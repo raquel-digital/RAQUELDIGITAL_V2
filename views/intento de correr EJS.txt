@@ -1,0 +1,65 @@
+ COPIAR DE NUEVO EN INDEX
+ 
+ <!-- <%   if(data.result.length > 50){ %>
+                        console.log("ok") -->
+                    <!-- <script>
+                        crearPaginador('<%=data.result%>');
+                        //tags(mostradorDeArticulos);
+                    </script>        -->
+                        
+                    <!-- <%   } %> -->
+                      <!-- else{ 
+                        showArts(mostradorDeArticulos);
+                        tags(mostradorDeArticulos);
+                      } %> -->
+                    <!-- <% data.result.forEach(p => { %>
+                        <% if (p.mostrar) { %>
+                            <% let imagen = "/img/" + p.categorias + "/" + p.imagendetalle  %>
+                            
+                            <div class="card-articulo">
+                                <div id=<%=p.codigo%>imagen class="contenedor-img-articulo" style="background-image:url(<%= imagen %>);">
+                                            
+                                </div>
+                                <div class="contenedor-info-articulo">
+                                <h3><%=p.nombre%></h3>
+                                <p class="info-gral-articulo"><%=p.nombre2%></p>
+                                <div class="descripcion-titulo">
+                                    <p>Ver descripción</p>
+                                    <button type="button" class="chevron"></button>
+                                </div>
+                                <p class="descripcion-texto" style="display:none;"><%= p.descripcion%><br/><span>Código:</span> <%= p.codigo%><br/><span>Unidad de venta:</span>  <%= p.CantidadDeVenta%></p>
+                                <div class="precio-cantidad">
+                                    <div class="precio-card">
+                                    <p>$<%= p.precio%></p>
+                                    <p><%= p.CantidadDeVenta%></p>
+                                    </div>
+                                    <div class="cantidad-card">
+                                    <button type="button" class="menos"></button>
+                                    <input type="number" value="1">
+                                    <button type="button" class="mas"></button>
+                                    </div>
+                                </div>
+                                <button id="articulo-compra" type="button" class="btn-primario <%=p.codigo%> articulo-compra">Agregar al carrito</button>
+                                </div>
+                            </div>
+                            
+                            <script>
+                                
+                                document.querySelector("." + '<%=p.codigo%>').setAttribute("codigo", '<%=p.codigo%>');
+                                document.querySelector("." + '<%=p.codigo%>').setAttribute("precio", '<%=p.precio%>');                            
+                                document.querySelector("." + '<%=p.codigo%>').setAttribute("nombre", '<%=p.nombre%>');
+                                document.querySelector("." + '<%=p.codigo%>').setAttribute("imagen", '<%=imagen%>');
+                                //modal                            
+                                //document.querySelector("#" + '<%=p.codigo%>' + "imagen").setAttribute("imagen", '<%=p.imagen%>');
+                                document.querySelector("#" + '<%=p.codigo%>' + "imagen").setAttribute("nombre", '<%=p.codigo%>');
+                            </script>                    
+                            
+                            <% if (p.colores.length > 0) { %>
+                            <script>
+                                console.log("col")
+                                //document.querySelector("." + '<%=p.codigo%>').setAttribute("colores", JSON.stringify('<%=p.colores%>'))
+                                document.querySelector("." + '<%=p.codigo%>').textContent = "Ver Carta De Colores"
+                            </script>
+                            <% }; %>
+                        <% }; %>  
+                    <% }); %> -->

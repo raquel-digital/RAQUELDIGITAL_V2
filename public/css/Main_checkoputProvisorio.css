@@ -1,0 +1,503 @@
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&family=Roboto+Condensed&family=Roboto:ital,wght@0,300;1,700&display=swap');
+:root{
+  --color-principal: rgb(110, 181, 65);
+  --warning: #e32235;
+  --primary: #405cf5;
+  --amarillo: #ffc107;
+}
+
+.banerCateg a img{
+  margin-top: 1.31rem;
+  margin-left: 16.68rem;
+  margin-bottom: 1.37rem;
+  width: 37.5rem;
+  height: 12.68rem;
+}
+
+.barraInicio{
+    font-weight: 900;
+    background-color: var(--color-principal);
+}
+
+body{
+    background-image: url("imagenDeFondo.jpg");    
+} 
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.botonera button{
+  padding: 10px;
+  color: #fffffc;
+  font-weight: bold;
+  border: none;
+  border-bottom: 4px solid rgb(208, 247, 135);
+  background: var(--color-principal);
+  background: -moz-linear-gradient(top, white 0%, var(--color-principal) 100%);
+  background: -webkit-linear-gradient(top, white 0%, var(--color-principal) 100%);
+  background: linear-gradient(to bottom, rgb(190, 243, 134) 0%, var(--color-principal) 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba($gradient,.7)', endColorstr='rgba($gradient,.9)',GradientType=0 );
+  border-radius: 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-left: 0.125rem;
+  margin-bottom: 0.3125rem;
+}
+
+.fqa{
+  padding: 10px;
+  color: #FFFFFF;
+  border: none;
+  border: 4px solid #dcefb5;
+  background: var(--color-principal);
+  background: -moz-linear-gradient(top, white 0%, var(--color-principal) 100%);
+  background: -webkit-linear-gradient(top, white 0%, var(--color-principal) 100%);
+  background: linear-gradient(to bottom, rgb(190, 243, 134) 0%, var(--color-principal) 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba($gradient,.7)', endColorstr='rgba($gradient,.9)',GradientType=0 );
+  border-radius: 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-left: 0.125rem;
+  margin-top: 0.125rem;
+  margin-bottom: 0.3125rem;
+}
+
+.fqa:hover {
+  color: #fffb07;
+}
+
+.mostrador{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.precio{
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+  align-self: center;
+}
+.botonComprar{
+  display: inline;
+  width: 19.2rem;
+  height: 3rem;
+}
+/* trasladar a formulario */
+input{
+  background-color: white;
+}
+input[type=text]{
+  
+  margin-left: 0.62rem;    
+  border-radius: 1.24rem;
+  border: 0.062rem;
+  padding-left: 0.62rem;
+}
+    
+input[type=text]:focus {
+   outline: none;
+   border: 0.062rem solid #a0d18c;
+}
+input[type=number]{ 
+  margin-left: 0.62rem;       
+  border-radius: 1.24rem;
+  border: 0.062rem;
+  padding-left: 0.62rem;
+ }
+   
+ input[type=number]:focus {
+    outline: none;
+    border: 0.062rem solid #a0d18c;
+ }
+ select{
+    margin-left: 1rem;    
+   border-radius: 1rem;
+   border: 0.1rem;
+   padding-left: 1rem;
+  }
+  
+select:focus {
+   outline: none;
+   border: 0.062rem solid #a0d18c;
+}
+nav{
+  margin-bottom: 1rem;
+}
+
+.navbar{
+  display: flex;
+  width: 100%;
+  height: 3.125rem;
+  position: fixed;
+  margin: 0;
+  z-index: 1;
+}
+
+/* Buscador */
+#buscadorContainer{
+  margin: 0;
+  padding: 0;
+}
+#buscadorContainer input{  
+  width: 80%;
+  height: 3rem;
+  display: inline;  
+  box-shadow: -0.125rem 0.125rem 0.375rem 0.25rem rgba(0, 0, 0, 0.2);
+  margin-right: 0.8rem;
+}
+
+#sidebar {  
+  margin-top: 3.12rem;
+  position: fixed;
+  width: 25rem;
+  height: 95%;
+  background: var(--color-principal);  
+  right: -25rem;
+  transition: all 500ms linear;
+  overflow: scroll;
+  z-index: 1;
+}
+
+#sidebar.active {
+  right: 0px;
+}
+
+
+#sidebar ul li {
+  color: rgba(230, 230, 230, .9);
+  list-style: none;
+  padding: 0.94rem 0.62rem;
+  border-bottom: 0.062rem solid rgba(100, 100, 100, .3);
+  text-align: center;
+}
+
+.logo {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+#sidebar .toggle-btn {
+  position: absolute;
+  left: 14.37rem;
+  top: 1.25rem;
+  cursor: pointer;
+}
+
+#sidebar .toggle-btn span {
+  display: block;
+  width: 2.5rem;
+  text-align: center;
+  font-size: 1.87rem;
+  border: 0.19 solid rgb(65, 230, 15);
+}
+.botonConfirmarBajo {
+  margin: 0;
+  display: block;
+  width: 17rem;
+  margin-left: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+nav a{
+  text-decoration: none;
+  text-align: center;
+  /* margin-right: 25rem; */
+  color: rgb(249, 250, 223);
+}
+
+nav a:hover{
+  color: rgb(249, 250, 223);
+}
+
+nav a p{
+  padding-top: 0.62rem;
+}
+.itemContainer{
+  display: flex;  
+  margin-left: 35rem;
+  width: 2.5rem;
+  height: 2.84rem;
+  position: relative;
+}
+.fa-cart-shopping{  
+  /* width: 2.5rem;
+  height: 2.84rem; */
+  
+  /* justify-content: flex-end; */
+  /* text-align: right;   */
+  font-size: 2.5rem;
+}
+
+.countIntems{ 
+  position: absolute;
+  bottom: -5rem;
+  border-radius: 0.5rem;
+  margin-left: 2rem;
+  margin-bottom: 5rem;
+  background-color: rgb(234, 234, 65);
+  width: 1.3000000000000007rem;
+  height: 1.2999999999999998rem;
+}
+
+.countIntems p{ 
+  /* align-items: center;
+  justify-content: center; */
+  padding-top: 0.2rem;
+  padding-right: 0.3rem;  
+  font-size: 1rem;
+  position: absolute;
+  left: 0.4rem;
+}
+
+.sideBarCross {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+.sideBarCross i:hover{
+  color: #dc3545;
+}
+
+label{   
+  margin-left: 1.625rem;
+}
+.jumbotron{
+  margin-left: 6.25rem;
+  margin-right: 6.25rem;
+}
+h1, h3{
+  text-align: center;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+h2{
+  text-align: center;
+  font-family: 'Francois One', sans-serif;
+}
+h4{
+  text-align: center;
+  font-family: 'Francois One', sans-serif;
+}
+form{
+  font-family: 'Roboto', sans-serif;
+}
+#ovalo {
+  padding-top: 0.62rem;
+  padding-bottom: 0.62rem;
+  background: rgba(200, 254, 202, 0.975);
+  border-radius: 3.125rem/3.125rem;
+}
+.pago-transferencia {
+  background-color: rgb(214, 214, 214);
+  font-size: larger;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  margin: 3.125rem 3.125rem 3.125rem 3.125rem;
+}
+.shape{
+  align-self: center;
+  display: flex;
+  flex-direction: column;  
+  width: 70%;
+  height: 100%;
+  margin: auto;
+  background-color: rgba(164, 241, 167, 0.975);;
+  border-radius: 1.25rem;  
+}
+.shape li {
+  list-style-type: none;
+}
+.shape li:hover {
+  background-color: rgb(247, 255, 205);
+  color: rgb(69, 69, 245);
+}
+.form-check-input{
+  position: absolute;
+  top: 0.25rem;  
+  margin: 0;
+}
+.form-check-input label{
+  position: relative;
+  right: 5rem;
+  margin: 0;
+}
+
+.price-selec {
+  display: flex;
+  justify-content: center;
+}
+.price-selec h3{
+  display: flex;
+  justify-content: right;
+  margin-left: 3.56rem;
+}
+.fa-trash-can{
+  padding-top: 0.75rem;
+  padding-left: 1.25rem;
+  margin-left: 1.25rem;
+  margin-top: 0.19;  
+}
+.fa-trash-can:hover{
+  color: #dc3545;
+}
+table{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* paginador */
+ .paginador{
+  margin-top: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: row;  
+  flex-wrap: wrap; 
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+
+.page-items{ 
+  display: flex;
+  flex-direction: row; 
+  justify-content: center;
+  width: 35px;
+  border: 2px solid rgb(197, 196, 196);
+  border-radius: 50px;
+  background-color: white;
+}
+.page-items:hover{
+  border: 2px solid var(--primary);
+}
+.numPag{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.page-links{
+  display: inline-block;
+  text-decoration: none;
+  align-items: center;
+  border-radius: 50px;
+  justify-content: center;
+}
+
+.paginadorSelected{  
+  border: 2px solid var(--color-principal);
+  color: white;
+}
+
+.lineBreak{
+  margin-top: 12px;
+  flex-basis: 100%;
+  height: 0;
+}
+
+/* MODAL DE COLORES */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cartaColores {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 1.26rem;
+  justify-content: space-between;
+}
+footer{
+  display: flex;
+}
+footer a img{
+  align-items: flex-end;
+  margin-left: 1.5rem;
+  height: 5rem;
+}
+
+@media screen and (max-device-width:1114px), screen and (max-width:1114px){
+  .itemContainer{
+    margin-left: 9rem;
+  }
+}
+@media screen and (max-device-width:990px), screen and (max-width:990px) {
+  .fa-cart-shopping{
+    position: relative;
+  }
+  .itemContainer{
+    position: absolute;
+    right: 4rem;
+    margin-left: 9rem;
+  }
+  .navbar-brand{
+    display: none;
+  }
+}
+
+@media screen and (max-device-width:640px), screen and (max-width:640px) {
+ 
+  .mostrador{
+    display: flex;
+    flex-direction: column;
+  }
+  .cardItem{
+    width: 35.5rem;
+  }
+  .jumbotron{
+    margin: 0;    
+    width: 100%;
+  }
+}
+@media screen and (max-device-width:640px), screen and (max-width:640px){
+  .navbar-brand{
+    display: none;
+  }
+  .fa-cart-shopping{
+    width: 2.5rem;
+  }
+}
+
+
+
+
+

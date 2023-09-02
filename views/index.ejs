@@ -1,0 +1,240 @@
+<%- include('partials/header') -%>
+<body>
+	<div class="contenedor-header">
+        <header>
+            <a href="index.php"><img class="logo-header" src="img/logo.svg" alt="Casa Raquel" /></a>
+            <div class="buscador-carrito">
+                <form id="barra-busqueda" action="/buscador" method="get">
+                    <input id="input-busqueda" type="text" placeholder="Buscar artículos" name="buscar" />
+                    <button type="submit" class="lupa"></button>
+                    <!-- <button id="cruz-busqueda" type="submit" class="cruz" style="display: none;"></button> -->
+                    <p class="busqueda-vacia">El campo de búsqueda no puede quedar vacío.</p>
+                </form>
+                <button type="button" class="carrito">
+                    <span id="carritoNumber" class="badge">0</span>
+                    <div class="toast-exito">
+                        <img src="img/tilde.svg" alt="" />
+                        <p>Carrito eliminado con éxito.<br />
+                        Artículo agregado.</p>
+                    </div>
+                </button>
+            </div>
+        </header>
+    </div>
+	<div class="contenedor-principal">
+		<nav id="select-categ">
+			<h2>Categorías</h2>
+			<button type="button">Elige una categoría</button>
+			<ul>
+				<li><a>Abrojos</a></li>
+				<li><a>Alfileres y Agujas</a></li>
+				<li><a>Aplicaciones</a></li>
+				<li><a>Bordado</a></li>
+				<li><a>Botones y Broches</a></li>
+				<li><a>Brillos</a></li>
+				<li><a>Cierres</a></li>
+				<li><a>Cintas</a></li>
+				<li><a>Cordones</a></li>
+				<li><a>Costura</a></li>
+				<li><a>Elásticos</a></li>
+				<li><a>Flores</a></li>
+				<li><a>Herrajes</a></li>
+				<li><a>Herramientas</a></li>
+				<li><a>Hilos</a></li>
+				<li><a>Indumentaria</a></li>
+				<li><a>Lanas</a></li>
+				<li><a>Manualidades</a></li>
+				<li><a>Matrices e Insumos</a></li>
+				<li><a>Puntillas</a></li>
+				<li><a>Tapices</a></li>
+				<li><a>Telar</a></li>
+				<li><a>Otros</a></li>
+			</ul>
+		</nav>
+		<main>
+			<h1>Últimos artículos agregados:</h1>
+            <% if (categRes) { %>
+                <div id="resultado-router"></div>
+                <div class="filtros"></div>
+            <% } %> 
+            <!--  CONTENEDOR PRINCIPAL  -->
+			<div class="contenedor-articulos">                
+                <!-- <% if (categRes) { %> -->
+                   
+                <!-- <% } else { %>  -->
+                    
+				<div class="card-articulo card-art-sk">
+					<div class="contenedor-img-articulo-sk"></div>
+					<div class="contenedor-info-articulo">
+						<div class="h3-sk"></div>
+						<p class="info-gral-articulo-sk"></p>
+						<div class="descripcion-titulo-sk"></div>
+						<div class="precio-cantidad">
+							<div class="precio-card">
+								<p class="precio-sk"></p>
+								<p class="unidades-sk"></p>
+							</div>
+							<div class="cantidad-card">
+								<div class="signo-sk"></div>
+								<div class="input-number-sk"></div>
+								<div class="signo-sk"></div>
+							</div>
+						</div>
+						<button type="button" class="btn-primario-sk"></button>
+					</div>
+				</div>
+				<div class="card-articulo card-art-sk">
+					<div class="contenedor-img-articulo-sk"></div>
+					<div class="contenedor-info-articulo">
+						<div class="h3-sk"></div>
+						<p class="info-gral-articulo-sk"></p>
+						<div class="descripcion-titulo-sk"></div>
+						<div class="precio-cantidad">
+							<div class="precio-card">
+								<p class="precio-sk"></p>
+								<p class="unidades-sk"></p>
+							</div>
+							<div class="cantidad-card">
+								<div class="signo-sk"></div>
+								<div class="input-number-sk"></div>
+								<div class="signo-sk"></div>
+							</div>
+						</div>
+						<button type="button" class="btn-primario-sk"></button>
+					</div>
+				</div>
+				<div class="card-articulo card-art-sk">
+					<div class="contenedor-img-articulo-sk"></div>
+					<div class="contenedor-info-articulo">
+						<div class="h3-sk"></div>
+						<p class="info-gral-articulo-sk"></p>
+						<div class="descripcion-titulo-sk"></div>
+						<div class="precio-cantidad">
+							<div class="precio-card">
+								<p class="precio-sk"></p>
+								<p class="unidades-sk"></p>
+							</div>
+							<div class="cantidad-card">
+								<div class="signo-sk"></div>
+								<div class="input-number-sk"></div>
+								<div class="signo-sk"></div>
+							</div>
+						</div>
+						<button type="button" class="btn-primario-sk"></button>
+					</div>
+				</div>
+				<div class="card-articulo card-art-sk">
+					<div class="contenedor-img-articulo-sk"></div>
+					<div class="contenedor-info-articulo">
+						<div class="h3-sk"></div>
+						<p class="info-gral-articulo-sk"></p>
+						<div class="descripcion-titulo-sk"></div>
+						<div class="precio-cantidad">
+							<div class="precio-card">
+								<p class="precio-sk"></p>
+								<p class="unidades-sk"></p>
+							</div>
+							<div class="cantidad-card">
+								<div class="signo-sk"></div>
+								<div class="input-number-sk"></div>
+								<div class="signo-sk"></div>
+							</div>
+						</div>
+						<button type="button" class="btn-primario-sk"></button>
+					</div>
+				</div>
+				<div class="card-articulo card-art-sk">
+					<div class="contenedor-img-articulo-sk"></div>
+					<div class="contenedor-info-articulo">
+						<div class="h3-sk"></div>
+						<p class="info-gral-articulo-sk"></p>
+						<div class="descripcion-titulo-sk"></div>
+						<div class="precio-cantidad">
+							<div class="precio-card">
+								<p class="precio-sk"></p>
+								<p class="unidades-sk"></p>
+							</div>
+							<div class="cantidad-card">
+								<div class="signo-sk"></div>
+								<div class="input-number-sk"></div>
+								<div class="signo-sk"></div>
+							</div>
+						</div>
+						<button type="button" class="btn-primario-sk"></button>
+					</div>
+				</div>
+				<div class="card-articulo card-art-sk">
+					<div class="contenedor-img-articulo-sk"></div>
+					<div class="contenedor-info-articulo">
+						<div class="h3-sk"></div>
+						<p class="info-gral-articulo-sk"></p>
+						<div class="descripcion-titulo-sk"></div>
+						<div class="precio-cantidad">
+							<div class="precio-card">
+								<p class="precio-sk"></p>
+								<p class="unidades-sk"></p>
+							</div>
+							<div class="cantidad-card">
+								<div class="signo-sk"></div>
+								<div class="input-number-sk"></div>
+								<div class="signo-sk"></div>
+							</div>
+						</div>
+						<button type="button" class="btn-primario-sk"></button>
+					</div>
+				</div>
+                <!-- <% } %> -->
+                <!-- PREGUNTA FRECUENTES -->
+                <% if (faq) { %>
+                    <script>
+                        document.querySelector(".contenedor-articulos").innerHTML = ""
+                    </script>
+                    <%- include('partials/preguntas-frecuentes') -%>
+                <% } %> 
+			</div>
+            <!-- FIN CONTENEDOR PRINCIPAL -->
+            <% if (categRes) { %>
+                <div class="paginador">
+            
+                </div>
+            <% } %> 
+		</main>
+	</div>
+	
+    <%- include('partials/footer') -%>
+
+	<a href="https://api.whatsapp.com/send?phone=5491136933250" target="_blank" class="whatsapp-float"><img src="img/whatsapp.svg" alt="Whatsapp" /></a>
+
+	<!-- Modal imagen ampliada - Z-index: 200 -->
+     <%- include('partials/modela-img-ampliada') -%>
+	<!-- Fin Modal imagen ampliada -->
+	
+	<!-- Modal carta de colores - z-index: 300 -->
+	 <%- include('partials/modal-carta-colores') -%>
+	<!-- Fin Modal carta de colores -->
+
+	<!-- Drawer carrito - z-index: 400 -->
+     <%- include('partials/carrito') -%>
+	<!-- Fin Drawer carrito -->
+
+	<!-- Drawer modal eliminar carrito z-index: 500 -->
+     <%- include('partials/carrito-vacio') -%>
+	<!-- Fin Drawer modal salir -->
+    <!-- Drawer modal eliminar item z-index: 500 -->
+    <%- include('partials/carriro-eliminar-item') -%>
+	<!-- Fin Drawer modal salir -->
+    <% if (categRes) { %>
+        <script src="js/app.js"></script>
+        <script src="js/crearArticulos.js"></script>
+        <script src="js/carrito.js"></script>
+        <script src="js/buscador.js"></script>  
+        <script src="js/categ.js"></script>
+    <% } %>   
+    <% if (!categRes && !faq) { %>  
+        <script src="js/app.js"></script>
+        <script src="js/crearArticulos.js"></script>
+        <script src="js/carrito.js"></script>  
+        <script src="js/buscador.js"></script>  
+        <script src="js/start.js"></script>
+    <% } %>   
+</body>

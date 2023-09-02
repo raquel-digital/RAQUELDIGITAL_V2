@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "01- raqueldigital v2",
+			"path": "..\\.."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
