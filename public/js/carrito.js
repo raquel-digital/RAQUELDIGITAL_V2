@@ -97,7 +97,8 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
         alertModal("Queres guardar tu pedido?", "Luego vas a poder volver a cargarlo desde la barra de usuario", "Aceptar", "Cancelar")
         confirm.addEventListener("click", event => {
             if(event.target.textContent == "Aceptar"){
-                const data = { id: mouse.value, pedido: carrito, nombre: "nombre prueba"}
+                const userInput = window.prompt("Por favor, ingresa el nombre de tu pedido:");
+                const data = { id: mouse.value, pedido: carrito, nombre: userInput}
                 console.log(data)
                 socket.emit("guardar-pedido-usuario", data)
                 confirm.style.display = "none"
