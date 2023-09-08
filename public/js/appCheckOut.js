@@ -1,6 +1,7 @@
 
 const socket = io.connect();
-console.log("ok")
+
+
 let compra = JSON.parse(localStorage.getItem('carrito'));
 let totalCompra = 0;
 let datos_cliente = JSON.parse(localStorage.getItem('datos-envio'));
@@ -442,6 +443,7 @@ socket.on("valPeticion", data => {
       if(res.isConfirmed){
         form.submit();
         const datosCliente = JSON.parse(localStorage.getItem('datos-envio'));
+        datosCliente.auth = cliDat
         socket.emit("mail", datosCliente)
       }
     })
@@ -577,7 +579,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             <input class="form-check-input check-correo" type="radio" name="tipo-envio" id="tipo-envio2">
             <label class="form-check-label" for="tipo-envio2">
             <span>Por Correo Argentino $ <p class="valor-correo" style="display: inline;">${valorCorreo} Valor por paquete de 5kg (en caso de superarse le vamos a avisar el costo)</p></span>
-            </label>
+ check           </label>
         </div>
         <div class="form-check">
             <input class="form-check-input check-expreso" type="radio" name="tipo-envio" id="tipo-envio1">
@@ -591,4 +593,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
       }
 })
 
-
+let cliDat;
+/**** RECIBIMOS USER DE AUTH */
+socket.on("usuario-auth", perfil => cliDat = perfil);
+/*** ***************************/

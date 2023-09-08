@@ -1,0 +1,62 @@
+<div class="navbar" id="nav-xavi">
+  <nav class="navbar navbar-expand-lg barraInicio">
+      <div class="buscadorPedido d-flex justify-content-center p-2" style="margin-left: 40%;">
+          
+          <% if (login.isLog) { %>
+            <h1>Logueado</h1>
+            <form action="/logout">
+              <button type="submit">Logout</button>
+            </form>
+            <p>Usuario: <%= user.name %></p>
+            <img src="<%= user.picture %>" alt="">
+            <% if (user.email) { %>
+              <p>mail: <%= user.email %></p>
+            <% } %>
+          <% } else {%> 
+            <h1>Loguearse</h1>
+            <form action="/login">
+              <button type="submit">Login</button>
+            </form>
+          <% } %> 
+          <% if (login.pedidos) { %>
+            <!-- <h1>PEDIDOS REALIZADOS: <%= login.pedidos.pedidos.length %> </h1> -->
+            <select id="menuPedidos">
+              <option value=" " disabled selected>Historial de Pedidos</option>
+              <% login.pedidos.pedidos.forEach(p => { %>              
+                <option value="<%= JSON.stringify(p.compra) %>"><%= p.fecha %></option>
+              <% }) %>          
+          </select>
+
+          <select id="menuPedidosFavoritos">
+            <option value=" " disabled selected>Pedidos Favoritos</option>
+            <% login.pedidos.pedidos.forEach(p => { %>
+              <% if(p.favorito) { %>              
+              <option value="<%= JSON.stringify(p.compra) %>"> Nombre: <%= p.nombre %>  Fecha: <%= p.fecha %></option>
+              <% } %>
+            <% }) %>
+          </select>
+
+          <% } %>
+      </div>
+  </nav>
+</div>
+
+<!-- <script>
+    const componente = document.getElementById('nav-xavi');
+    const shadowRoot = componente.attachShadow({ mode: 'open' });
+
+    // Estilos específicos para el componente
+    const estilo = document.createElement('style');
+    estilo.textContent = `
+    #nav-xavi {
+      position: absolute;
+    }
+     `;
+
+    shadowRoot.appendChild(estilo);
+
+    // Contenido específico para el componente
+    const contenido = document.createElement('div');
+    contenido.textContent = 'Este es un componente con Shadow DOM.';
+    shadowRoot.appendChild(contenido);
+</script> -->

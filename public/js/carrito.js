@@ -32,8 +32,8 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
   //eliminar artículo individual
   if(mouse.classList.contains("eliminar-articulo")){
         const codigo = event.target.parentElement.childNodes[3].childNodes[1].textContent
-       
-        const confirm = document.getElementById("eliminar-item")
+        const confirm = document.getElementById("custom-modal")
+        alertModal("¿Querés eliminar el artículos del carrito?", "Esta acción no se puede deshacer.", "Sí, eliminar", "No")
         confirm.style.display = "block"
         confirm.addEventListener("click", event => {
             if(event.target.textContent == "Sí, eliminar"){
@@ -59,7 +59,8 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
     }
 
     if(mouse.id == "eliminar-carrito"){
-        const confirm = document.getElementById("carrito-vaciar")
+        const confirm = document.getElementById("custom-modal")
+        alertModal("¿Querés eliminar todos los artículos del carrito?", "Esta acción no se puede deshacer.", "Sí, eliminar", "No")
         confirm.style.display = "block"
         confirm.addEventListener("click", event => {
             if(event.target.textContent == "Sí, eliminar"){
@@ -82,17 +83,41 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
         window.location = "http://localhost:8080/check-out"
     }
 
-    //TEST cierre haciendo click fuera del carrito
+    //cerrar haciendo click fuera del carrito
     if (mouse.classList.contains("drawer-carrito")) {
         carritoShow.style.display = "none"
         if(carrito.length > 0){
             itemsCarrito.style.display = "block"
             itemsCarrito.textContent = carrito.length;
         }
-    }    
-    
+    }
+    if (mouse.id == "guardarPedido") {        
+        const confirm = document.getElementById("custom-modal")
+        confirm.style.display = "block"
+        alertModal("Queres guardar tu pedido?", "Luego vas a poder volver a cargarlo desde la barra de usuario", "Aceptar", "Cancelar")
+        confirm.addEventListener("click", event => {
+            if(event.target.textContent == "Aceptar"){
+                const data = { id: mouse.value, pedido: carrito, nombre: "nombre prueba"}
+                console.log(data)
+                socket.emit("guardar-pedido-usuario", data)
+                confirm.style.display = "none"
+            }
+            if(event.target.textContent == "Cancelar"){
+                confirm.style.display = "none"
+            }          
+        })
+         
+    } 
 })
 
+//respuesta a guardar pedido
+socket.on("guardar-pedido-usuario-res", res => {
+    if(res){
+        location.reload();
+    }else{
+        alertModal("Hubo un problema al guardar su pedido", "Por favor reintente nuevamente", "Cerrar")
+    }
+})
 
 const carritoBody = document.querySelector(".carrito-cuerpo");
 carritoBody.addEventListener('click', event=>{

@@ -1,4 +1,6 @@
 const express = require('express');
+const {  auth, requiresAuth } = require('express-openid-connect');
+
 const app = express();
 const http = require('http').Server(app);
 //const http = require('http');
@@ -10,13 +12,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const path = require('path');
 const logger = require('morgan');
-const { auth } = require('express-openid-connect');
+
 
 const dotenv = require('dotenv');
 dotenv.config();
 
 const requer  = require("./config/config")
 const nodemailer = require('nodemailer');
+
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    secret: 'a long, randomly-generated string stored in env',
+    baseURL: 'http://localhost:8080',
+    clientID: 'KLMYKNTCOXdY4xnFo6BIaJ6S0L7M0mDi',
+    issuerBaseURL: 'https://dev-mrcujunoqv0mgprk.us.auth0.com'
+  };
+
+  // auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+// // Middleware to make the `user` object available for all views
+app.use(function (req, res, next) {
+    res.locals.user = req.oidc.user;
+    next();
+  });
 
 
 io.on('connect', socket => {
@@ -40,6 +59,15 @@ io.on('connect', socket => {
             socket.emit("set-envio", envios);
         })     
      })();
+
+    //GUARDAR PEDIDO
+    socket.on("guardar-pedido-usuario", data => {
+        (async ()=>{
+            const controller = require("./api/auth/controller")
+            const res = await controller.guardarPedido(data)
+            socket.emit("guardar-pedido-usuario-res", res)
+        })()
+    }) 
      
     
     //CHECK OUT
@@ -54,9 +82,17 @@ io.on('connect', socket => {
             const mongoCrud = require("./api/users/controller");            
             mongoCrud.ingresar(data);
         }
+        // const result = {}
+        // result.state = true
         socket.emit("valPeticion", result);
     })
     socket.on("mail", data =>{
+
+        if(data.auth){
+           const controller = require("./api/auth/controller")
+           controller.ingresar(data)
+        }
+        
         mailEmit(data);        
     })     
 });
@@ -70,10 +106,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const config = {
-    authRequired: false,
-    auth0Logout: true
-  };
+
 
 //**** */
 const router = require("./routers/router");
@@ -230,32 +263,11 @@ async function mailEmit(data){
 
 }
 
-// http.listen(PORT, () => {
-//     console.log(`servidor escuchando en http://localhost:${PORT}`);
-// });
-
 const port = process.env.PORT || 8080
 
 if (!config.baseURL && !process.env.BASE_URL && process.env.PORT && process.env.NODE_ENV !== 'production') {
     config.baseURL = `http://localhost:${port}`;
-  }
-
-app.use(auth(config));
-
-// Middleware to make the `user` object available for all views
-app.use(function (req, res, next) {
-  res.locals.user = req.oidc.user;
-  next();
-});
-
-app.use('/', router);
-
-// Catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+}
 
 http.listen(port, () => {
     console.log(`servidor escuchando en http://localhost:${port}`);
@@ -266,3 +278,8 @@ process.on('warning', e => console.warn(e.stack));
 http.on('error', error => {
     console.log('error en el servidor:', error);
 });
+
+
+
+
+

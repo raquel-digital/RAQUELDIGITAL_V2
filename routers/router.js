@@ -7,14 +7,45 @@ const controller = require("../api/arts/controller")
 
 const { requiresAuth } = require('express-openid-connect');
 
-//ejs y auth0
-router.get('/', function (req, res, next) {
-  res.render('index', {
-    categRes: false,
-    data: " ",
-    faq: false
-    //isAuthenticated: req.oidc.isAuthenticated()
-  });
+//ENTRANDO A "/login y /logout" te logueas y deslogueas
+router.get("/", (req,res) => {
+
+  const login = req.oidc.isAuthenticated() ? true : false
+  let pedidos = 0
+  
+  if(login){ 
+      (async () => {       
+          const controller = require("../api/auth/controller")
+          pedidos = await controller.leer(req.oidc.user)
+          
+          res.render('index', {
+              categRes: false,
+              data: " ",
+              faq: false,
+              login: {
+                  isLog: login,
+                  pedidos: pedidos
+              }
+            });
+      })()        
+  }else{
+      res.render('index', {
+          categRes: false,
+          data: " ",
+          faq: false,
+          login: {
+              isLog: login,
+              pedidos: pedidos
+          }
+        });
+  }
+})
+
+//ver el profile con la informacion del logueado
+router.get('/profile', requiresAuth(), (req, res) => {
+  const profile = JSON.stringify(req.oidc.user)
+  const data = {user: profile}
+  res.send(data);
 });
 
 //-----CATEGS-----------
@@ -38,7 +69,12 @@ router.get("/categoria/", async (req, res) => {
   //res.sendFile(path.resolve("./public/categ.html"))
   //EJS pero carga desde JS
   //TODO descomentar codigo en INDEX
-  res.render('index', {categRes: true, faq: false});
+  res.render('index', {
+    categRes: true, 
+    faq: false, 
+    login: req.oidc.isAuthenticated() ? true : false,
+    
+  });
     
   // EJS
   // try{
@@ -172,7 +208,18 @@ router.post("/mercadopago", (req, res) => {
 
 
 //--check out
-router.get("/check-out", (req,res) => {
+router.get("/check-out", (req, res) => {
+  const auth =  req.oidc.isAuthenticated() ? true : false
+  if(auth){
+      const profile = JSON.stringify(req.oidc.user)
+      const perfil = JSON.parse(profile)
+      
+      
+      let io = require('../io.js').get();  
+      io.once('connect', socket => {
+          socket.emit("usuario-auth", perfil);
+      })
+  }
   res.sendFile(path.resolve("./public/check-out.html"))
 })
 

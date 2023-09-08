@@ -13,11 +13,21 @@
               <p>Total de la compra</p>
               <p id="total-carrito-suma">0</p>
           </div>
+          
           <div class="carrito-botones" >
               <button id="eliminar-carrito" type="button" class="btn-terciario">Eliminar carrito</button>
               <button id="cerrarCarrito" type="button" class="btn-secundario">Cerrar</button>
-              <button id="confirmar-compra" type="button" class="btn-primario">Comprar carrito</button>
+              
+              <% if (login.pedidos) { %>
+                <button id="guardarPedido" type="button" class="btn-secundario" value="<%= user.sub %>">Guardar pedido</button>
+              <% }else{ %>
+                <button id="confirmar-compra" type="button" class="btn-primario">Comprar carrito</button>
+              <% } %>
           </div>
+          <% if (login.pedidos) { %>
+            <button id="confirmar-compra" type="button" class="btn-primario">Comprar carrito</button>
+          <% } %>
+          
       </div>
     </div>
   </div>

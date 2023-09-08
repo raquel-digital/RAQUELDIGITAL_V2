@@ -1,4 +1,4 @@
- COPIAR DE NUEVO EN INDEX
+COPIAR DE NUEVO EN INDEX
  
  <!-- <%   if(data.result.length > 50){ %>
                         console.log("ok") -->

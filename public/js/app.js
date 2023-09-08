@@ -73,6 +73,29 @@ mostrador.addEventListener('click', event=>{
     }
 })
 
+//SELECT DE PEDIDOS
+document.querySelector("#menuPedidos").addEventListener('click', event => {
+  const pedido = event.target.value
+  const compra = JSON.parse(pedido)
+  const confirm = document.getElementById("custom-modal")
+  alertModal("Queres ingresar el pedido?", "Si tiene elementos en el carrito, estos se borraran", "Si", "No")
+  confirm.style.display = "block"
+  confirm.addEventListener("click", event => {
+    if(event.target.textContent == "Si"){
+      carrito.length = 0 //TODO hacer alert que avise que el carrito se va a vaciar
+      for(let c of compra){
+        ingresarCarrito(c)//TODO actualizar precio cuando sea necesario
+      }
+      confirm.style.display = "none" 
+    } 
+    if(event.target.textContent == "No"){
+      confirm.style.display = "none" 
+    }
+  })
+  document.querySelector("#menuPedidos").options[0].disabled = true;
+  document.querySelector("#menuPedidos").options[0].selected = true;
+})
+
 //clicks en modal cierra imagen
 document.querySelector(".modal-img-ampliada").addEventListener('click', () => {
     const modal = document.querySelector(".modal-img-ampliada")
@@ -421,6 +444,19 @@ function actualizarPrecioCarrito(codigo, cant){
     }
    })
    
+  }
+
+  function alertModal(txt, txt2, confirmar, cancelar){
+    document.getElementById("mensaje-1").textContent = txt
+
+    if(txt2){
+      document.getElementById("mensaje-2").textContent = txt2
+    }
+
+    document.getElementById("confirmar-mensaje").textContent = confirmar
+    if(cancelar){
+      document.getElementById("cancelar-mensaje").textContent = cancelar
+    }
   }
 
 

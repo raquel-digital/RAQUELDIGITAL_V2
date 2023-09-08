@@ -20,7 +20,9 @@
                 </button>
             </div>
         </header>
+		<%- include('partials/nav-login') -%>
     </div>
+	
 	<div class="contenedor-principal">
 		<nav id="select-categ">
 			<h2>Categorías</h2>
@@ -52,13 +54,16 @@
 			</ul>
 		</nav>
 		<main>
+				
 			<h1>Últimos artículos agregados:</h1>
             <% if (categRes) { %>
                 <div id="resultado-router"></div>
                 <div class="filtros"></div>
             <% } %> 
+			
             <!--  CONTENEDOR PRINCIPAL  -->
-			<div class="contenedor-articulos">                
+			<div class="contenedor-articulos"> 
+				               
                 <!-- <% if (categRes) { %> -->
                    
                 <!-- <% } else { %>  -->
@@ -218,11 +223,9 @@
 	<!-- Fin Drawer carrito -->
 
 	<!-- Drawer modal eliminar carrito z-index: 500 -->
-     <%- include('partials/carrito-vacio') -%>
+     <%- include('partials/custom-modal') -%>
 	<!-- Fin Drawer modal salir -->
-    <!-- Drawer modal eliminar item z-index: 500 -->
-    <%- include('partials/carriro-eliminar-item') -%>
-	<!-- Fin Drawer modal salir -->
+    
     <% if (categRes) { %>
         <script src="js/app.js"></script>
         <script src="js/crearArticulos.js"></script>
