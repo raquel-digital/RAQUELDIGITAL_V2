@@ -4,7 +4,6 @@ var path = require('path');
 const requer = require("../config/config");
 //const middleware = require("../utils/middleware");
 const controller = require("../api/arts/controller")
-
 const { requiresAuth } = require('express-openid-connect');
 
 //ENTRANDO A "/login y /logout" te logueas y deslogueas
@@ -72,8 +71,7 @@ router.get("/categoria/", async (req, res) => {
   res.render('index', {
     categRes: true, 
     faq: false, 
-    login: req.oidc.isAuthenticated() ? true : false,
-    
+    login: req.oidc.isAuthenticated() ? true : false,    
   });
     
   // EJS
@@ -87,6 +85,29 @@ router.get("/categoria/", async (req, res) => {
     // }catch(err){
     //   console.log(err)
     // }
+})
+
+//-----BUSCADOR-----
+router.get("/buscador", (req, res) => {
+  let io = require('../io.js').get();  
+  io.once('connect', socket => {
+    (async () => {      
+        const buscar = req.query.buscar.toLocaleLowerCase();        
+        if(req.query.buscar == " "){
+          console.log("ok")
+          socket.emit("resultado-vacio");
+          return
+        }
+        const result = await controller.buscarArticulo(buscar); 
+        const data = { result: result, query: buscar}       
+        socket.emit("resultado-busqueda", data);
+    })();
+  })   
+  res.render('index', {
+    categRes: true, 
+    faq: false, 
+    login: req.oidc.isAuthenticated() ? true : false,    
+  });  
 })
 
 
@@ -139,25 +160,7 @@ router.get("/login-admin", (req,res) => {
 })
 
 
-//-----BUSCADOR-----
-router.get("/buscador", (req, res) => {
-  let io = require('../io.js').get();  
-  io.once('connect', socket => {
-    (async () => {      
-        const buscar = req.query.buscar.toLocaleLowerCase();
-        
-        if(req.query.buscar == " "){
-          console.log("ok")
-          socket.emit("resultado-vacio");
-          return
-        }
-        const result = await controller.buscarArticulo(buscar); 
-        const data = { result: result, query: buscar}       
-        socket.emit("resultado-busqueda", data);
-    })();
-  })   
-  res.sendFile(path.resolve("./public/categ.html"));  
-})
+
 
 //----POST--------------
 

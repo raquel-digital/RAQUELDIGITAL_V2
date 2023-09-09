@@ -1,12 +1,27 @@
 //LUPA Y CRUZ
 
-// document.getElementById("barra-busqueda").addEventListener("keydown", () => {
-//   const lupa = document.querySelector(".lupa")
-//   lupa.classList.add("cruz") 
-//   if(document.getElementById("input-busqueda").value.trim() == ""){
-//     lupa.classList.remove("cruz")
-//   }  
-// })
+document.getElementById("barra-busqueda").addEventListener("keydown", event => {    
+  if (event.key === "Enter") {  
+    const campoValor = document.getElementById("input-busqueda");  
+    if (campoValor.value.trim() === "") {
+      event.preventDefault(); // Previene el envío del formulario si el campo está vacío.
+      const vacio = document.querySelector(".busqueda-vacia")
+      vacio.style.display = "block"
+      const bordeRojo = document.querySelector("#barra-busqueda")
+      bordeRojo.style.borderColor = "#E61C1C"
+    }else{
+      const submit = document.getElementById("barra-busqueda")
+      submit.submit()
+      console.log(submit)
+    }
+  }else{
+    const lupa = document.querySelector(".lupa")
+    lupa.classList.add("cruz") 
+    if(document.getElementById("input-busqueda").value.trim() == ""){
+      lupa.classList.remove("cruz")
+    }
+  }
+})
 
 document.querySelector(".lupa").addEventListener("click", event => {
   if(document.querySelector(".lupa").classList.contains("cruz")){
@@ -17,20 +32,20 @@ document.querySelector(".lupa").addEventListener("click", event => {
 })
 
 //evitar que el formulario llegue vacio
-document.getElementById("barra-busqueda").onsubmit = function(event) {
-    var campoValor = document.getElementById("input-busqueda");
+// document.getElementById("barra-busqueda").onsubmit = function(event) {
+//     var campoValor = document.getElementById("input-busqueda");
     
-    if (campoValor.value.trim() === "" || event.target.classList.contains("cruz")) {
-        event.preventDefault(); // Evita el envío del formulario si el campo está vacío
+//     if (campoValor.value.trim() === "" || event.target.classList.contains("cruz")) {
+//         event.preventDefault(); // Evita el envío del formulario si el campo está vacío
         
-        const vacio = document.querySelector(".busqueda-vacia")
-        vacio.style.display = "block"
+//         const vacio = document.querySelector(".busqueda-vacia")
+//         vacio.style.display = "block"
 
-        const bordeRojo = document.querySelector("#barra-busqueda")
-        bordeRojo.style.borderColor = "#E61C1C"
-        //bordeRojo.classList.add("buscador-error")
-    }
-};
+//         const bordeRojo = document.querySelector("#barra-busqueda")
+//         bordeRojo.style.borderColor = "#E61C1C"
+//         //bordeRojo.classList.add("buscador-error")
+//     }
+// };
 
 //recibir resultados
 socket.on("resultado-busqueda", data => {       
