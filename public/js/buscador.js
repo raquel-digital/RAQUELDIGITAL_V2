@@ -1,18 +1,19 @@
 //LUPA Y CRUZ
+document.getElementById("barra-busqueda").addEventListener("keydown", event => {
+  const vacio = document.querySelector(".busqueda-vacia")
+  const bordeRojo = document.querySelector("#barra-busqueda")
+  bordeRojo.style.borderColor = "#2F2F2F"
+  vacio.style.display = "none"
 
-document.getElementById("barra-busqueda").addEventListener("keydown", event => {    
   if (event.key === "Enter") {  
     const campoValor = document.getElementById("input-busqueda");  
     if (campoValor.value.trim() === "") {
       event.preventDefault(); // Previene el envío del formulario si el campo está vacío.
-      const vacio = document.querySelector(".busqueda-vacia")
-      vacio.style.display = "block"
-      const bordeRojo = document.querySelector("#barra-busqueda")
+      vacio.style.display = "block"      
       bordeRojo.style.borderColor = "#E61C1C"
     }else{
       const submit = document.getElementById("barra-busqueda")
       submit.submit()
-      console.log(submit)
     }
   }else{
     const lupa = document.querySelector(".lupa")
@@ -30,22 +31,6 @@ document.querySelector(".lupa").addEventListener("click", event => {
     document.querySelector(".lupa").classList.remove("cruz")
   }
 })
-
-//evitar que el formulario llegue vacio
-// document.getElementById("barra-busqueda").onsubmit = function(event) {
-//     var campoValor = document.getElementById("input-busqueda");
-    
-//     if (campoValor.value.trim() === "" || event.target.classList.contains("cruz")) {
-//         event.preventDefault(); // Evita el envío del formulario si el campo está vacío
-        
-//         const vacio = document.querySelector(".busqueda-vacia")
-//         vacio.style.display = "block"
-
-//         const bordeRojo = document.querySelector("#barra-busqueda")
-//         bordeRojo.style.borderColor = "#E61C1C"
-//         //bordeRojo.classList.add("buscador-error")
-//     }
-// };
 
 //recibir resultados
 socket.on("resultado-busqueda", data => {       

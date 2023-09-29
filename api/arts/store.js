@@ -183,6 +183,15 @@ const store = {
              return false;
          }
     },
+    updateOrder: async function (data){
+        try{
+          const res = await model.findOne({codigo: data.codigo})
+          return res
+        }catch(err){
+          console.log("[ ERROR AL ACTUALIZAR PEDIDO ] ", err)
+          return false
+        }
+      },
  }
  
  module.exports = store;

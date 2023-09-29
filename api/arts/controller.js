@@ -220,6 +220,17 @@ controller = {
             return false;
         }        
     },
+    actualizarPedido: async function (data){ 
+        
+        for(let d of data){
+            const r = await store.updateOrder(d)
+            const check = Number(r.precio) 
+            if(check != d.precio){
+                d.precio = check               
+            }
+        }  
+        return data
+    },
 }
 
 module.exports = controller;

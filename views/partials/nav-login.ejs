@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg barraInicio">
       <div class="buscadorPedido d-flex justify-content-center p-2" style="margin-left: 40%;">
           
-          <% if (login.isLog) { %>
+        <% if (login.isLog) { %>
             <h1>Logueado</h1>
             <form action="/logout">
               <button type="submit">Logout</button>
@@ -21,22 +21,22 @@
           <% if (login.pedidos) { %>
             <!-- <h1>PEDIDOS REALIZADOS: <%= login.pedidos.pedidos.length %> </h1> -->
             <select id="menuPedidos">
-              <option value=" " disabled selected>Historial de Pedidos</option>
+              <option value="<%= user.sub %>" disabled selected>Historial de Pedidos</option>
               <% login.pedidos.pedidos.forEach(p => { %>              
                 <option value="<%= JSON.stringify(p.compra) %>"><%= p.fecha %></option>
               <% }) %>          
           </select>
 
           <select id="menuPedidosFavoritos">
-            <option value=" " disabled selected>Pedidos Favoritos</option>
+            <option disabled selected>Pedidos Favoritos</option>
             <% login.pedidos.pedidos.forEach(p => { %>
               <% if(p.favorito) { %>              
               <option value="<%= JSON.stringify(p.compra) %>"> Nombre: <%= p.nombre %>  Fecha: <%= p.fecha %></option>
               <% } %>
             <% }) %>
           </select>
-
-          <% } %>
+          <button id="boton-borrar-pedidos">Borrar pedidos</button>
+        <% } %>
       </div>
   </nav>
 </div>

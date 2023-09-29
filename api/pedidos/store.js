@@ -58,7 +58,8 @@ const store = {
         }catch(err){
             console.log("[ ERROR EN STORE DELETE ] " + err)
         }
-    }
+    },
+    
 }
 
 module.exports = store;

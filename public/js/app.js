@@ -22,8 +22,7 @@ mostrador.addEventListener('click', event=>{
             imagen: boton.getAttribute("imagen"),
             cantidad: Number(cantidad_venta) 
           }
-        if(mouse.textContent == "Ver Carta De Colores"){
-          //TODO medidas
+        if(mouse.textContent == "Ver Carta De Colores" || mouse.textContent == "Seleccionar Medida"){
           modalColores.style.display = "block"
           const colores = boton.getAttribute("colores")
           cargarColores(art, colores)
@@ -78,26 +77,111 @@ const menuPedidos = document.querySelector("#menuPedidos")
 if(menuPedidos){
   menuPedidos.addEventListener('click', event => {
     const pedido = event.target.value
-    const compra = JSON.parse(pedido)
-    const confirm = document.getElementById("custom-modal")
-    alertModal("Queres ingresar el pedido?", "Si tiene elementos en el carrito, estos se borraran", "Si", "No")
-    confirm.style.display = "block"
-    confirm.addEventListener("click", event => {
-      if(event.target.textContent == "Si"){
-        carrito.length = 0 //TODO hacer alert que avise que el carrito se va a vaciar
-        for(let c of compra){
-          ingresarCarrito(c)//TODO actualizar precio cuando sea necesario
-        }
-        confirm.style.display = "none" 
-      } 
-      if(event.target.textContent == "No"){
-        confirm.style.display = "none" 
+    
+    if(!pedido.includes("google") && !pedido.includes("facebook")){
+       const compra = JSON.parse(pedido)
+       const confirm = document.getElementById("custom-modal")
+        alertModal("Queres ingresar el pedido?", "Si tiene elementos en el carrito, estos se borraran", "Si", "No")
+        confirm.style.display = "block"
+      
+      
+        confirm.addEventListener("click", event => {
+          if(event.target.textContent == "Si"){
+            carrito.length = 0 
+            //enviamos carrito a server para chequear diferencia en precios
+            socket.emit("chequear-compra", compra)
+            confirm.style.display = "none" 
+          } 
+          if(event.target.textContent == "No"){
+            confirm.style.display = "none" 
+          }
+        })
+
+        document.querySelector("#menuPedidos").options[0].disabled = true;
+        document.querySelector("#menuPedidos").options[0].selected = true;
+    }
+  })
+  //borrar pedidos del usuario
+document.querySelector("#boton-borrar-pedidos").addEventListener("click", event => {
+  if(event.target.id == "boton-borrar-pedidos"){
+    //seleccionamos los pedidos en el historial
+    const menu = document.querySelector("#menuPedidos")
+    let pedidos = menu.querySelectorAll("option")
+
+    mostrador.innerHTML = `
+                  <table id="tabla-pedidos" border="1" style="margin-top: 160rem; font-size: 10rem;">
+                  
+              </table>
+              </body>
+              </html>
+    `
+    let sub;
+    pedidos.forEach(e => {
+      
+      if(e.textContent != "Historial de Pedidos"){
+        const pedido = JSON.parse(e.value)
+        document.getElementById("tabla-pedidos").innerHTML += `
+            <thead>
+            <tr>
+              ${e.label}
+            </tr>
+            </thead>
+        `
+        const id = e.label.replace(/\s/g, "");
+  
+        document.getElementById("tabla-pedidos").innerHTML += `
+            <thead>
+              <tr>Codigo</tr>
+              <tr>Titulo</tr>
+              <tr>Precio</tr>
+              <tr>Cantidad</tr>
+              <tr>Imagen</tr>
+            </thead>
+            <tbody id=${id}></tbody>
+        `
+
+        
+        pedido.forEach(p => {
+          document.getElementById(id).innerHTML += `
+              <td>${p.codigo}</td>
+              <td>${p.titulo}</td>
+              <td>${p.precio}</td>
+              <td>${p.cantidad}</td>
+              <td>${p.imagen}</td>
+            `
+        })
+        
+        document.getElementById(id).innerHTML += `
+        <tfoot>
+                <tr>
+                  <button onclick="borrarPedido('${sub}', '${e.label}')">BORRAR PEDIDO</button>
+                </tr>
+        </tfoot>`
+      }else{
+        sub = e.value.toString()
       }
     })
-    document.querySelector("#menuPedidos").options[0].disabled = true;
-    document.querySelector("#menuPedidos").options[0].selected = true;
-  })
+  }
+})
 }
+socket.on("chequear-compra-res", compra => {
+   for(let c of compra){
+          ingresarCarrito(c)
+    }
+})
+
+function borrarPedido(id, fecha){
+  data = {id: id, fecha: fecha}
+  socket.emit("borrar-pedido", data)
+}
+//RESPUESTA
+socket.on("borrar-pedido-res", res => {
+  if(res){
+    alert("PEDIDO BORRADO EXITOSAMENTE")
+  }else{
+    alert("FALLO AL BORRAR PEDIDO")
+  }
+})
 
 //clicks en modal cierra imagen
 document.querySelector(".modal-img-ampliada").addEventListener('click', () => {
@@ -259,12 +343,17 @@ function actualizarPrecioCarrito(codigo, cant){
              const imagen = click[2] 
              const codigo = click[3]
              const cantidad = checkbox.parentElement.parentElement.children[1].children[1].children[1].value
+             let medida = checkbox.parentElement.parentElement.children[1].children[0].textContent
              
-             const art = {
+             if(!medida.includes("N°")){
+              medida = ""
+             }
+             
+              const art = {
                codigo: codigo,
                imagen: imagen,
                precio: boton.getAttribute("precio"),
-               titulo: boton.getAttribute("nombre"),
+               titulo: boton.getAttribute("nombre") + " " + medida,
                cantidad: Number(cantidad)
              };
 
@@ -283,19 +372,40 @@ function actualizarPrecioCarrito(codigo, cant){
     const modalContenidoColor = document.getElementById("contenido-modal")
     modalContenidoColor.innerHTML = ""
 
-    arrColores.forEach( e => {
+    let talles = false
+    //chequear si es talles
+    for(const t of arrColores){
+      if(t.codigo.includes("talle")){
+        talles = t.codigo.replace("_talle", "")
+        t.codigo = talles
+      }
+    }
+    
+    arrColores.sort(compararOrdenar)//ordenar de menor a mayor
+    arrColores.forEach( e => {     
+      let color 
+      const split = e.codigo.split("-")
       if(e.mostrar){
-        const split = e.codigo.split("-")
-        let color = split[1]
-        if(split.length > 2){        
-          for (let index = 2; index < split.length; index++) {
-            color += " " + split[index]
+        if(talles){          
+          color = "Medida N° " + split[split.length-1]
+        }else{          
+          color = split[1]
+          if(split.length > 2){        
+            for (let index = 2; index < split.length; index++) {
+              color += " " + split[index]
+            }
           }
         }
 
         const splitImg = art.imagen.split("/")
-        const imagen = "/img/" + splitImg[2] + "/" + e.color
-
+        let imagen
+        if(splitImg.length>3){
+          imagen = "/img/" + splitImg[2] + "/" + splitImg[3] + "/" + e.color
+        }else{
+          imagen = "/img/" + splitImg[2] + "/" + e.color
+        }
+        
+        console.log(art) 
         modalContenidoColor.innerHTML += `
         <div class="card-articulo">
         <div id="modal-color${e.codigo}" class="contenedor-img-articulo img-color ${imagen} ${e.codigo}" style="background-image:url(${imagen});"></div>
@@ -347,6 +457,17 @@ function actualizarPrecioCarrito(codigo, cant){
       document.getElementById("cancelar-mensaje").textContent = cancelar
     }
   }
+
+  
+  function compararOrdenar(a, b) {
+    // Extraer los números de las strings
+    var numeroA = parseInt(a.codigo.split("-")[1]);
+    var numeroB = parseInt(b.codigo.split("-")[1]);
+
+    // Comparar los números
+    return numeroA - numeroB;
+}
+
 
 
 

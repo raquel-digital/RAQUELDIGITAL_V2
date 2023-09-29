@@ -64,7 +64,8 @@ const controller = {
     const fecha = date.toLocaleString()
     data.fecha = fecha
     store.writeCarrito(data)
-   }
+   },
+  
 }
 
 

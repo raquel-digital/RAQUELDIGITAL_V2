@@ -56,10 +56,15 @@ function showArts(art, message){
         modalImagen.setAttribute("imagen", imagen);
         modalImagen.setAttribute("nombre", p.nombre);
         
+        const checkTalle = p.colores.filter(e => e.codigo.includes("talle"))
         //detectar carta de colores
         if(p.colores.length > 0){
           boton.setAttribute("colores", JSON.stringify(p.colores))
-          boton.textContent = "Ver Carta De Colores"
+          if(checkTalle.length > 0){
+            boton.textContent = "Seleccionar Medida"
+          }else{            
+            boton.textContent = "Ver Carta De Colores"
+          }
         }
       } 
       
@@ -81,7 +86,7 @@ mostrador.addEventListener('click', event=>{
       let imagen = mouse.parentElement.parentElement.childNodes[1].src      
       const articulo = {codigo: codigo, titulo: titulo, precio: precio, cantidad: cantidad, imagen: imagen}
       
-      checkColores(articulo);
+      //checkColores(articulo);
     }    
     if(mouse.classList.contains('fa-plus-circle')){
       let cantidad = mouse.parentElement.previousElementSibling.value++;

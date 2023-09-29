@@ -68,7 +68,22 @@ io.on('connect', socket => {
             socket.emit("guardar-pedido-usuario-res", res)
         })()
     }) 
-     
+    //BORRAR PEDIDO
+    socket.on("borrar-pedido", data => {
+        (async ()=>{
+            const controller = require("./api/auth/controller")
+            const res = await controller.borrarPedido(data)
+            socket.emit("borrar-pedido-res", res)
+        })()
+    }) 
+    //ACTUALIZAR PRECIOS DE CARGA DE COMPRA DE USUARIO
+    socket.on("chequear-compra", data => {
+        (async ()=>{            
+            const controller = require("./api/arts/controller")
+            const res = await controller.actualizarPedido(data)
+            socket.emit("chequear-compra-res", res)
+        })()
+    })
     
     //CHECK OUT
     socket.on("success", () => {
@@ -77,13 +92,13 @@ io.on('connect', socket => {
     }) 
     socket.on("nuevo-pedido", data => {        
         const pedidoProssesor = require("./utils/procesarPedido");
-        const result = pedidoProssesor(data);
-        if(result.state){
-            const mongoCrud = require("./api/users/controller");            
-            mongoCrud.ingresar(data);
-        }
-        // const result = {}
-        // result.state = true
+        // const result = pedidoProssesor(data);
+        // if(result.state){
+        //     const mongoCrud = require("./api/users/controller");            
+        //     mongoCrud.ingresar(data);
+        // }
+        const result = {}
+        result.state = true
         socket.emit("valPeticion", result);
     })
     socket.on("mail", data =>{
@@ -99,7 +114,6 @@ io.on('connect', socket => {
 
 
 //ejs
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 

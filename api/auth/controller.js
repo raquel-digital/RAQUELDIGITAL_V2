@@ -49,7 +49,12 @@ const controller = {
         console.log("[ ERROR AL GUARDAR PEDIDO DE USUARIO ] " + err)
         return false
        }
-    }
+    },
+    borrarPedido: async function (data){        
+        const res = await store.del(data)
+        return res
+    },
+    
 }
 
 module.exports = controller;

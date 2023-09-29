@@ -231,3 +231,90 @@ function modalDelete(){
     delMessage.textContent = txt
 }
 
+//Carta de colores
+
+//Carta de medidas
+async function crearModalMedidas(art, medidas){  
+  
+const swal = document.querySelector(".swal2-container");  
+if(swal){
+ swal.remove();
+}   
+if(modal != undefined){    
+  modal.remove();
+}
+mostrador.innerHTML += `    
+  <!-- The Modal -->
+  <div id="myModal" class="modal" >    
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span id="closeModal">&times;</span>
+      <h4>SELECCIONA LAS MEDIDAS Y HAGA CLICK EN EL BOTON CONFIRMAR:</h4>
+      <div class=""><div class=" cartaMedidas"></div></div>
+      <button class="btn btn-primary confirmarColores">CONFIRMAR</button> 
+    </div>
+  </div>
+  `
+  
+   modalCartaColor = document.querySelector(".cartaMedidas");
+   modalCartaColor.style.display = "flex";    
+   modalCartaColor.style.justifyContent = "center";
+   modalCartaColor.innerHTML = `
+        <div class="cardItem" style="width: 7rem;">
+        <h3>Selecciona la medida<h3>
+        <select class="medidasTalles"></select>
+        <h3>Cantidad:<h3>
+          <input class="cartaMedidasCantidad" id="${art.codigo}" size="1" value="1" class="">
+          <span>        
+          <i class=" fas fa-plus-circle fa-2xs" aria-hidden="true"></i><i class=" fas fa-minus-circle fa-2xs" aria-hidden="true"></i>        
+          </span>
+        </div>
+        `
+   const ingresarMedidas = document.querySelector(".medidasTalles");    
+   
+   for(const m of medidas) {
+    ingresarMedidas.innerHTML += `<option value="${m}">${m}</option>`
+   }
+      
+           
+    
+
+    modal = document.getElementById("myModal");
+    modal.style.display = "inline-block";
+    // Get the <span> element that closes the modal
+    var span = document.getElementById("closeModal");
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+      modalCartaColor.innerHTML = "";
+      document.querySelector("body").style['overflow-y'] = 'scroll';
+      allArts = undefined;
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+        modalCartaColor.innerHTML = "";
+        document.querySelector("body").style['overflow-y'] = 'scroll';
+        allArts = undefined;
+      }
+    }
+
+    const confirmarColores = document.querySelector(".confirmarColores");
+    confirmarColores.onclick = function() {
+                  
+         const cantidad =  document.querySelector(".cartaMedidasCantidad").value;
+         const medida = document.querySelector(".medidasTalles").value;           
+         const articulo = {codigo: art.codigo + "-"+ medida, titulo: art.titulo + " MEDIDA: "+ medida, precio: parseInt(art.precio), cantidad: parseInt(cantidad), imagen: art.imagen}
+         
+         carritoCompra(articulo);
+     
+       modal.style.display = "none";
+       modalCartaColor.innerHTML = "";
+       document.querySelector("body").style['overflow-y'] = 'scroll';
+       allArts = undefined;
+    }
+  
+}
+
