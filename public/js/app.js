@@ -411,14 +411,14 @@ function actualizarPrecioCarrito(codigo, cant){
 
         const splitImg = art.imagen.split("/")
         let imagen
-        if(splitImg.length>3){
+        if(splitImg.length>4){
           imagen = "/img/" + splitImg[2] + "/" + splitImg[3] + "/" + e.color
+          console.log(splitImg)
         }else{
-          imagen = "/img/" + splitImg[2] + "/" + e.color
+          imagen = "/img/" + splitImg[2] + "/" + e.color          
         }
         
-        console.log(art) 
-        modalContenidoColor.innerHTML += `
+                modalContenidoColor.innerHTML += `
         <div class="card-articulo">
         <div id="modal-color${e.codigo}" class="contenedor-img-articulo img-color ${imagen} ${e.codigo}" style="background-image:url(${imagen});"></div>
         <div class="color-info">
