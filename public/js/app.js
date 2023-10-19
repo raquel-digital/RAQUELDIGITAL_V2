@@ -3,6 +3,14 @@ const mostrador = document.querySelector(".contenedor-articulos")
 let mostradorDeArticulos;
 let mostradorDeArticulosPaginador;
 
+let indice = 50
+if(window.innerWidth < 852){
+  indice = 20
+}
+if(window.innerWidth < 600){
+  indice = 10
+}
+
 //Clicks en mostrador
 mostrador.addEventListener('click', event=>{
     const mouse = event.target
@@ -38,23 +46,28 @@ mostrador.addEventListener('click', event=>{
             mouse.classList.remove("chevron-up")
             const mostrar = mouse.parentElement.nextElementSibling
             mostrar.style.display = "none"
+            mouse.previousElementSibling.textContent = "Ver descripción"
         }else{
             mouse.classList.add("chevron-up")
             const mostrar = mouse.parentElement.nextElementSibling
             mostrar.style.display = "block"
+            mouse.previousElementSibling.textContent = "Ocultar descripción"
         }
     }    
 
-    if(mouse.textContent == "Ver descripción"){
-        if( !mouse.nextElementSibling.classList.contains("chevron-up")){
-            mouse.nextElementSibling.classList.add("chevron-up")
-            const mostrar = mouse.parentElement.nextElementSibling
-            mostrar.style.display = "block"
-        }else{
-            mouse.nextElementSibling.classList.remove("chevron-up")
-            const mostrar = mouse.parentElement.nextElementSibling
-            mostrar.style.display = "none"
-        }        
+    if(mouse.textContent == "Ver descripción"){      
+      mouse.nextElementSibling.classList.add("chevron-up")
+      const mostrar = mouse.parentElement.nextElementSibling
+      mostrar.style.display = "block"
+      mouse.textContent = "Ocultar descripción"
+      return 
+    }
+    if(mouse.textContent == "Ocultar descripción"){
+      mouse.textContent = "Ver descripción"
+      mouse.nextElementSibling.classList.remove("chevron-up")
+      const mostrar = mouse.parentElement.nextElementSibling
+      mostrar.style.display = "none"
+      return       
     }
 
     //asigna + o - en articulo
@@ -219,7 +232,6 @@ function actualizarPrecioCarrito(codigo, cant){
 
   //PAGINADOR
   function crearPaginador(arr){
-    console.log("ok")
     paginador.innerHTML = ""
 
     //const paginadorArray = mostradorDeArticulos.filter(e => e.mostrar);
@@ -467,6 +479,29 @@ function actualizarPrecioCarrito(codigo, cant){
     // Comparar los números
     return numeroA - numeroB;
 }
+
+//categorias
+document.querySelector("#select-categ").addEventListener('click', event=>{
+  const mouse = event.target.tagName;
+  let inMobile = false
+  if(mouse == "A"){
+      //window.location = "https://raqueldigital.herokuapp.com/categoria?categ=" + event.target.textContent;
+      window.location = "http://localhost:8080/categoria?categ=" + event.target.textContent;
+  }else{
+    if(inMobile){
+      const barraCateg = document.getElementById("barra-categorias")
+      barraCateg.style.display = "none"
+      inMobile = false
+    }
+  }
+  //dropdown categorias (en responsive)
+  if(event.target.id == "elegir-categorias"){
+    inMobile = true
+    const barraCateg = document.getElementById("barra-categorias")
+    barraCateg.style.display = "block"
+  } 
+})
+
 
 
 

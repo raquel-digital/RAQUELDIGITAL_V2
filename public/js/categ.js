@@ -1,18 +1,129 @@
 const paginador = document.querySelector(".paginador")
-const indice = 50
 
-//categorias
-document.querySelector("#select-categ").addEventListener('click', event=>{
-  let mouse = event.target.tagName;
-  if(mouse == "A"){
-      console.log(event.target.textContent)
-      //window.location = "https://raqueldigital.herokuapp.com/categoria?categ=" + event.target.textContent;
-      window.location = "http://localhost:8080/categoria?categ=" + event.target.textContent;
-    }else{
-      console.log("not")
-  }
-  
-})
+
+document.querySelector("main h1").innerHTML = ""
+mostrador.innerHTML = `
+<div class="card-articulo card-art-sk">
+<div class="contenedor-img-articulo-sk"></div>
+<div class="contenedor-info-articulo">
+  <div class="h3-sk"></div>
+  <p class="info-gral-articulo-sk"></p>
+  <div class="descripcion-titulo-sk"></div>
+  <div class="precio-cantidad">
+    <div class="precio-card">
+      <p class="precio-sk"></p>
+      <p class="unidades-sk"></p>
+    </div>
+    <div class="cantidad-card">
+      <div class="signo-sk"></div>
+      <div class="input-number-sk"></div>
+      <div class="signo-sk"></div>
+    </div>
+  </div>
+  <button type="button" class="btn-primario-sk"></button>
+</div>
+</div>
+<div class="card-articulo card-art-sk">
+<div class="contenedor-img-articulo-sk"></div>
+<div class="contenedor-info-articulo">
+  <div class="h3-sk"></div>
+  <p class="info-gral-articulo-sk"></p>
+  <div class="descripcion-titulo-sk"></div>
+  <div class="precio-cantidad">
+    <div class="precio-card">
+      <p class="precio-sk"></p>
+      <p class="unidades-sk"></p>
+    </div>
+    <div class="cantidad-card">
+      <div class="signo-sk"></div>
+      <div class="input-number-sk"></div>
+      <div class="signo-sk"></div>
+    </div>
+  </div>
+  <button type="button" class="btn-primario-sk"></button>
+</div>
+</div>
+<div class="card-articulo card-art-sk">
+<div class="contenedor-img-articulo-sk"></div>
+<div class="contenedor-info-articulo">
+  <div class="h3-sk"></div>
+  <p class="info-gral-articulo-sk"></p>
+  <div class="descripcion-titulo-sk"></div>
+  <div class="precio-cantidad">
+    <div class="precio-card">
+      <p class="precio-sk"></p>
+      <p class="unidades-sk"></p>
+    </div>
+    <div class="cantidad-card">
+      <div class="signo-sk"></div>
+      <div class="input-number-sk"></div>
+      <div class="signo-sk"></div>
+    </div>
+  </div>
+  <button type="button" class="btn-primario-sk"></button>
+</div>
+</div>
+<div class="card-articulo card-art-sk">
+<div class="contenedor-img-articulo-sk"></div>
+<div class="contenedor-info-articulo">
+  <div class="h3-sk"></div>
+  <p class="info-gral-articulo-sk"></p>
+  <div class="descripcion-titulo-sk"></div>
+  <div class="precio-cantidad">
+    <div class="precio-card">
+      <p class="precio-sk"></p>
+      <p class="unidades-sk"></p>
+    </div>
+    <div class="cantidad-card">
+      <div class="signo-sk"></div>
+      <div class="input-number-sk"></div>
+      <div class="signo-sk"></div>
+    </div>
+  </div>
+  <button type="button" class="btn-primario-sk"></button>
+</div>
+</div>
+<div class="card-articulo card-art-sk">
+<div class="contenedor-img-articulo-sk"></div>
+<div class="contenedor-info-articulo">
+  <div class="h3-sk"></div>
+  <p class="info-gral-articulo-sk"></p>
+  <div class="descripcion-titulo-sk"></div>
+  <div class="precio-cantidad">
+    <div class="precio-card">
+      <p class="precio-sk"></p>
+      <p class="unidades-sk"></p>
+    </div>
+    <div class="cantidad-card">
+      <div class="signo-sk"></div>
+      <div class="input-number-sk"></div>
+      <div class="signo-sk"></div>
+    </div>
+  </div>
+  <button type="button" class="btn-primario-sk"></button>
+</div>
+</div>
+<div class="card-articulo card-art-sk">
+<div class="contenedor-img-articulo-sk"></div>
+<div class="contenedor-info-articulo">
+  <div class="h3-sk"></div>
+  <p class="info-gral-articulo-sk"></p>
+  <div class="descripcion-titulo-sk"></div>
+  <div class="precio-cantidad">
+    <div class="precio-card">
+      <p class="precio-sk"></p>
+      <p class="unidades-sk"></p>
+    </div>
+    <div class="cantidad-card">
+      <div class="signo-sk"></div>
+      <div class="input-number-sk"></div>
+      <div class="signo-sk"></div>
+    </div>
+  </div>
+  <button type="button" class="btn-primario-sk"></button>
+</div>
+`
+
 
 document.addEventListener('DOMContentLoaded', () => {
     //local storage
@@ -24,9 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     socket.on("categ-result", data => {
-      
+        console.log(data)
         if(data.succes){        
             mostrador.innerHTML = ""
+            document.querySelector("main h1").textContent = "Categoria: " + data.categ
             mostradorDeArticulos = data.result.sort(function (a, b) {
               if (a.id > b.id) {
                 return 1;
