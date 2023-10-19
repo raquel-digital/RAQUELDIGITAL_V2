@@ -485,8 +485,8 @@ document.querySelector("#select-categ").addEventListener('click', event=>{
   const mouse = event.target.tagName;
   let inMobile = false
   if(mouse == "A"){
-      //window.location = "https://raqueldigital.herokuapp.com/categoria?categ=" + event.target.textContent;
-      window.location = "http://localhost:8080/categoria?categ=" + event.target.textContent;
+      window.location = "https://raqueldigital.herokuapp.com/categoria?categ=" + event.target.textContent;
+      //window.location = "http://localhost:8080/categoria?categ=" + event.target.textContent;
   }else{
     if(inMobile){
       const barraCateg = document.getElementById("barra-categorias")
