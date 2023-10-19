@@ -135,10 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     socket.on("categ-result", data => {
-        console.log(data)
         if(data.succes){        
             mostrador.innerHTML = ""
-            document.querySelector("main h1").textContent = "Categoria: " + data.categ
+            document.querySelector("main h1").textContent = data.categ
             mostradorDeArticulos = data.result.sort(function (a, b) {
               if (a.id > b.id) {
                 return 1;
