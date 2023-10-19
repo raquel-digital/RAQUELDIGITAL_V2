@@ -492,14 +492,26 @@ document.querySelector("#select-categ").addEventListener('click', event=>{
       const barraCateg = document.getElementById("barra-categorias")
       barraCateg.style.display = "none"
       inMobile = false
+      console.log("mobile")
     }
   }
   //dropdown categorias (en responsive)
+  if(event.target.classList.contains("cruz")){
+    event.target.classList.remove("cruz")
+    const barraCateg = document.getElementById("barra-categorias")
+    barraCateg.style.display = "none"
+    event.target.textContent = "Elejir una categoría"
+    return
+  }
   if(event.target.id == "elegir-categorias"){
     inMobile = true
+    event.target.textContent = "Cerrar"
+    event.target.classList.add("cruz")    
     const barraCateg = document.getElementById("barra-categorias")
     barraCateg.style.display = "block"
+    return
   } 
+ 
 })
 
 
