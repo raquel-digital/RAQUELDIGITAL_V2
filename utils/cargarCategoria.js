@@ -175,7 +175,6 @@ async function loadCateg(query){
 async function filtrar(categ){          
       const result = await controller.cargarCateg(categ);
       return result;
-    
 }
 
 module.exports = loadCateg;

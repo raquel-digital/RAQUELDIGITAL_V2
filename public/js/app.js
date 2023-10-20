@@ -274,7 +274,7 @@ function actualizarPrecioCarrito(codigo, cant){
     const arrayIndiceMap = mostradorDeArticulosPaginador.slice(start, end);
 
     // Calcula la posición de la sección
-    var posicion = mostrador.getBoundingClientRect().top + window.scrollY + -150;
+    var posicion = mostrador.getBoundingClientRect().top + window.scrollY + -500;//-150 prev
 
     // Realiza el desplazamiento suave hasta la posición de la sección
     window.scrollTo({

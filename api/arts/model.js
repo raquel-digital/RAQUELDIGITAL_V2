@@ -30,6 +30,16 @@ const newSchema = new schema({
         
 })
 
+newSchema.index({ categorias: 1 });
+
 const model = mongoose.model("articulos", newSchema);
+
+model.ensureIndexes((err) => {
+        if (err) {
+            console.error('Error al crear el índice:', err);
+        } else {
+            console.log('Índice creado con éxito');
+        }
+    });
 
 module.exports = model;

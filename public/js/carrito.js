@@ -33,6 +33,33 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
   if(mouse.classList.contains("eliminar-articulo")){
         const codigo = event.target.parentElement.childNodes[3].childNodes[1].textContent
         const confirm = document.getElementById("custom-modal")
+        alertModal("¿Querés eliminar este artículo?", "Esta acción no se puede deshacer.", "Sí, eliminar", "No")
+        confirm.style.display = "block"
+        confirm.addEventListener("click", event => {
+            if(event.target.textContent == "Sí, eliminar"){
+                for(let i=0; i<carrito.length; i++){
+                    if(carrito[i].codigo == codigo){
+                        console.log(carrito[i])
+                        carrito.splice(i, 1)
+                        actualizarCarrito()
+                    }
+                }
+                if(carrito.lenght == 0){                    
+                    itemsCarrito.style.display = "none"
+                    const footer = document.querySelector(".carrito-footer")
+                    footer.style.display = "none"
+                }
+                confirm.style.display = "none"
+                localStorage.setItem("carrito", JSON.stringify(carrito))
+            }
+            if(event.target.textContent == "No" || event.target.classList.contains("cruz")){
+                confirm.style.display = "none"
+            }
+        })
+  }
+  if(mouse.classList.contains("eliminar-link")){
+        const codigo = event.target.parentElement.parentElement.children[1].children[0].textContent
+        const confirm = document.getElementById("custom-modal")
         alertModal("¿Querés eliminar el artículos del carrito?", "Esta acción no se puede deshacer.", "Sí, eliminar", "No")
         confirm.style.display = "block"
         confirm.addEventListener("click", event => {
@@ -55,8 +82,8 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
             if(event.target.textContent == "No" || event.target.classList.contains("cruz")){
                 confirm.style.display = "none"
             }
-    })
-    }
+        })
+  }
 
     if(mouse.id == "eliminar-carrito"){
         const confirm = document.getElementById("custom-modal")
@@ -94,7 +121,7 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
     if (mouse.id == "guardarPedido") {        
         const confirm = document.getElementById("custom-modal")
         confirm.style.display = "block"
-        alertModal("Queres guardar tu pedido?", "Luego vas a poder volver a cargarlo desde la barra de usuario", "Aceptar", "Cancelar")
+        alertModal("Querés guardar tu pedido?", "Luego vas a poder volver a cargarlo desde la barra de usuario", "Aceptar", "Cancelar")
         confirm.addEventListener("click", event => {
             if(event.target.textContent == "Aceptar"){
                 const userInput = window.prompt("Por favor, ingresa el nombre de tu pedido:");
