@@ -1,10 +1,9 @@
 
 const socket = io.connect();
-
-
 let compra = JSON.parse(localStorage.getItem('carrito'));
 let totalCompra = 0;
 let datos_cliente = JSON.parse(localStorage.getItem('datos-envio'));
+console.log(datos_cliente)
 
 let envios = undefined
 socket.emit("get-valor-envio")
@@ -19,29 +18,27 @@ if( compra == null || compra == undefined || compra.length == 0){
 }
 
 
-table();
-function table(){
-    if(Array.isArray(compra)){
+//table();
+// function table(){
+//     if(Array.isArray(compra)){   
 
-    
-
-      var resumenCheckOut = document.querySelector(".resumen-check-out");
-      resumenCheckOut.innerHTML = "";
+//       var resumenCheckOut = document.querySelector(".resumen-check-out");
+//       resumenCheckOut.innerHTML = "";
       
-      compra.forEach(e => {
-        resumenCheckOut.innerHTML += `
-        <td><img src="${e.imagen}" alt="imagen table" widht="60px" height="60px"></td>
-        <td>${e.codigo}</td>
-        <td>${e.titulo}<td>
-        <td>${e.precio}</td>
-        <td>${e.cantidad}</td>
-        <td>${e.cantidad * e.precio}</td>
-        `;
-        totalCompra += e.cantidad * e.precio;
-      })
-      document.querySelector(".total-compra-final").innerHTML = `<td><b>EL TOTAL DE SU COMPRA: ${totalCompra.toFixed(2)}</b></td>`;
-    }
-}
+//       compra.forEach(e => {
+//         resumenCheckOut.innerHTML += `
+//         <td><img src="${e.imagen}" alt="imagen table" widht="60px" height="60px"></td>
+//         <td>${e.codigo}</td>
+//         <td>${e.titulo}<td>
+//         <td>${e.precio}</td>
+//         <td>${e.cantidad}</td>
+//         <td>${e.cantidad * e.precio}</td>
+//         `;
+//         totalCompra += e.cantidad * e.precio;
+//       })
+//       document.querySelector(".total-compra-final").innerHTML = `<td><b>EL TOTAL DE SU COMPRA: ${totalCompra.toFixed(2)}</b></td>`;
+//     }
+// }
 
 const provinciasSelect = document.querySelector(".listaProvincias");
 const localidades = document.querySelector(".listaLocalidades");

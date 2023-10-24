@@ -6,6 +6,7 @@ const requer = require("../config/config");
 const controller = require("../api/arts/controller")
 const { requiresAuth } = require('express-openid-connect');
 
+
 //ENTRANDO A "/login y /logout" te logueas y deslogueas
 router.get("/", (req,res) => {
 
@@ -209,22 +210,10 @@ router.post("/mercadopago", (req, res) => {
     });
 });
 
-
-//--check out
-router.get("/check-out", (req, res) => {
-  const auth =  req.oidc.isAuthenticated() ? true : false
-  if(auth){
-      const profile = JSON.stringify(req.oidc.user)
-      const perfil = JSON.parse(profile)
-      
-      
-      let io = require('../io.js').get();  
-      io.once('connect', socket => {
-          socket.emit("usuario-auth", perfil);
-      })
-  }
-  res.sendFile(path.resolve("./public/check-out.html"))
+//Pagina de check out
+router.post("/check-out", (req, res) => {
+  const carrito = JSON.parse(req.body.carrito_holder)
+  res.render("checkOut", { carrito: carrito })
 })
-
 
 module.exports = router ;

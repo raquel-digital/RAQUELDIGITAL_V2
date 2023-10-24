@@ -29,7 +29,7 @@ async function loadCateg(query){
        }       
       }
       if(categ == "brillos"){                 
-       const result = await filtrar(["ST","LE","MO","GL"]);
+       const result = await filtrar(["ST","LE","MO"]);
        if(result.length > 0){
         return { succes: true, result: result } 
        }       

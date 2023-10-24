@@ -106,9 +106,10 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
         })
         
     }
-    if(mouse.id == "confirmar-compra"){
-        window.location = "http://localhost:8080/check-out"
-    }
+
+    // if(mouse.id == "confirmar-compra"){
+    //     window.location = "http://localhost:8080/check-out"
+    // }
 
     //cerrar haciendo click fuera del carrito
     if (mouse.classList.contains("drawer-carrito")) {
@@ -178,6 +179,7 @@ function ingresarCarrito(art){
     itemsCarrito.style.display = "block"
     itemsCarrito.textContent = carrito.length;
     localStorage.setItem("carrito", JSON.stringify(carrito))
+    document.getElementById("carrito-holder").value = JSON.stringify(carrito)
 }
 
 function actualizarCarrito(){

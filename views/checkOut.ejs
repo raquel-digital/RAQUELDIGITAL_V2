@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raquel Digital Web</title>
+    <script src="/socket.io/socket.io.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="/css/Main_checkoputProvisorio.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+</head>
+    <body>
+        <div class="container mr-5 text-center"> 
+            <h1><b> RESUMEN DE COMPRA </b></h1> 
+        <table class="table table-striped table-hover">
+            <thead>
+               <tr>
+                   <th>codigo</th>
+                   <th>titulo</th>
+                   <th>precio unitario</th>
+                   <th>cantidad</th>
+                   <th>total</th>
+               </tr>
+              </thead>
+              <tbody class="resumen-check-out">
+                <% let total = 0; %>
+                <% carrito.forEach(e => { %>
+                    <tr>
+                        <td><img src="<%= e.imagen %>" alt="imagen table" widht="60px" height="60px"></td>
+                        <td><%= e.codigo %></td>
+                        <td><%= e.titulo %><td>
+                        <td><%= e.precio %></td>
+                        <td><%= e.cantidad %></td>
+                        <td><%= e.cantidad * e.precio %></td>   
+                    </tr>
+                    <% total += e.cantidad * e.precio %>           
+                <% }); %>  
+                  
+              </tbody>
+              <tfoot >
+                <tr>
+                    <td> <b>EL TOTAL DE SU COMPRA: $ <%= total %></b></td>
+                </tr>
+          </tfoot>
+        </table>
+    </div>
+    
+    <div class="jumbotron"> 
+        <h2>POR FAVOR COMPLETA LOS SIGUIENTES DATOS PARA PODER FINALIZAR </h2>
+        <h2 class="text-center" style="margin-bottom: 50px;">TU PEDIDO:</h2>
+                                  
+        <hr>
+        <form class="formAction" action="" method="">
+        <div class="row ml-5">
+            NOMBRE Y APELLIDO:
+            <input class="ml-3 nombreApellido" type="text" name="nombreApellido" data-bs-toggle="tooltip" data-bs-placement="right" title="A este nombre va a quedar reservado tu pedido">
+        </div>
+        
+        <hr>
+        <div class="selectEnvioRetiro" style="margin-left: 50px;">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="envio-retiro" id="retiro">
+            <label class="form-check-label" for="retiro">
+            Retiro en Lavalle 2665
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input selecEnvio" type="radio" name="envio-retiro" id="envio">
+            <label class="form-check-label" for="envio">
+            Envío
+            </label>
+        </div>
+        <div class="porEnvio" style="display: none;">                
+            <hr>
+            <select class="listaProvincias form-select" name=slist>
+                <option value="">Seleccione Su Provincia</option>
+            </select>
+            <select class="listaLocalidades form-select" style="display: none;">            
+            </select>
+        </div>
+       
+    </div>
+        <hr>
+            
+            <div class="ingresoDestinoContainer" style="margin-left: 50px;"> 
+            <div class="ingresarTipoEnvio" style="margin-bottom: 10px;">
+                <h4>Seleccione el tipo de envío</h4>
+            <div class="form-check">
+            <input class="form-check-input check-correo" type="radio" name="tipo-envio" id="tipo-envio2">
+            <label class="form-check-label" for="tipo-envio2">
+            <span>Por Correo Argentino $ <p class="valor-correo" style="display: inline;"></p> Valor por paquete de 5kg (en caso de superarse le vamos a avisar el costo)</span>
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input check-expreso" type="radio" name="tipo-envio" id="tipo-envio1">
+            <label class="form-check-label" for="tipo-envio1">
+            Por Expreso $ <p class="valor-expreso" style="display: inline;"></p> valor del flete de envío a la terminal.
+            </label>
+        </div>
+            </div> 
+            <div class="ingresarDestino"></div>
+             <div class="correo" style="display: none;">
+                        <div style="margin-bottom: 10px;">
+                        Calle:
+                        <input type="text" name="direccion" class="correoCalle">                        
+                        Altura:
+                        <input type="number" name="altura" class="correoAltura">
+                        Piso / Dpto:
+                        <input type="text" name="piso" class="correoPiso">
+                        </div>
+                        codigo postal:
+                        <input type="number" name="cp" class="correoCP">
+                        DNI:
+                        <input type="number" name="dni" class="correoDNI">
+                    </div>
+                    <div class="expresos" style="display: none;" >
+                        <p style="display: inline; margin-bottom: 10px; "> Por cuál empresa de transporte? </p>
+                        <input class="ml-3 expresoEmpresa" style="display: inline; margin-bottom: 10px; "  type="text" name="expreso" data-bs-toggle="tooltip" data-bs-placement="right" title="Si todavía no sabes dejalo en blanco y podemos elejir una mas adelante cuando este listo el pedido">  
+                        <div>
+                        dirección de envío: 
+                        <input style="margin-bottom: 10px; " class="ml-3 expresoCalle" type="text" name="direccion"  data-bs-toggle="tooltip" data-bs-placement="right" title='si quiere retirarlo en el desposito poner "retiro en deposito"'>   
+                        Altura:
+                        <input style="margin-bottom: 10px; " type="number" name="altura" class="expresoAltura">    
+                        Piso / Dpto:
+                        <input type="text" name="piso" class="expresoPiso">
+                        </div> 
+                        <div>   
+                        DNI:
+                        <input style="margin-bottom: 10px;" class="ml-3 expresoDNI" type="number" name="dni">
+                        </div>                            
+                        <b style="margin-top: 10px; margin-bottom: 10px;">aclaracion en caso del expreso se abona $ <p class="valor-expreso" style="display: inline;"></p> de flete de envío a la terminal y luego le abona al expreso al recibirlo el costo varia segun la empresa de transporte elegida</b>
+                    </div> 
+                </div>  
+            <div class="moto" style="display: none; margin-bottom: 10px;">
+                <div class="motoValor"></div>
+                <div>
+                direccion: 
+                <input style="margin-bottom: 10px;" class="ml-3 motoCalle" type="text" name="direccion">   
+                Altura:
+                <input style="margin-bottom: 10px;" type="number" name="altura" class="motoAltura">    
+                Piso / Dpto:
+                <input type="text" name="piso" class="motoPiso">
+                </div> 
+                <div>   
+                Franja Horaria:
+                <input style="margin-bottom: 10px;" type="text" class="horario-entrega" data-bs-toggle="tooltip" data-bs-placement="right" title='Puede aclararnos el horario de la entrega en caso de no haber dejar en blanco'>
+                </div>
+            </div>            
+        <hr>
+            <div class="formaContacto" style="margin-left: 50px;">
+                FORMA DE CONTACTO:  elegí la forma en que preferís que nos contactemos una vez terminado el pedido
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="formaContacto" id="formaContacto1">
+                    <label class="form-check-label" for="formaContacto1">
+                    Whatsapp <i class="fa-brands fa-whatsapp"></i>
+                    </label>
+                    <input type="text" name="whatsapp" style="display: none;" id="whatsapp">
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="formaContacto" id="formaContacto2">
+                    <label class="form-check-label" for="formaContacto2">
+                    MAIL   <i class="fa-regular fa-envelope"></i>
+                    </label>
+                    <input type="text" name="mail" style="display: none;" id="mail">
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="formaContacto" id="formaContacto3">
+                    <label class="form-check-label" for="formaContacto3">
+                    Telefono Fijo <i class="fa-solid fa-phone-flip"></i>
+                    </label>                        
+                    <input type="text" name="tel" style="display: none;" id="tel">
+                </div>
+            </div>
+            <input type="hidden" name="compra" id="pedido">
+            
+           
+            <div class="facturacion" style="margin-left: 50px; margin-top: 20px;">
+                FACTURACION:
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="facturacion" id="facturacion1">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                    Consumidor Final
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="facturacion" id="facturacion2">
+                    <label class="form-check-label" for="flexRadioDefault2">Monotributo:</label>
+                    <div class="monotributo" style="display: none;">
+                        Razon Social: 
+                        <input class="monotributoRS" type="text" name="razonSocial" id="razonSocial">
+                        CUIT:
+                        <input class="monotributoCUIT" type="text" name="cuit" id="monotributo">
+                    </div>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="facturacion" id="facturacion3">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                    IVA Inscripto
+                    </label>
+                    <div class="facturaA" style="display: none; margin-left: 10px;">
+                        Razon Social: 
+                        <input class="aRS" type="text" name="razonSocial" id="razonSocial">
+                        CUIT:
+                        <input class="aCUIT" type="text" name="cuit" id="facturaA">
+                    </div>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="facturacion" id="facturacion4">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                    Exento
+                    </label>
+                    <div class="exento" style="display: none; margin-left: 10px;">
+                        Razon Social: 
+                        <input class="exentoRS" type="text" name="razonSocial" id="razonSocial">
+                        CUIT:
+                        <input class="exentoCUIT" type="text" name="cuit" id="exento">
+                    </div>
+                </div>
+            </div>
+            <div class="forma-pago" style="margin-left: 50px; margin-top: 20px;">
+                FORMA DE PAGO:
+                <div class="form-check pagoEfectivo" style="display: none;">
+                    <input class="form-check-input" type="radio" name="forma-pago" id="efectivo">
+                    <label class="form-check-label" for="efectivo">
+                        En Efectivo
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="forma-pago" id="forma-mercadopago">
+                    <label class="form-check-label" for="forma-mercadopago">
+                    Mercado Pago
+                    </label>                
+                </div>
+                <div class="form-check">
+                <input class="form-check-input" type="radio" name="forma-pago" id="banco">
+                <label class="form-check-label" for="banco">
+                Transferencia Bancaria
+                </label>
+                <div class="pago-transferencia" style="display: none; margin-left: 140px;">
+                    <p>En caso de transferencia bancaria puede ser a nuestros N° de cuenta:
+                    <li>ICBC: CBU 0150505402000102323287 ALIAS: CASARAQUEL.</li><li>MERCADOPAGO: CVU 0000003100034337461618 ALIAS CASARAQUELSA.</li></p>
+                    <span style="margin-top: 5px;">Por favor avisarnos una vez realizado el pago así podemos confirmar la acreditación.</span>
+                    </div>                    
+                </div>
+            </div>
+
+            <input class="precio" type="hidden" name="precio">
+            <input class="titulo" type="hidden" name="titulo">
+
+            <div class="col text-center" style="margin-top: 40px;">             
+                <button class= "btn btn-success btn-lg buttonSubmit" type="submit">ENVIAR</button>
+            </div>
+            <div class="text-center" style="margin-top: 40px;">  
+                <b>cualquier duda podes comunicarte con nosotros por: </b>
+                <b style="display: block;"><i class="fa-brands fa-whatsapp"></i>11 3693 3250 <i class="fa-regular fa-envelope"></i> raqueldigitalweb@gmail.com <i class="fa-solid fa-phone-flip"></i> 4963-8844 o 4963-7109</b>
+            </div>
+        </form>
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+    
+    <!-- <script src="./js/appCheckOut.js"></script> -->
+    <script src="./js/checkOut.js"></script>
+
+    <!-- BLACK TOOLTIP -->
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+    </script>
+    </body>
+</html>

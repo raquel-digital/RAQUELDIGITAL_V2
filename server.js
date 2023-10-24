@@ -3,7 +3,8 @@ const {  auth, requiresAuth } = require('express-openid-connect');
 
 const app = express();
 const http = require('http').Server(app);
-//const http = require('http');
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //socket
 const io = require('./io.js').init(http);
@@ -46,18 +47,7 @@ io.on('connect', socket => {
         }        
         catch(err){            
             console.log(err + " Error en inciar articulos WEB");  
-        }   
-        //obtener valores de envío
-        socket.on("get-valor-envio", () => {
-            const envios = {
-                correoReg: Number(process.env.valorCorreoReg), //requer.envioCorreoReg,
-                correoNac: Number(process.env.valorCorreoNac), //requer.envioCorreoNac,
-                correoNac2:  Number(process.env.valorCorreoNac2),//requer.envioCorreoNac2,
-                moto: Number(process.env.valorMoto), //requer.envioMoto,
-                expreso: Number(process.env.valorExpreso) //requer.envioExpreso
-            }
-            socket.emit("set-envio", envios);
-        })     
+        }
      })();
 
     //GUARDAR PEDIDO
