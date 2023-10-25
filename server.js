@@ -92,13 +92,12 @@ io.on('connect', socket => {
         socket.emit("valPeticion", result);
     })
     socket.on("mail", data =>{
-
         if(data.auth){
            const controller = require("./api/auth/controller")
            controller.ingresar(data)
-        }
-        
-        mailEmit(data);        
+        }        
+        mailEmit(data);   
+             
     })     
 });
 

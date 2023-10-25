@@ -274,13 +274,7 @@ header {
 
 
 .toast-exito img {
-    margin-right: 6rem;
-    vertical-align: middle;
-}
-
-.toast-exito p {
-	display: inline-block;
-	vertical-align: middle;
+    margin-right: 8rem;
 }
 
 /* Fin Header */
@@ -391,7 +385,7 @@ header {
 }
 
 .card-articulo {
-	max-width: 277rem;
+	max-width: 284rem;
 	border: 1px solid #C0C0C0;
 	border-radius: 4px;
 	background-color: #fff;

@@ -1,13 +1,15 @@
 const socket = io.connect();
 let envios = undefined
 let datos_cliente = JSON.parse(localStorage.getItem('datos-envio'));
-const cliente = {}
+let form = document.querySelector(".formAction");
 
 //selectores HTML
 const checkEnvio = document.querySelector("#envio");
 const porEnvio = document.querySelector(".porEnvio");
 const pagoEfectivo = document.querySelector(".pagoEfectivo");
 const efectivoInput = document.querySelector("#efectivo");
+const correo = document.querySelector("#tipo-envio2");
+const expreso = document.querySelector("#tipo-envio1");
 //envios
 const tiposDeEvio = document.querySelector(".ingresarTipoEnvio") ;
 const selectEnvioRetiro = document.querySelector(".selectEnvioRetiro");
@@ -255,8 +257,7 @@ function reingresarDatos(cliente){
         localidades.innerHTML += `<option value="${cliente.tipoDeEnvio.Localidad}" selected>${cliente.tipoDeEnvio.Localidad}</option>`;
       }
   
-      const correo = document.querySelector("#tipo-envio2");
-      const expreso = document.querySelector("#tipo-envio1");
+      
   
       if(correo != null){
         correo.checked = cliente.sys.checked.correo;
@@ -338,7 +339,270 @@ function reingresarDatos(cliente){
 }
 
 //TODO envio
-cliente.nombreApellido = document.querySelector(".nombreApellido").value
+
+//cliente.nombreApellido = document.querySelector(".nombreApellido").value
 
 //ENVIO PEDIDO A SERVER
 //socket.emit("mail", datosCliente)
+
+function envio_mock(){
+  //TODO caso envío moto fijarse tambien si la párte HTML esta OK
+  //los casos de pagos tienen ¿form actions adentro?
+
+  const compraFinal = document.getElementById('datos-compra');
+
+  const cliente = {
+    nombreApellido: document.querySelector(".nombreApellido").value,
+    sys: {
+      checked: {
+        retiro: document.querySelector("#retiro").checked,
+        envio: checkEnvio.checked,
+        expreso: expreso.checked,
+        correo: correo.checked,
+        moto: false,
+        whatsapp: whatsapp.checked,
+        mail: mail.checked,
+        tel: tel.checked,
+        consumidor_final: facturacion1.checked,
+        monotributo: facturacion2.checked,
+        iva_inscripto: facturacion3.checked,
+        exento: facturacion4.checked,
+        mercado_pago: formaMercadoPago.checked,
+        transferencia: formaTranferencia.checked,
+        efectivo: efectivoInput.checked
+      },
+      compra: JSON.parse(compraFinal.dataset.datos)
+    }    
+  }
+
+  let tipoDeEnvio;
+  let tipoRetiro = "";
+  if(cliente.sys.checked.retiro){
+    tipoRetiro = "Retira en local"
+    tipoDeEnvio = {Costo: undefined, forma_de_envio: undefined}
+  }
+  if(cliente.sys.checked.correo){
+    tipoRetiro = "Por Correo Argentino"
+     tipoDeEnvio = {
+        forma_de_envio: "Correo_Argentino",
+        Costo: valorCorreo,
+        Provincia: provinciasSelect.value,
+        Localidad: localidades.value,
+        Calle: document.querySelector(".correoCalle").value,
+        Altura: document.querySelector(".correoAltura").value,
+        Piso: document.querySelector(".correoPiso").value,
+        CP: document.querySelector(".correoCP").value,
+        DNI: document.querySelector(".correoDNI").value
+     }    
+  }
+  if(cliente.sys.checked.expreso){   
+    tipoRetiro = "Por Expreso"
+    tipoDeEnvio = {
+      forma_de_envio: "Expreso",
+      Costo: envios.expreso,
+      Empresa: document.querySelector(".expresoEmpresa").value,
+      Provincia: provinciasSelect.value,
+      Localidad: localidades.value,
+      Calle: document.querySelector(".expresoCalle").value,
+      Altura: document.querySelector(".expresoAltura").value,
+      Piso: document.querySelector(".expresoPiso").value,
+      DNI: document.querySelector(".expresoDNI").value
+    }
+  }
+
+  if(provinciasSelect.value == "Ciudad Autonoma De Bs As" && checkEnvio.checked){
+    tipoRetiro = "Por Moto"
+    tipoDeEnvio = {
+      forma_de_envio: "Moto",
+      Costo: envios.moto,
+      Provincia: "Ciudad Autonoma De Bs As",
+      Calle: document.querySelector(".motoCalle").value,
+      Altura: document.querySelector(".motoAltura").value,
+      Piso: document.querySelector(".motoPiso").value,
+      Horario_Entrega: document.querySelector(".horario-entrega").value
+    }
+    cliente.sys.checked.moto = true
+  }
+
+  cliente.tipoDeEnvio = tipoDeEnvio
+  cliente.retira = tipoRetiro
+
+  let contactoTipo;
+  if(whatsapp.checked){    
+    contactoTipo = {
+      contacto: "Whatsapp",
+      numero: whatsappInput.value
+    }
+  }
+  if(mail.checked){
+    contactoTipo = {
+      contacto: "Mail",
+      numero: mailInput.value
+    }
+  }
+  if(tel.checked){
+    contactoTipo = {
+      contacto: "Telefono",
+      numero: telInput.value
+    }
+  }
+
+  cliente.formaDeContacto = contactoTipo
+
+  let tipoFacturacion;
+  if(facturacion1.checked){
+    tipoFacturacion = {
+      tipo: "Consumidor Final",
+      RazonSocial: "-",
+      CUIT: "-"
+    }
+  }
+  if(facturacion2.checked){
+    tipoFacturacion = {
+      tipo: "Monotributo",
+      RazonSocial: document.querySelector(".monotributoRS").value,
+      CUIT:document.querySelector(".monotributoCUIT").value
+    }
+  }
+  if(facturacion3.checked){
+    tipoFacturacion = {
+      tipo: "IVA INSCRIPTO",
+      RazonSocial: document.querySelector(".aRS").value,
+      CUIT:document.querySelector(".aCUIT").value
+    }
+  }
+  if(facturacion4.checked){
+    tipoFacturacion = {
+      tipo: "IVA Exento",
+      RazonSocial: document.querySelector(".exentoRS").value,
+      CUIT:document.querySelector(".exentoCUIT").value
+    }
+  }
+
+  cliente.facturacion = tipoFacturacion
+
+  let formaDepago;
+  
+  if(formaTranferencia.checked){
+    formaDepago = "Transferencia Bancaria"
+    form.action = "/success-transferencia"
+    form.method = "get"
+  }
+  if(formaMercadoPago.checked){
+    formaDepago = "Mercado Pago"
+    form.action = "/mercadopago"
+    form.method = "post"
+  }
+  if(efectivoInput.checked){
+    formaDepago = "En Efectivo"
+    form.action = "/success-transferencia"
+    form.method = "get"
+  }
+
+  cliente.formaDePago = formaDepago
+
+  const res = controlDatos(cliente)
+  alertsCheckOut(res)
+}
+
+function controlDatos(cliente){
+  console.log(cliente)
+  if(cliente.nombreApellido == ""){
+      return {state: false, message: "Por favor ingrese su nombre", redMark: "nombre"};
+  }
+  if(cliente.retira == ""){
+      return {state: false, message: "Por favor ingrese una forma de envío", redMark: "envio-retiro"};
+  }
+  if(cliente.retira == "Por Envio" &&  !cliente.tipoDeEnvio.hasOwnProperty("forma_de_envio")){
+      return {state: false, message: "Por favor ingresar provincia, localidad y forma de envío", redMark: "selec-prov-loc"}
+  }
+  if(cliente.tipoDeEnvio.forma_de_envio == "Moto"){
+    if(!cliente.tipoDeEnvio.Calle.length){
+      return {state: false, message: "Por favor ingresa la calle", redMark: "moto-calle"};
+    }
+    if(!cliente.tipoDeEnvio.Altura){
+      return {state: false, message: "Por favor ingresa la altura de la calle", redMark: "moto-altura"};
+    }
+  }
+  if(cliente.tipoDeEnvio.forma_de_envio == "Correo_Argentino"){
+    if(!cliente.tipoDeEnvio.Calle.length){
+      return {state: false, message: "Por favor ingresa la calle", redMark: "correo-calle"};
+    }
+    if(!cliente.tipoDeEnvio.Altura){
+      return {state: false, message: "Por favor ingresa la altura de la calle", redMark: "correo-altura"};
+    }
+    if(!cliente.tipoDeEnvio.CP){
+      return {state: false, message: "Por favor ingresa el codigo postal", redMark: "correo-CP"};
+    }
+    if(!cliente.tipoDeEnvio.DNI){
+      return {state: false, message: "Por favor ingresa el DNI de la persona que lo recibe", redMark: "correo-DNI"};
+    }      
+  }
+  if(cliente.tipoDeEnvio.forma_de_envio == "Expreso"){
+    if(!cliente.tipoDeEnvio.Calle){
+      return {state: false, message: "Por favor ingresa la calle", redMark: "expreso-calle"};
+    }
+    if(!cliente.tipoDeEnvio.DNI){
+      return {state: false, message: "Por favor ingresa el DNI de la persona que lo recibe", redMark: "expreso-DNI"};
+    }        
+  }
+  if(!cliente.hasOwnProperty("formaDeContacto")){
+    return {state: false, message: "Ingrese una forma de contacto", redMark: "forma-contacto"};
+  }else{
+    let contacto = "numero";
+    if(cliente.formaDeContacto.contacto == 'Mail'){
+      contacto = "mail"
+    }
+    if(!cliente.formaDeContacto.numero){
+      return {state: false, message: `Por favor ingrese su ${contacto} para que podamos contactarnos`, redMark: "contacto-input"};
+    }
+  }
+  if(!cliente.hasOwnProperty("facturacion")){
+    return {state: false, message: `Por favor ingrese su forma de facturacion`, redMark: "facturacion"};      
+  }else{
+    if(cliente.facturacion.tipo == "IVA INSCRIPTO" || cliente.facturacion.tipo == "IVA Exento" || cliente.facturacion.tipo == "Monotributo"){
+      if(!cliente.facturacion.RazonSocial){
+        return {state: false, message: `Por favor ingrese su Razon Social`, redMark: "razon-social"}
+      }
+      if(!cliente.facturacion.CUIT){
+        return {state: false, message: `Por favor ingrese su N° de CUIT`, redMark: "cuit"}
+      }
+    }
+  }
+  if(!cliente.hasOwnProperty("formaDePago")){
+    return {state: false, message: `Por favor ingrese una forma de pago`, redMark: "forma-pago"}
+  } 
+  
+  cliente.state = true
+  return  cliente
+}
+
+function alertsCheckOut(data){
+  if(data.state){
+    socket.emit("mail", data)    
+    Swal.fire({
+      title: "Formulario procesado con exito!!",
+      // text: ,
+      icon: 'success',
+      confirmButtonText: 'Continuar',
+      confirmButtonColor: '#218838',      
+    }
+    ).then((res) => {
+      if(res.isConfirmed){        
+        form.submit();
+        //const datosCliente = JSON.parse(localStorage.getItem('datos-envio'));
+        //ENVIO PEDIDO A MAIL
+                
+      }
+    })
+  }else{
+    //alert(data.message)
+    Swal.fire({
+      title: data.message,      
+      icon: 'error',
+      confirmButtonColor: '#218838',
+      confirmButtonText: 'Continuar'
+    })
+  }
+}
+

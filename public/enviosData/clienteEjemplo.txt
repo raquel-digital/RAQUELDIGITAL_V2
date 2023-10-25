@@ -1,28 +1,3 @@
-{
-    nombreApellido: '',
-    retira: '',
-    tipoDeEnvio: {},
-    sys: {
-      checked: {
-        retiro: false,
-        envio: false,
-        correo: false,
-        expreso: false,
-        moto: false,
-        whatsapp: false,
-        mail: false,
-        tel: false,
-        consumidor_final: false,
-        monotributo: false,
-        iva_inscripto: false,
-        exento: false,
-        mercado_pago: false,
-        transferencia: false,
-        efectivo: false
-      },
-      compra: [ [Object], [Object] ]
-    }
-  }
   {
     nombreApellido: 'Casa Raquel S.A.',
     retira: 'Retira en local',
