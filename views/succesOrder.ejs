@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raquel Digital Web</title>
+    <script src="/socket.io/socket.io.js"></script> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/Main_checkoputProvisorio.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+</head>
+    <body>        
+        <hr>
+        <div class="text-center" id="ovalo">
+        <h1 class="text-center">GRACIAS POR TU COMPRA</h1>
+        <h1 class="text-center" style="margin-top: 10px;">TU PAGO SE PROCESO DE FORMA EXITOSA</h1>
+        </div>
+        <h2 class="text-center">A continuacion le dejamos un resumen de su pedido</h2>
+
+        <div class="container mr-5 text-center pedidoFinalizado"> 
+            <h1>RESUMEN DE COMPRA</h1> 
+        <table class="table table-striped table-hover">
+            <thead>
+               <tr>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+               </tr>
+              </thead>
+              <tbody class="resumen-check-out">
+                
+              </tbody>
+              <tfoot >
+                <tr class="total-compra-final">
+                  
+                </tr>
+          </tfoot>
+        </table>
+    </div>
+        <div class="datos-cliente">
+
+        </div>
+            <div class="shape">
+                <h1 style="text-align: center;">                
+                    Nos pondremos en contacto a la brevedad apenas listo tu pedido. 
+                </h1>
+                <h3 class="contacto" style="text-align: center;"></h3>
+                <h3 class="reservado"></h3>
+                <h3 class="casoEnvio"></h3>
+                <h4>Por cualquier consulta, nuestras vias de contacto son por Whastapp 11 3693 3250 mail raqueldigitalweb@gmail.com o tel 4963-8844/7109 </h3>
+            </div>
+           
+               
+        </div>
+    </div>
+    <script src="./js/app.Success.js"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+    </script>
+    </body>
+</html>

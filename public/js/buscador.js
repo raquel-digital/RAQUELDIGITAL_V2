@@ -7,6 +7,7 @@ document.getElementById("barra-busqueda").addEventListener("keydown", event => {
 
   if (event.key === "Enter") {  
     const campoValor = document.getElementById("input-busqueda");  
+    console.log(campoValor)
     if (campoValor.value.trim() === "") {
       event.preventDefault(); // Previene el envío del formulario si el campo está vacío.
       vacio.style.display = "block"      

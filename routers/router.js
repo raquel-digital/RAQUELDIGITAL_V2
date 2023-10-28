@@ -216,4 +216,38 @@ router.post("/check-out", (req, res) => {
   res.render("checkOut", { carrito: carrito })
 })
 
+//CHECK OUT MERCADOPAGO
+router.post("/mercadopago", (req, res) => {
+  console.log(req.body)
+  let preference = {
+    items: [
+      {
+        title:req.body.titulo,
+        unit_price: parseInt(req.body.precio),
+        quantity: 1,
+      }
+    ],
+    // ...
+"back_urls": {
+  "success": "raqueldigital.herokuapp.com/success",
+  "failure": "raqueldigital.herokuapp.com/failure",
+  "pending": "raqueldigital.herokuapp.com/pending"
+  },
+    "auto_return": "approved",
+// ...
+  };
+  mercadopago.preferences.create(preference)
+  .then(function(response){
+    console.log(response)
+    res.redirect(response.body.init_point);
+  }).catch(function(error){
+    console.log(error);
+  });
+});
+
+//CHECK OUT transferencia y resto
+router.get("/success-transferencia", (req, res) => {
+  res.render("successOrder")
+})
+
 module.exports = router ;

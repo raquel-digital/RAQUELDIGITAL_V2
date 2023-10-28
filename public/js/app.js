@@ -500,12 +500,10 @@ document.querySelector("#select-categ").addEventListener('click', event=>{
     event.target.classList.remove("cruz")
     const barraCateg = document.getElementById("barra-categorias")
     barraCateg.style.display = "none"
-    event.target.textContent = "Elejir una categoría"
     return
   }
   if(event.target.id == "elegir-categorias"){
-    inMobile = true
-    event.target.textContent = "Cerrar"
+    inMobile = true    
     event.target.classList.add("cruz")    
     const barraCateg = document.getElementById("barra-categorias")
     barraCateg.style.display = "block"

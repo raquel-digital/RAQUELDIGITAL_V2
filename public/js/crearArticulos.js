@@ -15,8 +15,8 @@ function showArts(art, message){
             p.precio = Number(p.precio); 
            }
           }          
-             //<img src="/img/${p.categorias}/${p.imagendetalle}">
-        const imagen = "/img/" + p.categorias + "/" + p.imagendetalle   
+      
+        const imagen = "/img/" + p.categorias + "/" + p.imagendetalle  
         
         mostrador.innerHTML += `
         <div class="card-articulo">

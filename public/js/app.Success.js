@@ -1,5 +1,4 @@
 const socket = io.connect();
-
 const compra = JSON.parse(localStorage.getItem('carrito'));
 let datosCliente = JSON.parse(localStorage.getItem('datos-envio'));
 
