@@ -46,7 +46,7 @@ function showArts(art, message){
             </div>
           </div>
         `
-
+        //btn-secundario
         const boton = document.querySelector("." + p.codigo);
         boton.setAttribute("codigo", p.codigo);
         boton.setAttribute("precio", p.precio);
@@ -59,6 +59,8 @@ function showArts(art, message){
         const checkTalle = p.colores.filter(e => e.codigo.includes("talle"))
         //detectar carta de colores
         if(p.colores.length > 0){
+          boton.classList.remove("btn-primario")
+          boton.classList.add("btn-secundario")
           boton.setAttribute("colores", JSON.stringify(p.colores))
           if(checkTalle.length > 0){
             boton.textContent = "Seleccionar Medida"

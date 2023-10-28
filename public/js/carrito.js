@@ -136,7 +136,7 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
             }          
         })
          
-    } 
+    }    
 })
 
 //respuesta a guardar pedido
@@ -198,7 +198,7 @@ function actualizarCarrito(){
             <img src="img/carrito-emptystate.svg" alt="" />
             <p class="empty-titulo">El carrito está vacío</p>
             <p class="empty-texto">Los artículos se agregarán acá luego de apretar “Agregar al carrito” en cada uno de ellos.</p>
-            <button type="button" class="btn-primario">Ir a comprar</button>
+            <button id="cerrarCarrito" type="button" class="btn-primario">Ir a comprar</button>
          </div>`
 
          itemsCarrito.style.display = "none"

@@ -36,7 +36,7 @@ mostrador.addEventListener('click', event=>{
           cargarColores(art, colores)
         }else{
           ingresarCarrito(art)
-          mostrarToats("Artículo agregado con exito", boton)
+          mostrarToats("Artículo agregado", boton)
         }      
     }
 
@@ -289,22 +289,32 @@ function actualizarPrecioCarrito(codigo, cant){
     
     spin.classList.add("spinner")
     spin.classList.add("loading")
-
     const toast = document.querySelector(".toast-exito")
     const tempTxt = spin.textContent
     spin.textContent = " "
-
     toast.innerHTML = `
         <img src="img/tilde.svg" alt="">
         <p>${txt}</p>
     `
-    toast.style.display = "block"
+        
+    // setTimeout(function() {
+    //     spin.classList.remove("spinner")
+    //     spin.classList.remove("loading")
+    //     spin.textContent = tempTxt
+    //     toast.style.display = "none";
+    // }, 1300);
     setTimeout(function() {
-        spin.classList.remove("spinner")
+      spin.classList.remove("spinner")
         spin.classList.remove("loading")
         spin.textContent = tempTxt
         toast.style.display = "none";
-    }, 1300);
+        console.log('Primer timeout completado');      
+      // Segundo timeout (llamado dentro del primer timeout)
+      setTimeout(function() {
+        toast.style.display = "block"
+        console.log('Segundo timeout completado');
+      }, 350); // El segundo timeout se ejecutará después de 2 segundos (2000 milisegundos)
+    }, 350); // El primer timeout se ejecutará después de 3 segundos (3000 milisegundos)
   }
 
   //Modal colores
