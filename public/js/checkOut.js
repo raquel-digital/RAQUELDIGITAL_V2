@@ -2,7 +2,7 @@ const socket = io.connect();
 let envios = undefined
 let datos_cliente = JSON.parse(localStorage.getItem('datos-envio'));
 let form = document.querySelector(".formAction");
-
+console.log(datos_cliente)
 //selectores HTML
 const checkEnvio = document.querySelector("#envio");
 const porEnvio = document.querySelector(".porEnvio");
@@ -56,8 +56,7 @@ fetch('../enviosData/dataEnvios.json')
     return response.json();
   })
   .then(data => {
-    // Trabaja con los datos JSON    
-    console.log(data);
+    // Trabaja con los datos JSON
     envios = data[0]
   })
   .catch(error => {
@@ -72,8 +71,7 @@ fetch('../enviosData/provincias.json')
     return response.json();
   })
   .then(provincias => {
-    // Trabaja con los datos JSON    
-    console.log(provincias);    
+    // Trabaja con los datos JSON
     provincias.forEach( e => {
       provinciasSelect.innerHTML += `<option value="${e.nombre}">${e.nombre}</option>`
     })
