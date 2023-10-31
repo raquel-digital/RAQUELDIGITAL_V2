@@ -42,7 +42,7 @@ function showArts(art, message){
                   <button type="button" class="mas"></button>
                 </div>
               </div>
-              <button id="articulo-compra" type="button" class="btn-primario ${p.codigo} articulo-compra">Agregar al carrito</button>
+              <button id="articulo-compra" type="button" class="${p.codigo} articulo-compra btn-primario">Agregar al carrito</button>
             </div>
           </div>
         `
@@ -58,15 +58,16 @@ function showArts(art, message){
         
         const checkTalle = p.colores.filter(e => e.codigo.includes("talle"))
         //detectar carta de colores
-        if(p.colores.length > 0){
-          boton.classList.remove("btn-primario")
-          boton.classList.add("btn-secundario")
+        if(p.colores.length > 0){          
           boton.setAttribute("colores", JSON.stringify(p.colores))
+          boton.classList.remove("btn-primario")
+          boton.classList.add("btn-secundario")                              
           if(checkTalle.length > 0){
             boton.textContent = "Seleccionar Medida"
           }else{            
-            boton.textContent = "Ver Carta De Colores"
+            boton.textContent = "Ver carta de colores"
           }
+          
         }
       } 
       

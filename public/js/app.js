@@ -14,13 +14,12 @@ if(window.innerWidth < 600){
 //Clicks en mostrador
 mostrador.addEventListener('click', event=>{
     const mouse = event.target
-    
     //agregar al carrito
     if(mouse.classList.contains("articulo-compra")){
                 
         //seleccionar boton con datos
         const clases = event.target.classList//returns arreglo con las clase
-        const boton = document.querySelector("." + clases[1]);
+        const boton = document.querySelector("." + clases[0]);
         const cantidad_venta = mouse.parentElement.childNodes[9].childNodes[3].childNodes[3].value
               
         const art = {            
@@ -30,9 +29,9 @@ mostrador.addEventListener('click', event=>{
             imagen: boton.getAttribute("imagen"),
             cantidad: Number(cantidad_venta) 
           }
-        if(mouse.textContent == "Ver Carta De Colores" || mouse.textContent == "Seleccionar Medida"){
-          modalColores.style.display = "block"
+        if(mouse.textContent == "Ver carta de colores" || mouse.textContent == "Seleccionar medida"){
           const colores = boton.getAttribute("colores")
+          modalColores.style.display = "block"
           cargarColores(art, colores)
         }else{
           ingresarCarrito(art)
@@ -296,13 +295,7 @@ function actualizarPrecioCarrito(codigo, cant){
         <img src="img/tilde.svg" alt="">
         <p>${txt}</p>
     `
-        
-    // setTimeout(function() {
-    //     spin.classList.remove("spinner")
-    //     spin.classList.remove("loading")
-    //     spin.textContent = tempTxt
-    //     toast.style.display = "none";
-    // }, 1300);
+    
     setTimeout(function() {
       spin.classList.remove("spinner")
         spin.classList.remove("loading")
@@ -312,7 +305,13 @@ function actualizarPrecioCarrito(codigo, cant){
       // Segundo timeout (llamado dentro del primer timeout)
       setTimeout(function() {
         toast.style.display = "block"
+        itemsCarrito.style.display = "block"
+        itemsCarrito.textContent = carrito.length;
         console.log('Segundo timeout completado');
+        setTimeout(function() {
+          toast.style.display = "none"
+          console.log('Tercer timeout completado');
+        }, 1000);
       }, 350); // El segundo timeout se ejecutará después de 2 segundos (2000 milisegundos)
     }, 350); // El primer timeout se ejecutará después de 3 segundos (3000 milisegundos)
   }
@@ -390,7 +389,7 @@ function actualizarPrecioCarrito(codigo, cant){
   function cargarColores(art, colores){
     
     const arrColores = JSON.parse(colores)
-    
+
     const modalContenidoColor = document.getElementById("contenido-modal")
     modalContenidoColor.innerHTML = ""
 

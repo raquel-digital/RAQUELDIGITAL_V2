@@ -2,6 +2,9 @@ const socket = io.connect();
 const compra = JSON.parse(localStorage.getItem('carrito'));
 let datosCliente = JSON.parse(localStorage.getItem('datos-envio'));
 
+console.log(compra)
+localStorage.removeItem("carrito");
+
 const mensajeCierre =  document.querySelector("#ovalo");
 if(datosCliente.sys.checked.mercado_pago){
   mensajeCierre.innerHTML = `<h1>Gracias Por Tu Compra:</h1>`

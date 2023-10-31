@@ -48,14 +48,14 @@
           </tfoot>
         </table>
         <div id="datos-compra" data-datos="<%= JSON.stringify(carrito) %>"></div>
-    </div>
+        </div>
     
     <div class="jumbotron"> 
         <h2>POR FAVOR COMPLETA LOS SIGUIENTES DATOS PARA PODER FINALIZAR </h2>
         <h2 class="text-center" style="margin-bottom: 50px;">TU PEDIDO:</h2>
                                   
         <hr>
-        <form class="formAction" action="" method="">
+        <form class="formAction" action="" method="post">
         <div class="row ml-5">
             NOMBRE Y APELLIDO:
             <input class="ml-3 nombreApellido" type="text" name="nombreApellido" data-bs-toggle="tooltip" data-bs-placement="right" title="A este nombre va a quedar reservado tu pedido">
@@ -87,7 +87,7 @@
     </div>
         <hr>
             
-            <div class="ingresoDestinoContainer" style="margin-left: 50px;"> 
+            <div class="ingresoDestinoContainer" style="margin-left: 50px; display: none;"> 
             <div class="ingresarTipoEnvio" style="margin-bottom: 10px;">
                 <h4>Seleccione el tipo de envío</h4>
             <div class="form-check">
@@ -252,15 +252,17 @@
             <input class="precio" type="hidden" name="precio">
             <input class="titulo" type="hidden" name="titulo">
 
-            <div class="col text-center" style="margin-top: 40px;">             
-                <button class= "btn btn-success btn-lg buttonSubmit" type="submit" onclick="envio_mock()">ENVIAR</button>
-            </div>
+            
             
             <div class="text-center" style="margin-top: 40px;">  
                 <b>cualquier duda podes comunicarte con nosotros por: </b>
                 <b style="display: block;"><i class="fa-brands fa-whatsapp"></i>11 3693 3250 <i class="fa-regular fa-envelope"></i> raqueldigitalweb@gmail.com <i class="fa-solid fa-phone-flip"></i> 4963-8844 o 4963-7109</b>
             </div>
+            <input type="text" name="carrito_holder" style="display: none;" id="carrito-holder">
         </form>
+        <div class="col text-center" style="margin-top: 40px;">
+            <button class= "btn btn-success btn-lg buttonSubmit"  onclick="envio_mock()">ENVIAR</button>
+        </div>
         
     </div>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>  

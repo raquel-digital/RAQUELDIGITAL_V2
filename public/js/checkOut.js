@@ -93,11 +93,14 @@ fetch('../enviosData/provincias.json')
     console.error('Error: ', error);
   });
 
-  reingresarDatos(datos_cliente)
+  //si existen cargamos datos previos del cliente
+  if(datos_cliente){    
+    reingresarDatos(datos_cliente)
+  }
 
   //cargar un envío
   selectEnvioRetiro.addEventListener("click", () => {
-    if(checkEnvio.checked){
+    if(checkEnvio.checked){      
       porEnvio.style.display="block";
       provinciasSelect.style.display="inline";    
       pagoEfectivo.style.display="none";
@@ -238,7 +241,8 @@ function reingresarDatos(cliente){
     document.querySelector("#retiro").checked = cliente.sys.checked.retiro;
     checkEnvio.checked = cliente.sys.checked.envio;
     if(checkEnvio.checked){
-      document.querySelector(".ingresarTipoEnvio").innerHTML = correoExpreso;
+      //document.querySelector(".ingresarTipoEnvio").innerHTML = correoExpreso;
+      ingresoDestinoContainer.style.display="block";
       porEnvio.style.display = "block";
       provinciasSelect.innerHTML += `<option value="${cliente.tipoDeEnvio.Provincia}" selected>${cliente.tipoDeEnvio.Provincia}</option>` 
       //envio por moto
@@ -345,8 +349,7 @@ function reingresarDatos(cliente){
 
 function envio_mock(){
   //TODO caso envío moto fijarse tambien si la párte HTML esta OK
-  //los casos de pagos tienen ¿form actions adentro?
-
+   
   const compraFinal = document.getElementById('datos-compra');
 
   const cliente = {
@@ -369,9 +372,17 @@ function envio_mock(){
         transferencia: formaTranferencia.checked,
         efectivo: efectivoInput.checked
       },
-      compra: JSON.parse(compraFinal.dataset.datos)
+      compra: JSON.parse(compraFinal.dataset.datos),
+      totalCompra: 0
     }    
   }
+
+  
+  
+  for(const p of cliente.sys.compra){
+    const valor = Number(p.precio) 
+    cliente.sys.totalCompra += valor
+  }  
 
   let tipoDeEnvio;
   let tipoRetiro = "";
@@ -481,27 +492,35 @@ function envio_mock(){
 
   let formaDepago;
   
+  //form.method = "post" //
   if(formaTranferencia.checked){
     formaDepago = "Transferencia Bancaria"
-    form.action = "/success-transferencia"
-    form.method = "get"
+    form.action = "/success-transferencia"    
   }
   if(formaMercadoPago.checked){
+    let envio = 0
+    if(tipoDeEnvio.Costo){
+      envio = tipoDeEnvio.Costo
+    }
+    document.querySelector(".precio").value = cliente.sys.totalCompra + envio;
+    document.querySelector(".titulo").value = "Carrito-Raquel-Digital";
+    console.log(document.querySelector(".titulo").value, document.querySelector(".precio").value)
     formaDepago = "Mercado Pago"
     form.action = "/mercadopago"
-    form.method = "post"
   }
   if(efectivoInput.checked){
     formaDepago = "En Efectivo"
-    form.action = "/success-transferencia"
-    form.method = "get"
+    form.action = "/success-transferencia"    
   }
 
   cliente.formaDePago = formaDepago
 
-  const res = controlDatos(cliente)
-  alertsCheckOut(res)
+  document.querySelector("#carrito-holder").value = JSON.stringify(cliente.sys.compra)
+  console.log(document.querySelector("#carrito-holder").value)
+   const res = controlDatos(cliente)   
+   alertsCheckOut(res)
 }
+
 
 function controlDatos(cliente){
   console.log(cliente)
@@ -576,8 +595,7 @@ function controlDatos(cliente){
 }
 
 function alertsCheckOut(data){
-  if(data.state){
-    socket.emit("mail", data)    
+  if(data.state){        
     Swal.fire({
       title: "Formulario procesado con exito!!",
       // text: ,
@@ -587,10 +605,12 @@ function alertsCheckOut(data){
     }
     ).then((res) => {
       if(res.isConfirmed){        
-        form.submit();
+        
         //const datosCliente = JSON.parse(localStorage.getItem('datos-envio'));
         //ENVIO PEDIDO A MAIL
-                
+        localStorage.setItem('datos-envio', JSON.stringify(data));
+        socket.emit("mail", data)
+        form.submit();        
       }
     })
   }else{

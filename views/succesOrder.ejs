@@ -20,29 +20,41 @@
         </div>
         <h2 class="text-center">A continuacion le dejamos un resumen de su pedido</h2>
 
-        <div class="container mr-5 text-center pedidoFinalizado"> 
-            <h1>RESUMEN DE COMPRA</h1> 
+        <div class="container mr-5 text-center"> 
+            <h1><b> RESUMEN DE COMPRA </b></h1> 
         <table class="table table-striped table-hover">
             <thead>
                <tr>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
+                   <th>codigo</th>
+                   <th>titulo</th>
+                   <th>precio unitario</th>
+                   <th>cantidad</th>
+                   <th>total</th>
                </tr>
               </thead>
               <tbody class="resumen-check-out">
-                
+                <% let total = 0; %>
+                <% carrito.forEach(e => { %>
+                    <tr>
+                        <td><img src="<%= e.imagen %>" alt="imagen table" widht="60px" height="60px"></td>
+                        <td><%= e.codigo %></td>
+                        <td><%= e.titulo %><td>
+                        <td><%= e.precio %></td>
+                        <td><%= e.cantidad %></td>
+                        <td><%= e.cantidad * e.precio %></td>   
+                    </tr>
+                    <% total += e.cantidad * e.precio %>           
+                <% }); %>  
+                  
               </tbody>
               <tfoot >
-                <tr class="total-compra-final">
-                  
+                <tr>
+                    <td> <b>EL TOTAL DE SU COMPRA: $ <%= total %></b></td>
                 </tr>
           </tfoot>
         </table>
-    </div>
+        <div id="datos-compra" data-datos="<%= JSON.stringify(carrito) %>"></div>
+        </div>
         <div class="datos-cliente">
 
         </div>

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 var path = require('path');
-const requer = require("../config/config");
+const requer = require("../utils/config");
 //const middleware = require("../utils/middleware");
 const controller = require("../api/arts/controller")
 const { requiresAuth } = require('express-openid-connect');
@@ -184,7 +184,7 @@ mercadopago.configure({
 
 router.post("/mercadopago", (req, res) => {
     console.log(req.body)
-    let preference = {
+    const compra = {
       items: [
         {
           title:req.body.titulo,
@@ -201,7 +201,7 @@ router.post("/mercadopago", (req, res) => {
       "auto_return": "approved",
 // ...
     };
-    mercadopago.preferences.create(preference)
+    mercadopago.preferences.create(compra)
     .then(function(response){
       console.log(response)
       res.redirect(response.body.init_point);
@@ -246,8 +246,9 @@ router.post("/mercadopago", (req, res) => {
 });
 
 //CHECK OUT transferencia y resto
-router.get("/success-transferencia", (req, res) => {
-  res.render("successOrder")
+router.post("/success-transferencia", (req, res) => {
+  const carrito = JSON.parse(req.body.carrito_holder)
+  res.render("succesOrder", { carrito: carrito })
 })
 
 module.exports = router ;

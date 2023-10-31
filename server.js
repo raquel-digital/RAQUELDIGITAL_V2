@@ -5,6 +5,7 @@ const app = express();
 const http = require('http').Server(app);
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
+const requer  = require("./utils/config")
 
 //socket
 const io = require('./io.js').init(http);
@@ -14,11 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 const path = require('path');
 const logger = require('morgan');
 
+// const dotenv = require('dotenv');
+// dotenv.config();
 
-const dotenv = require('dotenv');
-dotenv.config();
-
-const requer  = require("./config/config")
 const nodemailer = require('nodemailer');
 
 const config = {
@@ -75,29 +74,16 @@ io.on('connect', socket => {
         })()
     })
     
-    //CHECK OUT
-    socket.on("success", () => {
-        const provincias = require("./utils/provincias.json");
-        socket.emit("provincias", provincias);
-    }) 
-    socket.on("nuevo-pedido", data => {        
-        const pedidoProssesor = require("./utils/procesarPedido");
-        // const result = pedidoProssesor(data);
-        // if(result.state){
-        //     const mongoCrud = require("./api/users/controller");            
-        //     mongoCrud.ingresar(data);
-        // }
-        const result = {}
-        result.state = true
-        socket.emit("valPeticion", result);
-    })
-    socket.on("mail", data =>{
-        if(data.auth){
-           const controller = require("./api/auth/controller")
-           controller.ingresar(data)
-        }        
-        mailEmit(data);   
-             
+    //CHECK OUT    
+    socket.on("mail", data =>{        
+        (async () => {
+            //ingresamos pedido a la base de datos
+            // const controller = require("./api/users/controller")
+            // await controller.ingresar(data)
+
+            //enviamos mail
+            await mailEmit(data);
+        })()    
     })     
 });
 
@@ -124,14 +110,8 @@ db(process.env.mongo);
 
 const controller = require("./api/arts/controller");
 
-
-checkOut = false;
-
-
-
-
 async function mailEmit(data){
-    
+
     const datos = data;
     let compra;
     let sumaTotal = 0;
@@ -163,13 +143,11 @@ async function mailEmit(data){
         }
     })
     let mailOptions;
-    if(datos.retira == "Retira en local"){
-        
+    if(datos.sys.checked.retiro){
+        console.log("retira")
         mailOptions = {
             from: 'SITIO WEB',
-            to: 'raqueldigitalweb@gmail.com',
-            cc: 'raqueldigitalsitioweb@gmail.com',
-            bcc: "oscarcasaraquel@gmail.com",
+            to: 'raqueldigitalweb@gmail.com',            
             subject: 'Pedido Raquel Digital N° orden:' + orden,
             html: ` <h1> NUEVO PEDIDO N° ${orden} </h1>
                     <h3>NOMBRE Y APELLIDO: ${datos.nombreApellido}</h3>
@@ -196,10 +174,12 @@ async function mailEmit(data){
                   TOTAL DEL PEDIDO: ${sumaTotal}
                 </tr>
           </tfoot>
-            `,
-        }     
+            `
+        }
     }
-    if(datos.retira == "Por Envio"){        
+    
+    if(datos.sys.checked.expreso || datos.sys.checked.correo){  
+                  console.log("envio") 
             mailOptions = {
                 from: 'SITIO WEB',
                 to: 'raqueldigitalweb@gmail.com',
@@ -252,8 +232,8 @@ async function mailEmit(data){
                 </tr>
           </tfoot>
                         
-                `,
-            } 
+                `
+            }
     }    
 
     transporter.sendMail(mailOptions, (err, info) => {
@@ -261,7 +241,7 @@ async function mailEmit(data){
             console.log(err)
             return err
         }
-        console.log("[ MAIL ENVIADO EXITOSAMENTE ]")
+        console.log("[ MAIL ENVIADO EXITOSAMENTE ]", info)
     })
 
 }

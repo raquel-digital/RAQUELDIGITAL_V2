@@ -8,7 +8,7 @@ const controller = {
        const date = new Date
        const user = {
         id: data.auth.sub,
-        nombre: data.auth.name,
+        nombre: data.nombreApellido,
         mail: data.auth.email || " ",
         pedidos: {
             fecha: date.toLocaleString(),

@@ -1,11 +1,6 @@
 const carrito = []
 
-const itemsCarrito = document.querySelector("#carritoNumber")
-if(carrito.lenght > 0){
-    itemsCarrito.textContent = carrito.length;
-}else{
-    itemsCarrito.style.display = "none"
-}
+
 
 //abrir carrito
 document.querySelector(".carrito").addEventListener('click', event=>{
@@ -174,10 +169,8 @@ function ingresarCarrito(art){
                 carrito.push(art);
             }
         }
-    }
+    }    
     
-    itemsCarrito.style.display = "block"
-    itemsCarrito.textContent = carrito.length;
     localStorage.setItem("carrito", JSON.stringify(carrito))
     document.getElementById("carrito-holder").value = JSON.stringify(carrito)
 }
