@@ -169,10 +169,7 @@ function ingresarCarrito(art){
                 carrito.push(art);
             }
         }
-    }    
-    
-    localStorage.setItem("carrito", JSON.stringify(carrito))
-    document.getElementById("carrito-holder").value = JSON.stringify(carrito)
+    }
 }
 
 function actualizarCarrito(){
@@ -224,10 +221,11 @@ function actualizarCarrito(){
         } 
         
         itemsCarrito.textContent = carrito.length;
-        //itemsCarrito.style.display = "none"   
-    }
+        //itemsCarrito.style.display = "none" 
+        localStorage.setItem("carrito", JSON.stringify(carrito))
+        document.getElementById("carrito-holder").value = JSON.stringify(carrito) 
+    }    
     
-    //BUG SI NO HAY ELEAMENTOS CARGADOS NO ABRE EL CARRITO
     const inputCantidadCarrito = document.querySelector(".cantidad-de-venta")
     if(inputCantidadCarrito){
         let t = 500

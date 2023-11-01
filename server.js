@@ -114,8 +114,7 @@ async function mailEmit(data){
 
     const datos = data;
     let compra;
-    let sumaTotal = 0;
-    
+
     data.sys.compra.forEach(e => {
         compra +=`
         <tr>
@@ -126,7 +125,7 @@ async function mailEmit(data){
         <td>${e.precio}</td>
         </tr>       
         `
-        sumaTotal += e.precio * e.cantidad;
+       
     })
     
     const store = require("./api/users/store");
@@ -171,15 +170,16 @@ async function mailEmit(data){
               </tbody>
               <tfoot >
                 <tr class="total-compra-final">
-                  TOTAL DEL PEDIDO: ${sumaTotal}
+                  TOTAL DEL PEDIDO: ${data.sys.totalCompra.toFixed(2)}
+                  TOTAL DEL PEDIDO + ENVIO: ${data.sys.totalCompra.toFixed(2) + data.tipoDeEnvio.Costo}
                 </tr>
           </tfoot>
             `
         }
     }
     
-    if(datos.sys.checked.expreso || datos.sys.checked.correo){  
-                  console.log("envio") 
+    if(datos.sys.checked.expreso || datos.sys.checked.correo || datos.sys.checked.moto){  
+                   
             mailOptions = {
                 from: 'SITIO WEB',
                 to: 'raqueldigitalweb@gmail.com',
@@ -228,7 +228,10 @@ async function mailEmit(data){
               </tbody>
               <tfoot >
                 <tr class="total-compra-final">
-                    TOTAL DEL PEDIDO: ${sumaTotal}
+                    TOTAL DEL PEDIDO: ${data.sys.totalCompra.toFixed(2)}                    
+                </tr>
+                <tr class="total-compra-final">
+                    TOTAL DEL PEDIDO + ENVIO: ${data.sys.totalCompra.toFixed(2) + Number(data.tipoDeEnvio.Costo).toFixed(2)}
                 </tr>
           </tfoot>
                         
@@ -241,7 +244,7 @@ async function mailEmit(data){
             console.log(err)
             return err
         }
-        console.log("[ MAIL ENVIADO EXITOSAMENTE ]", info)
+        console.log("[ MAIL ENVIADO EXITOSAMENTE ]")
     })
 
 }

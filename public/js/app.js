@@ -313,7 +313,7 @@ function actualizarPrecioCarrito(codigo, cant){
           console.log('Tercer timeout completado');
         }, 1000);
       }, 350); // El segundo timeout se ejecutará después de 2 segundos (2000 milisegundos)
-    }, 350); // El primer timeout se ejecutará después de 3 segundos (3000 milisegundos)
+    }, 100); // El primer timeout se ejecutará después de 3 segundos (3000 milisegundos)
   }
 
   //Modal colores
@@ -455,9 +455,11 @@ function actualizarPrecioCarrito(codigo, cant){
    modalContenidoColor.addEventListener("click", event => {
     if(event.target.classList.contains("contenedor-img-articulo")){     
       const click = event.target.classList;
+      console.log(click)
       const imagen = click[2]
-      const nombre = art.nombre;
-      const modalContenidoColorApliada = document.querySelector("#apmliada-en-modal")
+      const nombre = boton.getAttribute("nombre");
+      const modalContenidoColorApliada = document.querySelector(".modal-img-ampliada")
+      console.log(modalContenidoColorApliada)
       modalContenidoColorApliada.children[1].children[0].textContent = nombre
       modalContenidoColorApliada.children[1].children[1].src = imagen
       modalContenidoColorApliada.style.display = "block"

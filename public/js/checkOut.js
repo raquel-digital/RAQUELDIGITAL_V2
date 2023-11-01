@@ -2,7 +2,6 @@ const socket = io.connect();
 let envios = undefined
 let datos_cliente = JSON.parse(localStorage.getItem('datos-envio'));
 let form = document.querySelector(".formAction");
-console.log(datos_cliente)
 //selectores HTML
 const checkEnvio = document.querySelector("#envio");
 const porEnvio = document.querySelector(".porEnvio");
@@ -47,23 +46,22 @@ const monotributo = document.querySelector(".monotributo");
 const facturaA = document.querySelector(".facturaA");
 const exento = document.querySelector(".exento");
 
-
-fetch('../enviosData/dataEnvios.json')
-  .then(response => {
+(async () => {
+  try {
+    const response = await fetch('../enviosData/dataEnvios.json')
     if (!response.ok) {
-      throw new Error('La solicitud no se pudo completar.');
-    }
-    return response.json();
-  })
-  .then(data => {
-    // Trabaja con los datos JSON
+      throw new Error('No se pudo obtener los datos.');
+    }    
+    const data = await response.json(); // Esperar a que se resuelva la promesa JSON
     envios = data[0]
-  })
-  .catch(error => {
-    console.error('Error: ', error);
-  });
-
-fetch('../enviosData/provincias.json')
+    valorExpreso = envios.expreso
+     
+  } catch (error) {
+    console.error('Error:', error);
+  }
+  
+ 
+await fetch('../enviosData/provincias.json')
   .then(response => {
     if (!response.ok) {
       throw new Error('La solicitud no se pudo completar.');
@@ -91,12 +89,13 @@ fetch('../enviosData/provincias.json')
   })
   .catch(error => {
     console.error('Error: ', error);
-  });
+  }); 
 
-  //si existen cargamos datos previos del cliente
   if(datos_cliente){    
     reingresarDatos(datos_cliente)
-  }
+  }   
+})()
+
 
   //cargar un envío
   selectEnvioRetiro.addEventListener("click", () => {
@@ -135,7 +134,6 @@ fetch('../enviosData/provincias.json')
         if(provinciasSelect.value == "Buenos Aires" || provinciasSelect.value == "Cordoba" || provinciasSelect.value == "Entre Rios" || provinciasSelect.value == "La Pampa" || provinciasSelect.value == "Santa Fe"){
           valorCorreo = envios.correoReg
           document.querySelector(".valor-correo").textContent = valorCorreo;
-          console.log(document.querySelector(".valor-correo"), valorCorreo)
         }
         else if(provinciasSelect.value == "Tucuman" || provinciasSelect.value == "Santiago Del Estero" || provinciasSelect.value == "San Luis" || provinciasSelect.value == "San Juan" || provinciasSelect.value == "Rio Negro" || provinciasSelect.value == "Neuquen" || provinciasSelect.value == "Misiones" || provinciasSelect.value == "Mendoza" || provinciasSelect.value == "La Rioja" || provinciasSelect.value == "Formosa" ||provinciasSelect.value == "Corrientes" || provinciasSelect.value == "Chaco" || provinciasSelect.value == "Catamarca"){
           valorCorreo = envios.correoNac;
@@ -268,6 +266,24 @@ function reingresarDatos(cliente){
           document.querySelector(".correoAltura").value = cliente.tipoDeEnvio.Altura
           document.querySelector(".correoCP").value = cliente.tipoDeEnvio.CP
           document.querySelector(".correoDNI").value = cliente.tipoDeEnvio.DNI
+
+          const ingresarExpreso = document.querySelectorAll(".valor-expreso")
+          for(const e of ingresarExpreso){
+            e.textContent = valorExpreso
+          }
+          if(provinciasSelect.value == "Buenos Aires" || provinciasSelect.value == "Cordoba" || provinciasSelect.value == "Entre Rios" || provinciasSelect.value == "La Pampa" || provinciasSelect.value == "Santa Fe"){
+            valorCorreo = envios.correoReg
+            document.querySelector(".valor-correo").textContent = valorCorreo;
+          }
+          else if(provinciasSelect.value == "Tucuman" || provinciasSelect.value == "Santiago Del Estero" || provinciasSelect.value == "San Luis" || provinciasSelect.value == "San Juan" || provinciasSelect.value == "Rio Negro" || provinciasSelect.value == "Neuquen" || provinciasSelect.value == "Misiones" || provinciasSelect.value == "Mendoza" || provinciasSelect.value == "La Rioja" || provinciasSelect.value == "Formosa" ||provinciasSelect.value == "Corrientes" || provinciasSelect.value == "Chaco" || provinciasSelect.value == "Catamarca"){
+            valorCorreo = envios.correoNac;
+            document.querySelector(".valor-correo").textContent = valorCorreo;
+          }
+          else{
+            valorCorreo = envios.correoNac2;
+            document.querySelector(".valor-correo").textContent = valorCorreo;
+          }
+
           document.querySelector(".correo").style.display = "block"
         }
       }
@@ -279,6 +295,24 @@ function reingresarDatos(cliente){
           document.querySelector(".expresoCalle").value = cliente.tipoDeEnvio.Calle
           document.querySelector(".expresoAltura").value = cliente.tipoDeEnvio.Altura
           document.querySelector(".expresoDNI").value = cliente.tipoDeEnvio.DNI
+
+          const ingresarExpreso = document.querySelectorAll(".valor-expreso")
+          for(const e of ingresarExpreso){
+            e.textContent = valorExpreso
+          }
+          if(provinciasSelect.value == "Buenos Aires" || provinciasSelect.value == "Cordoba" || provinciasSelect.value == "Entre Rios" || provinciasSelect.value == "La Pampa" || provinciasSelect.value == "Santa Fe"){
+            valorCorreo = envios.correoReg
+            document.querySelector(".valor-correo").textContent = valorCorreo;
+          }
+          else if(provinciasSelect.value == "Tucuman" || provinciasSelect.value == "Santiago Del Estero" || provinciasSelect.value == "San Luis" || provinciasSelect.value == "San Juan" || provinciasSelect.value == "Rio Negro" || provinciasSelect.value == "Neuquen" || provinciasSelect.value == "Misiones" || provinciasSelect.value == "Mendoza" || provinciasSelect.value == "La Rioja" || provinciasSelect.value == "Formosa" ||provinciasSelect.value == "Corrientes" || provinciasSelect.value == "Chaco" || provinciasSelect.value == "Catamarca"){
+            valorCorreo = envios.correoNac;
+            document.querySelector(".valor-correo").textContent = valorCorreo;
+          }
+          else{
+            valorCorreo = envios.correoNac2;
+            document.querySelector(".valor-correo").textContent = valorCorreo;
+          }
+          
           document.querySelector(".expresos").style.display = "block"
         }
       }
@@ -623,4 +657,13 @@ function alertsCheckOut(data){
     })
   }
 }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//    //si existen cargamos datos previos del cliente
+//   if(datos_cliente){    
+//     reingresarDatos(datos_cliente)
+//   }
+// })
+
+
 
