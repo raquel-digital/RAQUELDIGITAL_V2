@@ -301,7 +301,7 @@ function actualizarPrecioCarrito(codigo, cant){
         spin.classList.remove("loading")
         spin.textContent = tempTxt
         toast.style.display = "none";
-        console.log('Primer timeout completado');      
+        console.log('Primer timeout completado');        
       // Segundo timeout (llamado dentro del primer timeout)
       setTimeout(function() {
         toast.style.display = "block"

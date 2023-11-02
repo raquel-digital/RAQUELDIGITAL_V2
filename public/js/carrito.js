@@ -1,6 +1,17 @@
 const carrito = []
 
-
+//local storage
+const carritoAnterior = JSON.parse(localStorage.getItem("carrito"))
+const itemsCarrito = document.querySelector("#carritoNumber")
+if(carritoAnterior.length > 0){
+    if(carritoAnterior){
+        carritoAnterior.forEach(e => {
+            ingresarCarrito(e)
+        });
+    }
+}else{
+    actualizarCarrito()
+}
 
 //abrir carrito
 document.querySelector(".carrito").addEventListener('click', event=>{
@@ -34,12 +45,11 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
             if(event.target.textContent == "Sí, eliminar"){
                 for(let i=0; i<carrito.length; i++){
                     if(carrito[i].codigo == codigo){
-                        console.log(carrito[i])
                         carrito.splice(i, 1)
                         actualizarCarrito()
                     }
                 }
-                if(carrito.lenght == 0){                    
+                if(carrito.length == 0){                    
                     itemsCarrito.style.display = "none"
                     const footer = document.querySelector(".carrito-footer")
                     footer.style.display = "none"
@@ -61,12 +71,11 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
             if(event.target.textContent == "Sí, eliminar"){
                 for(let i=0; i<carrito.length; i++){
                     if(carrito[i].codigo == codigo){
-                        console.log(carrito[i])
                         carrito.splice(i, 1)
                         actualizarCarrito()
                     }
                 }
-                if(carrito.lenght == 0){                    
+                if(carrito.length == 0){                    
                     itemsCarrito.style.display = "none"
                     const footer = document.querySelector(".carrito-footer")
                     footer.style.display = "none"
@@ -122,7 +131,6 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
             if(event.target.textContent == "Aceptar"){
                 const userInput = window.prompt("Por favor, ingresa el nombre de tu pedido:");
                 const data = { id: mouse.value, pedido: carrito, nombre: userInput}
-                console.log(data)
                 socket.emit("guardar-pedido-usuario", data)
                 confirm.style.display = "none"
             }
@@ -149,7 +157,6 @@ carritoBody.addEventListener('click', event=>{
 })
 
 function ingresarCarrito(art){
-
     if(art.cantidad < 1){
         alert("La cantidad del artículo debe ser mayor a cero")
     }else{
@@ -170,9 +177,12 @@ function ingresarCarrito(art){
             }
         }
     }
+    actualizarCarrito()
 }
 
 function actualizarCarrito(){
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+    document.getElementById("carrito-holder").value = JSON.stringify(carrito)
     const carritoBody = document.querySelector(".carrito-cuerpo");
     carritoBody.innerHTML = ""
     
@@ -191,7 +201,6 @@ function actualizarCarrito(){
             <button id="cerrarCarrito" type="button" class="btn-primario">Ir a comprar</button>
          </div>`
 
-         itemsCarrito.style.display = "none"
     }else{
         const footer = document.querySelector(".carrito-footer")
         footer.style.display = "block"
@@ -219,12 +228,16 @@ function actualizarCarrito(){
             `
             sumaTotal += precio
         } 
-        
-        itemsCarrito.textContent = carrito.length;
-        //itemsCarrito.style.display = "none" 
-        localStorage.setItem("carrito", JSON.stringify(carrito))
-        document.getElementById("carrito-holder").value = JSON.stringify(carrito) 
     }    
+
+    
+    if(carrito.length > 0){
+        itemsCarrito.textContent = carrito.length;
+        itemsCarrito.style.display = "block"         
+    }else{
+        itemsCarrito.style.display = "none"
+        itemsCarrito.textContent = carrito.length;
+    }
     
     const inputCantidadCarrito = document.querySelector(".cantidad-de-venta")
     if(inputCantidadCarrito){
@@ -337,4 +350,5 @@ mostrador.innerHTML += `
     }
   
 }
+
 

@@ -213,8 +213,12 @@ if(filtros){
                 if(codigo.includes(clikTag)){
                   articulosTags.push(p);
                 }
-          }
-            
+            }
+         
+            if(clikTag == "Todos"){
+              showArts(mostradorDeArticulos)
+              return
+            }
             loadTag(articulosTags, clik);
           }
     })
@@ -253,13 +257,13 @@ function tags(art){
 
 //Cargar TAGS de artículos
 function loadTag(articulosTags, target){ 
-//TODO EL TAG "TODOS" debe devolver la tottalidad de la categ
+
 let nuevoQueryString
 let queryString = window.location.search;
 
-if(queryString.includes("tag")){
+if(queryString.includes("tag")){  
   const split = queryString.split("&")
-  nuevoQueryString = split[0] + "&tag="+target;
+  nuevoQueryString = split[0] + "&tag="+target.replace(" ", "-");
 }else{
   nuevoQueryString = queryString + "&tag="+target;
 }
