@@ -285,7 +285,6 @@ function actualizarPrecioCarrito(codigo, cant){
   }
 
   function mostrarToats(txt, spin){
-    
     spin.classList.add("spinner")
     spin.classList.add("loading")
     const toast = document.querySelector(".toast-exito")

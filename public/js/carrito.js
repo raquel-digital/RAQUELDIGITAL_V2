@@ -3,12 +3,11 @@ const carrito = []
 //local storage
 const carritoAnterior = JSON.parse(localStorage.getItem("carrito"))
 const itemsCarrito = document.querySelector("#carritoNumber")
-if(carritoAnterior.length > 0){
-    if(carritoAnterior){
-        carritoAnterior.forEach(e => {
-            ingresarCarrito(e)
-        });
-    }
+
+if(carritoAnterior && carritoAnterior.length > 0){
+  carritoAnterior.forEach(e => {
+      ingresarCarrito(e)
+  });
 }else{
     actualizarCarrito()
 }
