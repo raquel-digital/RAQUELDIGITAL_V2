@@ -249,6 +249,17 @@ async function mailEmit(data){
 
 }
 
+//rutas de respuesta mercadopago
+app.get("/success", (req, res) => {
+    res.sendFile("./public/check-out-success.html", {root: __dirname })
+})
+app.get("/failure", (req, res) => {
+    res.sendFile("./public/check-out-failure.html", {root: __dirname })
+})
+app.get("/pending", (req, res) => {
+    res.sendFile("./public/check-out-pending.html", {root: __dirname })
+})
+
 const port = process.env.PORT || 8080
 
 if (!config.baseURL && !process.env.BASE_URL && process.env.PORT && process.env.NODE_ENV !== 'production') {

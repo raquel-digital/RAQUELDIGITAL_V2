@@ -176,40 +176,6 @@ router.post("/valid-log", (req,res) => {
   }
 })
 
-
-const mercadopago =  require("mercadopago")
-mercadopago.configure({
-    access_token: requer.capDb
-});
-
-router.post("/mercadopago", (req, res) => {
-    console.log(req.body)
-    const compra = {
-      items: [
-        {
-          title:req.body.titulo,
-          unit_price: parseInt(req.body.precio),
-          quantity: 1,
-        }
-      ],
-      // ...
-  "back_urls": {
-    "success": "raqueldigital.herokuapp.com/success",
-    "failure": "raqueldigital.herokuapp.com/failure",
-    "pending": "raqueldigital.herokuapp.com/pending"
-    },
-      "auto_return": "approved",
-// ...
-    };
-    mercadopago.preferences.create(compra)
-    .then(function(response){
-      console.log(response)
-      res.redirect(response.body.init_point);
-    }).catch(function(error){
-      console.log(error);
-    });
-});
-
 //Pagina de check out
 router.post("/check-out", (req, res) => {
   const carrito = JSON.parse(req.body.carrito_holder)
@@ -217,6 +183,11 @@ router.post("/check-out", (req, res) => {
 })
 
 //CHECK OUT MERCADOPAGO
+const mercadopago =  require("mercadopago")
+mercadopago.configure({
+    access_token: requer.capDb
+});
+
 router.post("/mercadopago", (req, res) => {
   console.log(req.body)
   let preference = {
