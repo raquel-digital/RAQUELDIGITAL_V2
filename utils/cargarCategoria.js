@@ -59,7 +59,7 @@ async function loadCateg(query){
             }
       }
       if(categ == "reparacion ropa"){
-            const result = await filtrar(["AN","HO","GA","RE","TP","TR","CI/VIVOS"]);//EL SE VA A SUBDIVIDIR EN BRETELES
+            const result = await filtrar(["AN","HO","GA","RE","TP","TR","CI/VIVOS","VS/INDUMENTARIA"]);//EL SE VA A SUBDIVIDIR EN BRETELES
             
             if(result.length > 0){
              return { succes: true, result: result } 
@@ -186,7 +186,7 @@ async function loadCateg(query){
        }
       }
       if(categ == "herramientas"){      
-       const result = await filtrar(["CS","TJ","MH","PE"]);
+       const result = await filtrar(["CS","TJ","MH","PA","PE"]);
        if(result.length > 0){
         return { succes: true, result: result } 
        }
@@ -198,7 +198,7 @@ async function loadCateg(query){
        }
       }
       if(categ == "indumentaria"){      
-            const result = await filtrar(["AN","CA","HO","HC","GL","GP","LE","MO","PF","PL","RC","RR","RE","TA","TE","TP","TR","CI/VIVOS","VS/INDUMENTARIA","CS-BROCHE","CI/TALLES-REPARACION"]);
+            const result = await filtrar(["AN","CA","HO","HC","PA","VS/INDUMENTARIA"]);
             if(result.length > 0){
              return { succes: true, result: result } 
             }
@@ -210,7 +210,7 @@ async function loadCateg(query){
        }
       }
       if(categ == "manualidades"){      
-       const result = await filtrar(["AN","AL","CM","CP","MU","MH/manualidades","VS/manualidades","RV","CS-BORDADO","LE","MO"]);
+       const result = await filtrar(["AN","AL","CM","CP","MU","MH/manualidades","VS/manualidades","RV","CS-BORDADO","LE","MO","PA"]);
        if(result.length > 0){
         return { succes: true, result: result } 
        }
