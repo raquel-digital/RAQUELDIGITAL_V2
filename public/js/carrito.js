@@ -101,7 +101,7 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
                 carritoShow.style.display = "none"
                 itemsCarrito.style.display = "none"
                 itemsCarrito.textContent = carrito.length
-                mostrarToats("Carrito eliminado con éxito.")
+                mostrarToats("Carrito eliminado", false)
             }
             if(event.target.textContent == "No" || event.target.classList.contains("cruz")){
                 confirm.style.display = "none"

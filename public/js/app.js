@@ -285,15 +285,26 @@ function actualizarPrecioCarrito(codigo, cant){
   }
 
   function mostrarToats(txt, spin){
-    spin.classList.add("spinner")
-    spin.classList.add("loading")
     const toast = document.querySelector(".toast-exito")
-    const tempTxt = spin.textContent
-    spin.textContent = " "
     toast.innerHTML = `
         <img src="img/tilde.svg" alt="">
         <p>${txt}</p>
     `
+
+    if(spin == false){
+      setTimeout(function() {
+        toast.style.display = "block"
+        setTimeout(function() {
+          toast.style.display = "none"
+        }, 1000);
+      }, 1);
+      return
+    }
+
+    const tempTxt = spin.textContent
+    spin.classList.add("spinner")
+    spin.classList.add("loading")    
+    spin.textContent = " "
     
     setTimeout(function() {
       spin.classList.remove("spinner")
