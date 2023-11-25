@@ -52,6 +52,7 @@ function showArts(art, message){
         boton.setAttribute("precio", p.precio);
         boton.setAttribute("nombre", p.nombre);
         boton.setAttribute("imagen", imagen);
+
         const modalImagen = document.querySelector("#" + p.codigo + "imagen");
         modalImagen.setAttribute("imagen", imagen);
         modalImagen.setAttribute("nombre", p.nombre);
@@ -67,10 +68,8 @@ function showArts(art, message){
           }else{            
             boton.textContent = "Ver carta de colores"
           }
-          
         }
-      } 
-      
+      }
     });
 
 mostrador.addEventListener('click', event=>{

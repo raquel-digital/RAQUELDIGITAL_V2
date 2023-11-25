@@ -117,7 +117,7 @@ await fetch('../enviosData/provincias.json')
   })
   provinciasSelect.addEventListener("click", () => {
     if(provinciasSelect.value == "Ciudad Autonoma De Bs As"){
-      document.querySelector(".ingresarTipoEnvio").innerHTML = ""
+      document.querySelector(".ingresarTipoEnvio").style.display = "none";
       document.querySelector(".moto").style.display = "block";
       document.querySelector(".motoValor").innerHTML = `<h5 style="margin-bottom: 10px;">Realizamos envíos por moto dentro de CABA, valor $${envios.moto} </h5>`;
       localidades.style.display="none";
@@ -125,6 +125,7 @@ await fetch('../enviosData/provincias.json')
       document.querySelector(".expresos").style.display = "none"
     }else{
       document.querySelector(".moto").style.display = "none";
+      document.querySelector(".ingresarTipoEnvio").style.display = "block";
       provinciasLocalidades.forEach(e => {
         if(e.provincia == provinciasSelect.value){        
           localidades.style.display="inline";
@@ -231,6 +232,7 @@ formaDePago.addEventListener("click", () => {
 
 //Tools
 function reingresarDatos(cliente){ 
+  console.log(cliente)
     //reingresamos los datos
     //nombre
     if(cliente.nombreApellido)
@@ -245,10 +247,10 @@ function reingresarDatos(cliente){
       provinciasSelect.innerHTML += `<option value="${cliente.tipoDeEnvio.Provincia}" selected>${cliente.tipoDeEnvio.Provincia}</option>` 
       //envio por moto
       if(cliente.tipoDeEnvio.Provincia == "Ciudad Autonoma De Bs As"){
-        porEnvio.style.display = "none";
-        document.querySelector(".ingresarTipoEnvio").innerHTML = ""
+        //porEnvio.style.display = "none";
+        document.querySelector(".ingresarTipoEnvio").style.display = "none";
         document.querySelector(".moto").style.display = "block";
-        document.querySelector(".motoValor").innerHTML = `<h5>${envios.moto}</h5>`;
+        document.querySelector(".motoValor").innerHTML = `<h5>Realizamos envíos por moto dentro de CABA, valor $${envios.moto}</h5>`;
         document.querySelector(".motoCalle").value = cliente.tipoDeEnvio.Calle;
         document.querySelector(".motoAltura").value = cliente.tipoDeEnvio.Altura;
         document.querySelector(".horario-entrega").value = cliente.tipoDeEnvio.Horario_Entrega;      
@@ -258,8 +260,8 @@ function reingresarDatos(cliente){
       }
   
       
-  
-      if(correo != null){
+      //if(correo != null){
+      if(cliente.sys.checked.correo){
         correo.checked = cliente.sys.checked.correo;
         if(correo.checked){
           document.querySelector(".correoCalle").value = cliente.tipoDeEnvio.Calle
@@ -288,7 +290,8 @@ function reingresarDatos(cliente){
         }
       }
       
-      if(expreso != null){
+      //if(expreso != null){
+      if(cliente.sys.checked.expreso){
         expreso.checked = cliente.sys.checked.expreso;
         if(expreso.checked){
           document.querySelector(".expresoEmpresa").value = cliente.tipoDeEnvio.Empresa
@@ -385,16 +388,15 @@ function envio_mock(){
   //TODO caso envío moto fijarse tambien si la párte HTML esta OK
    
   const compraFinal = document.getElementById('datos-compra');
-
+  
   const cliente = {
     nombreApellido: document.querySelector(".nombreApellido").value,
     sys: {
       checked: {
         retiro: document.querySelector("#retiro").checked,
         envio: checkEnvio.checked,
-        expreso: expreso.checked,
-        correo: correo.checked,
-        moto: false,
+        expreso: document.querySelector("#tipo-envio1") ? document.querySelector("#tipo-envio1").checked : false,
+        correo: document.querySelector("#tipo-envio2") ? document.querySelector("#tipo-envio2").checked : false,        
         whatsapp: whatsapp.checked,
         mail: mail.checked,
         tel: tel.checked,
@@ -595,20 +597,26 @@ function controlDatos(cliente){
     }
     if(!cliente.tipoDeEnvio.DNI){
       return {state: false, message: "Por favor ingresa el DNI de la persona que lo recibe", redMark: "expreso-DNI"};
-    }        
+    }    
+    if(!cliente.tipoDeEnvio.Empresa){
+      return {state: false, message: "Por favor ingresa por que empresa de transporte se envia", redMark: "expreso-DNI"};
+    }   
+    if(!cliente.tipoDeEnvio.Altura){
+      return {state: false, message: "Por favor ingresa la altura de la calle", redMark: "expreso-DNI"};
+    }      
   }
-  if(!cliente.hasOwnProperty("formaDeContacto")){
-    return {state: false, message: "Ingrese una forma de contacto", redMark: "forma-contacto"};
-  }else{
-    let contacto = "numero";
-    if(cliente.formaDeContacto.contacto == 'Mail'){
-      contacto = "mail"
-    }
-    if(!cliente.formaDeContacto.numero){
-      return {state: false, message: `Por favor ingrese su ${contacto} para que podamos contactarnos`, redMark: "contacto-input"};
-    }
+  if(!cliente.formaDeContacto){
+  //   return {state: false, message: "Ingrese una forma de contacto", redMark: "forma-contacto"};
+  // }else{
+  //   let contacto = "numero";
+  //   if(cliente.formaDeContacto.contacto == 'Mail'){
+  //     contacto = "mail"
+  //   }
+  //   if(!cliente.formaDeContacto.numero){
+      return {state: false, message: `Por favor ingrese su forma de contacto para que podamos contactarnos`, redMark: "contacto-input"};
+    //}
   }
-  if(!cliente.hasOwnProperty("facturacion")){
+  if(!cliente.facturacion){
     return {state: false, message: `Por favor ingrese su forma de facturacion`, redMark: "facturacion"};      
   }else{
     if(cliente.facturacion.tipo == "IVA INSCRIPTO" || cliente.facturacion.tipo == "IVA Exento" || cliente.facturacion.tipo == "Monotributo"){
@@ -620,7 +628,7 @@ function controlDatos(cliente){
       }
     }
   }
-  if(!cliente.hasOwnProperty("formaDePago")){
+  if(!cliente.formaDePago){
     return {state: false, message: `Por favor ingrese una forma de pago`, redMark: "forma-pago"}
   } 
   
@@ -642,9 +650,10 @@ function alertsCheckOut(data){
         
         //const datosCliente = JSON.parse(localStorage.getItem('datos-envio'));
         //ENVIO PEDIDO A MAIL
-        localStorage.setItem('datos-envio', JSON.stringify(data));
-        socket.emit("mail", data)
-        form.submit();        
+         localStorage.setItem('datos-envio', JSON.stringify(data));
+        // socket.emit("mail", data)
+        // form.submit();
+        console.log(data)        
       }
     })
   }else{
