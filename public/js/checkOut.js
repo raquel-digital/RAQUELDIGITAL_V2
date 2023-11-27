@@ -646,14 +646,12 @@ function alertsCheckOut(data){
       confirmButtonColor: '#218838',      
     }
     ).then((res) => {
-      if(res.isConfirmed){        
+      if(res.isConfirmed){ 
         
-        //const datosCliente = JSON.parse(localStorage.getItem('datos-envio'));
         //ENVIO PEDIDO A MAIL
-         localStorage.setItem('datos-envio', JSON.stringify(data));
-        // socket.emit("mail", data)
-        // form.submit();
-        console.log(data)        
+        localStorage.setItem('datos-envio', JSON.stringify(data));
+        socket.emit("mail", data)
+        form.submit();  
       }
     })
   }else{
