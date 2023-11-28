@@ -7,103 +7,6 @@ async function loadCateg(query){
             query = "elasticos"; 
       }
       const categ = query.toLowerCase().replace("%20", " ");
-
-          //CATEGORIAS EN PUREBA
-          if(categ == "lenceria"){
-            const result = await filtrar(["RC","RR","EL"]);//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      if(categ == "argollas"){
-            const result = await filtrar(["AH","AP"]);//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      if(categ == "hebillas"){
-            const result = await filtrar(["HE","HH","TR"]);//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      if(categ == "ganchos"){
-            const result = await filtrar(["GA","MQ"]);//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      if(categ == "pegamentos"){
-            const result = await filtrar("PE");//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      if(categ == "flecos"){
-            const result = await filtrar("PF");//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      if(categ == "plumas"){
-            const result = await filtrar("PL");//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      if(categ == "reparacion ropa"){
-            const result = await filtrar(["AN","HO","GA","RE","TP","TR","CI/VIVOS","VS/INDUMENTARIA"]);//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      if(categ == "decoracion ropa"){
-            const result = await filtrar(["AN","CA","HO","HC","GA","LE","MO","TA","TR"]);//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      if(categ == "ganchos"){
-            const result = await filtrar(["CA","GL","GP","GB","NA"]);//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      if(categ == "bijou"){
-            const result = await filtrar(["CM","CP","MU","MO","LE"]);//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      if(categ == "banderas"){
-            const result = await filtrar("AR");//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      if(categ == "cortineria"){
-            const result = await filtrar("CR");//EL SE VA A SUBDIVIDIR EN BRETELES
-            
-            if(result.length > 0){
-             return { succes: true, result: result } 
-            }
-      }
-      
-
-      //----------------------------------------
-
       
       if(categ == "alfileres y agujas"){
        const result = await filtrar(["AF","AG","AT","BA","GA"]);
@@ -124,6 +27,13 @@ async function loadCateg(query){
        if(result.length > 0){
         return { succes: true, result: result } 
        }       
+      }
+      if(categ == "bijou"){
+            const result = await filtrar(["CM","CP","MU","MO","LE"]);//EL SE VA A SUBDIVIDIR EN BRETELES
+            
+            if(result.length > 0){
+             return { succes: true, result: result } 
+            }
       }
       if(categ == "brillos"){                 
        const result = await filtrar(["ST","LE","MO","GL","NA","AD"]);
@@ -161,6 +71,13 @@ async function loadCateg(query){
         return { succes: true, result: result } 
        }
       }
+      if(categ == "cortineria"){
+            const result = await filtrar("CR");//EL SE VA A SUBDIVIDIR EN BRETELES
+            
+            if(result.length > 0){
+             return { succes: true, result: result } 
+            }
+      }
       if(categ == "costura"){        
             const result = await filtrar(["CS","CS-BROCHE","TR"]);
             if(result.length > 0){
@@ -172,6 +89,13 @@ async function loadCateg(query){
        if(result.length > 0){
         return { succes: true, result: result } 
        }
+      }
+      if(categ == "flecos"){
+            const result = await filtrar("PF");//EL SE VA A SUBDIVIDIR EN BRETELES
+            
+            if(result.length > 0){
+             return { succes: true, result: result } 
+            }
       }
       if(categ == "flores"){        
        const result = await filtrar(["FL","FR"]);
@@ -209,6 +133,13 @@ async function loadCateg(query){
         return { succes: true, result: result } 
        }
       }
+      if(categ == "lenceria"){
+            const result = await filtrar(["RC","RR","EL"]);//EL SE VA A SUBDIVIDIR EN BRETELES
+            
+            if(result.length > 0){
+             return { succes: true, result: result } 
+            }
+      }
       if(categ == "manualidades"){      
        const result = await filtrar(["AN","AL","CM","CP","MU","MH/manualidades","VS/manualidades","RV","CS-BORDADO","LE","MO","PA"]);
        if(result.length > 0){
@@ -221,11 +152,32 @@ async function loadCateg(query){
         return { succes: true, result: result } 
        }
       }
+      if(categ == "pegamentos"){
+            const result = await filtrar("PE");//EL SE VA A SUBDIVIDIR EN BRETELES
+            
+            if(result.length > 0){
+             return { succes: true, result: result } 
+            }
+      }
+      if(categ == "plumas"){
+            const result = await filtrar("PL");//EL SE VA A SUBDIVIDIR EN BRETELES
+            
+            if(result.length > 0){
+             return { succes: true, result: result } 
+            }
+      }
       if(categ == "puntillas"){      
        const result = await filtrar(["PY","PU","BX","PW","PT","PZ","PR"]);
        if(result.length > 0){
         return { succes: true, result: result } 
        }
+      }
+      if(categ == "reparacion ropa"){
+            const result = await filtrar(["AN","HO","GA","RE","TP","TR","CI/VIVOS","VS/INDUMENTARIA"]);//EL SE VA A SUBDIVIDIR EN BRETELES
+            
+            if(result.length > 0){
+             return { succes: true, result: result } 
+            }
       }
       if(categ == "telar"){
        const result = await filtrar("BB","CS-BORDADO","RV","VS/manualidades");

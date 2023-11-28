@@ -212,7 +212,7 @@ function asignarMasMenos(mouse, cart){
            actualizarPrecioCarrito(codigo, Number(cant+1))
         }       
     }
-    if(mouse.classList == "menos" && mouse.nextElementSibling.value > 1){
+    if(mouse.classList == "menos" && mouse.nextElementSibling.value > 0){
         const cant = mouse.nextElementSibling.value-- 
         if(cart){
            const codigo = mouse.parentElement.parentElement.childNodes[3].childNodes[1].textContent
@@ -326,8 +326,18 @@ function actualizarPrecioCarrito(codigo, cant){
     }, 100); // El primer timeout se ejecutará después de 3 segundos (3000 milisegundos)
   }
 
-  //Modal colores
+  //Modal carta colores
   const modalColores = document.querySelector(".modal-carta-colores")
+
+  modalColores.addEventListener("keydown", e => {
+    //input numeros teclado
+    if(!isNaN(e.target.value)){
+      document.getElementById("modal-colores").removeAttribute("disabled");
+      const cantidad = e.target.parentElement.parentElement.parentElement.children[2].children[1]
+      cantidad.checked = 1
+      e.target.parentElement.parentElement.parentElement.classList.add("color-seleccionado")
+    }
+  })
   modalColores.addEventListener("click", e => {
     const mouse = e.target
     asignarMasMenos(mouse)
@@ -343,15 +353,16 @@ function actualizarPrecioCarrito(codigo, cant){
         mouse.parentElement.parentElement.parentElement.classList.remove("color-seleccionado")
         checkBox.checked = false
       } 
-      //TODO funcion que quite el seleccionado
+      
       document.getElementById("modal-colores").removeAttribute("disabled");
     }
+
     if(mouse.checked){
       const cantidad = mouse.parentElement.parentElement.children[1].children[1].children[1]
       if(cantidad.value == 0){
         cantidad.value = 1
       }     
-      //TODO funcion que quite el seleccionado
+      
       mouse.parentElement.parentElement.classList.add("color-seleccionado")
       
       document.getElementById("modal-colores").removeAttribute("disabled");
@@ -366,9 +377,12 @@ function actualizarPrecioCarrito(codigo, cant){
     //Confirmar Compra
     if(mouse.id == "modal-colores"){
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      
+        
+        let exist = false
         checkboxes.forEach(function(checkbox) {
+         
           if (checkbox.checked) {
+             exist = true 
              const boton = document.getElementById("modal-colores")
              const click = checkbox.parentElement.parentElement.firstElementChild.classList 
              const imagen = click[2] 
@@ -388,11 +402,20 @@ function actualizarPrecioCarrito(codigo, cant){
                cantidad: Number(cantidad)
              };
 
-             ingresarCarrito(art)
-             mostrarToats("Artículo agregado con exito", boton)
-             modalColores.style.display = "none"
+             if(art.cantidad > 0){
+              ingresarCarrito(art)
+              mostrarToats("Artículo agregado con exito", boton)              
+              modalColores.style.display = "none"
+             }else{
+              alert("articulo " + art.codigo + art.titulo + " se ingreso cero en la cantidad")
+             }
           }
         })
+        if(!exist){
+          const boton = document.getElementById("modal-colores")
+          alert("No se selecciono ningun artículo")
+        }
+        document.getElementById("modal-colores").setAttribute("disabled", "true");
     }
   })
 
@@ -444,7 +467,7 @@ function actualizarPrecioCarrito(codigo, cant){
             <h3>${color}</h3>
             <div class="cantidad-card">
                 <button type="button" class="menos"></button>
-                <input type="number" value="0">
+                <input class="inputCantidadCartaColor" type="number" value="0">
                 <button type="button" class="mas"></button>
             </div>
         </div>
@@ -457,8 +480,9 @@ function actualizarPrecioCarrito(codigo, cant){
       }
     }) 
 
-   //setear atributos al boton de confirmar TEST
+   //setear atributos al boton de confirmar
    const boton = document.getElementById("modal-colores")
+   boton.textContent = "Agregar al carrito"
    boton.setAttribute("precio", art.precio);
    boton.setAttribute("nombre", art.titulo);
 

@@ -78,8 +78,8 @@ io.on('connect', socket => {
     socket.on("mail", data =>{        
         (async () => {
             //ingresamos pedido a la base de datos
-            // const controller = require("./api/users/controller")
-            // await controller.ingresar(data)
+            const controller = require("./api/users/controller")
+            await controller.ingresar(data)
 
             //enviamos mail
             await mailEmit(data);
@@ -178,8 +178,8 @@ async function mailEmit(data){
         }
     }
     
-    if(datos.sys.checked.expreso || datos.sys.checked.correo || datos.sys.checked.moto){  
-                   
+    if(datos.sys.checked.expreso || datos.sys.checked.correo || datos.sys.checked.moto){        
+        const costo_envios = Number(data.sys.totalCompra) + Number(data.tipoDeEnvio.Costo)
             mailOptions = {
                 from: 'SITIO WEB',
                 to: 'raqueldigitalweb@gmail.com',
@@ -231,7 +231,7 @@ async function mailEmit(data){
                     TOTAL DEL PEDIDO: ${data.sys.totalCompra.toFixed(2)}                    
                 </tr>
                 <tr class="total-compra-final">
-                    TOTAL DEL PEDIDO + ENVIO: ${data.sys.totalCompra.toFixed(2) + Number(data.tipoDeEnvio.Costo).toFixed(2)}
+                    TOTAL DEL PEDIDO + ENVIO: ${costo_envios.toFixed(2)}
                 </tr>
           </tfoot>
                         
