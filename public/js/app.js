@@ -331,11 +331,12 @@ function actualizarPrecioCarrito(codigo, cant){
 
   modalColores.addEventListener("keydown", e => {
     //input numeros teclado
-    if(!isNaN(e.target.value)){
+    if(!isNaN(e.target.value)){      
       document.getElementById("modal-colores").removeAttribute("disabled");
       const cantidad = e.target.parentElement.parentElement.parentElement.children[2].children[1]
       cantidad.checked = 1
       e.target.parentElement.parentElement.parentElement.classList.add("color-seleccionado")
+      
     }
   })
   modalColores.addEventListener("click", e => {
@@ -444,8 +445,11 @@ function actualizarPrecioCarrito(codigo, cant){
           color = "Medida N° " + split[split.length-1]
         }else{          
           color = split[1]
+          if(color.includes("_")){
+            color = color.replace("_", " ")
+          }
           if(split.length > 2){        
-            for (let index = 2; index < split.length; index++) {
+            for (let index = 2; index < split.length; index++) {              
               color += " " + split[index]
             }
           }
