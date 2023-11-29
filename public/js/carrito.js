@@ -110,10 +110,6 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
         
     }
 
-    // if(mouse.id == "confirmar-compra"){
-    //     window.location = "http://localhost:8080/check-out"
-    // }
-
     //cerrar haciendo click fuera del carrito
     if (mouse.classList.contains("drawer-carrito")) {
         carritoShow.style.display = "none"
@@ -238,21 +234,24 @@ function actualizarCarrito(){
         itemsCarrito.textContent = carrito.length;
     }
     
-    const inputCantidadCarrito = document.querySelector(".cantidad-de-venta")
-    if(inputCantidadCarrito){
-        let t = 500
-        inputCantidadCarrito.addEventListener("keyup", event => {  
-            t += 100          
-            setTimeout(function() {
-                const value = event.target.value
-                if(value == "" || value == 0){
-                    inputCantidadCarrito.value = 1
-                }
-                const codigo = event.target.parentElement.parentElement.childNodes[3].childNodes[1].textContent
-                actualizarPrecioCarrito(codigo, value)
-            }, t);
-        })
-    }    
+    const inputCantidadCarrito = document.querySelectorAll(".cantidad-de-venta")
+    inputCantidadCarrito.forEach(e => {
+        if(inputCantidadCarrito){
+            let t = 500
+            e.addEventListener("keyup", event => {  
+                t += 100          
+                setTimeout(function() {
+                    const value = event.target.value
+                    if(value == "" || value == 0){
+                        inputCantidadCarrito.value = 1
+                    }
+                    const codigo = event.target.parentElement.parentElement.childNodes[3].childNodes[1].textContent
+                    actualizarPrecioCarrito(codigo, value)
+                }, t);
+            })
+        }
+    })
+        
     document.getElementById("total-carrito-suma").textContent = "$ " + Number(sumaTotal).toFixed(2) 
 }
 
