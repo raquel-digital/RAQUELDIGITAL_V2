@@ -97,7 +97,7 @@ await fetch('../enviosData/provincias.json')
 })()
 
 
-  //cargar un envío
+  //cargar un envío tipo-envio2 tipo-envio1
   selectEnvioRetiro.addEventListener("click", () => {
     if(checkEnvio.checked){      
       porEnvio.style.display="block";
@@ -425,6 +425,8 @@ function envio_mock(){
   if(cliente.sys.checked.retiro){
     tipoRetiro = "Retira en local"
     tipoDeEnvio = {Costo: undefined, forma_de_envio: undefined}
+    cliente.sys.checked.expreso = false
+    cliente.sys.checked.correo = false
   }
   if(cliente.sys.checked.correo){
     tipoRetiro = "Por Correo Argentino"
@@ -606,15 +608,7 @@ function controlDatos(cliente){
     }      
   }
   if(!cliente.formaDeContacto){
-  //   return {state: false, message: "Ingrese una forma de contacto", redMark: "forma-contacto"};
-  // }else{
-  //   let contacto = "numero";
-  //   if(cliente.formaDeContacto.contacto == 'Mail'){
-  //     contacto = "mail"
-  //   }
-  //   if(!cliente.formaDeContacto.numero){
-      return {state: false, message: `Por favor ingrese su forma de contacto para que podamos contactarnos`, redMark: "contacto-input"};
-    //}
+    return {state: false, message: `Por favor ingrese su forma de contacto para que podamos contactarnos`, redMark: "contacto-input"};
   }
   if(!cliente.facturacion){
     return {state: false, message: `Por favor ingrese su forma de facturacion`, redMark: "facturacion"};      
