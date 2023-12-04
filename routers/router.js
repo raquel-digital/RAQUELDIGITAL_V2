@@ -5,6 +5,7 @@ const requer = require("../utils/config");
 //const middleware = require("../utils/middleware");
 const controller = require("../api/arts/controller")
 const { requiresAuth } = require('express-openid-connect');
+const middleware =  require("../utils/middleware")
 
 
 //ENTRANDO A "/login y /logout" te logueas y deslogueas
@@ -126,12 +127,12 @@ router.get('/profile', requiresAuth(), function (req, res, next) {
 //************ */
 
 router.get("/admin", (req, res, next) => {
-    if(middleware.validAdmin(log)){
-      log = undefined;      
+    // if(middleware.validAdmin(log)){
+    //   log = undefined;      
       res.sendFile(path.resolve("./public/index-admin.html"))
-    }else{
-      res.redirect("/login-admin");
-    }
+    // }else{
+    //   res.redirect("/login-admin");
+    // }
 })
 
 router.get("/admin/pedidos", (req, res) => {
@@ -141,8 +142,8 @@ router.get("/admin/pedidos", (req, res) => {
   // }else{
   //   res.redirect("/login-admin");
   // }
-  //res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
-  res.send("ok")
+  res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
+  //res.send("ok")
 })
 router.get("/admin/pedidos/local", (req, res) => {
   // if(middleware.validAdmin(log)){

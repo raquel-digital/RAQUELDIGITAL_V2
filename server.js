@@ -84,7 +84,74 @@ io.on('connect', socket => {
             //enviamos mail
             await mailEmit(data);
         })()    
-    })     
+    })    
+    
+    //ADMIN PEDIDOS
+    socket.on("chequear-pedidos-admin", () => {        
+        const userController = require("./api/pedidos/controller");
+        (async () => {            
+         const result = await userController.buscar();
+         socket.emit("nuevos-pedidos", result);
+        })();        
+    });
+    
+    socket.on("update-pedido", pedidos => {
+        const controller = require("./api/pedidos/controller");
+        (async () => { 
+            const res = await controller.updatePedidos(pedidos);
+            socket.emit("update-pedido-res", res);
+        })();
+    });
+
+    socket.on("borrar-pedido", orden => {
+        const controller = require("./api/pedidos/controller");
+        (async () => { 
+            const res = await controller.borrarPedidos(orden);  
+            socket.emit("borrar-pedido-res", res)          
+        })();
+    });
+    socket.on("nuevo-pedido-local", pedido => {
+        const controller = require("./api/pedidos/pedidosLocal/controller");
+        (async () => { 
+            const res = await controller.ingresar(pedido);     
+            socket.emit("nuevo-pedido-local-res",res)       
+        })();
+    })
+    socket.on("buscar-pedidos-local", () => {
+        const controller = require("./api/pedidos/pedidosLocal/controller");
+        (async () => { 
+            const res = await controller.buscar();
+            socket.emit("buscar-pedidos-local-res", res)            
+        })();
+    })
+    socket.on("update-pedido-local", pedidos => {
+        const controller = require("./api/pedidos/pedidosLocal/controller");
+        (async () => { 
+            const res = await controller.updatePedidos(pedidos);
+            socket.emit("update-pedido-local-res", res);
+        })();
+    });
+    socket.on("borrar-pedido-local", orden => {
+        const controller = require("./api/pedidos/pedidosLocal/controller");
+        (async () => { 
+            const res = await controller.borrarPedidos(orden);
+            socket.emit("update-pedido-local-res", res);
+        })();
+    });
+    socket.on("pedidos-anteriores", () => {
+        const controller = require("./api/pedidos/pedidosLocal/controller");
+        (async () => { 
+           const res = await controller.pedidosAnteriores();
+           socket.emit("pedidos-anteriores-res", res);
+        })();
+    })
+    socket.on("findOld", query => {
+        const controller = require("./api/pedidos/pedidosLocal/controller");
+        (async () => { 
+           const res = await controller.buscarPedidoAnterior(query);
+           socket.emit("findOld-res", res);
+        })();
+    })
 });
 
 

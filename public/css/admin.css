@@ -1,0 +1,16 @@
+body{
+    background-image: url("imagenDeFondo.jpg");    
+} 
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+form label{
+    background-color: rgb(254, 245, 168);
+}
+
+form input{
+    border: 2px solid black;
+}

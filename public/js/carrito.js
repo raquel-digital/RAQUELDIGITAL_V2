@@ -44,7 +44,8 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
             if(event.target.textContent == "Sí, eliminar"){
                 for(let i=0; i<carrito.length; i++){
                     if(carrito[i].codigo == codigo){
-                        carrito.splice(i, 1)
+                        const eliminado = carrito.splice(i, 1)
+                        console.log(eliminado)
                         actualizarCarrito()
                     }
                 }
