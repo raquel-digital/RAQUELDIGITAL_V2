@@ -152,6 +152,13 @@ io.on('connect', socket => {
            socket.emit("findOld-res", res);
         })();
     })
+    socket.on("busqueda-pedido", num_orden => {
+        const userController = require("./api/users/controller");
+        (async () => {
+          const res = await userController.buscar(num_orden)
+          socket.emit("busqueda-pedido-reponse", res)
+        })();
+    })
 });
 
 
