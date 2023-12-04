@@ -416,7 +416,7 @@ function envio_mock(){
   
   
   for(const p of cliente.sys.compra){
-    const valor = Number(p.precio) 
+    const valor = Number(p.precio) * p.cantidad
     cliente.sys.totalCompra += valor
   }  
 
