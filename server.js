@@ -159,6 +159,24 @@ io.on('connect', socket => {
           socket.emit("busqueda-pedido-reponse", res)
         })();
     })
+    //---------------
+    //ADMIN SEARCH
+    socket.on("busqueda-admin", query => {       
+        (async () => {
+            if(Array.isArray(query)){
+                const result = []
+                 for(let q of query){
+                    const split = q.codigo.split("-")
+                    const res = await controller.buscarArticulo(split[0]);
+                    result.push(res)
+                 }
+                 socket.emit("res-busqueda-upload", result[0]);
+            }else{
+                const result = await controller.buscarArticulo(query);            
+                socket.emit("resultado-busqueda", result);
+            }            
+        })();
+    })
 });
 
 
