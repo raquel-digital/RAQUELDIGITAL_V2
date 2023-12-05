@@ -126,9 +126,12 @@ router.get('/profile', requiresAuth(), function (req, res, next) {
 });
 //************ */
 
+
+let adminPedidos = false
 router.get("/admin", (req, res, next) => {
     if(middleware.validAdmin(log)){
-      log = undefined;      
+      log = undefined; 
+      adminPedidos = true     
       res.sendFile(path.resolve("./public/index-admin.html"))
     }else{
       res.redirect("/login-admin");
@@ -136,8 +139,9 @@ router.get("/admin", (req, res, next) => {
 })
 
 router.get("/admin/pedidos", (req, res) => {
-  if(middleware.validAdmin(log)){
-    log = undefined;      
+  if(adminPedidos){
+    log = undefined;   
+    adminPedidos = false    
     res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
   }else{
     res.redirect("/login-admin");
@@ -146,9 +150,10 @@ router.get("/admin/pedidos", (req, res) => {
   
 })
 router.get("/admin/pedidos/local", (req, res) => {
-   if(middleware.validAdmin(log)){
-     log = undefined;      
-     res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
+  if(adminPedidos){
+    log = undefined;   
+    adminPedidos = false      
+    res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
    }else{
      res.redirect("/login-admin");
    }
