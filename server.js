@@ -177,6 +177,16 @@ io.on('connect', socket => {
             }            
         })();
     })
+    //ADMIN PRECIOS
+    socket.on("actuPrecios", data => {
+        (async () => {
+            const actuPrecios = require("./utils/preciosActu");
+            const result = await actuPrecios(data);
+            if(result){
+                socket.emit("actuPreciosRes", (result));
+            }
+        })();        
+    })
 });
 
 
