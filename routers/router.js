@@ -127,31 +127,31 @@ router.get('/profile', requiresAuth(), function (req, res, next) {
 //************ */
 
 router.get("/admin", (req, res, next) => {
-    // if(middleware.validAdmin(log)){
-    //   log = undefined;      
+    if(middleware.validAdmin(log)){
+      log = undefined;      
       res.sendFile(path.resolve("./public/index-admin.html"))
-    // }else{
-    //   res.redirect("/login-admin");
-    // }
+    }else{
+      res.redirect("/login-admin");
+    }
 })
 
 router.get("/admin/pedidos", (req, res) => {
-  // if(middleware.validAdmin(log)){
-  //   log = undefined;      
-  //   res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
-  // }else{
-  //   res.redirect("/login-admin");
-  // }
+  if(middleware.validAdmin(log)){
+    log = undefined;      
+    res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
+  }else{
+    res.redirect("/login-admin");
+  }
   res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
-  //res.send("ok")
+  
 })
 router.get("/admin/pedidos/local", (req, res) => {
-  // if(middleware.validAdmin(log)){
-  //   log = undefined;      
-  //   res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
-  // }else{
-  //   res.redirect("/login-admin");
-  // }
+   if(middleware.validAdmin(log)){
+     log = undefined;      
+     res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
+   }else{
+     res.redirect("/login-admin");
+   }
   res.sendFile(path.resolve("./public/index-adminPedidos-local.html"))
 })
 
