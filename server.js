@@ -187,6 +187,18 @@ io.on('connect', socket => {
             }
         })();        
     })
+    //ADMIN ARTICULOS
+    socket.on("delete", data => {
+        controller.borrarArt(data);
+    })
+    socket.on("cambio-en-articulos", cambiosEnArticulos => {                
+        (async () => {
+            const result = await controller.actualizarArticulos(cambiosEnArticulos);
+            console.log("RESULT", result)
+            socket.emit("result-actu", result);
+        })();
+    })
+
 });
 
 
