@@ -341,6 +341,7 @@ function actualizarPrecioCarrito(codigo, cant){
   })
   modalColores.addEventListener("click", e => {
     const mouse = e.target
+    
     asignarMasMenos(mouse)
     //activar checkbox con + o -
     if(mouse.classList.contains("mas") || mouse.classList.contains("menos")){
@@ -367,6 +368,10 @@ function actualizarPrecioCarrito(codigo, cant){
       mouse.parentElement.parentElement.classList.add("color-seleccionado")
       
       document.getElementById("modal-colores").removeAttribute("disabled");
+    }else{
+      mouse.parentElement.parentElement.classList.remove("color-seleccionado")
+      const cantidad = mouse.parentElement.parentElement.children[1].children[1].children[1]
+      cantidad.value = 0
     }
     //CERRAR MODAL
     if(mouse.id == "cerrar-modal"){
@@ -503,7 +508,6 @@ function actualizarPrecioCarrito(codigo, cant){
       modalContenidoColorApliada.style.display = "block"
     }
    })
-   
   }
 
   function alertModal(txt, txt2, confirmar, cancelar){
@@ -535,7 +539,6 @@ document.querySelector("#select-categ").addEventListener('click', event=>{
   let inMobile = false
   if(mouse == "A"){
       window.location = "https://raqueldigital.herokuapp.com/categoria?categ=" + event.target.textContent;
-      //window.location = "https://planillaventas-minorista.herokuapp.com/categoria?categ=" + event.target.textContent;
   }else{
     if(inMobile){
       const barraCateg = document.getElementById("barra-categorias")

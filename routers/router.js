@@ -115,7 +115,7 @@ router.get("/buscador", (req, res) => {
 
 
 router.get('/preguntas-frecuentes', function (req, res, next) {
-  res.render('index', { faq: true, categRes: false, data: " " });
+  res.render('index', { faq: true, categRes: false, data: " ", login: false });
 });
 
 router.get('/profile', requiresAuth(), function (req, res, next) {
