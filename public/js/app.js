@@ -27,7 +27,7 @@ mostrador.addEventListener('click', event=>{
             precio: boton.getAttribute("precio"),
             titulo: boton.getAttribute("nombre"),
             imagen: boton.getAttribute("imagen"),
-            cantidad: Number(cantidad_venta) 
+            cantidad: parseInt(cantidad_venta)
           }
         if(mouse.textContent == "Ver carta de colores" || mouse.textContent == "Seleccionar medida"){
           const colores = boton.getAttribute("colores")
@@ -209,14 +209,14 @@ function asignarMasMenos(mouse, cart){
        const cant = mouse.previousElementSibling.value++
         if(cart){
            const codigo = mouse.parentElement.parentElement.childNodes[3].childNodes[1].textContent
-           actualizarPrecioCarrito(codigo, Number(cant+1))
+           actualizarPrecioCarrito(codigo, parseInt(cant+1))
         }       
     }
     if(mouse.classList == "menos" && mouse.nextElementSibling.value > 0){
         const cant = mouse.nextElementSibling.value-- 
         if(cart){
            const codigo = mouse.parentElement.parentElement.childNodes[3].childNodes[1].textContent
-           actualizarPrecioCarrito(codigo, Number(cant-1))
+           actualizarPrecioCarrito(codigo, parseInt(cant-1))
         }      
     }
 }
@@ -405,7 +405,7 @@ function actualizarPrecioCarrito(codigo, cant){
                imagen: imagen,
                precio: boton.getAttribute("precio"),
                titulo: boton.getAttribute("nombre") + " " + medida,
-               cantidad: Number(cantidad)
+               cantidad: parseInt(cantidad)
              };
 
              if(art.cantidad > 0){
