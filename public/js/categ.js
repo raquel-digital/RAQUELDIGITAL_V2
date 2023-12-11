@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const carritoAnterior = JSON.parse(localStorage.getItem("carrito"))
     if(carritoAnterior){
         carritoAnterior.forEach(e => {
-            ingresarCarrito(e)
+            //ingresarCarrito(e) GENERA QUE SE REINGRESEN LOS TOTALES DEL CARRITO
         });
     }
 

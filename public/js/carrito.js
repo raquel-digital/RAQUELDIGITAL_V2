@@ -162,8 +162,8 @@ function ingresarCarrito(art){
             let check = false
             for(const c of carrito){
                 if(c.codigo === art.codigo){
-                    const a = Number(c.cantidad)
-                    const b = Number(art.cantidad)
+                    const a = parseInt(c.cantidad)
+                    const b = parseInt(art.cantidad)
                     c.cantidad = a + b
                     check = true
                 }
