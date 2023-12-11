@@ -36,19 +36,33 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
 
   //eliminar artículo individual
   if(mouse.classList.contains("eliminar-articulo")){
+    console.log("articulo individual")
         const codigo = event.target.parentElement.childNodes[3].childNodes[1].textContent
+        console.log(event.target.parentElement.childNodes[3].childNodes[1])
         const confirm = document.getElementById("custom-modal")
         alertModal("¿Querés eliminar este artículo?", "Esta acción no se puede deshacer.", "Sí, eliminar", "No")
         confirm.style.display = "block"
         confirm.addEventListener("click", event => {
             if(event.target.textContent == "Sí, eliminar"){
-                for(let i=0; i<carrito.length; i++){
-                    if(carrito[i].codigo == codigo){
+                let i = 0
+                for(const c of carrito){
+                    if(c.codigo === codigo){
                         const eliminado = carrito.splice(i, 1)
-                        console.log(eliminado)
-                        actualizarCarrito()
+                        console.log(eliminado[0].codigo)                        
+                    }else{
+                        i++
                     }
                 }
+                // for(let i=0; i<carrito.length; i++){
+                //     if(carrito[i].codigo === codigo){
+                //         const eliminado = carrito.splice(i, 1)
+                //         console.log(eliminado[0].codigo)
+                //         actualizarCarrito()
+                //         confirm.style.display = "none"
+                //         localStorage.setItem("carrito", JSON.stringify(carrito))
+                //         return
+                //     }
+                // }
                 if(carrito.length == 0){                    
                     itemsCarrito.style.display = "none"
                     const footer = document.querySelector(".carrito-footer")
@@ -56,14 +70,17 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
                 }
                 confirm.style.display = "none"
                 localStorage.setItem("carrito", JSON.stringify(carrito))
+                actualizarCarrito()
             }
             if(event.target.textContent == "No" || event.target.classList.contains("cruz")){
                 confirm.style.display = "none"
             }
         })
+        return
   }
   if(mouse.classList.contains("eliminar-link")){
         const codigo = event.target.parentElement.parentElement.children[1].children[0].textContent
+        console.log("eliminar-link")
         const confirm = document.getElementById("custom-modal")
         alertModal("¿Querés eliminar el artículos del carrito?", "Esta acción no se puede deshacer.", "Sí, eliminar", "No")
         confirm.style.display = "block"
@@ -90,6 +107,7 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
   }
 
     if(mouse.id == "eliminar-carrito"){
+        console.log("eliminar-carrito")
         const confirm = document.getElementById("custom-modal")
         alertModal("¿Querés eliminar todos los artículos del carrito?", "Esta acción no se puede deshacer.", "Sí, eliminar", "No")
         confirm.style.display = "block"
@@ -201,12 +219,12 @@ function actualizarCarrito(){
         const footer = document.querySelector(".carrito-footer")
         footer.style.display = "block"
         document.getElementById("eliminar-carrito").style.display = "block"
-
+        let id = 0
         for(const c of carrito){
             const precio = c.precio * c.cantidad
             
             carritoBody.innerHTML += `
-                <div class="carrito-item">
+                <div id="${id}" class="carrito-item">
                 <div class="contenedor-img-carrito" style="background-image: url(${c.imagen});"></div>
                 <div>
                     <p style="display: none;">${c.codigo}</p>
@@ -217,12 +235,14 @@ function actualizarCarrito(){
                     <button type="button" class="menos"></button>
                     <input class="cantidad-de-venta" type="number" value="${c.cantidad}">
                     <button type="button" class="mas"></button>
-                    <a class="eliminar-link">Eliminar</a>
+                    
                 </div>
                 <button type="button" class="eliminar eliminar-articulo"><span class="tooltip-eliminar">Eliminar</span></button>
                 </div>
             `
+            //debajo de "<button type="button" class="mas"></button>" <a class="eliminar-link">Eliminar</a>
             sumaTotal += precio
+            id++
         } 
     }    
 
