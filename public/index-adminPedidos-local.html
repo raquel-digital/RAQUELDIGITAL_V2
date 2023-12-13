@@ -21,6 +21,7 @@
             <button class="btn btn-primary p-2" onclick="pedidosTabla()" style="margin-left: 4rem;">Pedidos En Curso</button>
             <button class="btn btn-primary p-2" onclick="pedidosAnteriores()" style="margin-left: 4rem;">Pedidos Anteriores</button>
             <button class="btn btn-primary p-2" onclick="imprimirPedidos()" style="margin-left: 4rem;">IMPRIMIR</button>
+            <button class="btn btn-danger p-2" onclick="borrarPedidosXInput()" style="margin-left: 4rem;">borrar pedidos</button>
             <div class="buscadorPedido d-flex justify-content-center p-2" style="margin-left: 40%;">
 
             </div>
@@ -51,7 +52,34 @@
                         <option value="Monica" >Monica</option>
                         <option value="Oscar">Oscar</option>
                     </select>
+                    <hr>
                     <div style="margin-top: 1rem;">
+                        <label for="est_pedido">Estado Pedido</label>
+                        <select name="" id="est_pedido">
+                            <option value="Pedido Sin Asignar">Pedido Sin Asignar</option>
+                            <option value="En preparacion">En preparacion</option>
+                            <option value="En preparacion -- Falta Mercaderia">En preparacion</option>
+                            <option value="Mercaderia encargada">Mercaderia encargada</option>
+                            <option value="pasamos faltas">pasamos faltas</option>
+                            <option value="Señado" >Señado</option>
+                            <option value="Pedido Terminado">Pedido Terminado</option>
+                            <option value="Importe pasado">Importe pasado</option>
+                            <option value="Reiteramos aviso importe">Reiteramos aviso importe</option>
+                            <option value="Pagado">Pagado</option>
+                            <option value="Listo para enviar">Listo para enviar</option>
+                            <option value="Listo para que retire">Listo para que retire</option>
+                        </select>
+                    <label for="zona-de-guardado">Zona Guardado</label>
+                    <select name="" id="zona-de-guardado">
+                        <option value="Sin Asignar">Sin Asignar</option>
+                        <option value="Zona Blanca">Zona Blanca</option>
+                        <option value="Zona Amarilla" >Zona Amarilla</option>
+                        <option value="Zona Estante" >Zona Estante</option>
+                        <option value="Zona Verde" >Zona Verde</option>
+                        <option value="Zona Caja" >Zona Caja</option>
+                        <option value="Embolsado" >Embolsado</option>
+                    </select>
+                    <hr>
                     <label for="contacto">Contacto:</label>
                     <select name="" id="contacto">
                         <option value="Cliente_del_local" >Cliente_del_local</option>

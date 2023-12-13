@@ -39,6 +39,8 @@ function submitForm() {
     const contacto =  document.querySelector("#contacto").value;
     const numero_mail = document.querySelector("#numero-mail").value;
     const pedido = document.querySelector("#pedidoIngreso").value;
+    const zona_guardado = document.querySelector("#zona-de-guardado").value;
+    const est_pedido = document.querySelector("#est_pedido").value;
 
     if(cliente == " "){
         alert("DEBE INGRESAR NOMBRE DE CLIENTE");
@@ -100,7 +102,9 @@ function submitForm() {
         numero_mail: numero_mail,
         pedido: pedido,
         envio: envio,
-        forma_de_pago: formaDePago
+        forma_de_pago: formaDePago,
+        zona: zona_guardado,
+        estado: est_pedido
     }
     console.log(data)
     socket.emit("nuevo-pedido-local", data)
@@ -187,7 +191,8 @@ const draw = {
                                 <option value="Listo para que retire">Listo para que retire</option>
                             </select>
                             <h5 class="card-title">Zona Guardado:</h5>
-                            <select name="" id="zona${p.num_orden}">
+                            <select name="" id="zona${p.num_orden}" value=${p.zona}>
+                                <option value="${p.zona}">${p.zona}</option>
                                 <option value="Pedido Sin Asignar">Pedido Sin Asignar</option>
                                 <option value="Zona Blanca">Zona Blanca</option>
                                 <option value="Zona Amarilla" >Zona Amarilla</option>
@@ -246,6 +251,7 @@ const draw = {
         draw.estado("estado"+p.num_orden, p.estado)
         draw.preparado("preparado"+p.num_orden, p.prepara)
         draw.zona("zona"+p.num_orden, p.zona)
+        console.log(p.zona)
         if(p.envio || p.forma_de_pago){
             draw.checkBox(p.envio, p.forma_de_pago, p.num_orden)
         }
@@ -282,6 +288,7 @@ const draw = {
         }
     },
     zona: (id, zona) => {
+        console.log(id, zona)
         const select = document.querySelector("#"+id);
         select.innerHTML += `<option value="${zona}" selected>${zona}</option>`;
     },
@@ -308,6 +315,7 @@ const draw = {
             <th scope="col">ESTADO</th>
             <th scope="col">GUARDADO ZONA</th>
             <th scope="col"> ######## </th>
+            <th scope="col"> BORRAR </th>
             </tr>
             </thead>
             <tbody class="tableBody">
@@ -330,7 +338,23 @@ const draw = {
             if(dia != Number(fechaSplit[0])){
               suma += dia - Number(fechaSplit[0])
             }
-            body.innerHTML += `
+            
+            if(e.notas.length > 1|| e.pedido.length > 1){
+                body.innerHTML += `
+            <tr>
+                <td><b>${e.num_orden}</b></td>
+                <td><b>${e.prepara}</b></td>
+                <td><b>${e.fecha}</b></td>
+                <td><b>${suma}</b></td>
+                <td><b>${e.cliente}</b></td>
+                <td><b>${e.estado}</b></td>
+                <td><b>${e.zona}</b></td>
+                <td class="editarOrden" style="color: blue;"  data-bs-toggle="tooltip" data-bs-placement="right" title="${e.notas + " " + e.faltas}">[ EDITAR ]</td>
+                <td><input class="borrarPedidoInput" type="checkbox" id="miCheckbox" name="miCheckbox"></td>
+            </tr>
+            `
+            }else{
+                body.innerHTML += `
             <tr>
                 <td>${e.num_orden}</td>
                 <td>${e.prepara}</td>
@@ -340,8 +364,11 @@ const draw = {
                 <td>${e.estado}</td>
                 <td>${e.zona}</td>
                 <td class="editarOrden" style="color: blue;"  data-bs-toggle="tooltip" data-bs-placement="right" title="${e.notas + " " + e.faltas}">[ EDITAR ]</td>
+                <td><input class="borrarPedidoInput" type="checkbox" id="miCheckbox" name="miCheckbox"></td>
             </tr>
             `
+            }
+            
             
         })
         
@@ -558,5 +585,40 @@ mostrador.addEventListener('keypress', function (e) {
 
 function imprimirPedidos(){
     window.print()
+}
+
+function borrarPedidosXInput(){
+    const pedidos = document.querySelectorAll(".borrarPedidoInput")
+    const pedidosABorrar = []
+    for(const p of pedidos){
+        if(p.checked){
+            const borrar = {
+                orden: p.parentElement.parentElement.children[0].textContent,
+                cliente: p.parentElement.parentElement.children[4].textContent
+            }
+            pedidosABorrar.push(borrar)            
+        }        
+    } 
+    
+    let aviso = ""
+    if(pedidosABorrar.length > 0){
+        for(const p of pedidosABorrar){
+            aviso += p.cliente + " | "
+        }
+    }
+
+    const confirmar = window.confirm("DESEA BORRAR LOS PEDIDOS DE: " + aviso)
+    
+    if(confirmar){
+        for(const p of pedidosABorrar){
+            socket.emit("borrar-pedido-local", p.orden);
+        }
+        alert("PEDIDOS BORRADOS")        
+        socket.emit("chequear-pedidos-admin");
+    }else{
+        for(const p of pedidos){
+            p.checked = false
+        }
+    }    
 }
 

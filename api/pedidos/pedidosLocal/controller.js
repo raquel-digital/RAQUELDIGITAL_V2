@@ -18,14 +18,14 @@ const controller = {
         num_orden: num[0].num_orden + 1,
         cliente: data.cliente,
         prepara: data.prepara,
-        estado: "Pedido Sin Asignar",
+        estado: data.estado,
         contacto: contacto,
         pedido: data.pedido,
         faltas: " ",
         notas: " ",
         forma_de_pago: data.forma_de_pago,
         envio: data.envio,
-        zona: "Sin asignar"
+        zona: data.zona
        }
         store.ingresar(order);
         return true;
