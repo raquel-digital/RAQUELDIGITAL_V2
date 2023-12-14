@@ -54,7 +54,7 @@ router.get("/categoria/", async (req, res) => {
   const categOrganicer =  require("../utils/cargarCategoria");
   const categIO = req.query.categ
   const categ = req.query.categ.toLowerCase()
-  const tag = req.query.tag;    
+  const tag = req.query.tag.toLowerCase();    
   let io = require('../io.js').get();  
   io.once('connect', socket => {    
     (async () => {
@@ -63,7 +63,7 @@ router.get("/categoria/", async (req, res) => {
         result.categ = categIO
         socket.emit("categ-result", result);
         if(tag){            
-          socket.emit("tag-result", tag);            
+          socket.emit("tag-result", tag); 
         }
     })();
   })   

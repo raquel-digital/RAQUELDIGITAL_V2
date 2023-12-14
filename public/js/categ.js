@@ -174,17 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }    
     });
 
-    socket.on("tag-result", tag => {
-      const articulosTags = [];
-      tag = tag.replaceAll(" ", "-");
-      for(let p of mostradorDeArticulos){
-        if(p.tags.includes(tag)){      
-          articulosTags.push(p);
-        }  
-    }
-      loadTag(articulosTags);
-    });
-
     socket.on("resultado-vacio", () => {
       const barra =  document.getElementById("barra-busqueda")
       barra.classList.add("buscador-error")
@@ -261,7 +250,7 @@ function loadTag(articulosTags, target){
 let nuevoQueryString
 let queryString = window.location.search;
 
-if(queryString.includes("tag")){  
+if(queryString.includes("tag")){
   const split = queryString.split("&")
   nuevoQueryString = split[0] + "&tag="+target.replace(" ", "-");
 }else{
@@ -294,6 +283,23 @@ window.history.replaceState({}, "", nuevoQueryString);
         `
   }
 }
+
+//CARGAR TAGS
+socket.on("tag-result", tag => {  
+  const articulosTags = [];
+  for(let p of mostradorDeArticulos){ 
+    if(p.tags.includes("%20")){
+      console.log(p.tag)
+      p.tags = p.tags.replaceAll("%20", "-");
+    }
+    
+    
+    if(p.tags.includes(tag)){      
+      articulosTags.push(p);
+    }
+}
+  loadTag(articulosTags, tag);
+})
 
 
 
