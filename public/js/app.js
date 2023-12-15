@@ -29,7 +29,7 @@ mostrador.addEventListener('click', event=>{
             imagen: boton.getAttribute("imagen"),
             cantidad: parseInt(cantidad_venta)
           }
-        if(mouse.textContent == "Ver carta de colores" || mouse.textContent == "Seleccionar medida"){
+        if(mouse.textContent == "Ver carta de colores" || mouse.textContent == "Seleccionar Medida"){
           const colores = boton.getAttribute("colores")
           modalColores.style.display = "block"
           cargarColores(art, colores)
