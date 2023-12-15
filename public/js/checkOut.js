@@ -610,6 +610,9 @@ function controlDatos(cliente){
   if(!cliente.formaDeContacto){
     return {state: false, message: `Por favor ingrese su forma de contacto para que podamos contactarnos`, redMark: "contacto-input"};
   }
+  if(!cliente.formaDeContacto.numero){
+    return {state: false, message: `Por favor ingrese su forma de contacto para que podamos contactarnos`, redMark: "contacto-input"};
+  }
   if(!cliente.facturacion){
     return {state: false, message: `Por favor ingrese su forma de facturacion`, redMark: "facturacion"};      
   }else{
