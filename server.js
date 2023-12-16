@@ -232,7 +232,7 @@ async function mailEmit(data){
     data.sys.compra.forEach(e => {
         compra +=`
         <tr>
-        <td><img src="${e.imagen}" alt="imagen table" widht="60px" height="60px"></td>
+        <td><img src="https://raqueldigital.herokuapp.com/${e.imagen}" alt="imagen table" widht="60px" height="60px"></td>
         <td>${e.codigo}</td>
         <td>${e.titulo}<td>
         <td>${e.cantidad}</td>
@@ -244,7 +244,8 @@ async function mailEmit(data){
     
     const store = require("./api/users/store");
     let orden = await store.numero_orden();
-    
+    orden++ 
+
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {            
