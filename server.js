@@ -198,7 +198,14 @@ io.on('connect', socket => {
             socket.emit("result-actu", result);
         })();
     })
-
+    //ADMIN SUBIR ARTICULO NUEVO
+    socket.on("nuevos-articulos", articulos => {
+        const subirArchivo = require("./utils/subirArticulos");
+        (async ()=> {
+          const result = await subirArchivo(articulos);
+          socket.emit("nuevos-articulos-res", result);
+        })();
+    })
 });
 
 
