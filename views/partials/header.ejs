@@ -4,6 +4,13 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<title>Raquel Digital</title>
 	<meta charset="UTF-8">
+	<% if (iphone) { %>
+		<script>
+			console.log("IPHONE")
+		</script>
+	<% }else{ %>		
+		<link rel="stylesheet" type="text/css" href="css/styles.css">	
+	<% } %> 
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

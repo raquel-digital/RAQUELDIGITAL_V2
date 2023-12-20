@@ -135,8 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     socket.on("categ-result", data => {         
       
-        if(data.succes){  
-
+        if(data.succes){ 
           mostrador.innerHTML = ""
           document.querySelector("main h1").textContent = data.categ
           mostradorDeArticulos = data.result.sort(function (a, b) {
@@ -145,31 +144,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (a.id < b.id) {
               return -1;
-            }
-            
+            }            
             return 0;
           }).reverse();
+
           console.log(data)
           categOrganizador(data.categ);
 
-          // if(mostradorDeArticulos.length > indice){        
-          //   crearPaginador(mostradorDeArticulos);
-          //   tags(mostradorDeArticulos);
-          // }
-          // else{ 
-          //   showArts(mostradorDeArticulos);
-          //   tags(mostradorDeArticulos);
-          // } 
+          if(mostradorDeArticulos.length > indice){ 
+            const showArr = mostradorDeArticulos.slice(0, 50)
+            //crearPaginador(mostradorDeArticulos);
+            showArts(showArr);
+          }
+          else{ 
+            showArts(mostradorDeArticulos);
+            //tags(mostradorDeArticulos);
+          } 
 
-          // const categoria = document.querySelectorAll("#select-categ ul li a")  
-          // categoria.forEach(e => {
-          //   if(e.classList.contains("categoria-elegida")){
-          //     e.classList.remove("categoria-elegida")
-          //   }
-          //   if(e.textContent == data.categ){              
-          //     e.classList.add("categoria-elegida")
-          //   } 
-          // })
+          const categoria = document.querySelectorAll("#select-categ ul li a")  
+          categoria.forEach(e => {
+            if(e.classList.contains("categoria-elegida")){
+              e.classList.remove("categoria-elegida")
+            }
+            if(e.textContent == data.categ){              
+              e.classList.add("categoria-elegida")
+            } 
+          })
                 
         }else{
             alert("Categoria no valida")

@@ -8,8 +8,15 @@ const { requiresAuth } = require('express-openid-connect');
 const middleware =  require("../utils/middleware")
 
 
+
 //ENTRANDO A "/login y /logout" te logueas y deslogueas
 router.get("/", (req,res) => {
+
+  //DETECTAR IPHONE
+  const userAgent = req.headers['user-agent'];
+  // Verificar si la cadena del agente de usuario contiene "iPhone"
+  const esIPhone = userAgent.includes('iPhone');
+  
 
   const login = req.oidc.isAuthenticated() ? true : false
   let pedidos = 0
@@ -23,6 +30,7 @@ router.get("/", (req,res) => {
               categRes: false,
               data: " ",
               faq: false,
+              iphone: esIPhone,
               login: {
                   isLog: login,
                   pedidos: pedidos
@@ -34,6 +42,7 @@ router.get("/", (req,res) => {
           categRes: false,
           data: " ",
           faq: false,
+          iphone: esIPhone,
           login: {
               isLog: login,
               pedidos: pedidos
@@ -50,7 +59,12 @@ router.get('/profile', requiresAuth(), (req, res) => {
 });
 
 //-----CATEGS-----------
-router.get("/categoria/", async (req, res) => {    
+router.get("/categoria/", async (req, res) => {  
+  //DETECTAR IPHONE
+  const userAgent = req.headers['user-agent'];
+  // Verificar si la cadena del agente de usuario contiene "iPhone"
+  const esIPhone = userAgent.includes('iPhone');
+  
   const categOrganicer =  require("../utils/cargarCategoria");
   const categIO = req.query.categ
   const categ = req.query.categ.toLowerCase()
@@ -73,7 +87,8 @@ router.get("/categoria/", async (req, res) => {
   //TODO descomentar codigo en INDEX
   res.render('index', {
     categRes: true, 
-    faq: false, 
+    faq: false,
+    iphone: esIPhone,
     login: req.oidc.isAuthenticated() ? true : false,    
   });
     
@@ -92,6 +107,11 @@ router.get("/categoria/", async (req, res) => {
 
 //-----BUSCADOR-----
 router.get("/buscador", (req, res) => {
+  //DETECTAR IPHONE
+  const userAgent = req.headers['user-agent'];
+  // Verificar si la cadena del agente de usuario contiene "iPhone"
+  const esIPhone = userAgent.includes('iPhone');
+
   let io = require('../io.js').get();  
   io.once('connect', socket => {
     (async () => {      
@@ -109,6 +129,7 @@ router.get("/buscador", (req, res) => {
   res.render('index', {
     categRes: true, 
     faq: false, 
+    iphone: esIPhone,
     login: req.oidc.isAuthenticated() ? true : false,    
   });  
 })
@@ -116,11 +137,22 @@ router.get("/buscador", (req, res) => {
 
 
 router.get('/preguntas-frecuentes', function (req, res, next) {
-  res.render('index', { faq: true, categRes: false, data: " ", login: false });
+  //DETECTAR IPHONE
+  const userAgent = req.headers['user-agent'];
+  // Verificar si la cadena del agente de usuario contiene "iPhone"
+  const esIPhone = userAgent.includes('iPhone');
+
+  res.render('index', { faq: true, iphone: esIPhone, categRes: false, data: " ", login: false });
 });
 
 router.get('/profile', requiresAuth(), function (req, res, next) {
+  //DETECTAR IPHONE
+  const userAgent = req.headers['user-agent'];
+  // Verificar si la cadena del agente de usuario contiene "iPhone"
+  const esIPhone = userAgent.includes('iPhone');
+
   res.render('profile', {
+    iphone: esIPhone,
     userProfile: JSON.stringify(req.oidc.user, null, 2),
     title: 'Profile page'
   });
@@ -185,8 +217,13 @@ router.post("/valid-log", (req,res) => {
 
 //Pagina de check out
 router.post("/check-out", (req, res) => {
+  //DETECTAR IPHONE
+  const userAgent = req.headers['user-agent'];
+  // Verificar si la cadena del agente de usuario contiene "iPhone"
+  const esIPhone = userAgent.includes('iPhone');
+
   const carrito = JSON.parse(req.body.carrito_holder)
-  res.render("checkOut", { carrito: carrito })
+  res.render("checkOut", { iphone: esIPhone, carrito: carrito })
 })
 
 //CHECK OUT MERCADOPAGO
@@ -225,8 +262,13 @@ router.post("/mercadopago", (req, res) => {
 
 //CHECK OUT transferencia y resto
 router.post("/success-transferencia", (req, res) => {
+  //DETECTAR IPHONE
+  const userAgent = req.headers['user-agent'];
+  // Verificar si la cadena del agente de usuario contiene "iPhone"
+  const esIPhone = userAgent.includes('iPhone');
+
   const carrito = JSON.parse(req.body.carrito_holder)
-  res.render("succesOrder", { carrito: carrito })
+  res.render("succesOrder", { iphone: esIPhone, carrito: carrito })
 })
 
 module.exports = router ;

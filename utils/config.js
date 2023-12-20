@@ -10,7 +10,9 @@ config = {
     envioCorreoNac: process.env.valorCorreoNac,
     envioCorreoReg: process.env.valorCorreoReg,
     envioMoto: process.env.valorMoto,
-    envioExpreso: process.env.valorExpreso
+    envioExpreso: process.env.valorExpreso,
+    mongo: process.env.mongo,
+    test: "ok"
 };
 
 module.exports = config;
