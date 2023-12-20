@@ -149,27 +149,27 @@ document.addEventListener('DOMContentLoaded', () => {
             
             return 0;
           }).reverse();
-          console.log(data)
-          categOrganizador(data.categ);
+          // console.log(data)
+          // categOrganizador(data.categ);
 
-          // if(mostradorDeArticulos.length > indice){        
-          //   crearPaginador(mostradorDeArticulos);
-          //   tags(mostradorDeArticulos);
-          // }
-          // else{ 
-          //   showArts(mostradorDeArticulos);
-          //   tags(mostradorDeArticulos);
-          // } 
+          if(mostradorDeArticulos.length > indice){        
+            crearPaginador(mostradorDeArticulos);
+            tags(mostradorDeArticulos);
+          }
+          else{ 
+            showArts(mostradorDeArticulos);
+            tags(mostradorDeArticulos);
+          } 
 
-          // const categoria = document.querySelectorAll("#select-categ ul li a")  
-          // categoria.forEach(e => {
-          //   if(e.classList.contains("categoria-elegida")){
-          //     e.classList.remove("categoria-elegida")
-          //   }
-          //   if(e.textContent == data.categ){              
-          //     e.classList.add("categoria-elegida")
-          //   } 
-          // })
+          const categoria = document.querySelectorAll("#select-categ ul li a")  
+          categoria.forEach(e => {
+            if(e.classList.contains("categoria-elegida")){
+              e.classList.remove("categoria-elegida")
+            }
+            if(e.textContent == data.categ){              
+              e.classList.add("categoria-elegida")
+            } 
+          })
                 
         }else{
             alert("Categoria no valida")
