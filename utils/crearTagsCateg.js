@@ -1,9 +1,4 @@
-const fs = require("fs");
-const db = require("../db");
-const dotenv = require('dotenv').config();
-const path = require('path');
 
-db(process.env.mongo);
 
 //COMANDOS: depurar crea JSON con todos los tags // categ: crea carpetas con las categorias
 
@@ -28,7 +23,6 @@ async function depurar () {
 
     const store = require("../api/arts/store")
     const allArts = await store.leer()
-    
     const tags = require("../public/system/tags.json")
 
     for(const t2 of allArts[0]){
@@ -55,9 +49,8 @@ async function crearCategs () {
     const directorioBase = '../public/system';
 
     const categArr = {}
-
-    //CREAR CARPETAS
     for(const t of tags){
+        //CREAR CARPETAS
         // const rutaCarpeta = path.join(directorioBase, t.categoria);
         // if (!fs.existsSync(rutaCarpeta)) {
         //     try{
@@ -72,7 +65,9 @@ async function crearCategs () {
             categArr[t.categoria] = []
             categArr[t.categoria].push(t.tags)
         }else{
-            categArr[t.categoria].push(t.tags)
+            if(!categArr[t.categoria].includes(t.tags)){                
+                categArr[t.categoria].push(t.tags)
+            }
         }        
     }
 
@@ -136,6 +131,8 @@ function filtrar(arr, query){
 
     fs.writeFileSync(`../public/system/categ/${query}.json`, JSON.stringify(arrFiltrado, null, 2));
 }
+
+
 
 
 

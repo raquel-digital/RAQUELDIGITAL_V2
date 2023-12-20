@@ -207,7 +207,11 @@ if(filtros){
             }
          
             if(clikTag == "Todos"){
-              showArts(mostradorDeArticulos)
+              if(mostradorDeArticulos.length > indice){ 
+                crearPaginador(mostradorDeArticulos);
+              }else{
+                showArts(mostradorDeArticulos)
+              }
               return
             }
             loadTag(articulosTags, clik);
@@ -337,7 +341,9 @@ function categOrganizador(categ){
           console.error('Error: ', error);
         });  
         console.log(tagCheck)
-        const botonera = document.querySelector(".filtros")      
+        const botonera = document.querySelector(".filtros")
+        botonera.innerHTML = `<h2 style="margin-bottom: 12rem;">Filtrar por:</h2>`;
+        botonera.innerHTML += `<button type="button" class="tag hashtag tag-seleccionado">Todos</button>`;      
       for(let t  of tagCheck){
         if(t.includes("-")){
           t = t.replaceAll("-", " ");
@@ -345,8 +351,6 @@ function categOrganizador(categ){
         botonera.innerHTML += `<button type="button"  class="tag hashtag">${t}</button>`
       }    
     })()
-  //})
-  
 }
 
 
