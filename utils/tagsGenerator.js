@@ -66,7 +66,7 @@ async function filtrar(arr, categ){
         }
     }
     
-    fs.writeFileSync(`../public/system/categ/${categ}.json`, JSON.stringify(categArr[categ], null, 2));
+    fs.writeFileSync(`../public/system/categ/${categ}.json`, JSON.stringify(categArr[categ].sort(), null, 2));
 
     return console.log("Categoria", categ, "Generada")
 }

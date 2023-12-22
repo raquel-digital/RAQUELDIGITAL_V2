@@ -646,8 +646,8 @@ function alertsCheckOut(data){
       if(res.isConfirmed){ 
         
         //ENVIO PEDIDO A MAIL
-        localStorage.setItem('datos-envio', JSON.stringify(data));
-        socket.emit("mail", data)
+        //localStorage.setItem('datos-envio', JSON.stringify(data));
+        //socket.emit("mail", data)
         form.submit();  
       }
     })

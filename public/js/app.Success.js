@@ -47,7 +47,7 @@ function table(){
         `;
         totalCompra += e.cantidad * e.precio;
       })
-      document.querySelector(".total-compra-final").innerHTML = `<td><b>EL TOTAL DE SU COMPRA: ${totalCompra}</b></td>`;
+      document.querySelector(".total-compra-final").innerHTML = `<td><b>EL TOTAL DE SU COMPRA: ${totalCompra.toFixed(2)}</b></td>`;
       
     }
 }
