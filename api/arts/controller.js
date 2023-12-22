@@ -191,12 +191,13 @@ controller = {
                         res = store.addColor(code, d);
                     }
                 }
+                return res;
             }catch(err){
                 console.log("[ ERROR EN STORE funcion agregarColores() ] " + err);
                 return false;
             } 
                 
-                return res;       
+                       
     },
     agregarColoresPreexistentes: async function(data) {
         try{

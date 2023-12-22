@@ -206,6 +206,13 @@ io.on('connect', socket => {
           socket.emit("nuevos-articulos-res", result);
         })();
     })
+    //ADMIN SUBIR COLORES
+    socket.on("upload-colors", colores => {
+        (async () => {
+          const res = await controller.agregarColores(colores);
+          socket.emit("upload-colors-res", res);
+        })();
+    })
 });
 
 

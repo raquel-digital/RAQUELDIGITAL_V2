@@ -31,6 +31,21 @@ mostrador.addEventListener("click", e => {
         const orden =  mouse.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
         editarPedido(orden);
     }
+    if(mouse.id == "seleccionar-todo"){
+        const checkBox = document.querySelector("#seleccionar-todo")
+        if(checkBox.checked){
+            const allOrders = document.querySelectorAll(".borrarPedidoInput")            
+            allOrders.forEach(e => {
+                e.checked =  true
+            })
+        }else{
+            const allOrders = document.querySelectorAll(".borrarPedidoInput")
+            allOrders.forEach(e => {
+                e.checked =  false
+            })
+        }
+        
+    }
 })
 
 function submitForm() {    
@@ -315,7 +330,7 @@ const draw = {
             <th scope="col">ESTADO</th>
             <th scope="col">GUARDADO ZONA</th>
             <th scope="col"> ######## </th>
-            <th scope="col"> BORRAR </th>
+            <th scope="col"> BORRAR <input type="checkbox" id="seleccionar-todo" name="seleccionarTodo"></th>
             </tr>
             </thead>
             <tbody class="tableBody">
