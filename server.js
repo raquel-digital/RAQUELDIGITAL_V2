@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 const path = require('path');
 const logger = require('morgan');
 
+//cargar tags nuevos
 const loadCategs = require("./utils/tagsGenerator")
 
 
