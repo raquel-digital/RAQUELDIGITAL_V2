@@ -15,8 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 const path = require('path');
 const logger = require('morgan');
 
-// const dotenv = require('dotenv');
-// dotenv.config();
+const loadCategs = require("./utils/tagsGenerator")
+
 
 const nodemailer = require('nodemailer');
 
@@ -397,6 +397,7 @@ if (!config.baseURL && !process.env.BASE_URL && process.env.PORT && process.env.
 
 http.listen(port, () => {
     console.log(`servidor escuchando en http://localhost:${port}`);
+    loadCategs()
 });
 //en caso de memory leaks por el emmiter
 process.on('warning', e => console.warn(e.stack));
