@@ -189,12 +189,13 @@ io.on('connect', socket => {
     })
     //ADMIN ARTICULOS
     socket.on("delete", data => {
+        loadCategs()
         controller.borrarArt(data);
     })
     socket.on("cambio-en-articulos", cambiosEnArticulos => {                
         (async () => {
             const result = await controller.actualizarArticulos(cambiosEnArticulos);
-            console.log("RESULT", result)
+            loadCategs()
             socket.emit("result-actu", result);
         })();
     })
@@ -203,6 +204,7 @@ io.on('connect', socket => {
         const subirArchivo = require("./utils/subirArticulos");
         (async ()=> {
           const result = await subirArchivo(articulos);
+          loadCategs()
           socket.emit("nuevos-articulos-res", result);
         })();
     })
@@ -210,6 +212,7 @@ io.on('connect', socket => {
     socket.on("upload-colors", colores => {
         (async () => {
           const res = await controller.agregarColores(colores);
+          loadCategs()
           socket.emit("upload-colors-res", res);
         })();
     })
@@ -397,6 +400,7 @@ if (!config.baseURL && !process.env.BASE_URL && process.env.PORT && process.env.
 
 http.listen(port, () => {
     console.log(`servidor escuchando en http://localhost:${port}`);
+    //carga las categorias nuevas al inicio
     loadCategs()
 });
 //en caso de memory leaks por el emmiter
