@@ -71,7 +71,7 @@ async function filtrar(arr, categ, artBase){
     
     fs.writeFileSync(`./public/system/categ/${categ}.json`, JSON.stringify(categArr[categ].sort(), null, 2));
 
-    return console.log("Categoria", categ, "Generada")
+    return
 }
 
 module.exports = loadCateg

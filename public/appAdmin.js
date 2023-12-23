@@ -25,7 +25,6 @@ socket.on("prodAdmin", data => {
 })
 
 function confirmarCambios(){
-  console.log(toDel)
   if(toDel.length > 0){
     socket.emit("delete", toDel);
   }
@@ -35,8 +34,6 @@ function confirmarCambios(){
 socket.emit("changes?");
 
 socket.on("result-actu", result => {
-  console.log(cambiosEnArticulos)
-  //formulario.value = result.codigo;
   buscador();
   alert("ARTICULOS ACTUALIZADOS");
   cambiosEnArticulos = []
@@ -44,27 +41,10 @@ socket.on("result-actu", result => {
 
 socket.on("categorias", categ => {
   categoriasAdmin = categ;
-  console.log(categoriasAdmin)
 })
 
 socket.on("start", data => {
   productosAdmin = data;
-  
-    //if(productosAdmin != undefined){
-      // let mostrador = []
-      // let prodSlice; 
-
-      // //categorias.forEach(e => {
-      //   prodSlice = productos["AB"].slice(0,20);
-      //   prodSlice.forEach(e => {
-      //     mostrador.push(e)
-      //   })
-        
-      // //})
-
-      // showArts(mostrador);
-      console.log(productosAdmin)
-    //}
 })
 
 socket.on("categ-result", arts => {
@@ -115,8 +95,16 @@ function showArts(art){
              </div>
                <div class="collapse" id="${p.codigo}colapse">
                  <hr>
-                 <input value="${p.descripcion}">
-                 <input value="${p.stock}">
+                 <label class="form-check-label" for="titulo">Titulo:</label>              
+              <input name="titulo" value="${p.nombre}">
+              <label class="form-check-label" for="subsubtitulo">Sub Titulo:</label>
+              <input name="subsubtitulo" value="${p.nombre2}">
+              <label class="form-check-label" for="descripcion">Descripción:</label>
+              <input name="descripcion" value="${p.descripcion}">
+              <label class="form-check-label" for="stock">Stock:</label>
+              <input name="stock" value="${p.stock}">
+              <label class="form-check-label" for="codigo">Codigo:</label>
+              <input name="codigo" value="${p.codigo}">
                  <button class="btn btn-danger borrarArticulo" value=${p.codigo}>BORRAR</button>
                </div>
                </div>
@@ -156,8 +144,16 @@ function showArts(art){
             </div>
               <div class="collapse" id="${p.codigo}colapse">
                 <hr>
-                <input value="${p.descripcion}">
-                <input value="${p.stock}">
+                <label class="form-check-label" for="titulo">Titulo:</label>              
+              <input name="titulo" value="${p.nombre}">
+              <label class="form-check-label" for="subsubtitulo">Sub Titulo:</label>
+              <input name="subsubtitulo" value="${p.nombre2}">
+              <label class="form-check-label" for="descripcion">Descripción:</label>
+              <input name="descripcion" value="${p.descripcion}">
+              <label class="form-check-label" for="stock">Stock:</label>
+              <input name="stock" value="${p.stock}">
+              <label class="form-check-label" for="codigo">Codigo:</label>
+              <input name="codigo" value="${p.codigo}">
                 <button class="btn btn-danger borrarArticulo" value=${p.codigo}>BORRAR</button>
               </div>
               </div>
@@ -195,9 +191,16 @@ function showArts(art){
           </div>
             <div class="collapse" id="${p.codigo}colapse">
               <hr>
-              <input value="${p.descripcion}">
-              <input value="${p.stock}">
-              <input value="${p.codigo}">
+              <label class="form-check-label" for="titulo">Titulo:</label>              
+              <input name="titulo" value="${p.nombre}">
+              <label class="form-check-label" for="subsubtitulo">Sub Titulo:</label>
+              <input name="subsubtitulo" value="${p.nombre2}">
+              <label class="form-check-label" for="descripcion">Descripción:</label>
+              <input name="descripcion" value="${p.descripcion}">
+              <label class="form-check-label" for="stock">Stock:</label>
+              <input name="stock" value="${p.stock}">
+              <label class="form-check-label" for="codigo">Codigo:</label>
+              <input name="codigo" value="${p.codigo}">
               <button class="btn btn-danger borrarArticulo" value=${p.codigo}>BORRAR</button>
             </div>
             </div>
@@ -221,9 +224,7 @@ function showArts(art){
     checkMostrar(art);
 }
 
-function checkMostrar(art){
-    console.log(art)
-    
+function checkMostrar(art){    
         art.forEach(e => {  
             let check = document.querySelector(".check"+e.codigo);
             let input = document.querySelector(".input"+e.codigo);
@@ -274,7 +275,6 @@ socket.on("loading-search", () => {
 })
 
 socket.on("resultado-busqueda", result => {
-  console.log(result)   
   busqueda = false;
     
     if(result.length > 0) {
@@ -357,18 +357,20 @@ mostrador.addEventListener("click", e => {
       const mostrar = mouse.previousElementSibling.childNodes[3].childNodes[1].checked;
       const tags = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[9].value;
       const img = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[2].value;
-      const decr = mouse.parentElement.childNodes[3].childNodes[7].childNodes[3].value;
+      const decr = mouse.parentElement.children[1].children[3].children[6].value
       const stock = mouse.parentElement.childNodes[3].childNodes[7].childNodes[5].value;
       const categ = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[5].value;
-      const cambioCodigo = mouse.parentElement.childNodes[3].childNodes[7].childNodes[7].value;
-      
+      const cambioCodigo = mouse.parentElement.children[1].children[3].children[10].value;
+      const titulo = mouse.parentElement.children[1].children[3].children[2].value;
+      const subtitulo = mouse.parentElement.children[1].children[3].children[4].value;
+    
       let artChange;
 
       if(codigo.includes("*")){
         const split = codigo.split("*");
-        artChange = {_id: split[1], codigo: split[0], mostrar: mostrar, tags: tags, imagendetalle: img, descripcion: decr, categorias: categ, stock: stock, cambioCodigo: cambioCodigo};
+        artChange = {_id: split[1], codigo: split[0], mostrar: mostrar, tags: tags, imagendetalle: img, descripcion: decr, categorias: categ, stock: parseInt(stock), cambioCodigo: cambioCodigo, nombre: titulo, nombre2: subtitulo};
       }else{
-        artChange = { codigo: codigo, mostrar: mostrar, tags: tags, imagendetalle: img, descripcion: decr, categorias: categ, stock: stock, cambioCodigo: cambioCodigo};
+        artChange = { codigo: codigo, mostrar: mostrar, tags: tags, imagendetalle: img, descripcion: decr, categorias: categ, stock: parseInt(stock), cambioCodigo: cambioCodigo, nombre: titulo, nombre2: subtitulo};
       }
       
       cambiosArt(artChange);
@@ -379,7 +381,7 @@ mostrador.addEventListener("click", e => {
       toDel.push({codigo: mouse.value});
     }
     if(mouse.classList.contains("eliminar-articulo")){
-      console.log(mouse.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent)
+      
       const codigo = mouse.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
       for(i=0;i<pedido.length;i++){
         
@@ -412,9 +414,7 @@ function cambiosArt(art){
     }else{
         return;
     }
-    console.log(cambiosEnArticulos);
-    //productosModificados.value = cambiosEnArticulos;
-    
+  
 }
 
 
@@ -565,14 +565,12 @@ function uploadArts(){
           art.imagendetalle = cell[5];
         }
         upload.push(art)
-        console.log(art)
       }      
     }
           
     socket.emit("busqueda-admin", upload);
   }
   socket.on("res-busqueda-upload", result => {
-    console.log(result)
     if(result.length > 0){      
       for(let r of result){
         for(let u of upload){
@@ -610,7 +608,7 @@ function uploadArts(){
   function ingresarColores(row){
     const colores = []
     row.shift()
-    console.log(row)
+    
     for(let i in row){
       const cell = row[i].split("\t"); 
       
@@ -630,7 +628,6 @@ function uploadArts(){
   }
 
   socket.on("upload-colors-res", res => {
-    console.log(res);
     if(res){
       alert("COLORES SUBIDOS EXITOSAMENTE")
     }else{
@@ -678,12 +675,10 @@ function uploadArts(){
     }      
     
   function enviarArticulosNuevos(){
-    console.log(upload)
     socket.emit("nuevos-articulos", upload) 
   }
 
   socket.on("nuevos-articulos-res", result => {
-    console.log(result)
     if(result.state){
       alert("NUEVOS ARTICULOS SUBIDOS, HAY " + result.count + " NUEVOS");
       vaciarUpload()
@@ -747,7 +742,6 @@ function buscarPedido(){
 let pedido;
 let dataMail
 socket.on("busqueda-pedido-reponse", res => {
-  console.log("[ RESPUESTA PEDIDO ] : ", res);
   pedido = res[0].compra;
   if(res.length == 0){
     alert("PEDIDO INVALIDAO");

@@ -52,7 +52,7 @@ controller = {
 
     actualizarArticulos: async function(data){
        try{
-        //console.log(data)
+        
         let result;
         const arrayRes = [];
 

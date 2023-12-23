@@ -40,7 +40,7 @@ const store = {
         })
     },    
     update: async function (data){
-        try{            
+        try{   
             await model.findOneAndUpdate({codigo: data.codigo}, {                
                 $set: {
                     codigo: data.cambioCodigo,
@@ -49,7 +49,9 @@ const store = {
                     imagendetalle: data.imagendetalle,
                     descripcion: data.descripcion,
                     categorias: data.categorias,
-                    stock: data.stock
+                    stock: data.stock,
+                    nombre: data.nombre,
+                    nombre2: data.nombre2
                 }});
                 
             return { status: true};
