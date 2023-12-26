@@ -232,6 +232,30 @@ controller = {
         }  
         return data
     },
+    busquedaMasiva: async function (data){
+        
+        const res = await store.findMassUpdate(data)
+        data.res = res
+        
+        return data
+    },
+    cambiosMasivos: async function (data){
+        const ant = []
+        const upd = []
+        
+        for(const d of data){
+            const r = await store.updateMass(d)
+            ant.push(r)
+            const u = await store.search(d.codigo)
+            upd.push(u[0])
+        }          
+        
+        const res = {
+            anterior: ant,
+            update: upd
+        }
+        return res
+    },
 }
 
 module.exports = controller;

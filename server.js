@@ -217,6 +217,21 @@ io.on('connect', socket => {
           socket.emit("upload-colors-res", res);
         })();
     })
+    //Update Masivo de articulos
+    socket.on("update-masivo", data => {
+        (async () => {
+            const res = await controller.busquedaMasiva(data);        
+            socket.emit("update-masivo-res", res);
+        })();
+    })
+    //Update Masivo de articulos CONFIRMAR CAMBIOS
+    socket.on("update-masivo-ok", data => {
+        (async () => {
+            const res = await controller.cambiosMasivos(data);    
+            loadCategs()    
+            socket.emit("update-masivo-ok-res", res);
+        })();        
+    })
 });
 
 

@@ -194,6 +194,45 @@ const store = {
           return false
         }
       },
+      findMassUpdate: async function (data){
+        try{
+          query = {}
+          query[data.search.condicion] = { $regex: new RegExp(data.search.valor, 'i') } 
+          const res = await model.find(query)
+          return res
+        }catch(err){
+          console.log("[ ERROR AL ACTUALIZAR PEDIDO ] ", err)
+          return false
+        }
+      },
+      updateMass: async function (data){
+        try{
+           const res = await model.findOneAndUpdate({_id: data._id}, {                
+                $set: {
+                    codigo: data.cambioCodigo,
+                    categorias: data.categorias,
+                    mostrar: data.mostrar,
+                    tags: data.tags,
+                    imagendetalle: data.imagendetalle,
+                    descripcion: data.descripcion,
+                    categorias: data.categorias,
+                    stock: parseInt(data.stock),
+                    nombre: data.nombre,
+                    nombre2: data.nombre2,
+                    CantidadDeVenta: data.CantidadDeVenta,
+                    precio: data.precio,
+                    fechaDeIngreso: data.fechaDeIngreso,
+                    fechaModificacion: data.fechaModificacion,
+                    fechaUltimaVenta: data.fechaUltimaVenta,
+                    imgActualizada: data.imgActualizada,
+                    id: parseInt(data.id),
+                }});
+          return res
+        }catch(err){
+          console.log("[ ERROR AL ACTUALIZAR PEDIDO ] ", err)
+          return false
+        }
+      },
  }
  
  module.exports = store;

@@ -185,7 +185,7 @@ function showArts(art){
           <p>IMAGEN:</p><input value="${p.imagendetalle}">
           <p>CATEG:</p><input value="${p.categorias}">
           <p>TAGS:</p>
-          <input type="text" class="input${p.codigo}">
+          <input type="text" class="input${p.codigo} value="${p.tags}">
           <a href="#${p.codigo}colapse" data-bs-toggle="collapse" class=" float-left dropdown-toggle btn-outline-info btn-sm bg-info" style="color: white;">Descripcion</a>
           </div>
           </div>
@@ -210,7 +210,7 @@ function showArts(art){
               </div>
               MOSTRAR               
               <label class="switch">
-                <input type="checkbox" class="check${p.codigo}">
+                <input type="checkbox" class="check${p.codigo} value="${p.mostrar}">
                 <span class="slider round"></span>
               </label>              
             </div>
@@ -221,23 +221,26 @@ function showArts(art){
       }
     });
 
-    checkMostrar(art);
+    //checkMostrar(art);
 }
 
 function checkMostrar(art){    
-        art.forEach(e => {  
+        art.forEach(e => { 
             let check = document.querySelector(".check"+e.codigo);
             let input = document.querySelector(".input"+e.codigo);
-           
             if(check != null){
-              check.checked = e.mostrar;              
+              check.checked = e.mostrar;
+              console.log("ok", e.mostrar)              
             }
             if(input != null){
-                input.value = e.tags;                 
+                input.value = e.tags;   
+                console.log("ok", e.tags)              
             }
             //carta colores
-            if(e.colores.length > 0){
-              cartaColoresShow(e)
+            if(e.colores){
+              if(e.colores.length > 0){
+                cartaColoresShow(e)
+              }
             }
         }) 
     
@@ -521,6 +524,9 @@ barraHerramientas.addEventListener("click", e => {
     }
     if(barraHerramientas.selectedIndex == 5){      
       window.location = "https://raqueldigital.herokuapp.com/admin/pedidos/local"      
+    }
+    if(barraHerramientas.selectedIndex == 6){      
+      actulizadorMasivo()
     }
   }  
 })
@@ -886,6 +892,165 @@ function cartaColoresShow(art){
       input.value = art.tags
   })
 }
+
+
+function actulizadorMasivo(){
+  document.getElementById("buscadorContainer").innerHTML = ""
+  mostrador.innerHTML = `
+  <p style="margin-top: 5rem;">buscar productos para actualizar:</p>
+  <div class="row" style="margin-top: 5rem;">
+    <div class="col">      
+      <label class="form-check-label" for="condicion-cambio">Condicion:</label>
+      <select name="condicion-a-cambiar" id="select-busqueda">
+        <option id="herramientas-default"  value="codigo" selected>codigo</option>
+        <option value="categorias">categorias</option>
+        <option value="nombre">nombre</option>
+        <option value="nombre2">nombre2</option>
+        <option value="CantidadDeVenta">CantidadDeVenta</option>
+        <option value="precio">precio</option>
+        <option value="descripcion">Descripcion</option>
+        <option value="stock">stock</option>
+        <option value="tags">tags</option>
+        <option value="fechaDeIngreso">fechaDeIngreso</option>
+        <option value="fechaModificacion">fechaModificacion</option>
+        <option value="fechaUltimaVenta">fechaUltimaVenta</option>
+        <option value="mostrar">mostrar</option>
+        <option value="id">id</option>
+        <option value="imagendetalle">imagendetalle</option>
+      </select>  
+        <input type="text" name="" id="input-busqueda">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5rem;">
+    <div class="col">
+      <label class="form-check-label" for="condicion-a-cambiar">Condicion a cambiar:</label>
+      <select name="condicion-a-cambiar" id="select-update">
+        <option id="herramientas-default"  value="codigo" selected>codigo</option>
+        <option value="categorias">categorias</option>
+        <option value="nombre">nombre</option>
+        <option value="nombre2">nombre2</option>
+        <option value="CantidadDeVenta">CantidadDeVenta</option>
+        <option value="precio">precio</option>
+        <option value="descripcion">Descripcion</option>
+        <option value="stock">stock</option>
+        <option value="tags">tags</option>
+        <option value="fechaDeIngreso">fechaDeIngreso</option>
+        <option value="fechaModificacion">fechaModificacion</option>
+        <option value="fechaUltimaVenta">fechaUltimaVenta</option>
+        <option value="mostrar">mostrar</option>
+        <option value="id">id</option>
+        <option value="imagendetalle">imagendetalle</option>
+      </select> 
+      <input type="text" name="" id="input-update">
+    </div>
+    </div>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <button type="button" class="btn btn-success" onclick="modificarDormasivoPreview()">Aceptar</button>
+          <button type="button" class="btn btn-danger" onclick="actulizadorMasivo()">Cancelar</button>
+        </div>        
+      </div>
+    </div>
+  `
+}
+
+
+function modificarDormasivoPreview(){
+  const search = {
+    condicion: document.getElementById("select-busqueda").value,
+    valor: document.getElementById("input-busqueda").value,
+  } 
+  const update = {
+    condicion: document.getElementById("select-update").value,
+    valor: document.getElementById("input-update").value,
+  } 
+
+  const data = {}
+  data.search = search
+  data.update = update
+
+  if(data.search.valor != " " & data.update.valor != " "){    
+    socket.emit("update-masivo", data)
+    mostrador.innerHTML = `Buscando Archivos ...` 
+  }else{
+    alert("datos vacios")
+  } 
+}
+
+socket.on("update-masivo-res", data => {
+  console.log(data)
+  showTablePreview(data)
+})
+
+function showTablePreview(data){  
+  if(data.res.length == 0){
+    alert("Sin resultados")
+    modificarDormasivoPreview()
+  }
+  if(data.res.length > 100){
+    alert("Respuesta muy grande hay " + data.res.length + " queres continuar?")
+  }
+
+  mostrador.innerHTML =`
+    <table class="table table-bordered table-hover tablaOrden" style="margin-top: 5rem;">
+    <thead>
+      <tr>
+          <th>foto</th>
+          <th>codigo</th>
+          <th>valor anterior</th>
+          <th>cambio</th>
+      </tr>
+      </thead>
+      <tbody class="preview-arts">
+        
+      </tbody>
+    </table>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <button type="button" class="btn btn-success" id="botonConfirmarCambios">Aceptar</button>
+          <button type="button" class="btn btn-danger" onclick="actulizadorMasivo()">Cancelar</button>
+        </div>        
+      </div>
+    </div>
+  `
+  
+  data.res.forEach(e => {
+    const ant = {}
+    ant[data.update.condicion] = e[data.update.condicion]
+    e[data.update.condicion] = data.update.valor
+
+    document.querySelector(".preview-arts").innerHTML += `
+    <td class="text-center"><img src="${"/img/" + e.categorias + "/" + e.imagendetalle}" alt="imagen table" widht="auto" height="60px"></td>
+    <td>${e.codigo}</td>
+    <td>${e.nombre}<td>
+    <td>${data.update.condicion}: ${ant[data.update.condicion]}<td>
+    <td>${data.update.condicion}: ${data.update.valor}</td>
+    `;
+  })
+
+  mostrador.addEventListener("click", e => e.target.id == "botonConfirmarCambios" ? socket.emit("update-masivo-ok", data.res) : console.log("ok"))
+}
+
+socket.on("update-masivo-ok-res", res => {
+  console.log(res)
+  showArts(res.update)
+  mostrador.innerHTML += `
+  <div class="row">
+  <div class="col-md-6 text-center">
+  <button type="button" class="btn btn-danger" id="deshacerCambios">Deshacer</button>
+  </div>
+  </div> 
+  `
+  mostrador.addEventListener("click", e => {
+    if(e.target.id == "deshacerCambios"){
+      socket.emit("update-masivo-ok", res.anterior)
+    }
+  }) 
+});
+
+
 
 
 
