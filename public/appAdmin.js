@@ -221,7 +221,7 @@ function showArts(art){
       }
     });
 
-    //checkMostrar(art);
+    checkMostrar(art);
 }
 
 function checkMostrar(art){    
