@@ -983,7 +983,8 @@ socket.on("update-masivo-res", data => {
   showTablePreview(data)
 })
 
-function showTablePreview(data){  
+function showTablePreview(data){ 
+  console.log(data) 
   if(data.res.length == 0){
     alert("Sin resultados")
     modificarDormasivoPreview()
@@ -1026,11 +1027,27 @@ function showTablePreview(data){
     <td>${e.codigo}</td>
     <td>${e.nombre}<td>
     <td>${data.update.condicion}: ${ant[data.update.condicion]}<td>
-    <td>${data.update.condicion}: ${data.update.valor}</td>
+    <td>${data.update.condicion}: <input class="updateValue" type="text" value="${data.update.valor}"></td>
+    <td><p class="eliminar ${e.codigo}" style="color: red;">ELIMINAR</p></td>
     `;
   })
 
-  mostrador.addEventListener("click", e => e.target.id == "botonConfirmarCambios" ? socket.emit("update-masivo-ok", data.res) : console.log("ok"))
+  mostrador.addEventListener("click", e => {
+
+    if(e.target.id == "botonConfirmarCambios"){
+      const checkVal = document.querySelectorAll(".updateValue")
+      checkVal.forEach(e => {
+
+      })
+      socket.emit("update-masivo-ok", data.res)
+    }
+
+      if(e.target.classList.contains("eliminar")){
+        const index = data.res.findIndex(elem => elem.codigo == e.target.classList[1])
+        data.res.splice(index, 1)
+        showTablePreview(data)
+      }
+    })
 }
 
 socket.on("update-masivo-ok-res", res => {
