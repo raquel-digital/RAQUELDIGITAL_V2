@@ -207,6 +207,7 @@ const store = {
       },
       updateMass: async function (data){
         try{
+           const stock = parseInt(data.stock)
            const res = await model.findOneAndUpdate({_id: data._id}, {                
                 $set: {
                     codigo: data.cambioCodigo,
@@ -216,7 +217,7 @@ const store = {
                     imagendetalle: data.imagendetalle,
                     descripcion: data.descripcion,
                     categorias: data.categorias,
-                    stock: parseInt(data.stock),
+                    stock: stock,
                     nombre: data.nombre,
                     nombre2: data.nombre2,
                     CantidadDeVenta: data.CantidadDeVenta,

@@ -1027,7 +1027,7 @@ function showTablePreview(data){
     <td>${e.codigo}</td>
     <td>${e.nombre}<td>
     <td>${data.update.condicion}: ${ant[data.update.condicion]}<td>
-    <td>${data.update.condicion}: <input class="updateValue" type="text" value="${data.update.valor}"></td>
+    <td>${data.update.condicion}: <input class="updateValue ${e.codigo}" type="text" value="${data.update.valor}"></td>
     <td><p class="eliminar ${e.codigo}" style="color: red;">ELIMINAR</p></td>
     `;
   })
@@ -1037,7 +1037,11 @@ function showTablePreview(data){
     if(e.target.id == "botonConfirmarCambios"){
       const checkVal = document.querySelectorAll(".updateValue")
       checkVal.forEach(e => {
-
+        data.res.forEach(r => {
+          if(r.codigo == e.classList[1]){
+            r[data.update.condicion] = e.value
+          }
+        })
       })
       socket.emit("update-masivo-ok", data.res)
     }
@@ -1062,6 +1066,7 @@ socket.on("update-masivo-ok-res", res => {
   `
   mostrador.addEventListener("click", e => {
     if(e.target.id == "deshacerCambios"){
+      console.log(res.anterior)
       socket.emit("update-masivo-ok", res.anterior)
     }
   }) 
