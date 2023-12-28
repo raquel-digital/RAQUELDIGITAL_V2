@@ -603,3 +603,8 @@ function copiarPedido(){
   });
   
 }
+
+function buscarPedido(){
+  const num_orden = document.querySelector("#num_orden").value
+  socket.emit("busqueda-pedido", num_orden);
+}

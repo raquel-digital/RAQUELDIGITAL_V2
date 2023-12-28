@@ -110,7 +110,7 @@ async function loadCateg(query){
        }
       }
       if(categ == "herramientas"){      
-       const result = await filtrar(["CS","TJ","MH","PA","PE"]);
+       const result = await filtrar(["CS","TJ","MH","PA","PE","MH/manualidades"]);
        if(result.length > 0){
         return { succes: true, result: result } 
        }

@@ -14,6 +14,19 @@ let mailContent;
 const toDel = [];
 let busqueda = false;
 
+//------CARGA DESPUES DEL DOM-----------------
+document.addEventListener('DOMContentLoaded', (e) => {
+
+  const selectCateg = document.querySelector(".sel__box--black-panther");
+
+  selectCateg.addEventListener("click", e => {
+    const categ = e.target.textContent;    
+    socket.emit("categ-seleccionada", categ);
+    paginador.innerHTML = ""; 
+    
+  })  
+})
+
 const productosModificados = document.querySelector(".productos-modificados");
 
 socket.on("admin-sock", data => {
@@ -740,10 +753,6 @@ socket.on("nuevos-pedidos", data => {
   lastOrder = data[0];
 });
 
-function buscarPedido(){
-  const num_orden = document.querySelector("#num_orden").value
-  socket.emit("busqueda-pedido", num_orden);
-}
 
 let pedido;
 let dataMail

@@ -31,7 +31,7 @@ async function loadCateg(){
     await filtrar(["PF"], "flecos", artBase);
     await filtrar(["FL","FR"], "flores", artBase);
     await filtrar(["AH","AP","MQ","HE","HH","RC","RR","TE"], "herrajes", artBase);
-    await filtrar(["CS","TJ","MH","PA","PE"], "herramientas", artBase);
+    await filtrar(["CS","TJ","MH","PA","PE","MH/manualidades"], "herramientas", artBase);
     await filtrar(["HI","HI/HI8100","HI/HI0901","HI/HI9000"], "hilos", artBase);
     await filtrar(["AN","CA","HO","HC","PA","VS/INDUMENTARIA"], "indumentaria", artBase);
     await filtrar(["LA","AT"], "lanas", artBase);

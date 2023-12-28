@@ -6,6 +6,15 @@ const http = require('http').Server(app);
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 const requer  = require("./utils/config")
+const controller = require("./api/arts/controller");
+//TODO
+//cargar todos los articulos al inicio
+// console.log("cargando articulos")
+// (async () => {
+//     const articulos = await controller.leerArticulos()
+//     const fs = require("fs");
+//     fs.writeFileSync(`./articulos.json`, JSON.stringify(articulos));
+// })()
 
 //socket
 const io = require('./io.js').init(http);
@@ -17,7 +26,6 @@ const logger = require('morgan');
 
 //cargar tags nuevos
 const loadCategs = require("./utils/tagsGenerator")
-
 
 const nodemailer = require('nodemailer');
 
@@ -232,6 +240,14 @@ io.on('connect', socket => {
             socket.emit("update-masivo-ok-res", res);
         })();        
     })
+    //ADMIN seleccionar categorias
+    socket.on("categ-seleccionada", categ => {
+        (async () => { 
+            const categOrganicer = require("./utils/cargarCategoria")
+            const result = await categOrganicer(categ);
+            socket.emit("categ-result", result);
+        })();
+    }); 
 });
 
 
@@ -253,9 +269,6 @@ const fs = require("fs");
 const db = require("./db");//conexion con mongo
 
 db(process.env.mongo);
-
-
-const controller = require("./api/arts/controller");
 
 async function mailEmit(data){
 

@@ -18,11 +18,16 @@
     <div class="navbar">
         <nav class="navbar navbar-expand-lg barraInicio">
             <div class="buscadorPedido d-flex justify-content-center p-2" style="margin-left: 40%;">
-                
-                
+                 
                 <button class="btn btn-primary p-2" onclick="confirmarCambios()">Confirmar Cambios</button>       
                                 
                 <button class="btn btn-primary p-2" onclick="loadPedEnCurso()" style="margin-left: 50px;">Pedidos en Curso</button>     
+            
+                <div class="buscadorPedido">
+                    <input type="number" id="num_orden" style="margin-left: 4rem;">
+                    <button class="btn btn-primary" onclick="buscarPedido()">buscar orden</button>           
+                </div>
+
             </div>
         </nav>
     </div>
