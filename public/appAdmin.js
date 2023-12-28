@@ -1066,7 +1066,7 @@ socket.on("update-masivo-ok-res", res => {
   `
   mostrador.addEventListener("click", e => {
     if(e.target.id == "deshacerCambios"){
-      console.log(res.anterior)
+      console.log("deshaciendo cambios", res.anterior)
       socket.emit("update-masivo-ok", res.anterior)
     }
   }) 
