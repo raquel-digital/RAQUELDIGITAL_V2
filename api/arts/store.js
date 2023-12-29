@@ -6,8 +6,7 @@ const { ObjectId } = require("bson")
 const store = {
     leer: async function (){
         try{
-            let base = [];
-            await model.find().then( a => base.push(a));                 
+            const base = await model.find();                 
             return base;
         }catch(err){
             return err;

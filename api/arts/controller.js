@@ -45,7 +45,7 @@ controller = {
         }        
     },
 
-    leerArticulos: function (){
+    leerArticulos: async function (){
         let base
         return base = store.leer();
     },

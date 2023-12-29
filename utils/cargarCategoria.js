@@ -59,8 +59,13 @@ async function loadCateg(query){
         return { succes: true, result: result } 
        }
       }
-      if(categ == "cintas"){        
-       const result = await filtrar(["CI","GB","GL","GP","NA","CI/VIVOS","CI/TALLES-REPARACION"]);
+      if(categ == "cintas"){  
+      
+       const arts = require("../public/system/dir/allArts.json")
+       const categFilter = ["CI","GB","GL","GP","NA","CI/VIVOS","CI/TALLES-REPARACION"]
+       const result = arts.filter(element => categFilter.includes(element.categorias));
+                       
+       //const result = await filtrar(["CI","GB","GL","GP","NA","CI/VIVOS","CI/TALLES-REPARACION"]);
        if(result.length > 0){
         return { succes: true, result: result } 
        }
@@ -215,7 +220,7 @@ async function loadCateg(query){
       return { succes: false, result: "Categoria no valida" }
 }
 
-async function filtrar(categ){          
+async function filtrar(categ){
       const result = await controller.cargarCateg(categ);
       return result;
 }

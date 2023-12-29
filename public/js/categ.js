@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     socket.on("categ-result", data => {         
-      
+        
         if(data.succes){  
 
           mostrador.innerHTML = ""

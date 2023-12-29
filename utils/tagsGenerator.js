@@ -13,7 +13,7 @@ let artBase;
 
 async function loadCateg(){
     const allArts = await store.leer()
-    let artBase = allArts[0]
+    let artBase = allArts
 
     await filtrar(["AF","AG","AT","BA","GA"], "alfileres_y_agujas", artBase);
     await filtrar(["AJ"], "abrojos", artBase);
@@ -44,7 +44,8 @@ async function loadCateg(){
     await filtrar(["AN","HO","GA","RE","TP","TR","CI/VIVOS","VS/INDUMENTARIA"], "reparacion_ropa", artBase);//EL SE VA A SUBDIVIDIR EN BRETELES
     await filtrar(["BB","CS-BORDADO","RV","VS/manualidades"], "telar", artBase);
     await filtrar(["HC","VS","PA","VS/INDUMENTARIA"], "otros", artBase);
-
+  
+    fs.writeFileSync("./public/system/dir/allArts.json", JSON.stringify(artBase, null, 2));  
   return  console.log("Categorias Cargadas")
 }
 
@@ -70,7 +71,7 @@ async function filtrar(arr, categ, artBase){
     }
     
     fs.writeFileSync(`./public/system/categ/${categ}.json`, JSON.stringify(categArr[categ].sort(), null, 2));
-
+    
     return
 }
 

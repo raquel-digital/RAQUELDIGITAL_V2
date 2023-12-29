@@ -7,14 +7,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 const requer  = require("./utils/config")
 const controller = require("./api/arts/controller");
-//TODO
-//cargar todos los articulos al inicio
-// console.log("cargando articulos")
-// (async () => {
-//     const articulos = await controller.leerArticulos()
-//     const fs = require("fs");
-//     fs.writeFileSync(`./articulos.json`, JSON.stringify(articulos));
-// })()
+
 
 //socket
 const io = require('./io.js').init(http);
@@ -46,8 +39,11 @@ app.use(function (req, res, next) {
     next();
   });
 
+ 
+
 
 io.on('connect', socket => {
+
     (async () => {
         try{
             const res = await controller.ultimos20subidos()
@@ -190,8 +186,9 @@ io.on('connect', socket => {
     socket.on("actuPrecios", data => {
         (async () => {
             const actuPrecios = require("./utils/preciosActu");
-            const result = await actuPrecios(data);
+            const result = await actuPrecios(data);            
             if(result){
+                loadCategs()
                 socket.emit("actuPreciosRes", (result));
             }
         })();        
