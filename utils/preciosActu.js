@@ -46,7 +46,7 @@ async function actu(base, actu){
 async function exportar(nuevosPrecios){
     try{
         const base = await controller.leerArticulos();
-        const result = await actu(base[0], nuevosPrecios)
+        const result = await actu(base, nuevosPrecios)
         return result;
     }catch(err){
         console.log("error actualizar precio " + err);
