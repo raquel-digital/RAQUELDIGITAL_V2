@@ -55,7 +55,10 @@ mostrador.addEventListener("click", e => {
 })
 
 
-function buscarPedido(num_orden){    
+function buscarPedido(num_orden){
+    if(!num_orden){
+      num_orden = document.getElementById("num_orden").value
+    }    
     socket.emit("busqueda-pedido", num_orden);
 }
   
@@ -70,7 +73,7 @@ socket.on("busqueda-pedido-reponse", res => {
     alert("PEDIDO INVALIDAO");
     return;
   } 
-  dataMail = res[0];
+  dataMail = res;
   //draw.orders(pedido, res[0]) 
   printPagePreview(pedido, res[0])  
 })
@@ -127,7 +130,7 @@ const draw = {
               suma += dia - Number(fechaSplit[0])
             }
           
-                                     
+            console.log(d)                         
             mostrador.innerHTML += `
             <hr>
             <div class="cardItem">
@@ -500,7 +503,7 @@ socket.on("borrar-pedido-res", res => {
 
 
 function printPagePreview(pedido, cliente){
-  console.log(cliente)
+  console.log(pedido, cliente)
   let envio = " "
   if(cliente.tipoDeEnvio){
     envio = `<div class="row"><b>Tipo de envío: ${cliente.retira} Forma de envío: ${cliente.tipoDeEnvio.forma_de_envio}</b></div>
@@ -604,7 +607,4 @@ function copiarPedido(){
   
 }
 
-function buscarPedido(){
-  const num_orden = document.querySelector("#num_orden").value
-  socket.emit("busqueda-pedido", num_orden);
-}
+
