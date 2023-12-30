@@ -999,7 +999,10 @@ function showTablePreview(data){
     modificarDormasivoPreview()
   }
   if(data.res.length > 100){
-    alert("Respuesta muy grande hay " + data.res.length + " queres continuar?")
+    const ok =confirm("Respuesta muy grande hay " + data.res.length + " queres continuar?")
+    if(!ok){    
+      return
+    }
   }
 
   mostrador.innerHTML =`
