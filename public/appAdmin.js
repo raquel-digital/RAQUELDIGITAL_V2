@@ -373,19 +373,25 @@ mostrador.addEventListener("click", e => {
       const mostrar = mouse.previousElementSibling.childNodes[3].childNodes[1].checked;
       const tags = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[9].value;
       const img = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[2].value;
-      const decr = mouse.parentElement.children[1].children[3].children[6].value
+      
       const stock = mouse.parentElement.childNodes[3].childNodes[7].childNodes[5].value;
       const categ = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[5].value;
-      const cambioCodigo = mouse.parentElement.children[1].children[3].children[10].value;
+      
       const titulo = mouse.parentElement.children[1].children[3].children[2].value;
-      const subtitulo = mouse.parentElement.children[1].children[3].children[4].value;
+      
     
       let artChange;
 
       if(codigo.includes("*")){
+        //ACTUALIZAR ARTICULO DE COLOR
         const split = codigo.split("*");
-        artChange = {_id: split[1], codigo: split[0], mostrar: mostrar, tags: tags, imagendetalle: img, descripcion: decr, categorias: categ, stock: parseInt(stock), cambioCodigo: cambioCodigo, nombre: titulo, nombre2: subtitulo};
+        artChange = {_id: split[1], codigo: split[0], mostrar: mostrar, tags: tags, imagendetalle: img, categorias: categ, stock: parseInt(stock), nombre: titulo};
+        
       }else{
+        //ACTUALIZAR ARTICULO COMUN
+        const decr = mouse.parentElement.children[1].children[3].children[6].value
+        const cambioCodigo = mouse.parentElement.children[1].children[3].children[10].value;
+        const subtitulo = mouse.parentElement.children[1].children[3].children[4].value;
         artChange = { codigo: codigo, mostrar: mostrar, tags: tags, imagendetalle: img, descripcion: decr, categorias: categ, stock: parseInt(stock), cambioCodigo: cambioCodigo, nombre: titulo, nombre2: subtitulo};
       }
       

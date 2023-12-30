@@ -57,6 +57,7 @@ controller = {
         const arrayRes = [];
 
         for(const e of data){
+            console.log(e)
             if(e._id){
                 result = await store.updateColor(e);
                 arrayRes.push(result);
