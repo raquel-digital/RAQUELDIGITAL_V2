@@ -177,7 +177,13 @@ io.on('connect', socket => {
                  }
                  socket.emit("res-busqueda-upload", result[0]);
             }else{
-                const result = await controller.buscarArticulo(query);            
+                let result;
+                if(query.includes("color")){
+                    result = await controller.buscarArticuloPorColor(query);
+                }else{
+                    result = await controller.buscarArticulo(query);
+                }
+                            
                 socket.emit("resultado-busqueda", result);
             }            
         })();

@@ -56,10 +56,19 @@ controller = {
         let result;
         const arrayRes = [];
 
-        for(const e of data){
-            console.log(e)
-            if(e._id){
-                result = await store.updateColor(e);
+        for(const e of data){            
+            if(e._id || e.descripcion == "color"){
+                if(e.descripcion == "color"){
+                    
+                    e.stock = 10
+                    if(split.length > 2){
+                        e.codigo = split[0]+"-"+split[1]
+                    }else{
+                        e.codigo = split[0]
+                    }                   
+                    e._id = e.nombre2
+                }                
+                result = await store.updateColor(e);                
                 arrayRes.push(result);
             }else{                
                 result = await store.update(e);
@@ -108,6 +117,29 @@ controller = {
        const result = await store.search(query);
        return result;
     },
+    buscarArticuloPorColor: async function(query){
+        const split = query.split(" ")
+        const result = await store.search(split[0]);
+        const colorQuery = []
+        result.map(e => e.colores.filter(f => {
+            if(f.codigo.includes(split[2])){
+                colorQuery.push({
+                    codigo: f.codigo, 
+                    categorias: e.categorias, 
+                    tags: e.tags,
+                    imagendetalle: f.color,
+                    mostrar: f.mostrar,
+                    precio: e.precio,                    
+                    nombre: e.nombre,
+                    nombre2: e._id,
+                    descripcion: "color",
+                    stock: e.stock
+
+                })
+            }
+        }))        
+        return colorQuery
+     },
 
     cargarCateg: async function(categ){
         try{      

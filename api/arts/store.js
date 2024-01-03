@@ -87,6 +87,21 @@ const store = {
                     }
                 }
             )
+            console.log("res store: ", res, data)
+            return { status: true};
+        }catch(err){
+            return { status: false, message: "Error al actualizar color " + data.codigo, error: err }; 
+        }
+    },
+    updateColorMostrar:async function (data){
+        try{
+            const res =  await model.updateOne( {codigo: data.query, "colores.codigo" : data.codigo } ,
+                {
+                    $set: {
+                        "colores.$.mostrar": data.mostrar
+                    }
+                }
+            )
             console.log("restltado!!!",res)
             return { status: true};
         }catch(err){
@@ -158,6 +173,7 @@ const store = {
             console.log("[ ERROR EN SEARCH STORE] " + err)
         }
     },
+    
 
     updatePrices: async function(data){
         try{          

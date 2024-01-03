@@ -40,13 +40,14 @@ socket.on("prodAdmin", data => {
 function confirmarCambios(){
   if(toDel.length > 0){
     socket.emit("delete", toDel);
-  }
+  }  
   socket.emit("cambio-en-articulos", cambiosEnArticulos)
 }
 
 socket.emit("changes?");
 
 socket.on("result-actu", result => {
+  console.log(result)
   buscador();
   alert("ARTICULOS ACTUALIZADOS");
   cambiosEnArticulos = []
@@ -292,7 +293,7 @@ socket.on("loading-search", () => {
 
 socket.on("resultado-busqueda", result => {
   busqueda = false;
-    
+    console.log(result)    
     if(result.length > 0) {
       if(result.length > indice){        
         mostradorDeArticulos = result//mostrarRes;
@@ -395,6 +396,7 @@ mostrador.addEventListener("click", e => {
         artChange = { codigo: codigo, mostrar: mostrar, tags: tags, imagendetalle: img, descripcion: decr, categorias: categ, stock: parseInt(stock), cambioCodigo: cambioCodigo, nombre: titulo, nombre2: subtitulo};
       }
       
+      console.log(artChange)
       cambiosArt(artChange);
       
     } 
