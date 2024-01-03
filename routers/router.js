@@ -74,7 +74,7 @@ router.get("/categoria/", async (req, res) => {
   io.once('connect', socket => {    
     (async () => {
         socket.emit("loading")
-        let result = await categOrganicer(categ, arts);        
+        let result = await categOrganicer(categ);        
         result.categ = categIO
         socket.emit("categ-result", result);
         if(tag){    
