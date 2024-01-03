@@ -1,15 +1,5 @@
 const fs = require("fs");
-//const db = require("../db");
-//const dotenv = require('dotenv').config();
-//db(process.env.mongo);
 const store = require("../api/arts/store")
-let artBase;
-
-// (async () => {
-//     const allArts = await store.leer()
-//     artBase = allArts[0]
-//     loadCateg()     
-// })()
 
 async function loadCateg(){
     const allArts = await store.leer()

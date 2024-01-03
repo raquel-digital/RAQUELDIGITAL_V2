@@ -1,7 +1,6 @@
 const controller = require("../api/arts/controller")
-const arts = require("../public/system/dir/allArts.json")
 
-async function loadCateg(query){
+async function loadCateg(query, arts){
       if(query == "Elásticos"){
             query = "elasticos"; 
       }

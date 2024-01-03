@@ -65,7 +65,8 @@ router.get("/categoria/", async (req, res) => {
   // Verificar si la cadena del agente de usuario contiene "iPhone"
   const esIPhone = userAgent.includes('iPhone');
   
-  const categOrganicer =  require("../utils/cargarCategoria");
+  const categOrganicer =  require("../utils/cargarCategoria"); 
+
   const categIO = req.query.categ
   const categ = req.query.categ.toLowerCase()
   const tag = req.query.tag
@@ -73,7 +74,7 @@ router.get("/categoria/", async (req, res) => {
   io.once('connect', socket => {    
     (async () => {
         socket.emit("loading")
-        let result = await categOrganicer(categ);
+        let result = await categOrganicer(categ, arts);        
         result.categ = categIO
         socket.emit("categ-result", result);
         if(tag){    

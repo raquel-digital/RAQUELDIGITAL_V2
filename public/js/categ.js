@@ -310,8 +310,6 @@ function categOrganizador(categ){
   if(categ.includes(" ")){
     categ = categ.replaceAll(" ", "_")
   }
-  console.log(categ)
-   //const tagFetch = []
     let tagCheck
 
   // data.forEach(e => {
