@@ -59,7 +59,7 @@ controller = {
         for(const e of data){            
             if(e._id || e.descripcion == "color"){
                 if(e.descripcion == "color"){
-                    
+                    const split = e.codigo.split("-")
                     e.stock = 10
                     if(split.length > 2){
                         e.codigo = split[0]+"-"+split[1]
@@ -122,7 +122,8 @@ controller = {
         const result = await store.search(split[0]);
         const colorQuery = []
         result.map(e => e.colores.filter(f => {
-            if(f.codigo.includes(split[2])){
+            const check = f.codigo.toLocaleLowerCase()
+            if(check.includes(split[2])){
                 colorQuery.push({
                     codigo: f.codigo, 
                     categorias: e.categorias, 
@@ -131,13 +132,13 @@ controller = {
                     mostrar: f.mostrar,
                     precio: e.precio,                    
                     nombre: e.nombre,
-                    nombre2: e._id,
+                    nombre2: f._id,
                     descripcion: "color",
                     stock: e.stock
-
                 })
             }
-        }))        
+        }))   
+        
         return colorQuery
      },
 

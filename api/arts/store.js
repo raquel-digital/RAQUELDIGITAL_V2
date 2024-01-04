@@ -80,6 +80,7 @@ const store = {
     },
     updateColor:async function (data){
         try{
+           
             const res =  await model.updateOne( {codigo: data.codigo, "colores._id" : ObjectId(data._id) } ,
                 {
                     $set: {
@@ -87,8 +88,8 @@ const store = {
                     }
                 }
             )
-            console.log("res store: ", res, data)
-            return { status: true};
+            
+            return { status: true, res: res};
         }catch(err){
             return { status: false, message: "Error al actualizar color " + data.codigo, error: err }; 
         }

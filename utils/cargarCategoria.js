@@ -2,7 +2,9 @@ const controller = require("../api/arts/controller")
 
 
 async function loadCateg(query){
+      //limpia cache del modulo precios
       delete require.cache[require.resolve("../public/system/dir/allArts.json")];
+      //vuelve a cargarlo en caso que se actualice
       const arts = require("../public/system/dir/allArts.json")
       if(query == "Elásticos"){
             query = "elasticos"; 
