@@ -1,6 +1,7 @@
 const socket = io.connect();
 const mostrador =  document.querySelector(".mostrador");
 let pedidos;
+let i = 1
 
 
 const cambios = [];
@@ -12,6 +13,26 @@ const anio = new Date().getFullYear();
 mostrador.addEventListener("click", e => {
 
     const mouse = e.target;
+
+    if(mouse.classList.contains("flecha-atraz")){
+      if(i > 1){
+        i--
+        draw.pedidoFlecha(pedidos[i-1])
+      }else{
+        i = 1
+        draw.pedidoFlecha(pedidos[i-1])
+      }
+    }
+    if(mouse.classList.contains("flecha-adelante")){
+      if(i < pedidos.length){
+        i++
+        draw.pedidoFlecha(pedidos[i-1])
+      }
+      if(i > pedido.length){
+        i = pedido.length
+        draw.pedidoFlecha(pedidos[i-1])
+      }
+    }
 
     if(mouse.classList.contains("eliminar-articulo")){
         const codigo = mouse.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
@@ -84,14 +105,17 @@ socket.on("nuevos-pedidos", data => {
   console.log(data)
   if(pedidos == undefined && data.length > 0){
     pedidos = data;
-    draw.newOrders(pedidos);
+    //draw.newOrders(pedidos);
+    draw.pedidoFlecha(pedidos[i-1]);
     socket.emit("chequear-pedidos-admin");
     return;
   }
   if(data.length > 0 && data.length > pedidos.length){
     alert("HAY PEDIDOS NUEVOS");
     pedidos = data;
-    draw.newOrders(pedidos);
+    //TODO ver si es comodo quiza se pueda cambiar la opcion de que 
+    //cambie al pedido nuevo
+    draw.pedidoFlecha(pedidos[pedidos.length]);
     socket.emit("chequear-pedidos-admin");
     return;
   }
@@ -114,10 +138,10 @@ function checkOrders(){
 }
 
 const draw = {
-    newOrders: (data) => {
-        mostrador.innerHTML = ``
-        data.forEach(d => {
-          
+    pedidoFlecha: (d) => {
+      mostrador.innerHTML = ``
+        
+
                       
             const fechaSplit = d.fecha.split("/");
             let suma = 0;
@@ -132,11 +156,175 @@ const draw = {
             }
                             
             mostrador.innerHTML += `
-            <div class="col-4">
+            <div class="row">
+              
               <hr>
               <div class="cardItem">
               <hr><div class="card border-success">        
                 <div class="card-body">
+                <div class="row">
+                  <div class="flecha-atraz col">
+                  </div>                
+                  <h5 class="col">ORDEN DE PEDIDO: ${i}</h5>
+                  <div class="col flecha-adelante"></div>
+                </div>
+                  <hr>
+                  <h2 class="card-title">CLIENTE: ${d.cliente} NUMERO DE ORDEN: ${d.num_orden} DIAS EN PREPARACION: ${suma} FECHA: ${d.fecha} </h2>   
+                  <h6></h6>       
+                  <hr>
+                  <div class="row">
+                  <div class="col">
+                  <a href="#num${d.num_orden}colapse" data-bs-toggle="collapse" class=" float-left dropdown-toggle btn-outline-info btn-sm bg-info" style="color: white;">Pedido</a>
+                          
+                          <div class="collapse" id="num${d.num_orden}colapse">
+                              <hr>
+                              <table class="table table-striped table-hover tablaOrden">
+                                <thead>
+                                <tr>
+                                    <th>codigo</th>
+                                    <th>titulo</th>
+                                    <th>precio unitario</th>
+                                    <th>cantidad</th>
+                                    <th>total</th>
+                                    <th>borrar</th>
+                                </tr>
+                                </thead>
+                                <tbody id="list${d.num_orden}">
+                                    
+                                </tbody>
+                                <tfoot >
+                                    <tr class="total-compra-final">
+                                    
+                                    </tr>
+                                    </tfoot>
+                                </table> 
+                                                                    
+                            </div>
+                            <hr>
+                  
+                    <a href="#faltas${d.num_orden}colapse" data-bs-toggle="collapse" class=" float-left dropdown-toggle btn-outline-info btn-sm bg-info" style="color: white;">Faltas</a>
+                    <hr> 
+
+                            <div class="collapse" id="faltas${d.num_orden}colapse">
+                              <hr>
+                              <table class="table table-striped table-hover tablaOrden">
+                                <thead>
+                                <tr>
+                                    <th>codigo</th>
+                                    <th>titulo</th>
+                                    <th>precio unitario</th>
+                                    <th>cantidad</th>
+                                    <th>fecha de entrega</th>
+                                    <th>borrar</th>
+                                </tr>
+                                </thead>
+                                <tbody id="list-faltas${d.num_orden}">
+                                    
+                                </tbody>
+                                <tfoot >
+                                    <tr class="total-compra-final">
+                                    
+                                    </tr>
+                                    </tfoot>
+                                </table> 
+                                                                    
+                            </div>
+                            <h6>Preparado por:</h6>
+                    <select name="" id="preparado${d.num_orden}">
+                      <option value="Oscar" selected>Oscar</option>
+                      <option value="Javier" >Javier</option>        
+                      <option value="Alejandro" >Alejandro</option>
+                      <option value="Eric" >Eric</option>
+                      <option value="Graciela" >Graciela</option>
+                      <option value="Karina" >Karina</option>
+                      <option value="Mario" >Mario</option>
+                    </select>
+                    <hr> 
+                    </div>
+
+                    <hr>
+                    <h6>Estado</h6>
+                    <select name="" id="estado${d.num_orden}">
+                      <option value="Pagado" >Pagado</option>
+                      <option value="Pedido Sin Asignar">Pedido Sin Asignar</option>
+                      <option value="En preparacion" >En preparacion</option> 
+                      <option value="Pasamos faltas" >Pasamos faltas</option> 
+                      <option value="Sumando al pedido">Sumando al pedido</option>        
+                      <option value="Importe pasado" >Importe pasado</option>
+                      <option value="Reiteramos aviso importe">Reiteramos aviso importe</option>
+                      <option value="Listo para enviar" >Listo para enviar</option>
+                      <option value="Listo para que retire" >Listo para que retire</option>
+                      <option value="Salio">Salio</option>
+                    </select>
+                    <hr>
+                    <h6>Notas:</h6>
+                    <textarea name="" id="notasText${d.num_orden}" cols="5" rows="5">${d.notas}</textarea>
+
+                          <div class="card-footer row">
+                            <button class="botonConfirmar btn btn-primary" style="margin-right: 20px;" onclick="cambiosPorFlecha(${i})">Corfirmar</button>
+                            <button class="btn btn-danger" style="" onclick="borrarPedido(${d.num_orden})">Borrar</button>
+                            <button class="btn btn-warning botonOrden" onclick="buscarPedido(${d.num_orden})">IMPRIMIR</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      ` 
+        if(d.estado == " "){
+          d.estado = "Pedido Sin Asignar";
+        }  
+        
+          draw.preparado("preparado"+d.num_orden, d.prepara)
+          draw.estado("estado"+d.num_orden, d.estado)  
+          draw.ordersList("list"+d.num_orden, d.compra)
+          draw.faltas("list-faltas"+d.num_orden, d.faltas)
+
+          //pocisiones flecha pedidos
+          const flechaAdelante = document.querySelector(".flecha-adelante")
+          const flechaAtraz = document.querySelector(".flecha-atraz")
+
+          if(i < pedidos.length){
+            //style="background: #a4ecf7;"
+            flechaAdelante.style.backgroundColor = "#a4ecf7"
+            flechaAdelante.innerHTML = `<i class="fa-solid fa-arrow-right"></i>`
+          }
+          if(i > 1){
+            flechaAtraz.style.backgroundColor = "#a4ecf7"
+            flechaAtraz.innerHTML = `<i class="fa-solid fa-arrow-left-long"></i>`
+          }
+          
+            
+        
+        
+    
+    },
+    newOrders: (data) => {
+        
+        mostrador.innerHTML = ``
+        data.forEach(d => {
+
+                      
+            const fechaSplit = d.fecha.split("/");
+            let suma = 0;
+            if(anio != Number(fechaSplit[2])){
+              suma += 365 * (anio - Number(fechaSplit[2]))
+            }
+            if(mes != Number(fechaSplit[1])){
+              suma += 30 * (mes - Number(fechaSplit[1]))
+            }
+            if(dia != Number(fechaSplit[0])){
+              suma += dia - Number(fechaSplit[0])
+            }
+                            
+            mostrador.innerHTML += `
+            <div class="row">
+              
+              <hr>
+              <div class="cardItem">
+              <hr><div class="card border-success">        
+                <div class="card-body">
+                
                   <hr>
                   <h5 class="card-title">CLIENTE: ${d.cliente} NUMERO DE ORDEN: ${d.num_orden} DIAS EN PREPARACION: ${suma} FECHA: ${d.fecha} </h5>   
                   <h6></h6>       
@@ -247,8 +435,8 @@ const draw = {
           draw.preparado("preparado"+d.num_orden, d.prepara)
           draw.estado("estado"+d.num_orden, d.estado)  
           draw.ordersList("list"+d.num_orden, d.compra)
-          draw.faltas("list-faltas"+d.num_orden, d.faltas)
-               
+          draw.faltas("list-faltas"+d.num_orden, d.faltas)        
+            
       })
         
     },
@@ -474,6 +662,16 @@ function agregarCambio(orden){
       cambios.push(e);
     }
   })
+  
+}
+function cambiosPorFlecha(i){
+    const e = pedidos[i-1]
+    const notas = document.querySelector("#notasText"+e.num_orden).value;
+    const preparado = document.querySelector("#preparado"+e.num_orden).value;
+    const estado = document.querySelector("#estado"+e.num_orden).value;
+    e.notas = notas;
+    e.prepara = preparado;
+    e.estado = estado;
 }
 
 function confirmarCambios(){

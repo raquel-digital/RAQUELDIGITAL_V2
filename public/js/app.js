@@ -311,16 +311,16 @@ function actualizarPrecioCarrito(codigo, cant){
         spin.classList.remove("loading")
         spin.textContent = tempTxt
         toast.style.display = "none";
-        console.log('Primer timeout completado');        
+        //Primer timeout completado        
       // Segundo timeout (llamado dentro del primer timeout)
       setTimeout(function() {
         toast.style.display = "block"
         itemsCarrito.style.display = "block"
         itemsCarrito.textContent = carrito.length;
-        console.log('Segundo timeout completado');
+        //Segundo timeout completado
         setTimeout(function() {
           toast.style.display = "none"
-          console.log('Tercer timeout completado');
+          //Tercer timeout completado
         }, 1000);
       }, 350); // El segundo timeout se ejecutará después de 2 segundos (2000 milisegundos)
     }, 100); // El primer timeout se ejecutará después de 3 segundos (3000 milisegundos)
@@ -469,7 +469,7 @@ function actualizarPrecioCarrito(codigo, cant){
         let imagen
         if(splitImg.length>4){
           imagen = "/img/" + splitImg[2] + "/" + splitImg[3] + "/" + e.color
-          console.log(splitImg)
+         
         }else{
           imagen = "/img/" + splitImg[2] + "/" + e.color          
         }
@@ -503,11 +503,10 @@ function actualizarPrecioCarrito(codigo, cant){
    modalContenidoColor.addEventListener("click", event => {
     if(event.target.classList.contains("contenedor-img-articulo")){     
       const click = event.target.classList;
-      console.log(click)
       const imagen = click[2]
       const nombre = boton.getAttribute("nombre");
       const modalContenidoColorApliada = document.querySelector(".modal-img-ampliada")
-      console.log(modalContenidoColorApliada)
+      
       modalContenidoColorApliada.children[1].children[0].textContent = nombre
       modalContenidoColorApliada.children[1].children[1].src = imagen
       modalContenidoColorApliada.style.display = "block"
@@ -549,7 +548,6 @@ document.querySelector("#select-categ").addEventListener('click', event=>{
       const barraCateg = document.getElementById("barra-categorias")
       barraCateg.style.display = "none"
       inMobile = false
-      console.log("mobile")
     }
   }
   //dropdown categorias (en responsive)
