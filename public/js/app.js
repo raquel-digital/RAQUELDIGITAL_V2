@@ -370,8 +370,13 @@ function actualizarPrecioCarrito(codigo, cant){
       document.getElementById("modal-colores").removeAttribute("disabled");
     }else{
       mouse.parentElement.parentElement.classList.remove("color-seleccionado")
-      const cantidad = mouse.parentElement.parentElement.children[1].children[1].children[1]
-      cantidad.value = 0
+      
+      const parentElement = mouse.parentElement;
+      const cantidadElement = parentElement?.parentElement?.children[1]?.children[1]?.children[1];
+      
+      if(cantidadElement){
+        cantidadElement.value = 0
+      }  
     }
     //CERRAR MODAL
     if(mouse.id == "cerrar-modal"){
