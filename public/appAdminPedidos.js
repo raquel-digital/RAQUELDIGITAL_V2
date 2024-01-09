@@ -705,6 +705,7 @@ socket.on("borrar-pedido-res", res => {
 
 function printPagePreview(pedido, cliente){
   console.log(pedido, cliente)
+  let totalPedido = 0
   let envio = " "
   if(cliente.tipoDeEnvio){
     envio = `<div class="row"><b>Tipo de envío: ${cliente.retira} Forma de envío: ${cliente.tipoDeEnvio.forma_de_envio}</b></div>
@@ -743,7 +744,7 @@ function printPagePreview(pedido, cliente){
       <tr class="total-compra-final">
         
       </tr>
-      </tfoot>
+    </tfoot>
   </table>
   </div> 
    
@@ -758,20 +759,34 @@ function printPagePreview(pedido, cliente){
   //
   const resumenCheckOut = document.querySelector(".resumen-check-out")
   pedido.forEach(e => {
+    const total = e.cantidad * e.precio
     resumenCheckOut.innerHTML += `
     <td class="text-center"><img src="${e.imagen}" alt="imagen table" widht="auto" height="60px"></td>
     <td>${e.codigo}</td>
     <td>${e.titulo}<td>
     <td>${e.precio}</td>
     <td>${e.cantidad}</td>
-    <td>${e.cantidad * e.precio}</td>
-    <td>en stock: </td>
-    <td>falta: </td>
+    <td>${total}</td>    
     `;
+    // <td>en stock: </td>
+    // <td>falta: </td>
+    totalPedido += total    
   })
+  if(cliente.tipoDeEnvio){
+    document.querySelector(".total-compra-final").innerHTML = `
+    <th>Total: ${totalPedido}</th> <th>Total Mas Envío: ${totalPedido + cliente.tipoDeEnvio.Costo}</th>
+    `
+  }else{
+    document.querySelector(".total-compra-final").innerHTML = `
+    <th>Total: ${totalPedido}</th>
+    `
+  }
+  
+
 }
 
 function printPage(){
+  document.querySelector(".total-compra-final").innerHTML = ""
   window.print()
 }
 

@@ -36,7 +36,7 @@ document.querySelector(".lupa").addEventListener("click", event => {
 //recibir resultados
 socket.on("resultado-busqueda", data => {       
     if(data.result.length == 0){
-     mostrador.innerHTML = `<h1>No hay resultados de búsqueda para <span class="resultado-busqueda">“${data.query}”</span></h1>
+     document.querySelector("main").innerHTML = `<h1>No hay resultados de búsqueda para <span class="resultado-busqueda">“${data.query}”</span></h1>
       <div  class="sin-resultados">
         <p>Intentá con otra palabra o navegá por las categorías para encontrar el artículo que buscás.</p>
         <button id="botonInicio" type="button" class="btn-primario">Volver al inicio</button>
