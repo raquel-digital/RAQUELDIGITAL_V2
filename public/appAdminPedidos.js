@@ -101,10 +101,9 @@ socket.on("busqueda-pedido-reponse", res => {
   
 
 socket.emit("chequear-pedidos-admin");
-socket.on("nuevos-pedidos", data => {
-  console.log(data)
+socket.on("nuevos-pedidos", data => {  
   if(pedidos == undefined && data.length > 0){
-    pedidos = data;
+    pedidos = data;    
     //draw.newOrders(pedidos);
     draw.pedidoFlecha(pedidos[i-1]);
     socket.emit("chequear-pedidos-admin");
@@ -115,8 +114,8 @@ socket.on("nuevos-pedidos", data => {
     pedidos = data;
     //TODO ver si es comodo quiza se pueda cambiar la opcion de que 
     //cambie al pedido nuevo
-    draw.pedidoFlecha(pedidos[pedidos.length]);
-    socket.emit("chequear-pedidos-admin");
+    draw.pedidoFlecha(pedidos[pedidos.length-1]);
+    //socket.emit("chequear-pedidos-admin");
     return;
   }
   return;
@@ -748,12 +747,16 @@ function printPagePreview(pedido, cliente){
   </table>
   </div> 
    
-  <button class="botonOrden" onclick="printPage()">IMPRIMIR</button>
+  <button id="printPagePreviewSinIVA" class="botonOrden">IMPRIMIR</button>
   <hr> 
   <hr>
   <hr>
   <button class="botonOrden" onclick="sendDataMail(dataMail)">ENVIAR X MAIL</button>
   <hr>   
+  <button id="pagePreciosSinIVA" class="botonOrden" >PRECIOS SIN IVA</button>
+  <hr>   
+  <button id="copiarContenido" class="botonOrden" >COPIAR</button>
+  <hr> 
   <button class="botonOrden" onclick="refreshing()">VOLVER</button>
   `
   //
@@ -781,11 +784,23 @@ function printPagePreview(pedido, cliente){
     <th>Total: ${totalPedido}</th>
     `
   }
-  
 
+  document.querySelector(".mostrador").addEventListener("click", e => {
+    if(e.target.id == "printPagePreviewSinIVA"){
+      printPage(pedido, cliente)
+    }
+    if(e.target.id == "pagePreciosSinIVA"){
+      printPagePreviewSinIVA(pedido, cliente)
+    }
+    if(e.target.id == "copiarContenido"){
+      const obj = document.querySelector(".tablaOrden")
+      copyToClipboard(obj)
+    }
+  })
 }
 
-function printPage(){
+function printPage(pedido, cliente){
+  printPagePreviewSinIVA(pedido, cliente)
   document.querySelector(".total-compra-final").innerHTML = ""
   window.print()
 }
@@ -799,28 +814,111 @@ function loadPedEnCurso(){
   socket.emit("chequear-pedidos-sinTerminar");
 }
 
-//FUNCION PARA COPIAR UNA TABLA Y ENVIARLA POR WHASTAPP NO FUNCIONAN TODAVIA
-function copiarPedido(){
-  document.getElementById("botonCopiar").addEventListener("click", function() {
-    // Seleccionar la tabla
-    const tabla = document.querySelector(".tablaImprimir");
-    
-    if (tabla) {
-      // Crear un elemento temporal para copiar la tabla
-      const elementoTemporal = document.createElement("textarea");
-      elementoTemporal.value = tabla.outerHTML; // Copia la tabla en formato HTML
-      document.body.appendChild(elementoTemporal);
-      elementoTemporal.select();
-      document.execCommand("copy");
-      document.body.removeChild(elementoTemporal);
+//FUNCION PARA COPIAR UNA TABLA Y ENVIARLA POR WHASTAPP
+//SOLO COPIA EL HTML
+function copyToClipboard(inputElement) {
+  console.log(inputElement)
+  try {
+    // Crear un rango y seleccionar el contenido de la tabla
+    var range = document.createRange();
+    range.selectNode(inputElement);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
 
-      // Mensaje de confirmación
-      alert("Tabla copiada como HTML al portapapeles.");
-    } else {
-      alert("No se encontró la tabla en el documento.");
-    }
-  });
+    // Copiar el contenido al portapapeles utilizando el API Clipboard
+    document.execCommand("copy");
+    alert("Tabla copiada al portapapeles");
+  } catch (err) {
+    console.error("Error al intentar copiar la tabla al portapapeles:", err);
+  } finally {
+    // Limpiar la selección después de copiar
+    window.getSelection().removeAllRanges();
+  }
+}
+
+//TABLA IMPRIMIR CON PRECIOS SIN IVA
+
+function printPagePreviewSinIVA(pedido, cliente){
+  console.log(pedido, cliente)
+  let totalPedido = 0
+  let envio = " "
+  if(cliente.tipoDeEnvio){
+    envio = `<div class="row"><b>Tipo de envío: ${cliente.retira} Forma de envío: ${cliente.tipoDeEnvio.forma_de_envio}</b></div>
+    <div class="row"><b>Calle: ${cliente.tipoDeEnvio.Calle} Altura: ${cliente.tipoDeEnvio.Altura} Piso: ${cliente.tipoDeEnvio.piso_departamento} Horario de entrega: ${cliente.tipoDeEnvio.Horario_Entrega}</b></div>
+    <div class="row"><b>Localidad: ${cliente.tipoDeEnvio.Localidad} Provincia: ${cliente.tipoDeEnvio.Provincia}</b></div>
+    <div class="row"><b>CP: ${cliente.tipoDeEnvio.CP} Costo Envío: ${cliente.tipoDeEnvio.Costo}</b></div>` 
+  }else{
+    envio = `<div class="row"><b>Tipo de envío: ${cliente.retira}</b></div>`
+  }
   
+  mostrador.innerHTML = `
+  <div class="tablaImprimir justify-content-center">
+  <div class="row"><b>N° de orden: ${cliente.numero_orden}</b></div>
+  <div class="row"><b>Fecha: ${cliente.fecha}</b></div>
+  <div class="row"><b>Cliente: ${cliente.nombreApellido}</b></div>
+  ${envio}
+  <div class="row"><b>Forma de pago: ${cliente.formaDePago}</b></div>
+  <div class="row"><b>Facturacion: ${cliente.facturacion.tipo} Razon Social: ${cliente.facturacion.RazonSocial} CUIT: ${cliente.facturacion.CUIT}</b></div>
+  <div class="row"><b>Forma de contacto: ${cliente.formaDeContacto.contacto} ${cliente.formaDeContacto.numero}</b></div>
+  </div>
+  <table class="table table-bordered table-hover tablaOrden">
+  <thead>
+     <tr>
+         <th>foto</th>
+         <th>codigo</th>
+         <th>titulo</th>
+         <th>precio unitario</th>
+         <th>cantidad</th>
+         <th>total</th>
+     </tr>
+    </thead>
+    <tbody class="resumen-check-out">
+      
+    </tbody>
+    <tfoot >
+      <tr class="total-compra-final">
+        
+      </tr>
+    </tfoot>
+  </table>
+  </div> 
+   
+  <button class="botonOrden" onclick="printPage()">IMPRIMIR</button>
+  <hr> 
+  <hr>
+  <hr>
+  <button class="botonOrden" onclick="sendDataMail(dataMail)">ENVIAR X MAIL</button>
+  <hr>   
+  <button class="botonOrden" onclick="refreshing()">VOLVER</button>
+  `
+  //
+  const resumenCheckOut = document.querySelector(".resumen-check-out")
+  pedido.forEach(e => {
+    const total = e.cantidad * e.precio
+    const pSiva = e.precio / 1.21
+    resumenCheckOut.innerHTML += `
+    <td class="text-center"><img src="${e.imagen}" alt="imagen table" widht="auto" height="60px"></td>
+    <td>${e.codigo}</td>
+    <td>${e.titulo}<td>
+    <td>${Number(pSiva).toFixed(2)}</td>
+    <td>${e.cantidad}</td>
+    <td>${total}</td>
+    `;
+    // <td>en stock: </td>
+    // <td>falta: </td>
+    totalPedido += total    
+  })
+  if(cliente.tipoDeEnvio){
+    document.querySelector(".total-compra-final").innerHTML = `
+    <th>Total: ${totalPedido}</th> <th>Total Mas Envío: ${totalPedido + cliente.tipoDeEnvio.Costo}</th>
+    `
+  }else{
+    document.querySelector(".total-compra-final").innerHTML = `
+    <th>Total: ${totalPedido}</th>
+    `
+  }
+  
+
 }
 
 
