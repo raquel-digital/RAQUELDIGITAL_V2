@@ -221,6 +221,9 @@ function actualizarCarrito(){
         document.getElementById("eliminar-carrito").style.display = "block"
         let id = 0
         for(const c of carrito){
+            if(c.cantidad == 0){
+                c.cantidad = 1
+            }
             const precio = c.precio * c.cantidad
             
             carritoBody.innerHTML += `
