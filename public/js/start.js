@@ -1,4 +1,4 @@
-
+const paginador = document.querySelector(".paginador")
 
 
 document.addEventListener('DOMContentLoaded', () => { 

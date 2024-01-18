@@ -32,7 +32,8 @@ const store = {
                         descripcion: data.descripcion,
                         tags: data.tags,
                         categorias: data.categorias,
-                        stock: 10
+                        stock: data.stock,
+                        CantidadDeVenta: data.CantidadDeVenta
                     }});
                     console.log(data)
             })()
@@ -50,7 +51,8 @@ const store = {
                     categorias: data.categorias,
                     stock: data.stock,
                     nombre: data.nombre,
-                    nombre2: data.nombre2
+                    nombre2: data.nombre2,
+                    CantidadDeVenta: data.CantidadDeVenta
                 }});
                 
             return { status: true};

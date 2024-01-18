@@ -251,6 +251,12 @@ io.on('connect', socket => {
             socket.emit("categ-result", result);
         })();
     }); 
+    //AGENDA
+    socket.on("data-agenda", data => {
+        const fs = require("fs")
+        fs.writeFileSync(`./public/system/dir/agenda.json`, JSON.stringify(data, null, 2));
+        socket.emit("data-agenda-res")
+    })
 });
 
 

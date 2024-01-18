@@ -115,7 +115,7 @@ socket.on("nuevos-pedidos", data => {
     //TODO ver si es comodo quiza se pueda cambiar la opcion de que 
     //cambie al pedido nuevo
     draw.pedidoFlecha(pedidos[pedidos.length-1]);
-    //socket.emit("chequear-pedidos-admin");
+    alert("HAY PEDIDOS NUEVOS");
     return;
   }
   return;
@@ -164,7 +164,7 @@ const draw = {
                 <div class="row">
                   <div class="flecha-atraz col">
                   </div>                
-                  <h5 class="col">ORDEN DE PEDIDO: ${i}</h5>
+                  <h5 class="col">ORDEN DE PEDIDO: ${i} / ${pedidos.length}</h5>
                   <div class="col flecha-adelante"></div>
                 </div>
                   <hr>

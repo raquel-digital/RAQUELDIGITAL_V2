@@ -11,7 +11,7 @@ let categoriasAdmin = undefined;
 let mostradorDeArticulos = [];
 const indice = 50;//cantidad de items a mostrar
 let mailContent;
-const toDel = [];
+let toDel = [];
 let busqueda = false;
 
 //------CARGA DESPUES DEL DOM-----------------
@@ -89,7 +89,8 @@ function showArts(art){
     mostrador.innerHTML = ""; 
 
     art.forEach(p => {
-      if(faltaStock.checked){               
+      if(faltaStock.checked){  
+        //MUESTRA SOLO LOS ARTICULOS QUE NO HAY EN STOCK             
         if(p.stock < 0){
          mostrador.innerHTML += `
          <div class="cardItem col-4">
@@ -117,6 +118,8 @@ function showArts(art){
               <input name="descripcion" value="${p.descripcion}">
               <label class="form-check-label" for="stock">Stock:</label>
               <input name="stock" value="${p.stock}">
+              <label class="form-check-label" for="stock">CANTIDAD DE VENTA:</label>
+              <input name="stock" value="${p.CantidadDeVenta}">
               <label class="form-check-label" for="codigo">Codigo:</label>
               <input name="codigo" value="${p.codigo}">
                  <button class="btn btn-danger borrarArticulo" value=${p.codigo}>BORRAR</button>
@@ -137,8 +140,9 @@ function showArts(art){
          </div>
          `
         }        
-       }
-      else if(artOcultos.checked){        
+      }
+      else if(artOcultos.checked){    
+        //MUESTRA SOLO LOS ARTICULOS QUE ESTEN OCULTOS    
        if(p.mostrar == false){
         mostrador.innerHTML += `
         <div class="cardItem col-4">
@@ -187,6 +191,7 @@ function showArts(art){
         `
        }        
       }else{
+      //******ARTICULO COMUN**********///
         mostrador.innerHTML += `
       <div class="cardItem col-4">
       <hr><div class="card border-success">
@@ -213,8 +218,11 @@ function showArts(art){
               <input name="descripcion" value="${p.descripcion}">
               <label class="form-check-label" for="stock">Stock:</label>
               <input name="stock" value="${p.stock}">
+              <label class="form-check-label" for="cantidad-venta">C/venta:</label>
+              <input name="cantidad-venta" value="${p.CantidadDeVenta}">
               <label class="form-check-label" for="codigo">Codigo:</label>
               <input name="codigo" value="${p.codigo}">
+              <hr>
               <button class="btn btn-danger borrarArticulo" value=${p.codigo}>BORRAR</button>
             </div>
             </div>
@@ -243,12 +251,10 @@ function checkMostrar(art){
             let check = document.querySelector(".check"+e.codigo);
             let input = document.querySelector(".input"+e.codigo);
             if(check != null){
-              check.checked = e.mostrar;
-              console.log("ok", e.mostrar)              
+              check.checked = e.mostrar;            
             }
             if(input != null){
-                input.value = e.tags;   
-                console.log("ok", e.tags)              
+                input.value = e.tags;            
             }
             //carta colores
             if(e.colores){
@@ -375,7 +381,7 @@ mostrador.addEventListener("click", e => {
       const tags = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[9].value;
       const img = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[2].value;
       
-      const stock = mouse.parentElement.childNodes[3].childNodes[7].childNodes[5].value;
+      const stock = mouse.parentElement.children[1].children[3].children[8].value
       const categ = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[5].value;
       
       const titulo = mouse.parentElement.children[1].children[3].children[2].value;
@@ -391,18 +397,42 @@ mostrador.addEventListener("click", e => {
       }else{
         //ACTUALIZAR ARTICULO COMUN
         const decr = mouse.parentElement.children[1].children[3].children[6].value
-        const cambioCodigo = mouse.parentElement.children[1].children[3].children[10].value;
+        const cambioCodigo = mouse.parentElement.children[1].children[3].children[12].value;
         const subtitulo = mouse.parentElement.children[1].children[3].children[4].value;
-        artChange = { codigo: codigo, mostrar: mostrar, tags: tags, imagendetalle: img, descripcion: decr, categorias: categ, stock: parseInt(stock), cambioCodigo: cambioCodigo, nombre: titulo, nombre2: subtitulo};
+        const cantVenta = mouse.parentElement.children[1].children[3].children[10].value
+        
+        artChange = { 
+          codigo: codigo, 
+          mostrar: mostrar, 
+          tags: tags, 
+          imagendetalle: img, 
+          descripcion: decr, 
+          categorias: categ, 
+          stock: parseInt(stock), 
+          cambioCodigo: cambioCodigo, 
+          nombre: titulo, 
+          nombre2: subtitulo, 
+          CantidadDeVenta: cantVenta
+        };
+        console.log(artChange, cantVenta)
       }
       
-      console.log(artChange)
       cambiosArt(artChange);
       
     } 
     if(mouse.classList.contains("borrarArticulo")){
       mouse.classList.add("toDel");
+      mouse.parentElement.parentElement.parentElement.style.background = "#f54a11"
       toDel.push({codigo: mouse.value});
+      mouse.parentElement.innerHTML = `<button class="btn btn-warning borrarArticuloCancelar" value=${mouse.value}>Cancelar</button>`
+    }
+    if(mouse.classList.contains("borrarArticuloCancelar")){
+     
+      toDel = toDel.filter(producto => producto.codigo !== mouse.value)
+      console.log(mouse.parentElement.parentElement.parentElement)
+      mouse.parentElement.parentElement.parentElement.style.background = "#fff"
+      mouse.parentElement.innerHTML = `<button class="btn btn-danger borrarArticulo" value=${mouse.value}>BORRAR</button>`
+      
     }
     if(mouse.classList.contains("eliminar-articulo")){
       
@@ -548,6 +578,9 @@ barraHerramientas.addEventListener("click", e => {
     }
     if(barraHerramientas.selectedIndex == 6){      
       actulizadorMasivo()
+    }
+    if(barraHerramientas.selectedIndex == 7){      
+      agenda()
     }
   }  
 })
@@ -1091,6 +1124,86 @@ socket.on("update-masivo-ok-res", res => {
     }
   }) 
 });
+
+async function agenda(){
+  //document.getElementById("buscadorContainer").innerHTML = ""
+  //const mostrador = document.getElementById("buscadorContainer")
+  const data = await fetch("./system/dir/agenda.json")
+  .then(response => {
+    if (!response.ok) {      
+      alert("Archivo agenda no encontrado")
+      throw new Error('La solicitud no se pudo completar.');
+    }
+    return response.json();
+  })
+  
+  const agenda = []
+  agenda.push(data)
+  entradaAgenda(agenda)
+  eventosAgenda(agenda)
+}
+
+function eventosAgenda(agenda){
+  mostrador.addEventListener("click", e => {
+    const mouse = e.target
+
+    if(mouse.id == "ingresarBoton"){
+      const data = {
+        nota: document.getElementById("ingresar").value,
+        cliente: document.getElementById("inputCliente").value,
+        fecha: crearFecha()
+      }
+      agenda.push(data)
+      console.log(agenda)
+      socket.emit("data-agenda", agenda)
+    }
+
+  })
+}
+
+function entradaAgenda(agenda){
+  mostrador.innerHTML = ` 
+    <h1>Agenda ${crearFecha()}</h1>     
+    <div class="row">
+      <p>Cliente:</p><input id="inputCliente" input value="">
+      <h5 class="card-title" style="margin-top: 2rem;">nota:</h5>
+      <textarea name="" id="ingresar" cols="6" rows="4"></textarea>
+      <button id="ingresarBoton" class="btn btn-success">Ingresar</button>
+    </div>
+    <div class="row entradasAgenda">
+    </div>
+  `
+  const entradasAgenda = document.querySelector(".entradasAgenda")
+  agenda.forEach(e => {
+    entradasAgenda.innerHTML += `
+    <div class="cardItem col-4">
+    <hr><div class="card border-success">
+    <h1>${e.cliente}</h1>
+    <h4>Fecha ingreso: ${e.fecha}</h4>
+      <div class="card-body">
+        <textarea name="" cols="6" rows="4">${e.nota}</textarea>
+        <button class="botonConfirmar btn btn-primary">CONFIRMAR</button>
+      </div>
+    </div>
+    `
+  })
+}
+
+function crearFecha() {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  let mm = today.getMonth() + 1;
+  let dd = today.getDate();
+  if (dd < 10) dd = '0' + dd;
+  if (mm < 10) mm = '0' + mm;        
+  const fecha = dd + '/' + mm + '/' + yyyy;
+  return fecha;
+}
+
+socket.on("data-agenda-res", () => {
+  agenda()
+})
+
 
 
 

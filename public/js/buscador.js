@@ -6,8 +6,7 @@ document.getElementById("barra-busqueda").addEventListener("keydown", event => {
   vacio.style.display = "none"
 
   if (event.key === "Enter") {  
-    const campoValor = document.getElementById("input-busqueda");  
-    console.log(campoValor)
+    const campoValor = document.getElementById("input-busqueda");
     if (campoValor.value.trim() === "") {
       event.preventDefault(); // Previene el envío del formulario si el campo está vacío.
       vacio.style.display = "block"      
@@ -47,7 +46,10 @@ socket.on("resultado-busqueda", data => {
     }else{
       document.getElementById("resultado-router").innerHTML = `<h1>Resultados de búsqueda para <span class="resultado-busqueda">“${data.query}”</span></h1>`
       
-      paginador.innerHTML = ""
+      if(paginador){
+        paginador.innerHTML = ""
+      }
+      
 
       if(data.result.length > indice){
         //mostradorDeArticulos = data.result       
@@ -56,4 +58,21 @@ socket.on("resultado-busqueda", data => {
         showArts(data.result)
       }
     }      
+})
+
+socket.on("resultado-vacio", () => {
+  mostrador.innerHTML = ""
+  const vacio = document.querySelector(".busqueda-vacia")
+  const bordeRojo = document.querySelector("#barra-busqueda")
+  vacio.style.display = "block"      
+  bordeRojo.style.borderColor = "#E61C1C"
+
+  document.querySelector("main").innerHTML = `<h1>Campo de busqueda vacio</h1>
+      <div  class="sin-resultados">
+        <p>Ingrese una palabra en el campo de búsqueda.</p>
+        <button id="botonInicio" type="button" class="btn-primario">Volver al inicio</button>
+      </div>`
+      document.getElementById("botonInicio").onclick = function() {
+        window.location.href = "https://raqueldigital.herokuapp.com/"
+      };
 })

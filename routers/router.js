@@ -116,9 +116,8 @@ router.get("/buscador", (req, res) => {
   let io = require('../io.js').get();  
   io.once('connect', socket => {
     (async () => {      
-        const buscar = req.query.buscar.toLocaleLowerCase();        
-        if(req.query.buscar == " "){
-          console.log("ok")
+        const buscar = req.query.buscar.toLocaleLowerCase(); 
+        if(req.query.buscar.length == 0){
           socket.emit("resultado-vacio");
           return
         }

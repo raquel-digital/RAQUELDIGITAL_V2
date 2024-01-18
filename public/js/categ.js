@@ -1,4 +1,4 @@
-const paginador = document.querySelector(".paginador")
+
 
 document.querySelector("main h1").innerHTML = ""
 mostrador.innerHTML = `
