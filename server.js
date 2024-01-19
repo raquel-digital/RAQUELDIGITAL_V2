@@ -257,7 +257,19 @@ io.on('connect', socket => {
         fs.writeFileSync(`./public/system/dir/agenda.json`, JSON.stringify(data, null, 2));
         socket.emit("data-agenda-res")
     })
-});
+    socket.on("req-cli", () => {
+        delete require.cache[require.resolve("./utils/agenda/clientes.json")];
+        const clientes = require("./utils/agenda/clientes.json")
+        socket.emit("req-cli-res", clientes)
+    })
+    socket.on("borrar-cliente", data => {
+        const fs = require("fs")
+        fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(data, null, 2));
+        delete require.cache[require.resolve("./utils/agenda/clientes.json")];
+        const clientes = require("./utils/agenda/clientes.json")
+        socket.emit("req-cli-res", clientes)
+    })
+})
 
 
 //ejs
@@ -274,7 +286,7 @@ const router = require("./routers/router");
 app.use(router);
 
 
-const fs = require("fs");
+//const fs = require("fs");
 const db = require("./db");//conexion con mongo
 
 db(process.env.mongo);

@@ -1,0 +1,530 @@
+[
+  {
+    "_id": "65846c6ff2aa126d264d0920",
+    "fecha": "21/12/2023",
+    "num_orden": 1082,
+    "cliente": " MARCE(AMIGA DE ADRI)",
+    "prepara": "Graciela",
+    "estado": "En preparacion",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65846c6ff2aa126d264d0921"
+      }
+    ],
+    "pedido": " ",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": " ",
+    "envio": " ",
+    "zona": "Zona Amarilla",
+    "__v": 0
+  },
+  {
+    "_id": "658daaa4270cba009119e651",
+    "fecha": "28/12/2023",
+    "num_orden": 1096,
+    "cliente": "TREPIAC FABIANA",
+    "prepara": "Oscar",
+    "estado": "Pagado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "658daaa4270cba009119e652"
+      }
+    ],
+    "pedido": "",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "icbc",
+    "envio": "retira",
+    "zona": "Zona Caja",
+    "__v": 0
+  },
+  {
+    "_id": "6594074f9360851adb58c5d9",
+    "fecha": "2/1/2024",
+    "num_orden": 1102,
+    "cliente": " GALFIONE Y CIA  ( FLAVIO )",
+    "prepara": "Oscar",
+    "estado": "pasamos faltas",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "6594074f9360851adb58c5da"
+      }
+    ],
+    "pedido": " PEDIDO 27/12/2023\n",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": " ",
+    "envio": " ",
+    "zona": "Zona Blanca",
+    "__v": 0
+  },
+  {
+    "_id": "659d5137cfb69d9c22eeac8d",
+    "fecha": "9/1/2024",
+    "num_orden": 1119,
+    "cliente": "IRIS MITRIANI",
+    "prepara": "Oscar",
+    "estado": "Pagado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "659d5137cfb69d9c22eeac8e"
+      }
+    ],
+    "pedido": "ORDEN 719\nRETIRA EN LOCAL",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "mercadopago",
+    "envio": "retira",
+    "zona": "Zona Caja",
+    "__v": 0
+  },
+  {
+    "_id": "659d5b8a49a5489cd2ca5fe0",
+    "fecha": "9/1/2024",
+    "num_orden": 1120,
+    "cliente": "fashion desing",
+    "prepara": "Javier",
+    "estado": "Importe pasado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "659d5b8a49a5489cd2ca5fe1"
+      }
+    ],
+    "pedido": "",
+    "faltas": " ",
+    "notas": " hubo agregado 10/1 ga8184 dos cajas",
+    "forma_de_pago": "icbc",
+    "envio": "retira",
+    "zona": "Zona Verde",
+    "__v": 0
+  },
+  {
+    "_id": "659f00e24f84f3ca64b2f411",
+    "fecha": "10/1/2024",
+    "num_orden": 1128,
+    "cliente": "REGINA",
+    "prepara": "Alejandro",
+    "estado": "En preparacion -- Falta Mercaderia",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "659f00e24f84f3ca64b2f412"
+      }
+    ],
+    "pedido": "//",
+    "faltas": " ",
+    "notas": " //",
+    "forma_de_pago": "local",
+    "envio": "retira",
+    "zona": "Zona Verde",
+    "__v": 0
+  },
+  {
+    "_id": "65a15be7ba17ce57cf939c7e",
+    "fecha": "12/1/2024",
+    "num_orden": 1130,
+    "cliente": "PBV",
+    "prepara": "Oscar",
+    "estado": "Pagado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a15be7ba17ce57cf939c7f"
+      }
+    ],
+    "pedido": "TALLE FONDO NEGRO\n",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "icbc",
+    "envio": "retira",
+    "zona": "Zona Verde",
+    "__v": 0
+  },
+  {
+    "_id": "65a2b1d029d11ba0ef751287",
+    "fecha": "13/1/2024",
+    "num_orden": 1132,
+    "cliente": "ERNESTINA CORNA",
+    "prepara": "Alejandro",
+    "estado": "Pagado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a2b1d029d11ba0ef751288"
+      }
+    ],
+    "pedido": "CI0121 LILAX8 BLANCOX7",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "local",
+    "envio": "retira",
+    "zona": "Zona Verde",
+    "__v": 0
+  },
+  {
+    "_id": "65a528312c1a8992f47bbb06",
+    "fecha": "15/1/2024",
+    "num_orden": 1133,
+    "cliente": "tuyuven",
+    "prepara": "Eric",
+    "estado": "Mercaderia encargada",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a528312c1a8992f47bbb07"
+      }
+    ],
+    "pedido": "",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "icbc",
+    "envio": "retira",
+    "zona": "Zona Amarilla",
+    "__v": 0
+  },
+  {
+    "_id": "65a54e1b2c1a8992f47c210a",
+    "fecha": "15/1/2024",
+    "num_orden": 1136,
+    "cliente": "JOSE",
+    "prepara": "Eric",
+    "estado": "En preparacion",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a54e1b2c1a8992f47c210b"
+      }
+    ],
+    "pedido": "",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "local",
+    "envio": "retira",
+    "zona": "Zona Amarilla",
+    "__v": 0
+  },
+  {
+    "_id": "65a558872c1a8992f47c41c1",
+    "fecha": "15/1/2024",
+    "num_orden": 1137,
+    "cliente": "RAMIRO",
+    "prepara": "Oscar",
+    "estado": "Importe pasado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a558872c1a8992f47c41c2"
+      }
+    ],
+    "pedido": "PARA CONFIRMAR\n",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": " ",
+    "envio": " ",
+    "zona": "Zona Estante",
+    "__v": 0
+  },
+  {
+    "_id": "65a56ea72c1a8992f47c67a2",
+    "fecha": "15/1/2024",
+    "num_orden": 1138,
+    "cliente": "vacavaliente",
+    "prepara": "Javier",
+    "estado": "Importe pasado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a56ea72c1a8992f47c67a3"
+      }
+    ],
+    "pedido": "",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "icbc",
+    "envio": "retira",
+    "zona": "Zona Verde",
+    "__v": 0
+  },
+  {
+    "_id": "65a68b443eb732e5c8b1808d",
+    "fecha": "16/1/2024",
+    "num_orden": 1140,
+    "cliente": "ANA M. T. LUCCA",
+    "prepara": "Oscar",
+    "estado": "pasamos faltas",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a68b443eb732e5c8b1808e"
+      }
+    ],
+    "pedido": "HILOS DMC\n",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": " ",
+    "envio": " ",
+    "zona": "Zona Estante",
+    "__v": 0
+  },
+  {
+    "_id": "65a69c643eb732e5c8b1a061",
+    "fecha": "16/1/2024",
+    "num_orden": 1141,
+    "cliente": "ELIAS BALTAZAR",
+    "prepara": "Oscar",
+    "estado": "pasamos faltas",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a69c643eb732e5c8b1a062"
+      }
+    ],
+    "pedido": "TAZAS DE CORPIÑIO\n",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": " ",
+    "envio": " ",
+    "zona": "Zona Blanca",
+    "__v": 0
+  },
+  {
+    "_id": "65a7dec6579bf596e5e7a6b5",
+    "fecha": "17/1/2024",
+    "num_orden": 1143,
+    "cliente": "ROMINA ALMADA",
+    "prepara": "Eric",
+    "estado": "En preparacion",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a7dec6579bf596e5e7a6b6"
+      }
+    ],
+    "pedido": "",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "icbc",
+    "envio": "expreso",
+    "zona": "Zona Amarilla",
+    "__v": 0
+  },
+  {
+    "_id": "65a7df1c579bf596e5e7e290",
+    "fecha": "17/1/2024",
+    "num_orden": 1144,
+    "cliente": " JORGE ALMADA",
+    "prepara": "Eric",
+    "estado": "En preparacion",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a7df1c579bf596e5e7e291"
+      }
+    ],
+    "pedido": " ",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "icbc",
+    "envio": "expreso",
+    "zona": "Zona Amarilla",
+    "__v": 0
+  },
+  {
+    "_id": "65a80251e7f17e90de575dc9",
+    "fecha": "17/1/2024",
+    "num_orden": 1145,
+    "cliente": "CAROLINA FERNANDEZ",
+    "prepara": "Oscar",
+    "estado": "Pagado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a80251e7f17e90de575dca"
+      }
+    ],
+    "pedido": "ORDEN  729\nRETIRA EN LOCAL\n",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "icbc",
+    "envio": "retira",
+    "zona": "Zona Blanca",
+    "__v": 0
+  },
+  {
+    "_id": "65a94d02e3cb81b58279730e",
+    "fecha": "18/1/2024",
+    "num_orden": 1148,
+    "cliente": "mariana castellano pepe",
+    "prepara": "Javier",
+    "estado": "Importe pasado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a94d02e3cb81b58279730f"
+      }
+    ],
+    "pedido": "Sigue agregando",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "icbc",
+    "envio": "retira",
+    "zona": "Zona Verde",
+    "__v": 0
+  },
+  {
+    "_id": "65a9752be3cb81b58279cfeb",
+    "fecha": "18/1/2024",
+    "num_orden": 1149,
+    "cliente": "EDUARDO BOMBERO",
+    "prepara": "Alejandro",
+    "estado": "Pedido Terminado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a9752be3cb81b58279cfec"
+      }
+    ],
+    "pedido": "CI0525 X1\nCI4950 VIOLETA PASTEL X10 (SEPARADO)\nCI4950 NARANJA X10 (SEPARADO)\n\n//",
+    "faltas": " ",
+    "notas": " //",
+    "forma_de_pago": "local",
+    "envio": "retira",
+    "zona": "Zona Blanca",
+    "__v": 0
+  },
+  {
+    "_id": "65a977a4e3cb81b58279d616",
+    "fecha": "18/1/2024",
+    "num_orden": 1150,
+    "cliente": "COMITO JORGE",
+    "prepara": "Oscar",
+    "estado": "Importe pasado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65a977a4e3cb81b58279d617"
+      }
+    ],
+    "pedido": "ORDEN  730\nRETIRA LOCAL\n",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "",
+    "envio": "",
+    "zona": "Zona Caja",
+    "__v": 0
+  },
+  {
+    "_id": "65aa83dca7ae348a1cf3249f",
+    "fecha": "19/1/2024",
+    "num_orden": 1152,
+    "cliente": "MEGAMENTAL",
+    "prepara": "Oscar",
+    "estado": "Pedido Terminado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65aa83dca7ae348a1cf324a0"
+      }
+    ],
+    "pedido": "",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": " ",
+    "envio": " ",
+    "zona": "Zona Caja",
+    "__v": 0
+  },
+  {
+    "_id": "65aa8468a7ae348a1cf32639",
+    "fecha": "19/1/2024",
+    "num_orden": 1153,
+    "cliente": "Gustavo pompones",
+    "prepara": "Javier",
+    "estado": "Importe pasado",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65aa8468a7ae348a1cf3263a"
+      }
+    ],
+    "pedido": "",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "presupuesto",
+    "envio": "retira",
+    "zona": "Zona Verde",
+    "__v": 0
+  },
+  {
+    "_id": "65aa8d9da7ae348a1cf35e2b",
+    "fecha": "19/1/2024",
+    "num_orden": 1154,
+    "cliente": "MARIA ROMO",
+    "prepara": "Oscar",
+    "estado": "pasamos faltas",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65aa8d9da7ae348a1cf35e2c"
+      }
+    ],
+    "pedido": "",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": " ",
+    "envio": " ",
+    "zona": "Zona Estante",
+    "__v": 0
+  },
+  {
+    "_id": "65aac0dea7ae348a1cf395c9",
+    "fecha": "19/1/2024",
+    "num_orden": 1155,
+    "cliente": "CECILIA DIAZ",
+    "prepara": "Eric",
+    "estado": "En preparacion",
+    "contacto": [
+      {
+        "medio": "Whatsapp",
+        "nota": "ingresado",
+        "_id": "65aac0dea7ae348a1cf395ca"
+      }
+    ],
+    "pedido": "",
+    "faltas": " ",
+    "notas": " ",
+    "forma_de_pago": "",
+    "envio": "",
+    "zona": "Zona Amarilla",
+    "__v": 0
+  }
+]
