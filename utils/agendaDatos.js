@@ -1,3 +1,5 @@
+//  SE USO PARA TOMAR LOS PEDIDOS LOCALES Y GENERAR UN LISTADO DE CLIENTES
+
 const MongoClient = require('mongodb').MongoClient;
 const fs = require("fs")
 const dotenv = require('dotenv');
@@ -36,3 +38,17 @@ db(process.env.mongo);
 
     fs.writeFileSync(`./agenda/clientes.json`, JSON.stringify(clientes.sort(), null, 2));
 })()
+
+
+//codigo que use para depurar la lista
+// const agenda = require("./agenda/clientes.json")
+// const fs = require("fs")
+// const data = []
+
+// agenda.forEach(e => {
+//     if(!data.includes(e)){
+//         data.push(e)
+//     }
+// })
+
+// fs.writeFileSync(`./agenda/clientes.json`, JSON.stringify(data.sort(), null, 2));
