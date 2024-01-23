@@ -580,7 +580,7 @@ barraHerramientas.addEventListener("click", e => {
       actulizadorMasivo()
     }
     if(barraHerramientas.selectedIndex == 7){      
-      agenda()
+      agendaInicio()
     }
   }  
 })

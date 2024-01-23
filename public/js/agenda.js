@@ -1,9 +1,10 @@
 const clientes = []
-
-async function agenda(){
+const agenda = []
+async function agendaInicio(){
     //document.getElementById("buscadorContainer").innerHTML = ""
     //const mostrador = document.getElementById("buscadorContainer")
     
+    //Obtenemos listado de los clientes en sistema
     const data = await fetch("./system/dir/agenda.json")
     .then(response => {
       if (!response.ok) {      
@@ -12,18 +13,25 @@ async function agenda(){
       }
       return response.json();
     })
-      
-    const agenda = []
+    //Obtenemos listado de tareas
+    const tareas = await fetch("./system/dir/tareasPendientes.json")
+    .then(response => {
+      if (!response.ok) {      
+        alert("Archivo agenda no encontrado")
+        throw new Error('La solicitud no se pudo completar.');
+      }
+      return response.json();
+    })    
+    
     data.forEach(e => agenda.push(e))
     
-    entradaAgenda(agenda)
-    eventosAgenda(agenda)
+    entradaTareas(tareas, agenda)
+    eventosAgenda(agenda, tareas)
     socket.emit("req-cli")
   }
 
   //obtenemos lista de clientes
   socket.on("req-cli-res", data => {
-    console.log("DATA CLIENTES RECIBIDA")
 
     data.forEach(e => {
         const str = e.replace(/_/g, " ")
@@ -39,7 +47,7 @@ async function agenda(){
 
   })
   
-  function eventosAgenda(agenda){
+  function eventosAgenda(agenda, tareas){
     mostrador.addEventListener("click", e => {
       const mouse = e.target
   
@@ -62,47 +70,50 @@ async function agenda(){
         socket.emit("borrar-cliente", emit)
       }
       if(mouse.id == "listadoClientes"){
-        let exist = false
 
-        agenda.forEach(e => {
-          if(e.cliente == mouse.value){
-            exist = true
-            crearTarjetaCliente(e.cliente)
-          }
-        })
-        if(!exist){
-          const nuevoCliente = {            
-            cliente: mouse.value,
-            fecha_ingreso: "Por lista " + crearFecha(),
-            nota: " ",
-          }
-          socket.emit("data-agenda", nuevoCliente)
-          crearTarjetaCliente(nuevoCliente.cliente)
-          //TODO PISA LOS DATOS ANTERIORES ENVIAR AGENDA ENTERA
+          crearTarjetaCliente(mouse.value, agenda)
+      }
+      
+      if(mouse.id == "ingresar-tarea"){
+
+        const tarea = {
+          cliente: document.getElementById("searchInputTareas").value,
+          tipo_de_tarea: document.getElementById("tipo-tarea").value,
+          tarea: document.getElementById("tareaIngreso").value,
+          fecha: crearFecha(),
+          estado: "pendiente"
         }
-        
-    }
-  
+        console.log(tarea)
+        tareas.push(tarea)
+        socket.emit("tarea-nueva", tareas)
+      }
     })
     //barra que completa busqueda de clientes
-    completarBusqueda()
+    completarBusqueda(agenda, 'searchInput', 'suggestionsContainer')
+    completarBusqueda(agenda, "searchInputTareas", "suggestionsContainerTareas")
   }
+
+  //recibimos las tareas recien ingresadas
+  socket.on("tarea-nueva-res", update => {
+    entradaTareas(update, agenda)
+  })
   
-  function entradaAgenda(agenda){
-    mostrador.innerHTML = pantallaInicio()
+  function entradaTareas(tareas, agenda){
+    mostrador.innerHTML = pantallaInicio(agenda)
     const entradasAgenda = document.querySelector(".entradasAgenda")
-    agenda.forEach(e => {
-      entradasAgenda.innerHTML += `
-      <div class="cardItem col-4">
-      <hr><div class="card border-success">
-      <h1>${e.cliente}</h1>
-      <h4>Fecha ingreso: ${e.fecha}</h4>
-        <div class="card-body">
-          <textarea name="" cols="6" rows="4">${e.nota}</textarea>
-          <button class="botonConfirmar btn btn-primary">CONFIRMAR</button>
-        </div>
-      </div>
+    entradasAgenda.innerHTML = `
+    <h1>TAREAS PENDIENTES:</h1>
+      <ul style="list-style-type: none; padding: 0; width: 300px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"></ul>
       `
+    tareas.forEach(e => {      
+      entradasAgenda.innerHTML += `
+        <li style="padding: 12px; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center;">
+            <label style="flex: 1; display: flex; align-items: center; cursor: pointer;">
+                CIENTE: ${e.cliente} FECHA: ${e.fecha} Tipo: ${e.tipo_de_tarea} TAREA: ${e.tarea}
+                <input type="checkbox" style="margin-left: 10px; cursor: pointer;">
+            </label>
+        </li>
+        `
     })
   }
 
@@ -125,9 +136,9 @@ async function agenda(){
 
 
   //completar input busqueda con clientes
-  function completarBusqueda(){
-    const searchInput = document.getElementById('searchInput');
-    const suggestionsContainer = document.getElementById('suggestionsContainer');
+  function completarBusqueda(agenda, input, listado){
+    const searchInput = document.getElementById(input);
+    const suggestionsContainer = document.getElementById(listado);
 
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.trim();
@@ -148,7 +159,7 @@ async function agenda(){
             // También puedes ocultar las sugerencias o realizar otra lógica aquí
             suggestionsContainer.style.display = 'none';
             //esccribimos la tarjeta
-            crearTarjetaCliente(suggestion)
+            crearTarjetaCliente(suggestion, agenda)
         });
 
         suggestionsContainer.appendChild(suggestionElement);
@@ -184,7 +195,28 @@ function borrarPedido(cliente){
 
 //***********  INNERS HTML ************** */
 
-function crearTarjetaCliente(d){
+function crearTarjetaCliente(d, agenda){
+
+  let cliente = agenda.filter(objeto => objeto.cliente === d);  
+
+  if(!cliente){
+    cliente = {    
+      fecha_ingreso: "Por lista " + crearFecha(),
+      fecha: "Por lista " + crearFecha(),        
+      cliente: d,
+      facturacion_tipo: "",
+      contacto: "",      
+      nota: " ",
+      pedidos_activos: [],
+      pedidos_anteriores: [],
+      articulos_lleva: []
+    }
+    notas = " "
+    agenda.push(cliente)  
+  }
+
+
+  
   const entradasAgenda = document.querySelector(".entradasAgenda")
   entradasAgenda.innerHTML = `<div class="row">
               <hr>
@@ -192,17 +224,17 @@ function crearTarjetaCliente(d){
               <hr><div class="card border-success">        
                 <div class="card-body">
                 <div class="row">
-                  <h5 class="col">${d}</h5>
+                  <h5 class="col">${cliente.cliente}</h5>
                 </div>
                   <hr>
-                  <h2 class="card-title">CLIENTE: ${d} FECHA: ${crearFecha()} DIAS EN PREPARACION: TODO FECHA INGRESO: TODO </h2>   
+                  <h2 class="card-title">CLIENTE: ${cliente.cliente} FECHA: ${crearFecha()} DIAS EN PREPARACION: TODO FECHA INGRESO: TODO </h2>   
                   <h6></h6>       
                   <hr>
                   <div class="row">
                   <div class="col">
-                  <a href="#num${d}colapse" data-bs-toggle="collapse" class=" float-left dropdown-toggle btn-outline-info btn-sm bg-info" style="color: white;">Pedido</a>
+                  <a href="#num${cliente.cliente}colapse" data-bs-toggle="collapse" class=" float-left dropdown-toggle btn-outline-info btn-sm bg-info" style="color: white;">Pedido</a>
                           
-                          <div class="collapse" id="num${d}colapse">
+                          <div class="collapse" id="num${cliente.cliente}colapse">
                               <hr>
                               <table class="table table-striped table-hover tablaOrden">
                                 <thead>
@@ -215,7 +247,7 @@ function crearTarjetaCliente(d){
                                     <th>borrar</th>
                                 </tr>
                                 </thead>
-                                <tbody id="list${d}">
+                                <tbody id="list${cliente.cliente}">
                                     
                                 </tbody>
                                 <tfoot >
@@ -228,10 +260,10 @@ function crearTarjetaCliente(d){
                             </div>
                             <hr>
                   
-                    <a href="#faltas${d}colapse" data-bs-toggle="collapse" class=" float-left dropdown-toggle btn-outline-info btn-sm bg-info" style="color: white;">Faltas</a>
+                    <a href="#faltas${cliente.cliente}colapse" data-bs-toggle="collapse" class=" float-left dropdown-toggle btn-outline-info btn-sm bg-info" style="color: white;">Faltas</a>
                     <hr> 
 
-                            <div class="collapse" id="faltas${d}colapse">
+                            <div class="collapse" id="faltas${cliente.cliente}colapse">
                               <hr>
                               <table class="table table-striped table-hover tablaOrden">
                                 <thead>
@@ -244,7 +276,7 @@ function crearTarjetaCliente(d){
                                     <th>borrar</th>
                                 </tr>
                                 </thead>
-                                <tbody id="list-faltas${d}">
+                                <tbody id="list-faltas${cliente.cliente}">
                                     
                                 </tbody>
                                 <tfoot >
@@ -256,7 +288,7 @@ function crearTarjetaCliente(d){
                                                                     
                             </div>
                             <h6>Preparado por:</h6>
-                    <select name="" id="preparado${d}">
+                    <select name="" id="preparado${cliente.cliente}">
                       <option value="Oscar" selected>Oscar</option>
                       <option value="Javier" >Javier</option>        
                       <option value="Alejandro" >Alejandro</option>
@@ -270,7 +302,7 @@ function crearTarjetaCliente(d){
 
                     <hr>
                     <h6>Estado</h6>
-                    <select name="" id="estado${d}">
+                    <select name="" id="estado${cliente.cliente}">
                       <option value="Pagado" >Pagado</option>
                       <option value="Pedido Sin Asignar">Pedido Sin Asignar</option>
                       <option value="En preparacion" >En preparacion</option> 
@@ -284,11 +316,11 @@ function crearTarjetaCliente(d){
                     </select>
                     <hr>
                     <h6>Notas:</h6>
-                    <textarea name="" id="notasText${d}" cols="5" rows="5">${d}</textarea>
+                    <textarea name="" id="notasText${cliente.cliente}" cols="5" rows="5">${cliente.cliente.nota}</textarea>
 
                           <div class="card-footer row">
-                            <button class="botonConfirmar btn btn-primary" style="margin-right: 20px;">Corfirmar</button>
-                            <button class="btn btn-danger" style="" onclick="borrarPedido('${d}')">Borrar</button>
+                            <button class="botonConfirmar btn btn-primary" data-cliente="${JSON.stringify(cliente)}" style="margin-right: 20px;">Corfirmar</button>
+                            <button class="btn btn-danger" style="" onclick="borrarPedido('${cliente.cliented}')">Borrar</button>
                           </div>
                       </div>
                   </div>
@@ -300,7 +332,7 @@ function crearTarjetaCliente(d){
 }
 
 
-function pantallaInicio(){
+function pantallaInicio(agenda){
   const inicio = `
   <style>
       body {
@@ -357,16 +389,47 @@ function pantallaInicio(){
 
     <div class="row" style="margin-top: 10%;">
     <div class="card col-6" style="background-color: rgb(195, 195, 195); margin-top: 6rem; width: 60rem;">
-          <h5 class="card-title">Ingreso De Cliente:</h5>
+          <h5 class="card-title">Ingreso de clientes:</h5>
       <p>Cliente:</p><input id="inputCliente" input value="">
       <h5 class="card-title" style="margin-top: 2rem;">nota:</h5>
       <textarea name="" id="ingresar" cols="6" rows="4"></textarea>
       <button id="ingresarBoton" class="btn btn-success" style="margin-bottom: 1rem;">Ingresar</button>
     </div>
     </div>
+
+    <hr>  
+
+    <div class="ingresoPedido card col-6" style="background-color: rgb(195, 195, 195); margin-top: 6rem; width: 60rem;">
+            <h5 class="card-title">Ingreso De Tareas:</h5>
+            <div class="card-body">
+
+            <div class="search-container">
+            <h4>Cliente:</h4>
+              <input type="text" class="search-input" id="searchInputTareas" placeholder="Buscar...">
+              <div class="suggestions-container" id="suggestionsContainerTareas"></div>
+            </div>
+                    
+                    <label for="contacto">Tipo de tarea:</label>
+                    <select name="" id="tipo-tarea">
+                        <option value="Tarea General">Tarea General</option>
+                        <option value="Modificaciones en web">Modificaciones en web</option>
+                        <option value="Actualizacion Articulos Web">Actualizacion Articulos Web</option>
+                        <option value="Encargar Artículo">Encargar Artículo</option>
+                    </select>
+                    
+                    <div class="row">
+                        <h5 class="card-title" style="margin-top: 2rem;">Tarea:</h5>
+                        <textarea name="" id="tareaIngreso" cols="6" rows="4"></textarea>
+                    </div>
+                    </div>
+                    
+                    <button id="ingresar-tarea" class="btn btn-primary" style="width: 30rem; margin-top: 2rem; margin-left: 16rem; margin-bottom: 1rem;">Enviar</button>
+                
+            </div>
+     
+        </div>
     
   `
-
   return inicio
 }
   

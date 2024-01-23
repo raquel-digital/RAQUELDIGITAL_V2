@@ -11,7 +11,8 @@ function buscador(query){
         if(e.nombre.includes(query.toUpperCase())){
             return e
         }
-        if(e.nombre2.includes(query)){
+        const checkNom2 = e.nombre2.toUpperCase()
+        if(checkNom2.includes(query.toUpperCase())){
             return e
         }
     })

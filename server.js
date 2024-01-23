@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 const requer  = require("./utils/config")
 const controller = require("./api/arts/controller");
-
+const fs = require("fs")
 
 //socket
 const io = require('./io.js').init(http);
@@ -252,8 +252,7 @@ io.on('connect', socket => {
         })();
     }); 
     //AGENDA
-    socket.on("data-agenda", data => {
-        const fs = require("fs")
+    socket.on("data-agenda", data => {        
         fs.writeFileSync(`./public/system/dir/agenda.json`, JSON.stringify(data, null, 2));
         socket.emit("data-agenda-res")
     })
@@ -262,12 +261,18 @@ io.on('connect', socket => {
         const clientes = require("./utils/agenda/clientes.json")
         socket.emit("req-cli-res", clientes)
     })
-    socket.on("borrar-cliente", data => {
-        const fs = require("fs")
+    socket.on("borrar-cliente", data => {   
+        //fallo borra todo TODO     
         fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(data, null, 2));
         delete require.cache[require.resolve("./utils/agenda/clientes.json")];
         const clientes = require("./utils/agenda/clientes.json")
         socket.emit("req-cli-res", clientes)
+    })
+    socket.on("tarea-nueva", data => {
+        fs.writeFileSync(`./public/system/dir/tareasPendientes.json`, JSON.stringify(data, null, 2));
+        delete require.cache[require.resolve("./public/system/dir/tareasPendientes.json")];
+        const update = require("./public/system/dir/tareasPendientes.json")
+        socket.emit("tarea-nueva-res", update)
     })
 })
 
