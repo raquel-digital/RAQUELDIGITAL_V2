@@ -10,6 +10,9 @@ const middleware = {
         }
         if(log.user === config.admin && log.pass === config.padmin){
             return true;
+        }
+        else  if(log.user === config.admin && log.pass === config.padminXavi){
+            return "true agenda ok";    
         }else{
             return false;
         }

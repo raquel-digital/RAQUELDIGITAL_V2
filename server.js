@@ -252,22 +252,22 @@ io.on('connect', socket => {
         })();
     }); 
     //AGENDA
-    socket.on("data-agenda", data => {        
-        fs.writeFileSync(`./public/system/dir/agenda.json`, JSON.stringify(data, null, 2));
-        socket.emit("data-agenda-res")
-    })
+    // socket.on("data-agenda", data => {        
+    //     fs.writeFileSync(`./public/system/dir/agenda.json`, JSON.stringify(data, null, 2));
+    //     socket.emit("data-agenda-res")
+    // })
     socket.on("req-cli", () => {
         delete require.cache[require.resolve("./utils/agenda/clientes.json")];
         const clientes = require("./utils/agenda/clientes.json")
         socket.emit("req-cli-res", clientes)
     })
-    socket.on("borrar-cliente", data => {   
-        //fallo borra todo TODO     
-        fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(data, null, 2));
-        delete require.cache[require.resolve("./utils/agenda/clientes.json")];
-        const clientes = require("./utils/agenda/clientes.json")
-        socket.emit("req-cli-res", clientes)
-    })
+    // socket.on("borrar-cliente", data => {   
+    //     //fallo borra todo TODO     
+    //     fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(data, null, 2));
+    //     delete require.cache[require.resolve("./utils/agenda/clientes.json")];
+    //     const clientes = require("./utils/agenda/clientes.json")
+    //     socket.emit("req-cli-res", clientes)
+    // })
     socket.on("tarea-nueva", data => {
         fs.writeFileSync(`./public/system/dir/tareasPendientes.json`, JSON.stringify(data, null, 2));
         delete require.cache[require.resolve("./public/system/dir/tareasPendientes.json")];

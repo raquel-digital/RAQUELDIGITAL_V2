@@ -162,7 +162,19 @@ router.get('/profile', requiresAuth(), function (req, res, next) {
 
 let adminPedidos = false
 router.get("/admin", (req, res, next) => {
-    if(middleware.validAdmin(log)){
+  const result = middleware.validAdmin(log)
+    if(result == "true agenda ok"){
+      res.sendFile(path.resolve("./public/index-admin.html"))
+      let io = require('../io.js').get();
+      io.once('connect', socket => {
+        (async () => {
+            socket.emit("log-agenda", result);
+        })();
+      })
+      log = undefined;
+      return   
+    }
+    if(result == true){
       log = undefined; 
       adminPedidos = true     
       res.sendFile(path.resolve("./public/index-admin.html"))

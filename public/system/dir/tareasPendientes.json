@@ -1,9 +1,68 @@
-[ 
+[
   {
     "cliente": "JESICA FERNANDEZ",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "cuando entra HE2505",
-    "fecha": "22/01/2024",
-    "estado": "pendiente"
+    "tarea": "cuando entra HE2505 SE PUEDE CONSEGUIR PERO EL PRECIO ES EL DOBLE AVISAR",
+    "fecha": "22/01/2024"
+  },
+  {
+    "cliente": "Mario Jimenez",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "pedido web falta MQ0036 plateado por 100 AVISAR QUE NO TIENEN EN STOCK",
+    "fecha": "23/01/2024"
+  },
+  {
+    "cliente": "BEJMUK PAULA SABRINA",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "CI6000 rojo",
+    "fecha": "23/01/2024"
+  },
+  {
+    "cliente": "vanina 972",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "CI4950 naranja fuerte x3 entra mañana",
+    "fecha": "23/01/2024"
+  },
+  {
+    "cliente": "MEGAMENTAL",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "le mandamos factura por 5 la5010 cualquier color tiene que abonar",
+    "fecha": "23/01/2024"
+  },
+  {
+    "cliente": "BOUTIQUE MERCERIA",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "Mando 3 e-checks 240 x2 y uno de 232. Uno de 240 reboto. Deuda 522281 acredito 472000. DEBE 50281.",
+    "fecha": "23/01/2024"
+  },
+  {
+    "cliente": "papa",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "coyal pendiente // karina entro el martes",
+    "fecha": "23/01/2024"
+  },
+  {
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "El select para filtrar deberia de ejecutarse en 2 clicks",
+    "fecha": "23/01/2024"
+  },
+  {
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "Chequear depositos del lunes a fecha ",
+    "fecha": "23/01/2024"
+  },
+  {
+    "cliente": "FASHION DESIGN",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "pedido listo entro RC1000 negro consulte si agregaban algo sin respuesta",
+    "fecha": "23/01/2024"
+  },
+  {
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Incluir JSON de borrado para mantener un historial.",
+    "fecha": "23/01/2024"
   }
 ]

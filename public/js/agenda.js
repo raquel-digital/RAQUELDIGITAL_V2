@@ -1,5 +1,15 @@
 const clientes = []
 const agenda = []
+//tareas para agregar al select
+const tareasTipo = `
+  <option value="Tarea General">Tarea General</option>
+  <option value="Modificaciones en web">Modificaciones en web</option>
+  <option value="Actualizacion Articulos Web">Actualizacion Articulos Web</option>
+  <option value="Encargar Artículo">Encargar Artículo</option>
+  <option value="Mantenimiento Agenda">Mantenimiento Agenda</option>
+
+  <option value="Mantenimiento Agenda">Todo</option>
+`
 async function agendaInicio(){
     //document.getElementById("buscadorContainer").innerHTML = ""
     //const mostrador = document.getElementById("buscadorContainer")
@@ -32,70 +42,67 @@ async function agendaInicio(){
 
   //obtenemos lista de clientes
   socket.on("req-cli-res", data => {
-
     data.forEach(e => {
         const str = e.replace(/_/g, " ")
         clientes.push(str)
     })
-
-    //CREA UN SELECT CON TODOS LOS CLIENTES
-    const select = document.getElementById("listadoClientes")
-    select.innerHTML = `<option value="" disabled>Seleccionar Cliente</option>`;
-
-    const optionsHTML = clientes.map(e => `<option value="${e}">${e}</option>`).join('');
-    select.innerHTML += optionsHTML;
-
   })
   
   function eventosAgenda(agenda, tareas){
     mostrador.addEventListener("click", e => {
       const mouse = e.target
-  
-      if(mouse.id == "ingresarBoton"){
-        const data = {
-          nota: document.getElementById("ingresar").value,
-          cliente: document.getElementById("inputCliente").value,
-          fecha: crearFecha()
-        }
-        agenda.push(data)
-        socket.emit("data-agenda", agenda)
-      }
-      if(mouse.classList.contains("borrarCliente")){
-        console.log(mouse.value)
-        const data = clientes.filter(e => e != mouse.value)
-        const emit = data.map(e => {           
-                const str = e.replace(" ", "_")
-                return str
-        })
-        socket.emit("borrar-cliente", emit)
-      }
-      if(mouse.id == "listadoClientes"){
 
-          crearTarjetaCliente(mouse.value, agenda)
-      }
-      
       if(mouse.id == "ingresar-tarea"){
 
         const tarea = {
           cliente: document.getElementById("searchInputTareas").value,
           tipo_de_tarea: document.getElementById("tipo-tarea").value,
           tarea: document.getElementById("tareaIngreso").value,
-          fecha: crearFecha(),
-          estado: "pendiente"
+          fecha: crearFecha()
         }
         console.log(tarea)
         tareas.push(tarea)
         socket.emit("tarea-nueva", tareas)
+
+      }       
+      if(mouse.classList.contains("botonConfirmarTarea")){       
+        tarjetaTarea(tareas[mouse.value])
+      }
+      if(mouse.classList.contains("botonConfirmarCambioTarea")){       
+        tareas.forEach(e => {
+        if(e.cliente === mouse.value){            
+          e.tipo_de_tarea = document.getElementById("selectDeEstadoTarea").value
+          e.tarea = document.getElementById("notasText").value
+        }
+        })
+        //updateamos las tareas
+        socket.emit("tarea-nueva", tareas)
+      }
+      if(mouse.classList.contains("borrarPedido")){
+          const confi = confirm("Deseas borrar esta tarea?")
+          if(confi){
+            const borrar = tareas.filter(e => e.cliente != mouse.value)
+            //updateamos las tareas
+            socket.emit("tarea-nueva", borrar)
+          }
+      }
+      //filtrar tareas 
+      if(mouse.id == "tipo-tarea-filtrar"){
+        if(mouse.value == "Todos"){
+          entradaTareas(tareas, agenda)
+        }else{
+          const filtrar = tareas.filter(e => e.tipo_de_tarea === mouse.value)
+          entradaTareas(filtrar, agenda)
+        }
       }
     })
     //barra que completa busqueda de clientes
-    completarBusqueda(agenda, 'searchInput', 'suggestionsContainer')
     completarBusqueda(agenda, "searchInputTareas", "suggestionsContainerTareas")
   }
 
   //recibimos las tareas recien ingresadas
   socket.on("tarea-nueva-res", update => {
-    entradaTareas(update, agenda)
+    agendaInicio()
   })
   
   function entradaTareas(tareas, agenda){
@@ -105,16 +112,25 @@ async function agendaInicio(){
     <h1>TAREAS PENDIENTES:</h1>
       <ul style="list-style-type: none; padding: 0; width: 300px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"></ul>
       `
-    tareas.forEach(e => {      
+    let i = 0  
+    tareas.forEach(e => {  
+      //checkbox <input type="checkbox" style="margin-left: 10px; cursor: pointer;">    
+      
       entradasAgenda.innerHTML += `
+      <hr>
         <li style="padding: 12px; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center;">
-            <label style="flex: 1; display: flex; align-items: center; cursor: pointer;">
-                CIENTE: ${e.cliente} FECHA: ${e.fecha} Tipo: ${e.tipo_de_tarea} TAREA: ${e.tarea}
-                <input type="checkbox" style="margin-left: 10px; cursor: pointer;">
-            </label>
-        </li>
+            <p style="flex: 1; display: flex; align-items: center; cursor: pointer;">
+            FECHA: ${e.fecha} CIENTE: ${e.cliente}  ${e.tipo_de_tarea} ${e.tarea}
+            <button class="botonConfirmarTarea btn btn-primary" value="${i}" style="margin-left: 20px;">Ver</button>    
+            </p>
+        </li>        
         `
+        i++
     })
+  }
+
+  function modificarTarea(tarea){
+    
   }
 
   // UTILS
@@ -159,7 +175,7 @@ async function agendaInicio(){
             // También puedes ocultar las sugerencias o realizar otra lógica aquí
             suggestionsContainer.style.display = 'none';
             //esccribimos la tarjeta
-            crearTarjetaCliente(suggestion, agenda)
+            //crearTarjetaCliente(suggestion, agenda)
         });
 
         suggestionsContainer.appendChild(suggestionElement);
@@ -185,142 +201,31 @@ function generateSuggestions(query) {
     return suggestions;
 }
 
-//borrar pedidos todo
-function borrarPedido(cliente){
-  const check = confirm("Borrar?", cliente)
-  if(check){
-    alert("MOCK DE BORRADO DE " + cliente)
-  }
-}
-
 //***********  INNERS HTML ************** */
 
-function crearTarjetaCliente(d, agenda){
-
-  let cliente = agenda.filter(objeto => objeto.cliente === d);  
-
-  if(!cliente){
-    cliente = {    
-      fecha_ingreso: "Por lista " + crearFecha(),
-      fecha: "Por lista " + crearFecha(),        
-      cliente: d,
-      facturacion_tipo: "",
-      contacto: "",      
-      nota: " ",
-      pedidos_activos: [],
-      pedidos_anteriores: [],
-      articulos_lleva: []
-    }
-    notas = " "
-    agenda.push(cliente)  
-  }
-
-
-  
-  const entradasAgenda = document.querySelector(".entradasAgenda")
-  entradasAgenda.innerHTML = `<div class="row">
+function tarjetaTarea(tarea){
+  document.querySelector(".entradasAgenda").innerHTML = `<div class="row">
               <hr>
               <div class="cardItem">
               <hr><div class="card border-success">        
                 <div class="card-body">
-                <div class="row">
-                  <h5 class="col">${cliente.cliente}</h5>
-                </div>
-                  <hr>
-                  <h2 class="card-title">CLIENTE: ${cliente.cliente} FECHA: ${crearFecha()} DIAS EN PREPARACION: TODO FECHA INGRESO: TODO </h2>   
-                  <h6></h6>       
-                  <hr>
-                  <div class="row">
-                  <div class="col">
-                  <a href="#num${cliente.cliente}colapse" data-bs-toggle="collapse" class=" float-left dropdown-toggle btn-outline-info btn-sm bg-info" style="color: white;">Pedido</a>
-                          
-                          <div class="collapse" id="num${cliente.cliente}colapse">
-                              <hr>
-                              <table class="table table-striped table-hover tablaOrden">
-                                <thead>
-                                <tr>
-                                    <th>codigo</th>
-                                    <th>titulo</th>
-                                    <th>precio unitario</th>
-                                    <th>cantidad</th>
-                                    <th>total</th>
-                                    <th>borrar</th>
-                                </tr>
-                                </thead>
-                                <tbody id="list${cliente.cliente}">
-                                    
-                                </tbody>
-                                <tfoot >
-                                    <tr class="total-compra-final">
-                                    
-                                    </tr>
-                                    </tfoot>
-                                </table> 
-                                                                    
-                            </div>
-                            <hr>
+                  <h2 class="card-title">CLIENTE: ${tarea.cliente} FECHA: ${crearFecha()} DIAS EN PREPARACION: TODO FECHA INGRESO: TODO </h2>   
                   
-                    <a href="#faltas${cliente.cliente}colapse" data-bs-toggle="collapse" class=" float-left dropdown-toggle btn-outline-info btn-sm bg-info" style="color: white;">Faltas</a>
-                    <hr> 
-
-                            <div class="collapse" id="faltas${cliente.cliente}colapse">
-                              <hr>
-                              <table class="table table-striped table-hover tablaOrden">
-                                <thead>
-                                <tr>
-                                    <th>codigo</th>
-                                    <th>titulo</th>
-                                    <th>precio unitario</th>
-                                    <th>cantidad</th>
-                                    <th>fecha de entrega</th>
-                                    <th>borrar</th>
-                                </tr>
-                                </thead>
-                                <tbody id="list-faltas${cliente.cliente}">
-                                    
-                                </tbody>
-                                <tfoot >
-                                    <tr class="total-compra-final">
-                                    
-                                    </tr>
-                                    </tfoot>
-                                </table> 
-                                                                    
-                            </div>
-                            <h6>Preparado por:</h6>
-                    <select name="" id="preparado${cliente.cliente}">
-                      <option value="Oscar" selected>Oscar</option>
-                      <option value="Javier" >Javier</option>        
-                      <option value="Alejandro" >Alejandro</option>
-                      <option value="Eric" >Eric</option>
-                      <option value="Graciela" >Graciela</option>
-                      <option value="Karina" >Karina</option>
-                      <option value="Mario" >Mario</option>
-                    </select>
-                    <hr> 
-                    </div>
-
-                    <hr>
-                    <h6>Estado</h6>
-                    <select name="" id="estado${cliente.cliente}">
-                      <option value="Pagado" >Pagado</option>
-                      <option value="Pedido Sin Asignar">Pedido Sin Asignar</option>
-                      <option value="En preparacion" >En preparacion</option> 
-                      <option value="Pasamos faltas" >Pasamos faltas</option> 
-                      <option value="Sumando al pedido">Sumando al pedido</option>        
-                      <option value="Importe pasado" >Importe pasado</option>
-                      <option value="Reiteramos aviso importe">Reiteramos aviso importe</option>
-                      <option value="Listo para enviar" >Listo para enviar</option>
-                      <option value="Listo para que retire" >Listo para que retire</option>
-                      <option value="Salio">Salio</option>
-                    </select>
+                  <h6>Tipo Tarea:</h6>
+                  <select id="selectDeEstadoTarea">
+                  <option value="${tarea.tipo_de_tarea}" selected>${tarea.tipo_de_tarea}</option>
+                    ${tareasTipo}        
+                  </select> 
+                    
                     <hr>
                     <h6>Notas:</h6>
-                    <textarea name="" id="notasText${cliente.cliente}" cols="5" rows="5">${cliente.cliente.nota}</textarea>
-
+                    <div class="row">
+                      <textarea name="" id="notasText" cols="5" rows="5">${tarea.tarea}</textarea>
+                    </div>
+                    <hr>
                           <div class="card-footer row">
-                            <button class="botonConfirmar btn btn-primary" data-cliente="${JSON.stringify(cliente)}" style="margin-right: 20px;">Corfirmar</button>
-                            <button class="btn btn-danger" style="" onclick="borrarPedido('${cliente.cliented}')">Borrar</button>
+                            <button value="${tarea.cliente}" class="botonConfirmarCambioTarea btn btn-primary" style="margin-right: 20px;">Corfirmar / VOLVER</button>
+                            <button value="${tarea.cliente}" class="btn btn-danger borrarPedido" >Borrar</button>
                           </div>
                       </div>
                   </div>
@@ -373,29 +278,17 @@ function pantallaInicio(agenda){
       }
     </style>
 
-      <h1>Agenda ${crearFecha()}</h1>
-      <div class="row">
-        <div class="search-container">
-          <input type="text" class="search-input" id="searchInput" placeholder="Buscar...">
-          <div class="suggestions-container" id="suggestionsContainer"></div>
-        </div> 
-      </div>
-    
-    <select id="listadoClientes">        
-    </select>   
+      <h1>Fecha: ${crearFecha()}</h1>
+
+      <h1>Filtrar Por:</h1>
+      <select name="" id="tipo-tarea-filtrar">
+          ${tareasTipo}
+      </select>
 
     <div class="row entradasAgenda">
     </div>
 
-    <div class="row" style="margin-top: 10%;">
-    <div class="card col-6" style="background-color: rgb(195, 195, 195); margin-top: 6rem; width: 60rem;">
-          <h5 class="card-title">Ingreso de clientes:</h5>
-      <p>Cliente:</p><input id="inputCliente" input value="">
-      <h5 class="card-title" style="margin-top: 2rem;">nota:</h5>
-      <textarea name="" id="ingresar" cols="6" rows="4"></textarea>
-      <button id="ingresarBoton" class="btn btn-success" style="margin-bottom: 1rem;">Ingresar</button>
-    </div>
-    </div>
+    
 
     <hr>  
 
@@ -411,10 +304,7 @@ function pantallaInicio(agenda){
                     
                     <label for="contacto">Tipo de tarea:</label>
                     <select name="" id="tipo-tarea">
-                        <option value="Tarea General">Tarea General</option>
-                        <option value="Modificaciones en web">Modificaciones en web</option>
-                        <option value="Actualizacion Articulos Web">Actualizacion Articulos Web</option>
-                        <option value="Encargar Artículo">Encargar Artículo</option>
+                        ${tareasTipo}
                     </select>
                     
                     <div class="row">
