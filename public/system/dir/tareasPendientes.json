@@ -2,67 +2,64 @@
   {
     "cliente": "JESICA FERNANDEZ",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "cuando entra HE2505 SE PUEDE CONSEGUIR PERO EL PRECIO ES EL DOBLE AVISAR",
-    "fecha": "22/01/2024"
+    "tarea": "Avisar 25/01 cuando entren HE2505 x3(ultima modificacion: 24/01/2024)",
+    "fecha": "22/01/2024",
+    "id": 0
   },
   {
     "cliente": "Mario Jimenez",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "pedido web falta MQ0036 plateado por 100 AVISAR QUE NO TIENEN EN STOCK",
-    "fecha": "23/01/2024"
+    "tarea": "Buscar modelo alternativo MQ0036 subio mucho de precio(ultima modificacion: 24/01/2024)",
+    "fecha": "23/01/2024",
+    "id": 1
   },
   {
     "cliente": "BEJMUK PAULA SABRINA",
     "tipo_de_tarea": "Encargar Artículo",
     "tarea": "CI6000 rojo",
-    "fecha": "23/01/2024"
+    "fecha": "23/01/2024",
+    "id": 2
   },
   {
     "cliente": "vanina 972",
     "tipo_de_tarea": "Encargar Artículo",
     "tarea": "CI4950 naranja fuerte x3 entra mañana",
-    "fecha": "23/01/2024"
-  },
-  {
-    "cliente": "MEGAMENTAL",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "le mandamos factura por 5 la5010 cualquier color tiene que abonar",
-    "fecha": "23/01/2024"
+    "fecha": "23/01/2024",
+    "id": 3
   },
   {
     "cliente": "BOUTIQUE MERCERIA",
     "tipo_de_tarea": "Tarea General",
-    "tarea": "Mando 3 e-checks 240 x2 y uno de 232. Uno de 240 reboto. Deuda 522281 acredito 472000. DEBE 50281.",
-    "fecha": "23/01/2024"
+    "tarea": "Mando 3 e-checks 240 x2 y uno de 232. Uno de 240 reboto. Deuda 522281 acredito 472000. DEBE 50281.\n// hoy 24 acreito el e-che abono en total 712000",
+    "fecha": "23/01/2024",
+    "id": 5
   },
   {
     "cliente": "papa",
     "tipo_de_tarea": "Tarea General",
-    "tarea": "coyal pendiente // karina entro el martes",
-    "fecha": "23/01/2024"
-  },
-  {
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "El select para filtrar deberia de ejecutarse en 2 clicks",
-    "fecha": "23/01/2024"
-  },
-  {
-    "cliente": "",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "Chequear depositos del lunes a fecha ",
-    "fecha": "23/01/2024"
+    "tarea": "coyal pendiente // karina entro el martes // tema boutique merceria e-check // pirelli // INES DEPOSITO 198476 pero tiene mas deuda(ultima modificacion: 24/01/2024)",
+    "fecha": "23/01/2024",
+    "id": 6
   },
   {
     "cliente": "FASHION DESIGN",
     "tipo_de_tarea": "Tarea General",
     "tarea": "pedido listo entro RC1000 negro consulte si agregaban algo sin respuesta",
-    "fecha": "23/01/2024"
+    "fecha": "23/01/2024",
+    "id": 7
   },
   {
+    "id": 13,
     "cliente": "",
     "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "Incluir JSON de borrado para mantener un historial.",
-    "fecha": "23/01/2024"
+    "tarea": "acceder al historial desde el front",
+    "fecha": "24/01/2024"
+  },
+  {
+    "id": 17,
+    "cliente": "PIRELLI",
+    "tipo_de_tarea": "Conflicto Cliente",
+    "tarea": "Pirelli quiere que le entreguemos el pedido de hilos inlcuyendo el envío",
+    "fecha": "24/01/2024"
   }
 ]

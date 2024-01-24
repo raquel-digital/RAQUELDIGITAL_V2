@@ -582,9 +582,11 @@ barraHerramientas.addEventListener("click", e => {
       actulizadorMasivo()
     }
     if(barraHerramientas.selectedIndex == 7 && agendaOk){
+      //window.location = "http://localhost:8080/admin/agenda"
       agendaInicio()
     }
-  }  
+  }
+  barraHerramientas.selectedIndex = 0  
 })
 
 let upload = []

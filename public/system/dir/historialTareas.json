@@ -1,0 +1,128 @@
+[
+  {
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "El select para filtrar deberia de ejecutarse en 2 clicks",
+    "fecha": "23/01/2024",
+    "id": 9
+  },
+  {
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Incluir JSON de borrado para mantener un historial.",
+    "fecha": "23/01/2024",
+    "id": 11
+  },
+  {
+    "cliente": "MEGAMENTAL",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "le mandamos factura por 5 la5010 cualquier color tiene que abonar",
+    "fecha": "23/01/2024",
+    "id": 4
+  },
+  {
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Recordatorios por fecha + seccion de tareas atrazadas",
+    "fecha": "23/01/2024",
+    "id": 12
+  },
+  {
+    "id": 14,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "cuando se entra a la ficha de la tarea scrollear hasta arriba",
+    "fecha": "24/01/2024"
+  },
+  {
+    "id": 15,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "buscardor de tareas ingresadas",
+    "fecha": "24/01/2024"
+  },
+  {
+    "id": 19,
+    "cliente": "test urgente",
+    "tipo_de_tarea": "Urgentes",
+    "tarea": "testear tareas urgenter",
+    "fecha": "24/01/2024"
+  },
+  {
+    "id": 19,
+    "cliente": "test",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "testear tareas urgentes",
+    "fecha": "24/01/2024"
+  },
+  {
+    "id": 19,
+    "cliente": "test",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "testear tareas urgentes",
+    "fecha": "24/01/2024"
+  },
+  {
+    "id": 19,
+    "cliente": "test",
+    "tipo_de_tarea": "Urgentes",
+    "tarea": "testear tareas urgentes",
+    "fecha": "24/01/2024"
+  },
+  {
+    "id": 19,
+    "cliente": "test",
+    "tipo_de_tarea": "Urgentes",
+    "tarea": "testear tareas urgentes",
+    "fecha": "24/01/2024"
+  },
+  {
+    "id": 18,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "mostrar un alert cuando algo es urgente",
+    "fecha": "24/01/2024"
+  },
+  {
+    "id": 18,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "mostrar un alert cuando algo es urgente",
+    "fecha": "24/01/2024"
+  },
+  {
+    "id": 18,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "mostrar un alert cuando algo es urgente",
+    "fecha": "24/01/2024"
+  },
+  {
+    "id": 18,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "mostrar un alert cuando algo es urgente",
+    "fecha": "24/01/2024"
+  },
+  {
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "Chequear depositos del lunes a fecha ",
+    "fecha": "23/01/2024",
+    "id": 10
+  },
+  {
+    "cliente": "mario jimenes",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "PAGO POR MP MQ0036 plateado no se esta consiguiendo ya le avisamos nuevo precio por las nubes",
+    "fecha": "23/01/2024",
+    "id": 8
+  },
+  {
+    "id": 16,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "hubo un bug al borrar tarea el confirm se bloqueo",
+    "fecha": "24/01/2024"
+  }
+]

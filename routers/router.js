@@ -161,6 +161,7 @@ router.get('/profile', requiresAuth(), function (req, res, next) {
 
 
 let adminPedidos = false
+let agendaOk = false
 router.get("/admin", (req, res, next) => {
   const result = middleware.validAdmin(log)
     if(result == "true agenda ok"){
@@ -172,6 +173,7 @@ router.get("/admin", (req, res, next) => {
         })();
       })
       log = undefined;
+      agendaOk = true
       return   
     }
     if(result == true){
@@ -204,6 +206,16 @@ router.get("/admin/pedidos/local", (req, res) => {
   //  }
   res.sendFile(path.resolve("./public/index-adminPedidos-local.html"))
 })
+
+
+// router.get("/admin/agenda", (req, res) => {
+//   if(agendaOk){
+//     agendaOk = false
+//     res.sendFile(path.resolve("./public/agenda.html"))
+//   }else{
+//     res.sendFile(path.resolve("./public/login-admin.html"))
+//   }
+// })
 
 let log;
 

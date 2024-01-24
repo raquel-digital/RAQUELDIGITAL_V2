@@ -274,6 +274,12 @@ io.on('connect', socket => {
         const update = require("./public/system/dir/tareasPendientes.json")
         socket.emit("tarea-nueva-res", update)
     })
+    socket.on("art-borrado", artBorrado => {        
+        delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
+        const historial = require("./public/system/dir/historialTareas.json")
+        historial.push(artBorrado[0])
+        fs.writeFileSync(`./public/system/dir/historialTareas.json`, JSON.stringify(historial, null, 2));
+    })
 })
 
 
