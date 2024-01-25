@@ -124,5 +124,47 @@
     "tipo_de_tarea": "Mantenimiento Agenda",
     "tarea": "hubo un bug al borrar tarea el confirm se bloqueo",
     "fecha": "24/01/2024"
+  },
+  {
+    "id": 19,
+    "cliente": "test",
+    "tipo_de_tarea": "Urgentes",
+    "tarea": "Este test es re urgente",
+    "fecha": "25/01/2024"
+  },
+  {
+    "id": 20,
+    "cliente": "maria romo 2",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "tazas",
+    "fecha": "25/01/2024"
+  },
+  {
+    "id": 21,
+    "cliente": "maria romo 3",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "taza",
+    "fecha": "25/01/2024"
+  },
+  {
+    "id": 23,
+    "cliente": "test cli",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "eeee",
+    "fecha": "25/01/2024"
+  },
+  {
+    "id": 25,
+    "cliente": "test cli",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "",
+    "fecha": "25/01/2024"
+  },
+  {
+    "id": 24,
+    "cliente": "test cli",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "www",
+    "fecha": "25/01/2024"
   }
 ]

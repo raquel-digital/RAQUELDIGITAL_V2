@@ -251,23 +251,19 @@ io.on('connect', socket => {
             socket.emit("categ-result", result);
         })();
     }); 
-    //AGENDA
-    // socket.on("data-agenda", data => {        
-    //     fs.writeFileSync(`./public/system/dir/agenda.json`, JSON.stringify(data, null, 2));
-    //     socket.emit("data-agenda-res")
-    // })
+    //AGENDA    
     socket.on("req-cli", () => {
-        delete require.cache[require.resolve("./utils/agenda/clientes.json")];
+        delete require.cache[require.resolve("./utils/agenda/clientes.json")];        
         const clientes = require("./utils/agenda/clientes.json")
         socket.emit("req-cli-res", clientes)
     })
-    // socket.on("borrar-cliente", data => {   
-    //     //fallo borra todo TODO     
-    //     fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(data, null, 2));
-    //     delete require.cache[require.resolve("./utils/agenda/clientes.json")];
-    //     const clientes = require("./utils/agenda/clientes.json")
-    //     socket.emit("req-cli-res", clientes)
-    // })
+    socket.on("nuevo-cliente", agenda =>{
+        delete require.cache[require.resolve("./utils/agenda/clientes.json")];
+        fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(agenda, null, 2));
+        const clientes = require("./utils/agenda/clientes.json")
+        socket.emit("req-cli-res", clientes)
+    })
+
     socket.on("tarea-nueva", data => {
         fs.writeFileSync(`./public/system/dir/tareasPendientes.json`, JSON.stringify(data, null, 2));
         delete require.cache[require.resolve("./public/system/dir/tareasPendientes.json")];
@@ -280,6 +276,11 @@ io.on('connect', socket => {
         historial.push(artBorrado[0])
         fs.writeFileSync(`./public/system/dir/historialTareas.json`, JSON.stringify(historial, null, 2));
     })
+    socket.on("historial-tareas", () => {
+        delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
+        const historial = require("./public/system/dir/historialTareas.json")
+        socket.emit("historial-tareas-res", historial)
+    })    
 })
 
 
