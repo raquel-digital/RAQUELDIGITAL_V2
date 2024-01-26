@@ -32,11 +32,21 @@ async function agendaInicio(historial){
         return response.json();
       })
 
+      //obtenemos tareas en MONGO
+      socket.emit("agenda-inicio")  
       entradaTareas(tareas, agenda)
-      eventosAgenda(agenda, tareas)
+      eventosAgenda(agenda, tareas)    
       socket.emit("req-cli")
     }
   }
+
+  //obtenemos lista tareas
+  socket.on("agenda-inicio-res", data => {
+      const tareas = JSON.parse(data[0].agenda)
+      console.log(tareas)
+      //entradaTareas(tareas, null)
+      //eventosAgenda(null, tareas)
+  })
 
   //obtenemos lista de clientes
   socket.on("req-cli-res", data => {
@@ -79,29 +89,28 @@ async function agendaInicio(historial){
       }
       if(mouse.classList.contains("botonConfirmarCambioTarea")){ 
         tareas.forEach(e => {
-        if(e.id == mouse.value){            
-          e.tipo_de_tarea = document.getElementById("selectDeEstadoTarea").value
-          if(e.tarea.includes("||")){
-            const split = e.tarea.split("||")
-            e.tarea = split[0] + "|| (ultima modificación: " + crearFecha() +")"
-          }else{
-            e.tarea = document.getElementById("notasText").value + "|| (ultima modificación: " + crearFecha() +")"
+          if(e.id == mouse.value){    
+            e.tarea = document.getElementById("selectDeEstadoTarea").value
+            if(e.tarea.includes("||")){
+              const split = e.tarea.split("||")
+              e.tarea = split[0] + "|| (ultima modificación: " + crearFecha() +")"
+            }else{
+              e.tarea = document.getElementById("notasText").value + "|| (ultima modificación: " + crearFecha() +")"
+            }
+            
+            if(document.getElementById("fecha-aviso").value != ""){  
+                // Obtener el valor de la fecha en el formato "YYYY-MM-DD"
+                const fechaOriginal = document.getElementById("fecha-aviso").value;
+
+                // Convertir la fecha al formato "DD/MM/YYYY"
+                const partesFecha = fechaOriginal.split("-");
+                const fechaFormateada = partesFecha[2] + "/" + partesFecha[1] + "/" + partesFecha[0];
+
+                // Establecer el valor formateado en el campo de fecha
+                e.fecha_aviso = fechaFormateada;
+            }
           }
-          
-          if(document.getElementById("fecha-aviso").value != ""){  
-              // Obtener el valor de la fecha en el formato "YYYY-MM-DD"
-              const fechaOriginal = document.getElementById("fecha-aviso").value;
-
-              // Convertir la fecha al formato "DD/MM/YYYY"
-              const partesFecha = fechaOriginal.split("-");
-              const fechaFormateada = partesFecha[2] + "/" + partesFecha[1] + "/" + partesFecha[0];
-
-              // Establecer el valor formateado en el campo de fecha
-              e.fecha_aviso = fechaFormateada;
-          }  
-        }
-        })
-         
+        })         
         //updateamos las tareas
         socket.emit("tarea-nueva", tareas)
       }
@@ -163,7 +172,7 @@ async function agendaInicio(historial){
       }
       if(mouse.id == "historial-tareas"){
         socket.emit("historial-tareas")
-      }
+      }      
     
     //barra que completa busqueda de clientes
     completarBusqueda(clientes, "searchInputTareas", "suggestionsContainerTareas")
@@ -172,20 +181,26 @@ async function agendaInicio(historial){
     completarBusqueda(tareasCliente, "searchInputTareasInicio", "suggestionsContainerTareasInicio")
     //Barra Busqueda Tareas  
     document.getElementById("suggestionsContainerTareasInicio").addEventListener("click", event => {
-      const cliente = document.getElementById("searchInputTareasInicio").value
-      if(cliente === ""){
+      //borrarde la lista de clientes
+      if(mouse.classList.contains("borrar-lista-cliente")){
+        console.log(mouse.value)
         return
-      }
-      const filtrar = tareas.filter(e => e.cliente === cliente)
-      console.log(cliente, filtrar)
-      entradaTareas(filtrar)
+      }else{
+        const cliente = document.getElementById("searchInputTareasInicio").value
+        if(cliente === ""){
+          return
+        }
+        const filtrar = tareas.filter(e => e.cliente === cliente)
+        console.log(cliente, filtrar)
+        entradaTareas(filtrar)
+      }      
     })
   })  
   }
 
   //recibimos las tareas recien ingresadas
   socket.on("tarea-nueva-res", update => {
-    agendaInicio()
+    agendaInicio(update)
   })
   //recibimos historial de tareas
   socket.on("historial-tareas-res", historial => {
@@ -320,10 +335,13 @@ async function agendaInicio(historial){
         const suggestionElement = document.createElement('div');
         suggestionElement.classList.add('suggestion');
         suggestionElement.textContent = suggestion;
+        
 
         suggestionElement.addEventListener('click', function() {
             // Al hacer clic en una sugerencia, puedes realizar alguna acción, como llenar el campo de búsqueda
             searchInput.value = suggestion
+            //agregar cruz para borrar cliente de la lista
+            searchInput.innerHTML += `<i value="${suggestion}" class="fa-solid fa-xmark borrar-lista-cliente" style="position: absolute; right: 1rem;"></i>`
             // También puedes ocultar las sugerencias o realizar otra lógica aquí
             suggestionsContainer.style.display = 'none';
             

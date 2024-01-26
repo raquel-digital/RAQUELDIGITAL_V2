@@ -263,12 +263,21 @@ io.on('connect', socket => {
         const clientes = require("./utils/agenda/clientes.json")
         socket.emit("req-cli-res", clientes)
     })
+    socket.on("agenda-inicio", async () => {
+        const store = require("./api/agenda/store")        
+        const res = await store.read()
+        socket.emit("agenda-inicio-res", res)
+    })
 
-    socket.on("tarea-nueva", data => {
+    socket.on("tarea-nueva", async data => {
         fs.writeFileSync(`./public/system/dir/tareasPendientes.json`, JSON.stringify(data, null, 2));
         delete require.cache[require.resolve("./public/system/dir/tareasPendientes.json")];
         const update = require("./public/system/dir/tareasPendientes.json")
-        socket.emit("tarea-nueva-res", update)
+        //MONGO 
+        const dataString = JSON.stringify(data)
+        const store = require("./api/agenda/store")        
+        const res = await store.write(dataString)
+        socket.emit("tarea-nueva-res", res)
     })
     socket.on("art-borrado", artBorrado => {        
         delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
@@ -280,7 +289,7 @@ io.on('connect', socket => {
         delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
         const historial = require("./public/system/dir/historialTareas.json")
         socket.emit("historial-tareas-res", historial)
-    })    
+    })
 })
 
 
