@@ -265,7 +265,8 @@ io.on('connect', socket => {
     })
     socket.on("agenda-inicio", async () => {
         const store = require("./api/agenda/store")        
-        const res = await store.read()
+        const resMongo = await store.read()
+        const res = JSON.parse(resMongo[0].agenda)
         socket.emit("agenda-inicio-res", res)
     })
 
@@ -276,7 +277,8 @@ io.on('connect', socket => {
         //MONGO 
         const dataString = JSON.stringify(data)
         const store = require("./api/agenda/store")        
-        const res = await store.write(dataString)
+        const resMongo = await store.write(dataString)
+        const res = JSON.parse(resMongo[0].agenda) 
         socket.emit("tarea-nueva-res", res)
     })
     socket.on("art-borrado", artBorrado => {        

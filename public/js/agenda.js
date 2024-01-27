@@ -32,20 +32,22 @@ async function agendaInicio(historial){
         return response.json();
       })
 
+      //Inicio en local
+      // entradaTareas(tareas, agenda)
+      // eventosAgenda(agenda, tareas)
+
+
       //obtenemos tareas en MONGO
       socket.emit("agenda-inicio")  
-      entradaTareas(tareas, agenda)
-      eventosAgenda(agenda, tareas)    
+      
       socket.emit("req-cli")
     }
   }
 
   //obtenemos lista tareas
-  socket.on("agenda-inicio-res", data => {
-      const tareas = JSON.parse(data[0].agenda)
-      console.log(tareas)
-      //entradaTareas(tareas, null)
-      //eventosAgenda(null, tareas)
+  socket.on("agenda-inicio-res", tareas => {
+      entradaTareas(tareas, null)
+      eventosAgenda(null, tareas)
   })
 
   //obtenemos lista de clientes
@@ -238,7 +240,7 @@ async function agendaInicio(historial){
         }
 
         ingresarTarea(e, entradasAgenda)
-
+        
         //ingresar tareas S/tiempo pasado
         const today = new Date();
         const yyyy = today.getFullYear();

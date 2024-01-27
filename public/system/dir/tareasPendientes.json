@@ -2,7 +2,7 @@
   {
     "cliente": "vanina 972",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "CI4950 naranja fuerte x3 entra mañana // viene atrazado esperemos entre || (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)",
+    "tarea": "CI4950 naranja fuerte x3 entra mañana // viene atrazado esperemos entre [mongus]|| (ultima modificación: 27/01/2024)",
     "fecha": "23/01/2024",
     "id": 3,
     "fecha_aviso": "31/01/2024"
@@ -121,7 +121,15 @@
     "id": 36,
     "cliente": "MATIAS CLIENTE VINO LOCAL",
     "tipo_de_tarea": "Cliente Whatsapp",
-    "tarea": "quiere llevar 3000 TE0100 negro ver en fabrica, confirmar precio y pasar al ehatsapp 1150034218 // avisado pase cotizacion|| (ultima modificación: 26/01/2024)",
+    "tarea": "quiere llevar 3000 TE0100 negro ver en fabrica, confirmar precio y pasar al ehatsapp 1150034218 // dejo seña 50% encargar|| (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)",
+    "fecha": "26/01/2024",
+    "fecha_aviso": "29/01/2024"
+  },
+  {
+    "id": 37,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Problema al usar mongo linea 248 problema con la fecha??",
     "fecha": "26/01/2024"
   }
 ]

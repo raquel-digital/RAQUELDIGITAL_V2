@@ -246,5 +246,12 @@
     "tipo_de_tarea": "Cliente Whatsapp",
     "tarea": "CE0045 marino 1 docena usa saldo a favor para descontar",
     "fecha": "26/01/2024"
+  },
+  {
+    "id": 18,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Testear si se puede guardar en mongo como string grande //|| nuevo test (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)",
+    "fecha": "24/01/2024"
   }
 ]

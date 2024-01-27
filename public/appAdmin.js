@@ -527,9 +527,12 @@ function actuPrecios(){
 socket.on("actuPreciosRes", result => {
   if(result){
     console.log(result)
+    if(result.length == 0){
+      mostrador.innerHTML = `<h1>No hay ningun precio para actualizar TODOS LOS PRECIOS AL DÍA</h1>`
+    }
     mostrador.innerHTML = `<ul class="result"></ul>`
     const res = document.querySelector(".result");
-   // if(result.length < 100){
+   
       result.forEach(e => {
         if(e.baja){
           res.innerHTML += `<li style="color:red;">CODIGO: ${e.codigo} PRECIO EN BAJA: ${e.precio} PRECIO ANTERIOR: ${e.precioViejo}</li>`
@@ -537,15 +540,7 @@ socket.on("actuPreciosRes", result => {
           res.innerHTML += `<li>CODIGO: ${e.codigo} NUEVO PRECIO: ${e.precio}</li>`
         }
       })
-    // }
-    //else{
-    //   result.forEach(e => {
-    //     res.innerHTML += `<li>RESULTADO MUY EXTENSO SOLO SE MUESTRAN LAS BAJAS</li>`
-    //     if(e.baja){
-    //       res.innerHTML += `<li style="color:red;">CODIGO: ${e.codigo} PRECIO EN BAJA: ${e.precio} PRECIO ANTERIOR: ${e.precioViejo}</li>`
-    //     }
-    //   })
-    // }
+    
     alert("PRECIOS ACTUALIZADOS")
   }else{
     alert("ERROR AL ACTUALIZAR PRECIOS")
