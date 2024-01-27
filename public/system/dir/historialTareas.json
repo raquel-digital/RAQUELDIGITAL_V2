@@ -253,5 +253,47 @@
     "tipo_de_tarea": "Mantenimiento Agenda",
     "tarea": "Testear si se puede guardar en mongo como string grande //|| nuevo test (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)",
     "fecha": "24/01/2024"
+  },
+  {
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "El select para filtrar deberia de ejecutarse en 2 clicks",
+    "fecha": "23/01/2024",
+    "id": 9
+  },
+  {
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Incluir JSON de borrado para mantener un historial.",
+    "fecha": "23/01/2024",
+    "id": 11
+  },
+  {
+    "id": 18,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Testear si se puede guardar en mongo como string grande //|| nuevo test (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)",
+    "fecha": "24/01/2024"
+  },
+  {
+    "id": 37,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Problema al usar mongo linea 248 problema con la fecha??",
+    "fecha": "26/01/2024"
+  },
+  {
+    "id": 30,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "boton de buscar en la barra de busqueda de clientes",
+    "fecha": "25/01/2024"
+  },
+  {
+    "id": 33,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "cuando hace una busqueda hacerlo tanto en la agenda actual como en el historial",
+    "fecha": "25/01/2024"
   }
 ]

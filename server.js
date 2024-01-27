@@ -264,10 +264,13 @@ io.on('connect', socket => {
         socket.emit("req-cli-res", clientes)
     })
     socket.on("agenda-inicio", async () => {
+        delete require.cache[require.resolve("./public/system/dir/tareasPendientes.json")];
+        const update = require("./public/system/dir/tareasPendientes.json")
+
         const store = require("./api/agenda/store")        
         const resMongo = await store.read()
         const res = JSON.parse(resMongo[0].agenda)
-        socket.emit("agenda-inicio-res", res)
+        socket.emit("agenda-inicio-res", update)
     })
 
     socket.on("tarea-nueva", async data => {
@@ -279,18 +282,32 @@ io.on('connect', socket => {
         const store = require("./api/agenda/store")        
         const resMongo = await store.write(dataString)
         const res = JSON.parse(resMongo[0].agenda) 
-        socket.emit("tarea-nueva-res", res)
+        socket.emit("tarea-nueva-res", update)
     })
-    socket.on("art-borrado", artBorrado => {        
+    socket.on("art-borrado", async artBorrado => {        
         delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
         const historial = require("./public/system/dir/historialTareas.json")
         historial.push(artBorrado[0])
         fs.writeFileSync(`./public/system/dir/historialTareas.json`, JSON.stringify(historial, null, 2));
+    
+        const store = require("./api/agenda/store")        
+        const resMongo = await store.write(historial, "historial")
+        //const res = JSON.parse(resMongo[0].agenda)
     })
-    socket.on("historial-tareas", () => {
+    socket.on("historial-tareas", async () => {
         delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
         const historial = require("./public/system/dir/historialTareas.json")
-        socket.emit("historial-tareas-res", historial)
+        const store = require("./api/agenda/store")        
+        const resMongo = await store.read("historial")
+        const res = JSON.parse(resMongo[0].agenda)
+        socket.emit("historial-tareas-res", res)
+    })
+    socket.on("busqueda-agenda", async tareas => {
+        const store = require("./api/agenda/store")
+        const resMongo = await store.read("historial")
+        const res = JSON.parse(resMongo[0].agenda)
+        const agenda = [...tareas, ...res];
+        socket.emit("busqueda-agenda-res", agenda)
     })
 })
 

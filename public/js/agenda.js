@@ -13,6 +13,8 @@ const tareasTipo = `
   <option value="Urgentes">Urgentes</option>
   <option value="envios">Envíos</option>
   <option value="Cliente Whatsapp">Cliente Whatsapp</option>
+  <option value="Revisar Precio">Revisar Precio</option>
+  <option value="Mario">Mario</option>
 `
 async function agendaInicio(historial){    
 
@@ -197,6 +199,11 @@ async function agendaInicio(historial){
         entradaTareas(filtrar)
       }      
     })
+    //Boton busqueda
+    document.getElementById("buscarClientesHistorial").addEventListener("click", event => {
+        
+        socket.emit("busqueda-agenda", tareas)       
+    })
   })  
   }
 
@@ -207,6 +214,15 @@ async function agendaInicio(historial){
   //recibimos historial de tareas
   socket.on("historial-tareas-res", historial => {
     agendaInicio(historial)    
+  })
+  //busqueda en historial y clientes
+  socket.on("busqueda-agenda-res", agenda => { 
+    const cliente = document.getElementById("searchInputTareasInicio").value
+        if(cliente === ""){
+          return
+        }   
+    const filtrar = agenda.filter(e => e.cliente.includes(cliente.toUpperCase()))
+    entradaTareas(filtrar)
   })
   
   function entradaTareas(tareas){
@@ -239,7 +255,7 @@ async function agendaInicio(historial){
           `      
         }
 
-        ingresarTarea(e, entradasAgenda)
+        //ingresarTarea(e, entradasAgenda)
         
         //ingresar tareas S/tiempo pasado
         const today = new Date();
@@ -373,6 +389,7 @@ function generateSuggestions(query, clientes) {
     return suggestions;
 }
 
+
 //***********  INNERS HTML ************** */
 
 function tarjetaTarea(tarea){
@@ -447,9 +464,10 @@ function pantallaInicio(){
       }
 
       .search-input {
-      width: 100%;
+      width: 80%;
       padding: 10px;
       font-size: 16px;
+      margin-right: 0.5rem;
       }
 
       .suggestions-container {
@@ -476,10 +494,12 @@ function pantallaInicio(){
 
       <h1>Fecha: ${crearFecha()}</h1>
       <hr>
-      <div class="search-container">
+      <div class="search-container row">
             <h4>Cliente:</h4>
-              <input type="text" class="search-input" id="searchInputTareasInicio" placeholder="Buscar...">
+            <div class="col">
+              <input type="text" class="search-input" id="searchInputTareasInicio" placeholder="Buscar..."><button id="buscarClientesHistorial" class="btn btn-primary mb-2 btn-lg">Buscar</button>
               <div class="suggestions-container" id="suggestionsContainerTareasInicio"></div>
+            </div>
       </div>
       <hr>
       <div class="row">
@@ -511,6 +531,22 @@ function pantallaInicio(){
       <div class="row entradasAgenda">
       </div>
 
+      <hr> 
+           
+
+            <div id="esta-semana" class="row">
+              <h4>Esta Semana: </h4>
+            </div>
+            <div id="semana-pasada" class="row">
+              <h4>Semana Pasada: </h4>
+            </div>
+            <div id="mes-anterior" class="row">
+              <h4>Mes Anterior: </h4>
+            </div>
+            <div id="mas-de-un-mes" class="row">
+              <h4>Mas De Un Mes: </h4>
+            </div>
+
     
 
     <hr>  
@@ -540,22 +576,7 @@ function pantallaInicio(){
                 
             </div>
 
-            <hr style="margin-top: 4rem;"> 
-              <h1>Tareas Organizadas Por Periodo</h1> 
-            <hr> 
-
-            <div id="esta-semana" class="row">
-              <h4>Esta Semana: </h4>
-            </div>
-            <div id="semana-pasada" class="row">
-              <h4>Semana Pasada: </h4>
-            </div>
-            <div id="mes-anterior" class="row">
-              <h4>Mes Anterior: </h4>
-            </div>
-            <div id="mas-de-un-mes" class="row">
-              <h4>Mas De Un Mes: </h4>
-            </div>     
+                 
         </div>
     
   `
