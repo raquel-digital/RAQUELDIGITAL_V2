@@ -94,11 +94,14 @@ async function agendaInicio(historial){
       if(mouse.classList.contains("botonConfirmarCambioTarea")){ 
         tareas.forEach(e => {
           if(e.id == mouse.value){    
-            e.tarea = document.getElementById("selectDeEstadoTarea").value
+            e.tipo_de_tarea = document.getElementById("selectDeEstadoTarea").value
+            e.tarea = document.getElementById("notasText").value
+            //console.log(document.getElementById("selectDeEstadoTarea").value)
             if(e.tarea.includes("||")){
               const split = e.tarea.split("||")
+              console.log(split[0])
               e.tarea = split[0] + "|| (ultima modificación: " + crearFecha() +")"
-            }else{
+            }else{              
               e.tarea = document.getElementById("notasText").value + "|| (ultima modificación: " + crearFecha() +")"
             }
             

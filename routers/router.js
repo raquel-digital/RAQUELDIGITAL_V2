@@ -186,36 +186,13 @@ router.get("/admin", (req, res, next) => {
 })
 
 router.get("/admin/pedidos", (req, res) => {
-  // if(adminPedidos){
-  //   log = undefined;   
-  //   adminPedidos = false    
-    //res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
-  // }else{
-  //   res.redirect("/login-admin");
-  // }
+  
   res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
   
 })
 router.get("/admin/pedidos/local", (req, res) => {
-  // if(adminPedidos){
-  //   log = undefined;   
-  //   adminPedidos = false      
-  //   res.sendFile(path.resolve("./public/index-admin-pedidos.html"))
-  //  }else{
-  //    res.redirect("/login-admin");
-  //  }
   res.sendFile(path.resolve("./public/index-adminPedidos-local.html"))
 })
-
-
-// router.get("/admin/agenda", (req, res) => {
-//   if(agendaOk){
-//     agendaOk = false
-//     res.sendFile(path.resolve("./public/agenda.html"))
-//   }else{
-//     res.sendFile(path.resolve("./public/login-admin.html"))
-//   }
-// })
 
 let log;
 

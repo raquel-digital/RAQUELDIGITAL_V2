@@ -116,7 +116,7 @@ controller = {
     buscarArticulo: async function(query){
        //const result = await store.search(query);
        const buscador = require("../../utils/buscadorLocal")
-       const result = buscador(query)
+       const result = await buscador(query)
        return result;
     },
     buscarArticuloPorColor: async function(query){

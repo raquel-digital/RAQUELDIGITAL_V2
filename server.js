@@ -270,7 +270,7 @@ io.on('connect', socket => {
         const store = require("./api/agenda/store")        
         const resMongo = await store.read()
         const res = JSON.parse(resMongo[0].agenda)
-        socket.emit("agenda-inicio-res", update)
+        socket.emit("agenda-inicio-res", res)
     })
 
     socket.on("tarea-nueva", async data => {
@@ -282,7 +282,7 @@ io.on('connect', socket => {
         const store = require("./api/agenda/store")        
         const resMongo = await store.write(dataString)
         const res = JSON.parse(resMongo[0].agenda) 
-        socket.emit("tarea-nueva-res", update)
+        socket.emit("tarea-nueva-res", res)
     })
     socket.on("art-borrado", async artBorrado => {        
         delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
