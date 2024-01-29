@@ -1,4 +1,4 @@
-
+const paginador = document.querySelector(".paginador")
 
 document.querySelector("main h1").innerHTML = ""
 mostrador.innerHTML = `
@@ -134,9 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     socket.on("categ-result", data => {         
+        console.log(data)
         
-        if(data.succes){  
-
+        if(data.succes){ 
           mostrador.innerHTML = ""
           document.querySelector("main h1").textContent = data.categ
           mostradorDeArticulos = data.result.sort(function (a, b) {
@@ -145,20 +145,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (a.id < b.id) {
               return -1;
-            }
-            
+            }            
             return 0;
           }).reverse();
-          // console.log(data)
-          // categOrganizador(data.categ);
 
-          if(mostradorDeArticulos.length > indice){        
-            crearPaginador(mostradorDeArticulos);
-            tags(mostradorDeArticulos);
+          
+          categOrganizador(data.categ);
+
+          if(mostradorDeArticulos.length > indice){ 
+            const showArr = mostradorDeArticulos.slice(0, 50)
+            //crearPaginador(mostradorDeArticulos);
+            showArts(showArr);
           }
           else{ 
             showArts(mostradorDeArticulos);
-            tags(mostradorDeArticulos);
+            //tags(mostradorDeArticulos);
           } 
 
           const categoria = document.querySelectorAll("#select-categ ul li a")  
@@ -207,7 +208,11 @@ if(filtros){
             }
          
             if(clikTag == "Todos"){
-              showArts(mostradorDeArticulos)
+              if(mostradorDeArticulos.length > indice){ 
+                crearPaginador(mostradorDeArticulos);
+              }else{
+                showArts(mostradorDeArticulos)
+              }
               return
             }
             loadTag(articulosTags, clik);
@@ -310,6 +315,8 @@ function categOrganizador(categ){
   if(categ.includes(" ")){
     categ = categ.replaceAll(" ", "_")
   }
+  console.log(categ)
+   //const tagFetch = []
     let tagCheck
 
   // data.forEach(e => {
@@ -335,7 +342,9 @@ function categOrganizador(categ){
           console.error('Error: ', error);
         });  
         console.log(tagCheck)
-        const botonera = document.querySelector(".filtros")      
+        const botonera = document.querySelector(".filtros")
+        botonera.innerHTML = `<h2 style="margin-bottom: 12rem;">Filtrar por:</h2>`;
+        botonera.innerHTML += `<button type="button" class="tag hashtag tag-seleccionado">Todos</button>`;      
       for(let t  of tagCheck){
         if(t.includes("-")){
           t = t.replaceAll("-", " ");
@@ -343,8 +352,6 @@ function categOrganizador(categ){
         botonera.innerHTML += `<button type="button"  class="tag hashtag">${t}</button>`
       }    
     })()
-  //})
-  
 }
 
 

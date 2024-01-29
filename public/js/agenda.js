@@ -1,6 +1,7 @@
 const clientes = []
 const agenda = []
 const fechasFiltrar = []
+let filterActual;
 
 //tareas para agregar al select
 const tareasTipo = `
@@ -14,9 +15,12 @@ const tareasTipo = `
   <option value="envios">Envíos</option>
   <option value="Cliente Whatsapp">Cliente Whatsapp</option>
   <option value="Revisar Precio">Revisar Precio</option>
+  <option value="Redes Sociales">Redes Sociales</option>
   <option value="Mario">Mario</option>
 `
-async function agendaInicio(historial){    
+async function agendaInicio(historial){
+
+    filterActual = undefined
 
     if(historial){
       //modo historial
@@ -96,15 +100,8 @@ async function agendaInicio(historial){
           if(e.id == mouse.value){    
             e.tipo_de_tarea = document.getElementById("selectDeEstadoTarea").value
             e.tarea = document.getElementById("notasText").value
-            //console.log(document.getElementById("selectDeEstadoTarea").value)
-            if(e.tarea.includes("||")){
-              const split = e.tarea.split("||")
-              console.log(split[0])
-              e.tarea = split[0] + "|| (ultima modificación: " + crearFecha() +")"
-            }else{              
-              e.tarea = document.getElementById("notasText").value + "|| (ultima modificación: " + crearFecha() +")"
-            }
-            
+            e.ultima_actualizacion = crearFecha()
+                        
             if(document.getElementById("fecha-aviso").value != ""){  
                 // Obtener el valor de la fecha en el formato "YYYY-MM-DD"
                 const fechaOriginal = document.getElementById("fecha-aviso").value;
@@ -142,7 +139,8 @@ async function agendaInicio(historial){
 
             const artBorrado = tareas.filter(e => e.id == mouse.value)
             const borrar = tareas.filter(e => e.id != mouse.value)
-
+            artBorrado[0].borrado = true //identificar que es de historial
+            console.log(artBorrado, borrar)
             //updateamos las tareas
             socket.emit("art-borrado", artBorrado)
             socket.emit("tarea-nueva", borrar)
@@ -157,6 +155,7 @@ async function agendaInicio(historial){
         if(mouse.value == "Todos"){
           entradaTareas(tareas, agenda)
         }else{
+          filterActual = mouse.value
           const filtrar = tareas.filter(e => e.tipo_de_tarea === mouse.value)
           entradaTareas(filtrar, agenda)
         }
@@ -179,6 +178,9 @@ async function agendaInicio(historial){
       }
       if(mouse.id == "historial-tareas"){
         socket.emit("historial-tareas")
+      }  
+      if(mouse.id == "historial-tareas-volver"){
+        agendaInicio()
       }      
     
     //barra que completa busqueda de clientes
@@ -212,7 +214,13 @@ async function agendaInicio(historial){
 
   //recibimos las tareas recien ingresadas
   socket.on("tarea-nueva-res", update => {
-    agendaInicio(update)
+    if(filterActual != undefined){
+      const filtrar = update.filter(e => e.tipo_de_tarea === filterActual)
+      filterActual = undefined
+      entradaTareas(filtrar)     
+    }else{
+      agendaInicio(update)
+    }
   })
   //recibimos historial de tareas
   socket.on("historial-tareas-res", historial => {
@@ -243,6 +251,11 @@ async function agendaInicio(historial){
         if(!fechasFiltrar.includes(e.fecha)){
           fechasFiltrar.push(e.fecha)
         } 
+
+        let ultimaActualizacion = " "
+        if(e.ultima_actualizacion){
+          ultimaActualizacion = "(ultima modificación: " + e.ultima_actualizacion +")"
+        }
         
         if(e.fecha_aviso == crearFecha()){
           const fechaAviso = document.querySelector(".entradasAgendaFechaAviso")
@@ -251,7 +264,7 @@ async function agendaInicio(historial){
           <hr>
             <li style="padding: 12px; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center;">
                 <b style="flex: 1; display: flex; align-items: center; cursor: pointer;">
-                FECHA: ${e.fecha} CIENTE: ${e.cliente}  ${e.tipo_de_tarea} ${e.tarea}
+                FECHA: ${e.fecha} CIENTE: ${e.cliente}  ${e.tipo_de_tarea} ${e.tarea} ${ultimaActualizacion}
                 <button class="botonConfirmarTarea btn btn-primary" value="${e.id}" style="margin-left: 20px;">Ver</button>    
                 </b>
             </li>  
@@ -321,12 +334,17 @@ async function agendaInicio(historial){
         timer: 3000
       });
     }
+
+    let ultimaActualizacion = " "
+    if(e.ultima_actualizacion){
+      ultimaActualizacion = "(ultima modificación: " + e.ultima_actualizacion +")"
+    }
     
     target.innerHTML += `
       <hr>
         <li style="padding: 12px; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center;">
             <p style="flex: 1; display: flex; align-items: center; cursor: pointer;">
-            FECHA: ${e.fecha} CIENTE: ${e.cliente}  ${e.tipo_de_tarea} ${e.tarea}
+            FECHA: ${e.fecha} CIENTE: ${e.cliente}  ${e.tipo_de_tarea} ${e.tarea} ${ultimaActualizacion}
             <button class="botonConfirmarTarea btn btn-primary" value="${e.id}" style="margin-left: 20px;">Ver</button>    
             </p>
         </li>        
@@ -522,6 +540,7 @@ function pantallaInicio(){
             <option value="Todos">Todos</option>
         </select>
         <button id="historial-tareas" type="button" class="btn btn-primary btn-sm" style="margin-left: 1rem;">Historial</button>
+        <button id="historial-tareas-volver" type="button" class="btn btn-warning btn-sm" style="margin-left: 1rem;">Reiniciar</button>
         
         </nav>
         </div>

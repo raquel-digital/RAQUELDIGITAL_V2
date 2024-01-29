@@ -1,299 +1,189 @@
 [
   {
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "El select para filtrar deberia de ejecutarse en 2 clicks",
+    "cliente": "vanina 972",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "CI4950 naranja fuerte x3 entra miércoles.",
     "fecha": "23/01/2024",
-    "id": 9
+    "id": 3,
+    "fecha_aviso": "31/01/2024",
+    "ultima_actualizacion": "29/01/2024"
   },
   {
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "Incluir JSON de borrado para mantener un historial.",
-    "fecha": "23/01/2024",
-    "id": 11
-  },
-  {
-    "cliente": "MEGAMENTAL",
+    "cliente": "FASHION DESIGN",
     "tipo_de_tarea": "Tarea General",
-    "tarea": "le mandamos factura por 5 la5010 cualquier color tiene que abonar",
+    "tarea": "pedido listo entro RC1000 negro consulte si agregaban algo sin respuesta // Pasamos importe TODAVIA NO ABONA VER SI HAY DIFERENCIA DE PRECIO Y AVISAR // chequear si no se factiro la RC1000 beige anteriormente",
     "fecha": "23/01/2024",
-    "id": 4
+    "id": 7,
+    "fecha_aviso": "30/01/2024",
+    "ultima_actualizacion": "29/01/2024"
   },
   {
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "Recordatorios por fecha + seccion de tareas atrazadas",
-    "fecha": "23/01/2024",
-    "id": 12
-  },
-  {
-    "id": 14,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "cuando se entra a la ficha de la tarea scrollear hasta arriba",
-    "fecha": "24/01/2024"
-  },
-  {
-    "id": 15,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "buscardor de tareas ingresadas",
-    "fecha": "24/01/2024"
+    "id": 17,
+    "cliente": "PIRELLI",
+    "tipo_de_tarea": "Conflicto Cliente",
+    "tarea": "Pirelli quiere que le entreguemos el pedido de hilos inlcuyendo el envío DEJAMOS STAND BY HASTA QUE ELLOS RESPONDAN",
+    "fecha": "24/01/2024",
+    "ultima_actualizacion": "29/01/2024"
   },
   {
     "id": 19,
-    "cliente": "test urgente",
-    "tipo_de_tarea": "Urgentes",
-    "tarea": "testear tareas urgenter",
-    "fecha": "24/01/2024"
-  },
-  {
-    "id": 19,
-    "cliente": "test",
+    "cliente": "ELIAS BALTAZAR",
     "tipo_de_tarea": "Tarea General",
-    "tarea": "testear tareas urgentes",
-    "fecha": "24/01/2024"
+    "tarea": "Pasamos importe clavo visto // RETIRO?",
+    "fecha": "25/01/2024",
+    "fecha_aviso": "30/01/2024",
+    "ultima_actualizacion": "29/01/2024"
   },
   {
-    "id": 19,
-    "cliente": "test",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "testear tareas urgentes",
-    "fecha": "24/01/2024"
-  },
-  {
-    "id": 19,
-    "cliente": "test",
-    "tipo_de_tarea": "Urgentes",
-    "tarea": "testear tareas urgentes",
-    "fecha": "24/01/2024"
-  },
-  {
-    "id": 19,
-    "cliente": "test",
-    "tipo_de_tarea": "Urgentes",
-    "tarea": "testear tareas urgentes",
-    "fecha": "24/01/2024"
-  },
-  {
-    "id": 18,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "mostrar un alert cuando algo es urgente",
-    "fecha": "24/01/2024"
-  },
-  {
-    "id": 18,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "mostrar un alert cuando algo es urgente",
-    "fecha": "24/01/2024"
-  },
-  {
-    "id": 18,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "mostrar un alert cuando algo es urgente",
-    "fecha": "24/01/2024"
-  },
-  {
-    "id": 18,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "mostrar un alert cuando algo es urgente",
-    "fecha": "24/01/2024"
-  },
-  {
-    "cliente": "",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "Chequear depositos del lunes a fecha ",
-    "fecha": "23/01/2024",
-    "id": 10
-  },
-  {
-    "cliente": "mario jimenes",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "PAGO POR MP MQ0036 plateado no se esta consiguiendo ya le avisamos nuevo precio por las nubes",
-    "fecha": "23/01/2024",
-    "id": 8
-  },
-  {
-    "id": 16,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "hubo un bug al borrar tarea el confirm se bloqueo",
-    "fecha": "24/01/2024"
-  },
-  {
-    "id": 19,
-    "cliente": "test",
-    "tipo_de_tarea": "Urgentes",
-    "tarea": "Este test es re urgente",
-    "fecha": "25/01/2024"
-  },
-  {
-    "id": 20,
-    "cliente": "maria romo 2",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "tazas",
-    "fecha": "25/01/2024"
-  },
-  {
-    "id": 21,
-    "cliente": "maria romo 3",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "taza",
-    "fecha": "25/01/2024"
+    "id": 22,
+    "cliente": "GALFIONE    (FLAVIO)",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "Mañana entra EL1103 negro le falta uno. PEDIDO DE OSCAR dice que abono pero me muestra una factura del 27/12 con cosas que ya llevo  PAGADO",
+    "fecha": "25/01/2024",
+    "fecha_aviso": "29/01/2024",
+    "ultima_actualizacion": "29/01/2024"
   },
   {
     "id": 23,
-    "cliente": "test cli",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "eeee",
+    "cliente": "MARIA ROMO",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "Le nfalta RC0107 blanco o natural 95 y 100 y odcena de cada fabrica sigue sin confirmar ver que pasa se le consulto al fabricante esta en vacaciones seguimor esperando",
+    "fecha": "25/01/2024",
+    "fecha_aviso": "07/02/2024",
+    "ultima_actualizacion": "29/01/2024"
+  },
+  {
+    "id": 26,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Cruzar informacion con base de datos de pedido local y web?",
     "fecha": "25/01/2024"
   },
   {
-    "id": 25,
-    "cliente": "test cli",
+    "id": 27,
+    "cliente": "PEDIDOS LOCAL",
     "tipo_de_tarea": "Tarea General",
-    "tarea": "",
+    "tarea": "incluir en la barra de busqueda de \"pedidos local\" el codigo de busqueda de clientes",
     "fecha": "25/01/2024"
   },
   {
-    "id": 24,
-    "cliente": "test cli",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "www",
+    "id": 28,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "boton para borrar cliente de la lista de busqueda añadi de font awesome la crux hay prioblemas para que se lea el value trate de ubicarlo en la barra de busqueda pero ahoa no se muestra",
+    "fecha": "25/01/2024",
+    "ultima_actualizacion": "29/01/2024"
+  },
+  {
+    "id": 29,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "boton de volver cuando estamos en modo historial",
+    "fecha": "25/01/2024",
+    "borrado": true
+  },
+  {
+    "id": 32,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "CE0016 marino no me deja ocultarlo",
     "fecha": "25/01/2024"
+  },
+  {
+    "id": 35,
+    "cliente": "PARA KARINA",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "RC0107 x100 y 95 blanco y natural Y CI6000 ROJO YA ENCARGADO /// ya pase a kary",
+    "fecha": "25/01/2024",
+    "fecha_aviso": "15/01/2024",
+    "ultima_actualizacion": "29/01/2024"
   },
   {
     "id": 36,
-    "cliente": "TESTORELLI",
-    "tipo_de_tarea": "Urgentes",
-    "tarea": "algo urgente",
-    "fecha": "26/01/2024"
-  },
-  {
-    "cliente": "JESICA FERNANDEZ",
-    "tipo_de_tarea": "envios",
-    "tarea": "Avisar 25/01 cuando entren HE2505 x3|| (ultima modificación: 26/01/2024)",
-    "fecha": "22/01/2024",
-    "id": 0,
-    "fecha_aviso": "26/01/2024"
-  },
-  {
-    "cliente": "Mario Jimenez",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Buscar modelo alternativo MQ0036 subio mucho de precio(ultima modificacion: 24/01/2024)\n// lo cambia por MQ0026 tiene que abonar 8670 de diferencia.(ultima modificacion: 25/01/2024)|| (ultima modificación: 25/01/2024)",
-    "fecha": "23/01/2024",
-    "id": 1
-  },
-  {
-    "id": 34,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "La id 1 y 0 no actualiza tarea ?? EL ERROR PARECE ESTAR AL MODIFICARLO LA PRIMERA VEZ LUEGO NO DEJA MODIFICAR MAS|| (ultima modificación: 25/01/2024)|| (ultima modificación: 26/01/2024)",
-    "fecha": "25/01/2024",
-    "fecha_aviso": "26/01/2024"
-  },
-  {
-    "cliente": "papa",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "coyal pendiente // karina entro el martes // tema boutique merceria e-check // pirelli // INES DEPOSITO 198476 pero tiene mas deuda // hector tiene 2 facturas de dorsa(ultima modificación: 25/01/2024)",
-    "fecha": "23/01/2024",
-    "id": 6,
-    "fecha_aviso": "26/01/2024"
-  },
-  {
-    "cliente": "BEJMUK PAULA SABRINA",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "CI6000 rojo resrev 3 rollos ver si los quiere y encargar mas pago|| (ultima modificación: 25/01/2024)",
-    "fecha": "23/01/2024",
-    "id": 2
-  },
-  {
-    "cliente": "BOUTIQUE MERCERIA",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "Mando 3 e-checks 240 x2 y uno de 232. Uno de 240 reboto. Deuda 522281 acredito 472000. DEBE 50281.\n// hoy 24 acreito el e-che abono en total 712000(ultima modificacion: 25/01/2024)|| (ultima modificación: 26/01/2024)",
-    "fecha": "23/01/2024",
-    "id": 5
-  },
-  {
-    "id": 24,
-    "cliente": "BEJMUK PAULA SABRINA",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "CI6000 rojo",
-    "fecha": "25/01/2024"
-  },
-  {
-    "id": 31,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "boton volver cuando estamos en modo historial",
-    "fecha": "25/01/2024"
-  },
-  {
-    "id": 25,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "poder hacer busquedas en el historial",
-    "fecha": "25/01/2024"
-  },
-  {
-    "id": 37,
-    "cliente": "VICTORIA SANCHEZ",
+    "cliente": "MATIAS CLIENTE VINO LOCAL",
     "tipo_de_tarea": "Cliente Whatsapp",
-    "tarea": "CE0045 marino 1 docena usa saldo a favor para descontar",
-    "fecha": "26/01/2024"
+    "tarea": "quiere llevar 3000 TE0100 negro ver en fabrica, confirmar precio y pasar al ehatsapp 1150034218 // dejo seña 50% encargar // encargado entra entre el 30/1 y 31/1",
+    "fecha": "26/01/2024",
+    "fecha_aviso": "30/01/2024",
+    "ultima_actualizacion": "29/01/2024"
   },
   {
-    "id": 18,
+    "id": 39,
     "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "Testear si se puede guardar en mongo como string grande //|| nuevo test (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)",
-    "fecha": "24/01/2024"
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "actualizar taza faltan modelos en negro y natural",
+    "fecha": "27/01/2024",
+    "ultima_actualizacion": "29/01/2024"
   },
   {
+    "id": 40,
     "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "El select para filtrar deberia de ejecutarse en 2 clicks",
-    "fecha": "23/01/2024",
-    "id": 9
+    "tipo_de_tarea": "Revisar Precio",
+    "tarea": "PE0207 uhu super glue",
+    "fecha": "27/01/2024"
   },
   {
+    "id": 41,
     "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "Incluir JSON de borrado para mantener un historial.",
-    "fecha": "23/01/2024",
-    "id": 11
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "VER TEMA DEL preguntas frecuentes",
+    "fecha": "29/01/2024",
+    "ultima_actualizacion": "29/01/2024",
+    "fecha_aviso": "01/02/2024"
   },
   {
-    "id": 18,
+    "id": 42,
     "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "Testear si se puede guardar en mongo como string grande //|| nuevo test (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)|| (ultima modificación: 26/01/2024)",
-    "fecha": "24/01/2024"
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin",
+    "fecha": "29/01/2024"
   },
   {
-    "id": 37,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "Problema al usar mongo linea 248 problema con la fecha??",
-    "fecha": "26/01/2024"
+    "id": 44,
+    "cliente": "TAIPEI",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "Quiere HI5000 color 5047 x6",
+    "fecha": "29/01/2024"
   },
   {
-    "id": 30,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "boton de buscar en la barra de busqueda de clientes",
-    "fecha": "25/01/2024"
+    "id": 45,
+    "cliente": "2974 36-8112",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "tuvo problemas para ingresar pedido en la web",
+    "fecha": "29/01/2024",
+    "ultima_actualizacion": "29/01/2024",
+    "fecha_aviso": "30/01/2024"
   },
   {
-    "id": 33,
+    "id": 46,
+    "cliente": "ASENCIO KARINA",
+    "tipo_de_tarea": "envios",
+    "tarea": "Hubo una falla al facturar se pasaron 3 pero lleva 5 BS1315 esperando que conteste",
+    "fecha": "29/01/2024",
+    "ultima_actualizacion": "29/01/2024",
+    "fecha_aviso": "30/01/2024"
+  },
+  {
+    "id": 47,
     "cliente": "",
     "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "cuando hace una busqueda hacerlo tanto en la agenda actual como en el historial",
-    "fecha": "25/01/2024"
+    "tarea": "que al ingrear una tarea nueva se pueda ingresar fecha de aviso directamente",
+    "fecha": "29/01/2024"
+  },
+  {
+    "id": 29,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "boton de volver cuando estamos en modo historial",
+    "fecha": "25/01/2024",
+    "borrado": true
+  },
+  {
+    "id": 38,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "cuando filtra por fecha o tipo tarea y se borra  // mofica algo y vuelve a la pantalla principal quiero mantener el filtro",
+    "fecha": "27/01/2024",
+    "borrado": true
   }
 ]

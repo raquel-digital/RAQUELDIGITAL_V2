@@ -10,7 +10,7 @@ const store = {
                 return await model.find({ _id: "65b3c896043620990da4cf7a"})
             }
         }catch(err){
-            console.log("[ ERROR EN READ ", err)
+            console.log("[ ERROR EN READ ")
         }
     },
     write:  async function (data, historial) {
@@ -29,7 +29,7 @@ const store = {
                 return await model.find({ _id: "65b3c896043620990da4cf7a"})
             }
         }catch(err){
-            console.log("[ ERROR EN WRITE ", err)
+            console.log("[ ERROR EN WRITE ")
         }
     },
 }
