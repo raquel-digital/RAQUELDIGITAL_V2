@@ -637,3 +637,112 @@ function borrarPedidosXInput(){
     }    
 }
 
+
+
+//completar input busqueda con clientes
+function completarBusqueda(agenda, input, listado){
+    const searchInput = document.getElementById(input);
+    const suggestionsContainer = document.getElementById(listado);
+    console.log(searchInput, suggestionsContainer)
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.trim();
+        // Simplemente como ejemplo, aquí generamos algunas sugerencias de búsqueda aleatorias.
+        const suggestions = generateSuggestions(searchTerm, agenda);
+        // Limpiamos el contenedor de sugerencias
+        suggestionsContainer.innerHTML = '';
+
+       
+        // Mostramos las sugerencias en el contenedor
+        suggestions.forEach(suggestion => {
+          const suggestionElement = document.createElement('div');
+          suggestionElement.classList.add('suggestion');
+          suggestionElement.textContent = suggestion;     
+          
+          // Crear el ícono de cruz
+        //   const crossWrap = document.createElement('div');
+        //   const crossIcon = document.createElement('i');
+        //   crossIcon.classList.add('fas', 'fa-times', 'borrar-lista-cliente');
+        //   crossIcon.setAttribute('value', suggestion);
+        //   crossIcon.style.position = 'absolute';
+        //   crossIcon.style.right = '1rem';
+        //   crossIcon.style.top = '1rem';
+
+
+          // Agregar el ícono al DOM
+        //   
+
+          suggestionElement.addEventListener('click', function() {
+              // Al hacer clic en una sugerencia, puedes realizar alguna acción, como llenar el campo de búsqueda
+              searchInput.value = suggestion
+
+              // También puedes ocultar las sugerencias o realizar otra lógica aquí
+              suggestionsContainer.style.display = 'none';
+              
+          });
+        
+
+          suggestionsContainer.appendChild(suggestionElement);
+        });
+
+        document.querySelectorAll(".suggestion").forEach(e => {
+          
+        })
+
+        // Mostramos el contenedor de sugerencias si hay sugerencias disponibles
+        if (suggestions.length > 0) {
+          suggestionsContainer.style.display = 'block';
+        } else {   
+            suggestionsContainer.style.display = 'none';            
+        }
+        console.log(suggestions, suggestionsContainer)
+
+        // Evento de clic en el documento para ocultar la barra de sugerencias
+    document.addEventListener('click', function(event) {
+      const isClickInsideSearch = searchInput.contains(event.target);
+      const isClickInsideSuggestions = suggestionsContainer.contains(event.target);
+
+      if (!isClickInsideSearch && !isClickInsideSuggestions) {
+          suggestionsContainer.style.display = 'none';
+      }
+    });  
+    });   
+  }
+
+// Función para generar sugerencias de búsqueda
+function generateSuggestions(query, clientes) {
+    const suggestions = [];
+    const check = query.toUpperCase()
+    for (const c of clientes) {
+        if(c.includes(check))
+        suggestions.push(c);
+    }
+    return suggestions;
+}
+
+socket.emit("req-cli")
+socket.on("req-cli-res", clientes => completarBusqueda(clientes, "searchInputTareasInicio", "suggestionsContainerTareasInicio"))
+
+
+// if(mouse.classList.contains("borrar-lista-cliente")){
+//     Swal.fire({
+//       title: "Queres borrar al cliente de la lista?",
+//       text: "",
+//       icon: "warning",
+//       showCancelButton: true,
+//       confirmButtonColor: "#3085d6",
+//       cancelButtonColor: "#d33",
+//       confirmButtonText: "Si!!, borrar!"
+//     }).then((result) => {
+//       if (result.isConfirmed) {
+//         Swal.fire({
+//           title: "Borrado!",
+//           text: "El cliente fue borrado.",
+//           icon: "success"
+//         });
+//         const cliente = mouse.parentElement.parentElement.textContent
+//         if(cliente){
+//           socket.emit("borrar-cliente-lista", cliente)
+//         }
+//       }
+//     });
+

@@ -328,6 +328,13 @@ io.on('connect', socket => {
         const agenda = [...tareas, ...res];
         socket.emit("busqueda-agenda-res", agenda)
     })
+    socket.on("borrar-cliente-lista", cliente => {
+        delete require.cache[require.resolve("./utils/agenda/clientes.json")];        
+        const clientes = require("./utils/agenda/clientes.json")
+        const filter = clientes.filter(e => e != cliente)
+        fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(filter, null, 2));
+        socket.emit("req-cli-res", filter)
+    })
 })
 
 

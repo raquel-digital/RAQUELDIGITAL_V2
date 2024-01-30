@@ -86,6 +86,15 @@ async function agendaInicio(historial){
           tarea: document.getElementById("tareaIngreso").value,
           fecha: crearFecha()
         }
+
+        const fechaAviso = document.getElementById("fecha-aviso").value
+
+         if(fechaAviso != ""){
+            // Convertir la fecha al formato "DD/MM/YYYY"
+            const partesFecha = fechaAviso.split("-");
+            const fechaFormateada = partesFecha[2] + "/" + partesFecha[1] + "/" + partesFecha[0];
+            tarea.fecha_aviso = fechaFormateada;
+          }
         
         tareas.push(tarea)
         socket.emit("tarea-nueva", tareas)
@@ -147,6 +156,34 @@ async function agendaInicio(historial){
           }
         });         
       }
+
+      //borrar cliente de la lista de busquedas
+      if(mouse.classList.contains("borrar-lista-cliente")){
+        //const cliente = mouse.parentElement.parentElement.textContent
+        const cliente = mouse.value
+        Swal.fire({
+          title: "Queres borrar al cliente " + cliente + " de la lista?",
+          text: "",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Si!!, borrar!"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: "Borrado!",
+              text: "El cliente fue borrado.",
+              icon: "success"
+            });
+            
+            if(cliente){
+              socket.emit("borrar-cliente-lista", cliente)
+            }
+          }
+        });
+      }
+
       //filtrar tareas 
       if(mouse.id == "tipo-tarea-filtrar"){
         if(mouse.value == "inicio"){
@@ -183,13 +220,13 @@ async function agendaInicio(historial){
         agendaInicio()
       }      
     
-    //barra que completa busqueda de clientes
-    completarBusqueda(clientes, "searchInputTareas", "suggestionsContainerTareas")
-    //busqueda de tareas ingresadas por cliente
-    const tareasCliente = tareas.map(e => e.cliente)
-    completarBusqueda(tareasCliente, "searchInputTareasInicio", "suggestionsContainerTareasInicio")
-    //Barra Busqueda Tareas  
-    document.getElementById("suggestionsContainerTareasInicio").addEventListener("click", event => {
+      //barra que completa busqueda de clientes
+      completarBusqueda(clientes, "searchInputTareas", "suggestionsContainerTareas")
+      //busqueda de tareas ingresadas por cliente
+      const tareasCliente = tareas.map(e => e.cliente)
+      completarBusqueda(tareasCliente, "searchInputTareasInicio", "suggestionsContainerTareasInicio")
+      //Barra Busqueda Tareas  
+      document.getElementById("suggestionsContainerTareasInicio").addEventListener("click", event => {
       //borrarde la lista de clientes
       if(mouse.classList.contains("borrar-lista-cliente")){
         console.log(mouse.value)
@@ -369,26 +406,43 @@ async function agendaInicio(historial){
         // Limpiamos el contenedor de sugerencias
         suggestionsContainer.innerHTML = '';
 
+       
         // Mostramos las sugerencias en el contenedor
         suggestions.forEach(suggestion => {
-        const suggestionElement = document.createElement('div');
-        suggestionElement.classList.add('suggestion');
-        suggestionElement.textContent = suggestion;
+          const suggestionElement = document.createElement('div');
+          suggestionElement.classList.add('suggestion');
+          suggestionElement.textContent = suggestion;     
+          
+          // Crear el ícono de cruz
+          const crossWrap = document.createElement('div');
+          const crossIcon = document.createElement('i');
+          crossIcon.classList.add('fas', 'fa-times', 'borrar-lista-cliente');
+          crossWrap.setAttribute('value', suggestion);          
+          crossIcon.style.position = 'absolute';
+          crossIcon.style.right = '1rem';
+          crossIcon.style.top = '1rem';
+
+
+          // Agregar el ícono al DOM
+          crossWrap.appendChild(crossIcon)
+          suggestionElement.appendChild(crossWrap);
+
+          suggestionElement.addEventListener('click', function() {
+              // Al hacer clic en una sugerencia, puedes realizar alguna acción, como llenar el campo de búsqueda
+              searchInput.value = suggestion
+
+              // También puedes ocultar las sugerencias o realizar otra lógica aquí
+              suggestionsContainer.style.display = 'none';
+              
+          });
         
 
-        suggestionElement.addEventListener('click', function() {
-            // Al hacer clic en una sugerencia, puedes realizar alguna acción, como llenar el campo de búsqueda
-            searchInput.value = suggestion
-            //agregar cruz para borrar cliente de la lista
-            searchInput.innerHTML += `<i value="${suggestion}" class="fa-solid fa-xmark borrar-lista-cliente" style="position: absolute; right: 1rem;"></i>`
-            // También puedes ocultar las sugerencias o realizar otra lógica aquí
-            suggestionsContainer.style.display = 'none';
-            
+          suggestionsContainer.appendChild(suggestionElement);
         });
-        
 
-        suggestionsContainer.appendChild(suggestionElement);
-        });
+        document.querySelectorAll(".suggestion").forEach(e => {
+          
+        })
 
         // Mostramos el contenedor de sugerencias si hay sugerencias disponibles
         if (suggestions.length > 0) {
@@ -396,6 +450,16 @@ async function agendaInicio(historial){
         } else {   
             suggestionsContainer.style.display = 'none';            
         }
+
+        // Evento de clic en el documento para ocultar la barra de sugerencias
+    document.addEventListener('click', function(event) {
+      const isClickInsideSearch = searchInput.contains(event.target);
+      const isClickInsideSuggestions = suggestionsContainer.contains(event.target);
+
+      if (!isClickInsideSearch && !isClickInsideSuggestions) {
+          suggestionsContainer.style.display = 'none';
+      }
+    });  
     });   
   }
 
@@ -582,16 +646,21 @@ function pantallaInicio(){
               <input type="text" class="search-input" id="searchInputTareas" placeholder="Buscar...">
               <div class="suggestions-container" id="suggestionsContainerTareas"></div>
             </div>
-                    
+            <div class="row">      
+              <div class="col">
                     <label for="contacto">Tipo de tarea:</label>
-                    <select name="" id="tipo-tarea">
-                        ${tareasTipo}
-                    </select>
                     
+                      <select name="" id="tipo-tarea">
+                          ${tareasTipo}
+                      </select>                    
+                      <input type="date" id="fecha-aviso" name="fecha">
+                    </div>
+              </div>
                     <div class="row">
                         <h5 class="card-title" style="margin-top: 2rem;">Tarea:</h5>
                         <textarea name="" id="tareaIngreso" cols="6" rows="4"></textarea>
                     </div>
+                    <div class="row">
                     </div>
                     
                     <button id="ingresar-tarea" class="btn btn-primary" style="width: 30rem; margin-top: 2rem; margin-left: 16rem; margin-bottom: 1rem;">Enviar</button>

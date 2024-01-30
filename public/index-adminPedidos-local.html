@@ -13,6 +13,47 @@
     <link rel="stylesheet" href="/css/adminMain.css">        
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        }
+  
+        .search-container {
+        position: relative;
+        width: 90%;
+        margin: 20px auto;
+        }
+  
+        .search-input {
+        width: 90%;
+        padding: 10px;
+        font-size: 16px;
+        margin-right: 0.5rem;
+        }
+  
+        .suggestions-container {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        }
+  
+        .suggestion {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+        }
+  
+        .suggestion:hover {
+        background-color: #f9f9f9;
+        }
+      </style>
+  
+
 </head>
 <body>
    <section class="closeModal">
@@ -39,7 +80,13 @@
             <h5 class="card-title">Ingreso De Pedido:</h5>
             <div class="card-body">
                     <label for="cliente">Cliente:</label>
-                    <input type="text" id="cliente">
+                    <div class="search-container row">
+                        <h4>Cliente:</h4>
+                        <div class="col">
+                          <input type="text" class="search-input" id="searchInputTareasInicio" placeholder="Buscar...">
+                          <div class="suggestions-container" id="suggestionsContainerTareasInicio"></div>
+                        </div>
+                  </div>
                     <label for="prepara">Prepara:</label>
                     <select name="" id="prepara">
                         <option value="Sin Asignar" selected>Sin Asignar</option>
