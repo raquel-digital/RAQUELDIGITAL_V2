@@ -43,16 +43,17 @@ function confirmarCambios(){
   if(toDel.length > 0){
     socket.emit("delete", toDel);
   }  
+  console.log(cambiosEnArticulos)
   socket.emit("cambio-en-articulos", cambiosEnArticulos)
 }
 
 socket.emit("changes?");
 
 socket.on("result-actu", result => {
-  console.log(result)
-  buscador();
+  console.log(result.update)  
   alert("ARTICULOS ACTUALIZADOS");
-  cambiosEnArticulos = []
+  cambiosEnArticulos = []  
+  showArts(result.update)
 })
 
 socket.on("categorias", categ => {
@@ -300,6 +301,7 @@ socket.on("loading-search", () => {
 })
 
 socket.on("resultado-busqueda", result => {
+  console.log(result)
   busqueda = false;
     console.log(result)    
     if(result.length > 0) {
@@ -410,7 +412,7 @@ mostrador.addEventListener("click", e => {
           imagendetalle: img, 
           descripcion: decr, 
           categorias: categ, 
-          stock: parseInt(stock), 
+          stock:  stock == "null" ? 10 : parseInt(stock), 
           cambioCodigo: cambioCodigo, 
           nombre: titulo, 
           nombre2: subtitulo, 

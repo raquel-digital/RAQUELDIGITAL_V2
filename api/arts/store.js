@@ -40,8 +40,9 @@ const store = {
         })
     },    
     update: async function (data){
-        try{   
-            await model.findOneAndUpdate({codigo: data.codigo}, {                
+        try{           
+                      
+           const res = await model.findOneAndUpdate({codigo: data.codigo}, {                
                 $set: {
                     codigo: data.cambioCodigo,
                     mostrar: data.mostrar,
@@ -53,9 +54,10 @@ const store = {
                     nombre: data.nombre,
                     nombre2: data.nombre2,
                     CantidadDeVenta: data.CantidadDeVenta
-                }});
+                }},
+                { new: true });
                 
-            return { status: true};
+            return { status: true, upd: res};
         }catch(err){
             return { status: false, message: "Error al actualizar " + data.codigo, error: err }; 
         }

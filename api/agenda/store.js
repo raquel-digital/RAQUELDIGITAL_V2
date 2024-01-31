@@ -15,7 +15,7 @@ const store = {
     },
     write:  async function (data, historial) {
         try{
-            if(historial){
+            if(historial == "historial"){
                 await model.updateOne({_id: "65b50646015f742499348960"}, 
                     { 
                         $set: { agenda: data }
@@ -29,7 +29,7 @@ const store = {
                 return await model.find({ _id: "65b3c896043620990da4cf7a"})
             }
         }catch(err){
-            console.log("[ ERROR EN WRITE ")
+            console.log("[ ERROR EN WRITE ]", err, data)
         }
     },
 }

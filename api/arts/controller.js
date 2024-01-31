@@ -76,13 +76,13 @@ controller = {
             }
         }
         
-        const finalmente = arrayRes.filter(e => !e.status);
+        const finalmente = arrayRes.filter(e => !e.status);        
 
         if(finalmente.length > 0){
           return finalmente;
         }else{
-          console.log("[ CONTROLLER ] ACTUALIZACION EXITOSA " + result)  
-          return { message: "Articulos actualizados correctamente" };
+          console.log("[ CONTROLLER ] ACTUALIZACION EXITOSA ")  
+          return { message: "Articulos actualizados correctamente", update: arrayRes.map(e => e.upd)};
         }
        }catch(err){
         console.log("[ ERROR EN CONTROLLER UPDATE ] " + err);
@@ -116,7 +116,7 @@ controller = {
     buscarArticulo: async function(query){
        //const result = await store.search(query);
        const buscador = require("../../utils/buscadorLocal")
-       const result = await buscador(query)
+       const result = await buscador(query, "admin")
        return result;
     },
     buscarArticuloPorColor: async function(query){

@@ -303,14 +303,15 @@ io.on('connect', socket => {
     })
     socket.on("art-borrado", async artBorrado => {        
         delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
-        const historial = require("./public/system/dir/historialTareas.json")     
-        
+        const historial = require("./public/system/dir/historialTareas.json")
         historial.push(artBorrado[0])
-        fs.writeFileSync(`./public/system/dir/historialTareas.json`, JSON.stringify(historial, null, 2));
-    
+        
+        const noInlcuir = ["Modificaciones en web", "Actualizacion Articulos Web", "Mantenimiento Agenda", "Revisar Precio", "Redes Sociales"]
+        const filtrar = historial.filter(e => !noInlcuir.includes(e.tipo_de_tarea))
+        const upload = JSON.stringify(filtrar)
+        fs.writeFileSync(`./public/system/dir/historialTareas.json`, upload);
         const store = require("./api/agenda/store")        
-        const resMongo = await store.write(historial, "historial")
-        //const res = JSON.parse(resMongo[0].agenda)
+        await store.write(upload, "historial")
     })
     socket.on("historial-tareas", async () => {
         delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
