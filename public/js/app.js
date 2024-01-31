@@ -1,5 +1,6 @@
 const socket = io.connect();
 const mostrador = document.querySelector(".contenedor-articulos")
+console.log(mostrador)
 let mostradorDeArticulos;
 let mostradorDeArticulosPaginador;
 

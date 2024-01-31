@@ -385,18 +385,15 @@ mostrador.addEventListener("click", e => {
       const tags = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[9].value;
       const img = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[2].value;
       
-      const stock = mouse.parentElement.children[1].children[3].children[8].value
       const categ = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[5].value;
-      
       const titulo = mouse.parentElement.children[1].children[3].children[2].value;
-      
     
       let artChange;
 
       if(codigo.includes("*")){
         //ACTUALIZAR ARTICULO DE COLOR
         const split = codigo.split("*");
-        artChange = {_id: split[1], codigo: split[0], mostrar: mostrar, tags: tags, imagendetalle: img, categorias: categ, stock: parseInt(stock), nombre: titulo};
+        artChange = {_id: split[1], codigo: split[0], mostrar: mostrar, tags: tags, imagendetalle: img, categorias: categ, nombre: titulo};
         
       }else{
         //ACTUALIZAR ARTICULO COMUN
@@ -404,7 +401,8 @@ mostrador.addEventListener("click", e => {
         const cambioCodigo = mouse.parentElement.children[1].children[3].children[12].value;
         const subtitulo = mouse.parentElement.children[1].children[3].children[4].value;
         const cantVenta = mouse.parentElement.children[1].children[3].children[10].value
-        
+        const stock = mouse.parentElement.children[1].children[3].children[8].value
+
         artChange = { 
           codigo: codigo, 
           mostrar: mostrar, 
