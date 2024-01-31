@@ -49,7 +49,7 @@ mostrador.addEventListener("click", e => {
 })
 
 function submitForm() {    
-    const cliente =  document.querySelector("#cliente").value;
+    const cliente =  document.querySelector("#searchInputTareasInicio").value;
     const prepara =  document.querySelector("#prepara").value;
     const contacto =  document.querySelector("#contacto").value;
     const numero_mail = document.querySelector("#numero-mail").value;
