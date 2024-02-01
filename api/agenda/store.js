@@ -32,6 +32,26 @@ const store = {
             console.log("[ ERROR EN WRITE ]", err, data)
         }
     },
+    writeAgenda:  async function (data) {
+        try{                       
+            await model.updateOne({_id: "65bba89071fb7942eb89299e"}, 
+            { 
+                $set: { agenda: data }
+            })
+        return await model.find({ _id: "65bba89071fb7942eb89299e"})     
+            
+        }catch(err){
+            console.log("[ ERROR EN WRITE HISTORIAL]", err, data)
+        }
+    },
+    readAgenda: async function () {
+        try{           
+                return await model.find({ _id: "65bba89071fb7942eb89299e"})
+            
+        }catch(err){
+            console.log("[ ERROR EN READ ")
+        }
+    },
 }
 
 module.exports = store

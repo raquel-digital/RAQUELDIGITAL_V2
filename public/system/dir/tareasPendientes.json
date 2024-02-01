@@ -3,10 +3,10 @@
     "id": 17,
     "cliente": "PIRELLI",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quiere AJ8050 x 1000 mtss mas los hilos vahe. Pasar presupuesto.",
+    "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta",
     "fecha": "24/01/2024",
-    "ultima_actualizacion": "31/01/2024",
-    "fecha_aviso": "01/02/2024"
+    "ultima_actualizacion": "01/02/2024",
+    "fecha_aviso": "28/01/2024"
   },
   {
     "id": 26,
@@ -14,29 +14,6 @@
     "tipo_de_tarea": "Mantenimiento Agenda",
     "tarea": "Cruzar informacion con base de datos de pedido local y web?",
     "fecha": "25/01/2024"
-  },
-  {
-    "id": 27,
-    "cliente": "PEDIDOS LOCAL",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "incluir en la barra de busqueda de \"pedidos local\" el codigo de busqueda de clientes",
-    "fecha": "25/01/2024"
-  },
-  {
-    "id": 32,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "CE0016 marino no me deja ocultarlo",
-    "fecha": "25/01/2024"
-  },
-  {
-    "id": 36,
-    "cliente": "MATIAS CLIENTE VINO LOCAL",
-    "tipo_de_tarea": "Cliente Whatsapp",
-    "tarea": "quiere llevar 3000 TE0100 negro ver en fabrica, confirmar precio y pasar al ehatsapp 1150034218 // dejo seña 50% encargar // encargado entra entre el 30/1 y 31/1",
-    "fecha": "26/01/2024",
-    "fecha_aviso": "31/01/2024",
-    "ultima_actualizacion": "30/01/2024"
   },
   {
     "id": 39,
@@ -52,15 +29,6 @@
     "tipo_de_tarea": "Revisar Precio",
     "tarea": "PE0207 uhu super glue",
     "fecha": "27/01/2024"
-  },
-  {
-    "id": 41,
-    "cliente": "",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "VER TEMA DEL preguntas frecuentes",
-    "fecha": "29/01/2024",
-    "ultima_actualizacion": "29/01/2024",
-    "fecha_aviso": "01/02/2024"
   },
   {
     "id": 42,
@@ -86,21 +54,13 @@
     "fecha": "29/01/2024"
   },
   {
-    "id": 50,
-    "cliente": "LEONELA",
-    "tipo_de_tarea": "Cliente Whatsapp",
-    "tarea": "entra el CI4951 x10 + 2 piezas que vamos dejando separadas N° 11 6131-2287",
-    "fecha": "30/01/2024",
-    "fecha_aviso": "31/01/2024"
-  },
-  {
     "id": 51,
     "cliente": "VACAVALIENTE",
     "tipo_de_tarea": "Encargar Artículo",
     "tarea": "EL1103 gris topo x2 cambian por gris medio que llevaron // encarga EL0003 gris topo x13 para el viernes trae mas mercaderia en cambio",
     "fecha": "30/01/2024",
     "fecha_aviso": "02/02/2024",
-    "ultima_actualizacion": "30/01/2024"
+    "ultima_actualizacion": "31/01/2024"
   },
   {
     "id": 54,
@@ -114,16 +74,17 @@
     "id": 55,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "SUBIR CI5051 vivo fluo (no esta e canasto) // subir ci4779 cinta reflectiva 50mm",
+    "tarea": "SUBIR CI5051 vivo fluo (no esta e canasto) // subir ci4779 cinta reflectiva 50mm //CI2240//ARGOLLA CAREY BLANCO//HI4030 pespente // completar puntilla en cono",
     "fecha": "30/01/2024",
-    "ultima_actualizacion": "30/01/2024"
+    "ultima_actualizacion": "31/01/2024"
   },
   {
     "id": 56,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "Actualizar carta colores de: CD0163 // cierres: perro, reforzado y metalico ",
-    "fecha": "30/01/2024"
+    "tarea": "Actualizar carta colores de: CD0163 // cierres: perro, reforzado y metalico //CI4800 y 20",
+    "fecha": "30/01/2024",
+    "ultima_actualizacion": "31/01/2024"
   },
   {
     "id": 57,
@@ -159,5 +120,56 @@
     "tipo_de_tarea": "Mantenimiento Agenda",
     "tarea": "en el futuro cuando borremos articulos quiero crear un nuevo model que busque al cliente y agrupe el historial en un objeto. Mas delante cada vez que se ingrese una consulta va a buscar ese objeto y su historial de pedidos y preferencias",
     "fecha": "31/01/2024"
+  },
+  {
+    "id": 66,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "el hisotorial volvio a pisarse con el de actual lo curioso es que el archivo local esta todo OK probablemente sea un problema con el archivo que esta en github",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 67,
+    "cliente": "JORGELINA MOSCARDI",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "Mando foto de broche flor Kary dice que landau no lo mando",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 68,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Snaps cargar por cajas",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 69,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "Hormilla no se puede seleccionar en blanco o en negro",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 70,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Reguladores plásticos en lenceria falta subior natural manteca",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 72,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "que al aplicar filtro quede fijado como titulo disiabled",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 73,
+    "cliente": "ONIFLEX",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "Quieren CD0350 negro X30 CI1101 negro x10 ya pasado",
+    "fecha": "01/02/2024",
+    "fecha_aviso": "02/02/2024",
+    "ultima_actualizacion": "01/02/2024"
   }
 ]

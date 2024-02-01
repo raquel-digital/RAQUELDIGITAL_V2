@@ -252,16 +252,26 @@ io.on('connect', socket => {
         })();
     }); 
     //AGENDA    
-    socket.on("req-cli", () => {
+    socket.on("req-cli", async () => {
         delete require.cache[require.resolve("./utils/agenda/clientes.json")];        
         const clientes = require("./utils/agenda/clientes.json")
-        socket.emit("req-cli-res", clientes)
+
+        const store = require("./api/agenda/store")        
+        const resMongo = await store.readAgenda()
+        const res = JSON.parse(resMongo[0].agenda)
+
+        socket.emit("req-cli-res", res)
     })
-    socket.on("nuevo-cliente", agenda =>{
+    socket.on("nuevo-cliente", async agenda =>{
         delete require.cache[require.resolve("./utils/agenda/clientes.json")];
         fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(agenda, null, 2));
         const clientes = require("./utils/agenda/clientes.json")
-        socket.emit("req-cli-res", clientes)
+
+        const store = require("./api/agenda/store")        
+        const resMongo = await store.writeAgenda(JSON.stringify(agenda))
+        const res = JSON.parse(resMongo[0].agenda)
+
+        socket.emit("req-cli-res", res)
     })
     socket.on("agenda-inicio", async () => {
         delete require.cache[require.resolve("./public/system/dir/tareasPendientes.json")];
@@ -320,7 +330,7 @@ io.on('connect', socket => {
         const store = require("./api/agenda/store")        
         const resMongo = await store.read("historial")
         const res = JSON.parse(resMongo[0].agenda)
-        socket.emit("historial-tareas-res", historial)
+        socket.emit("historial-tareas-res", res)
     })
     socket.on("busqueda-agenda", async tareas => {
         const store = require("./api/agenda/store")

@@ -61,6 +61,12 @@ function submitForm() {
         alert("DEBE INGRESAR NOMBRE DE CLIENTE");
         return;
     }
+    if(!agenda.includes(cliente.toUpperCase())){
+        //si no esta el cliente en la lista se lo ingresa 
+        console.log(cliente, agenda)       
+        agenda.push(cliente.toUpperCase()) 
+        socket.emit("nuevo-cliente", agenda)
+      }
 
     //forma de pago
     const local = document.querySelector("#pagoLocal").checked;
@@ -641,6 +647,7 @@ function borrarPedidosXInput(){
 
 //completar input busqueda con clientes
 function completarBusqueda(agenda, input, listado){
+    
     const searchInput = document.getElementById(input);
     const suggestionsContainer = document.getElementById(listado);
     console.log(searchInput, suggestionsContainer)
@@ -719,8 +726,12 @@ function generateSuggestions(query, clientes) {
     return suggestions;
 }
 
+let agenda = null
 socket.emit("req-cli")
-socket.on("req-cli-res", clientes => completarBusqueda(clientes, "searchInputTareasInicio", "suggestionsContainerTareasInicio"))
+socket.on("req-cli-res", clientes => {
+    agenda = clientes
+    completarBusqueda(clientes, "searchInputTareasInicio", "suggestionsContainerTareasInicio")
+})
 
 
 // if(mouse.classList.contains("borrar-lista-cliente")){
