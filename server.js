@@ -312,15 +312,24 @@ io.on('connect', socket => {
         socket.emit("tarea-nueva-res", res)
     })
     socket.on("art-borrado", async artBorrado => {        
-        delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
-        const historial = require("./public/system/dir/historialTareas.json")
-        historial.push(artBorrado[0])
-        
+        // delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
+        // const historial = require("./public/system/dir/historialTareas.json")
+        // historial.push(artBorrado[0])
+        const store = require("./api/agenda/store")
+        const mongo = await store.read("historial")
+        const historial = JSON.parse(mongo[0].agenda)
+        //console.log(historial)  
         const noInlcuir = ["Modificaciones en web", "Actualizacion Articulos Web", "Mantenimiento Agenda", "Revisar Precio", "Redes Sociales"]
         const filtrar = historial.filter(e => !noInlcuir.includes(e.tipo_de_tarea))
         const upload = JSON.stringify(filtrar)
         fs.writeFileSync(`./public/system/dir/historialTareas.json`, upload);
-        const store = require("./api/agenda/store")        
+        //console.log(upload)       
+        //await store.write(upload, "historial")
+    })
+    socket.on("art-borrado-historial", async historialBorrado => {  
+        const upload = JSON.stringify(historialBorrado)      
+        const store = require("./api/agenda/store")  
+        console.log(upload)      
         await store.write(upload, "historial")
     })
     socket.on("historial-tareas", async () => {
@@ -330,7 +339,7 @@ io.on('connect', socket => {
         const store = require("./api/agenda/store")        
         const resMongo = await store.read("historial")
         const res = JSON.parse(resMongo[0].agenda)
-        socket.emit("historial-tareas-res", res)
+        socket.emit("historial-tareas-res", historial)
     })
     socket.on("busqueda-agenda", async tareas => {
         const store = require("./api/agenda/store")

@@ -234,13 +234,14 @@ function actualizarCarrito(){
                     <p class="item-titulo">${c.titulo}</p>
                     <p class="item-precio">$${Number(precio).toFixed(2)}</p>
                 </div>
-                <div class="cantidad-card">
+                <div class="cantidad-card ">
                     <button type="button" class="menos"></button>
                     <input class="cantidad-de-venta" type="number" value="${c.cantidad}">
                     <button type="button" class="mas"></button>
                     
                 </div>
                 <button type="button" class="eliminar eliminar-articulo"><span class="tooltip-eliminar">Eliminar</span></button>
+                <a class="eliminar-link eliminar-articulo">Eliminar</a>
                 </div>
             `
             //debajo de "<button type="button" class="mas"></button>" <a class="eliminar-link">Eliminar</a>

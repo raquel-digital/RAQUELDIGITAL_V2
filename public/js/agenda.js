@@ -148,11 +148,16 @@ async function agendaInicio(historial){
 
             const artBorrado = tareas.filter(e => e.id == mouse.value)
             const borrar = tareas.filter(e => e.id != mouse.value)
-            artBorrado[0].borrado = true //identificar que es de historial
-            console.log(artBorrado, borrar)
-            //updateamos las tareas
-            socket.emit("art-borrado", artBorrado)
-            socket.emit("tarea-nueva", borrar)
+            if(!artBorrado[0].borrado){
+              artBorrado[0].borrado = true //identificar que es de historial
+              //updateamos las tareas
+              socket.emit("art-borrado", artBorrado)
+              console.log("borrar comun", artBorrado)
+            }else{
+              socket.on("art-borrado-historial", borrar)
+              console.log("borrar historial", borrar)
+            }
+            //socket.emit("tarea-nueva", borrar)
           }
         });         
       }
@@ -196,6 +201,7 @@ async function agendaInicio(historial){
           const filtrar = tareas.filter(e => e.tipo_de_tarea === mouse.value)
           entradaTareas(filtrar, agenda)
         }
+        document.getElementById("tipo-tarea-filtrar").firstElementChild.textContent = mouse.value
         //vuelve el filtro a la pos original TOTO APLICAR EN APP ADMIN GRLA
         document.getElementById("tipo-tarea-filtrar").selectedIndex = 0
       }
@@ -210,6 +216,7 @@ async function agendaInicio(historial){
           const filtrar = tareas.filter(e => e.fecha === mouse.value)
           entradaTareas(filtrar, agenda)
         }
+        document.getElementById("fecha-filtrar").firstElementChild.textContent = mouse.value
         //vuelve el filtro a la pos original TOTO APLICAR EN APP ADMIN GRLA
         document.getElementById("fecha-filtrar").selectedIndex = 0
       }
@@ -261,6 +268,7 @@ async function agendaInicio(historial){
   })
   //recibimos historial de tareas
   socket.on("historial-tareas-res", historial => {
+    console.log(historial)
     agendaInicio(historial)    
   })
   //busqueda en historial y clientes

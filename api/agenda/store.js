@@ -1,3 +1,4 @@
+const { errorMonitor } = require("nodemailer/lib/xoauth2");
 const { async } = require("rxjs");
 const model = require("./model");
 
@@ -51,7 +52,7 @@ const store = {
         }catch(err){
             console.log("[ ERROR EN READ ")
         }
-    },
+    }
 }
 
 module.exports = store

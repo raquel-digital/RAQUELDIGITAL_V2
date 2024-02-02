@@ -5,7 +5,7 @@
     "tipo_de_tarea": "Encargar Artículo",
     "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta",
     "fecha": "24/01/2024",
-    "ultima_actualizacion": "01/02/2024",
+    "ultima_actualizacion": "02/02/2024",
     "fecha_aviso": "28/01/2024"
   },
   {
@@ -28,7 +28,8 @@
     "cliente": "",
     "tipo_de_tarea": "Revisar Precio",
     "tarea": "PE0207 uhu super glue",
-    "fecha": "27/01/2024"
+    "fecha": "27/01/2024",
+    "ultima_actualizacion": "01/02/2024"
   },
   {
     "id": 42,
@@ -54,29 +55,12 @@
     "fecha": "29/01/2024"
   },
   {
-    "id": 51,
-    "cliente": "VACAVALIENTE",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "EL1103 gris topo x2 cambian por gris medio que llevaron // encarga EL0003 gris topo x13 para el viernes trae mas mercaderia en cambio",
-    "fecha": "30/01/2024",
-    "fecha_aviso": "02/02/2024",
-    "ultima_actualizacion": "31/01/2024"
-  },
-  {
-    "id": 54,
-    "cliente": "",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "lista local que pueda ingresar clientes nuevos y implementar subida de lista clientes a mongo",
-    "fecha": "30/01/2024",
-    "ultima_actualizacion": "30/01/2024"
-  },
-  {
     "id": 55,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "SUBIR CI5051 vivo fluo (no esta e canasto) // subir ci4779 cinta reflectiva 50mm //CI2240//ARGOLLA CAREY BLANCO//HI4030 pespente // completar puntilla en cono",
+    "tarea": "SUBIR ARGOLLA CAREY BLANCO//HI4030 pespente // completar puntilla en cono",
     "fecha": "30/01/2024",
-    "ultima_actualizacion": "31/01/2024"
+    "ultima_actualizacion": "01/02/2024"
   },
   {
     "id": 56,
@@ -132,8 +116,10 @@
     "id": 67,
     "cliente": "JORGELINA MOSCARDI",
     "tipo_de_tarea": "Cliente Whatsapp",
-    "tarea": "Mando foto de broche flor Kary dice que landau no lo mando",
-    "fecha": "31/01/2024"
+    "tarea": "Mando foto de broche flor Kary dice que landau no lo mando // SE PUEDE CONSEGUIR PARA EL LUNES",
+    "fecha": "31/01/2024",
+    "ultima_actualizacion": "01/02/2024",
+    "fecha_aviso": "05/02/2024"
   },
   {
     "id": 68,
@@ -157,19 +143,43 @@
     "fecha": "31/01/2024"
   },
   {
-    "id": 72,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "que al aplicar filtro quede fijado como titulo disiabled",
-    "fecha": "31/01/2024"
-  },
-  {
     "id": 73,
     "cliente": "ONIFLEX",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quieren CD0350 negro X30 CI1101 negro x10 ya pasado",
+    "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura",
     "fecha": "01/02/2024",
-    "fecha_aviso": "02/02/2024",
-    "ultima_actualizacion": "01/02/2024"
+    "fecha_aviso": "05/02/2024",
+    "ultima_actualizacion": "02/02/2024"
+  },
+  {
+    "id": 74,
+    "cliente": "IMAN",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "Necesitan EL6560 x1 falto de pedido anterior",
+    "fecha": "01/02/2024",
+    "fecha_aviso": "05/02/2024"
+  },
+  {
+    "id": 75,
+    "cliente": "",
+    "tipo_de_tarea": "Mario",
+    "tarea": "Actualizacion de precios fallo al abrir inventario/tablas. Mande mail a ariel y le pedi que quite la descripcion",
+    "fecha": "01/02/2024",
+    "fecha_aviso": "03/02/2024",
+    "ultima_actualizacion": "02/02/2024"
+  },
+  {
+    "id": 76,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "en cel no muestra el icono del tachito en el carrito",
+    "fecha": "02/02/2024"
+  },
+  {
+    "id": 77,
+    "cliente": "ELIZABETH CINTA CORSETERA",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo.",
+    "fecha": "02/02/2024"
   }
 ]
