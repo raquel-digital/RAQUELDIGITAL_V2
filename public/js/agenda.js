@@ -157,7 +157,7 @@ async function agendaInicio(historial){
               socket.on("art-borrado-historial", borrar)
               console.log("borrar historial", borrar)
             }
-            //socket.emit("tarea-nueva", borrar)
+            socket.emit("tarea-nueva", borrar)
           }
         });         
       }
