@@ -35,8 +35,9 @@
     "id": 42,
     "cliente": "",
     "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin",
-    "fecha": "29/01/2024"
+    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin REVISAR PROXIMOS CAMBIOS",
+    "fecha": "29/01/2024",
+    "ultima_actualizacion": "03/02/2024"
   },
   {
     "id": 44,
@@ -74,8 +75,10 @@
     "id": 57,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "chequear puntilla y brodery",
-    "fecha": "30/01/2024"
+    "tarea": "chequear puntilla y brodery SE LO PASE A ERIC",
+    "fecha": "30/01/2024",
+    "ultima_actualizacion": "03/02/2024",
+    "fecha_aviso": "05/02/2024"
   },
   {
     "id": 61,
@@ -165,8 +168,8 @@
     "tipo_de_tarea": "Mario",
     "tarea": "Actualizacion de precios fallo al abrir inventario/tablas. Mande mail a ariel y le pedi que quite la descripcion",
     "fecha": "01/02/2024",
-    "fecha_aviso": "03/02/2024",
-    "ultima_actualizacion": "02/02/2024"
+    "fecha_aviso": "30/01/2024",
+    "ultima_actualizacion": "03/02/2024"
   },
   {
     "id": 77,
@@ -174,13 +177,5 @@
     "tipo_de_tarea": "Encargar Artículo",
     "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo.",
     "fecha": "02/02/2024"
-  },
-  {
-    "id": 78,
-    "cliente": "",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "Ubicar bien el boton de eliminar en mobile",
-    "fecha": "02/02/2024",
-    "fecha_aviso": "03/02/2024"
   }
 ]

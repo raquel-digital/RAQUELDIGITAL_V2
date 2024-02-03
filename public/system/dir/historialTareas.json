@@ -1,41 +1,190 @@
 [
   {
-    "cliente": "FANTASIA",
+    "id": 17,
+    "cliente": "PIRELLI",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "CI4950 naranja fuerte x3 entra miércoles.",
-    "fecha": "23/01/2024",
-    "id": 3,
-    "fecha_aviso": "31/01/2024",
+    "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta",
+    "fecha": "24/01/2024",
     "ultima_actualizacion": "02/02/2024",
-    "borrado": true
+    "fecha_aviso": "28/01/2024"
   },
   {
-    "cliente": "vanina 972",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "CI4950 naranja fuerte x3 entra miércoles.",
-    "fecha": "23/01/2024",
-    "id": 3,
-    "fecha_aviso": "31/01/2024",
-    "ultima_actualizacion": "02/02/2024",
-    "borrado": true
+    "id": 26,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Cruzar informacion con base de datos de pedido local y web?",
+    "fecha": "25/01/2024"
   },
   {
-    "cliente": "FASHION DESIGN",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "pedido listo entro RC1000 negro consulte si agregaban algo sin respuesta // Pasamos importe TODAVIA NO ABONA VER SI HAY DIFERENCIA DE PRECIO Y AVISAR // chequear si no se factiro la RC1000 beige anteriormente",
-    "fecha": "23/01/2024",
-    "id": 7,
-    "fecha_aviso": "31/01/2024",
+    "id": 39,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "actualizar taza faltan modelos en negro y natural",
+    "fecha": "27/01/2024",
+    "ultima_actualizacion": "29/01/2024"
+  },
+  {
+    "id": 40,
+    "cliente": "",
+    "tipo_de_tarea": "Revisar Precio",
+    "tarea": "PE0207 uhu super glue",
+    "fecha": "27/01/2024",
+    "ultima_actualizacion": "01/02/2024"
+  },
+  {
+    "id": 42,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin REVISAR PROXIMOS CAMBIOS",
+    "fecha": "29/01/2024",
+    "ultima_actualizacion": "03/02/2024"
+  },
+  {
+    "id": 44,
+    "cliente": "TAIPEI",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "Quiere HI5000 color 5047 x6 se hizo pedido chequear si entro",
+    "fecha": "29/01/2024",
     "ultima_actualizacion": "30/01/2024",
-    "borrado": true
+    "fecha_aviso": "06/02/2024"
   },
   {
-    "id": 52,
-    "cliente": "CRISTIAN REMOLCOY",
-    "tipo_de_tarea": "envios",
-    "tarea": "por correo:\nCliente: Cristian Remolcoy\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Pasaje la pinta 3982 barrio San Martin Altura: 3982 Piso: undefined Horario de entrega: undefined\nLocalidad: Comodoro Rivadavia Provincia: Chubut\nCP: 9000 Costo Envío: 6890\nForma de pago: Mercado Pago\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp +542974368112",
+    "id": 48,
+    "cliente": "",
+    "tipo_de_tarea": "Redes Sociales",
+    "tarea": "seguir con video tutoriales",
+    "fecha": "29/01/2024"
+  },
+  {
+    "id": 55,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "SUBIR ARGOLLA CAREY BLANCO//HI4030 pespente // completar puntilla en cono",
     "fecha": "30/01/2024",
-    "fecha_aviso": "31/01/2024",
+    "ultima_actualizacion": "01/02/2024"
+  },
+  {
+    "id": 56,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Actualizar carta colores de: CD0163 // cierres: perro, reforzado y metalico //CI4800 y 20",
+    "fecha": "30/01/2024",
+    "ultima_actualizacion": "31/01/2024"
+  },
+  {
+    "id": 57,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "chequear puntilla y brodery SE LO PASE A ERIC",
+    "fecha": "30/01/2024",
+    "ultima_actualizacion": "03/02/2024",
+    "fecha_aviso": "05/02/2024"
+  },
+  {
+    "id": 61,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "subir taza rc0700 usar foto RC0107",
+    "fecha": "30/01/2024"
+  },
+  {
+    "id": 62,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Gancho pollera revisar stock",
+    "fecha": "30/01/2024"
+  },
+  {
+    "id": 63,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "cierres por 100 un",
+    "fecha": "30/01/2024"
+  },
+  {
+    "id": 64,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "en el futuro cuando borremos articulos quiero crear un nuevo model que busque al cliente y agrupe el historial en un objeto. Mas delante cada vez que se ingrese una consulta va a buscar ese objeto y su historial de pedidos y preferencias",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 66,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "el hisotorial volvio a pisarse con el de actual lo curioso es que el archivo local esta todo OK probablemente sea un problema con el archivo que esta en github",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 67,
+    "cliente": "JORGELINA MOSCARDI",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "Mando foto de broche flor Kary dice que landau no lo mando // SE PUEDE CONSEGUIR PARA EL LUNES",
+    "fecha": "31/01/2024",
+    "ultima_actualizacion": "01/02/2024",
+    "fecha_aviso": "05/02/2024"
+  },
+  {
+    "id": 68,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Snaps cargar por cajas",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 69,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "Hormilla no se puede seleccionar en blanco o en negro",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 70,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Reguladores plásticos en lenceria falta subior natural manteca",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 73,
+    "cliente": "ONIFLEX",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura",
+    "fecha": "01/02/2024",
+    "fecha_aviso": "05/02/2024",
+    "ultima_actualizacion": "02/02/2024"
+  },
+  {
+    "id": 74,
+    "cliente": "IMAN",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "Necesitan EL6560 x1 falto de pedido anterior",
+    "fecha": "01/02/2024",
+    "fecha_aviso": "05/02/2024"
+  },
+  {
+    "id": 75,
+    "cliente": "",
+    "tipo_de_tarea": "Mario",
+    "tarea": "Actualizacion de precios fallo al abrir inventario/tablas. Mande mail a ariel y le pedi que quite la descripcion",
+    "fecha": "01/02/2024",
+    "fecha_aviso": "30/01/2024",
+    "ultima_actualizacion": "03/02/2024"
+  },
+  {
+    "id": 77,
+    "cliente": "ELIZABETH CINTA CORSETERA",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo.",
+    "fecha": "02/02/2024"
+  },
+  {
+    "id": 78,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "Ubicar bien el boton de eliminar en mobile",
+    "fecha": "02/02/2024",
+    "fecha_aviso": "03/02/2024",
     "borrado": true
   }
 ]
