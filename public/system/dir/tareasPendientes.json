@@ -174,5 +174,13 @@
     "tipo_de_tarea": "Encargar Artículo",
     "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo.",
     "fecha": "02/02/2024"
+  },
+  {
+    "id": 78,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "Ubicar bien el boton de eliminar en mobile",
+    "fecha": "02/02/2024",
+    "fecha_aviso": "03/02/2024"
   }
 ]

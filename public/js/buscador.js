@@ -33,8 +33,9 @@ document.querySelector(".lupa").addEventListener("click", event => {
 })
 
 //recibir resultados
-socket.on("resultado-busqueda", data => {       
-    if(data.result.length == 0){
+socket.on("resultado-busqueda", data => { 
+    const result = data.result.filter(e => e.mostrar)  
+    if(result.length == 0){
      document.querySelector("main").innerHTML = `<h1>No hay resultados de búsqueda para <span class="resultado-busqueda">“${data.query}”</span></h1>
       <div  class="sin-resultados">
         <p>Intentá con otra palabra o navegá por las categorías para encontrar el artículo que buscás.</p>
@@ -51,11 +52,11 @@ socket.on("resultado-busqueda", data => {
       }
       
 
-      if(data.result.length > indice){
+      if(result.length > indice){
         //mostradorDeArticulos = data.result       
-        crearPaginador(data.result);
+        crearPaginador(result);
       }else{
-        showArts(data.result)
+        showArts(result)
       }
     }      
 })
