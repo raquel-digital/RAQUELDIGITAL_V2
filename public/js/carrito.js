@@ -1,3 +1,4 @@
+let alertOk = true
 const carrito = []
 
 //local storage
@@ -5,12 +6,20 @@ const carritoAnterior = JSON.parse(localStorage.getItem("carrito"))
 const itemsCarrito = document.querySelector("#carritoNumber")
 
 if(carritoAnterior && carritoAnterior.length > 0){
-  carritoAnterior.forEach(e => {
-      ingresarCarrito(e)
-  });
+  //const actuCarrito = checkAumentosCarrito(carritoAnterior)  
+  socket.emit("check-carrito-precios", carritoAnterior)
+//   carritoAnterior.forEach(e => {
+//       ingresarCarrito(e)
+//   });
 }else{
     actualizarCarrito()
 }
+socket.on("check-carrito-precios-res", carrito => {
+    console.log(carrito)
+    carrito.forEach(e => {
+        ingresarCarrito(e)
+    });
+})
 
 //abrir carrito
 document.querySelector(".carrito").addEventListener('click', event=>{
@@ -170,7 +179,12 @@ carritoBody.addEventListener('click', event=>{
     asignarMasMenos(event.target, true)
 })
 
+
 function ingresarCarrito(art){
+    if(carrito.length > 100 && alertOk){
+        alert("El carrito supera los 100 productos esto puede causar algunos problemas en la funcionalidad de la pagina. Si necesita mas artículos le recomendamos que cierre su compra e inicie una nueva compra. Cualquier duda comuniquese con nosotros a nuetro whatsapp 11 3693 3250 o por mail a info@casaraquel.com")
+        alertOk = false
+    }
     if(art.cantidad < 1){
         alert("La cantidad del artículo debe ser mayor a cero")
     }else{
@@ -195,9 +209,7 @@ function ingresarCarrito(art){
 }
 
 function actualizarCarrito(){
-    if(carrito.lenght >= 50){
-        alert("El carrito supera los 50 productos esto puede causar algunos problemas en la funcionalidad de la pagina. Si necesita mas artículos le recomendamos que cierre su compra e inicie una nueva compra. Cualquier duda comuniquese con nosotros a nuetro whatsapp 11 3693 3250 o por mail a info@casaraquel.com")
-    }
+    
     localStorage.setItem("carrito", JSON.stringify(carrito))
     
     document.getElementById("carrito-holder").value = JSON.stringify(carrito)
@@ -375,6 +387,10 @@ mostrador.innerHTML += `
        allArts = undefined;
     }
   
+}
+
+function checkAumentosCarrito(carrito){
+    
 }
 
 
