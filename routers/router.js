@@ -223,7 +223,22 @@ router.post("/check-out", (req, res) => {
   // Verificar si la cadena del agente de usuario contiene "iPhone"
   const esIPhone = userAgent.includes('iPhone');
 
-  const carrito = JSON.parse(req.body.carrito_holder)
+  const carritoAnterior = JSON.parse(req.body.carrito_holder)
+  const precios = require("../public/system/dir/allArts.json")
+  
+  
+
+  const carrito = carritoAnterior.map(e =>{
+  const res = precios.filter(p => p.codigo == e.codigo)
+
+    if(e.precio != res[0].precio){
+        const repl = res[0].precio.replace(",", ".")
+        e.precio = repl
+    }
+
+    return e
+})
+  
   res.render("checkOut", { iphone: esIPhone, carrito: carrito })
 })
 

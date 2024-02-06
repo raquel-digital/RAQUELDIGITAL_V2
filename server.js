@@ -78,22 +78,6 @@ io.on('connect', socket => {
             socket.emit("chequear-compra-res", res)
         })()
     })
-
-    //Chequear actualizacion de precios carrito
-    socket.on("check-carrito-precios", carritoAnterior => {
-        const precios = require("./public/system/dir/allArts.json")
-        const carrito = carritoAnterior.map(e =>{
-            //e.precio != carritoAnterior.precio
-            const res = precios.filter(p => p.codigo == e.codigo)
-            if(e.precio != res[0].precio){
-                const repl = res[0].precio.replace(",", ".")
-                e.precio = repl
-            }
-
-            return e
-        })
-        socket.emit("check-carrito-precios-res", carrito)
-    })
     
     //CHECK OUT    
     socket.on("mail", data =>{        
