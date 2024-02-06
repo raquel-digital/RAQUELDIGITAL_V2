@@ -6,11 +6,11 @@ const carritoAnterior = JSON.parse(localStorage.getItem("carrito"))
 const itemsCarrito = document.querySelector("#carritoNumber")
 
 if(carritoAnterior && carritoAnterior.length > 0){
-  //const actuCarrito = checkAumentosCarrito(carritoAnterior)  
-  socket.emit("check-carrito-precios", carritoAnterior)
-//   carritoAnterior.forEach(e => {
-//       ingresarCarrito(e)
-//   });
+  const actuCarrito = checkAumentosCarrito(carritoAnterior)  
+  //socket.emit("check-carrito-precios", carritoAnterior)
+   carritoAnterior.forEach(e => {
+       ingresarCarrito(e)
+   });
 }else{
     actualizarCarrito()
 }
