@@ -191,13 +191,5 @@
     "tarea": "Queda pendiente de la lista de eric chequear colores en puntilla elastizada revisar de la lista algunos artículos con signo \"?\"",
     "fecha": "05/02/2024",
     "ultima_actualizacion": "05/02/2024"
-  },
-  {
-    "id": 86,
-    "cliente": "MELANIE CORREA",
-    "tipo_de_tarea": "Cliente Whatsapp",
-    "tarea": "pedido para preparar",
-    "fecha": "05/02/2024",
-    "fecha_aviso": "06/02/2024"
   }
 ]
