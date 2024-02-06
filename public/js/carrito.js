@@ -195,7 +195,11 @@ function ingresarCarrito(art){
 }
 
 function actualizarCarrito(){
+    if(carrito.lenght >= 50){
+        alert("El carrito supera los 50 productos esto puede causar algunos problemas en la funcionalidad de la pagina. Si necesita mas artículos le recomendamos que cierre su compra e inicie una nueva compra. Cualquier duda comuniquese con nosotros a nuetro whatsapp 11 3693 3250 o por mail a info@casaraquel.com")
+    }
     localStorage.setItem("carrito", JSON.stringify(carrito))
+    
     document.getElementById("carrito-holder").value = JSON.stringify(carrito)
     const carritoBody = document.querySelector(".carrito-cuerpo");
     carritoBody.innerHTML = ""

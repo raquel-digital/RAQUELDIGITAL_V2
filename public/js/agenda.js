@@ -67,6 +67,8 @@ async function agendaInicio(historial){
   })
   
   function eventosAgenda(agenda, tareas){
+    console.log(tareas, "Chequear que cuando se borre no agregue al inicio tareas borradas")
+
     mostrador.addEventListener("click", e => {
       const mouse = e.target
 
@@ -324,25 +326,34 @@ async function agendaInicio(historial){
         const mm = today.getMonth() + 1;
         const dd = today.getDate();
         
-        const fechaIngreso = e.fecha.split("/")
+        const fechaSplit = e.fecha.split("/")
+        const fechaIngreso = fechaSplit.map(e => Number(e))
+
+        const mismoMes = mm - fechaIngreso[1]
+        const difDias = dd - fechaIngreso[0]
 
         if(fechaIngreso[2] < yyyy){
           ingresarTarea(e, document.getElementById("mas-de-un-mes"))
         }
         else {
-          if(fechaIngreso[1] < mm && fechaIngreso[1] - mm >= 2){
+          if(fechaIngreso[1] < mm && mismoMes >= 2){
             ingresarTarea(e, document.getElementById("mas-de-un-mes"))
           }
-          else if (mm && fechaIngreso[1] - mm == 1){
-            ingresarTarea(e, document.getElementById("mes-anterior"))
-          }
-          else {
-            const dia = dd - fechaIngreso[0]
-            if(dia > 7){
+          else if (mismoMes == 1){
+            const checkSemana = (dd + 30) - fechaIngreso[0] 
+            if(checkSemana >= 30){              
+              ingresarTarea(e, document.getElementById("mes-anterior"))
+            }else if(checkSemana >= 7){
               ingresarTarea(e, document.getElementById("semana-pasada"))
             }else{
               ingresarTarea(e, document.getElementById("esta-semana"))
-            }
+            }            
+          }else{
+            if(difDias > 7){
+              ingresarTarea(e, document.getElementById("semana-pasada"))
+            }else{
+              ingresarTarea(e, document.getElementById("esta-semana"))
+            } 
           }
         }
     })

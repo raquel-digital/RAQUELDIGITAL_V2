@@ -24,14 +24,6 @@
     "ultima_actualizacion": "29/01/2024"
   },
   {
-    "id": 40,
-    "cliente": "",
-    "tipo_de_tarea": "Revisar Precio",
-    "tarea": "PE0207 uhu super glue",
-    "fecha": "27/01/2024",
-    "ultima_actualizacion": "01/02/2024"
-  },
-  {
     "id": 42,
     "cliente": "",
     "tipo_de_tarea": "Modificaciones en web",
@@ -43,9 +35,9 @@
     "id": 44,
     "cliente": "TAIPEI",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quiere HI5000 color 5047 x6 se hizo pedido chequear si entro",
+    "tarea": "Quiere HI5000 color 5047 x6 se hizo pedido chequear si entro en 10 días reciben mas colores",
     "fecha": "29/01/2024",
-    "ultima_actualizacion": "30/01/2024",
+    "ultima_actualizacion": "05/02/2024",
     "fecha_aviso": "06/02/2024"
   },
   {
@@ -70,15 +62,6 @@
     "tarea": "Actualizar carta colores de: CD0163 // cierres: perro, reforzado y metalico //CI4800 y 20",
     "fecha": "30/01/2024",
     "ultima_actualizacion": "31/01/2024"
-  },
-  {
-    "id": 57,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "chequear puntilla y brodery SE LO PASE A ERIC",
-    "fecha": "30/01/2024",
-    "ultima_actualizacion": "03/02/2024",
-    "fecha_aviso": "05/02/2024"
   },
   {
     "id": 61,
@@ -116,15 +99,6 @@
     "fecha": "31/01/2024"
   },
   {
-    "id": 67,
-    "cliente": "JORGELINA MOSCARDI",
-    "tipo_de_tarea": "Cliente Whatsapp",
-    "tarea": "Mando foto de broche flor Kary dice que landau no lo mando // SE PUEDE CONSEGUIR PARA EL LUNES",
-    "fecha": "31/01/2024",
-    "ultima_actualizacion": "01/02/2024",
-    "fecha_aviso": "05/02/2024"
-  },
-  {
     "id": 68,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
@@ -151,8 +125,8 @@
     "tipo_de_tarea": "Encargar Artículo",
     "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura",
     "fecha": "01/02/2024",
-    "fecha_aviso": "05/02/2024",
-    "ultima_actualizacion": "02/02/2024"
+    "fecha_aviso": "06/02/2024",
+    "ultima_actualizacion": "05/02/2024"
   },
   {
     "id": 74,
@@ -160,7 +134,8 @@
     "tipo_de_tarea": "Encargar Artículo",
     "tarea": "Necesitan EL6560 x1 falto de pedido anterior",
     "fecha": "01/02/2024",
-    "fecha_aviso": "05/02/2024"
+    "fecha_aviso": "06/02/2024",
+    "ultima_actualizacion": "05/02/2024"
   },
   {
     "id": 75,
@@ -177,5 +152,52 @@
     "tipo_de_tarea": "Encargar Artículo",
     "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo.",
     "fecha": "02/02/2024"
+  },
+  {
+    "id": 78,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "Ver el orden de los botones del carrito en mobile\n",
+    "fecha": "03/02/2024"
+  },
+  {
+    "id": 79,
+    "cliente": "",
+    "tipo_de_tarea": "Mario",
+    "tarea": "Sistema caja hay dudas con la cuenta de UTILIDAD BRUTA Y UTILIDAD REAL // ademas la cuenta se repite 2 veces\npapá tiene que mejorar la cuenta y ver que paso con lo de creditos y debitos que se sumaba antes",
+    "fecha": "03/02/2024",
+    "fecha_aviso": "06/02/2024",
+    "ultima_actualizacion": "05/02/2024"
+  },
+  {
+    "id": 81,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "EL1103 faltan colores",
+    "fecha": "05/02/2024"
+  },
+  {
+    "id": 82,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "el carrito no modifica sus precios cuando hay aumentos",
+    "fecha": "05/02/2024",
+    "fecha_aviso": "06/02/2024"
+  },
+  {
+    "id": 85,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Queda pendiente de la lista de eric chequear colores en puntilla elastizada revisar de la lista algunos artículos con signo \"?\"",
+    "fecha": "05/02/2024",
+    "ultima_actualizacion": "05/02/2024"
+  },
+  {
+    "id": 86,
+    "cliente": "MELANIE CORREA",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "pedido para preparar",
+    "fecha": "05/02/2024",
+    "fecha_aviso": "06/02/2024"
   }
 ]

@@ -326,7 +326,7 @@ io.on('connect', socket => {
         //console.log(filtrar)
         const upload = JSON.stringify(filtrar)
         fs.writeFileSync(`./public/system/dir/historialTareas.json`, JSON.stringify(filtrar, null, 2));
-        //console.log(upload)       
+        console.log(upload)       
         await store.write(upload, "historial")
     })
     socket.on("art-borrado-historial", async historialBorrado => {  
