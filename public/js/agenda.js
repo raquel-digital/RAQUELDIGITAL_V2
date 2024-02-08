@@ -395,12 +395,16 @@ async function agendaInicio(historial){
     if(e.ultima_actualizacion){
       ultimaActualizacion = "(ultima modificación: " + e.ultima_actualizacion +")"
     }
-    
+    let fechaAviso = ""
+    if(e.fecha_aviso){
+      fechaAviso = "(Programado para avisar " + e.fecha_aviso + ")"
+    }
+  
     target.innerHTML += `
       <hr>
         <li style="padding: 12px; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center;">
             <p style="flex: 1; display: flex; align-items: center; cursor: pointer;">
-            FECHA: ${e.fecha} CIENTE: ${e.cliente}  ${e.tipo_de_tarea} ${e.tarea} ${ultimaActualizacion}
+            FECHA: ${e.fecha} CIENTE: ${e.cliente}  ${e.tipo_de_tarea} ${e.tarea} ${ultimaActualizacion} ${fechaAviso}
             <button class="botonConfirmarTarea btn btn-primary" value="${e.id}" style="margin-left: 20px;">Ver</button>    
             </p>
         </li>        
@@ -496,7 +500,7 @@ function generateSuggestions(query, clientes) {
 
 //***********  INNERS HTML ************** */
 
-function tarjetaTarea(tarea){
+function tarjetaTarea(tarea){  
   document.querySelector(".entradasAgenda").innerHTML = `<div class="row">
               <hr>
               <div class="cardItem">

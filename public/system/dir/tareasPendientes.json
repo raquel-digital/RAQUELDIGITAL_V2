@@ -3,10 +3,10 @@
     "id": 17,
     "cliente": "PIRELLI",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta",
+    "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta // Bajan a 500mts las cantidades de abrojo ver precio",
     "fecha": "24/01/2024",
-    "ultima_actualizacion": "02/02/2024",
-    "fecha_aviso": "28/01/2024"
+    "ultima_actualizacion": "08/02/2024",
+    "fecha_aviso": "09/02/2024"
   },
   {
     "id": 26,
@@ -19,9 +19,9 @@
     "id": 39,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "actualizar taza faltan modelos en negro y natural",
+    "tarea": "actualizar taza faltan modelos en negro y natural // subir taza rc0700 usar foto RC0107",
     "fecha": "27/01/2024",
-    "ultima_actualizacion": "29/01/2024"
+    "ultima_actualizacion": "07/02/2024"
   },
   {
     "id": 42,
@@ -35,17 +35,19 @@
     "id": 44,
     "cliente": "TAIPEI",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quiere HI5000 color 5047 x6 se hizo pedido chequear si entro en 10 días reciben mas colores",
+    "tarea": "Quiere HI5000 color 5047 x6 se hizo pedido chequear si entro en 10 días reciben mas colores // HIZO UN AGREGADO AL PEDIDO",
     "fecha": "29/01/2024",
-    "ultima_actualizacion": "05/02/2024",
-    "fecha_aviso": "06/02/2024"
+    "ultima_actualizacion": "07/02/2024",
+    "fecha_aviso": "15/02/2024"
   },
   {
     "id": 48,
     "cliente": "",
     "tipo_de_tarea": "Redes Sociales",
     "tarea": "seguir con video tutoriales",
-    "fecha": "29/01/2024"
+    "fecha": "29/01/2024",
+    "ultima_actualizacion": "07/02/2024",
+    "fecha_aviso": "09/02/2024"
   },
   {
     "id": 55,
@@ -62,13 +64,6 @@
     "tarea": "Actualizar carta colores de: CD0163 // cierres: perro, reforzado y metalico //CI4800 y 20",
     "fecha": "30/01/2024",
     "ultima_actualizacion": "31/01/2024"
-  },
-  {
-    "id": 61,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "subir taza rc0700 usar foto RC0107",
-    "fecha": "30/01/2024"
   },
   {
     "id": 62,
@@ -123,35 +118,19 @@
     "id": 73,
     "cliente": "ONIFLEX",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura",
+    "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura\nReitero 7/2",
     "fecha": "01/02/2024",
-    "fecha_aviso": "06/02/2024",
-    "ultima_actualizacion": "05/02/2024"
-  },
-  {
-    "id": 74,
-    "cliente": "IMAN",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Necesitan EL6560 x1 falto de pedido anterior",
-    "fecha": "01/02/2024",
-    "fecha_aviso": "06/02/2024",
-    "ultima_actualizacion": "05/02/2024"
-  },
-  {
-    "id": 75,
-    "cliente": "",
-    "tipo_de_tarea": "Mario",
-    "tarea": "Actualizacion de precios fallo al abrir inventario/tablas. Mande mail a ariel y le pedi que quite la descripcion",
-    "fecha": "01/02/2024",
-    "fecha_aviso": "30/01/2024",
-    "ultima_actualizacion": "03/02/2024"
+    "fecha_aviso": "14/02/2024",
+    "ultima_actualizacion": "08/02/2024"
   },
   {
     "id": 77,
     "cliente": "ELIZABETH CINTA CORSETERA",
     "tipo_de_tarea": "Encargar Artículo",
     "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo.",
-    "fecha": "02/02/2024"
+    "fecha": "02/02/2024",
+    "ultima_actualizacion": "08/02/2024",
+    "fecha_aviso": "09/02/2024"
   },
   {
     "id": 78,
@@ -161,35 +140,69 @@
     "fecha": "03/02/2024"
   },
   {
-    "id": 79,
-    "cliente": "",
-    "tipo_de_tarea": "Mario",
-    "tarea": "Sistema caja hay dudas con la cuenta de UTILIDAD BRUTA Y UTILIDAD REAL // ademas la cuenta se repite 2 veces\npapá tiene que mejorar la cuenta y ver que paso con lo de creditos y debitos que se sumaba antes",
-    "fecha": "03/02/2024",
-    "fecha_aviso": "06/02/2024",
-    "ultima_actualizacion": "05/02/2024"
-  },
-  {
-    "id": 81,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "EL1103 faltan colores",
-    "fecha": "05/02/2024"
-  },
-  {
-    "id": 82,
-    "cliente": "",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "el carrito no modifica sus precios cuando hay aumentos",
-    "fecha": "05/02/2024",
-    "fecha_aviso": "06/02/2024"
-  },
-  {
     "id": 85,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
     "tarea": "Queda pendiente de la lista de eric chequear colores en puntilla elastizada revisar de la lista algunos artículos con signo \"?\"",
     "fecha": "05/02/2024",
     "ultima_actualizacion": "05/02/2024"
+  },
+  {
+    "id": 86,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "Seguir testeando extencion IA google sheets",
+    "fecha": "07/02/2024",
+    "fecha_aviso": "09/02/2024",
+    "ultima_actualizacion": "08/02/2024"
+  },
+  {
+    "id": 88,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "Arreglar tema categ ocultos en admin y mostrar a kary",
+    "fecha": "07/02/2024",
+    "fecha_aviso": "09/02/2024",
+    "ultima_actualizacion": "08/02/2024"
+  },
+  {
+    "id": 89,
+    "cliente": "ASENCIO KARINA",
+    "tipo_de_tarea": "envios",
+    "tarea": "Cliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
+    "fecha": "07/02/2024",
+    "fecha_aviso": "09/02/2024",
+    "ultima_actualizacion": "08/02/2024"
+  },
+  {
+    "id": 90,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "HI1311 hilo chico encerado",
+    "fecha": "07/02/2024"
+  },
+  {
+    "id": 91,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "avisar a eric que reponga totora de atraz",
+    "fecha": "07/02/2024",
+    "fecha_aviso": "09/02/2024",
+    "ultima_actualizacion": "08/02/2024"
+  },
+  {
+    "id": 93,
+    "cliente": "",
+    "tipo_de_tarea": "Mario",
+    "tarea": "Manguera de desagote!!!!",
+    "fecha": "08/02/2024"
+  },
+  {
+    "id": 95,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "Graciela le quedo pendiente Juttempeker",
+    "fecha": "08/02/2024",
+    "fecha_aviso": "09/02/2024"
   }
 ]
