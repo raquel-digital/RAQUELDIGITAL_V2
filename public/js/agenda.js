@@ -2,7 +2,6 @@ const clientes = []
 const agenda = []
 const fechasFiltrar = []
 let filterActual;
-
 //tareas para agregar al select
 const tareasTipo = `
   <option value="Tarea General">Tarea General</option>
@@ -19,9 +18,7 @@ const tareasTipo = `
   <option value="Mario">Mario</option>
 `
 async function agendaInicio(historial){
-
     filterActual = undefined
-
     if(historial){
       //modo historial
       entradaTareas(historial, agenda)
@@ -29,18 +26,18 @@ async function agendaInicio(historial){
       socket.emit("req-cli")  
     }else{
       //Obtenemos listado de tareas
-      const tareas = await fetch("./system/dir/tareasPendientes.json")
-      .then(response => {
-        if (!response.ok) {      
-          alert("Archivo agenda no encontrado")
-          throw new Error('La solicitud no se pudo completar.');
-        }
-        return response.json();
-      })
+      // const tareas = await fetch("./system/dir/tareasPendientes.json")
+      // .then(response => {
+      //   if (!response.ok) {      
+      //     alert("Archivo agenda no encontrado")
+      //     throw new Error('La solicitud no se pudo completar.');
+      //   }
+      //   return response.json();
+      // })
 
-      //Inicio en local
-      // entradaTareas(tareas, agenda)
-      // eventosAgenda(agenda, tareas)
+      // //Inicio en local
+      //  entradaTareas(tareas, agenda)
+      //  eventosAgenda(agenda, tareas)
 
 
       //obtenemos tareas en MONGO
@@ -52,6 +49,7 @@ async function agendaInicio(historial){
 
   //obtenemos lista tareas
   socket.on("agenda-inicio-res", tareas => {
+    console.log(tareas)
       entradaTareas(tareas, null)
       eventosAgenda(null, tareas)
   })
@@ -67,7 +65,6 @@ async function agendaInicio(historial){
   })
   
   function eventosAgenda(agenda, tareas){
-    console.log(tareas, "Chequear que cuando se borre no agregue al inicio tareas borradas")
 
     mostrador.addEventListener("click", e => {
       const mouse = e.target
@@ -99,6 +96,7 @@ async function agendaInicio(historial){
           }
         
         tareas.push(tarea)
+        console.log(tareas[tareas.length - 1])
         socket.emit("tarea-nueva", tareas)
 
       }       

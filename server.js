@@ -256,43 +256,43 @@ io.on('connect', socket => {
         delete require.cache[require.resolve("./utils/agenda/clientes.json")];        
         const clientes = require("./utils/agenda/clientes.json")
 
-        const store = require("./api/agenda/store")        
-        const resMongo = await store.readAgenda()
-        const res = JSON.parse(resMongo[0].agenda)
+        //MONGO BORRA RESULTADOS
+        // const store = require("./api/agenda/store")        
+        // const resMongo = await store.readAgenda()
+        // const res = JSON.parse(clientes)
 
-        socket.emit("req-cli-res", res)
+        socket.emit("req-cli-res", clientes)
     })
     socket.on("nuevo-cliente", async agenda =>{
         delete require.cache[require.resolve("./utils/agenda/clientes.json")];
         fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(agenda, null, 2));
         const clientes = require("./utils/agenda/clientes.json")
 
-        const store = require("./api/agenda/store")        
-        const resMongo = await store.writeAgenda(JSON.stringify(agenda))
-        const res = JSON.parse(resMongo[0].agenda)
+        //MONGO
+        // const store = require("./api/agenda/store")        
+        // const resMongo = await store.writeAgenda(JSON.stringify(agenda))
+        // const res = JSON.parse(clientes)
 
-        socket.emit("req-cli-res", res)
+        socket.emit("req-cli-res", clientes)
     })
     socket.on("agenda-inicio", async () => {
         delete require.cache[require.resolve("./public/system/dir/tareasPendientes.json")];
         const update = require("./public/system/dir/tareasPendientes.json")
 
-        const store = require("./api/agenda/store")        
-        const resMongo = await store.read()
-        const res = JSON.parse(resMongo[0].agenda)
-        socket.emit("agenda-inicio-res", res)
+         const store = require("./api/agenda/store")        
+         const resMongo = await store.read()
+         const res = JSON.parse(resMongo[0].agenda)
+        socket.emit("agenda-inicio-res", update)
     })
 
     socket.on("tarea-nueva", async data => {
-        const checkHist =  data.some(function(objeto) {
-            return objeto.hasOwnProperty("borrado");
-          });
-        
+               
         let ruta;
         let res
         const store = require("./api/agenda/store")
         const dataString = JSON.stringify(data)
-        if(checkHist){
+        if(data[data.length - 1].borrado){        
+            console.log("Borrarr")    
            //escribimos en historial 
            ruta = "./public/system/dir/historialTareas.json"
            res = await store.write(dataString, "historial")
@@ -305,28 +305,28 @@ io.on('connect', socket => {
         fs.writeFileSync(ruta, JSON.stringify(data, null, 2));
         
         //LOCAL
-        //delete require.cache[require.resolve("./public/system/dir/tareasPendientes.json")];
-        //const update = require("./public/system/dir/tareasPendientes.json")
+        delete require.cache[require.resolve("./public/system/dir/tareasPendientes.json")];
+        const update = require("./public/system/dir/tareasPendientes.json")
         //MONGO
         res = JSON.parse(res[0].agenda) 
-        socket.emit("tarea-nueva-res", res)
+        socket.emit("tarea-nueva-res", update)
     })
     socket.on("art-borrado", async artBorrado => {        
          delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
          const historial = require("./public/system/dir/historialTareas.json")
          
         const store = require("./api/agenda/store")
-        //const mongo = await store.read("historial")
-        //const historial = JSON.parse(mongo[0].agenda)
+        const mongo = await store.read("historial")
+        //CUANDO TRABAJEMOS EN MONGO HABILITAR!! CUIDADO
+        //const historialMongo = JSON.parse(mongo[0].agenda)
         //console.log(historial)  
 
         historial.push(artBorrado[0])
         const noInlcuir = ["Modificaciones en web", "Actualizacion Articulos Web", "Mantenimiento Agenda", "Revisar Precio", "Redes Sociales"]
         const filtrar = historial.filter(e => !noInlcuir.includes(e.tipo_de_tarea))
-        //console.log(filtrar)
+        
         const upload = JSON.stringify(filtrar)
         fs.writeFileSync(`./public/system/dir/historialTareas.json`, JSON.stringify(filtrar, null, 2));
-        console.log(upload)       
         await store.write(upload, "historial")
     })
     socket.on("art-borrado-historial", async historialBorrado => {  
@@ -374,8 +374,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 const router = require("./routers/router");
 app.use(router);
 
-
-//const fs = require("fs");
 const db = require("./db");//conexion con mongo
 
 db(process.env.mongo);

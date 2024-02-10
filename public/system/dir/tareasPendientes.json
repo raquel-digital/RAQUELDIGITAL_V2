@@ -3,10 +3,10 @@
     "id": 17,
     "cliente": "PIRELLI",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta // Bajan a 500mts las cantidades de abrojo ver precio",
+    "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta // Bajan a 500mts las cantidades de abrojo ver precio // enviamos mail con presupuesto nuevo 10/2",
     "fecha": "24/01/2024",
-    "ultima_actualizacion": "08/02/2024",
-    "fecha_aviso": "09/02/2024"
+    "ultima_actualizacion": "10/02/2024",
+    "fecha_aviso": "29/01/2024"
   },
   {
     "id": 26,
@@ -27,9 +27,10 @@
     "id": 42,
     "cliente": "",
     "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin REVISAR PROXIMOS CAMBIOS",
+    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin REVISAR PROXIMOS CAMBIOS // vamos a subir las hormillas plastica negra aprovechar como prueba USAR IMAGEN: HORMILLA_PLASTICO_NEGRO.jpg",
     "fecha": "29/01/2024",
-    "ultima_actualizacion": "03/02/2024"
+    "ultima_actualizacion": "09/02/2024",
+    "fecha_aviso": "10/02/2024"
   },
   {
     "id": 44,
@@ -46,8 +47,8 @@
     "tipo_de_tarea": "Redes Sociales",
     "tarea": "seguir con video tutoriales",
     "fecha": "29/01/2024",
-    "ultima_actualizacion": "07/02/2024",
-    "fecha_aviso": "09/02/2024"
+    "ultima_actualizacion": "09/02/2024",
+    "fecha_aviso": "10/02/2024"
   },
   {
     "id": 55,
@@ -87,24 +88,10 @@
     "fecha": "31/01/2024"
   },
   {
-    "id": 66,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "el hisotorial volvio a pisarse con el de actual lo curioso es que el archivo local esta todo OK probablemente sea un problema con el archivo que esta en github",
-    "fecha": "31/01/2024"
-  },
-  {
     "id": 68,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
     "tarea": "Snaps cargar por cajas",
-    "fecha": "31/01/2024"
-  },
-  {
-    "id": 69,
-    "cliente": "",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "Hormilla no se puede seleccionar en blanco o en negro",
     "fecha": "31/01/2024"
   },
   {
@@ -118,19 +105,19 @@
     "id": 73,
     "cliente": "ONIFLEX",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura\nReitero 7/2",
+    "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura\n\nReitero 7/2\n\nRECOTIOZAR!!! ",
     "fecha": "01/02/2024",
     "fecha_aviso": "14/02/2024",
-    "ultima_actualizacion": "08/02/2024"
+    "ultima_actualizacion": "09/02/2024"
   },
   {
     "id": 77,
     "cliente": "ELIZABETH CINTA CORSETERA",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo.",
+    "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo. // ya entro hay que chequear stock",
     "fecha": "02/02/2024",
-    "ultima_actualizacion": "08/02/2024",
-    "fecha_aviso": "09/02/2024"
+    "ultima_actualizacion": "10/02/2024",
+    "fecha_aviso": "14/02/2024"
   },
   {
     "id": 78,
@@ -143,9 +130,10 @@
     "id": 85,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "Queda pendiente de la lista de eric chequear colores en puntilla elastizada revisar de la lista algunos artículos con signo \"?\"",
+    "tarea": "Queda pendiente de la lista de eric chequear colores en puntilla elastizada revisar de la lista algunos artículos con signo \"?\" ver lo ultimo antes que se vaya eric",
     "fecha": "05/02/2024",
-    "ultima_actualizacion": "05/02/2024"
+    "ultima_actualizacion": "09/02/2024",
+    "fecha_aviso": "10/02/2024"
   },
   {
     "id": 86,
@@ -153,8 +141,8 @@
     "tipo_de_tarea": "Tarea General",
     "tarea": "Seguir testeando extencion IA google sheets",
     "fecha": "07/02/2024",
-    "fecha_aviso": "09/02/2024",
-    "ultima_actualizacion": "08/02/2024"
+    "fecha_aviso": "10/02/2024",
+    "ultima_actualizacion": "09/02/2024"
   },
   {
     "id": 88,
@@ -162,17 +150,17 @@
     "tipo_de_tarea": "Modificaciones en web",
     "tarea": "Arreglar tema categ ocultos en admin y mostrar a kary",
     "fecha": "07/02/2024",
-    "fecha_aviso": "09/02/2024",
-    "ultima_actualizacion": "08/02/2024"
+    "fecha_aviso": "10/02/2024",
+    "ultima_actualizacion": "09/02/2024"
   },
   {
     "id": 89,
     "cliente": "ASENCIO KARINA",
     "tipo_de_tarea": "envios",
-    "tarea": "Cliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
+    "tarea": "SIGUE AGREGANDO // CHEQUEAR PAGO\n\nCliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
     "fecha": "07/02/2024",
-    "fecha_aviso": "09/02/2024",
-    "ultima_actualizacion": "08/02/2024"
+    "fecha_aviso": "14/02/2024",
+    "ultima_actualizacion": "09/02/2024"
   },
   {
     "id": 90,
@@ -185,10 +173,10 @@
     "id": 91,
     "cliente": "",
     "tipo_de_tarea": "Tarea General",
-    "tarea": "avisar a eric que reponga totora de atraz",
+    "tarea": "avisar a eric que reponga totora de atraz // ver si se repuso sino avisar con alejandro",
     "fecha": "07/02/2024",
-    "fecha_aviso": "09/02/2024",
-    "ultima_actualizacion": "08/02/2024"
+    "fecha_aviso": "14/02/2024",
+    "ultima_actualizacion": "10/02/2024"
   },
   {
     "id": 93,
@@ -198,11 +186,20 @@
     "fecha": "08/02/2024"
   },
   {
-    "id": 95,
+    "id": 96,
+    "cliente": "LUCIA RIERA TALLER JUJUY",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "BP0010 negro x30 en0082 x30 entra viernes proximo",
+    "fecha": "09/02/2024",
+    "ultima_actualizacion": "09/02/2024",
+    "fecha_aviso": "16/02/2024"
+  },
+  {
+    "id": 97,
     "cliente": "",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "Graciela le quedo pendiente Juttempeker",
-    "fecha": "08/02/2024",
-    "fecha_aviso": "09/02/2024"
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "se cayo la busqueda en la barra clientes y al ingresar cliente nuevo piso todo lo guardado anteriormente // comente el acceso a mongo // volvi a testear y funciona bien abria que volver a integrar mongo",
+    "fecha": "10/02/2024",
+    "ultima_actualizacion": "10/02/2024"
   }
 ]
