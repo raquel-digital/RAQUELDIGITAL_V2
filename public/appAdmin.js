@@ -746,6 +746,7 @@ function uploadArts(){
       alert("SUBIDA FALLIDA " + "en articulo" + result.message + " INTENTE NUEVAMENTE");
       preview(upload);
     }
+    confirmarCambios()
   });
 
  function vaciarUpload(){
