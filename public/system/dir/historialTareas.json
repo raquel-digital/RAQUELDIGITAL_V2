@@ -9,30 +9,6 @@
     "fecha_aviso": "29/01/2024"
   },
   {
-    "id": 26,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "Cruzar informacion con base de datos de pedido local y web?",
-    "fecha": "25/01/2024"
-  },
-  {
-    "id": 39,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "actualizar taza faltan modelos en negro y natural // subir taza rc0700 usar foto RC0107",
-    "fecha": "27/01/2024",
-    "ultima_actualizacion": "07/02/2024"
-  },
-  {
-    "id": 42,
-    "cliente": "",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin REVISAR PROXIMOS CAMBIOS // vamos a subir las hormillas plastica negra aprovechar como prueba USAR IMAGEN: HORMILLA_PLASTICO_NEGRO.jpg",
-    "fecha": "29/01/2024",
-    "ultima_actualizacion": "09/02/2024",
-    "fecha_aviso": "10/02/2024"
-  },
-  {
     "id": 44,
     "cliente": "TAIPEI",
     "tipo_de_tarea": "Encargar Artículo",
@@ -40,66 +16,6 @@
     "fecha": "29/01/2024",
     "ultima_actualizacion": "07/02/2024",
     "fecha_aviso": "15/02/2024"
-  },
-  {
-    "id": 48,
-    "cliente": "",
-    "tipo_de_tarea": "Redes Sociales",
-    "tarea": "seguir con video tutoriales",
-    "fecha": "29/01/2024",
-    "ultima_actualizacion": "09/02/2024",
-    "fecha_aviso": "10/02/2024"
-  },
-  {
-    "id": 55,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "SUBIR ARGOLLA CAREY BLANCO//HI4030 pespente // completar puntilla en cono",
-    "fecha": "30/01/2024",
-    "ultima_actualizacion": "01/02/2024"
-  },
-  {
-    "id": 56,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "Actualizar carta colores de: CD0163 // cierres: perro, reforzado y metalico //CI4800 y 20",
-    "fecha": "30/01/2024",
-    "ultima_actualizacion": "31/01/2024"
-  },
-  {
-    "id": 62,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "Gancho pollera revisar stock",
-    "fecha": "30/01/2024"
-  },
-  {
-    "id": 63,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "cierres por 100 un",
-    "fecha": "30/01/2024"
-  },
-  {
-    "id": 64,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "en el futuro cuando borremos articulos quiero crear un nuevo model que busque al cliente y agrupe el historial en un objeto. Mas delante cada vez que se ingrese una consulta va a buscar ese objeto y su historial de pedidos y preferencias",
-    "fecha": "31/01/2024"
-  },
-  {
-    "id": 68,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "Snaps cargar por cajas",
-    "fecha": "31/01/2024"
-  },
-  {
-    "id": 70,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "Reguladores plásticos en lenceria falta subior natural manteca",
-    "fecha": "31/01/2024"
   },
   {
     "id": 73,
@@ -120,35 +36,10 @@
     "fecha_aviso": "14/02/2024"
   },
   {
-    "id": 78,
-    "cliente": "",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "Ver el orden de los botones del carrito en mobile\n",
-    "fecha": "03/02/2024"
-  },
-  {
-    "id": 85,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "Queda pendiente de la lista de eric chequear colores en puntilla elastizada revisar de la lista algunos artículos con signo \"?\" ver lo ultimo antes que se vaya eric",
-    "fecha": "05/02/2024",
-    "ultima_actualizacion": "09/02/2024",
-    "fecha_aviso": "10/02/2024"
-  },
-  {
     "id": 86,
     "cliente": "",
     "tipo_de_tarea": "Tarea General",
     "tarea": "Seguir testeando extencion IA google sheets",
-    "fecha": "07/02/2024",
-    "fecha_aviso": "10/02/2024",
-    "ultima_actualizacion": "09/02/2024"
-  },
-  {
-    "id": 88,
-    "cliente": "",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "Arreglar tema categ ocultos en admin y mostrar a kary",
     "fecha": "07/02/2024",
     "fecha_aviso": "10/02/2024",
     "ultima_actualizacion": "09/02/2024"
@@ -161,13 +52,6 @@
     "fecha": "07/02/2024",
     "fecha_aviso": "14/02/2024",
     "ultima_actualizacion": "09/02/2024"
-  },
-  {
-    "id": 90,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "HI1311 hilo chico encerado",
-    "fecha": "07/02/2024"
   },
   {
     "id": 91,
@@ -195,19 +79,20 @@
     "fecha_aviso": "16/02/2024"
   },
   {
-    "id": 97,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "se cayo la busqueda en la barra clientes y al ingresar cliente nuevo piso todo lo guardado anteriormente // comente el acceso a mongo // volvi a testear y funciona bien abria que volver a integrar mongo",
-    "fecha": "10/02/2024",
-    "ultima_actualizacion": "10/02/2024"
-  },
-  {
     "id": 98,
     "cliente": "TEST99",
     "tipo_de_tarea": "Tarea General",
     "tarea": "1",
     "fecha": "10/02/2024",
+    "borrado": true
+  },
+  {
+    "id": 98,
+    "cliente": "",
+    "tipo_de_tarea": "Urgentes",
+    "tarea": "FACTURAR TODO LO PENDIENTE DEL VIERNES",
+    "fecha": "10/02/2024",
+    "fecha_aviso": "14/02/2024",
     "borrado": true
   }
 ]

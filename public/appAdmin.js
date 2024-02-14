@@ -44,6 +44,7 @@ function confirmarCambios(){
     socket.emit("delete", toDel);
   }  
   console.log(cambiosEnArticulos)
+  console.log("Cambios en Artículos")
   socket.emit("cambio-en-articulos", cambiosEnArticulos)
 }
 

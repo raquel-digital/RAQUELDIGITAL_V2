@@ -27,10 +27,10 @@
     "id": 42,
     "cliente": "",
     "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin REVISAR PROXIMOS CAMBIOS // vamos a subir las hormillas plastica negra aprovechar como prueba USAR IMAGEN: HORMILLA_PLASTICO_NEGRO.jpg",
+    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin REVISAR PROXIMOS CAMBIOS // veo que en local funciona perfecto pero en web no",
     "fecha": "29/01/2024",
-    "ultima_actualizacion": "09/02/2024",
-    "fecha_aviso": "10/02/2024"
+    "ultima_actualizacion": "10/02/2024",
+    "fecha_aviso": "14/02/2024"
   },
   {
     "id": 44,
@@ -47,8 +47,8 @@
     "tipo_de_tarea": "Redes Sociales",
     "tarea": "seguir con video tutoriales",
     "fecha": "29/01/2024",
-    "ultima_actualizacion": "09/02/2024",
-    "fecha_aviso": "10/02/2024"
+    "ultima_actualizacion": "10/02/2024",
+    "fecha_aviso": "14/02/2024"
   },
   {
     "id": 55,
@@ -132,8 +132,8 @@
     "tipo_de_tarea": "Actualizacion Articulos Web",
     "tarea": "Queda pendiente de la lista de eric chequear colores en puntilla elastizada revisar de la lista algunos artículos con signo \"?\" ver lo ultimo antes que se vaya eric",
     "fecha": "05/02/2024",
-    "ultima_actualizacion": "09/02/2024",
-    "fecha_aviso": "10/02/2024"
+    "ultima_actualizacion": "10/02/2024",
+    "fecha_aviso": "14/02/2024"
   },
   {
     "id": 86,
@@ -141,8 +141,8 @@
     "tipo_de_tarea": "Tarea General",
     "tarea": "Seguir testeando extencion IA google sheets",
     "fecha": "07/02/2024",
-    "fecha_aviso": "10/02/2024",
-    "ultima_actualizacion": "09/02/2024"
+    "fecha_aviso": "14/02/2024",
+    "ultima_actualizacion": "10/02/2024"
   },
   {
     "id": 88,
@@ -150,8 +150,8 @@
     "tipo_de_tarea": "Modificaciones en web",
     "tarea": "Arreglar tema categ ocultos en admin y mostrar a kary",
     "fecha": "07/02/2024",
-    "fecha_aviso": "10/02/2024",
-    "ultima_actualizacion": "09/02/2024"
+    "fecha_aviso": "14/02/2024",
+    "ultima_actualizacion": "10/02/2024"
   },
   {
     "id": 89,
@@ -201,5 +201,19 @@
     "tarea": "se cayo la busqueda en la barra clientes y al ingresar cliente nuevo piso todo lo guardado anteriormente // comente el acceso a mongo // volvi a testear y funciona bien abria que volver a integrar mongo",
     "fecha": "10/02/2024",
     "ultima_actualizacion": "10/02/2024"
+  },
+  {
+    "id": 99,
+    "cliente": "COMITO JORGE",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "El boludo desposito 2 veces 27934 el día 26/1 por MP",
+    "fecha": "14/02/2024"
+  },
+  {
+    "id": 100,
+    "cliente": "ANDRES EUROFULL",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "quiere comunicarse para mostrarnos como hacer el traspaso del dominio",
+    "fecha": "14/02/2024"
   }
 ]
