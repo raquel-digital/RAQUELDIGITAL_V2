@@ -35,6 +35,7 @@ async function loadCateg(){
     await filtrar(["BB","CS-BORDADO","RV","VS/manualidades"], "telar", artBase);
     await filtrar(["HC","VS","PA","VS/INDUMENTARIA"], "otros", artBase);
   
+    delete require.cache[require.resolve("../public/system/dir/allArts.json")];
     fs.writeFileSync("./public/system/dir/allArts.json", JSON.stringify(artBase, null, 2));  
   return  console.log("Categorias Cargadas")
 }

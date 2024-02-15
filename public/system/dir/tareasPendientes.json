@@ -155,8 +155,9 @@
     "id": 93,
     "cliente": "",
     "tipo_de_tarea": "Mario",
-    "tarea": "Manguera de desagote!!!!",
-    "fecha": "08/02/2024"
+    "tarea": "Manguera de desagote",
+    "fecha": "08/02/2024",
+    "ultima_actualizacion": "15/02/2024"
   },
   {
     "id": 96,
@@ -174,13 +175,6 @@
     "tarea": "se cayo la busqueda en la barra clientes y al ingresar cliente nuevo piso todo lo guardado anteriormente // comente el acceso a mongo // volvi a testear y funciona bien abria que volver a integrar mongo",
     "fecha": "10/02/2024",
     "ultima_actualizacion": "10/02/2024"
-  },
-  {
-    "id": 99,
-    "cliente": "COMITO JORGE",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "El boludo desposito 2 veces 27934 el día 26/1 por MP",
-    "fecha": "14/02/2024"
   },
   {
     "id": 100,
@@ -210,5 +204,29 @@
     "tipo_de_tarea": "Mantenimiento Agenda",
     "tarea": "poder programar tareas mensuales que siempre suceden",
     "fecha": "14/02/2024"
+  },
+  {
+    "id": 106,
+    "cliente": "CLIENTA MOSTRADOR",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "transfirió 2 veces a MP 5835 las 2 fallaron se llevo la mercadería y no se nos acredito. Contacto al 11 5467-9054 Lucila Nicole Morsella. Ella no quiere transferir hasta que el banco le devuelva su transferencia. Segun mercadopago eso demora maximo 72hs.",
+    "fecha": "15/02/2024",
+    "fecha_aviso": "16/02/2024",
+    "ultima_actualizacion": "15/02/2024"
+  },
+  {
+    "id": 107,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "El AF0040 y 43 se tiene que poder elejir entre blanco y colores",
+    "fecha": "15/02/2024"
+  },
+  {
+    "id": 108,
+    "cliente": "MARIA CLAUDIA MARQUES",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "Viene a retirar pedido grande abona en dolares",
+    "fecha": "15/02/2024",
+    "fecha_aviso": "14/02/2024"
   }
 ]
