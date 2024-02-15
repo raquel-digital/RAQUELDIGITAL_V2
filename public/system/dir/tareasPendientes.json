@@ -24,15 +24,6 @@
     "ultima_actualizacion": "07/02/2024"
   },
   {
-    "id": 42,
-    "cliente": "",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin REVISAR PROXIMOS CAMBIOS // veo que en local funciona perfecto pero en web no",
-    "fecha": "29/01/2024",
-    "ultima_actualizacion": "14/02/2024",
-    "fecha_aviso": "15/02/2024"
-  },
-  {
     "id": 44,
     "cliente": "TAIPEI",
     "tipo_de_tarea": "Encargar Artículo",
@@ -47,8 +38,8 @@
     "tipo_de_tarea": "Redes Sociales",
     "tarea": "seguir con video tutoriales",
     "fecha": "29/01/2024",
-    "ultima_actualizacion": "14/02/2024",
-    "fecha_aviso": "15/02/2024"
+    "ultima_actualizacion": "15/02/2024",
+    "fecha_aviso": "16/02/2024"
   },
   {
     "id": 55,
@@ -132,8 +123,8 @@
     "tipo_de_tarea": "Actualizacion Articulos Web",
     "tarea": "Queda pendiente de la lista de eric chequear colores en puntilla elastizada revisar de la lista algunos artículos con signo \"?\" ver lo ultimo antes que se vaya eric",
     "fecha": "05/02/2024",
-    "ultima_actualizacion": "14/02/2024",
-    "fecha_aviso": "15/02/2024"
+    "ultima_actualizacion": "15/02/2024",
+    "fecha_aviso": "16/02/2024"
   },
   {
     "id": 86,
@@ -175,6 +166,13 @@
     "tarea": "se cayo la busqueda en la barra clientes y al ingresar cliente nuevo piso todo lo guardado anteriormente // comente el acceso a mongo // volvi a testear y funciona bien abria que volver a integrar mongo",
     "fecha": "10/02/2024",
     "ultima_actualizacion": "10/02/2024"
+  },
+  {
+    "id": 99,
+    "cliente": "COMITO JORGE",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "El boludo desposito 2 veces 27934 el día 26/1 por MP",
+    "fecha": "14/02/2024"
   },
   {
     "id": 100,
