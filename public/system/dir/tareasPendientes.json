@@ -145,15 +145,6 @@
     "ultima_actualizacion": "14/02/2024"
   },
   {
-    "id": 88,
-    "cliente": "",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "Arreglar tema categ ocultos en admin y mostrar a kary",
-    "fecha": "07/02/2024",
-    "fecha_aviso": "15/02/2024",
-    "ultima_actualizacion": "14/02/2024"
-  },
-  {
     "id": 90,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
