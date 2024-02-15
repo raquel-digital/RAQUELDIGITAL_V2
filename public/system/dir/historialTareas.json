@@ -94,5 +94,72 @@
     "fecha": "10/02/2024",
     "fecha_aviso": "14/02/2024",
     "borrado": true
+  },
+  {
+    "id": 98,
+    "cliente": "",
+    "tipo_de_tarea": "Urgentes",
+    "tarea": "FACTURAR TODO LO PENDIENTE DEL VIERNES",
+    "fecha": "10/02/2024",
+    "fecha_aviso": "14/02/2024",
+    "borrado": true
+  },
+  {
+    "id": 89,
+    "cliente": "ASENCIO KARINA",
+    "tipo_de_tarea": "envios",
+    "tarea": "SIGUE AGREGANDO // CHEQUEAR PAGO\n\nCliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
+    "fecha": "07/02/2024",
+    "fecha_aviso": "14/02/2024",
+    "ultima_actualizacion": "09/02/2024",
+    "borrado": true
+  },
+  {
+    "id": 89,
+    "cliente": "ASENCIO KARINA",
+    "tipo_de_tarea": "envios",
+    "tarea": "SIGUE AGREGANDO // CHEQUEAR PAGO\n\nCliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
+    "fecha": "07/02/2024",
+    "fecha_aviso": "14/02/2024",
+    "ultima_actualizacion": "09/02/2024",
+    "borrado": true
+  },
+  {
+    "id": 89,
+    "cliente": "ASENCIO KARINA",
+    "tipo_de_tarea": "envios",
+    "tarea": "SIGUE AGREGANDO // CHEQUEAR PAGO\n\nCliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
+    "fecha": "07/02/2024",
+    "fecha_aviso": "14/02/2024",
+    "ultima_actualizacion": "09/02/2024",
+    "borrado": true
+  },
+  {
+    "id": 91,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "avisar a eric que reponga totora de atraz // ver si se repuso sino avisar con alejandro // avisado controlar si se hizo",
+    "fecha": "07/02/2024",
+    "fecha_aviso": "15/02/2024",
+    "ultima_actualizacion": "14/02/2024",
+    "borrado": true
+  },
+  {
+    "id": 103,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "instruir alejando en mostrar ocultar cosas de la pagina en el control",
+    "fecha": "14/02/2024",
+    "fecha_aviso": "15/02/2024",
+    "borrado": true
+  },
+  {
+    "id": 104,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "Mandar IIBB a jesy",
+    "fecha": "14/02/2024",
+    "fecha_aviso": "15/02/2024",
+    "borrado": true
   }
 ]

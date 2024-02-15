@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
   const selectCateg = document.querySelector(".sel__box--black-panther");
 
   selectCateg.addEventListener("click", e => {
-    const categ = e.target.textContent;    
+    const categ = e.target.textContent;  
+    console.log(categ)  
     socket.emit("categ-seleccionada", categ);
     paginador.innerHTML = ""; 
     
