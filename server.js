@@ -257,11 +257,11 @@ io.on('connect', socket => {
         const clientes = require("./utils/agenda/clientes.json")
 
         //MONGO BORRA RESULTADOS
-        // const store = require("./api/agenda/store")        
-        // const resMongo = await store.readAgenda()
-        // const res = JSON.parse(clientes)
+        const store = require("./api/agenda/store")        
+        const resMongo = await store.readAgenda()
+        const res = JSON.parse(clientes)
 
-        socket.emit("req-cli-res", clientes)
+        socket.emit("req-cli-res", res)
     })
     socket.on("nuevo-cliente", async agenda =>{
         delete require.cache[require.resolve("./utils/agenda/clientes.json")];
@@ -269,11 +269,11 @@ io.on('connect', socket => {
         const clientes = require("./utils/agenda/clientes.json")
 
         //MONGO
-        // const store = require("./api/agenda/store")        
-        // const resMongo = await store.writeAgenda(JSON.stringify(agenda))
-        // const res = JSON.parse(clientes)
+        const store = require("./api/agenda/store")        
+        const resMongo = await store.writeAgenda(JSON.stringify(agenda))
+        const res = JSON.parse(clientes)
 
-        socket.emit("req-cli-res", clientes)
+        socket.emit("req-cli-res", res)
     })
     socket.on("agenda-inicio", async () => {
         delete require.cache[require.resolve("./public/system/dir/tareasPendientes.json")];
@@ -282,7 +282,7 @@ io.on('connect', socket => {
          const store = require("./api/agenda/store")        
          const resMongo = await store.read()
          const res = JSON.parse(resMongo[0].agenda)
-        socket.emit("agenda-inicio-res", update)
+        socket.emit("agenda-inicio-res", res)
     })
 
     socket.on("tarea-nueva", async data => {
@@ -309,7 +309,7 @@ io.on('connect', socket => {
         const update = require("./public/system/dir/tareasPendientes.json")
         //MONGO
         res = JSON.parse(res[0].agenda) 
-        socket.emit("tarea-nueva-res", update)
+        socket.emit("tarea-nueva-res", res)
     })
     socket.on("art-borrado", async artBorrado => {        
          delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];

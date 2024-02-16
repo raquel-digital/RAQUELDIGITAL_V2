@@ -24,6 +24,15 @@
     "ultima_actualizacion": "07/02/2024"
   },
   {
+    "id": 42,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin REVISAR PROXIMOS CAMBIOS // veo que en local funciona perfecto pero en web no",
+    "fecha": "29/01/2024",
+    "ultima_actualizacion": "14/02/2024",
+    "fecha_aviso": "15/02/2024"
+  },
+  {
     "id": 44,
     "cliente": "TAIPEI",
     "tipo_de_tarea": "Encargar Artículo",
@@ -105,9 +114,9 @@
     "id": 77,
     "cliente": "ELIZABETH CINTA CORSETERA",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo. // ya entro hay que chequear stock // ya entraron clienta avisada",
+    "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo. // entro mercaderia y avisamos al cliente.",
     "fecha": "02/02/2024",
-    "ultima_actualizacion": "14/02/2024",
+    "ultima_actualizacion": "15/02/2024",
     "fecha_aviso": "29/01/2024"
   },
   {
@@ -165,7 +174,8 @@
     "tipo_de_tarea": "Mantenimiento Agenda",
     "tarea": "se cayo la busqueda en la barra clientes y al ingresar cliente nuevo piso todo lo guardado anteriormente // comente el acceso a mongo // volvi a testear y funciona bien abria que volver a integrar mongo",
     "fecha": "10/02/2024",
-    "ultima_actualizacion": "10/02/2024"
+    "ultima_actualizacion": "15/02/2024",
+    "fecha_aviso": "16/02/2024"
   },
   {
     "id": 99,
@@ -178,8 +188,10 @@
     "id": 100,
     "cliente": "ANDRES EUROFULL",
     "tipo_de_tarea": "Tarea General",
-    "tarea": "quiere comunicarse para mostrarnos como hacer el traspaso del dominio",
-    "fecha": "14/02/2024"
+    "tarea": "quiere comunicarse para mostrarnos como hacer el traspaso del dominio // no contesta whatsapp llamamos directamente",
+    "fecha": "14/02/2024",
+    "ultima_actualizacion": "15/02/2024",
+    "fecha_aviso": "16/02/2024"
   },
   {
     "id": 101,

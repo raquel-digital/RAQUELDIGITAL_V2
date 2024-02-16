@@ -1,0 +1,173 @@
+[
+    {
+      "id": 17,
+      "cliente": "PIRELLI",
+      "tipo_de_tarea": "Encargar Artículo",
+      "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta // Bajan a 500mts las cantidades de abrojo ver precio // enviamos mail con presupuesto nuevo 10/2",
+      "fecha": "24/01/2024",
+      "ultima_actualizacion": "10/02/2024",
+      "fecha_aviso": "29/01/2024"
+    },
+    {
+      "id": 44,
+      "cliente": "TAIPEI",
+      "tipo_de_tarea": "Encargar Artículo",
+      "tarea": "Quiere HI5000 color 5047 x6 se hizo pedido chequear si entro en 10 días reciben mas colores // HIZO UN AGREGADO AL PEDIDO",
+      "fecha": "29/01/2024",
+      "ultima_actualizacion": "07/02/2024",
+      "fecha_aviso": "15/02/2024"
+    },
+    {
+      "id": 73,
+      "cliente": "ONIFLEX",
+      "tipo_de_tarea": "Encargar Artículo",
+      "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura\n\nReitero 7/2\n\nRECOTIOZAR!!! ",
+      "fecha": "01/02/2024",
+      "fecha_aviso": "14/02/2024",
+      "ultima_actualizacion": "09/02/2024"
+    },
+    {
+      "id": 77,
+      "cliente": "ELIZABETH CINTA CORSETERA",
+      "tipo_de_tarea": "Encargar Artículo",
+      "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo. // ya entro hay que chequear stock",
+      "fecha": "02/02/2024",
+      "ultima_actualizacion": "10/02/2024",
+      "fecha_aviso": "14/02/2024"
+    },
+    {
+      "id": 86,
+      "cliente": "",
+      "tipo_de_tarea": "Tarea General",
+      "tarea": "Seguir testeando extencion IA google sheets",
+      "fecha": "07/02/2024",
+      "fecha_aviso": "10/02/2024",
+      "ultima_actualizacion": "09/02/2024"
+    },
+    {
+      "id": 89,
+      "cliente": "ASENCIO KARINA",
+      "tipo_de_tarea": "envios",
+      "tarea": "SIGUE AGREGANDO // CHEQUEAR PAGO\n\nCliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
+      "fecha": "07/02/2024",
+      "fecha_aviso": "14/02/2024",
+      "ultima_actualizacion": "09/02/2024"
+    },
+    {
+      "id": 91,
+      "cliente": "",
+      "tipo_de_tarea": "Tarea General",
+      "tarea": "avisar a eric que reponga totora de atraz // ver si se repuso sino avisar con alejandro",
+      "fecha": "07/02/2024",
+      "fecha_aviso": "14/02/2024",
+      "ultima_actualizacion": "10/02/2024"
+    },
+    {
+      "id": 93,
+      "cliente": "",
+      "tipo_de_tarea": "Mario",
+      "tarea": "Manguera de desagote!!!!",
+      "fecha": "08/02/2024"
+    },
+    {
+      "id": 96,
+      "cliente": "LUCIA RIERA TALLER JUJUY",
+      "tipo_de_tarea": "Encargar Artículo",
+      "tarea": "BP0010 negro x30 en0082 x30 entra viernes proximo",
+      "fecha": "09/02/2024",
+      "ultima_actualizacion": "09/02/2024",
+      "fecha_aviso": "16/02/2024"
+    },
+    {
+      "id": 98,
+      "cliente": "TEST99",
+      "tipo_de_tarea": "Tarea General",
+      "tarea": "1",
+      "fecha": "10/02/2024",
+      "borrado": true
+    },
+    {
+      "id": 98,
+      "cliente": "",
+      "tipo_de_tarea": "Urgentes",
+      "tarea": "FACTURAR TODO LO PENDIENTE DEL VIERNES",
+      "fecha": "10/02/2024",
+      "fecha_aviso": "14/02/2024",
+      "borrado": true
+    },
+    {
+      "id": 98,
+      "cliente": "",
+      "tipo_de_tarea": "Urgentes",
+      "tarea": "FACTURAR TODO LO PENDIENTE DEL VIERNES",
+      "fecha": "10/02/2024",
+      "fecha_aviso": "14/02/2024",
+      "borrado": true
+    },
+    {
+      "id": 89,
+      "cliente": "ASENCIO KARINA",
+      "tipo_de_tarea": "envios",
+      "tarea": "SIGUE AGREGANDO // CHEQUEAR PAGO\n\nCliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
+      "fecha": "07/02/2024",
+      "fecha_aviso": "14/02/2024",
+      "ultima_actualizacion": "09/02/2024",
+      "borrado": true
+    },
+    {
+      "id": 89,
+      "cliente": "ASENCIO KARINA",
+      "tipo_de_tarea": "envios",
+      "tarea": "SIGUE AGREGANDO // CHEQUEAR PAGO\n\nCliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
+      "fecha": "07/02/2024",
+      "fecha_aviso": "14/02/2024",
+      "ultima_actualizacion": "09/02/2024",
+      "borrado": true
+    },
+    {
+      "id": 89,
+      "cliente": "ASENCIO KARINA",
+      "tipo_de_tarea": "envios",
+      "tarea": "SIGUE AGREGANDO // CHEQUEAR PAGO\n\nCliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
+      "fecha": "07/02/2024",
+      "fecha_aviso": "14/02/2024",
+      "ultima_actualizacion": "09/02/2024",
+      "borrado": true
+    },
+    {
+      "id": 91,
+      "cliente": "",
+      "tipo_de_tarea": "Tarea General",
+      "tarea": "avisar a eric que reponga totora de atraz // ver si se repuso sino avisar con alejandro // avisado controlar si se hizo",
+      "fecha": "07/02/2024",
+      "fecha_aviso": "15/02/2024",
+      "ultima_actualizacion": "14/02/2024",
+      "borrado": true
+    },
+    {
+      "id": 103,
+      "cliente": "",
+      "tipo_de_tarea": "Tarea General",
+      "tarea": "instruir alejando en mostrar ocultar cosas de la pagina en el control",
+      "fecha": "14/02/2024",
+      "fecha_aviso": "15/02/2024",
+      "borrado": true
+    },
+    {
+      "id": 104,
+      "cliente": "",
+      "tipo_de_tarea": "Tarea General",
+      "tarea": "Mandar IIBB a jesy",
+      "fecha": "14/02/2024",
+      "fecha_aviso": "15/02/2024",
+      "borrado": true
+    },
+    {
+      "id": 99,
+      "cliente": "COMITO JORGE",
+      "tipo_de_tarea": "Tarea General",
+      "tarea": "El boludo desposito 2 veces 27934 el día 26/1 por MP",
+      "fecha": "14/02/2024",
+      "borrado": true
+    }
+  ]
