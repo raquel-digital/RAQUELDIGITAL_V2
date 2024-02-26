@@ -198,15 +198,6 @@
     "fecha": "14/02/2024"
   },
   {
-    "id": 106,
-    "cliente": "CLIENTA MOSTRADOR",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "transfirió 2 veces a MP 5835 las 2 fallaron se llevo la mercadería y no se nos acredito. Contacto al 11 5467-9054 Lucila Nicole Morsella. Ella no quiere transferir hasta que el banco le devuelva su transferencia. Segun mercadopago eso demora maximo 72hs.",
-    "fecha": "15/02/2024",
-    "fecha_aviso": "16/02/2024",
-    "ultima_actualizacion": "15/02/2024"
-  },
-  {
     "id": 107,
     "cliente": "",
     "tipo_de_tarea": "Modificaciones en web",
@@ -216,10 +207,9 @@
   },
   {
     "id": 108,
-    "cliente": "MARIA CLAUDIA MARQUES",
+    "cliente": "FLORENCIA PERRI",
     "tipo_de_tarea": "Cliente Whatsapp",
-    "tarea": "Viene a retirar pedido grande abona en dolares",
-    "fecha": "15/02/2024",
-    "fecha_aviso": "14/02/2024"
+    "tarea": "reserve HI5000 color 5020 quiere agregar.",
+    "fecha": "26/02/2024"
   }
 ]
