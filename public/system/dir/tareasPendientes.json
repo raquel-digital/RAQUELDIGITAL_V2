@@ -33,15 +33,6 @@
     "fecha_aviso": "15/02/2024"
   },
   {
-    "id": 44,
-    "cliente": "TAIPEI",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quiere HI5000 color 5047 x6 se hizo pedido chequear si entro en 10 días reciben mas colores // HIZO UN AGREGADO AL PEDIDO",
-    "fecha": "29/01/2024",
-    "ultima_actualizacion": "15/02/2024",
-    "fecha_aviso": "26/02/2024"
-  },
-  {
     "id": 48,
     "cliente": "",
     "tipo_de_tarea": "Redes Sociales",
@@ -105,19 +96,10 @@
     "id": 73,
     "cliente": "ONIFLEX",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura\n\nReitero 7/2\n\nRe facturamos 14/2",
+    "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura\n\nReitero 7/2\n\nRe facturamos 14/2\n\nRe facturamos 26/2",
     "fecha": "01/02/2024",
-    "fecha_aviso": "02/02/2024",
-    "ultima_actualizacion": "14/02/2024"
-  },
-  {
-    "id": 77,
-    "cliente": "ELIZABETH CINTA CORSETERA",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo. // entro mercaderia y avisamos al cliente.",
-    "fecha": "02/02/2024",
-    "ultima_actualizacion": "15/02/2024",
-    "fecha_aviso": "29/01/2024"
+    "fecha_aviso": "27/02/2024",
+    "ultima_actualizacion": "26/02/2024"
   },
   {
     "id": 78,
@@ -188,10 +170,10 @@
     "id": 100,
     "cliente": "ANDRES EUROFULL",
     "tipo_de_tarea": "Tarea General",
-    "tarea": "quiere comunicarse para mostrarnos como hacer el traspaso del dominio // no contesta whatsapp llamamos directamente",
+    "tarea": "Tema traspaso dominio ya consulte a ariel.",
     "fecha": "14/02/2024",
-    "ultima_actualizacion": "15/02/2024",
-    "fecha_aviso": "16/02/2024"
+    "ultima_actualizacion": "26/02/2024",
+    "fecha_aviso": "26/02/2024"
   },
   {
     "id": 101,
@@ -228,8 +210,9 @@
     "id": 107,
     "cliente": "",
     "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "El AF0040 y 43 se tiene que poder elejir entre blanco y colores",
-    "fecha": "15/02/2024"
+    "tarea": "El AF0043 se tiene que poder elejir entre blanco y colores no había en color surtido en stock.",
+    "fecha": "15/02/2024",
+    "ultima_actualizacion": "26/02/2024"
   },
   {
     "id": 108,

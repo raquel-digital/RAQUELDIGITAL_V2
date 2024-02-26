@@ -9,31 +9,113 @@
     "fecha_aviso": "29/01/2024"
   },
   {
-    "id": 44,
-    "cliente": "TAIPEI",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quiere HI5000 color 5047 x6 se hizo pedido chequear si entro en 10 días reciben mas colores // HIZO UN AGREGADO AL PEDIDO",
+    "id": 26,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Cruzar informacion con base de datos de pedido local y web?",
+    "fecha": "25/01/2024"
+  },
+  {
+    "id": 39,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "actualizar taza faltan modelos en negro y natural // subir taza rc0700 usar foto RC0107",
+    "fecha": "27/01/2024",
+    "ultima_actualizacion": "07/02/2024"
+  },
+  {
+    "id": 42,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin REVISAR PROXIMOS CAMBIOS // veo que en local funciona perfecto pero en web no",
     "fecha": "29/01/2024",
-    "ultima_actualizacion": "07/02/2024",
+    "ultima_actualizacion": "14/02/2024",
     "fecha_aviso": "15/02/2024"
+  },
+  {
+    "id": 48,
+    "cliente": "",
+    "tipo_de_tarea": "Redes Sociales",
+    "tarea": "seguir con video tutoriales",
+    "fecha": "29/01/2024",
+    "ultima_actualizacion": "15/02/2024",
+    "fecha_aviso": "16/02/2024"
+  },
+  {
+    "id": 55,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "SUBIR ARGOLLA CAREY BLANCO//HI4030 pespente // completar puntilla en cono",
+    "fecha": "30/01/2024",
+    "ultima_actualizacion": "01/02/2024"
+  },
+  {
+    "id": 56,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Actualizar carta colores de: CD0163 // cierres: perro, reforzado y metalico //CI4800 y 20",
+    "fecha": "30/01/2024",
+    "ultima_actualizacion": "31/01/2024"
+  },
+  {
+    "id": 62,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Gancho pollera revisar stock",
+    "fecha": "30/01/2024"
+  },
+  {
+    "id": 63,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "cierres por 100 un",
+    "fecha": "30/01/2024"
+  },
+  {
+    "id": 64,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "en el futuro cuando borremos articulos quiero crear un nuevo model que busque al cliente y agrupe el historial en un objeto. Mas delante cada vez que se ingrese una consulta va a buscar ese objeto y su historial de pedidos y preferencias",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 68,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Snaps cargar por cajas",
+    "fecha": "31/01/2024"
+  },
+  {
+    "id": 70,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Reguladores plásticos en lenceria falta subior natural manteca",
+    "fecha": "31/01/2024"
   },
   {
     "id": 73,
     "cliente": "ONIFLEX",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura\n\nReitero 7/2\n\nRECOTIOZAR!!! ",
+    "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura\n\nReitero 7/2\n\nRe facturamos 14/2\n\nRe facturamos 26/2",
     "fecha": "01/02/2024",
-    "fecha_aviso": "14/02/2024",
-    "ultima_actualizacion": "09/02/2024"
+    "fecha_aviso": "27/02/2024",
+    "ultima_actualizacion": "26/02/2024"
   },
   {
-    "id": 77,
-    "cliente": "ELIZABETH CINTA CORSETERA",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Encargamos 14 breteles mas. Graciela sabe el modelo. // ya entro hay que chequear stock",
-    "fecha": "02/02/2024",
-    "ultima_actualizacion": "10/02/2024",
-    "fecha_aviso": "14/02/2024"
+    "id": 78,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "Ver el orden de los botones del carrito en mobile\n",
+    "fecha": "03/02/2024"
+  },
+  {
+    "id": 85,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Queda pendiente de la lista de eric chequear colores en puntilla elastizada revisar de la lista algunos artículos con signo \"?\" ver lo ultimo antes que se vaya eric",
+    "fecha": "05/02/2024",
+    "ultima_actualizacion": "15/02/2024",
+    "fecha_aviso": "16/02/2024"
   },
   {
     "id": 86,
@@ -41,33 +123,23 @@
     "tipo_de_tarea": "Tarea General",
     "tarea": "Seguir testeando extencion IA google sheets",
     "fecha": "07/02/2024",
-    "fecha_aviso": "10/02/2024",
-    "ultima_actualizacion": "09/02/2024"
+    "fecha_aviso": "28/01/2024",
+    "ultima_actualizacion": "14/02/2024"
   },
   {
-    "id": 89,
-    "cliente": "ASENCIO KARINA",
-    "tipo_de_tarea": "envios",
-    "tarea": "SIGUE AGREGANDO // CHEQUEAR PAGO\n\nCliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
-    "fecha": "07/02/2024",
-    "fecha_aviso": "14/02/2024",
-    "ultima_actualizacion": "09/02/2024"
-  },
-  {
-    "id": 91,
+    "id": 90,
     "cliente": "",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "avisar a eric que reponga totora de atraz // ver si se repuso sino avisar con alejandro",
-    "fecha": "07/02/2024",
-    "fecha_aviso": "14/02/2024",
-    "ultima_actualizacion": "10/02/2024"
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "HI1311 hilo chico encerado",
+    "fecha": "07/02/2024"
   },
   {
     "id": 93,
     "cliente": "",
     "tipo_de_tarea": "Mario",
-    "tarea": "Manguera de desagote!!!!",
-    "fecha": "08/02/2024"
+    "tarea": "Manguera de desagote",
+    "fecha": "08/02/2024",
+    "ultima_actualizacion": "15/02/2024"
   },
   {
     "id": 96,
@@ -79,95 +151,76 @@
     "fecha_aviso": "16/02/2024"
   },
   {
-    "id": 98,
-    "cliente": "TEST99",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "1",
+    "id": 97,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "se cayo la busqueda en la barra clientes y al ingresar cliente nuevo piso todo lo guardado anteriormente // comente el acceso a mongo // volvi a testear y funciona bien abria que volver a integrar mongo",
     "fecha": "10/02/2024",
-    "borrado": true
-  },
-  {
-    "id": 98,
-    "cliente": "",
-    "tipo_de_tarea": "Urgentes",
-    "tarea": "FACTURAR TODO LO PENDIENTE DEL VIERNES",
-    "fecha": "10/02/2024",
-    "fecha_aviso": "14/02/2024",
-    "borrado": true
-  },
-  {
-    "id": 98,
-    "cliente": "",
-    "tipo_de_tarea": "Urgentes",
-    "tarea": "FACTURAR TODO LO PENDIENTE DEL VIERNES",
-    "fecha": "10/02/2024",
-    "fecha_aviso": "14/02/2024",
-    "borrado": true
-  },
-  {
-    "id": 89,
-    "cliente": "ASENCIO KARINA",
-    "tipo_de_tarea": "envios",
-    "tarea": "SIGUE AGREGANDO // CHEQUEAR PAGO\n\nCliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
-    "fecha": "07/02/2024",
-    "fecha_aviso": "14/02/2024",
-    "ultima_actualizacion": "09/02/2024",
-    "borrado": true
-  },
-  {
-    "id": 89,
-    "cliente": "ASENCIO KARINA",
-    "tipo_de_tarea": "envios",
-    "tarea": "SIGUE AGREGANDO // CHEQUEAR PAGO\n\nCliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
-    "fecha": "07/02/2024",
-    "fecha_aviso": "14/02/2024",
-    "ultima_actualizacion": "09/02/2024",
-    "borrado": true
-  },
-  {
-    "id": 89,
-    "cliente": "ASENCIO KARINA",
-    "tipo_de_tarea": "envios",
-    "tarea": "SIGUE AGREGANDO // CHEQUEAR PAGO\n\nCliente: Karina Asencio\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Laprida 575 Altura: 500 Piso: undefined Horario de entrega: undefined\nLocalidad: undefined Provincia: undefined\nCP: 24164472 Costo Envío: 6890\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 3812062421",
-    "fecha": "07/02/2024",
-    "fecha_aviso": "14/02/2024",
-    "ultima_actualizacion": "09/02/2024",
-    "borrado": true
-  },
-  {
-    "id": 91,
-    "cliente": "",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "avisar a eric que reponga totora de atraz // ver si se repuso sino avisar con alejandro // avisado controlar si se hizo",
-    "fecha": "07/02/2024",
-    "fecha_aviso": "15/02/2024",
-    "ultima_actualizacion": "14/02/2024",
-    "borrado": true
-  },
-  {
-    "id": 103,
-    "cliente": "",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "instruir alejando en mostrar ocultar cosas de la pagina en el control",
-    "fecha": "14/02/2024",
-    "fecha_aviso": "15/02/2024",
-    "borrado": true
-  },
-  {
-    "id": 104,
-    "cliente": "",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "Mandar IIBB a jesy",
-    "fecha": "14/02/2024",
-    "fecha_aviso": "15/02/2024",
-    "borrado": true
+    "ultima_actualizacion": "15/02/2024",
+    "fecha_aviso": "16/02/2024"
   },
   {
     "id": 99,
     "cliente": "COMITO JORGE",
     "tipo_de_tarea": "Tarea General",
     "tarea": "El boludo desposito 2 veces 27934 el día 26/1 por MP",
+    "fecha": "14/02/2024"
+  },
+  {
+    "id": 100,
+    "cliente": "ANDRES EUROFULL",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "Tema traspaso dominio ya consulte a ariel.",
     "fecha": "14/02/2024",
+    "ultima_actualizacion": "26/02/2024",
+    "fecha_aviso": "26/02/2024"
+  },
+  {
+    "id": 101,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Bug a veces se borran tareas y vuelven a figurar en sistema hasta el reinicio.",
+    "fecha": "14/02/2024"
+  },
+  {
+    "id": 102,
+    "cliente": "GABRIELA SEGAL",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "entra bies que le falto en su pedido",
+    "fecha": "14/02/2024",
+    "fecha_aviso": "16/02/2024"
+  },
+  {
+    "id": 105,
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "poder programar tareas mensuales que siempre suceden",
+    "fecha": "14/02/2024"
+  },
+  {
+    "id": 106,
+    "cliente": "CLIENTA MOSTRADOR",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "transfirió 2 veces a MP 5835 las 2 fallaron se llevo la mercadería y no se nos acredito. Contacto al 11 5467-9054 Lucila Nicole Morsella. Ella no quiere transferir hasta que el banco le devuelva su transferencia. Segun mercadopago eso demora maximo 72hs.",
+    "fecha": "15/02/2024",
+    "fecha_aviso": "16/02/2024",
+    "ultima_actualizacion": "15/02/2024"
+  },
+  {
+    "id": 107,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "El AF0043 se tiene que poder elejir entre blanco y colores no había en color surtido en stock.",
+    "fecha": "15/02/2024",
+    "ultima_actualizacion": "26/02/2024"
+  },
+  {
+    "id": 108,
+    "cliente": "MARIA CLAUDIA MARQUES",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "Viene a retirar pedido grande abona en dolares",
+    "fecha": "15/02/2024",
+    "fecha_aviso": "14/02/2024",
     "borrado": true
   }
 ]
