@@ -102,7 +102,7 @@ if(menuPedidos){
           if(event.target.textContent == "Si"){
             carrito.length = 0 
             //enviamos carrito a server para chequear diferencia en precios
-            socket.emit("chequear-compra", compra)
+            //socket.emit("chequear-compra", compra)
             confirm.style.display = "none" 
           } 
           if(event.target.textContent == "No"){
