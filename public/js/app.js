@@ -92,7 +92,7 @@ if(menuPedidos){
     const pedido = event.target.value
     
     if(!pedido.includes("google") && !pedido.includes("facebook")){
-       const compra = JSON.parse(pedido)
+       //const compra = JSON.parse(pedido)
        const confirm = document.getElementById("custom-modal")
         alertModal("Queres ingresar el pedido?", "Si tiene elementos en el carrito, estos se borraran", "Si", "No")
         confirm.style.display = "block"

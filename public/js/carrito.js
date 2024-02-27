@@ -7,8 +7,8 @@ const itemsCarrito = document.querySelector("#carritoNumber")
 
 if(carritoAnterior && carritoAnterior.length > 0){    
    //const actuCarrito = checkAumentosCarrito(carritoAnterior) 
-   carritoAnterior = carritoAnterior.slice(0, 100);
-   carritoAnterior.forEach(e => {
+   const carritoCheck = carritoAnterior.slice(0, 100);
+   carritoCheck.forEach(e => {
        ingresarCarrito(e)
    });
 }else{
