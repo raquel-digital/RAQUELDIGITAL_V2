@@ -157,6 +157,7 @@ async function agendaInicio(historial){
               socket.on("art-borrado-historial", borrar)
               console.log("borrar historial", borrar)
             }
+            tareas = []
             socket.emit("tarea-nueva", borrar)
           }
         });         

@@ -5,7 +5,7 @@
     "tipo_de_tarea": "Encargar Artículo",
     "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta // Bajan a 500mts las cantidades de abrojo ver precio // enviamos mail con presupuesto nuevo 10/2",
     "fecha": "24/01/2024",
-    "ultima_actualizacion": "10/02/2024",
+    "ultima_actualizacion": "26/02/2024",
     "fecha_aviso": "29/01/2024"
   },
   {
@@ -21,7 +21,7 @@
     "tipo_de_tarea": "Actualizacion Articulos Web",
     "tarea": "actualizar taza faltan modelos en negro y natural // subir taza rc0700 usar foto RC0107",
     "fecha": "27/01/2024",
-    "ultima_actualizacion": "07/02/2024"
+    "ultima_actualizacion": "26/02/2024"
   },
   {
     "id": 42,
@@ -131,7 +131,9 @@
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
     "tarea": "HI1311 hilo chico encerado",
-    "fecha": "07/02/2024"
+    "fecha": "07/02/2024",
+    "ultima_actualizacion": "26/02/2024",
+    "fecha_aviso": "27/02/2024"
   },
   {
     "id": 93,
@@ -140,15 +142,6 @@
     "tarea": "Manguera de desagote",
     "fecha": "08/02/2024",
     "ultima_actualizacion": "15/02/2024"
-  },
-  {
-    "id": 96,
-    "cliente": "LUCIA RIERA TALLER JUJUY",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "BP0010 negro x30 en0082 x30 entra viernes proximo",
-    "fecha": "09/02/2024",
-    "ultima_actualizacion": "09/02/2024",
-    "fecha_aviso": "16/02/2024"
   },
   {
     "id": 97,
@@ -160,35 +153,13 @@
     "fecha_aviso": "16/02/2024"
   },
   {
-    "id": 99,
-    "cliente": "COMITO JORGE",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "El boludo desposito 2 veces 27934 el día 26/1 por MP",
-    "fecha": "14/02/2024"
-  },
-  {
     "id": 100,
     "cliente": "ANDRES EUROFULL",
     "tipo_de_tarea": "Tarea General",
     "tarea": "Tema traspaso dominio ya consulte a ariel.",
     "fecha": "14/02/2024",
     "ultima_actualizacion": "26/02/2024",
-    "fecha_aviso": "26/02/2024"
-  },
-  {
-    "id": 101,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "Bug a veces se borran tareas y vuelven a figurar en sistema hasta el reinicio.",
-    "fecha": "14/02/2024"
-  },
-  {
-    "id": 102,
-    "cliente": "GABRIELA SEGAL",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "entra bies que le falto en su pedido",
-    "fecha": "14/02/2024",
-    "fecha_aviso": "16/02/2024"
+    "fecha_aviso": "27/02/2024"
   },
   {
     "id": 105,
@@ -207,9 +178,16 @@
   },
   {
     "id": 108,
-    "cliente": "FLORENCIA PERRI",
-    "tipo_de_tarea": "Cliente Whatsapp",
-    "tarea": "reserve HI5000 color 5020 quiere agregar.",
+    "cliente": "",
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "Bug a veces se borran tareas y vuelven a figurar en sistema hasta el reinicio // puse en la linea 160 tareas = [] chequear que mantenga bien",
+    "fecha": "26/02/2024"
+  },
+  {
+    "id": 109,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "GRACIELA mando foto de galos falso strass nuevos",
     "fecha": "26/02/2024"
   }
 ]

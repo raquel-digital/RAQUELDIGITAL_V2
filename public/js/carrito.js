@@ -5,8 +5,9 @@ const carrito = []
 const carritoAnterior = JSON.parse(localStorage.getItem("carrito"))
 const itemsCarrito = document.querySelector("#carritoNumber")
 
-if(carritoAnterior && carritoAnterior.length > 0){
-  const actuCarrito = checkAumentosCarrito(carritoAnterior) 
+if(carritoAnterior && carritoAnterior.length > 0){    
+   //const actuCarrito = checkAumentosCarrito(carritoAnterior) 
+   carritoAnterior = carritoAnterior.slice(0, 100);
    carritoAnterior.forEach(e => {
        ingresarCarrito(e)
    });
