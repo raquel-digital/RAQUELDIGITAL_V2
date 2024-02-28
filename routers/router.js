@@ -224,22 +224,22 @@ router.post("/check-out", (req, res) => {
   const esIPhone = userAgent.includes('iPhone');
 
   const carritoAnterior = JSON.parse(req.body.carrito_holder)
-  const precios = require("../public/system/dir/allArts.json")
-  
-  
 
-  const carrito = carritoAnterior.map(e =>{
-  const res = precios.filter(p => p.codigo == e.codigo)
+  //CHEQUEO DE PRECIO ESTA MATANDO LA MEMORIA???
+  //   const precios = require("../public/system/dir/allArts.json")  
 
-    if(e.precio != res[0].precio){
-        const repl = res[0].precio.replace(",", ".")
-        e.precio = repl
-    }
+  //   const carrito = carritoAnterior.map(e =>{
+  //   const res = precios.filter(p => p.codigo == e.codigo)
 
-    return e
-})
+  //     if(e.precio != res[0].precio){
+  //         const repl = res[0].precio.replace(",", ".")
+  //         e.precio = repl
+  //     }
+
+  //     return e
+  // })
   
-  res.render("checkOut", { iphone: esIPhone, carrito: carrito })
+  res.render("checkOut", { iphone: esIPhone, carrito: carritoAnterior })
 })
 
 //CHECK OUT MERCADOPAGO
