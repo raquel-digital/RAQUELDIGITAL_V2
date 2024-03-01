@@ -12,12 +12,8 @@ const middleware =  require("../utils/middleware")
 //ENTRANDO A "/login y /logout" te logueas y deslogueas
 router.get("/", (req,res) => {
 
-  //DETECTAR IPHONE
-  const userAgent = req.headers['user-agent'];
-  // Verificar si la cadena del agente de usuario contiene "iPhone"
-  const esIPhone = userAgent.includes('iPhone');
-  
-
+  //DETECTAR IPHONE O SAFARI
+  const esIPhone = verAgente(req)
   const login = req.oidc.isAuthenticated() ? true : false
   let pedidos = 0
   
@@ -286,5 +282,13 @@ router.post("/success-transferencia", (req, res) => {
   const carrito = JSON.parse(req.body.carrito_holder)
   res.render("succesOrder", { iphone: esIPhone, carrito: carrito })
 })
+
+function verAgente(req){
+  const userAgent = req.headers['user-agent'];  
+  // Verificar si la cadena del agente de usuario contiene "iPhone"
+  const esIPhone = userAgent.includes('iPhone') || userAgent.includes('Macintosh');
+  
+  return esIPhone
+}
 
 module.exports = router ;
