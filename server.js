@@ -41,8 +41,20 @@ app.use(function (req, res, next) {
 
  
 
-
+let activeClients = 0
 io.on('connect', socket => {
+
+    activeClients++;
+    console.log('Nuevo cliente conectado. Total de clientes activos:', activeClients);
+
+    socket.on('disconnect', () => {
+        activeClients--;
+        console.log('Cliente desconectado. Total de clientes activos:', activeClients);
+    });
+
+    socket.on("admin-visitas", () => {
+        socket.emit("admin-visitas-res", activeClients)
+    })
 
     (async () => {
         try{

@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
   const selectCateg = document.querySelector(".sel__box--black-panther");
 
+  socket.emit("admin-visitas")
+
   selectCateg.addEventListener("click", e => {
     const categ = e.target.textContent;  
     console.log(categ)  
@@ -30,15 +32,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
   })  
 })
 
+socket.emit("admin-visitas-res", numeroVisitas => {
+  mostrador.innerHTML = `<h1>Usuarios activos : ${numeroVisitas}</h1>`
+})
+
 const productosModificados = document.querySelector(".productos-modificados");
 
-socket.on("admin-sock", data => {
-  console.log(data)
-})
-
-socket.on("prodAdmin", data => {
-  productosAdmin = data;  
-})
 
 function confirmarCambios(){
   if(toDel.length > 0){
