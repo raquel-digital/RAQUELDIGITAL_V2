@@ -3,10 +3,10 @@
     "id": 17,
     "cliente": "PIRELLI",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta // Bajan a 500mts las cantidades de abrojo ver precio // enviamos mail con presupuesto nuevo 10/2",
+    "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta // Bajan a 500mts las cantidades de abrojo ver precio // enviamos mail con presupuesto nuevo 10/2 // 26/2 vuelven a pedir 1000 mts cotizados en abrojo //\n1/4 piden 800 mts mas en 2 presus distintos",
     "fecha": "24/01/2024",
-    "ultima_actualizacion": "26/02/2024",
-    "fecha_aviso": "29/01/2024"
+    "ultima_actualizacion": "02/03/2024",
+    "fecha_aviso": "27/02/2024"
   },
   {
     "id": 26,
@@ -21,55 +21,26 @@
     "tipo_de_tarea": "Actualizacion Articulos Web",
     "tarea": "actualizar taza faltan modelos en negro y natural // subir taza rc0700 usar foto RC0107",
     "fecha": "27/01/2024",
-    "ultima_actualizacion": "26/02/2024"
-  },
-  {
-    "id": 42,
-    "cliente": "",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "cuando se ingresa un artículo nuevo no se actualiza autimaticamente el archivo allArts.json hasta que se ingresa alguna modificacion en admin REVISAR PROXIMOS CAMBIOS // veo que en local funciona perfecto pero en web no",
-    "fecha": "29/01/2024",
-    "ultima_actualizacion": "14/02/2024",
-    "fecha_aviso": "15/02/2024"
+    "ultima_actualizacion": "08/03/2024",
+    "fecha_aviso": "09/03/2024"
   },
   {
     "id": 48,
     "cliente": "",
     "tipo_de_tarea": "Redes Sociales",
-    "tarea": "seguir con video tutoriales",
+    "tarea": "seguir con video tutoriales de como comprar en la web",
     "fecha": "29/01/2024",
-    "ultima_actualizacion": "15/02/2024",
+    "ultima_actualizacion": "06/03/2024",
     "fecha_aviso": "16/02/2024"
   },
   {
     "id": 55,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "SUBIR ARGOLLA CAREY BLANCO//HI4030 pespente // completar puntilla en cono",
+    "tarea": "HI4030 pespunte LISTO PARA SUBIR",
     "fecha": "30/01/2024",
-    "ultima_actualizacion": "01/02/2024"
-  },
-  {
-    "id": 56,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "Actualizar carta colores de: CD0163 // cierres: perro, reforzado y metalico //CI4800 y 20",
-    "fecha": "30/01/2024",
-    "ultima_actualizacion": "31/01/2024"
-  },
-  {
-    "id": 62,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "Gancho pollera revisar stock",
-    "fecha": "30/01/2024"
-  },
-  {
-    "id": 63,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "cierres por 100 un",
-    "fecha": "30/01/2024"
+    "ultima_actualizacion": "08/03/2024",
+    "fecha_aviso": "09/03/2024"
   },
   {
     "id": 64,
@@ -79,27 +50,13 @@
     "fecha": "31/01/2024"
   },
   {
-    "id": 68,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "Snaps cargar por cajas",
-    "fecha": "31/01/2024"
-  },
-  {
     "id": 70,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "Reguladores plásticos en lenceria falta subior natural manteca",
-    "fecha": "31/01/2024"
-  },
-  {
-    "id": 73,
-    "cliente": "ONIFLEX",
-    "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura\n\nReitero 7/2\n\nRe facturamos 14/2\n\nRe facturamos 26/2",
-    "fecha": "01/02/2024",
-    "fecha_aviso": "27/02/2024",
-    "ultima_actualizacion": "26/02/2024"
+    "tarea": "argolla plásticos en lenceria natural manteca hay muy poco stock subir cuando entren",
+    "fecha": "31/01/2024",
+    "ultima_actualizacion": "04/03/2024",
+    "fecha_aviso": "25/02/2024"
   },
   {
     "id": 78,
@@ -144,24 +101,6 @@
     "ultima_actualizacion": "15/02/2024"
   },
   {
-    "id": 97,
-    "cliente": "",
-    "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "se cayo la busqueda en la barra clientes y al ingresar cliente nuevo piso todo lo guardado anteriormente // comente el acceso a mongo // volvi a testear y funciona bien abria que volver a integrar mongo",
-    "fecha": "10/02/2024",
-    "ultima_actualizacion": "15/02/2024",
-    "fecha_aviso": "16/02/2024"
-  },
-  {
-    "id": 100,
-    "cliente": "ANDRES EUROFULL",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "Tema traspaso dominio ya consulte a ariel.",
-    "fecha": "14/02/2024",
-    "ultima_actualizacion": "26/02/2024",
-    "fecha_aviso": "27/02/2024"
-  },
-  {
     "id": 105,
     "cliente": "",
     "tipo_de_tarea": "Mantenimiento Agenda",
@@ -169,25 +108,65 @@
     "fecha": "14/02/2024"
   },
   {
-    "id": 107,
-    "cliente": "",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "El AF0043 se tiene que poder elejir entre blanco y colores no había en color surtido en stock.",
-    "fecha": "15/02/2024",
-    "ultima_actualizacion": "26/02/2024"
-  },
-  {
     "id": 108,
     "cliente": "",
     "tipo_de_tarea": "Mantenimiento Agenda",
-    "tarea": "Bug a veces se borran tareas y vuelven a figurar en sistema hasta el reinicio // puse en la linea 160 tareas = [] chequear que mantenga bien",
-    "fecha": "26/02/2024"
+    "tarea": "Bug a veces se borran tareas y vuelven a figurar en sistema hasta el reinicio // puse en la linea 160 tareas = [] chequear que mantenga bien /// cuando se modifican las tareas aparecen las borradas /// solo se mantienen eliminadas cuando reinicio la pagina",
+    "fecha": "26/02/2024",
+    "ultima_actualizacion": "06/03/2024"
   },
   {
-    "id": 109,
+    "id": 113,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Subir PW5104 cuando entre",
+    "fecha": "05/03/2024"
+  },
+  {
+    "id": 114,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "Cierres reforzados, metalicos,por rollo de 20 mts y diente de perro. Crear carta de colores.",
+    "fecha": "05/03/2024"
+  },
+  {
+    "id": 115,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "CD0470 subir cuando se pueda",
+    "fecha": "06/03/2024"
+  },
+  {
+    "id": 118,
+    "cliente": "DON WEB",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "realice la renovacion del dominio hay 7 días para que esto se valide",
+    "fecha": "07/03/2024",
+    "fecha_aviso": "14/03/2024"
+  },
+  {
+    "id": 119,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "subir PY4025 ",
+    "fecha": "07/03/2024"
+  },
+  {
+    "id": 120,
     "cliente": "",
     "tipo_de_tarea": "Tarea General",
-    "tarea": "GRACIELA mando foto de galos falso strass nuevos",
-    "fecha": "26/02/2024"
+    "tarea": "llevarse bolsa de cande",
+    "fecha": "08/03/2024",
+    "fecha_aviso": "11/03/2024",
+    "ultima_actualizacion": "08/03/2024"
+  },
+  {
+    "id": 121,
+    "cliente": "BECERRA NORMA",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "wasap 11 6134-0031 lleva tr2000 gris x5 seño 48000 ENCARGAR MERCADERIA entra el viernes",
+    "fecha": "08/03/2024",
+    "fecha_aviso": "11/03/2024",
+    "ultima_actualizacion": "08/03/2024"
   }
 ]

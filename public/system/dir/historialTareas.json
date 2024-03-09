@@ -103,5 +103,61 @@
     "fecha_aviso": "16/02/2024",
     "ultima_actualizacion": "15/02/2024",
     "borrado": true
+  },
+  {
+    "id": 111,
+    "cliente": "",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "11 2409-0760 quiere 1500 mts de EL4400 pase a kary para cotizar",
+    "fecha": "01/03/2024",
+    "fecha_aviso": "04/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 111,
+    "cliente": "",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "11 2409-0760 quiere 1500 mts de EL4400 pase a kary para cotizar",
+    "fecha": "01/03/2024",
+    "fecha_aviso": "04/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 73,
+    "cliente": "ONIFLEX",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "Quieren CD0350 negro X30 \n\nCI1101 negro x10 ya pasado mañana confirman que entra \n\nenviamos factura\n\nReitero 7/2\n\nRe facturamos 14/2\n\nRe facturamos 26/2",
+    "fecha": "01/02/2024",
+    "fecha_aviso": "27/02/2024",
+    "ultima_actualizacion": "26/02/2024",
+    "borrado": true
+  },
+  {
+    "id": 100,
+    "cliente": "ANDRES EUROFULL",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "Tema traspaso dominio ya consulte a ariel. Va avanzando ariel tiene cuenta en donweb ",
+    "fecha": "14/02/2024",
+    "ultima_actualizacion": "29/02/2024",
+    "fecha_aviso": "27/02/2024",
+    "borrado": true
+  },
+  {
+    "id": 116,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "ver los 2 pedidos de web",
+    "fecha": "06/03/2024",
+    "fecha_aviso": "07/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 117,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "recordar a dani que me mande la hoja con los estilos para mac",
+    "fecha": "06/03/2024",
+    "fecha_aviso": "07/03/2024",
+    "borrado": true
   }
 ]
