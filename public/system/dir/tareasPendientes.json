@@ -21,8 +21,8 @@
     "tipo_de_tarea": "Actualizacion Articulos Web",
     "tarea": "actualizar taza faltan modelos en negro y natural // subir taza rc0700 usar foto RC0107",
     "fecha": "27/01/2024",
-    "ultima_actualizacion": "08/03/2024",
-    "fecha_aviso": "09/03/2024"
+    "ultima_actualizacion": "09/03/2024",
+    "fecha_aviso": "11/03/2024"
   },
   {
     "id": 48,
@@ -32,15 +32,6 @@
     "fecha": "29/01/2024",
     "ultima_actualizacion": "06/03/2024",
     "fecha_aviso": "16/02/2024"
-  },
-  {
-    "id": 55,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "HI4030 pespunte LISTO PARA SUBIR",
-    "fecha": "30/01/2024",
-    "ultima_actualizacion": "08/03/2024",
-    "fecha_aviso": "09/03/2024"
   },
   {
     "id": 64,
@@ -164,9 +155,9 @@
     "id": 121,
     "cliente": "BECERRA NORMA",
     "tipo_de_tarea": "Cliente Whatsapp",
-    "tarea": "wasap 11 6134-0031 lleva tr2000 gris x5 seño 48000 ENCARGAR MERCADERIA entra el viernes",
+    "tarea": "wasap 11 6134-0031 lleva tr2000 gris x5 seño 48000 entra el viernes",
     "fecha": "08/03/2024",
-    "fecha_aviso": "11/03/2024",
-    "ultima_actualizacion": "08/03/2024"
+    "fecha_aviso": "15/03/2024",
+    "ultima_actualizacion": "11/03/2024"
   }
 ]
