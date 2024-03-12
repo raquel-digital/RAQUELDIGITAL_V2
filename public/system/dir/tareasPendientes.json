@@ -16,15 +16,6 @@
     "fecha": "25/01/2024"
   },
   {
-    "id": 39,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "actualizar taza faltan modelos en negro y natural // subir taza rc0700 usar foto RC0107",
-    "fecha": "27/01/2024",
-    "ultima_actualizacion": "09/03/2024",
-    "fecha_aviso": "11/03/2024"
-  },
-  {
     "id": 48,
     "cliente": "",
     "tipo_de_tarea": "Redes Sociales",
@@ -75,15 +66,6 @@
     "ultima_actualizacion": "14/02/2024"
   },
   {
-    "id": 90,
-    "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "HI1311 hilo chico encerado",
-    "fecha": "07/02/2024",
-    "ultima_actualizacion": "26/02/2024",
-    "fecha_aviso": "27/02/2024"
-  },
-  {
     "id": 93,
     "cliente": "",
     "tipo_de_tarea": "Mario",
@@ -131,9 +113,10 @@
     "id": 118,
     "cliente": "DON WEB",
     "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "realice la renovacion del dominio hay 7 días para que esto se valide",
+    "tarea": "realice la renovacion del dominio hay 7 días para que esto se valide RECIBIMOS MAIL DONDE MANDAMOS PARA QUE ACTUALICEN",
     "fecha": "07/03/2024",
-    "fecha_aviso": "14/03/2024"
+    "fecha_aviso": "14/03/2024",
+    "ultima_actualizacion": "12/03/2024"
   },
   {
     "id": 119,
@@ -141,15 +124,6 @@
     "tipo_de_tarea": "Actualizacion Articulos Web",
     "tarea": "subir PY4025 ",
     "fecha": "07/03/2024"
-  },
-  {
-    "id": 120,
-    "cliente": "",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "llevarse bolsa de cande",
-    "fecha": "08/03/2024",
-    "fecha_aviso": "11/03/2024",
-    "ultima_actualizacion": "08/03/2024"
   },
   {
     "id": 121,

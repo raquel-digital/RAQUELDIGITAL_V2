@@ -159,5 +159,24 @@
     "fecha": "06/03/2024",
     "fecha_aviso": "07/03/2024",
     "borrado": true
+  },
+  {
+    "id": 120,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "llevarse bolsa de cande",
+    "fecha": "08/03/2024",
+    "fecha_aviso": "11/03/2024",
+    "ultima_actualizacion": "08/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 122,
+    "cliente": "IMAN",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "Dejo pendiente pedido elast partido ",
+    "fecha": "11/03/2024",
+    "fecha_aviso": "12/03/2024",
+    "borrado": true
   }
 ]
