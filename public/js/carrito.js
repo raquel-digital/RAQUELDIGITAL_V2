@@ -83,8 +83,9 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
         return
   }
   if(mouse.classList.contains("eliminar-link")){
+        console.log("eliminar en cel")
         const codigo = event.target.parentElement.parentElement.children[1].children[0].textContent
-        console.log("eliminar-link")
+        
         const confirm = document.getElementById("custom-modal")
         alertModal("¿Querés eliminar el artículos del carrito?", "Esta acción no se puede deshacer.", "Sí, eliminar", "No")
         confirm.style.display = "block"
@@ -249,9 +250,9 @@ function actualizarCarrito(){
                     <button type="button" class="menos"></button>
                     <input class="cantidad-de-venta" type="number" value="${c.cantidad}">
                     <button type="button" class="mas"></button>
-                    <a class="eliminar-link eliminar-articulo">Eliminar</a>
+                    <a class="eliminar-link">Eliminar</a>
                 </div>
-                    <button type="button" class="eliminar eliminar-articulo"><span class="tooltip-eliminar eliminar-articulo">Eliminar</span></button>
+                    <button type="button" class="eliminar eliminar-articulo"><span class="tooltip-eliminar">Eliminar</span></button>
                 </div>
             `
             //debajo de "<button type="button" class="mas"></button>" <a class="eliminar-link">Eliminar</a>

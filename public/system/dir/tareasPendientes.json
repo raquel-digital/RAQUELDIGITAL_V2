@@ -140,5 +140,13 @@
     "tipo_de_tarea": "Actualizacion Articulos Web",
     "tarea": "subir bastidores DMC madera",
     "fecha": "13/03/2024"
+  },
+  {
+    "id": 125,
+    "cliente": "",
+    "tipo_de_tarea": "Modificaciones en web",
+    "tarea": "boton eliminar no funciona en cel",
+    "fecha": "13/03/2024",
+    "fecha_aviso": "14/03/2024"
   }
 ]
