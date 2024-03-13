@@ -251,7 +251,7 @@ function actualizarCarrito(){
                     <button type="button" class="mas"></button>
                     <a class="eliminar-link eliminar-articulo">Eliminar</a>
                 </div>
-                    <button type="button" class="eliminar eliminar-articulo"><span class="tooltip-eliminar">Eliminar</span></button>
+                    <button type="button" class="eliminar eliminar-articulo"><span class="tooltip-eliminar eliminar-articulo">Eliminar</span></button>
                 </div>
             `
             //debajo de "<button type="button" class="mas"></button>" <a class="eliminar-link">Eliminar</a>

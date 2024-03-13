@@ -178,5 +178,14 @@
     "fecha": "11/03/2024",
     "fecha_aviso": "12/03/2024",
     "borrado": true
+  },
+  {
+    "id": 123,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "marcar articulos con tilde",
+    "fecha": "12/03/2024",
+    "fecha_aviso": "13/03/2024",
+    "borrado": true
   }
 ]

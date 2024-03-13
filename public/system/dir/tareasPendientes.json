@@ -113,10 +113,10 @@
     "id": 118,
     "cliente": "DON WEB",
     "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "realice la renovacion del dominio hay 7 días para que esto se valide RECIBIMOS MAIL DONDE MANDAMOS PARA QUE ACTUALICEN",
+    "tarea": "ya tenemos dominio en dom web aprobado. Esoy empujando a ariel a ver si hace la redireccion YA MANDAMOS SOLICITUD A ARIEL. no la ve?¡?¡??\"\"\"\"$$$#",
     "fecha": "07/03/2024",
     "fecha_aviso": "14/03/2024",
-    "ultima_actualizacion": "12/03/2024"
+    "ultima_actualizacion": "13/03/2024"
   },
   {
     "id": 119,
@@ -133,5 +133,12 @@
     "fecha": "08/03/2024",
     "fecha_aviso": "15/03/2024",
     "ultima_actualizacion": "11/03/2024"
+  },
+  {
+    "id": 124,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "subir bastidores DMC madera",
+    "fecha": "13/03/2024"
   }
 ]
