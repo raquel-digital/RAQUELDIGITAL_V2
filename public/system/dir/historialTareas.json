@@ -187,5 +187,62 @@
     "fecha": "12/03/2024",
     "fecha_aviso": "13/03/2024",
     "borrado": true
+  },
+  {
+    "id": 126,
+    "cliente": "GUTIERREZ TANIA",
+    "tipo_de_tarea": "envios",
+    "tarea": "envio por correo \nCliente: Gutiérrez Tania\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: Avenida Los Notros Altura: 350 Piso: undefined Horario de entrega: undefined\nLocalidad: Lago Puelo Provincia: Chubut\nCP: 8431 Costo Envío: 7930\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 2944306932",
+    "fecha": "14/03/2024",
+    "ultima_actualizacion": "14/03/2024",
+    "fecha_aviso": "15/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 125,
+    "cliente": "GALFIONE",
+    "tipo_de_tarea": "Encargar Artículo",
+    "tarea": "EL8112 negro x12 avisar cuando entre FACTURA ENVIADA",
+    "fecha": "14/03/2024",
+    "fecha_aviso": "18/03/2024",
+    "ultima_actualizacion": "16/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 129,
+    "cliente": "VANESSA VIOLETA GARRIDO HUITRAYAN",
+    "tipo_de_tarea": "envios",
+    "tarea": "SALE POR CORREO \nCliente: vanessa violeta garrido huitrayan\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: armando tola Altura: 335 Piso: undefined Horario de entrega: undefined\nLocalidad: El Calafate Provincia: Santa Cruz\nCP: 9405 Costo Envío: 7930\nForma de pago: Mercado Pago\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 2966314400",
+    "fecha": "16/03/2024",
+    "fecha_aviso": "18/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 131,
+    "cliente": "",
+    "tipo_de_tarea": "Mario",
+    "tarea": "cierre Z cerro con 600 y pico recaudadmos 300 ??",
+    "fecha": "16/03/2024",
+    "fecha_aviso": "18/03/2024",
+    "ultima_actualizacion": "18/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 132,
+    "cliente": "PRISCILA ECKETER",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "sumo unas cosas alk pedido web y falta presupuestar",
+    "fecha": "16/03/2024",
+    "fecha_aviso": "18/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 130,
+    "cliente": "",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "11 4993-9420 quiere cotizar cinta bandera 7cm por 1000 mts potencialmente llevaria 3000. No quiere fraccionada.",
+    "fecha": "16/03/2024",
+    "fecha_aviso": "18/03/2024",
+    "borrado": true
   }
 ]

@@ -113,10 +113,10 @@
     "id": 118,
     "cliente": "DON WEB",
     "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "ya tenemos dominio en dom web aprobado. Esoy empujando a ariel a ver si hace la redireccion YA MANDAMOS SOLICITUD A ARIEL. no la ve?¡?¡??\"\"\"\"$$$#",
+    "tarea": "ariel tiene el dominio de donweb estoy esperando que me confirme la redireccion el muy HDP",
     "fecha": "07/03/2024",
-    "fecha_aviso": "14/03/2024",
-    "ultima_actualizacion": "13/03/2024"
+    "fecha_aviso": "15/03/2024",
+    "ultima_actualizacion": "14/03/2024"
   },
   {
     "id": 119,
@@ -142,11 +142,19 @@
     "fecha": "13/03/2024"
   },
   {
-    "id": 125,
+    "id": 127,
     "cliente": "",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "boton eliminar no funciona en cel",
-    "fecha": "13/03/2024",
-    "fecha_aviso": "14/03/2024"
+    "tipo_de_tarea": "Mantenimiento Agenda",
+    "tarea": "VER EN ELECTRON LA PARTE DE HISTORIAL",
+    "fecha": "14/03/2024",
+    "fecha_aviso": "15/03/2024"
+  },
+  {
+    "id": 128,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "pase a kary lista de ETISA con descuento. Vio que el cutter esta para comprar pero no sabemos marca",
+    "fecha": "16/03/2024",
+    "fecha_aviso": "18/03/2024"
   }
 ]
