@@ -244,5 +244,71 @@
     "fecha": "16/03/2024",
     "fecha_aviso": "18/03/2024",
     "borrado": true
+  },
+  {
+    "id": 132,
+    "cliente": "PRISCILA ECKETER",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "sumo unas cosas alk pedido web y falta presupuestar",
+    "fecha": "16/03/2024",
+    "fecha_aviso": "18/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 129,
+    "cliente": "VANESSA VIOLETA GARRIDO HUITRAYAN",
+    "tipo_de_tarea": "envios",
+    "tarea": "SALE POR CORREO \nCliente: vanessa violeta garrido huitrayan\nTipo de envío: Por Correo Argentino Forma de envío: Correo_Argentino\nCalle: armando tola Altura: 335 Piso: undefined Horario de entrega: undefined\nLocalidad: El Calafate Provincia: Santa Cruz\nCP: 9405 Costo Envío: 7930\nForma de pago: Mercado Pago\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 2966314400",
+    "fecha": "16/03/2024",
+    "fecha_aviso": "18/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 130,
+    "cliente": "",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "11 4993-9420 quiere cotizar cinta bandera 7cm por 1000 mts potencialmente llevaria 3000. No quiere fraccionada.",
+    "fecha": "16/03/2024",
+    "fecha_aviso": "18/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 131,
+    "cliente": "",
+    "tipo_de_tarea": "Mario",
+    "tarea": "cierre Z cerro con 600 y pico recaudadmos 300 ??",
+    "fecha": "16/03/2024",
+    "fecha_aviso": "18/03/2024",
+    "ultima_actualizacion": "18/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 128,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "pase a kary lista de ETISA con descuento. Vio que el cutter esta para comprar pero no sabemos marca",
+    "fecha": "16/03/2024",
+    "fecha_aviso": "19/03/2024",
+    "ultima_actualizacion": "18/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 121,
+    "cliente": "BECERRA NORMA",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "wasap 11 6134-0031 lleva tr2000 gris x5 seño 48000 entra el viernes",
+    "fecha": "08/03/2024",
+    "fecha_aviso": "15/03/2024",
+    "ultima_actualizacion": "11/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 134,
+    "cliente": "",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "11 4993-9420 quedamos en pasarle precio por cinta bandera 6mm por 100 mts falta que fabrica confirme precio",
+    "fecha": "18/03/2024",
+    "fecha_aviso": "19/03/2024",
+    "borrado": true
   }
 ]

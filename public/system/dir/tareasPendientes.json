@@ -3,9 +3,9 @@
     "id": 17,
     "cliente": "PIRELLI",
     "tipo_de_tarea": "Encargar Artículo",
-    "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta // Bajan a 500mts las cantidades de abrojo ver precio // enviamos mail con presupuesto nuevo 10/2 // 26/2 vuelven a pedir 1000 mts cotizados en abrojo //\n1/4 piden 800 mts mas en 2 presus distintos\n\nMANDARON ORDEN DE COMPRA POR 1500 mts de abrojo faltan las otras ordenes de compra mail enviado",
+    "tarea": "Quiere AJ8050 x 1000 mts mas los hilos vahe. Enviamos mail 31/01 pasamos presupuesto esperar respuesta // Bajan a 500mts las cantidades de abrojo ver precio // enviamos mail con presupuesto nuevo 10/2 // 26/2 vuelven a pedir 1000 mts cotizados en abrojo //\n1/4 piden 800 mts mas en 2 presus distintos\n\nMANDARON ORDEN DE COMPRA POR 1500 mts de abrojo faltan las otras ordenes de compra mail enviado\n\nnuevo mail pidiendo presupuetso por 4000 mts de abrojo. Contestamos 18/3",
     "fecha": "24/01/2024",
-    "ultima_actualizacion": "12/03/2024",
+    "ultima_actualizacion": "18/03/2024",
     "fecha_aviso": "28/02/2024"
   },
   {
@@ -110,29 +110,11 @@
     "fecha": "06/03/2024"
   },
   {
-    "id": 118,
-    "cliente": "DON WEB",
-    "tipo_de_tarea": "Modificaciones en web",
-    "tarea": "ariel tiene el dominio de donweb estoy esperando que me confirme la redireccion el muy HDP",
-    "fecha": "07/03/2024",
-    "fecha_aviso": "15/03/2024",
-    "ultima_actualizacion": "14/03/2024"
-  },
-  {
     "id": 119,
     "cliente": "",
     "tipo_de_tarea": "Actualizacion Articulos Web",
     "tarea": "subir PY4025 ",
     "fecha": "07/03/2024"
-  },
-  {
-    "id": 121,
-    "cliente": "BECERRA NORMA",
-    "tipo_de_tarea": "Cliente Whatsapp",
-    "tarea": "wasap 11 6134-0031 lleva tr2000 gris x5 seño 48000 entra el viernes",
-    "fecha": "08/03/2024",
-    "fecha_aviso": "15/03/2024",
-    "ultima_actualizacion": "11/03/2024"
   },
   {
     "id": 124,
@@ -150,11 +132,20 @@
     "fecha_aviso": "15/03/2024"
   },
   {
-    "id": 128,
+    "id": 133,
     "cliente": "",
-    "tipo_de_tarea": "Tarea General",
-    "tarea": "pase a kary lista de ETISA con descuento. Vio que el cutter esta para comprar pero no sabemos marca",
-    "fecha": "16/03/2024",
-    "fecha_aviso": "18/03/2024"
+    "tipo_de_tarea": "Redes Sociales",
+    "tarea": "Subir imagen de tijeras ya en MI NUM",
+    "fecha": "18/03/2024",
+    "fecha_aviso": "20/03/2024",
+    "ultima_actualizacion": "19/03/2024"
+  },
+  {
+    "id": 135,
+    "cliente": "SILVIO SIERRA",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "Encargamos CD0303 x10 entra jueves",
+    "fecha": "19/03/2024",
+    "fecha_aviso": "21/03/2024"
   }
 ]
