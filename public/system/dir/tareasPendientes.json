@@ -147,5 +147,13 @@
     "tarea": "Encargamos CD0303 x10 entra jueves",
     "fecha": "19/03/2024",
     "fecha_aviso": "21/03/2024"
+  },
+  {
+    "id": 136,
+    "cliente": "",
+    "tipo_de_tarea": "Actualizacion Articulos Web",
+    "tarea": "pasar a carta colores el CD0350 foto en el rigido",
+    "fecha": "19/03/2024",
+    "fecha_aviso": "20/03/2024"
   }
 ]
