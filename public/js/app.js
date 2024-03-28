@@ -455,6 +455,7 @@ function actualizarPrecioCarrito(codigo, cant){
           color = "Medida N° " + split[split.length-1]
         }else{          
           color = split[1]
+          console.log(e)
           if(color.includes("_")){
             color = color.replace("_", " ")
           }

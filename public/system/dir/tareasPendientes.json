@@ -137,23 +137,31 @@
     "tipo_de_tarea": "Redes Sociales",
     "tarea": "Subir imagen de tijeras ya en MI NUM",
     "fecha": "18/03/2024",
-    "fecha_aviso": "20/03/2024",
-    "ultima_actualizacion": "19/03/2024"
+    "fecha_aviso": "26/03/2024",
+    "ultima_actualizacion": "25/03/2024"
   },
   {
-    "id": 135,
-    "cliente": "SILVIO SIERRA",
-    "tipo_de_tarea": "Cliente Whatsapp",
-    "tarea": "Encargamos CD0303 x10 entra jueves",
-    "fecha": "19/03/2024",
-    "fecha_aviso": "21/03/2024"
-  },
-  {
-    "id": 136,
+    "id": 139,
     "cliente": "",
-    "tipo_de_tarea": "Actualizacion Articulos Web",
-    "tarea": "pasar a carta colores el CD0350 foto en el rigido",
-    "fecha": "19/03/2024",
-    "fecha_aviso": "20/03/2024"
+    "tipo_de_tarea": "Mario",
+    "tarea": "limpieza patio de atraz",
+    "fecha": "25/03/2024"
+  },
+  {
+    "id": 141,
+    "cliente": "BOTONOFICIO",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "dejo las lanas que quería llevar sin transferir",
+    "fecha": "25/03/2024",
+    "fecha_aviso": "26/03/2024"
+  },
+  {
+    "id": 142,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "pasar elacin PASAMOS MAIL ver respuesta",
+    "fecha": "26/03/2024",
+    "fecha_aviso": "28/03/2024",
+    "ultima_actualizacion": "26/03/2024"
   }
 ]

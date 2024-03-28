@@ -310,5 +310,89 @@
     "fecha": "18/03/2024",
     "fecha_aviso": "19/03/2024",
     "borrado": true
+  },
+  {
+    "id": 135,
+    "cliente": "SILVIO SIERRA",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "Encargamos CD0303 x10 entra jueves se hecho para atras quiere 3 piezas corregir con kary",
+    "fecha": "19/03/2024",
+    "fecha_aviso": "20/03/2024",
+    "ultima_actualizacion": "20/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 137,
+    "cliente": "",
+    "tipo_de_tarea": "Mario",
+    "tarea": "pagar bilevich 600 efc",
+    "fecha": "21/03/2024",
+    "fecha_aviso": "22/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 139,
+    "cliente": "",
+    "tipo_de_tarea": "Tarea General",
+    "tarea": "ver depositos de ICBC viernes",
+    "fecha": "22/03/2024",
+    "fecha_aviso": "23/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 138,
+    "cliente": "CICHANOWSKI VERONICA",
+    "tipo_de_tarea": "Cliente Whatsapp",
+    "tarea": "hizo deposito no puedo verlo por que no anda ICBC va por correo a sucursal",
+    "fecha": "22/03/2024",
+    "fecha_aviso": "23/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 137,
+    "cliente": "",
+    "tipo_de_tarea": "Mario",
+    "tarea": "PAGOS: GORLA MARTES // DELMAR se transfirio? Transferencias del viernes pausadas. ",
+    "fecha": "22/03/2024",
+    "fecha_aviso": "25/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 136,
+    "cliente": "",
+    "tipo_de_tarea": "Mario",
+    "tarea": "Ver cordon elastico de cordon de oro",
+    "fecha": "20/03/2024",
+    "fecha_aviso": "25/03/2024",
+    "ultima_actualizacion": "22/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 137,
+    "cliente": "MARIA DEL MAR ZANNIELLO",
+    "tipo_de_tarea": "envios",
+    "tarea": "ENVIO POR MOTO\nCalle: sucre Altura: 2600 Piso: undefined Horario de entrega: por la mañana\nLocalidad: undefined Provincia: Ciudad Autonoma De Bs As\nCP: undefined Costo Envío: 3500\nForma de pago: Transferencia Bancaria\nFacturacion: Consumidor Final Razon Social: - CUIT: -\nForma de contacto: Whatsapp 1133195020",
+    "fecha": "25/03/2024",
+    "ultima_actualizacion": "25/03/2024",
+    "fecha_aviso": "26/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 138,
+    "cliente": "ARROYO MONICA ALEJANDRA",
+    "tipo_de_tarea": "envios",
+    "tarea": "POR EXPRESO \nDni 26012756\nLavalle 2202 cp 4000  San Miguel de Tucumán \nEnviar por transporte vía cargo, retiro en depósito",
+    "fecha": "25/03/2024",
+    "fecha_aviso": "26/03/2024",
+    "borrado": true
+  },
+  {
+    "id": 140,
+    "cliente": "COTARELO",
+    "tipo_de_tarea": "envios",
+    "tarea": "Entregarle la boludez de pedido a bartolome Mitre 2587 casa manuart ACA NOMAS ES DE MAÑANA",
+    "fecha": "25/03/2024",
+    "fecha_aviso": "26/03/2024",
+    "borrado": true
   }
 ]
