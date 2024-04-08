@@ -132,11 +132,11 @@ await fetch('../enviosData/provincias.json')
           localidades.innerHTML = "";
           localidades.innerHTML +=  e.localidades;
         }
-        if(provinciasSelect.value == "Buenos Aires" || provinciasSelect.value == "Cordoba" || provinciasSelect.value == "Entre Rios" || provinciasSelect.value == "La Pampa" || provinciasSelect.value == "Santa Fe"){
+        if(provinciasSelect.value == "Buenos Aires"){
           valorCorreo = envios.correoReg
           document.querySelector(".valor-correo").textContent = valorCorreo;
         }
-        else if(provinciasSelect.value == "Tucuman" || provinciasSelect.value == "Santiago Del Estero" || provinciasSelect.value == "San Luis" || provinciasSelect.value == "San Juan" || provinciasSelect.value == "Rio Negro" || provinciasSelect.value == "Neuquen" || provinciasSelect.value == "Misiones" || provinciasSelect.value == "Mendoza" || provinciasSelect.value == "La Rioja" || provinciasSelect.value == "Formosa" ||provinciasSelect.value == "Corrientes" || provinciasSelect.value == "Chaco" || provinciasSelect.value == "Catamarca"){
+        else if(provinciasSelect.value == "Tucuman" || provinciasSelect.value == "Santiago Del Estero" || provinciasSelect.value == "San Luis" || provinciasSelect.value == "San Juan" || provinciasSelect.value == "Rio Negro" || provinciasSelect.value == "Neuquen" || provinciasSelect.value == "Misiones" || provinciasSelect.value == "Mendoza" || provinciasSelect.value == "La Rioja" || provinciasSelect.value == "Formosa" ||provinciasSelect.value == "Corrientes" || provinciasSelect.value == "Chaco" || provinciasSelect.value == "Catamarca" || provinciasSelect.value == "Cordoba" || provinciasSelect.value == "Entre Rios" || provinciasSelect.value == "La Pampa" || provinciasSelect.value == "Santa Fe"){
           valorCorreo = envios.correoNac;
           document.querySelector(".valor-correo").textContent = valorCorreo;
         }
