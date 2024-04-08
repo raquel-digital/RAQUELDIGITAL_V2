@@ -694,12 +694,14 @@ document.addEventListener('DOMContentLoaded', () => {
           if(c.codigo === e[1]){
             if(c.precio != e[6]){
               c.precio = e[6]
-              alert("Lamentablemente el articulo " + c.titulo + " a sufrio un cambio de precio")
+              console.log(c.codigo, e[1])
+              console.log(c.precio, e[6])
+              //alert("Lamentablemente el articulo " + c.titulo + " a sufrio un cambio de precio")
             }
           }
     }
   } 
-  console.log(carrito)
+    console.log(carrito, informacion)
     localStorage.setItem("carrito", JSON.stringify(carrito))   
 })
 

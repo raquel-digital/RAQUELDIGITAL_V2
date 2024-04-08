@@ -177,10 +177,10 @@ carritoBody.addEventListener('click', event=>{
 
 
 function ingresarCarrito(art){
-    if(carrito.length > 100 && alertOk){
-        alert("El carrito supera los 100 productos esto puede causar algunos problemas en la funcionalidad de la pagina. Si necesita mas artículos le recomendamos que cierre su compra e inicie una nueva compra. Cualquier duda comuniquese con nosotros a nuetro whatsapp 11 3693 3250 o por mail a info@casaraquel.com")
-        alertOk = false
-    }
+    //if(carrito.length > 100 && alertOk){
+        //alert("El carrito supera los 100 productos esto puede causar algunos problemas en la funcionalidad de la pagina. Si necesita mas artículos le recomendamos que cierre su compra e inicie una nueva compra. Cualquier duda comuniquese con nosotros a nuetro whatsapp 11 3693 3250 o por mail a info@casaraquel.com")
+        //alertOk = false
+    //}
     if(art.cantidad < 1){
         alert("La cantidad del artículo debe ser mayor a cero")
     }else{

@@ -1,23 +1,15 @@
 [
-  "6mm-12cm-metalico",
-  "6mm-14cm-metalico",
   "6mm-14cm-reforzado",
-  "6mm-16cm-metalico",
   "6mm-16cm-reforzado",
-  "6mm-18cm-metalico",
   "6mm-18cm-reforzado",
   "6mm-20cm-reforzado",
   "6mm-25cm-reforzado",
   "6mm-30cm-reforzado",
-  "6mm-por-rollo-20mts",
   "cierre-fijo",
+  "cierre-metal",
+  "cierre-por-rollo-20mt",
+  "cierre-por-rollo-20mts",
   "deslizador",
   "desmontable",
-  "diente-de-perro-50",
-  "diente-de-perro-55",
-  "diente-de-perro-60",
-  "diente-de-perro-65",
-  "diente-de-perro-70",
-  "diente-de-perro-75",
-  "diente-de-perro-80"
+  "diente-de-perro"
 ]
