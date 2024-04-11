@@ -1,14 +1,8 @@
 [
-  "6mm-14cm-reforzado",
-  "6mm-16cm-reforzado",
-  "6mm-18cm-reforzado",
-  "6mm-20cm-reforzado",
-  "6mm-25cm-reforzado",
-  "6mm-30cm-reforzado",
   "cierre-fijo",
   "cierre-metal",
-  "cierre-por-rollo-20mt",
   "cierre-por-rollo-20mts",
+  "cierre-reforzado",
   "deslizador",
   "desmontable",
   "diente-de-perro"
