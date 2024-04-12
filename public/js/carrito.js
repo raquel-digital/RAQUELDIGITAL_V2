@@ -40,33 +40,18 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
 
   //eliminar artículo individual
   if(mouse.classList.contains("eliminar-articulo")){
-    console.log("articulo individual")
+    
         const codigo = event.target.parentElement.childNodes[3].childNodes[1].textContent
-        console.log(event.target.parentElement.childNodes[3].childNodes[1])
         const confirm = document.getElementById("custom-modal")
         alertModal("¿Querés eliminar este artículo?", "Esta acción no se puede deshacer.", "Sí, eliminar", "No")
         confirm.style.display = "block"
         confirm.addEventListener("click", event => {
             if(event.target.textContent == "Sí, eliminar"){
-                let i = 0
-                for(const c of carrito){
-                    if(c.codigo === codigo){
-                        const eliminado = carrito.splice(i, 1)
-                        console.log(eliminado[0].codigo)                        
-                    }else{
-                        i++
-                    }
-                }
-                // for(let i=0; i<carrito.length; i++){
-                //     if(carrito[i].codigo === codigo){
-                //         const eliminado = carrito.splice(i, 1)
-                //         console.log(eliminado[0].codigo)
-                //         actualizarCarrito()
-                //         confirm.style.display = "none"
-                //         localStorage.setItem("carrito", JSON.stringify(carrito))
-                //         return
-                //     }
-                // }
+                console.log("articulo individual")                
+                const filter = carrito.filter(e => e.codigo != codigo)
+                carrito.length = 0 
+                filter.forEach(e => carrito.push(e))
+
                 if(carrito.length == 0){                    
                     itemsCarrito.style.display = "none"
                     const footer = document.querySelector(".carrito-footer")
@@ -112,12 +97,13 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
   }
 
     if(mouse.id == "eliminar-carrito"){
-        console.log("eliminar-carrito")
+        
         const confirm = document.getElementById("custom-modal")
-        alertModal("¿Querés eliminar todos los artículos del carrito?", "Esta acción no se puede deshacer.", "Sí, eliminar", "No")
+        alertModal("¿Querés eliminar todos los artículos del carrito?", "Esta acción no se puede deshacer.", "Sí, eliminar.", "No.")
         confirm.style.display = "block"
         confirm.addEventListener("click", event => {
-            if(event.target.textContent == "Sí, eliminar"){
+            if(event.target.textContent == "Sí, eliminar."){
+                console.log("carrito entero")
                 carrito.length = 0                
                 actualizarCarrito()
                 localStorage.setItem("carrito", JSON.stringify(carrito))
@@ -127,7 +113,7 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
                 itemsCarrito.textContent = carrito.length
                 mostrarToats("Carrito eliminado", false)
             }
-            if(event.target.textContent == "No" || event.target.classList.contains("cruz")){
+            if(event.target.textContent == "No." || event.target.classList.contains("cruz")){
                 confirm.style.display = "none"
             }
         })
