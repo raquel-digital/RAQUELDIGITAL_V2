@@ -762,6 +762,7 @@ function printPagePreview(pedido, cliente){
   //
   const resumenCheckOut = document.querySelector(".resumen-check-out")
   pedido.forEach(e => {
+    console.log(e.precio)
     const total = e.cantidad * e.precio
     resumenCheckOut.innerHTML += `
     <td class="text-center"><img src="${e.imagen}" alt="imagen table" widht="auto" height="60px"></td>

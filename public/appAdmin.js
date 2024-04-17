@@ -576,11 +576,7 @@ barraHerramientas.addEventListener("click", e => {
     }
     if(barraHerramientas.selectedIndex == 6){      
       actulizadorMasivo()
-    }
-    if(barraHerramientas.selectedIndex == 7 && agendaOk){
-      //window.location = "http://localhost:8080/admin/agenda"
-      agendaInicio()
-    }
+    }    
   }
   barraHerramientas.selectedIndex = 0  
 })
