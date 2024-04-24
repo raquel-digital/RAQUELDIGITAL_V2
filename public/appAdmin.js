@@ -869,6 +869,7 @@ function drawOrder(pedido, cliente){
   })
 }
 
+
 function printPage(){
   window.print()
 }

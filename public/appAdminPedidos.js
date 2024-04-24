@@ -801,9 +801,7 @@ function printPagePreview(pedido, cliente){
 }
 
 function printPage(pedido, cliente){
-  printPagePreviewSinIVA(pedido, cliente)
-  document.querySelector(".total-compra-final").innerHTML = ""
-  window.print()
+  printPagePreviewSinIVA(pedido, cliente)  
 }
 
 function refreshing(){
@@ -919,7 +917,9 @@ function printPagePreviewSinIVA(pedido, cliente){
     `
   }
   
-
+  document.querySelector(".total-compra-final").innerHTML = ""
+  window.print()
+  printPagePreview(pedido, cliente)
 }
 
 
