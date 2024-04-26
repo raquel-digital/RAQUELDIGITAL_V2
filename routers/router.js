@@ -87,20 +87,22 @@ router.get("/categoria/", async (req, res) => {
     faq: false,
     iphone: esIPhone,
     login: req.oidc.isAuthenticated() ? true : false,    
-  });
-    
-  // EJS
-  // try{
-    //   const categOrganicer =  require("../utils/cargarCategoria");
-    //   const categIO = req.query.categ
-    //   const categ = req.query.categ.toLowerCase()
-    //   const tag = req.query.tag;
-    //   const categRes = await categOrganicer(categ);
-    //   res.render('index', {categRes: true, data: categRes});
-    // }catch(err){
-    //   console.log(err)
-    // }
+  });  
 })
+
+//Generador de pedidos a mano
+router.get('/generar-pedidos', (req, res) => {
+
+  const esIPhone = verAgente(req)
+
+  res.render('index', {
+    categRes: false,
+    data: "pedidos",
+    faq: false,
+    iphone: esIPhone,
+    login: req.oidc.isAuthenticated() ? true : false
+  });
+});
 
 //-----BUSCADOR-----
 router.get("/buscador", (req, res) => {
@@ -220,20 +222,6 @@ router.post("/check-out", (req, res) => {
   const esIPhone = userAgent.includes('iPhone');
 
   const carritoAnterior = JSON.parse(req.body.carrito_holder)
-
-  //CHEQUEO DE PRECIO ESTA MATANDO LA MEMORIA???
-  //   const precios = require("../public/system/dir/allArts.json")  
-
-  //   const carrito = carritoAnterior.map(e =>{
-  //   const res = precios.filter(p => p.codigo == e.codigo)
-
-  //     if(e.precio != res[0].precio){
-  //         const repl = res[0].precio.replace(",", ".")
-  //         e.precio = repl
-  //     }
-
-  //     return e
-  // })
   
   res.render("checkOut", { iphone: esIPhone, carrito: carritoAnterior })
 })
