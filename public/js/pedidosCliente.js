@@ -12,6 +12,12 @@ const formularioContacto = `
     <input class="form-check-input" type="radio" name="formaContacto" id="retira">
     <h3>envio</h3>
     <input class="form-check-input" type="radio" name="formaContacto" id="envio">
+        <div id="formulario-contacto" style="display: none;">
+            <h3>Direccion:</h3>
+            <input class="form-check-input" type="radio" name="formaContacto" id="envio">
+            <h3>Localidad:</h3>
+            <input class="form-check-input" type="radio" name="formaContacto" id="envio">
+        </div>
     </div>
     <h3>Observaciones:</h3>
     <textarea name="observaciones" id="observaciones" cols="40" rows="10" style="margion-bottom:10rem;"></textarea>
@@ -68,7 +74,7 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
             contenedor.appendChild(e);
         })
         contenedor.innerHTML += `<div id="borrarArt"><h3 class="agregar-articulo">Sumar Artículo:</h3><div class="mas agregar-articulo""></div><div class="menos borrar-articulo""></div>${formularioContacto}<button type="button" class="enviar-pedido btn-primario" style"width: 30%;">ENVIAR PEDIDO</button></div>`
-    }    
+    }      
     if(mouse.classList.contains("enviar-pedido")){
         const arts = document.querySelectorAll(".card-preg-frec")
         const artsArray = Array.from(arts);
@@ -99,7 +105,13 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
             pedido: pedidos,
             observaciones: document.getElementById("observaciones").value
         }
-        socket.emit("pedido-plamilla", cliente)  
+        socket.emit("pedido-planilla", cliente)  
+    }
+    //mostrar campo envío
+    const envio = document.getElementById("envio")
+    const datoEnvio = document
+    if(envio.checked){
+        
     }
 })
 

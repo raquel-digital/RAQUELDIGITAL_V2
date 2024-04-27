@@ -250,119 +250,34 @@ io.on('connect', socket => {
             const result = await categOrganicer(categ);
             socket.emit("categ-result", result);
         })();
-    }); 
-    // //AGENDA    
-    // socket.on("req-cli", async () => {
-    //     delete require.cache[require.resolve("./utils/agenda/clientes.json")];        
-    //     const clientes = require("./utils/agenda/clientes.json")
-
-    //     //MONGO BORRA RESULTADOS
-    //     // const store = require("./api/agenda/store")        
-    //     // const resMongo = await store.readAgenda()
-    //     // const res = JSON.parse(clientes)
-
-    //     socket.emit("req-cli-res", clientes)
-    // })
-    // socket.on("nuevo-cliente", async agenda =>{
-    //     delete require.cache[require.resolve("./utils/agenda/clientes.json")];
-    //     fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(agenda, null, 2));
-    //     const clientes = require("./utils/agenda/clientes.json")
-
-    //     //MONGO
-    //     // const store = require("./api/agenda/store")        
-    //     // const resMongo = await store.writeAgenda(JSON.stringify(agenda))
-    //     // const res = JSON.parse(clientes)
-
-    //     socket.emit("req-cli-res", clientes)
-    // })
-    // socket.on("agenda-inicio", async () => {
-    //     delete require.cache[require.resolve("./public/system/dir/tareasPendientes.json")];
-    //     const update = require("./public/system/dir/tareasPendientes.json")
-
-    //      const store = require("./api/agenda/store")        
-    //      const resMongo = await store.read()
-    //      const res = JSON.parse(resMongo[0].agenda)
-    //     socket.emit("agenda-inicio-res", res)
-    // })
-
-    // socket.on("tarea-nueva", async data => {
-               
-    //     let ruta;
-    //     let res
-    //     const store = require("./api/agenda/store")
-    //     const dataString = JSON.stringify(data)
-    //     if(data[data.length - 1].borrado){        
-    //         console.log("Borrarr")    
-    //        //escribimos en historial 
-    //        ruta = "./public/system/dir/historialTareas.json"
-    //        res = await store.write(dataString, "historial")
-    //     }else{
-    //        //escribimos en tareas pendientes
-    //        ruta = "./public/system/dir/tareasPendientes.json"
-    //        res = await store.write(dataString)
-    //     }
-
-    //     fs.writeFileSync(ruta, JSON.stringify(data, null, 2));
-        
-    //     //LOCAL
-    //     delete require.cache[require.resolve("./public/system/dir/tareasPendientes.json")];
-    //     const update = require("./public/system/dir/tareasPendientes.json")
-    //     //MONGO
-    //     res = JSON.parse(res[0].agenda) 
-    //     socket.emit("tarea-nueva-res", res)
-    // })
-    // socket.on("art-borrado", async artBorrado => {        
-    //      delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
-    //      const historial = require("./public/system/dir/historialTareas.json")
-         
-    //     const store = require("./api/agenda/store")
-    //     const mongo = await store.read("historial")
-    //     //CUANDO TRABAJEMOS EN MONGO HABILITAR!! CUIDADO
-    //     //const historialMongo = JSON.parse(mongo[0].agenda)
-    //     //console.log(historial)  
-
-    //     historial.push(artBorrado[0])
-    //     const noInlcuir = ["Modificaciones en web", "Actualizacion Articulos Web", "Mantenimiento Agenda", "Revisar Precio", "Redes Sociales"]
-    //     const filtrar = historial.filter(e => !noInlcuir.includes(e.tipo_de_tarea))
-        
-    //     const upload = JSON.stringify(filtrar)
-    //     fs.writeFileSync(`./public/system/dir/historialTareas.json`, JSON.stringify(filtrar, null, 2));
-    //     await store.write(upload, "historial")
-    // })
-    // socket.on("art-borrado-historial", async historialBorrado => {  
-    //     const upload = JSON.stringify(historialBorrado)      
-    //     const store = require("./api/agenda/store")  
-    //     console.log(upload)      
-    //     await store.write(upload, "historial")
-    // })
-    // socket.on("historial-tareas", async () => {
-    //     delete require.cache[require.resolve("./public/system/dir/historialTareas.json")];
-    //     const historial = require("./public/system/dir/historialTareas.json")
-        
-    //     const store = require("./api/agenda/store")        
-    //     const resMongo = await store.read("historial")
-    //     const res = JSON.parse(resMongo[0].agenda)
-    //     socket.emit("historial-tareas-res", res)
-    // })
-    // socket.on("busqueda-agenda", async tareas => {
-    //     const store = require("./api/agenda/store")
-    //     const resMongo = await store.read("historial")
-    //     const res = JSON.parse(resMongo[0].agenda)
-    //     const agenda = [...tareas, ...res];
-    //     socket.emit("busqueda-agenda-res", agenda)
-    // })
-    // socket.on("borrar-cliente-lista", cliente => {
-    //     delete require.cache[require.resolve("./utils/agenda/clientes.json")];        
-    //     const clientes = require("./utils/agenda/clientes.json")
-    //     const filter = clientes.filter(e => e != cliente)
-    //     fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(filter, null, 2));
-    //     socket.emit("req-cli-res", filter)
-    // })
+    });
 
     //Pedido por planilla
-    socket.on("pedido-plamilla", cliente => {
+    socket.on("pedido-planilla", cliente => {
         mailPlanilla(cliente)
     })
+
+    socket.on("req-cli", async () => {
+        delete require.cache[require.resolve("./utils/agenda/clientes.json")];        
+        const clientes = require("./utils/agenda/clientes.json")
+         //MONGO BORRA RESULTADOS
+        // const store = require("./api/agenda/store")        
+        // const resMongo = await store.readAgenda()
+        // const res = JSON.parse(clientes)
+         socket.emit("req-cli-res", clientes)
+    })
+    socket.on("nuevo-cliente", async agenda =>{
+        delete require.cache[require.resolve("./utils/agenda/clientes.json")];
+        fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(agenda, null, 2));
+        const clientes = require("./utils/agenda/clientes.json")
+
+        //MONGO
+        // const store = require("./api/agenda/store")        
+        // const resMongo = await store.writeAgenda(JSON.stringify(agenda))
+        // const res = JSON.parse(clientes)
+
+        socket.emit("req-cli-res", clientes)
+    })    
 })
 
 
