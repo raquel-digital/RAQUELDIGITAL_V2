@@ -254,13 +254,14 @@ io.on('connect', socket => {
 
     //Pedido por planilla
     socket.on("pedido-planilla", cliente => {
-        mailPlanilla(cliente)
+        const ok = mailPlanilla(cliente)       
+        socket.emit("pedido-planilla-res", ok)       
     })
 
     socket.on("req-cli", async () => {
         delete require.cache[require.resolve("./utils/agenda/clientes.json")];        
         const clientes = require("./utils/agenda/clientes.json")
-         //MONGO BORRA RESULTADOS
+        // MONGO BORRA RESULTADOS
         // const store = require("./api/agenda/store")        
         // const resMongo = await store.readAgenda()
         // const res = JSON.parse(clientes)
@@ -482,14 +483,14 @@ function mailPlanilla(cliente){
         }
 
         transporter.sendMail(mailOptions, (err, info) => {
-            if (err) {
+            if (err) {                
                 console.log(err)
-                return err
+                return false
             }
             console.log("[ MAIL ENVIADO EXITOSAMENTE ]")
         })
     
-    
+    return true
 }
 
 //rutas de respuesta mercadopago
