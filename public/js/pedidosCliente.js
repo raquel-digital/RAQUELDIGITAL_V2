@@ -96,14 +96,15 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
         const arts = document.querySelectorAll(".card-preg-frec")
         const artsArray = Array.from(arts);
         const pedidos = []
-        console.log(artsArray)
+        
         artsArray.forEach(e => {
+            
             const input = e.querySelectorAll("input")
             const inputVals = Array.from(input);
-            
             const check = checkPedido(inputVals)
 
-            if(check){
+            if(!check){
+                console.log("Reboto", check)
                 return
             }
 
@@ -115,14 +116,14 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
             }
             pedidos.push(pedido)
         })
-
-        console.log(pedidos)  
+        
+        
         const form = document.getElementById("formulario-contacto")      
         const formVals = form.querySelectorAll("input")
         const inputFormVals = Array.from(formVals);             
         
-        const cliente = checkDatos(inputFormVals)   
-        if(cliente == false){
+        const cliente = checkDatos(inputFormVals, pedidos)   
+        if(!cliente){
             return
         }     
         
@@ -138,7 +139,7 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
     }
 })
 
-function checkDatos(inputFormVals){
+function checkDatos(inputFormVals, pedidos){
     if(inputFormVals[0].value.length == 0){
         alert("Por favor ingrese nombre")
         return false
@@ -154,7 +155,7 @@ function checkDatos(inputFormVals){
 
     const envio = inputFormVals[4].checked ? "Direccion: " + document.getElementById("direccion").value + "  Localidad: " + document.getElementById("localidad").value : " "    
     const retira = inputFormVals[3].checked ? "Retira por local" : " "
-
+    console.log(pedidos)
     const cliente = {
         nombre: inputFormVals[0].value,
         whatsapp: inputFormVals[1].value,
@@ -169,11 +170,14 @@ function checkDatos(inputFormVals){
 }
 
 function checkPedido(pedido){
+    console.log(pedido)
     if(pedido[0].value.length == 0){
+        console.log("desc")
         alert("Debe ingresar descripcion en artículo")
         return false
     }
     if(pedido[1].value.length == 0){
+        console.log("cant")
         alert("Debe ingresar cantidad en artículo")
         return false
     }
@@ -181,7 +185,6 @@ function checkPedido(pedido){
 }
 
 socket.on("pedido-planilla-res", res => {
-    console.log(res)
     if(res != null){
         mostrador.innerHTML = `<h1>Pedido enviado exitosamente, nos estamos poniendo en contacto a la brevedad</h1>`
     }else{
