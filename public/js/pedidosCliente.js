@@ -51,7 +51,7 @@ document.querySelector("main h1").textContent = "Planilla De Pedidos"
 const mostrador = document.querySelector(".contenedor-articulos")
 
 mostrador.innerHTML = `
-<h1>aqui puede generar un pedido completando los datos de la planilla complete los datos de contacto para poder comunicarnos</h1>
+<h1>Complete los datos de la planilla y aprete el botón enviar. Nosotros nos pondremos en contacto para terminar su pedido.</h1>
 <div class="contenedor-preg-frec">
     ${cardPedido}    
 </div>
