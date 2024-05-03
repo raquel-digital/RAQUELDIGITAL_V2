@@ -254,8 +254,13 @@ io.on('connect', socket => {
 
     //Pedido por planilla
     socket.on("pedido-planilla", cliente => {
-        const ok = mailPlanilla(cliente)       
-        socket.emit("pedido-planilla-res", ok)       
+        const ok = mailPlanilla(cliente)
+        if(ok){
+            socket.emit("pedido-planilla-res", cliente)
+        }else{
+            socket.emit("pedido-planilla-res", null)
+        }       
+               
     })
 
     socket.on("req-cli", async () => {
@@ -455,7 +460,7 @@ function mailPlanilla(cliente){
         cliente.pedido.forEach(e => {
             compra +=`
         
-            <li>Descripcion: ${e.descripcion} Color: ${e.color} Medida: ${e.medida} Cantidad: ${e.cantidad}</li>
+            <h3> • Descripcion: ${e.descripcion} Color: ${e.color} Medida: ${e.medida} Cantidad: ${e.cantidad}</h3>
             `
         })
         

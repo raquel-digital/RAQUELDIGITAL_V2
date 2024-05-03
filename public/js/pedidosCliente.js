@@ -1,3 +1,5 @@
+let indice = 0
+
 const formularioContacto = `
     <div id="formulario-contacto">
     <h3>Nombre:</h3>
@@ -24,11 +26,11 @@ const formularioContacto = `
 `
 
 const cardPedido = `
-<div class="card-preg-frec">
+<div id="${indice}" class="card-preg-frec">
     <h3 style="display: inline-block; margin-right: 10px;">Descripcion:</h3>
-    <input type="text" placeholder="Ingrese artículo" style="display: inline-block;margin-right: 10px;">
+    <input id="descripcion${indice}" type="text" placeholder="Ingrese artículo" style="display: inline-block;margin-right: 10px;">
     <h3 style="display: inline-block; margin-right: 10px;">Cantidad:</h3>
-    <input type="text" placeholder="Ingrese cantidad" style="display: inline-block;">
+    <input id="cantidad${indice}" type="text" placeholder="Ingrese cantidad" style="display: inline-block;">
     <div style="display: inline-block;">
         <h3 style="display: inline-block; margin-right: 10px;margin-top: 10px;">Color:</h3>
         <input type="text" placeholder="En caso de ser necesario" style="display: inline-block;margin-right: 10px; ">
@@ -44,7 +46,7 @@ const cardPedido = `
     <button type="button" class="enviar-pedido btn-primario" style="width: auto; margin-left: -243rem;">ENVIAR PEDIDO</button>    
 </div>
 `
-let pedido = []
+let pedidos = []
 
 const socket = io.connect();
 document.querySelector("main h1").textContent = "Planilla De Pedidos"
@@ -74,8 +76,6 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
 
         const form = crearFormulario()
         contenedor.appendChild(form)
-
-        
     }
     if(mouse.classList.contains("borrar-articulo")){
         const arts = document.querySelectorAll(".card-preg-frec")
@@ -91,22 +91,19 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
         const form = crearFormulario()
         contenedor.appendChild(form)
         //contenedor.innerHTML += `<div id="borrarArt"><h3 class="agregar-articulo">Sumar Artículo:</h3><div class="mas agregar-articulo""></div><div class="menos borrar-articulo""></div>${formularioContacto}<button type="button" class="enviar-pedido btn-primario" style"width: 30%;">ENVIAR PEDIDO</button></div>`
+        
     }      
     if(mouse.classList.contains("enviar-pedido")){
         const arts = document.querySelectorAll(".card-preg-frec")
         const artsArray = Array.from(arts);
         const pedidos = []
         
+
         artsArray.forEach(e => {
             
             const input = e.querySelectorAll("input")
             const inputVals = Array.from(input);
-            const check = checkPedido(inputVals)
-
-            if(!check){
-                console.log("Reboto", check)
-                return
-            }
+            //const check = checkPedido(inputVals, e)            
 
             const pedido = {
                 descripcion: inputVals[0].value,
@@ -120,13 +117,19 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
         
         const form = document.getElementById("formulario-contacto")      
         const formVals = form.querySelectorAll("input")
-        const inputFormVals = Array.from(formVals);             
+        const inputFormVals = Array.from(formVals);   
         
-        const cliente = checkDatos(inputFormVals, pedidos)   
-        if(!cliente){
+        const isOk = checkPedido()        
+        const cliente = checkDatos(inputFormVals, pedidos, form) 
+         
+        if(!cliente || !isOk){
             return
         }     
-        
+
+        window.scrollTo({
+            top: mostrador.getBoundingClientRect().top + window.scrollY + -500,
+            behavior: "smooth" // Animación suave
+        });
         socket.emit("pedido-planilla", cliente)  
     }
     //mostrar campo envío
@@ -139,19 +142,57 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
     }
 })
 
-function checkDatos(inputFormVals, pedidos){
+function checkDatos(inputFormVals, pedidos, form){
+    console.log(inputFormVals)
+    
     if(inputFormVals[0].value.length == 0){
+        const input = form.querySelector("input")
+        form.focus();
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        input.style.border = "2px solid red"
         alert("Por favor ingrese nombre")
         return false
+    }else{
+        const input = form.querySelector("input")
+        input.style.border = ""
     }
     if(inputFormVals[1].value.length == 0){
+        const input = form.childNodes[9]
+        form.focus();
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        input.style.border = "2px solid red"
         alert("Por favor un numero de whatsapp")
         return false
+    }else{
+        const input = form.childNodes[9]
+        input.style.border = ""
     }
     if(inputFormVals[2].value.length == 0){
+        const input = form.childNodes[13]
+        form.focus();
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        input.style.border = "2px solid red"
         alert("Por favor un mail de contacto")
         return false
+    }else{
+        const input = form.childNodes[13]
+        input.style.border = ""
     }
+    if(!inputFormVals[3].checked && !inputFormVals[4].checked){
+        const input = form.childNodes[21]
+        form.focus();
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        input.style.border = "2px solid red"
+        const input2 = form.childNodes[17]
+        input2.style.border = "2px solid red"
+        alert("Por favor ingrese si es para retirar o envío")
+        return false
+    }else{
+        const input = form.childNodes[21]
+        const input2 = form.childNodes[17]
+        input.style.border = ""
+        input2.style.border = ""
+    } 
 
     const envio = inputFormVals[4].checked ? "Direccion: " + document.getElementById("direccion").value + "  Localidad: " + document.getElementById("localidad").value : " "    
     const retira = inputFormVals[3].checked ? "Retira por local" : " "
@@ -169,24 +210,83 @@ function checkDatos(inputFormVals, pedidos){
     return cliente
 }
 
-function checkPedido(pedido){
-    console.log(pedido)
-    if(pedido[0].value.length == 0){
-        console.log("desc")
-        alert("Debe ingresar descripcion en artículo")
-        return false
-    }
-    if(pedido[1].value.length == 0){
-        console.log("cant")
-        alert("Debe ingresar cantidad en artículo")
-        return false
-    }
-    return true
+function checkPedido(pedido, elemento){
+
+    const cards = document.querySelectorAll(".card-preg-frec")
+    let i = 0
+    cards.forEach(e => {
+        const elemento = document.getElementById(i)
+        const input = elemento.querySelectorAll("input")
+        const inputVals = Array.from(input);
+        if(inputVals[0].value.length == 0){
+            elemento.focus();
+            elemento.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const input = document.getElementById("descripcion"+i)
+            input.style.border = "2px solid red"
+            alert("Debe ingresar descripcion en artículo")
+            return false
+        }else{
+            const input = document.getElementById("descripcion"+i)
+            input.style.border = ""
+        }
+        if(inputVals[1].value == ""){            
+            elemento.focus();
+            elemento.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const input = document.getElementById("cantidad"+i)
+            input.style.border = "2px solid red"        
+            alert("Debe ingresar cantidad en artículo")
+            return false
+        }else{            
+            const input = document.getElementById("cantidad"+i)
+            console.log(input)
+            input.style.border = ""
+        }
+        i++
+    })
+    
+    // if(pedido[0].value.length == 0){        
+    //     elemento.focus();
+    //     elemento.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    //     const input = elemento.querySelector("input")
+    //     input.style.border = "2px solid red"
+    //     alert("Debe ingresar descripcion en artículo")
+    //     return false
+    // }else{
+    //     const input = elemento.querySelector("input")
+    //     input.style.border = ""
+    // }
+    // if(pedido[1].value.length == 0){
+    //     elemento.focus();
+    //     elemento.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    //     const input = elemento.childNodes[7]
+    //     input.style.border = "2px solid red"        
+    //     alert("Debe ingresar cantidad en artículo")
+    //     return false
+    // }else{
+    //     const input = elemento.childNodes[7]
+    //     console.log(elemento,input)
+    //     input.style.border = "" 
+    // }
+    // return true
 }
 
 socket.on("pedido-planilla-res", res => {
     if(res != null){
+    
+
         mostrador.innerHTML = `<h1>Pedido enviado exitosamente, nos estamos poniendo en contacto a la brevedad</h1>`
+        mostrador.innerHTML += `<h1>A continuacion dejamos detallado tu pedido</h1>`
+        mostrador.innerHTML += `<h1>En caso que necesites modificar algo podes comunicarte al whatsaap 11 3693 3250 o por mail a raqueldigitalweb@gmail.com</h1>`
+        mostrador.innerHTML += `<h3>Pedido a nombre de: ${res.nombre}</h3>`
+        mostrador.innerHTML += `<h3>Whatsapp: ${res.whatsapp}</h3>`
+        mostrador.innerHTML += `<h3><h3>Mail: ${res.mail}</h3>`
+        mostrador.innerHTML += `<h3><h3>${res.retira} ${res.envio}</h3>`                    
+        mostrador.innerHTML += `<div id="pedido-finalizado"></div>`
+        res.pedido.forEach(e => {
+            document.getElementById("pedido-finalizado").innerHTML += `
+                <h3>  • Descripcion: ${e.descripcion} Color: ${e.color} Medida: ${e.medida} Cantidad: ${e.cantidad} </h3>
+            `
+        })
     }else{
         alert("Error al enviar pedido, por favor intente nuevamente")
     }
@@ -194,6 +294,7 @@ socket.on("pedido-planilla-res", res => {
 
 function agregarArticulos(arts, agregar){
     const res = []
+    let i = 0
 
     arts.forEach(e => {
         const inputVals = e.querySelectorAll("input")        
@@ -201,6 +302,8 @@ function agregarArticulos(arts, agregar){
         // Crear el contenedor principal
         const cardPregFrec = document.createElement('div');
         cardPregFrec.classList.add('card-preg-frec');
+        cardPregFrec.id = i
+        
 
         // Crear el elemento <h3> para "Descripcion"
         const descripcionHeader = document.createElement('h3');
@@ -215,6 +318,7 @@ function agregarArticulos(arts, agregar){
         descripcionInput.style.display = 'inline-block';
         descripcionInput.style.marginRight = '10px';
         descripcionInput.value = inputVals[0].value
+        descripcionInput.id = "descripcion"+i
         
         // Crear el elemento <h3> para "Cantidad"
         const cantidadHeader = document.createElement('h3');
@@ -228,6 +332,7 @@ function agregarArticulos(arts, agregar){
         cantidadInput.setAttribute('placeholder', 'Ingrese cantidad');
         cantidadInput.style.display = 'inline-block';
         cantidadInput.value = inputVals[1].value
+        cantidadInput.id = "cantidad"+i
 
         // Crear el contenedor para "Color" y "Medida"
         const colorMedidaContainer = document.createElement('div');
@@ -273,12 +378,16 @@ function agregarArticulos(arts, agregar){
         cardPregFrec.appendChild(colorMedidaContainer);
 
         res.push(cardPregFrec)
+        //incrementamos indice
+        i++
+        indice = i
     })
 
     if(agregar){
         // Crear el contenedor principal
         const cardPregFrec = document.createElement('div');
         cardPregFrec.classList.add('card-preg-frec');
+        cardPregFrec.id = indice
 
         // Crear el elemento <h3> para "Descripcion"
         const descripcionHeader = document.createElement('h3');
@@ -292,6 +401,8 @@ function agregarArticulos(arts, agregar){
         descripcionInput.setAttribute('placeholder', 'Ingrese artículo');
         descripcionInput.style.display = 'inline-block';
         descripcionInput.style.marginRight = '10px';
+        descripcionInput.id = "descripcion"+indice
+        
         
         // Crear el elemento <h3> para "Cantidad"
         const cantidadHeader = document.createElement('h3');
@@ -304,6 +415,7 @@ function agregarArticulos(arts, agregar){
         cantidadInput.setAttribute('type', 'text');
         cantidadInput.setAttribute('placeholder', 'Ingrese cantidad');
         cantidadInput.style.display = 'inline-block';
+        cantidadInput.id = "cantidad"+indice
 
         // Crear el contenedor para "Color" y "Medida"
         const colorMedidaContainer = document.createElement('div');
@@ -499,7 +611,6 @@ return borrarArtContainer
 
 /*TODO: 
 -- ALERTS DE ERRORES (completado parcial solo descripcion y cantidades) 
--- falta alert errores en campo de datos cliente ver si se puede redondear en  rojo
--- mover la pantalla al lugar del error o exito
--- PANTALLA DE EXITO*/
+    --hay un bug cuando hay mas de 1 item
+-- PANTALLA DE EXITO pulir*/
 
