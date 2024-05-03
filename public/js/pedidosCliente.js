@@ -10,14 +10,14 @@ const formularioContacto = `
     <h3>mail:</h3>
     <input id="mail" type="text" placeholder="ingrese e-mail">
     <h3>Es para retirar o envío?:</h3>
-    <h3>retiro</h3>
+    <h3 id="retiroMarca">retiro</h3>
     <input id="retiro" class="form-check-input" type="radio" name="formaContacto" id="retira">
-    <h3>envio</h3>
+    <h3 id="envioMarca">envio</h3>
     <input id="envio" class="form-check-input" type="radio" name="formaContacto" id="envio">
         <div id="ingresar-envio" style="display: none;">
-            <h3>Direccion:</h3>
+            <h3 id="direccionMarca">Direccion:</h3>
             <input id="direccion" class="form-check-input" type="text" name="direccion" id="direccion">
-            <h3>Localidad:</h3>
+            <h3 id="localidadMarca">Localidad:</h3>
             <input id="localidad" class="form-check-input" type="text" name="localidad" id="localidad">
         </div>
     </div>
@@ -120,8 +120,7 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
         const inputFormVals = Array.from(formVals);   
         
         const isOk = checkPedido()        
-        const cliente = checkDatos(inputFormVals, pedidos, form) 
-        console.log(cliente, isOk) 
+        const cliente = checkDatos(inputFormVals, pedidos, form)
         if(!cliente || !isOk){
             return
         }     
@@ -181,18 +180,45 @@ function checkDatos(inputFormVals, pedidos, form){
     }
 
     if(!inputFormVals[3].checked && !inputFormVals[4].checked){
-        const input = form.querySelector("#retiro")
+        const input = form.querySelector("#retiroMarca")
         form.focus();
         form.scrollIntoView({ behavior: 'smooth', block: 'center' });
         input.style.border = "2px solid red"
-        const input2 = form.querySelector("#envio")
+        const input2 = form.querySelector("#envioMarca")
         input2.style.border = "2px solid red"
+        console.log(input, input2)
         alert("Por favor ingrese si es para retirar o envío")
         return false
+    }else{
+        const input = form.querySelector("#retiroMarca")
+        const input2 = form.querySelector("#envioMarca")
+        input.style.border = ""
+        input2.style.border = ""
     }
 
-    const envio = inputFormVals[4].checked ? "Direccion: " + document.getElementById("direccion").value + "  Localidad: " + document.getElementById("localidad").value : " "    
-    const retira = inputFormVals[3].checked ? "Retira por local" : " "
+    const envio = inputFormVals[4].checked ? "Direccion: " + document.getElementById("direccion").value + "  Localidad: " + document.getElementById("localidad").value : ""    
+    const retira = inputFormVals[3].checked ? "Retira por local" : ""
+
+    if(envio.length > 0){
+        if(document.getElementById("direccion").value.length == 0){
+            const input = form.querySelector("#direccion")
+            input.style.border = "2px solid red"
+            alert("Por favor ingrese dirección de envío")
+            return false
+        }else{
+            const input = form.querySelector("#direccion")
+            input.style.border = ""
+        }
+        if(document.getElementById("localidad").value.length == 0){
+            const input2 = form.querySelector("#localidad")        
+            input2.style.border = "2px solid red"
+            alert("Por favor ingrese localidad de envío")
+            return false
+        }else{
+            const input2 = form.querySelector("#localidad")
+            input2.style.border = ""
+        }
+    }
     
     const cliente = {
         nombre: inputFormVals[0].value,
@@ -203,6 +229,7 @@ function checkDatos(inputFormVals, pedidos, form){
         pedido: pedidos,
         observaciones: document.getElementById("observaciones").value
     }
+    
     console.log(cliente)
     return cliente
 }
@@ -252,8 +279,16 @@ socket.on("pedido-planilla-res", res => {
         mostrador.innerHTML += `<h3>Pedido a nombre de: ${res.nombre}</h3>`
         mostrador.innerHTML += `<h3>Whatsapp: ${res.whatsapp}</h3>`
         mostrador.innerHTML += `<h3><h3>Mail: ${res.mail}</h3>`
-        mostrador.innerHTML += `<h3><h3>${res.retira} ${res.envio}</h3>`                    
-        mostrador.innerHTML += `<div id="pedido-finalizado"></div>`
+        mostrador.innerHTML += `<h3>${res.retira} ${res.envio}</h3>`
+        mostrador.innerHTML += `<hr>`
+          
+        mostrador.innerHTML += `
+        <div id="contenedor" style="width: 10px;">
+        <div id="elemento" style="width: 20px; height: 100px; float: left;">            
+        </div>                  
+        </div>        
+        `                  
+        mostrador.innerHTML += `<div id="pedido-finalizado" style="margin-top:30px;"><h3>PEDIDO:</h3></div>`
         res.pedido.forEach(e => {
             document.getElementById("pedido-finalizado").innerHTML += `
                 <h3>  • Descripcion: ${e.descripcion} Color: ${e.color} Medida: ${e.medida} Cantidad: ${e.cantidad} </h3>
@@ -503,6 +538,7 @@ formaContactoRadioHeader.textContent = 'Es para retirar o envío?:';
 
 const retiroHeader = document.createElement('h3');
 retiroHeader.textContent = 'retiro';
+retiroHeader.id = "retiroMarca"
 
 const retiroInput = document.createElement('input');
 retiroInput.classList.add('form-check-input');
@@ -512,6 +548,7 @@ retiroInput.setAttribute('id', 'retiro');
 
 const envioHeader = document.createElement('h3');
 envioHeader.textContent = 'envio';
+envioHeader.id = "envioMarca"
 
 const envioInput = document.createElement('input');
 envioInput.classList.add('form-check-input');
@@ -585,8 +622,5 @@ borrarArtContainer.appendChild(enviarPedidoButton);
 return borrarArtContainer
 }
 
-/*TODO: 
--- ALERTS DE ERRORES (completado parcial solo descripcion y cantidades) 
-    --hay un bug cuando hay mas de 1 item
--- PANTALLA DE EXITO pulir*/
+
 
