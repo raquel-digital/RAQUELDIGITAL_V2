@@ -3,22 +3,22 @@ let indice = 0
 const formularioContacto = `
     <div id="formulario-contacto">
     <h3>Nombre:</h3>
-    <input type="text" placeholder="ingrese nombre">
+    <input id="nombre" type="text" placeholder="ingrese nombre">
     <h3>Forma de contacto:</h3>
     <h3>whatsapp:</h3>
-    <input type="text" placeholder="ingrese numero">
+    <input id="whatsapp" type="text" placeholder="ingrese numero">
     <h3>mail:</h3>
-    <input type="text" placeholder="ingrese e-mail">
+    <input id="mail" type="text" placeholder="ingrese e-mail">
     <h3>Es para retirar o envío?:</h3>
     <h3>retiro</h3>
-    <input class="form-check-input" type="radio" name="formaContacto" id="retira">
+    <input id="retiro" class="form-check-input" type="radio" name="formaContacto" id="retira">
     <h3>envio</h3>
-    <input class="form-check-input" type="radio" name="formaContacto" id="envio">
+    <input id="envio" class="form-check-input" type="radio" name="formaContacto" id="envio">
         <div id="ingresar-envio" style="display: none;">
             <h3>Direccion:</h3>
-            <input class="form-check-input" type="text" name="direccion" id="direccion">
+            <input id="direccion" class="form-check-input" type="text" name="direccion" id="direccion">
             <h3>Localidad:</h3>
-            <input class="form-check-input" type="text" name="localidad" id="localidad">
+            <input id="localidad" class="form-check-input" type="text" name="localidad" id="localidad">
         </div>
     </div>
     <h3>Observaciones:</h3>
@@ -121,7 +121,7 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
         
         const isOk = checkPedido()        
         const cliente = checkDatos(inputFormVals, pedidos, form) 
-         
+        console.log(cliente, isOk) 
         if(!cliente || !isOk){
             return
         }     
@@ -130,8 +130,10 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
             top: mostrador.getBoundingClientRect().top + window.scrollY + -500,
             behavior: "smooth" // Animación suave
         });
+
         socket.emit("pedido-planilla", cliente)  
     }
+
     //mostrar campo envío
     const envio = document.getElementById("envio")
     const datoEnvio = document.getElementById("ingresar-envio")
@@ -143,60 +145,55 @@ document.querySelector(".contenedor-preg-frec").addEventListener("click", e => {
 })
 
 function checkDatos(inputFormVals, pedidos, form){
-    console.log(inputFormVals)
-    
+
     if(inputFormVals[0].value.length == 0){
-        const input = form.querySelector("input")
+        const input = form.querySelector("#nombre")
         form.focus();
         form.scrollIntoView({ behavior: 'smooth', block: 'center' });
         input.style.border = "2px solid red"
         alert("Por favor ingrese nombre")
         return false
     }else{
-        const input = form.querySelector("input")
+        const input = form.querySelector("#nombre")
         input.style.border = ""
     }
     if(inputFormVals[1].value.length == 0){
-        const input = form.childNodes[9]
+        const input = form.querySelector("#whatsapp")
         form.focus();
         form.scrollIntoView({ behavior: 'smooth', block: 'center' });
         input.style.border = "2px solid red"
         alert("Por favor un numero de whatsapp")
         return false
     }else{
-        const input = form.childNodes[9]
+        const input = form.querySelector("#whatsapp")
         input.style.border = ""
     }
     if(inputFormVals[2].value.length == 0){
-        const input = form.childNodes[13]
+        const input = form.querySelector("#mail")
         form.focus();
         form.scrollIntoView({ behavior: 'smooth', block: 'center' });
         input.style.border = "2px solid red"
         alert("Por favor un mail de contacto")
         return false
     }else{
-        const input = form.childNodes[13]
+        const input = form.querySelector("#mail")
         input.style.border = ""
     }
+
     if(!inputFormVals[3].checked && !inputFormVals[4].checked){
-        const input = form.childNodes[21]
+        const input = form.querySelector("#retiro")
         form.focus();
         form.scrollIntoView({ behavior: 'smooth', block: 'center' });
         input.style.border = "2px solid red"
-        const input2 = form.childNodes[17]
+        const input2 = form.querySelector("#envio")
         input2.style.border = "2px solid red"
         alert("Por favor ingrese si es para retirar o envío")
         return false
-    }else{
-        const input = form.childNodes[21]
-        const input2 = form.childNodes[17]
-        input.style.border = ""
-        input2.style.border = ""
-    } 
+    }
 
     const envio = inputFormVals[4].checked ? "Direccion: " + document.getElementById("direccion").value + "  Localidad: " + document.getElementById("localidad").value : " "    
     const retira = inputFormVals[3].checked ? "Retira por local" : " "
-    console.log(pedidos)
+    
     const cliente = {
         nombre: inputFormVals[0].value,
         whatsapp: inputFormVals[1].value,
@@ -206,7 +203,7 @@ function checkDatos(inputFormVals, pedidos, form){
         pedido: pedidos,
         observaciones: document.getElementById("observaciones").value
     }
-
+    console.log(cliente)
     return cliente
 }
 
@@ -238,42 +235,17 @@ function checkPedido(pedido, elemento){
             return false
         }else{            
             const input = document.getElementById("cantidad"+i)
-            console.log(input)
             input.style.border = ""
         }
         i++
-    })
-    
-    // if(pedido[0].value.length == 0){        
-    //     elemento.focus();
-    //     elemento.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    //     const input = elemento.querySelector("input")
-    //     input.style.border = "2px solid red"
-    //     alert("Debe ingresar descripcion en artículo")
-    //     return false
-    // }else{
-    //     const input = elemento.querySelector("input")
-    //     input.style.border = ""
-    // }
-    // if(pedido[1].value.length == 0){
-    //     elemento.focus();
-    //     elemento.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    //     const input = elemento.childNodes[7]
-    //     input.style.border = "2px solid red"        
-    //     alert("Debe ingresar cantidad en artículo")
-    //     return false
-    // }else{
-    //     const input = elemento.childNodes[7]
-    //     console.log(elemento,input)
-    //     input.style.border = "" 
-    // }
-    // return true
+    })    
+
+    return true
 }
 
 socket.on("pedido-planilla-res", res => {
-    if(res != null){
-    
-
+    if(res != null){    
+        console.log(res)
         mostrador.innerHTML = `<h1>Pedido enviado exitosamente, nos estamos poniendo en contacto a la brevedad</h1>`
         mostrador.innerHTML += `<h1>A continuacion dejamos detallado tu pedido</h1>`
         mostrador.innerHTML += `<h1>En caso que necesites modificar algo podes comunicarte al whatsaap 11 3693 3250 o por mail a raqueldigitalweb@gmail.com</h1>`
@@ -504,6 +476,7 @@ nombreHeader.textContent = 'Nombre:';
 const nombreInput = document.createElement('input');
 nombreInput.setAttribute('type', 'text');
 nombreInput.setAttribute('placeholder', 'Ingrese nombre');
+nombreInput.id = "nombre"
 
 // Crear los elementos para "Forma de contacto"
 const formaContactoHeader = document.createElement('h3');
@@ -515,6 +488,7 @@ whatsappHeader.textContent = 'whatsapp:';
 const whatsappInput = document.createElement('input');
 whatsappInput.setAttribute('type', 'text');
 whatsappInput.setAttribute('placeholder', 'Ingrese número');
+whatsappInput.id = "whatsapp"
 
 const mailHeader = document.createElement('h3');
 mailHeader.textContent = 'mail:';
@@ -522,6 +496,7 @@ mailHeader.textContent = 'mail:';
 const mailInput = document.createElement('input');
 mailInput.setAttribute('type', 'text');
 mailInput.setAttribute('placeholder', 'Ingrese e-mail');
+mailInput.id = "mail"
 
 const formaContactoRadioHeader = document.createElement('h3');
 formaContactoRadioHeader.textContent = 'Es para retirar o envío?:';
@@ -533,7 +508,7 @@ const retiroInput = document.createElement('input');
 retiroInput.classList.add('form-check-input');
 retiroInput.setAttribute('type', 'radio');
 retiroInput.setAttribute('name', 'formaContacto');
-retiroInput.setAttribute('id', 'retira');
+retiroInput.setAttribute('id', 'retiro');
 
 const envioHeader = document.createElement('h3');
 envioHeader.textContent = 'envio';
@@ -575,6 +550,7 @@ observacionesTextarea.setAttribute('id', 'observaciones');
 observacionesTextarea.setAttribute('cols', '40');
 observacionesTextarea.setAttribute('rows', '10');
 observacionesTextarea.style.marginBottom = '38rem';
+retiroInput.id = "observaciones"
 
 const enviarPedidoButton = document.createElement('button');
 enviarPedidoButton.setAttribute('type', 'button');
