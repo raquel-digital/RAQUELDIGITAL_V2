@@ -1,6 +1,5 @@
 const socket = io.connect();
-let agendaOk = false
-socket.on("log-agenda", () => agendaOk = true);
+
 //const socket = io("ws://localhost:8080", {forceNew: true});
 let mostrador =  document.querySelector(".mostrador");
 const paginador = document.querySelector(".paginador");

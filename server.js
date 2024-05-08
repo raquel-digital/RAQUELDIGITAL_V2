@@ -262,28 +262,6 @@ io.on('connect', socket => {
         }       
                
     })
-
-    socket.on("req-cli", async () => {
-        delete require.cache[require.resolve("./utils/agenda/clientes.json")];        
-        const clientes = require("./utils/agenda/clientes.json")
-        // MONGO BORRA RESULTADOS
-        // const store = require("./api/agenda/store")        
-        // const resMongo = await store.readAgenda()
-        // const res = JSON.parse(clientes)
-         socket.emit("req-cli-res", clientes)
-    })
-    socket.on("nuevo-cliente", async agenda =>{
-        delete require.cache[require.resolve("./utils/agenda/clientes.json")];
-        fs.writeFileSync(`./utils/agenda/clientes.json`, JSON.stringify(agenda, null, 2));
-        const clientes = require("./utils/agenda/clientes.json")
-
-        //MONGO
-        // const store = require("./api/agenda/store")        
-        // const resMongo = await store.writeAgenda(JSON.stringify(agenda))
-        // const res = JSON.parse(clientes)
-
-        socket.emit("req-cli-res", clientes)
-    })    
 })
 
 

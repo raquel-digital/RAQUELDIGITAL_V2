@@ -474,152 +474,152 @@ function agregarArticulos(arts, agregar){
 
 function crearFormulario(){
     // Crear el contenedor principal
-const borrarArtContainer = document.createElement('div');
-borrarArtContainer.id = 'borrarArt';
+    const borrarArtContainer = document.createElement('div');
+    borrarArtContainer.id = 'borrarArt';
 
-// Crear el elemento <h3> para "Sumar Artículo"
-const agregarArticuloHeader = document.createElement('h3');
-agregarArticuloHeader.classList.add('agregar-articulo');
-agregarArticuloHeader.style.display = 'inline-block';
-agregarArticuloHeader.textContent = 'Sumar Artículo:';
+    // Crear el elemento <h3> para "Sumar Artículo"
+    const agregarArticuloHeader = document.createElement('h3');
+    agregarArticuloHeader.classList.add('agregar-articulo');
+    agregarArticuloHeader.style.display = 'inline-block';
+    agregarArticuloHeader.textContent = 'Sumar Artículo:';
 
-// Crear el div para "mas"
-const masDiv = document.createElement('div');
-masDiv.classList.add('mas', 'agregar-articulo');
-masDiv.style.display = 'inline-block';
-masDiv.style.margin ="-8px 10px"
+    // Crear el div para "mas"
+    const masDiv = document.createElement('div');
+    masDiv.classList.add('mas', 'agregar-articulo');
+    masDiv.style.display = 'inline-block';
+    masDiv.style.margin ="-8px 10px"
 
-// Crear el div para "menos"
-const menosDiv = document.createElement('div');
-menosDiv.classList.add('menos', 'borrar-articulo');
-menosDiv.style.display = 'inline-block';
-menosDiv.style.margin ="-8px 10px"
+    // Crear el div para "menos"
+    const menosDiv = document.createElement('div');
+    menosDiv.classList.add('menos', 'borrar-articulo');
+    menosDiv.style.display = 'inline-block';
+    menosDiv.style.margin ="-8px 10px"
 
-// Agregar los elementos al contenedor principal
-borrarArtContainer.appendChild(agregarArticuloHeader);
-borrarArtContainer.appendChild(masDiv);
-borrarArtContainer.appendChild(menosDiv);
+    // Agregar los elementos al contenedor principal
+    borrarArtContainer.appendChild(agregarArticuloHeader);
+    borrarArtContainer.appendChild(masDiv);
+    borrarArtContainer.appendChild(menosDiv);
 
-// Crear el contenedor para "formulario-contacto"
-const formularioContactoContainer = document.createElement('div');
-formularioContactoContainer.id = 'formulario-contacto';
+    // Crear el contenedor para "formulario-contacto"
+    const formularioContactoContainer = document.createElement('div');
+    formularioContactoContainer.id = 'formulario-contacto';
 
-// Crear los elementos para "Nombre"
-const nombreHeader = document.createElement('h3');
-nombreHeader.textContent = 'Nombre:';
+    // Crear los elementos para "Nombre"
+    const nombreHeader = document.createElement('h3');
+    nombreHeader.textContent = 'Nombre:';
 
-const nombreInput = document.createElement('input');
-nombreInput.setAttribute('type', 'text');
-nombreInput.setAttribute('placeholder', 'Ingrese nombre');
-nombreInput.id = "nombre"
+    const nombreInput = document.createElement('input');
+    nombreInput.setAttribute('type', 'text');
+    nombreInput.setAttribute('placeholder', 'Ingrese nombre');
+    nombreInput.id = "nombre"
 
-// Crear los elementos para "Forma de contacto"
-const formaContactoHeader = document.createElement('h3');
-formaContactoHeader.textContent = 'Forma de contacto:';
+    // Crear los elementos para "Forma de contacto"
+    const formaContactoHeader = document.createElement('h3');
+    formaContactoHeader.textContent = 'Forma de contacto:';
 
-const whatsappHeader = document.createElement('h3');
-whatsappHeader.textContent = 'whatsapp:';
+    const whatsappHeader = document.createElement('h3');
+    whatsappHeader.textContent = 'whatsapp:';
 
-const whatsappInput = document.createElement('input');
-whatsappInput.setAttribute('type', 'text');
-whatsappInput.setAttribute('placeholder', 'Ingrese número');
-whatsappInput.id = "whatsapp"
+    const whatsappInput = document.createElement('input');
+    whatsappInput.setAttribute('type', 'text');
+    whatsappInput.setAttribute('placeholder', 'Ingrese número');
+    whatsappInput.id = "whatsapp"
 
-const mailHeader = document.createElement('h3');
-mailHeader.textContent = 'mail:';
+    const mailHeader = document.createElement('h3');
+    mailHeader.textContent = 'mail:';
 
-const mailInput = document.createElement('input');
-mailInput.setAttribute('type', 'text');
-mailInput.setAttribute('placeholder', 'Ingrese e-mail');
-mailInput.id = "mail"
+    const mailInput = document.createElement('input');
+    mailInput.setAttribute('type', 'text');
+    mailInput.setAttribute('placeholder', 'Ingrese e-mail');
+    mailInput.id = "mail"
 
-const formaContactoRadioHeader = document.createElement('h3');
-formaContactoRadioHeader.textContent = 'Es para retirar o envío?:';
+    const formaContactoRadioHeader = document.createElement('h3');
+    formaContactoRadioHeader.textContent = 'Es para retirar o envío?:';
 
-const retiroHeader = document.createElement('h3');
-retiroHeader.textContent = 'retiro';
-retiroHeader.id = "retiroMarca"
+    const retiroHeader = document.createElement('h3');
+    retiroHeader.textContent = 'retiro';
+    retiroHeader.id = "retiroMarca"
 
-const retiroInput = document.createElement('input');
-retiroInput.classList.add('form-check-input');
-retiroInput.setAttribute('type', 'radio');
-retiroInput.setAttribute('name', 'formaContacto');
-retiroInput.setAttribute('id', 'retiro');
+    const retiroInput = document.createElement('input');
+    retiroInput.classList.add('form-check-input');
+    retiroInput.setAttribute('type', 'radio');
+    retiroInput.setAttribute('name', 'formaContacto');
+    retiroInput.setAttribute('id', 'retiro');
 
-const envioHeader = document.createElement('h3');
-envioHeader.textContent = 'envio';
-envioHeader.id = "envioMarca"
+    const envioHeader = document.createElement('h3');
+    envioHeader.textContent = 'envio';
+    envioHeader.id = "envioMarca"
 
-const envioInput = document.createElement('input');
-envioInput.classList.add('form-check-input');
-envioInput.setAttribute('type', 'radio');
-envioInput.setAttribute('name', 'formaContacto');
-envioInput.setAttribute('id', 'envio');
+    const envioInput = document.createElement('input');
+    envioInput.classList.add('form-check-input');
+    envioInput.setAttribute('type', 'radio');
+    envioInput.setAttribute('name', 'formaContacto');
+    envioInput.setAttribute('id', 'envio');
 
-const ingresarEnvioContainer = document.createElement('div');
-ingresarEnvioContainer.id = 'ingresar-envio';
-ingresarEnvioContainer.style.display = 'none';
+    const ingresarEnvioContainer = document.createElement('div');
+    ingresarEnvioContainer.id = 'ingresar-envio';
+    ingresarEnvioContainer.style.display = 'none';
 
-const direccionHeader = document.createElement('h3');
-direccionHeader.textContent = 'Direccion:';
+    const direccionHeader = document.createElement('h3');
+    direccionHeader.textContent = 'Direccion:';
 
-const direccionInput = document.createElement('input');
-direccionInput.classList.add('form-check-input');
-direccionInput.setAttribute('type', 'text');
-direccionInput.setAttribute('name', 'direccion');
-direccionInput.setAttribute('id', 'direccion');
+    const direccionInput = document.createElement('input');
+    direccionInput.classList.add('form-check-input');
+    direccionInput.setAttribute('type', 'text');
+    direccionInput.setAttribute('name', 'direccion');
+    direccionInput.setAttribute('id', 'direccion');
 
-const localidadHeader = document.createElement('h3');
-localidadHeader.textContent = 'Localidad:';
+    const localidadHeader = document.createElement('h3');
+    localidadHeader.textContent = 'Localidad:';
 
-const localidadInput = document.createElement('input');
-localidadInput.classList.add('form-check-input');
-localidadInput.setAttribute('type', 'text');
-localidadInput.setAttribute('name', 'localidad');
-localidadInput.setAttribute('id', 'localidad');
+    const localidadInput = document.createElement('input');
+    localidadInput.classList.add('form-check-input');
+    localidadInput.setAttribute('type', 'text');
+    localidadInput.setAttribute('name', 'localidad');
+    localidadInput.setAttribute('id', 'localidad');
 
-const observacionesHeader = document.createElement('h3');
-observacionesHeader.textContent = 'Observaciones:';
+    const observacionesHeader = document.createElement('h3');
+    observacionesHeader.textContent = 'Observaciones:';
 
-const observacionesTextarea = document.createElement('textarea');
-observacionesTextarea.setAttribute('name', 'observaciones');
-observacionesTextarea.setAttribute('id', 'observaciones');
-observacionesTextarea.setAttribute('cols', '40');
-observacionesTextarea.setAttribute('rows', '10');
-observacionesTextarea.style.marginBottom = '38rem';
-retiroInput.id = "observaciones"
+    const observacionesTextarea = document.createElement('textarea');
+    observacionesTextarea.setAttribute('name', 'observaciones');
+    observacionesTextarea.setAttribute('id', 'observaciones');
+    observacionesTextarea.setAttribute('cols', '40');
+    observacionesTextarea.setAttribute('rows', '10');
+    observacionesTextarea.style.marginBottom = '38rem';
+    retiroInput.id = "observaciones"
 
-const enviarPedidoButton = document.createElement('button');
-enviarPedidoButton.setAttribute('type', 'button');
-enviarPedidoButton.classList.add('enviar-pedido', 'btn-primario');
-enviarPedidoButton.style.width = 'auto';
-enviarPedidoButton.textContent = 'ENVIAR PEDIDO';
-enviarPedidoButton.style.marginLeft = "-243rem"
+    const enviarPedidoButton = document.createElement('button');
+    enviarPedidoButton.setAttribute('type', 'button');
+    enviarPedidoButton.classList.add('enviar-pedido', 'btn-primario');
+    enviarPedidoButton.style.width = 'auto';
+    enviarPedidoButton.textContent = 'ENVIAR PEDIDO';
+    enviarPedidoButton.style.marginLeft = "-243rem"
 
-// Agregar los elementos al contenedor del formulario
-formularioContactoContainer.appendChild(nombreHeader);
-formularioContactoContainer.appendChild(nombreInput);
-formularioContactoContainer.appendChild(formaContactoHeader);
-formularioContactoContainer.appendChild(whatsappHeader);
-formularioContactoContainer.appendChild(whatsappInput);
-formularioContactoContainer.appendChild(mailHeader);
-formularioContactoContainer.appendChild(mailInput);
-formularioContactoContainer.appendChild(formaContactoRadioHeader);
-formularioContactoContainer.appendChild(retiroHeader);
-formularioContactoContainer.appendChild(retiroInput);
-formularioContactoContainer.appendChild(envioHeader);
-formularioContactoContainer.appendChild(envioInput);
-formularioContactoContainer.appendChild(ingresarEnvioContainer);
-ingresarEnvioContainer.appendChild(direccionHeader);
-ingresarEnvioContainer.appendChild(direccionInput);
-ingresarEnvioContainer.appendChild(localidadHeader);
-ingresarEnvioContainer.appendChild(localidadInput);
-borrarArtContainer.appendChild(formularioContactoContainer);
-borrarArtContainer.appendChild(observacionesHeader);
-borrarArtContainer.appendChild(observacionesTextarea);
-borrarArtContainer.appendChild(enviarPedidoButton);
+    // Agregar los elementos al contenedor del formulario
+    formularioContactoContainer.appendChild(nombreHeader);
+    formularioContactoContainer.appendChild(nombreInput);
+    formularioContactoContainer.appendChild(formaContactoHeader);
+    formularioContactoContainer.appendChild(whatsappHeader);
+    formularioContactoContainer.appendChild(whatsappInput);
+    formularioContactoContainer.appendChild(mailHeader);
+    formularioContactoContainer.appendChild(mailInput);
+    formularioContactoContainer.appendChild(formaContactoRadioHeader);
+    formularioContactoContainer.appendChild(retiroHeader);
+    formularioContactoContainer.appendChild(retiroInput);
+    formularioContactoContainer.appendChild(envioHeader);
+    formularioContactoContainer.appendChild(envioInput);
+    formularioContactoContainer.appendChild(ingresarEnvioContainer);
+    ingresarEnvioContainer.appendChild(direccionHeader);
+    ingresarEnvioContainer.appendChild(direccionInput);
+    ingresarEnvioContainer.appendChild(localidadHeader);
+    ingresarEnvioContainer.appendChild(localidadInput);
+    borrarArtContainer.appendChild(formularioContactoContainer);
+    borrarArtContainer.appendChild(observacionesHeader);
+    borrarArtContainer.appendChild(observacionesTextarea);
+    borrarArtContainer.appendChild(enviarPedidoButton);
 
-return borrarArtContainer
+    return borrarArtContainer
 }
 
 

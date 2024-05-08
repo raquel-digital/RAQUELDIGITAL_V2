@@ -65,7 +65,8 @@ router.get("/categoria/", async (req, res) => {
 
   const categIO = req.query.categ
   const categ = req.query.categ.toLowerCase()
-  const tag = req.query.tag
+  const tagCheck = req.query.tag
+  
   let io = require('../io.js').get();  
   io.once('connect', socket => {    
     (async () => {
@@ -73,7 +74,8 @@ router.get("/categoria/", async (req, res) => {
         let result = await categOrganicer(categ);        
         result.categ = categIO
         socket.emit("categ-result", result);
-        if(tag){    
+        if(tagCheck){ 
+          const tag = tagCheck.replace(" ", "-")   
           const tagEmit = tag.toLowerCase();            
           socket.emit("tag-result", tagEmit); 
         }
