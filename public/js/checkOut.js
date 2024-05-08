@@ -225,6 +225,7 @@ facturacion.addEventListener("click", () => {
 formaDePago.addEventListener("click", () => {
   if(formaTranferencia.checked){
     numerosCuentas.style.display = "block"
+    //document.getElementById("total-transferencia").innerHTML = `<h4>total a depositar: $</h4>`
   }else{
     numerosCuentas.style.display = "none"
   }
@@ -554,14 +555,13 @@ function envio_mock(){
   cliente.formaDePago = formaDepago
 
   document.querySelector("#carrito-holder").value = JSON.stringify(cliente.sys.compra)
-  console.log(document.querySelector("#carrito-holder").value)
-   const res = controlDatos(cliente)   
-   alertsCheckOut(res)
+  
+  const res = controlDatos(cliente)   
+  alertsCheckOut(res)
 }
 
 
 function controlDatos(cliente){
-  console.log(cliente)
   if(cliente.nombreApellido == ""){
       return {state: false, message: "Por favor ingrese su nombre", redMark: "nombre"};
   }
@@ -702,7 +702,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //     }
 //   } 
 //     console.log(carrito, informacion)
-    localStorage.setItem("carrito", JSON.stringify(carrito))   
+    //localStorage.setItem("carrito", JSON.stringify(carrito))   
 })
 
 
