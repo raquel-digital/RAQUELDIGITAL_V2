@@ -262,6 +262,13 @@ io.on('connect', socket => {
         }       
                
     })
+    //obtener listado de clientes
+    socket.on("req-cli", async () => {
+        delete require.cache[require.resolve("./utils/agenda/clientes.json")];        
+        const clientes = require("./utils/agenda/clientes.json")
+        socket.emit("req-cli-res", clientes)
+    })
+
 })
 
 

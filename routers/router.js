@@ -75,7 +75,7 @@ router.get("/categoria/", async (req, res) => {
         result.categ = categIO
         socket.emit("categ-result", result);
         if(tagCheck){ 
-          const tag = tagCheck.replace(" ", "-")   
+          const tag = tagCheck.replace(" ", "-")//%20   
           const tagEmit = tag.toLowerCase();            
           socket.emit("tag-result", tagEmit); 
         }
