@@ -108,6 +108,10 @@ await fetch('../enviosData/provincias.json')
         e.textContent = envios.expreso
       }
     }else{
+      const footer = document.querySelector("tfoot tr td b")
+      const total = footer.textContent.replace("EL TOTAL DE SU COMPRA: $ ", "")
+      document.getElementById("total-transferencia").innerHTML = `<b>total a depositar: $${total}</b>`
+
       porEnvio.style.display="none";
       provinciasSelect.style.display="none";
       localidades.style.display="none";
@@ -123,6 +127,13 @@ await fetch('../enviosData/provincias.json')
       localidades.style.display="none";
       document.querySelector(".correo").style.display = "none"
       document.querySelector(".expresos").style.display = "none"
+
+      const footer = document.querySelector("tfoot tr td b")
+      const total = footer.textContent.replace("EL TOTAL DE SU COMPRA: $ ", "")
+      const totalEnvio = envios.moto + Number(total)
+      document.getElementById("total-transferencia").innerHTML = `<b>total a depositar: $${totalEnvio.toFixed(2)} (ya incluido el envío por moto)</b>`
+
+
     }else{
       document.querySelector(".moto").style.display = "none";
       document.querySelector(".ingresarTipoEnvio").style.display = "block";
@@ -157,8 +168,8 @@ localidades.addEventListener("click", () => {
   }
 })
 //form de ingreso direccion
-ingresoDestinoContainer.addEventListener("click", () => {  
- 
+ingresoDestinoContainer.addEventListener("click", () => {
+
   const check_correo = document.querySelector("#tipo-envio2")
   const check_expreso = document.querySelector("#tipo-envio1")
   correoCheck = check_correo;
@@ -167,10 +178,22 @@ ingresoDestinoContainer.addEventListener("click", () => {
   if(check_correo.checked){
     document.querySelector(".correo").style.display = "block"
     document.querySelector(".expresos").style.display = "none"
+    if(document.getElementById("tipo-envio2").checked){
+      const footer = document.querySelector("tfoot tr td b")
+      const total = footer.textContent.replace("EL TOTAL DE SU COMPRA: $ ", "")
+      const totalEnvio = valorCorreo + Number(total)
+      document.getElementById("total-transferencia").innerHTML = `<b>total a depositar: $${totalEnvio.toFixed(2)} (ya incluido el correo)</b>`
+    }
   }
   if(check_expreso.checked){    
     document.querySelector(".expresos").style.display = "block"
     document.querySelector(".correo").style.display = "none"
+    if(document.getElementById("tipo-envio1").checked){
+      const footer = document.querySelector("tfoot tr td b")
+      const total = footer.textContent.replace("EL TOTAL DE SU COMPRA: $ ", "")
+      const totalEnvio = valorExpreso + Number(total)
+      document.getElementById("total-transferencia").innerHTML = `<b>total a depositar: $${totalEnvio.toFixed(2)} (ya incluido el flete de envío)</b>`
+    }
   }
 })
 
@@ -225,7 +248,22 @@ facturacion.addEventListener("click", () => {
 formaDePago.addEventListener("click", () => {
   if(formaTranferencia.checked){
     numerosCuentas.style.display = "block"
-    //document.getElementById("total-transferencia").innerHTML = `<h4>total a depositar: $</h4>`
+    const footer = document.querySelector("tfoot tr td b")
+    const total = footer.textContent.replace("EL TOTAL DE SU COMPRA: $ ", "")
+    
+    if(document.getElementById("retiro").checked){
+      document.getElementById("total-transferencia").innerHTML = `<b>total a depositar: $${total}</b>`
+    }
+    if(document.getElementById("tipo-envio2").checked){
+      const totalEnvio = valorCorreo + Number(total)
+      document.getElementById("total-transferencia").innerHTML = `<b>total a depositar: $${totalEnvio.toFixed(2)} (ya incluido el correo)</b>`
+    }    
+    if(document.getElementById("tipo-envio1").checked){
+      const totalEnvio = valorExpreso + Number(total)
+      document.getElementById("total-transferencia").innerHTML = `<b>total a depositar: $${totalEnvio.toFixed(2)} (ya incluido el flete de envío)</b>`
+    }
+    
+    
   }else{
     numerosCuentas.style.display = "none"
   }
