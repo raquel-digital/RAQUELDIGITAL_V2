@@ -252,7 +252,7 @@ formaDePago.addEventListener("click", () => {
     const total = footer.textContent.replace("EL TOTAL DE SU COMPRA: $ ", "")
     
     if(document.getElementById("retiro").checked){
-      document.getElementById("total-transferencia").innerHTML = `<b>total a depositar: $${total}</b>`
+      document.getElementById("total-transferencia").innerHTML = `<b>total a depositar: $${total} (el pedido se pasa a preparar el deposito previo no es obligatorio)</b>`
     }
     if(document.getElementById("tipo-envio2").checked){
       const totalEnvio = valorCorreo + Number(total)

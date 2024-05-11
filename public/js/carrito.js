@@ -385,9 +385,9 @@ socket.on("actuPreciosRes", data => {
     actualizarCarrito()
 })
 
-let intervaloCarrito = 86400000
-//chequear precios por intervalo 86400000 milSegs es 1 día
-setInterval(function() {
-    checkAumentosCarrito(carritoAnterior);
-}, 5000);
+// let intervaloCarrito = 86400000
+// //chequear precios por intervalo 86400000 milSegs es 1 día
+// setInterval(function() {
+//     checkAumentosCarrito(carritoAnterior);
+// }, 5000);
 
