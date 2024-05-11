@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 const requer  = require("./utils/config")
 const controller = require("./api/arts/controller");
-const fs = require("fs")
 
 //socket
 const io = require('./io.js').init(http);
@@ -189,15 +188,26 @@ io.on('connect', socket => {
         })();
     })
     //ADMIN PRECIOS
-    socket.on("actuPrecios", data => {
-        (async () => {
-            const actuPrecios = require("./utils/preciosActu");
-            const result = await actuPrecios(data);            
-            if(result){
-                loadCategs()
-                socket.emit("actuPreciosRes", (result));
+    socket.on("actuPrecios", carrito => {
+        delete require.cache[require.resolve("./public/system/dir/allArts.json")];
+        const actuPrecios = require("./public/system/dir/allArts.json");
+        const result = []    
+        // Recorre cada elemento del carrito
+        carrito.forEach(producto => {
+            // Verifica si el código del producto está en el array de códigos y precios
+            const index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
+            if (index !== -1) {
+                const precio = actuPrecios[index].precio.replace(",", ".")                
+                if(producto.precio != precio){
+                    producto.precio = precio;
+                    result.push(producto)      
+                }                
             }
-        })();        
+        });
+                  
+        if(result.length > 0){
+            socket.emit("actuPreciosRes", result);
+        }     
     })
     //ADMIN ARTICULOS
     socket.on("delete", data => {

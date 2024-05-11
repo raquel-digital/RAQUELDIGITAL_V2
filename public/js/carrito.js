@@ -5,8 +5,7 @@ const carrito = []
 const carritoAnterior = JSON.parse(localStorage.getItem("carrito"))
 const itemsCarrito = document.querySelector("#carritoNumber")
 
-if(carritoAnterior && carritoAnterior.length > 0){    
-   //const actuCarrito = checkAumentosCarrito(carritoAnterior) 
+if(carritoAnterior && carritoAnterior.length > 0){
    const carritoCheck = carritoAnterior.slice(0, 100);
    carritoCheck.forEach(e => {
        ingresarCarrito(e)
@@ -46,8 +45,7 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
         alertModal("¿Querés eliminar este artículo?", "Esta acción no se puede deshacer.", "Sí, eliminar", "No")
         confirm.style.display = "block"
         confirm.addEventListener("click", event => {
-            if(event.target.textContent == "Sí, eliminar"){
-                console.log("articulo individual")                
+            if(event.target.textContent == "Sí, eliminar"){      
                 const filter = carrito.filter(e => e.codigo != codigo)
                 carrito.length = 0 
                 filter.forEach(e => carrito.push(e))
@@ -68,7 +66,6 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
         return
   }
   if(mouse.classList.contains("eliminar-link")){
-        console.log("eliminar en cel")
         const codigo = event.target.parentElement.parentElement.children[1].children[0].textContent
         
         const confirm = document.getElementById("custom-modal")
@@ -103,7 +100,6 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
         confirm.style.display = "block"
         confirm.addEventListener("click", event => {
             if(event.target.textContent == "Sí, eliminar."){
-                console.log("carrito entero")
                 carrito.length = 0                
                 actualizarCarrito()
                 localStorage.setItem("carrito", JSON.stringify(carrito))
@@ -193,7 +189,6 @@ function ingresarCarrito(art){
 function actualizarCarrito(){
     
     localStorage.setItem("carrito", JSON.stringify(carrito))
-    
     document.getElementById("carrito-holder").value = JSON.stringify(carrito)
     const carritoBody = document.querySelector(".carrito-cuerpo");
     carritoBody.innerHTML = ""
@@ -372,7 +367,27 @@ mostrador.innerHTML += `
 }
 
 function checkAumentosCarrito(carrito){
-    
+    if(!carrito){
+        return
+    }
+    socket.emit("actuPrecios", carrito)
 }
 
+socket.on("actuPreciosRes", data => {
+    console.log("actualizacion", data)
+    carrito.forEach(producto => {
+        const index = data.findIndex(item => item.codigo === producto.codigo);
+        if (index !== -1) {            
+            // Si se encuentra el código, actualiza el precio del producto
+            producto.precio = data[index].precio;
+        }
+    })
+    actualizarCarrito()
+})
+
+let intervaloCarrito = 86400000
+//chequear precios por intervalo 86400000 milSegs es 1 día
+setInterval(function() {
+    checkAumentosCarrito(carritoAnterior);
+}, 5000);
 
