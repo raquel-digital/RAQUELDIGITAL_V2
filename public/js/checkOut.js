@@ -47,7 +47,6 @@ const facturaA = document.querySelector(".facturaA");
 const exento = document.querySelector(".exento");
 
 const compraFinal = document.getElementById('datos-compra');  
-localStorage.setItem("carrito", compraFinal.dataset.datos)
 
 (async () => {
   try {
@@ -704,6 +703,8 @@ function alertsCheckOut(data){
 
 //Tomar la tabla y guardar en carrito
 document.addEventListener('DOMContentLoaded', () => {
+  localStorage.setItem("carrito", compraFinal.dataset.datos)
+
 //   const table = document.querySelector(".resumen-check-out")
   
 //   // Array para almacenar la información
