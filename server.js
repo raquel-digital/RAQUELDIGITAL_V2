@@ -188,6 +188,18 @@ io.on('connect', socket => {
         })();
     })
     //ADMIN PRECIOS
+    socket.on("actuPreciosAdmin", data => {
+        (async () => {
+            const actuPrecios = require("./utils/preciosActu");
+            const result = await actuPrecios(data);            
+            if(result){
+                loadCategs()
+                socket.emit("actuPreciosAdminRes", (result));
+            }
+        })();        
+    })
+
+    //Chequear precios antes del checkout
     socket.on("actuPrecios", carrito => {
         delete require.cache[require.resolve("./public/system/dir/allArts.json")];
         const actuPrecios = require("./public/system/dir/allArts.json");

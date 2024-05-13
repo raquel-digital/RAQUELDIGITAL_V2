@@ -520,11 +520,10 @@ function actuPrecios(){
   
  }); 
  mostrador.innerHTML = `<h1>Actualizando precios esto lleva tiempo</h1>`
- socket.emit("actuPrecios", preJson);
- 
+ socket.emit("actuPreciosAdmin", preJson); 
 }
 
-socket.on("actuPreciosRes", result => {
+socket.on("actuPreciosAdminRes", result => {
   if(result){
     console.log(result)
     if(result.length == 0){
