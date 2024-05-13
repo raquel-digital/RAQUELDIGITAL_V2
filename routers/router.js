@@ -224,7 +224,22 @@ router.post("/check-out", (req, res) => {
   const esIPhone = userAgent.includes('iPhone');
 
   const carritoAnterior = JSON.parse(req.body.carrito_holder)
-  
+
+  //Cheque precios
+  delete require.cache[require.resolve("../public/system/dir/allArts.json")];
+  const actuPrecios = require("../public/system/dir/allArts.json");
+  // Recorre cada elemento del carrito
+  carritoAnterior.forEach(producto => {
+      // Verifica si el código del producto está en el array de códigos y precios
+      const index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
+      if (index !== -1) {
+          const precio = actuPrecios[index].precio.replace(",", ".")                
+          if(producto.precio != precio){              
+              producto.precio = precio;
+          }                
+      }
+  })
+
   res.render("checkOut", { iphone: esIPhone, carrito: carritoAnterior })
 })
 
