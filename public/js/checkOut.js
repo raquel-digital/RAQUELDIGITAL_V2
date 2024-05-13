@@ -46,6 +46,9 @@ const monotributo = document.querySelector(".monotributo");
 const facturaA = document.querySelector(".facturaA");
 const exento = document.querySelector(".exento");
 
+const compraFinal = document.getElementById('datos-compra');  
+localStorage.setItem("carrito", compraFinal.dataset.datos)
+
 (async () => {
   try {
     const response = await fetch('../enviosData/dataEnvios.json')
@@ -424,9 +427,7 @@ function reingresarDatos(cliente){
 //socket.emit("mail", datosCliente)
 
 function envio_mock(){
-  //TODO caso envío moto fijarse tambien si la párte HTML esta OK
-   
-  const compraFinal = document.getElementById('datos-compra');
+  //TODO caso envío moto fijarse tambien si la párte HTML esta OK   
   
   const cliente = {
     nombreApellido: document.querySelector(".nombreApellido").value,
@@ -593,7 +594,7 @@ function envio_mock(){
   cliente.formaDePago = formaDepago
 
   document.querySelector("#carrito-holder").value = JSON.stringify(cliente.sys.compra)
-  
+  localStorage.setItem("carrito", JSON.stringify(cliente.sys.compra))
   const res = controlDatos(cliente)   
   alertsCheckOut(res)
 }
