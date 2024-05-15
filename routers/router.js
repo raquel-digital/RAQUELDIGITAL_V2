@@ -161,21 +161,13 @@ router.get('/profile', requiresAuth(), function (req, res, next) {
 
 
 let adminPedidos = false
-let agendaOk = false
 router.get("/admin", (req, res, next) => {
   const result = middleware.validAdmin(log)
-    if(result == "true agenda ok"){
-      res.sendFile(path.resolve("./public/index-admin.html"))
-      let io = require('../io.js').get();
-      io.once('connect', socket => {
-        (async () => {
-            socket.emit("log-agenda", result);
-        })();
-      })
-      log = undefined;
-      agendaOk = true
-      return   
+    if(result === "permisos limitados"){
+      res.sendFile(path.resolve("./public/index-admin2.html"))
+      return
     }
+
     if(result == true){
       log = undefined; 
       adminPedidos = true     

@@ -11,8 +11,8 @@ const middleware = {
         if(log.user === config.admin && log.pass === config.padmin){
             return true;
         }
-        else  if(log.user === config.admin && log.pass === config.padminXavi){
-            return "true agenda ok";    
+        else  if(log.user === config.admin && log.pass === config.padmin2){
+            return "permisos limitados";    
         }else{
             return false;
         }
