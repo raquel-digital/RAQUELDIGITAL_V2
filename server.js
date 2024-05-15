@@ -199,28 +199,28 @@ io.on('connect', socket => {
         })();        
     })
 
-    //Chequear precios antes del checkout
-    socket.on("actuPrecios", carrito => {
-        delete require.cache[require.resolve("./public/system/dir/allArts.json")];
-        const actuPrecios = require("./public/system/dir/allArts.json");
-        const result = []    
-        // Recorre cada elemento del carrito
-        carrito.forEach(producto => {
-            // Verifica si el código del producto está en el array de códigos y precios
-            const index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
-            if (index !== -1) {
-                const precio = actuPrecios[index].precio.replace(",", ".")                
-                if(producto.precio != precio){
-                    producto.precio = precio;
-                    result.push(producto)      
-                }                
-            }
-        });
-                  
-        if(result.length > 0){
-            socket.emit("actuPreciosRes", result);
-        }     
-    })
+    //Chequear precios antes del checkout QUEDO EL CHEO EN ROUTER
+            // socket.on("actuPrecios", carrito => {
+            //     delete require.cache[require.resolve("./public/system/dir/allArts.json")];
+            //     const actuPrecios = require("./public/system/dir/allArts.json");
+            //     const result = []    
+            //     // Recorre cada elemento del carrito
+            //     carrito.forEach(producto => {
+            //         // Verifica si el código del producto está en el array de códigos y precios
+            //         const index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
+            //         if (index !== -1) {
+            //             const precio = actuPrecios[index].precio.replace(",", ".")                
+            //             if(producto.precio != precio){
+            //                 producto.precio = precio;
+            //                 result.push(producto)      
+            //             }                
+            //         }
+            //     });
+                        
+            //     if(result.length > 0){
+            //         socket.emit("actuPreciosRes", result);
+            //     }     
+            // })
     //ADMIN ARTICULOS
     socket.on("delete", data => {
         loadCategs()

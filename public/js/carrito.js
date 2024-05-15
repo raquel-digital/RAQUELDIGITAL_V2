@@ -366,28 +366,7 @@ mostrador.innerHTML += `
   
 }
 
-function checkAumentosCarrito(carrito){
-    if(!carrito){
-        return
-    }
-    socket.emit("actuPrecios", carrito)
-}
 
-socket.on("actuPreciosRes", data => {
-    console.log("actualizacion", data)
-    carrito.forEach(producto => {
-        const index = data.findIndex(item => item.codigo === producto.codigo);
-        if (index !== -1) {            
-            // Si se encuentra el código, actualiza el precio del producto
-            producto.precio = data[index].precio;
-        }
-    })
-    actualizarCarrito()
-})
 
-// let intervaloCarrito = 86400000
-// //chequear precios por intervalo 86400000 milSegs es 1 día
-// setInterval(function() {
-//     checkAumentosCarrito(carritoAnterior);
-// }, 5000);
+
 

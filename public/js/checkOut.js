@@ -273,7 +273,6 @@ formaDePago.addEventListener("click", () => {
 
 //Tools
 function reingresarDatos(cliente){ 
-  console.log(cliente)
     //reingresamos los datos
     //nombre
     if(cliente.nombreApellido)
@@ -581,7 +580,7 @@ function envio_mock(){
     }
     document.querySelector(".precio").value = cliente.sys.totalCompra + envio;
     document.querySelector(".titulo").value = "Carrito-Raquel-Digital";
-    console.log(document.querySelector(".titulo").value, document.querySelector(".precio").value)
+    
     formaDepago = "Mercado Pago"
     form.action = "/mercadopago"
   }
