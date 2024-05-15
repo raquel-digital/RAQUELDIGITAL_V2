@@ -186,7 +186,7 @@ function checkDatos(inputFormVals, pedidos, form){
         input.style.border = "2px solid red"
         const input2 = form.querySelector("#envioMarca")
         input2.style.border = "2px solid red"
-        console.log(input, input2)
+        
         alert("Por favor ingrese si es para retirar o envío")
         return false
     }else{
@@ -230,7 +230,7 @@ function checkDatos(inputFormVals, pedidos, form){
         observaciones: document.getElementById("observaciones").value
     }
     
-    console.log(cliente)
+    
     return cliente
 }
 
@@ -272,7 +272,7 @@ function checkPedido(pedido, elemento){
 
 socket.on("pedido-planilla-res", res => {
     if(res != null){    
-        console.log(res)
+        
         mostrador.innerHTML = `<h1>Pedido enviado exitosamente, nos estamos poniendo en contacto a la brevedad</h1>`
         mostrador.innerHTML += `<h1>A continuacion dejamos detallado tu pedido</h1>`
         mostrador.innerHTML += `<h1>En caso que necesites modificar algo podes comunicarte al whatsaap 11 3693 3250 o por mail a raqueldigitalweb@gmail.com</h1>`

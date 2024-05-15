@@ -133,8 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    socket.on("categ-result", data => {         
-        console.log(data)
+    socket.on("categ-result", data => {
         
         if(data.succes){ 
           mostrador.innerHTML = ""
@@ -202,7 +201,7 @@ if(filtros){
                                 
                 let codigo = p.tags;         
               
-                if(codigo.includes(clikTag)){
+                if(codigo === clikTag){
                   articulosTags.push(p);
                 }
             }
@@ -215,6 +214,7 @@ if(filtros){
               }
               return
             }
+            
             loadTag(articulosTags, clik);
           }
     })
@@ -296,7 +296,6 @@ socket.on("tag-result", tag => {
   const articulosTags = [];
   for(let p of mostradorDeArticulos){ 
     if(p.tags.includes("%20")){
-      console.log(p.tag)
       p.tags = p.tags.replaceAll("%20", "-");
     }
     
@@ -315,19 +314,10 @@ function categOrganizador(categ){
   if(categ.includes(" ")){
     categ = categ.replaceAll(" ", "_")
   }
-  console.log(categ)
-   //const tagFetch = []
     let tagCheck
 
-  // data.forEach(e => {
-  //   if(!tagFetch.includes(e.categorias)){
-  //     tagFetch.push(e.categorias)
-  //   }
-  // })
-  // tagFetch.forEach(e => {
     (async () => {
-        //const split = e
-      
+             
         await fetch('../system/categ/' + categ.toLowerCase() + '.json')
         .then(response => {
           if (!response.ok) {
@@ -341,7 +331,7 @@ function categOrganizador(categ){
         .catch(error => {
           console.error('Error: ', error);
         });  
-        console.log(tagCheck)
+       
         const botonera = document.querySelector(".filtros")
         botonera.innerHTML = `<h2 style="margin-bottom: 12rem;">Filtrar por:</h2>`;
         botonera.innerHTML += `<button type="button" class="tag hashtag tag-seleccionado">Todos</button>`;      

@@ -703,45 +703,6 @@ function alertsCheckOut(data){
 //Tomar la tabla y guardar en carrito
 document.addEventListener('DOMContentLoaded', () => {
   localStorage.setItem("carrito", compraFinal.dataset.datos)
-
-//   const table = document.querySelector(".resumen-check-out")
-  
-//   // Array para almacenar la información
-//   var informacion = [];
-
-//   // Iterar sobre las filas de la tabla, empezando desde la primera fila
-//   for (var i = 0; i < table.rows.length; i++) {
-//     var row = table.rows[i];
-//     var linea = [];
-
-//     // Iterar sobre las celdas de la fila
-//     for (var j = 0; j < row.cells.length; j++) {
-//       var cell = row.cells[j];
-//       // Agregar el texto de la celda al array de la línea
-//       linea.push(cell.innerText);
-//     }
-
-//     // Agregar el array de la línea al arreglo de información
-//     informacion.push(linea);
-// }
-
-//     const carritoTable = []
-//     const carrito = JSON.parse(localStorage.getItem('carrito'));
-//     // Imprimir el arreglo de información en la consola
-//     for(const e of informacion){
-//       for(const c of carrito){       
-//           if(c.codigo === e[1]){
-//             if(c.precio != e[6]){
-//               c.precio = e[6]
-//               console.log(c.codigo, e[1])
-//               console.log(c.precio, e[6])
-//               //alert("Lamentablemente el articulo " + c.titulo + " a sufrio un cambio de precio")
-//             }
-//           }
-//     }
-//   } 
-//     console.log(carrito, informacion)
-    //localStorage.setItem("carrito", JSON.stringify(carrito))   
 })
 
 

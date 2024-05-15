@@ -149,9 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             return 0;
           }).reverse();
-          // console.log(data)
-          // categOrganizador(data.categ);
-
+          
           if(mostradorDeArticulos.length > indice){        
             crearPaginador(mostradorDeArticulos);
             tags(mostradorDeArticulos);
@@ -291,7 +289,7 @@ socket.on("tag-result", tag => {
   const articulosTags = [];
   for(let p of mostradorDeArticulos){ 
     if(p.tags.includes("%20")){
-      console.log(p.tag)
+      
       p.tags = p.tags.replaceAll("%20", "-");
     }
     
@@ -334,7 +332,7 @@ function categOrganizador(categ){
         .catch(error => {
           console.error('Error: ', error);
         });  
-        console.log(tagCheck)
+        
         const botonera = document.querySelector(".filtros")      
       for(let t  of tagCheck){
         if(t.includes("-")){
