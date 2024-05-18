@@ -8,37 +8,38 @@ function buscador(query, admin){
     const words = consulta.split(" ")
 
     const res = arts.filter(e => {
-        const checkNom2 = e.nombre2.toUpperCase();
+         const checkNom2 = e.nombre2.toUpperCase();
     
-        if (e.codigo.includes(consulta)
-        || e.nombre.includes(consulta)
-        || checkNom2.includes(consulta) 
-        || words.some(name => e.nombre.includes(name)) 
-        || words.some(word => checkNom2.includes(word))) {
-            if (admin) {
-                return true; 
-            } else {
-                if (e.mostrar) {
-                    return true;
-                }
-            }
-        }
-    
-         return false; // si ninguna condición se cumple, devuelve false
-    
-        //OLD
-        // if(e.codigo.includes(consulta) 
+        // if (e.codigo.includes(consulta)
         // || e.nombre.includes(consulta)
-        // || checkNom2.includes(consulta)){
-
-        //     if(admin){
-        //         return e
-        //     }else{
-        //         if(e.mostrar){
-        //             return e
+        // || checkNom2.includes(consulta) 
+        // || words.some(name => e.nombre.includes(name)) 
+        // || words.some(word => checkNom2.includes(word))) {
+        //     if (admin) {
+        //         return true; 
+        //     } else {
+        //         if (e.mostrar) {
+        //             return true;
         //         }
         //     }
         // }
+    
+        //  return false; // si ninguna condición se cumple, devuelve false
+    
+        //OLD
+        if(e.codigo.includes(consulta) 
+        || e.nombre.includes(consulta)
+        || checkNom2.includes(consulta)
+        || e.descripcion.includes(consulta)){
+
+            if(admin){
+                return e
+            }else{
+                if(e.mostrar){
+                    return e
+                }
+            }
+        }
        
     });
 
@@ -46,6 +47,7 @@ function buscador(query, admin){
 
     //Score estapa de test
     // const resScore = res.map(e => {
+
     //     let score = 0
     //     if (e.codigo.includes(consulta)){
     //         score += 6
