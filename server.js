@@ -345,7 +345,7 @@ async function mailEmit(data){
     })
     let mailOptions;
     if(datos.sys.checked.retiro){
-        console.log("retira")
+       
         mailOptions = {
             from: 'SITIO WEB',
             to: 'raqueldigitalweb@gmail.com',            

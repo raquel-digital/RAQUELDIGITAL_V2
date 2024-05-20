@@ -47,10 +47,10 @@ socket.on("resultado-busqueda", data => {
     }else{
       document.getElementById("resultado-router").innerHTML = `<h1>Resultados de búsqueda para <span class="resultado-busqueda">“${data.query}”</span></h1>`
       
-      if(paginador){
-        paginador.innerHTML = ""
-      }
-      
+      // if(paginador){
+      //   paginador.innerHTML = ""
+      // }
+      document.querySelector(".paginador").innerHTML = ""
 
       if(result.length > indice){
         //mostradorDeArticulos = data.result       

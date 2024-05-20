@@ -199,7 +199,7 @@ router.get("/login-admin", (req,res) => {
 
 router.post("/valid-log", (req,res) => { 
   log = req.body;
-  console.log("valid",log) 
+  
   const check = middleware.validAdmin(log);
   if(check){
     res.redirect("/admin");
@@ -242,7 +242,7 @@ mercadopago.configure({
 });
 
 router.post("/mercadopago", (req, res) => {
-  console.log(req.body)
+  
   let preference = {
     items: [
       {
@@ -262,7 +262,7 @@ router.post("/mercadopago", (req, res) => {
   };
   mercadopago.preferences.create(preference)
   .then(function(response){
-    console.log(response)
+    
     res.redirect(response.body.init_point);
   }).catch(function(error){
     console.log(error);

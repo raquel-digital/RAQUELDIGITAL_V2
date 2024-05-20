@@ -9,24 +9,7 @@ function buscador(query, admin){
 
     const res = arts.filter(e => {
          const checkNom2 = e.nombre2.toUpperCase();
-    
-        // if (e.codigo.includes(consulta)
-        // || e.nombre.includes(consulta)
-        // || checkNom2.includes(consulta) 
-        // || words.some(name => e.nombre.includes(name)) 
-        // || words.some(word => checkNom2.includes(word))) {
-        //     if (admin) {
-        //         return true; 
-        //     } else {
-        //         if (e.mostrar) {
-        //             return true;
-        //         }
-        //     }
-        // }
-    
-        //  return false; // si ninguna condición se cumple, devuelve false
-    
-        //OLD
+        
         if(e.codigo.includes(consulta) 
         || e.nombre.includes(consulta)
         || checkNom2.includes(consulta)
@@ -39,9 +22,31 @@ function buscador(query, admin){
                     return e
                 }
             }
-        }
+        }       
        
     });
+
+    if(res.length == 0){
+       const res = arts.filter(e => {
+        const checkNom2 = e.nombre2.toUpperCase();
+        if (e.codigo.includes(consulta)
+        || e.nombre.includes(consulta)
+        || checkNom2.includes(consulta) 
+        || words.some(name => e.nombre.includes(name)) 
+        || words.some(word => checkNom2.includes(word))) {
+            if (admin) {
+                return true; 
+            } else {
+                if (e.mostrar) {
+                    return true;
+                }
+            }
+        }
+        return false; // si ninguna condición se cumple, devuelve false
+        })        
+    
+        return res
+    }
 
     return res
 
