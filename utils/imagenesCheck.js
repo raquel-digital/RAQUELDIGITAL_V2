@@ -25,7 +25,5 @@ function write(){
 
 read()
 
-
-
 //const img = require("../public/img/AB/AB0013.JPG")
 
