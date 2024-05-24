@@ -197,13 +197,16 @@ if(filtros){
             const clikTag = mouse.textContent.replaceAll(" ", "-");      
             
             for(let p of mostradorDeArticulos){ 
-              p.tags = p.tags.replaceAll(" ", "-");
-                                
-                let codigo = p.tags;         
-              
-                if(codigo === clikTag){
-                  articulosTags.push(p);
-                }
+
+                // p.tags = p.tags.replaceAll(" ", "-");
+                const tags = p.tags.split(" ")
+                tags.forEach(e => {   
+                  const tag = e.replaceAll(" ", "-")
+                  if(tag === clikTag){
+                    articulosTags.push(p);
+                  }
+                })            
+                
             }
          
             if(clikTag == "Todos"){
