@@ -8,7 +8,9 @@ const { requiresAuth } = require('express-openid-connect');
 const middleware =  require("../utils/middleware")
 
 
-
+router.get("/presupuestos", (req,res) => {
+  res.sendFile(path.resolve("./public/presupuestos.html"))
+})
 //ENTRANDO A "/login y /logout" te logueas y deslogueas
 router.get("/", (req,res) => {
 

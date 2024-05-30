@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raquel Digital Web</title>
+    <script src="/socket.io/socket.io.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="/css/Main_checkoputProvisorio.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+</head>
+    <body>
+        <div class="container mr-5 text-center"> 
+            <h1 id="titulo"><b>PRESUPUESTOS</b></h1> 
+            <h3 id="titulo">Podes elegir entre las distintas opciones de presupuesto que se ajusten a tu negocio</h3> 
+            <h3 id="titulo">Los presupuestos se pueden modificar a tus necesidades una vez los sumes al carrito</h3> 
+            <button class="btn btn-primary" id="presupuesto-basico" style="margin-right: 10px;">Presupuesto basico</button><button class="btn btn-primary" id="presupuesto-mediano" style="margin-right: 10px;">Presupuesto Mediano</button><button class="btn btn-primary" id="presupuesto-premium" style="margin-right: 10px;">Presupuesto Premium</button>
+        <table class="table table-striped table-hover" style="display: none;">
+            <thead>
+               <tr>
+                   <th>imagen</th>
+                   <th>codigo</th>
+                   <th>titulo</th>
+                   <th>precio unitario</th>
+                   <th>cantidad</th>
+                   <th>total</th>
+               </tr>
+              </thead>
+              <tbody class="resumen-check-out">
+                
+              </tbody>
+              <tfoot >
+                <tr class="total-compra-final">
+                  
+                </tr>
+          </tfoot>
+        </table>
+        <button class="btn btn-primary" id="boton-carrito" style="display: none; margin-right: 10px;">Agregar Al Carrito</button>
+    </div>    
+    <script src="./js/presupuesto.js"></script>
+    </body>
+</html>

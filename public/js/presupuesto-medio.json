@@ -1,0 +1,770 @@
+[
+    {
+      "CODIGO": "fb0262",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "fb0275",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "fb0281",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ho8001",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "pe0198",
+      "CANTIDAD": "6"
+    },
+    {
+      "CODIGO": "pe0200",
+      "CANTIDAD": "10"
+    },
+    {
+      "CODIGO": "pe0202",
+      "CANTIDAD": "5"
+    },
+    {
+      "CODIGO": "pe1718",
+      "CANTIDAD": "6"
+    },
+    {
+      "CODIGO": "pe3030",
+      "CANTIDAD": "12"
+    },
+    {
+      "CODIGO": "pe8001",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "pe8002",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "re0001",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "re0002",
+      "CANTIDAD": "6"
+    },
+    {
+      "CODIGO": "re0205",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "re0305",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "re1222",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "re1224",
+      "CANTIDAD": "6"
+    },
+    {
+      "CODIGO": "re1226",
+      "CANTIDAD": "6"
+    },
+    {
+      "CODIGO": "ag0195",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ah0001",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ah0003",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ah0005",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "aj8020",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "aj8025",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "aj8050",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "an6001",
+      "CANTIDAD": "90"
+    },
+    {
+      "CODIGO": "at0083",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "bo5518",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "bx2196",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "cd0005",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cd0922",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cd2012",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "cd2013",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ci0021",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ci0025",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci0030",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci0040",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci0117",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ci0121",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ci0310",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ci0320",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ci0350",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ci1925",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ci3008",
+      "CANTIDAD": "5"
+    },
+    {
+      "CODIGO": "ci3015",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci3035",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ci3925",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ci6025",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ci8425",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ci9523",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ci9725",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cr2555",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cr2666",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cr4045",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cs6016",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "cs6020",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "cs6022",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "el0003",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "fb0001",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "fb0641",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "fb0815",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "fb0816",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "fb0818",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "gp0640",
+      "CANTIDAD": "5"
+    },
+    {
+      "CODIGO": "hi0003",
+      "CANTIDAD": "12"
+    },
+    {
+      "CODIGO": "hi0040",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "hi0311",
+      "CANTIDAD": "12"
+    },
+    {
+      "CODIGO": "mh1160",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "na1506",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "na1561",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "na1565",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "pa0001",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "pa0005",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "pu0201",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "pu0203",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "py1097",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "py2098",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "py2105",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "py4008",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "rc0568",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "rc0591",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "rc0592",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "rc0902",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "tj0003",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "tj4506",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "tj9006",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "tj9007",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "vs0006",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "vs0100",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "vs0900",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "vs1000",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "vs3500",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ab1007",
+      "CANTIDAD": "5"
+    },
+    {
+      "CODIGO": "ab2639",
+      "CANTIDAD": "5"
+    },
+    {
+      "CODIGO": "ac0011",
+      "CANTIDAD": "5"
+    },
+    {
+      "CODIGO": "af0043",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "af8117",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "af8121",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "af8131",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ag0125",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ag1151",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ag1154",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ag2020",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ag2045",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "at1350",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "at1540",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "at1550",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "at6301",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "br0202",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "bs1315",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "bu0202",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "bu1313",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "bu7950",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cd0100",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "cd0350",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "cd3650",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "cd3651",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "cd3652",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ce0016",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ce0018",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ce0030",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ce0040",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ce0045",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ce0260",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ce0270",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ce0316",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ci0001",
+      "CANTIDAD": "5"
+    },
+    {
+      "CODIGO": "ci0002",
+      "CANTIDAD": "5"
+    },
+    {
+      "CODIGO": "ci0003",
+      "CANTIDAD": "5"
+    },
+    {
+      "CODIGO": "ci0005",
+      "CANTIDAD": "5"
+    },
+    {
+      "CODIGO": "ci0009",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci0012",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci0050",
+      "CANTIDAD": "6"
+    },
+    {
+      "CODIGO": "ci0101",
+      "CANTIDAD": "10"
+    },
+    {
+      "CODIGO": "ci0102",
+      "CANTIDAD": "6"
+    },
+    {
+      "CODIGO": "ci0103",
+      "CANTIDAD": "6"
+    },
+    {
+      "CODIGO": "ci0105",
+      "CANTIDAD": "6"
+    },
+    {
+      "CODIGO": "ci0109",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci0112",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci0301",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ci0303",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ci1101",
+      "CANTIDAD": "6"
+    },
+    {
+      "CODIGO": "ci1120",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci1125",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci1252",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "ci1271",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci1273",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci1275",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci1279",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "ci4900",
+      "CANTIDAD": "5"
+    },
+    {
+      "CODIGO": "ci4950",
+      "CANTIDAD": "5"
+    },
+    {
+      "CODIGO": "cs0001",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cs0006",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "cs0734",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cs0750",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cs1003",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cs1150",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cs1180",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cs4400",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "cs5001",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cs5277",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cs8191",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "cs8192",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "cs9600",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "cs9602",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "el0531",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "el0548",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "el3012",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "el3016",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "el3815",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "el3820",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "el3825",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "el8028",
+      "CANTIDAD": "2"
+    },
+    {
+      "CODIGO": "el8920",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "el8930",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "en3012",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "en3016",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "en8920",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "en8930",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "fb0012",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "fb0034",
+      "CANTIDAD": "3"
+    },
+    {
+      "CODIGO": "fb0088",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "hi0451",
+      "CANTIDAD": "0,5"
+    },
+    {
+      "CODIGO": "hi1451",
+      "CANTIDAD": "0,5"
+    },
+    {
+      "CODIGO": "hi2500",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "hi2501",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "hi8888",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "hi9050",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "hi9999",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ho7000",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "hi9999",
+      "CANTIDAD": "1"
+    },
+    {
+      "CODIGO": "ho7000",
+      "CANTIDAD": "1"
+    }
+   ]
