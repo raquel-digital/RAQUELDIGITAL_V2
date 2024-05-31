@@ -575,6 +575,10 @@ barraHerramientas.addEventListener("click", e => {
     if(barraHerramientas.selectedIndex == 6){      
       actulizadorMasivo()
     }    
+    if(barraHerramientas.selectedIndex == 7){      
+      mostrador.innerHTML = `<div id="presupuesto-container"><button class="btn btn-primary" id="presupuesto-basico" style="margin-right: 10px;">Presupuesto basico</button><button class="btn btn-primary" id="presupuesto-mediano" style="margin-right: 10px;">Presupuesto Mediano</button><button class="btn btn-primary" id="presupuesto-premium" style="margin-right: 10px;">Presupuesto Premium</button></div>`
+      herramientasPresupuesto()
+    }  
   }
   barraHerramientas.selectedIndex = 0  
 })
@@ -1114,13 +1118,157 @@ socket.on("update-masivo-ok-res", res => {
   </div> 
   `
   mostrador.addEventListener("click", e => {
-    if(e.target.id == "deshacerCambios"){
-      console.log("deshaciendo cambios", res.anterior)
+    if(e.target.id == "deshacerCambios"){      
       socket.emit("update-masivo-ok", res.anterior)
     }
   }) 
 });
 
+function herramientasPresupuesto(){
+  document.querySelector("#presupuesto-container").innerHTML += `
+  <h1 id="titulo"></h1>
+  <table class="table table-striped table-hover" style="display: none;">
+  <thead>
+     <tr>
+         <th>imagen</th>
+         <th>codigo</th>
+         <th>titulo</th>
+         <th>precio unitario</th>
+         <th>cantidad</th>
+         <th>total</th>
+         <th>Borrar</th>
+     </tr>
+    </thead>
+    <tbody class="resumen-check-out">
+      
+    </tbody>
+    <tfoot >
+      <tr class="total-compra-final">
+        
+      </tr>
+</tfoot>
+</table>
+<div id="botonesIngreso" style="display: none;">
+<button type="button" class="btn btn-success" id="botonConfirmarCambiosPresu">Confirmar Cambios</button>
+<input id="codigo-presu" type="text" placeholder="Ingrese Codigo"><input id="cantidad-presu" type="text" placeholder="Ingrese Cantidad"><button class="btn btn-primary" id="ingresar-articulo">Ingresar Artículo</button>
+</div>
+`
+  cargarPresupuestos()
+}
+
+async function cargarPresupuestos(){
+  const resBasico = await fetch("./system/presupuestos/presupuesto-basico.json")
+    const codeBasico = await resBasico.json();
+    const resMedio = await fetch("./system/presupuestos/presupuesto-medio.json")
+    const codeMedio = await resMedio.json();
+    const resPremium = await fetch("./system/presupuestos/presupuesto-premium.json")
+    const codePremium = await resPremium.json();
+
+
+    const resAll = await fetch("./system/dir/allArts.json")
+    const art = await resAll.json()
+    
+
+    document.querySelector("#presupuesto-container").addEventListener("click", e => {
+        const mouse = e.target
+        if(mouse.id ==  "presupuesto-basico"){
+            writeTable(art, codeBasico, "PRESUPUESTO BASICO")
+        }
+        if(mouse.id ==  "presupuesto-mediano"){
+            writeTable(art, codeMedio, "PRESUPUESTO MEDIANO")
+        }
+        if(mouse.id ==  "presupuesto-premium"){
+            writeTable(art, codePremium, "PRESUPUESTO PREMIUM")
+        }
+        if(mouse.id == "boton-carrito"){
+            let carrito = localStorage.getItem("carrito")
+            if(carrito){
+                carrito = [...pedidoPresu]
+                localStorage.setItem("carrito", JSON.stringify(carrito))
+            }else{
+                localStorage.setItem("carrito", JSON.stringify(pedidoPresu))
+            }
+        }
+        if(mouse.classList.contains("borrar-presu")){          
+          const codigo = mouse.classList[1]
+          // const i = pedidoPresu.indexOf(e => e.codigo == codigo)
+          // pedidoPresu.splice(i, 1)
+          const filter = pedidoPresu.filter(e => e.codigo != codigo)
+          writeTable(art, filter)
+        }
+        if(mouse.id == "botonConfirmarCambiosPresu"){
+          const check = confirm("Queres confirmar los cambios?")
+          if(check){
+            const data ={tipo: document.getElementById("titulo").textContent}
+            data.pedido = pedidoPresu
+            socket.emit("cambios en presu", data)
+          }          
+        }
+        if(mouse.id == "ingresar-articulo"){
+          const codigo = document.getElementById("codigo-presu").value
+          const cantidad = document.getElementById("cantidad-presu").value
+          const check = confirm("Queres agregar este artículo?")
+          if(check){
+            const data ={tipo: document.getElementById("titulo").textContent}
+            data.nuevoArt = {codigo: codigo, cantidad: cantidad}
+            data.pedido = pedidoPresu
+            socket.emit("ingresar-presu", data)
+          }
+        }
+    })
+}
+
+const pedidoPresu = []
+function writeTable(art, code, msg){
+  if(msg){
+    document.getElementById("titulo").textContent = msg
+  }
+  pedidoPresu.length = 0  
+  
+  const show = document.querySelector("table")
+  show.style.display = "block" 
+  const botonConfirmar = document.getElementById("botonesIngreso")
+  botonConfirmar.style.display = "block" 
+  const table = document.querySelector(".resumen-check-out")
+  table.innerHTML = ""
+  let totalFinal = 0
+
+  for(c of code){
+    for(a of art){
+        const code = c.codigo.toUpperCase()
+        if(code === a.codigo){
+           const precioT = Number(a.precio.replace(",", "."))
+           const cantidad = Number(c.cantidad.replace(",", "."))
+           const total = precioT * cantidad
+           totalFinal += total
+            table.innerHTML += `<td><img src="./img/${a.categorias}/${a.imagendetalle}" alt="imagen table" widht="60px" height="60px"></td>
+                                <td>${a.codigo}</td>
+                                <td>${a.nombre}</td>
+                                <td>${precioT}</td>
+                                <td>${c.cantidad}</td>
+                                <td>${total.toFixed(2)}</td>
+                                <td><p class="borrar-presu ${a.codigo}" style="color: red;">Borrar</p></td>
+                                `
+              pedidoPresu.push(
+                {                    
+                    codigo: a.codigo,
+                    imagen: "/img/" + a.categorias + "/" + a.imagendetalle,
+                    precio: precioT.toString(),
+                    titulo: a.nombre,
+                    cantidad: c.cantidad
+                }
+            )//nos llevamos el pedido para agregar al carrito
+        }
+    }
+  }
+
+  document.querySelector(".total-compra-final").innerHTML = `<td></td><td></td><td> <b>EL TOTAL PRESUPUESTADO: $ ${totalFinal.toFixed(2)}</b></td>`
+}
+ //recibimos presu con cambios
+ socket.on("ingresar-presu-res", data => {
+  alert("Artículo Agregado")
+  writeTable(data.allArts, data.pedido)
+ })
 
 
 

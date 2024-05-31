@@ -198,29 +198,7 @@ io.on('connect', socket => {
             }
         })();        
     })
-
-    //Chequear precios antes del checkout QUEDO EL CHEO EN ROUTER
-            // socket.on("actuPrecios", carrito => {
-            //     delete require.cache[require.resolve("./public/system/dir/allArts.json")];
-            //     const actuPrecios = require("./public/system/dir/allArts.json");
-            //     const result = []    
-            //     // Recorre cada elemento del carrito
-            //     carrito.forEach(producto => {
-            //         // Verifica si el código del producto está en el array de códigos y precios
-            //         const index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
-            //         if (index !== -1) {
-            //             const precio = actuPrecios[index].precio.replace(",", ".")                
-            //             if(producto.precio != precio){
-            //                 producto.precio = precio;
-            //                 result.push(producto)      
-            //             }                
-            //         }
-            //     });
-                        
-            //     if(result.length > 0){
-            //         socket.emit("actuPreciosRes", result);
-            //     }     
-            // })
+    
     //ADMIN ARTICULOS
     socket.on("delete", data => {
         loadCategs()
@@ -290,7 +268,61 @@ io.on('connect', socket => {
         const clientes = require("./utils/agenda/clientes.json")
         socket.emit("req-cli-res", clientes)
     })
+    //PRESUPUESTOS
+    socket.on("cambios en presu", data => {
+        const fs = require("fs")
+        if(data.tipo == "PRESUPUESTO BASICO"){
+            fs.writeFileSync(`./public/system/presupuestos/presupuesto-basico.json`, JSON.stringify(data.pedido, null, 2));
+        }
+        if(data.tipo == "PRESUPUESTO MEDIANO"){
+            
+        }
+        if(data.tipo == "PRESUPUESTO PREMIUM"){
+            
+        }
+    })
+    socket.on("ingresar-presu", data => {
+        const fs = require("fs")
+        delete require.cache[require.resolve("./public/system/dir/allArts.json")];        
+        const allArts = require("./public/system/dir/allArts.json")
+        data.allArts = allArts
+        console.log(data.nuevoArt.codigo)
+        allArts.forEach(e => {
+            if(e.codigo == data.nuevoArt.codigo.toUpperCase()){
+                
+               const art = {                    
+                    codigo: data.nuevoArt.codigo,
+                    imagen: "/img/" + e.categorias + "/" + e.imagendetalle,
+                    precio: e.precio,
+                    titulo: e.nombre,
+                    cantidad: data.nuevoArt.cantidad
+                }
 
+                data.pedido.push(art)
+                data.pedido.sort((a, b) => {
+                    if (a.codigo < b.codigo) {
+                        return -1;
+                    }
+                    if (a.codigo > b.codigo) {
+                        return 1;
+                    }
+                    return 0;
+                });
+
+                if(data.tipo == "PRESUPUESTO BASICO"){
+                    fs.writeFileSync(`./public/system/presupuestos/presupuesto-basico.json`, JSON.stringify(data.pedido, null, 2));
+                }
+                if(data.tipo == "PRESUPUESTO MEDIANO"){
+                    fs.writeFileSync(`./public/system/presupuestos/presupuesto-medio.json`, JSON.stringify(data.pedido, null, 2));
+                }
+                if(data.tipo == "PRESUPUESTO PREMIUM"){
+                    fs.writeFileSync(`./public/system/presupuestos/presupuesto-premium.json`, JSON.stringify(data.pedido, null, 2));
+                }
+
+                socket.emit("ingresar-presu-res", data)
+            }
+        })
+    })
 })
 
 

@@ -50,17 +50,17 @@ function writeTable(art, code, msg){
 
   for(c of code){
     for(a of art){
-        const code = c.CODIGO.toUpperCase()
+        const code = c.codigo.toUpperCase()
         if(code === a.codigo){
            const precioT = Number(a.precio.replace(",", "."))
-           const cantidad = Number(c.CANTIDAD.replace(",", "."))
+           const cantidad = Number(c.cantidad.replace(",", "."))
            const total = precioT * cantidad
            totalFinal += total
             table.innerHTML += `<td><img src="./img/${a.categorias}/${a.imagendetalle}" alt="imagen table" widht="60px" height="60px"></td>
                                 <td>${a.codigo}</td>
                                 <td>${a.nombre}</td>
-                                <td>${a.precioT}</td>
-                                <td>${c.CANTIDAD}</td>
+                                <td>${precioT}</td>
+                                <td>${c.cantidad}</td>
                                 <td>${total.toFixed(2)}</td>
                                 `
             pedido.push(
@@ -69,7 +69,7 @@ function writeTable(art, code, msg){
                     imagen: "/img/" + a.categorias + "/" + a.imagendetalle,
                     precio: precioT.toString(),
                     titulo: a.nombre,
-                    cantidad: c.CANTIDAD
+                    cantidad: c.cantidad
                 }
             )//nos llevamos el pedido para agregar al carrito
         
