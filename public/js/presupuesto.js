@@ -60,7 +60,7 @@ const socket = io.connect();
                           }else{
                               localStorage.setItem("carrito", JSON.stringify(pedido))
                           }
-                          window.location.href = 'http://localhost:8080/';
+                          window.location.href = 'https://raqueldigital.herokuapp.com';
                         }
                       });
                 };
