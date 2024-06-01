@@ -728,20 +728,6 @@
     "cantidad": "1"
   },
   {
-    "codigo": "HI0451",
-    "imagen": "/img/HI/HI0450G.jpg",
-    "precio": "43830.75",
-    "titulo": "HILO GUTTERMAN 450MTS X20 UN COLOR",
-    "cantidad": "0,5"
-  },
-  {
-    "codigo": "HI1451",
-    "imagen": "/img/HI/hi1451.jpg",
-    "precio": "40180.64",
-    "titulo": "HILO GUTTERMAN 450MTS X 20 UN BLANCO",
-    "cantidad": "0,5"
-  },
-  {
     "codigo": "HI2500",
     "imagen": "/img/HI/hi2500.jpg",
     "precio": "5480.37",

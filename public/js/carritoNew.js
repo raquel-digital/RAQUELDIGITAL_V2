@@ -7,7 +7,7 @@ const itemsCarrito = document.querySelector("#carritoNumber")
 
 if(carritoAnterior && carritoAnterior.length > 0){
    //const carritoCheck = carritoAnterior.slice(0, 100);
-   carritoCheck.forEach(e => {
+   carritoAnterior.forEach(e => {
        ingresarCarrito(e)
    });
 }else{
@@ -183,7 +183,10 @@ function ingresarCarrito(art){
             }
         }
     }
-    actualizarCarrito()
+    itemsCarrito.textContent = carrito.length;
+    itemsCarrito.style.display = "block"  
+    localStorage.setItem("carrito", JSON.stringify(carrito)) 
+    //actualizarCarrito()
 }
 
 function actualizarCarrito(){

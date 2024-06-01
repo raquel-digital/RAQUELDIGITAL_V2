@@ -1190,9 +1190,7 @@ async function cargarPresupuestos(){
             }
         }
         if(mouse.classList.contains("borrar-presu")){          
-          const codigo = mouse.classList[1]
-          // const i = pedidoPresu.indexOf(e => e.codigo == codigo)
-          // pedidoPresu.splice(i, 1)
+          const codigo = mouse.classList[1]          
           const filter = pedidoPresu.filter(e => e.codigo != codigo)
           writeTable(art, filter)
         }

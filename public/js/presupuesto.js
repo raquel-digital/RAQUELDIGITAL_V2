@@ -1,18 +1,18 @@
 const socket = io.connect();
 
 (async () => {
-    const resBasico = await fetch("./js/presupuesto-basico.json")
-    const codeBasico = await resBasico.json();
-    const resMedio = await fetch("./js/presupuesto-medio.json")
-    const codeMedio = await resMedio.json();
-    const resPremium = await fetch("./js/presupuesto-premium.json")
-    const codePremium = await resPremium.json();
+    try{
 
+    const resBasico = await fetch("./system/presupuestos/presupuesto-basico.json")
+    const codeBasico = await resBasico.json();
+    const resMedio = await fetch("./system/presupuestos/presupuesto-medio.json")
+    const codeMedio = await resMedio.json();
+    const resPremium = await fetch("./system/presupuestos/presupuesto-premium.json")
+    const codePremium = await resPremium.json();
 
     const resAll = await fetch("./system/dir/allArts.json")
     const art = await resAll.json()
     
-
     document.querySelector("body").addEventListener("click", e => {
         const mouse = e.target
         if(mouse.id ==  "presupuesto-basico"){
@@ -25,15 +25,58 @@ const socket = io.connect();
             writeTable(art, codePremium, "PRESUPUESTO PREMIUM")
         }
         if(mouse.id == "boton-carrito"){
-            let carrito = localStorage.getItem("carrito")
-            if(carrito){
-                carrito = [...pedido]
-                localStorage.setItem("carrito", JSON.stringify(carrito))
-            }else{
-                localStorage.setItem("carrito", JSON.stringify(pedido))
-            }
+            if (typeof swal === 'undefined') {
+                // Crea un nuevo elemento script
+                var script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/sweetalert2@11';
+                script.onload = function() {
+                    // Llamada a SweetAlert después de que el script se haya cargado
+                    Swal.fire({
+                        title: "Queres sumar el presupuesto a tu carrito?",
+                        text: "Luego podes modificarlo desde el carrito",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Si"
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          let carrito = JSON.parse(localStorage.getItem("carrito"))
+                          if(carrito){
+                              pedido.forEach(p => {
+                                  let check = false
+                                  carrito.forEach(c => {
+                                      if(p.codigo == c.codigo){
+                                          const cantidad = Number(c.cantidad) + Number(p.cantidad)
+                                          c.cantidad = cantidad
+                                          check = true
+                                      }
+                                  })
+                                  if(!check){
+                                      carrito.push(p)
+                                  }
+                              })
+                              localStorage.setItem("carrito", JSON.stringify(carrito))
+                          }else{
+                              localStorage.setItem("carrito", JSON.stringify(pedido))
+                          }
+                          window.location.href = 'http://localhost:8080/';
+                        }
+                      });
+                };
+                // Añade el script al documento
+                document.head.appendChild(script);
+            }            
         }
+        if(mouse.classList.contains("borrar-presu")){          
+            const codigo = mouse.classList[1]
+            const filter = pedido.filter(e => e.codigo != codigo)
+            writeTable(art, filter, document.getElementById("titulo").textContent)
+          }
     })
+    }catch(err){
+        console.log(err)
+    }
 })()
 
 const pedido = []
@@ -46,6 +89,7 @@ function writeTable(art, code, msg){
   showButton.style.display = "block"
 
   const table = document.querySelector(".resumen-check-out")
+  table.innerHTML = ""
   let totalFinal = 0
 
   for(c of code){
@@ -61,7 +105,7 @@ function writeTable(art, code, msg){
                                 <td>${a.nombre}</td>
                                 <td>${precioT}</td>
                                 <td>${c.cantidad}</td>
-                                <td>${total.toFixed(2)}</td>
+                                <td>${total.toFixed(2)}</td><td><p class="borrar-presu ${a.codigo}" style="color: red;">Borrar</p></td>
                                 `
             pedido.push(
                 {                    
