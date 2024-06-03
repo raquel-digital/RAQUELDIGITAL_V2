@@ -271,14 +271,14 @@ io.on('connect', socket => {
     //PRESUPUESTOS
     socket.on("cambios en presu", data => {
         const fs = require("fs")
-        if(data.tipo == "PRESUPUESTO BASICO"){
+        if(data.tipo == "PRESUPUESTO BASICO"){            
             fs.writeFileSync(`./public/system/presupuestos/presupuesto-basico.json`, JSON.stringify(data.pedido, null, 2));
         }
         if(data.tipo == "PRESUPUESTO MEDIANO"){
-            
+            fs.writeFileSync(`./public/system/presupuestos/presupuesto-medio.json`, JSON.stringify(data.pedido, null, 2));
         }
         if(data.tipo == "PRESUPUESTO PREMIUM"){
-            
+            fs.writeFileSync(`./public/system/presupuestos/presupuesto-premium.json`, JSON.stringify(data.pedido, null, 2));
         }
     })
     socket.on("ingresar-presu", data => {

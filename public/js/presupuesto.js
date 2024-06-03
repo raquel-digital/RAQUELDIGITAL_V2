@@ -33,7 +33,7 @@ const socket = io.connect();
                     // Llamada a SweetAlert después de que el script se haya cargado
                     Swal.fire({
                         title: "Queres sumar el presupuesto a tu carrito?",
-                        text: "Luego podes modificarlo desde el carrito",
+                        text: "Luego podes modificarlo o agregar mas productos desde el mismo",
                         icon: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#3085d6",

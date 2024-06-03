@@ -1,12 +1,5 @@
 [
   {
-    "codigo": "AB1007",
-    "imagen": "/img/AB/AB1007G.jpg",
-    "precio": "2424.13",
-    "titulo": "APLICACION RANA X 6 U.",
-    "cantidad": "5"
-  },
-  {
     "codigo": "AF0043",
     "imagen": "/img/AF/af0043.jpg",
     "precio": "3372.94",
@@ -105,30 +98,9 @@
     "cantidad": "2"
   },
   {
-    "codigo": "AT1540",
-    "imagen": "/img/AT/AT1515G.JPG",
-    "precio": "12158.69",
-    "titulo": "AGUJA TEJER SILVER 4",
-    "cantidad": "1"
-  },
-  {
-    "codigo": "AT1550",
-    "imagen": "/img/AT/AT1515G.JPG",
-    "precio": "13171.91",
-    "titulo": "AGUJA TEJER SILVER 5",
-    "cantidad": "1"
-  },
-  {
-    "codigo": "AT6301",
-    "imagen": "/img/AT/at6301_2.jpg",
-    "precio": "8666.95",
-    "titulo": "TOMAPUNTOS DE ALUMINIO N1",
-    "cantidad": "1"
-  },
-  {
     "codigo": "BO0118",
     "imagen": "/img/BO/BO0116.jpg",
-    "precio": "1876.49",
+    "precio": "6011.07",
     "titulo": "4301/18 BOTON CAMISERO 4AG X 125 UNIDADES",
     "cantidad": "1"
   },
@@ -212,21 +184,21 @@
   {
     "codigo": "CD3650",
     "imagen": "/img/CD/CD3650G.jpg",
-    "precio": "2124.38",
+    "precio": "2320.89",
     "titulo": "CORDONES ZAPATILLA 60CM X12 PARES",
     "cantidad": "2"
   },
   {
     "codigo": "CD3651",
     "imagen": "/img/CD/cd3649_50_51_52.jpg",
-    "precio": "2707.91",
+    "precio": "2958.39",
     "titulo": "CORDON CHATO ZAPATILLA 80CM X12 PARES",
     "cantidad": "2"
   },
   {
     "codigo": "CD3652",
     "imagen": "/img/CD/CD3652G.jpg",
-    "precio": "3586.83",
+    "precio": "3918.62",
     "titulo": "CORDONES ZAPATILLA 1,10M X12 PARES",
     "cantidad": "2"
   },
@@ -504,13 +476,6 @@
     "cantidad": "3"
   },
   {
-    "codigo": "CI1925",
-    "imagen": "/img/CI/CI1925G.JPG",
-    "precio": "3821.46",
-    "titulo": "1319025 MULTIRAYAS SPARKLE 25 MM X 10 MTS",
-    "cantidad": "1"
-  },
-  {
     "codigo": "CI4900",
     "imagen": "/img/CI/CI4900-CARTA.jpg",
     "precio": "1911.2",
@@ -700,44 +665,16 @@
     "cantidad": "1"
   },
   {
-    "codigo": "FB0088",
-    "imagen": "/img/CD/fb0088.jpg",
-    "precio": "4878.9",
-    "titulo": "HILO YUTE MANUALIDADES X40MT 10 UNIDADES",
-    "cantidad": "1"
-  },
-  {
-    "codigo": "FB0262",
-    "imagen": "/img/FB/FB0262.jpg",
-    "precio": "1296.01",
-    "titulo": "P262/0 FLECO ALG.CR.ANG.X10MTS",
-    "cantidad": "1"
-  },
-  {
-    "codigo": "FB0275",
-    "imagen": "/img/FB/FLECOS-SEDA-CARTA.jpg",
-    "precio": "10992.38",
-    "titulo": "FLECO DE SEDA 5 CM X 10 MTS",
-    "cantidad": "3"
-  },
-  {
-    "codigo": "FB0281",
-    "imagen": "/img/FB/FLECOS-SEDA-CARTA.jpg",
-    "precio": "29168.21",
-    "titulo": "FLECO DE SEDA 10CM X 10 MTS",
-    "cantidad": "1"
-  },
-  {
     "codigo": "HI2500",
     "imagen": "/img/HI/hi2500.jpg",
-    "precio": "5480.37",
+    "precio": "5674.92",
     "titulo": "BOBINA HILO ELASTICO BLANCO",
     "cantidad": "1"
   },
   {
     "codigo": "HI2501",
     "imagen": "/img/HI/HI2501.jpg",
-    "precio": "6138.02",
+    "precio": "6355.9",
     "titulo": "BOBINA HILO ELASTICO NEGRO",
     "cantidad": "1"
   },
@@ -805,13 +742,6 @@
     "cantidad": "1"
   },
   {
-    "codigo": "PE8002",
-    "imagen": "/img/PE/pe8002[2].jpg",
-    "precio": "11476.11",
-    "titulo": "PISTOLA CHICA SUPRABOND",
-    "cantidad": "1"
-  },
-  {
     "codigo": "RE0001",
     "imagen": "/img/RE/mendafacil-carta.jpg",
     "precio": "2526.48",
@@ -868,9 +798,9 @@
     "cantidad": "10"
   },
   {
-    "codigo": "tj0003",
+    "codigo": "TJ0003",
     "imagen": "/img/TJ/TJ0003.jpg",
-    "precio": "957,24",
+    "precio": "957.24",
     "titulo": "CORTAHILACHA DE METAL",
     "cantidad": "10"
   }

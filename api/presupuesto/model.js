@@ -3,9 +3,8 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
 const newSchema = new schema({
-
-        agenda: String
-        
+        codigo: String,
+        precios: String        
 })
 
 const model = mongoose.model("Agenda", newSchema);

@@ -436,14 +436,14 @@
   {
     "codigo": "CD3669",
     "imagen": "/img/CD/CD3669G.jpg",
-    "precio": "4519.45",
+    "precio": "4937.5",
     "titulo": "CORDONES RED ZAPATOS 1.10 X12 PARES",
     "cantidad": "2"
   },
   {
     "codigo": "CD3670",
     "imagen": "/img/CD/cd3660_69_70_71.jpg",
-    "precio": "3013.13",
+    "precio": "3291.83",
     "titulo": "CORDON RED.ZAPATOS 70CM X12 PARES",
     "cantidad": "2"
   },
@@ -1092,6 +1092,13 @@
     "cantidad": "3"
   },
   {
+    "codigo": "EL6520",
+    "imagen": "/img/EL/BRADBURY.JPG",
+    "precio": "2949.16",
+    "titulo": "ELASTICO POLIESTER X 25 MTS",
+    "cantidad": "4"
+  },
+  {
     "codigo": "EL7630",
     "imagen": "/img/EL/el0271.jpg",
     "precio": "9040.24",
@@ -1465,7 +1472,7 @@
   {
     "codigo": "HI0610",
     "imagen": "/img/HI/hi0610.jpg",
-    "precio": "2044.73",
+    "precio": "2078.45",
     "titulo": "CONO DE HILVANAR X 60GR",
     "cantidad": "3"
   },
@@ -1479,7 +1486,7 @@
   {
     "codigo": "HI1072",
     "imagen": "/img/HI/HI1072.jpg",
-    "precio": "2621.1",
+    "precio": "2988.03",
     "titulo": "HILO MONOFILAMENTO X 10 BOBINAS DE 100 MTS C/U",
     "cantidad": "1"
   },
@@ -1493,28 +1500,28 @@
   {
     "codigo": "HI2807",
     "imagen": "/img/HI/HI2807.JPG",
-    "precio": "8948.57",
+    "precio": "10150.92",
     "titulo": "HILO YUTE NAT.GRUESO X 20MTS LAS 10 UNIDADES",
     "cantidad": "1"
   },
   {
     "codigo": "HI2837",
     "imagen": "/img/HI/HI2837.JPG",
-    "precio": "5890.47",
+    "precio": "8303.43",
     "titulo": "HILO YUTE NATURAL FINO X 35M LAS 10 UNIDADES",
     "cantidad": "1"
   },
   {
     "codigo": "HI2900",
     "imagen": "/img/HI/hi2900.jpg",
-    "precio": "3341.43",
+    "precio": "3396.55",
     "titulo": "CONO HILO ELASTICO BCO 240MT",
     "cantidad": "1"
   },
   {
     "codigo": "HI2901",
     "imagen": "/img/HI/hi2901.jpg",
-    "precio": "3742.4",
+    "precio": "3804.14",
     "titulo": "CONO HILO ELASTICO NGRO 240M",
     "cantidad": "1"
   },
@@ -1628,14 +1635,7 @@
     "imagen": "/img/MQ/mq1070.jpg",
     "precio": "44066.87",
     "titulo": "MOSQUETON ANZUELO 10MM",
-    "cantidad": "0,25"
-  },
-  {
-    "codigo": "MQ1071",
-    "imagen": "/img/MQ/mq1071.jpg",
-    "precio": "51870.38",
-    "titulo": "MOSQUETON ANZUELO CH.20MM NQ",
-    "cantidad": "0,25"
+    "cantidad": "1"
   },
   {
     "codigo": "MU0007",
@@ -2079,10 +2079,10 @@
     "cantidad": "12"
   },
   {
-    "codigo": "el6520",
-    "imagen": "/img/EL/BRADBURY.JPG",
-    "precio": "2949,16",
-    "titulo": "ELASTICO POLIESTER X 25 MTS",
-    "cantidad": "4"
+    "codigo": "mq1071",
+    "imagen": "/img/MQ/mq1071.jpg",
+    "precio": "51870,38",
+    "titulo": "MOSQUETON ANZUELO CH.20MM NQ",
+    "cantidad": "1"
   }
 ]
