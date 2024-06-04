@@ -26,17 +26,17 @@ async function actu(base, actu){
                     //precios en presupuesto
                     resBasico.forEach(e => {
                         if(e.codigo == precio.Codigo){
-                            e.precio = precio.Precio
+                            e.precio = actuPrice.toString()
                         }
                     })
                     resMedio.forEach(e => {
                         if(e.codigo == precio.Codigo){
-                            e.precio = precio.Precio
+                            e.precio = actuPrice.toString()
                         }
                     })
                     resPremium.forEach(e => {
                         if(e.codigo == precio.Codigo){
-                            e.precio = precio.Precio
+                            e.precio = actuPrice.toString()
                         }
                     })
                     result.push(actu);
