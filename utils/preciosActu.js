@@ -1,6 +1,11 @@
-//const fs = require("fs");
+const fs = require("fs");
 
 const controller = require("../api/arts/controller");
+const controllerPresu = require("../api/presupuesto/constroller")
+
+const resBasico = require("../public/system/presupuestos/presupuesto-basico.json")
+const resMedio = require("../public/system/presupuestos/presupuesto-medio.json")
+const resPremium = require("../public/system/presupuestos/presupuesto-premium.json")
 
 async function actu(base, actu){    
     try{
@@ -18,6 +23,22 @@ async function actu(base, actu){
                         baja = true;
                     }                
                     const actu = { codigo: art.codigo, precio: precio.Precio, baja: baja, precioViejo: art.precio};
+                    //precios en presupuesto
+                    resBasico.forEach(e => {
+                        if(e.codigo == precio.Codigo){
+                            e.precio = precio.Precio
+                        }
+                    })
+                    resMedio.forEach(e => {
+                        if(e.codigo == precio.Codigo){
+                            e.precio = precio.Precio
+                        }
+                    })
+                    resPremium.forEach(e => {
+                        if(e.codigo == precio.Codigo){
+                            e.precio = precio.Precio
+                        }
+                    })
                     result.push(actu);
                 }
             })
@@ -47,6 +68,16 @@ async function exportar(nuevosPrecios){
     try{
         const base = await controller.leerArticulos();
         const result = await actu(base, nuevosPrecios)
+
+        fs.writeFileSync(`./public/system/presupuestos/presupuesto-basico.json`, JSON.stringify(resBasico, null, 2));
+        fs.writeFileSync(`./public/system/presupuestos/presupuesto-medio.json`, JSON.stringify(resMedio, null, 2));
+        fs.writeFileSync(`./public/system/presupuestos/presupuesto-premium.json`, JSON.stringify(resPremium, null, 2));
+
+        
+        controllerPresu.ingresar({tipo: "PRESUPUESTO BASICO", presupuesto: resBasico})
+        controllerPresu.ingresar({tipo: "PRESUPUESTO MEDIANO", presupuesto: resMedio})
+        controllerPresu.ingresar({tipo: "PRESUPUESTO PREMIUM", presupuesto: resPremium})
+
         return result;
     }catch(err){
         console.log("error actualizar precio " + err);

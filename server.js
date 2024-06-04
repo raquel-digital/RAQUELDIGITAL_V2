@@ -269,9 +269,11 @@ io.on('connect', socket => {
         socket.emit("req-cli-res", clientes)
     })
     //PRESUPUESTOS
-    socket.on("cambios en presu", data => {
+    socket.on("cambios-en-presu", data => {
+        const controller = require("./api/presupuesto/constroller")
+        controller.ingresar(data)
         const fs = require("fs")
-        if(data.tipo == "PRESUPUESTO BASICO"){            
+        if(data.tipo == "PRESUPUESTO BASICO"){ 
             fs.writeFileSync(`./public/system/presupuestos/presupuesto-basico.json`, JSON.stringify(data.pedido, null, 2));
         }
         if(data.tipo == "PRESUPUESTO MEDIANO"){
@@ -283,15 +285,16 @@ io.on('connect', socket => {
     })
     socket.on("ingresar-presu", data => {
         const fs = require("fs")
+        console.log(data)
         delete require.cache[require.resolve("./public/system/dir/allArts.json")];        
         const allArts = require("./public/system/dir/allArts.json")
-        data.allArts = allArts
-        console.log(data.nuevoArt.codigo)
+        data.allArts = allArts        
+        
         allArts.forEach(e => {
             if(e.codigo == data.nuevoArt.codigo.toUpperCase()){
                 
                const art = {                    
-                    codigo: data.nuevoArt.codigo,
+                    codigo: data.nuevoArt.codigo.toUpperCase(),
                     imagen: "/img/" + e.categorias + "/" + e.imagendetalle,
                     precio: e.precio,
                     titulo: e.nombre,
@@ -299,6 +302,7 @@ io.on('connect', socket => {
                 }
 
                 data.pedido.push(art)
+                
                 data.pedido.sort((a, b) => {
                     if (a.codigo < b.codigo) {
                         return -1;
@@ -319,6 +323,8 @@ io.on('connect', socket => {
                     fs.writeFileSync(`./public/system/presupuestos/presupuesto-premium.json`, JSON.stringify(data.pedido, null, 2));
                 }
 
+                const controller = require("./api/presupuesto/constroller")
+                controller.ingresar(data)
                 socket.emit("ingresar-presu-res", data)
             }
         })

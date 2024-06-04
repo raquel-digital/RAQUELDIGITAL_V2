@@ -1157,7 +1157,7 @@ function herramientasPresupuesto(){
 }
 
 async function cargarPresupuestos(){
-  const resBasico = await fetch("./system/presupuestos/presupuesto-basico.json")
+    const resBasico = await fetch("./system/presupuestos/presupuesto-basico.json")
     const codeBasico = await resBasico.json();
     const resMedio = await fetch("./system/presupuestos/presupuesto-medio.json")
     const codeMedio = await resMedio.json();
@@ -1199,7 +1199,7 @@ async function cargarPresupuestos(){
           if(check){
             const data ={tipo: document.getElementById("titulo").textContent}
             data.pedido = pedidoPresu
-            socket.emit("cambios en presu", data)
+            socket.emit("cambios-en-presu", data)
           }          
         }
         if(mouse.id == "ingresar-articulo"){
@@ -1265,7 +1265,7 @@ function writeTable(art, code, msg){
  //recibimos presu con cambios
  socket.on("ingresar-presu-res", data => {
   alert("Artículo Agregado")
-  writeTable(data.allArts, data.pedido)
+  writeTable(data.allArts, data.pedido, data.tipo)
  })
 
 

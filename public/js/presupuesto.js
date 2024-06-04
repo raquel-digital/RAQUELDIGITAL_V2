@@ -10,19 +10,19 @@ const socket = io.connect();
     const resPremium = await fetch("./system/presupuestos/presupuesto-premium.json")
     const codePremium = await resPremium.json();
 
-    const resAll = await fetch("./system/dir/allArts.json")
-    const art = await resAll.json()
+    // const resAll = await fetch("./system/dir/allArts.json")
+    // const art = await resAll.json()
     
     document.querySelector("body").addEventListener("click", e => {
         const mouse = e.target
         if(mouse.id ==  "presupuesto-basico"){
-            writeTable(art, codeBasico, "PRESUPUESTO BASICO")
+            writeTable(codeBasico, "PRESUPUESTO BASICO")
         }
         if(mouse.id ==  "presupuesto-mediano"){
-            writeTable(art, codeMedio, "PRESUPUESTO MEDIANO")
+            writeTable(codeMedio, "PRESUPUESTO MEDIANO")
         }
         if(mouse.id ==  "presupuesto-premium"){
-            writeTable(art, codePremium, "PRESUPUESTO PREMIUM")
+            writeTable(codePremium, "PRESUPUESTO PREMIUM")
         }
         if(mouse.id == "boton-carrito"){
             if (typeof swal === 'undefined') {
@@ -71,7 +71,7 @@ const socket = io.connect();
         if(mouse.classList.contains("borrar-presu")){          
             const codigo = mouse.classList[1]
             const filter = pedido.filter(e => e.codigo != codigo)
-            writeTable(art, filter, document.getElementById("titulo").textContent)
+            writeTable(filter, document.getElementById("titulo").textContent)
           }
     })
     }catch(err){
@@ -80,7 +80,7 @@ const socket = io.connect();
 })()
 
 const pedido = []
-function writeTable(art, code, msg){
+function writeTable(code, msg){
   pedido.length = 0  
   document.getElementById("titulo").textContent = msg  
   const show = document.querySelector("table")
@@ -92,33 +92,28 @@ function writeTable(art, code, msg){
   table.innerHTML = ""
   let totalFinal = 0
 
-  for(c of code){
-    for(a of art){
-        const code = c.codigo.toUpperCase()
-        if(code === a.codigo){
-           const precioT = Number(a.precio.replace(",", "."))
-           const cantidad = Number(c.cantidad.replace(",", "."))
-           const total = precioT * cantidad
-           totalFinal += total
-            table.innerHTML += `<td><img src="./img/${a.categorias}/${a.imagendetalle}" alt="imagen table" widht="60px" height="60px"></td>
-                                <td>${a.codigo}</td>
-                                <td>${a.nombre}</td>
-                                <td>${precioT}</td>
-                                <td>${c.cantidad}</td>
-                                <td>${total.toFixed(2)}</td><td><p class="borrar-presu ${a.codigo}" style="color: red;">Borrar</p></td>
-                                `
-            pedido.push(
-                {                    
-                    codigo: a.codigo,
-                    imagen: "/img/" + a.categorias + "/" + a.imagendetalle,
-                    precio: precioT.toString(),
-                    titulo: a.nombre,
-                    cantidad: c.cantidad
-                }
-            )//nos llevamos el pedido para agregar al carrito
-        
-        }
-    }
+  for(c of code){    
+       const precioT = Number(c.precio)
+       const cantidad = Number(c.cantidad)
+       const total = precioT * cantidad
+       totalFinal += total
+        table.innerHTML += `<td><img src="${c.imagen}" alt="imagen table" widht="60px" height="60px"></td>
+                            <td>${c.codigo}</td>
+                            <td>${c.titulo}</td>
+                            <td>${c.precio}</td>
+                            <td>${c.cantidad}</td>
+                            <td>${total.toFixed(2)}</td>
+                            <td><p class="borrar-presu ${c.codigo}" style="color: red;">Borrar</p></td>
+                            `
+        pedido.push(
+            {                    
+                codigo: c.codigo,
+                imagen: c.imagen,
+                precio: precioT.toString(),
+                titulo: c.titulo,
+                cantidad: c.cantidad
+            }
+        )//nos llevamos el pedido para agregar al carrito
   }
 
   document.querySelector(".total-compra-final").innerHTML = `<td></td><td></td><td> <b>EL TOTAL PRESUPUESTADO: $ ${totalFinal.toFixed(2)}</b></td>`
