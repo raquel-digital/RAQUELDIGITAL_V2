@@ -15,6 +15,10 @@ const store = {
                 const nuevoArticulo = new model({tipo: data.tipo, presupuesto: data.pedido});
                 await nuevoArticulo.save();
             }
+        },
+        read: async function () {
+            const res = await model.find()
+            return res
         }
  }
  

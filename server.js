@@ -38,15 +38,17 @@ app.use(function (req, res, next) {
     next();
   });
 
- 
+//bajamos presupuestos a server
+const presuController = require("./api/presupuesto/constroller") 
+presuController.leer()
 
 let activeClients = 0
-io.on('connect', socket => {
+io.on('connect', socket => {    
 
     (async () => {
         try{
             const res = await controller.ultimos20subidos()
-            socket.emit("productos", res);
+            socket.emit("productos", res);           
         }        
         catch(err){            
             console.log(err + " Error en inciar articulos WEB");  
@@ -302,7 +304,7 @@ io.on('connect', socket => {
                 }
 
                 data.pedido.push(art)
-                
+
                 data.pedido.sort((a, b) => {
                     if (a.codigo < b.codigo) {
                         return -1;
