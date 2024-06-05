@@ -1251,7 +1251,7 @@ function writeTable(art, code, msg){
                 {                    
                     codigo: a.codigo,
                     imagen: "/img/" + a.categorias + "/" + a.imagendetalle,
-                    precio: precioT.toString(),
+                    precio: a.precio.replace(",", "."),
                     titulo: a.nombre,
                     cantidad: c.cantidad
                 }

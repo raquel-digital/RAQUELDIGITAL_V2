@@ -9,7 +9,7 @@ const newSchema = new schema({
                                 codigo: String,
                                 imagen: String,
                                 codigo: String,
-                                precios: String,
+                                precio: String,
                                 titulo: String,
                                 cantidad: String,
                         }

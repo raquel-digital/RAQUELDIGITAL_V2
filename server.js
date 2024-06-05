@@ -274,20 +274,19 @@ io.on('connect', socket => {
     socket.on("cambios-en-presu", data => {
         const controller = require("./api/presupuesto/constroller")
         controller.ingresar(data)
-        const fs = require("fs")
-        if(data.tipo == "PRESUPUESTO BASICO"){ 
-            fs.writeFileSync(`./public/system/presupuestos/presupuesto-basico.json`, JSON.stringify(data.pedido, null, 2));
-        }
-        if(data.tipo == "PRESUPUESTO MEDIANO"){
-            fs.writeFileSync(`./public/system/presupuestos/presupuesto-medio.json`, JSON.stringify(data.pedido, null, 2));
-        }
-        if(data.tipo == "PRESUPUESTO PREMIUM"){
-            fs.writeFileSync(`./public/system/presupuestos/presupuesto-premium.json`, JSON.stringify(data.pedido, null, 2));
-        }
+        presuController.leer()
+        // const fs = require("fs")
+        // if(data.tipo == "PRESUPUESTO BASICO"){ 
+        //     fs.writeFileSync(`./public/system/presupuestos/presupuesto-basico.json`, JSON.stringify(data.pedido, null, 2));
+        // }
+        // if(data.tipo == "PRESUPUESTO MEDIANO"){
+        //     fs.writeFileSync(`./public/system/presupuestos/presupuesto-medio.json`, JSON.stringify(data.pedido, null, 2));
+        // }
+        // if(data.tipo == "PRESUPUESTO PREMIUM"){
+        //     fs.writeFileSync(`./public/system/presupuestos/presupuesto-premium.json`, JSON.stringify(data.pedido, null, 2));
+        // }
     })
-    socket.on("ingresar-presu", data => {
-        const fs = require("fs")
-        console.log(data)
+    socket.on("ingresar-presu", data => {        
         delete require.cache[require.resolve("./public/system/dir/allArts.json")];        
         const allArts = require("./public/system/dir/allArts.json")
         data.allArts = allArts        
@@ -315,15 +314,15 @@ io.on('connect', socket => {
                     return 0;
                 });
 
-                if(data.tipo == "PRESUPUESTO BASICO"){
-                    fs.writeFileSync(`./public/system/presupuestos/presupuesto-basico.json`, JSON.stringify(data.pedido, null, 2));
-                }
-                if(data.tipo == "PRESUPUESTO MEDIANO"){
-                    fs.writeFileSync(`./public/system/presupuestos/presupuesto-medio.json`, JSON.stringify(data.pedido, null, 2));
-                }
-                if(data.tipo == "PRESUPUESTO PREMIUM"){
-                    fs.writeFileSync(`./public/system/presupuestos/presupuesto-premium.json`, JSON.stringify(data.pedido, null, 2));
-                }
+                // if(data.tipo == "PRESUPUESTO BASICO"){
+                //     fs.writeFileSync(`./public/system/presupuestos/presupuesto-basico.json`, JSON.stringify(data.pedido, null, 2));
+                // }
+                // if(data.tipo == "PRESUPUESTO MEDIANO"){
+                //     fs.writeFileSync(`./public/system/presupuestos/presupuesto-medio.json`, JSON.stringify(data.pedido, null, 2));
+                // }
+                // if(data.tipo == "PRESUPUESTO PREMIUM"){
+                //     fs.writeFileSync(`./public/system/presupuestos/presupuesto-premium.json`, JSON.stringify(data.pedido, null, 2));
+                // }
 
                 const controller = require("./api/presupuesto/constroller")
                 controller.ingresar(data)
