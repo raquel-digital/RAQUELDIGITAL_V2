@@ -19,6 +19,13 @@ const store = {
         read: async function () {
             const res = await model.find()
             return res
+        },
+        updateCode: async function (code, newCode) {
+            const res = await model.updateOne(
+                { 'presupuesto.codigo': code },
+                { $set: { 'presupuesto.$.codigo': newCode } }
+              );
+            return 
         }
  }
  

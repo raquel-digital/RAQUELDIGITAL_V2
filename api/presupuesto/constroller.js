@@ -33,7 +33,11 @@ controller = {
                 fs.writeFileSync(`./public/system/presupuestos/presupuesto-premium.json`, JSON.stringify(data.presupuesto, null, 2));
             }
         });
-    }
+    },
+    actuCodigo: async function (code, newCode) {
+        await store.updateCode(code, newCode)
+        return
+    }   
 }
 
 module.exports = controller;

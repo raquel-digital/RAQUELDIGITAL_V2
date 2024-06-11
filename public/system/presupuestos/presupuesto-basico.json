@@ -1,11 +1,19 @@
 [
   {
+    "codigo": "AB0892",
+    "imagen": "/img/AB/AB0892.jpg",
+    "precio": "6520.74",
+    "titulo": "APLICACION CONSIGNA JARDIN X 12 UNIDADES",
+    "cantidad": "1",
+    "_id": "6668722d87cc1e0780f20773"
+  },
+  {
     "codigo": "AF0043",
     "imagen": "/img/AF/af0043.jpg",
     "precio": "3372.94",
     "titulo": "ALFILERES PERLADAS X12RUEDAS",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b939"
+    "_id": "6668722d87cc1e0780f20774"
   },
   {
     "codigo": "AF8117",
@@ -13,7 +21,7 @@
     "precio": "11380.22",
     "titulo": "ALFILER ACERO N°3 X25GRS X4CAJAS",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b93a"
+    "_id": "6668722d87cc1e0780f20775"
   },
   {
     "codigo": "AF8121",
@@ -21,7 +29,7 @@
     "precio": "11893.02",
     "titulo": "ALFILER ERIZO ",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b93b"
+    "_id": "6668722d87cc1e0780f20776"
   },
   {
     "codigo": "AF8131",
@@ -29,7 +37,7 @@
     "precio": "14081.93",
     "titulo": "ALFILER DE GANCHO 1 AL 3 X12",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b93c"
+    "_id": "6668722d87cc1e0780f20777"
   },
   {
     "codigo": "AG0125",
@@ -37,7 +45,7 @@
     "precio": "7561.67",
     "titulo": "AGUJA DE MANO X 5 SOBRES",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b93d"
+    "_id": "6668722d87cc1e0780f20778"
   },
   {
     "codigo": "AG1151",
@@ -45,7 +53,7 @@
     "precio": "7045.64",
     "titulo": "AGUJA COSER A MANO INDIO X6S",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b93e"
+    "_id": "6668722d87cc1e0780f20779"
   },
   {
     "codigo": "AG1154",
@@ -53,7 +61,7 @@
     "precio": "2256.99",
     "titulo": "AGUJA COSER CANASTITA",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b93f"
+    "_id": "6668722d87cc1e0780f2077a"
   },
   {
     "codigo": "AG2020",
@@ -61,7 +69,7 @@
     "precio": "12147.95",
     "titulo": "AGUJA SINGER FAMILIAR X 40 UNIDADES",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b940"
+    "_id": "6668722d87cc1e0780f2077b"
   },
   {
     "codigo": "AG2045",
@@ -69,7 +77,7 @@
     "precio": "12838.93",
     "titulo": "AGUJA SINGER FAMILIAR PUNTA BOLITA X 40 UNIDADES",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b941"
+    "_id": "6668722d87cc1e0780f2077c"
   },
   {
     "codigo": "AH0001",
@@ -77,7 +85,7 @@
     "precio": "6211.38",
     "titulo": "ARGOLLA SOLDADA 12 MM.X200U.",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b942"
+    "_id": "6668722d87cc1e0780f2077d"
   },
   {
     "codigo": "AH0003",
@@ -85,7 +93,7 @@
     "precio": "9699.47",
     "titulo": "ARGOLLA SOLDADA 20 MM.X200U.",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b943"
+    "_id": "6668722d87cc1e0780f2077e"
   },
   {
     "codigo": "AH0005",
@@ -93,7 +101,7 @@
     "precio": "9524.74",
     "titulo": "ARGOLLA SOLDADA 28 MM.X150U.",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b944"
+    "_id": "6668722d87cc1e0780f2077f"
   },
   {
     "codigo": "AN6001",
@@ -101,7 +109,7 @@
     "precio": "1209.90",
     "titulo": "ANILINA COLIBRI EN FRIO 20GR",
     "cantidad": "90",
-    "_id": "666094522cf29eb9f4d4b945"
+    "_id": "6668722d87cc1e0780f20780"
   },
   {
     "codigo": "AT1350",
@@ -109,31 +117,15 @@
     "precio": "7903.14",
     "titulo": "AGUJA CROCHET DORADA 3.5 A 4.5",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b946"
-  },
-  {
-    "codigo": "AT1440",
-    "imagen": "/img/AT/at1610-90.jpg",
-    "precio": "11358.63",
-    "titulo": "AGUJA P/TEJER NRO 4",
-    "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b947"
-  },
-  {
-    "codigo": "AT1450",
-    "imagen": "/img/AT/at1610-90.jpg",
-    "precio": "12370.48",
-    "titulo": "AGUJA P/TEJER NRO 5",
-    "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b948"
+    "_id": "6668722d87cc1e0780f20781"
   },
   {
     "codigo": "BO0118",
     "imagen": "/img/BO/BO0116.jpg",
     "precio": "6011.07",
-    "titulo": "4301/18 BOTON CAMISERO 4AG X 125 UNIDADES",
+    "titulo": "4301/18 BOTON CAMISERO 4AG X 144 UNIDADES",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b949"
+    "_id": "6668722d87cc1e0780f20782"
   },
   {
     "codigo": "BO5518",
@@ -141,7 +133,7 @@
     "precio": "5144.50",
     "titulo": "4555/18 BOTON CAMISERO 2 AG",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b94a"
+    "_id": "6668722d87cc1e0780f20783"
   },
   {
     "codigo": "BR0202",
@@ -149,7 +141,7 @@
     "precio": "13601.28",
     "titulo": "BROCHE DOBLE ARO 11MM X 200U",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b94b"
+    "_id": "6668722d87cc1e0780f20784"
   },
   {
     "codigo": "BS1315",
@@ -157,7 +149,7 @@
     "precio": "7431.12",
     "titulo": "BROCHE Nº 13/15 X 100 UND.",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b94c"
+    "_id": "6668722d87cc1e0780f20785"
   },
   {
     "codigo": "BU0202",
@@ -165,7 +157,7 @@
     "precio": "7281.18",
     "titulo": "MATRIZ DOBLE ARO 0202 11MM",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b94d"
+    "_id": "6668722d87cc1e0780f20786"
   },
   {
     "codigo": "BU1313",
@@ -173,7 +165,7 @@
     "precio": "8509.33",
     "titulo": "MATRIZ SNAPS 1313/1315",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b94e"
+    "_id": "6668722d87cc1e0780f20787"
   },
   {
     "codigo": "BU7950",
@@ -181,7 +173,7 @@
     "precio": "38468.93",
     "titulo": "MAQUINA UNIV.P/BROCHE&BOTON",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b94f"
+    "_id": "6668722d87cc1e0780f20788"
   },
   {
     "codigo": "CD0005",
@@ -189,7 +181,7 @@
     "precio": "6583.05",
     "titulo": "CORDON RELL.CDO 5MM ALGX100M",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b950"
+    "_id": "6668722d87cc1e0780f20789"
   },
   {
     "codigo": "CD0350",
@@ -197,7 +189,7 @@
     "precio": "5531.42",
     "titulo": "CORDON PPP 350 X 100 MTS",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b951"
+    "_id": "6668722d87cc1e0780f2078a"
   },
   {
     "codigo": "CD0922",
@@ -205,23 +197,7 @@
     "precio": "12599.95",
     "titulo": "922 CORDON 2 CABOS RAYON X 20 MTS ",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b952"
-  },
-  {
-    "codigo": "CD1911",
-    "imagen": "/img/CD/CD1911.jpg",
-    "precio": "10004.86",
-    "titulo": "911/M CORDON MD. ALGODON X 20 MTS",
-    "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b953"
-  },
-  {
-    "codigo": "CD1913",
-    "imagen": "/img/CD/CD1913.jpg",
-    "precio": "9026.55",
-    "titulo": "913/M CORDON MD. ALGODON X 20 MTS",
-    "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b954"
+    "_id": "6668722d87cc1e0780f2078b"
   },
   {
     "codigo": "CD2012",
@@ -229,7 +205,7 @@
     "precio": "2346.26",
     "titulo": "CORDON PLATA NRO 0 X50MTS",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b955"
+    "_id": "6668722d87cc1e0780f2078c"
   },
   {
     "codigo": "CD2013",
@@ -237,7 +213,7 @@
     "precio": "3394.09",
     "titulo": "2012/1 CORDON PLATA N.1 X 50 MTS",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b956"
+    "_id": "6668722d87cc1e0780f2078d"
   },
   {
     "codigo": "CD3650",
@@ -245,7 +221,7 @@
     "precio": "2320.89",
     "titulo": "CORDONES ZAPATILLA 60CM X12 PARES",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b957"
+    "_id": "6668722d87cc1e0780f2078e"
   },
   {
     "codigo": "CD3651",
@@ -253,7 +229,7 @@
     "precio": "2958.39",
     "titulo": "CORDON CHATO ZAPATILLA 80CM X12 PARES",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b958"
+    "_id": "6668722d87cc1e0780f2078f"
   },
   {
     "codigo": "CD3652",
@@ -261,7 +237,7 @@
     "precio": "3918.62",
     "titulo": "CORDONES ZAPATILLA 1,10M X12 PARES",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b959"
+    "_id": "6668722d87cc1e0780f20790"
   },
   {
     "codigo": "CE0016",
@@ -269,7 +245,7 @@
     "precio": "1981.44",
     "titulo": "CIERRE 4 MM. NYLON 16 CM.",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b95a"
+    "_id": "6668722d87cc1e0780f20791"
   },
   {
     "codigo": "CE0018",
@@ -277,7 +253,7 @@
     "precio": "2096.82",
     "titulo": "CIERRE 4 MM. NYLON 18 CM.",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b95b"
+    "_id": "6668722d87cc1e0780f20792"
   },
   {
     "codigo": "CE0030",
@@ -285,7 +261,7 @@
     "precio": "2943.86",
     "titulo": "CIERRE 4 MM. NYLON 30 CM.",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b95c"
+    "_id": "6668722d87cc1e0780f20793"
   },
   {
     "codigo": "CE0040",
@@ -293,7 +269,7 @@
     "precio": "3884.68",
     "titulo": "CIERRE 4 MM. NYLON 40 CM.",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b95d"
+    "_id": "6668722d87cc1e0780f20794"
   },
   {
     "codigo": "CE0045",
@@ -301,7 +277,7 @@
     "precio": "4247.03",
     "titulo": "CIERRE 4 MM. NYLON 45 CM.",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b95e"
+    "_id": "6668722d87cc1e0780f20795"
   },
   {
     "codigo": "CE0260",
@@ -309,7 +285,7 @@
     "precio": "6402.24",
     "titulo": "CIERRE 6 MM. DESMONT. 60 CM.",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b95f"
+    "_id": "6668722d87cc1e0780f20796"
   },
   {
     "codigo": "CE0270",
@@ -317,7 +293,7 @@
     "precio": "6772.26",
     "titulo": "CIERRE 6 MM. DESMONT. 70CM.",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b960"
+    "_id": "6668722d87cc1e0780f20797"
   },
   {
     "codigo": "CE0316",
@@ -325,7 +301,7 @@
     "precio": "7914.33",
     "titulo": "CIERRE DE BRONCE 16 CM",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b961"
+    "_id": "6668722d87cc1e0780f20798"
   },
   {
     "codigo": "CI0002",
@@ -333,7 +309,7 @@
     "precio": "973.67",
     "titulo": "CINTA FALLETINA N. 2 X 10MTS",
     "cantidad": "5",
-    "_id": "666094522cf29eb9f4d4b962"
+    "_id": "6668722d87cc1e0780f20799"
   },
   {
     "codigo": "CI0003",
@@ -341,7 +317,7 @@
     "precio": "1041.57",
     "titulo": "CINTA FALLETINA N. 3 X 10MTS",
     "cantidad": "5",
-    "_id": "666094522cf29eb9f4d4b963"
+    "_id": "6668722d87cc1e0780f2079a"
   },
   {
     "codigo": "CI0005",
@@ -349,7 +325,7 @@
     "precio": "1431.19",
     "titulo": "CINTA FALLETINA N. 5 X 10MTS",
     "cantidad": "5",
-    "_id": "666094522cf29eb9f4d4b964"
+    "_id": "6668722d87cc1e0780f2079b"
   },
   {
     "codigo": "CI0009",
@@ -357,7 +333,7 @@
     "precio": "2068.62",
     "titulo": "CINTA FALLETINA N. 9 X 10MTS",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b965"
+    "_id": "6668722d87cc1e0780f2079c"
   },
   {
     "codigo": "CI0012",
@@ -365,7 +341,7 @@
     "precio": "2672.18",
     "titulo": "CINTA FALLETINA N.12 X 10MTS",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b966"
+    "_id": "6668722d87cc1e0780f2079d"
   },
   {
     "codigo": "CI0025",
@@ -373,7 +349,7 @@
     "precio": "2553.00",
     "titulo": "CINTA PP 25 MM X 10 MTS",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b967"
+    "_id": "6668722d87cc1e0780f2079e"
   },
   {
     "codigo": "CI0030",
@@ -381,7 +357,7 @@
     "precio": "3034.78",
     "titulo": "CINTA PP 30 MM X 10 MTS",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b968"
+    "_id": "6668722d87cc1e0780f2079f"
   },
   {
     "codigo": "CI0040",
@@ -389,7 +365,7 @@
     "precio": "4021.36",
     "titulo": "CINTA PP 40 MM X 10 MTS",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b969"
+    "_id": "6668722d87cc1e0780f207a0"
   },
   {
     "codigo": "CI0050",
@@ -397,7 +373,7 @@
     "precio": "2754.84",
     "titulo": "CINTA 0 X 50 METROS CINTA 0 X 50 METROS",
     "cantidad": "6",
-    "_id": "666094522cf29eb9f4d4b96a"
+    "_id": "6668722d87cc1e0780f207a1"
   },
   {
     "codigo": "CI0101",
@@ -405,7 +381,7 @@
     "precio": "1005.33",
     "titulo": "CINTA DE RASO N. 1 X 10 MTS",
     "cantidad": "6",
-    "_id": "666094522cf29eb9f4d4b96b"
+    "_id": "6668722d87cc1e0780f207a2"
   },
   {
     "codigo": "CI0101",
@@ -413,7 +389,7 @@
     "precio": "1005.33",
     "titulo": "CINTA DE RASO N. 1 X 10 MTS",
     "cantidad": "10",
-    "_id": "666094522cf29eb9f4d4b96c"
+    "_id": "6668722d87cc1e0780f207a3"
   },
   {
     "codigo": "CI0103",
@@ -421,7 +397,7 @@
     "precio": "1371.39",
     "titulo": "CINTA DE RASO N. 3 X 10 MTS.",
     "cantidad": "6",
-    "_id": "666094522cf29eb9f4d4b96d"
+    "_id": "6668722d87cc1e0780f207a4"
   },
   {
     "codigo": "CI0105",
@@ -429,7 +405,7 @@
     "precio": "1756.94",
     "titulo": "CINTA DE RASO N. 5 X 10 MTS.",
     "cantidad": "6",
-    "_id": "666094522cf29eb9f4d4b96e"
+    "_id": "6668722d87cc1e0780f207a5"
   },
   {
     "codigo": "CI0109",
@@ -437,7 +413,7 @@
     "precio": "2684.88",
     "titulo": "CINTA DE RASO N. 9 X 10 MTS.",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b96f"
+    "_id": "6668722d87cc1e0780f207a6"
   },
   {
     "codigo": "CI0112",
@@ -445,23 +421,23 @@
     "precio": "3547.91",
     "titulo": "CINTA DE RASO N. 12 X 10 MTS",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b970"
+    "_id": "6668722d87cc1e0780f207a7"
   },
   {
     "codigo": "CI0117",
     "imagen": "/img/CI/VIVOS/CI0117-CARTA.jpg",
-    "precio": "4295.84",
+    "precio": "4295.77",
     "titulo": "VIVO DE PIJAMA X 25 METROS",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b971"
+    "_id": "6668722d87cc1e0780f207a8"
   },
   {
     "codigo": "CI0121",
     "imagen": "/img/CI/VIVOS/CI0121-CARTA.jpg",
-    "precio": "5655.30",
+    "precio": "5655.37",
     "titulo": "CINTA VIVO X 25 METROS",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b972"
+    "_id": "6668722d87cc1e0780f207a9"
   },
   {
     "codigo": "CI0301",
@@ -469,7 +445,7 @@
     "precio": "914.88",
     "titulo": "CINTA BANDERA NRO 1 X 10 MTS",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b973"
+    "_id": "6668722d87cc1e0780f207aa"
   },
   {
     "codigo": "CI0303",
@@ -477,39 +453,31 @@
     "precio": "1218.45",
     "titulo": "CINTA BANDERA NRO 3 X 10 MTS",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b974"
+    "_id": "6668722d87cc1e0780f207ab"
   },
   {
     "codigo": "CI0310",
     "imagen": "/img/CI/CI0310-CARTA.jpg",
-    "precio": "3714.49",
+    "precio": "3714.43",
     "titulo": "ZIG ZAG X 20 MTS.",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b975"
+    "_id": "6668722d87cc1e0780f207ac"
   },
   {
     "codigo": "CI0320",
     "imagen": "/img/CI/CI0310-CARTA.jpg",
-    "precio": "3977.29",
+    "precio": "3977.34",
     "titulo": "ZIG-ZAG X 20 MTS",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b976"
+    "_id": "6668722d87cc1e0780f207ad"
   },
   {
     "codigo": "CI0350",
     "imagen": "/img/CI/CI0310-CARTA.jpg",
-    "precio": "3380.49",
+    "precio": "3380.50",
     "titulo": "ZIG ZAG X 10 MTS",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b977"
-  },
-  {
-    "codigo": "CI0505",
-    "imagen": "/img/CI/CI0505.JPG",
-    "precio": "3564.53",
-    "titulo": "1947005 BANDERA COOPERATIVA X10MTS",
-    "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b978"
+    "_id": "6668722d87cc1e0780f207ae"
   },
   {
     "codigo": "CI1101",
@@ -517,7 +485,7 @@
     "precio": "3028.45",
     "titulo": "CINTA DE RASO N. 1 X 50 MTS.",
     "cantidad": "6",
-    "_id": "666094522cf29eb9f4d4b979"
+    "_id": "6668722d87cc1e0780f207af"
   },
   {
     "codigo": "CI1120",
@@ -525,7 +493,7 @@
     "precio": "3317.81",
     "titulo": "CINTA CUADRILLE X 20 MTS",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b97a"
+    "_id": "6668722d87cc1e0780f207b0"
   },
   {
     "codigo": "CI1125",
@@ -533,7 +501,7 @@
     "precio": "5550.38",
     "titulo": "CINTA CON VOLADO FLUO-AMARILLO",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b97b"
+    "_id": "6668722d87cc1e0780f207b1"
   },
   {
     "codigo": "CI1252",
@@ -541,7 +509,7 @@
     "precio": "4734.89",
     "titulo": "GROSS DE SEDA NRO 12 X 10 MTS",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b97c"
+    "_id": "6668722d87cc1e0780f207b2"
   },
   {
     "codigo": "CI1271",
@@ -549,7 +517,7 @@
     "precio": "1207.11",
     "titulo": "GROSS DE SEDA NRO 1 X 10 MTS",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b97d"
+    "_id": "6668722d87cc1e0780f207b3"
   },
   {
     "codigo": "CI1273",
@@ -557,7 +525,7 @@
     "precio": "1815.82",
     "titulo": "GROSS DE SEDA NRO 3 X 10 MTS",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b97e"
+    "_id": "6668722d87cc1e0780f207b4"
   },
   {
     "codigo": "CI1275",
@@ -565,7 +533,7 @@
     "precio": "2419.95",
     "titulo": "GROSS DE SEDA NRO 5 X 10 MTS",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b97f"
+    "_id": "6668722d87cc1e0780f207b5"
   },
   {
     "codigo": "CI1279",
@@ -573,7 +541,7 @@
     "precio": "4113.29",
     "titulo": "GROSS DE SEDA NRO 9 X 10 MTS",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b980"
+    "_id": "6668722d87cc1e0780f207b6"
   },
   {
     "codigo": "CI4900",
@@ -581,7 +549,7 @@
     "precio": "1911.20",
     "titulo": "CINTA AL BIES 13MM COLOR X25MTS",
     "cantidad": "5",
-    "_id": "666094522cf29eb9f4d4b981"
+    "_id": "6668722d87cc1e0780f207b7"
   },
   {
     "codigo": "CI4950",
@@ -589,7 +557,7 @@
     "precio": "2603.15",
     "titulo": "CINTA AL BIES 20MM COLOR X25 MTS",
     "cantidad": "5",
-    "_id": "666094522cf29eb9f4d4b982"
+    "_id": "6668722d87cc1e0780f207b8"
   },
   {
     "codigo": "CS0006",
@@ -597,7 +565,7 @@
     "precio": "4415.75",
     "titulo": "COSTURERO NECESER",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b983"
+    "_id": "6668722d87cc1e0780f207b9"
   },
   {
     "codigo": "CS0734",
@@ -605,7 +573,7 @@
     "precio": "3194.74",
     "titulo": "ALFILETERO TOMATE MEDIANO CON AFILADOR X4U",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b984"
+    "_id": "6668722d87cc1e0780f207ba"
   },
   {
     "codigo": "CS0750",
@@ -613,7 +581,7 @@
     "precio": "1973.22",
     "titulo": "DEDAL METAL X 12U.",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b985"
+    "_id": "6668722d87cc1e0780f207bb"
   },
   {
     "codigo": "CS1003",
@@ -621,7 +589,7 @@
     "precio": "4120.67",
     "titulo": "CENTIMETRO ECONOMICO CHINO",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b986"
+    "_id": "6668722d87cc1e0780f207bc"
   },
   {
     "codigo": "CS1150",
@@ -629,7 +597,7 @@
     "precio": "1833.28",
     "titulo": "ENHEBRADOR ECONOMICO X 50U.",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b987"
+    "_id": "6668722d87cc1e0780f207bd"
   },
   {
     "codigo": "CS1180",
@@ -637,7 +605,7 @@
     "precio": "3839.27",
     "titulo": "DESOJALADOR CHICO X 10 UNIDADES",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b988"
+    "_id": "6668722d87cc1e0780f207be"
   },
   {
     "codigo": "CS4400",
@@ -645,7 +613,7 @@
     "precio": "1088.25",
     "titulo": "ACEITE DE MAQUINA LUBRIN",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b989"
+    "_id": "6668722d87cc1e0780f207bf"
   },
   {
     "codigo": "CS5001",
@@ -653,7 +621,7 @@
     "precio": "4210.80",
     "titulo": "CORREA DE GOMA P/MAQUINA X5",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b98a"
+    "_id": "6668722d87cc1e0780f207c0"
   },
   {
     "codigo": "CS5277",
@@ -661,7 +629,7 @@
     "precio": "2136.57",
     "titulo": "PORTA BOBINA P/MAQUINA",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b98b"
+    "_id": "6668722d87cc1e0780f207c1"
   },
   {
     "codigo": "CS8191",
@@ -669,7 +637,7 @@
     "precio": "13765.35",
     "titulo": "BROCHE PRESION PULPO N.1 X36",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b98c"
+    "_id": "6668722d87cc1e0780f207c2"
   },
   {
     "codigo": "CS8192",
@@ -677,7 +645,7 @@
     "precio": "16064.54",
     "titulo": "BROCHE PRESION PULPO N.2 X36",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b98d"
+    "_id": "6668722d87cc1e0780f207c3"
   },
   {
     "codigo": "CS9600",
@@ -685,7 +653,7 @@
     "precio": "1399.81",
     "titulo": "BOBINAS DE METAL P/MAQUINA",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b98e"
+    "_id": "6668722d87cc1e0780f207c4"
   },
   {
     "codigo": "CS9602",
@@ -693,23 +661,23 @@
     "precio": "4741.54",
     "titulo": "BOBINA PLASTICA P/SINGER",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b98f"
+    "_id": "6668722d87cc1e0780f207c5"
   },
   {
     "codigo": "EL0531",
     "imagen": "/img/EL/el0531.jpg",
-    "precio": "5788.33",
+    "precio": "5788.75",
     "titulo": "ELASTICO DE ALGODON X 50 MTS",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b990"
+    "_id": "6668722d87cc1e0780f207c6"
   },
   {
     "codigo": "EL0548",
     "imagen": "/img/EL/el0548.jpg",
-    "precio": "6357.27",
+    "precio": "6354.58",
     "titulo": "ELASTICO DE ALGODON X 50 MTS",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b991"
+    "_id": "6668722d87cc1e0780f207c7"
   },
   {
     "codigo": "EL3012",
@@ -717,7 +685,7 @@
     "precio": "3848.32",
     "titulo": "ELASTICO POLIESTER 5MM X50MT",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b992"
+    "_id": "6668722d87cc1e0780f207c8"
   },
   {
     "codigo": "EL3016",
@@ -725,47 +693,31 @@
     "precio": "4440.85",
     "titulo": "ELASTICO POLIESTER 7MM X50MT",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b993"
+    "_id": "6668722d87cc1e0780f207c9"
   },
   {
     "codigo": "EL3815",
     "imagen": "/img/EL/el8220.jpg",
-    "precio": "3563.41",
+    "precio": "3563.45",
     "titulo": "ELASTICO ALGODON 15MM X25MTS",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b994"
+    "_id": "6668722d87cc1e0780f207ca"
   },
   {
     "codigo": "EL3820",
     "imagen": "/img/EL/el8220.jpg",
-    "precio": "4342.13",
+    "precio": "4342.12",
     "titulo": "ELASTICO ALGODON 20MM X25MTS",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b995"
+    "_id": "6668722d87cc1e0780f207cb"
   },
   {
     "codigo": "EL3825",
     "imagen": "/img/EL/el8220.jpg",
-    "precio": "5630.34",
+    "precio": "5630.31",
     "titulo": "ELASTICO ALGODON 25MM X25MTS",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b996"
-  },
-  {
-    "codigo": "EL6520",
-    "imagen": "/img/EL/BRADBURY.JPG",
-    "precio": "2949.16",
-    "titulo": "ELASTICO POLIESTER X 25 MTS",
-    "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b997"
-  },
-  {
-    "codigo": "EL6530",
-    "imagen": "/img/EL/BRADBURY.JPG",
-    "precio": "4247.64",
-    "titulo": "ELASTICO POLIESTER X 25 MTS",
-    "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b998"
+    "_id": "6668722d87cc1e0780f207cc"
   },
   {
     "codigo": "EL8028",
@@ -773,7 +725,7 @@
     "precio": "5177.70",
     "titulo": "ELASTICO AFELP.28 MM X 10MTS",
     "cantidad": "2",
-    "_id": "666094522cf29eb9f4d4b999"
+    "_id": "6668722d87cc1e0780f207cd"
   },
   {
     "codigo": "EL8930",
@@ -781,15 +733,7 @@
     "precio": "3200.29",
     "titulo": "ELASTICO POLIESTER 30MMX10MT",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b99a"
-  },
-  {
-    "codigo": "EL8950",
-    "imagen": "/img/EL/el8100.jpg",
-    "precio": "4236.63",
-    "titulo": "ELASTICO POLIESTER 50MMX10MT",
-    "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b99b"
+    "_id": "6668722d87cc1e0780f207ce"
   },
   {
     "codigo": "EN3012",
@@ -797,7 +741,7 @@
     "precio": "4149.47",
     "titulo": "ELAST.POLYEST.NEGRO 5MMX50MT",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b99c"
+    "_id": "6668722d87cc1e0780f207cf"
   },
   {
     "codigo": "EN3016",
@@ -805,23 +749,15 @@
     "precio": "4817.69",
     "titulo": "ELAST.POLYEST.NEGRO 7MMX50MT",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b99d"
+    "_id": "6668722d87cc1e0780f207d0"
   },
   {
-    "codigo": "EN6520",
-    "imagen": "/img/EN/BRADBURYnegro.JPG",
-    "precio": "3501.79",
-    "titulo": "ELASTICO POLIESTER NGRO X25M",
+    "codigo": "FB0012",
+    "imagen": "/img/CD/FB0012G.JPG",
+    "precio": "7168.02",
+    "titulo": "CORDON 4mm ALGODON COLOR X 25MTS",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b99e"
-  },
-  {
-    "codigo": "EN6530",
-    "imagen": "/img/EN/BRADBURYnegro.JPG",
-    "precio": "4996.89",
-    "titulo": "ELASTICO POLIESTER NGRO X25M",
-    "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b99f"
+    "_id": "6668722d87cc1e0780f207d1"
   },
   {
     "codigo": "HI2500",
@@ -829,7 +765,7 @@
     "precio": "5674.92",
     "titulo": "BOBINA HILO ELASTICO BLANCO",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b9a0"
+    "_id": "6668722d87cc1e0780f207d2"
   },
   {
     "codigo": "HI2501",
@@ -837,15 +773,7 @@
     "precio": "6355.90",
     "titulo": "BOBINA HILO ELASTICO NEGRO",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b9a1"
-  },
-  {
-    "codigo": "HI2837",
-    "imagen": "/img/HI/HI2837.JPG",
-    "precio": "8303.43",
-    "titulo": "HILO YUTE NATURAL FINO X 35M LAS 10 UNIDADES",
-    "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b9a2"
+    "_id": "6668722d87cc1e0780f207d3"
   },
   {
     "codigo": "HI8888",
@@ -853,7 +781,7 @@
     "precio": "3899.21",
     "titulo": "HILO PIOLIN X 10 OVILLOS 37 MTS C/U",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b9a3"
+    "_id": "6668722d87cc1e0780f207d4"
   },
   {
     "codigo": "HO7000",
@@ -861,7 +789,7 @@
     "precio": "10875.44",
     "titulo": "HOMBRERA FORR.NRO0 BCA/COLOR",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b9a4"
+    "_id": "6668722d87cc1e0780f207d5"
   },
   {
     "codigo": "HO8001",
@@ -869,7 +797,7 @@
     "precio": "14910.44",
     "titulo": "HOMBRERA FORRADA CHICA N.1",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b9a5"
+    "_id": "6668722d87cc1e0780f207d6"
   },
   {
     "codigo": "PE0198",
@@ -877,7 +805,7 @@
     "precio": "1309.70",
     "titulo": "PEGAMENTO UNIPOX X 25ML",
     "cantidad": "6",
-    "_id": "666094522cf29eb9f4d4b9a6"
+    "_id": "6668722d87cc1e0780f207d7"
   },
   {
     "codigo": "PE0200",
@@ -885,7 +813,7 @@
     "precio": "2020.91",
     "titulo": "PEGAMENTO UHU X 33 ML",
     "cantidad": "10",
-    "_id": "666094522cf29eb9f4d4b9a7"
+    "_id": "6668722d87cc1e0780f207d8"
   },
   {
     "codigo": "PE0202",
@@ -893,7 +821,7 @@
     "precio": "6089.88",
     "titulo": "PEGAMENTO UHU X 125 ML",
     "cantidad": "5",
-    "_id": "666094522cf29eb9f4d4b9a8"
+    "_id": "6668722d87cc1e0780f207d9"
   },
   {
     "codigo": "PE1718",
@@ -901,7 +829,7 @@
     "precio": "1367.61",
     "titulo": "PEGAMENTO LA GOTITA X 2 ML",
     "cantidad": "6",
-    "_id": "666094522cf29eb9f4d4b9a9"
+    "_id": "6668722d87cc1e0780f207da"
   },
   {
     "codigo": "PE3030",
@@ -909,15 +837,7 @@
     "precio": "633.58",
     "titulo": "PEGAMENTO SILICONA LIQ.30ML",
     "cantidad": "12",
-    "_id": "666094522cf29eb9f4d4b9aa"
-  },
-  {
-    "codigo": "PE3287",
-    "imagen": "/img/PE/PE3287.jpg",
-    "precio": "9500.62",
-    "titulo": "PISTOLA ENCOLADORA UNIPOX 15 WATTS",
-    "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b9ab"
+    "_id": "6668722d87cc1e0780f207db"
   },
   {
     "codigo": "PE8001",
@@ -925,7 +845,23 @@
     "precio": "12315.19",
     "titulo": "PEGAMENTO BARRA FINA X KILO",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b9ac"
+    "_id": "6668722d87cc1e0780f207dc"
+  },
+  {
+    "codigo": "PF0313-BLANCO",
+    "imagen": "/img/PF/PF0313-BLANCO.jpg",
+    "precio": "2829.92",
+    "titulo": "FLECO ALGODON 25 MM X 10 MTS",
+    "cantidad": "1",
+    "_id": "6668722d87cc1e0780f207dd"
+  },
+  {
+    "codigo": "PF0313-NATURAL",
+    "imagen": "/img/PF/PF2101-NATURAL.jpg",
+    "precio": "2829.92",
+    "titulo": "FLECO ALGODON 25 MM X 10 MTS",
+    "cantidad": "1",
+    "_id": "6668722d87cc1e0780f207de"
   },
   {
     "codigo": "PF1010",
@@ -933,7 +869,7 @@
     "precio": "32085.04",
     "titulo": "FLECO DE RAYON 100MM X10 MTS",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b9ad"
+    "_id": "6668722d87cc1e0780f207df"
   },
   {
     "codigo": "RE0001",
@@ -941,7 +877,7 @@
     "precio": "2526.48",
     "titulo": "MENDAFACIL CHICO 12 unidades",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b9ae"
+    "_id": "6668722d87cc1e0780f207e0"
   },
   {
     "codigo": "RE0002",
@@ -949,7 +885,7 @@
     "precio": "4579.25",
     "titulo": "MENDAFACIL MEDIANO 6 UNIDADES",
     "cantidad": "6",
-    "_id": "666094522cf29eb9f4d4b9af"
+    "_id": "6668722d87cc1e0780f207e1"
   },
   {
     "codigo": "RE0205",
@@ -957,7 +893,7 @@
     "precio": "5052.96",
     "titulo": "KIT REPARACION ROPA DE TRABAJO X6 UNIDADES",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b9b0"
+    "_id": "6668722d87cc1e0780f207e2"
   },
   {
     "codigo": "RE0305",
@@ -965,7 +901,7 @@
     "precio": "5052.96",
     "titulo": "KIT REPARACION ROPA DE TRABAJO X6 UNIDADES",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b9b1"
+    "_id": "6668722d87cc1e0780f207e3"
   },
   {
     "codigo": "RE1222",
@@ -973,7 +909,7 @@
     "precio": "5176.84",
     "titulo": "PITUCON ADHESIVO GABARDINA ALGODON X 6 UNIDADES",
     "cantidad": "3",
-    "_id": "666094522cf29eb9f4d4b9b2"
+    "_id": "6668722d87cc1e0780f207e4"
   },
   {
     "codigo": "RE1224",
@@ -981,7 +917,7 @@
     "precio": "5672.86",
     "titulo": "PITUCON JERSEY ELASTIZADO X6 UNIDADES",
     "cantidad": "6",
-    "_id": "666094522cf29eb9f4d4b9b3"
+    "_id": "6668722d87cc1e0780f207e5"
   },
   {
     "codigo": "RE1226",
@@ -989,7 +925,7 @@
     "precio": "5176.84",
     "titulo": "PITUCON JOGGIN ALGODON X6 UNIDADES",
     "cantidad": "6",
-    "_id": "666094522cf29eb9f4d4b9b4"
+    "_id": "6668722d87cc1e0780f207e6"
   },
   {
     "codigo": "TJ0003",
@@ -997,7 +933,7 @@
     "precio": "957.24",
     "titulo": "CORTAHILACHA DE METAL",
     "cantidad": "1",
-    "_id": "666094522cf29eb9f4d4b9b5"
+    "_id": "6668722d87cc1e0780f207e7"
   },
   {
     "codigo": "VS0100",
@@ -1005,6 +941,14 @@
     "precio": "3772.18",
     "titulo": "BALLENA 6 MM X 25 MTS.",
     "cantidad": "10",
-    "_id": "666094522cf29eb9f4d4b9b6"
+    "_id": "6668722d87cc1e0780f207e8"
+  },
+  {
+    "codigo": "VS2811",
+    "imagen": "/img/VS/manualidades/VS2811.jpg",
+    "precio": "1644.17",
+    "titulo": "POMPONERA C.B.X. 5-8-10 CM",
+    "cantidad": "1",
+    "_id": "6668722d87cc1e0780f207e9"
   }
 ]

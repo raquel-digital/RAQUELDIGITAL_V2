@@ -7,6 +7,10 @@
   "aguja-crochet",
   "aguja-curva",
   "aguja-mano",
+  "aguja-maquina-collareta",
+  "aguja-maquina-familiar",
+  "aguja-maquina-industrial",
+  "aguja-maquina-overlock",
   "aguja-para-medias",
   "aguja-tejer-tricot",
   "alfiler-fantasía",
@@ -14,9 +18,5 @@
   "alfiler-modista",
   "alfiler-vidriera",
   "gancho-para-pantalon",
-  "indumentaria-confección-gancho",
-  "maquina-collareta",
-  "maquina-familiar",
-  "maquina-industrial",
-  "maquina-overlock"
+  "indumentaria-confección-gancho"
 ]

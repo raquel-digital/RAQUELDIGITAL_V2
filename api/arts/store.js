@@ -56,6 +56,12 @@ const store = {
                     CantidadDeVenta: data.CantidadDeVenta
                 }},
                 { new: true });
+
+                if(data.codigo != data.cambioCodigo){                    
+                    const presuStore = require("../presupuesto/constroller")
+                    await presuStore.actuCodigo(data.codigo, data.cambioCodigo)
+                    await presuStore.leer()
+                }   
                 
             return { status: true, upd: res};
         }catch(err){

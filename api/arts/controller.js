@@ -70,7 +70,7 @@ controller = {
                 }                
                 result = await store.updateColor(e);                
                 arrayRes.push(result);
-            }else{                
+            }else{
                 result = await store.update(e);
                 arrayRes.push(result);
             }
