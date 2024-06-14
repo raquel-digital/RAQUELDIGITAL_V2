@@ -151,7 +151,7 @@ async function loadCateg(query){
       }
       if(categ == "hilos"){      
        //const result = await filtrar(["HI","HI/HI8100","HI/HI0901","HI/HI9000"]);
-       const categFilter = ["HI","HI/HI8100","HI/HI0901","HI/HI9000"]
+       const categFilter = ["HI","HI/HI8100","HI/HI0901","HI/HI9000", "HI/bordado"]
        const result = arts.filter(element => categFilter.includes(element.categorias));
        if(result.length > 0){
         return { succes: true, result: result } 
