@@ -30,19 +30,28 @@ const controller = {
         return result[0]
     },
     guardarPedido: async function (data) {
-       try{
+       try{       
 
         const date = new Date
         const user = {
-         id: data.id,        
+         id: data.id,
+         tipo: data.tipo,        
          pedidos: {
              fecha: date.toLocaleString(),
              nombre: data.nombre,
              favorito: true,
+             tipo: data.tipo,
              compra: data.pedido
          }        
         }
-        await store.ingresar(user)
+
+        if(data.tipo == "Historial"){
+            user.favorito = false
+            await store.history(user)
+        }else{
+            await store.ingresar(user)
+        }
+        
         return true
 
        }catch(err){

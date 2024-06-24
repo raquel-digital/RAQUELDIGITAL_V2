@@ -115,7 +115,8 @@ function writeTable(code, msg){
             }
         )//nos llevamos el pedido para agregar al carrito
   }
-
+  
+  document.getElementById("total-encabezado").innerHTML = `<h1>EL TOTAL DEL PRESUPUESTO: $ ${totalFinal.toFixed(2)}</h1>`
   document.querySelector(".total-compra-final").innerHTML = `<td></td><td></td><td> <b>EL TOTAL PRESUPUESTADO: $ ${totalFinal.toFixed(2)}</b></td>`
 }
 

@@ -9,6 +9,7 @@ const newSchema = new schema({
       {
         fecha: String,      
         nombre: String,
+        tipo: String,
         favorito: Boolean,
         compra: [
           {

@@ -96,6 +96,12 @@ await fetch('../enviosData/provincias.json')
   if(datos_cliente){    
     reingresarDatos(datos_cliente)
   }   
+
+  //guardamos pedido en historial
+  const pedido = localStorage.getItem("carrito")
+  const id = localStorage.getItem("login")
+  const data = { id: id, pedido: JSON.parse(pedido), nombre: " ", tipo: "Historial"}
+  socket.emit("guardar-pedido-usuario", data)
 })()
 
 

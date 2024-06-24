@@ -261,11 +261,12 @@ controller = {
         
         for(let d of data){
             const r = await store.updateOrder(d)
-            const check = Number(r.precio) 
+            const check = Number(r.precio.replace(",", "."))
             if(check != d.precio){
                 d.precio = check               
             }
         }  
+        
         return data
     },
     busquedaMasiva: async function (data){

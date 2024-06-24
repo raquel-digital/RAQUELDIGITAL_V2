@@ -1,5 +1,4 @@
-const { async } = require("rxjs");
-const { findOneAndUpdate } = require("./model");
+
 const model = require("./model");
 
 const store = {
@@ -21,14 +20,35 @@ const store = {
     },
     del: async function (data){
       try{
-        await model.updateOne({id: data.id}, { $pull: { pedidos: { fecha: data.fecha } } })
+        
+        await model.updateOne(
+          { id: data.id },
+          { $pull: { pedidos: { fecha: data.fecha } } }
+        );
+     
         return true
       }catch(err){
         console.log("[ ERROR AL BORRAR PEDIDO ] ", err)
         return false
       }
     },
-    
+    history: async function (user){
+      const base = await model.find({ id: user.id }, {pedidos: 1})
+      const history = base.filter(e => e.tipo != "Historial")
+      console.log(history)
+      if(history.length > 4){ 
+        console.log("BORRANDO PEDIDOS")       
+        await model.updateOne(
+          { id: user.id },
+          { $pull: { pedidos: { _id: history[0]._id } } }
+        );
+      }
+
+      await model.updateOne(
+        { id: user.id },
+        { $push: { pedidos: user.pedidos } }
+      )
+    }    
 }
 
 module.exports = store;

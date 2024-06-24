@@ -131,7 +131,7 @@ document.querySelector(".drawer-carrito").addEventListener('click', event=>{
         confirm.addEventListener("click", event => {
             if(event.target.textContent == "Aceptar"){
                 const userInput = window.prompt("Por favor, ingresa el nombre de tu pedido:");
-                const data = { id: mouse.value, pedido: carrito, nombre: userInput}
+                const data = { id: mouse.value, pedido: carrito, nombre: userInput, tipo: " "}
                 socket.emit("guardar-pedido-usuario", data)
                 confirm.style.display = "none"
             }

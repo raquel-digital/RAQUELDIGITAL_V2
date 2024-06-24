@@ -60,6 +60,7 @@ router.get('/profile', requiresAuth(), (req, res) => {
 router.get("/categoria/", async (req, res) => {  
   //DETECTAR IPHONE
   const userAgent = req.headers['user-agent'];
+  const login = req.oidc.isAuthenticated() ? true : false
   // Verificar si la cadena del agente de usuario contiene "iPhone"
   const esIPhone = userAgent.includes('iPhone');
   
@@ -83,15 +84,30 @@ router.get("/categoria/", async (req, res) => {
         }
     })();
   })   
-  //res.sendFile(path.resolve("./public/categ.html"))
-  //EJS pero carga desde JS
-  //TODO descomentar codigo en INDEX
-  res.render('index', {
-    categRes: true, 
-    faq: false,
-    iphone: esIPhone,
-    login: req.oidc.isAuthenticated() ? true : false,    
-  });  
+  if(login){ 
+    (async () => {       
+        const controller = require("../api/auth/controller")
+        pedidos = await controller.leer(req.oidc.user)
+        
+        res.render('index', {
+            categRes: true,
+            data: " ",
+            faq: false,
+            iphone: esIPhone,
+            login: {
+                isLog: login,
+                pedidos: pedidos
+            }
+          });
+    })()        
+}else{
+    res.render('index', {
+      categRes: true, 
+      faq: false,
+      iphone: esIPhone,
+      login: req.oidc.isAuthenticated() ? true : false,    
+    });  
+  }
 })
 
 //Generador de pedidos a mano

@@ -21,9 +21,11 @@
           <% if (login.pedidos) { %>
             <!-- <h1>PEDIDOS REALIZADOS: <%= login.pedidos.pedidos.length %> </h1> -->
             <select id="menuPedidos">
-              <option value="<%= user.sub %>" disabled selected>Historial de Pedidos</option>
-              <% login.pedidos.pedidos.forEach(p => { %>              
+              <option disabled selected>Historial de Pedidos</option>
+              <% login.pedidos.pedidos.forEach(p => { %> 
+                <% if(p.tipo == "Historial") { %>             
                 <option value="<%= JSON.stringify(p.compra) %>"><%= p.fecha %></option>
+                <% } %>  
               <% }) %>          
           </select>
 
@@ -35,7 +37,7 @@
               <% } %>
             <% }) %>
           </select>
-          <button id="boton-borrar-pedidos">Borrar pedidos</button>
+          <button id="boton-borrar-pedidos" value="<%= user.sub %>">Borrar pedidos</button>
         <% } %>
       </div>
   </nav>

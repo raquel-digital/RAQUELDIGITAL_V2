@@ -64,18 +64,18 @@ io.on('connect', socket => {
         })()
     }) 
     //BORRAR PEDIDO
-    socket.on("borrar-pedido", data => {
+    socket.on("borrar-pedido-auth", data => {
         (async ()=>{
             const controller = require("./api/auth/controller")
             const res = await controller.borrarPedido(data)
-            socket.emit("borrar-pedido-res", res)
+            socket.emit("borrar-pedido-auth-res", res)
         })()
     }) 
     //ACTUALIZAR PRECIOS DE CARGA DE COMPRA DE USUARIO
     socket.on("chequear-compra", data => {
-        (async ()=>{            
+        (async ()=>{ 
             const controller = require("./api/arts/controller")
-            const res = await controller.actualizarPedido(data)
+            const res = await controller.actualizarPedido(data)            
             socket.emit("chequear-compra-res", res)
         })()
     })

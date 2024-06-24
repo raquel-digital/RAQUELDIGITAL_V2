@@ -87,107 +87,142 @@ mostrador.addEventListener('click', event=>{
 //SI HAY LOGIN: SELECT DE PEDIDOS
 const menuPedidos = document.querySelector("#menuPedidos")
 if(menuPedidos){
+  let pasePedido;
+  const id = document.getElementById("boton-borrar-pedidos").value
+  localStorage.setItem("login", id)
+
   menuPedidos.addEventListener('click', event => {
     const pedido = event.target.value
-    
-    if(!pedido.includes("google") && !pedido.includes("facebook")){
-       //const compra = JSON.parse(pedido)
+    if(pedido != "Historial de Pedidos"){
        const confirm = document.getElementById("custom-modal")
         alertModal("Queres ingresar el pedido?", "Si tiene elementos en el carrito, estos se borraran", "Si", "No")
-        confirm.style.display = "block"
-      
+        confirm.style.display = "block"    
+        pasePedido = JSON.parse(pedido)  
       
         confirm.addEventListener("click", event => {
-          if(event.target.textContent == "Si"){
-            carrito.length = 0 
+           if(event.target.textContent == "Si"){
             //enviamos carrito a server para chequear diferencia en precios
-            //socket.emit("chequear-compra", compra)
+            socket.emit("chequear-compra", pasePedido)
             confirm.style.display = "none" 
           } 
-          if(event.target.textContent == "No"){
+          if(event.target.textContent == "No" || event.target.classList.contains("cruz")){
             confirm.style.display = "none" 
           }
         })
-
+        
         document.querySelector("#menuPedidos").options[0].disabled = true;
         document.querySelector("#menuPedidos").options[0].selected = true;
     }
   })
-  //borrar pedidos del usuario
-document.querySelector("#boton-borrar-pedidos").addEventListener("click", event => {
-  if(event.target.id == "boton-borrar-pedidos"){
-    //seleccionamos los pedidos en el historial
-    const menu = document.querySelector("#menuPedidos")
-    let pedidos = menu.querySelectorAll("option")
-
-    mostrador.innerHTML = `
-                  <table id="tabla-pedidos" border="1" style="margin-top: 160rem; font-size: 10rem;">
-                  
-              </table>
-              </body>
-              </html>
-    `
-    let sub;
-    pedidos.forEach(e => {
-      
-      if(e.textContent != "Historial de Pedidos"){
-        const pedido = JSON.parse(e.value)
-        document.getElementById("tabla-pedidos").innerHTML += `
-            <thead>
-            <tr>
-              ${e.label}
-            </tr>
-            </thead>
-        `
-        const id = e.label.replace(/\s/g, "");
   
-        document.getElementById("tabla-pedidos").innerHTML += `
-            <thead>
-              <tr>Codigo</tr>
-              <tr>Titulo</tr>
-              <tr>Precio</tr>
-              <tr>Cantidad</tr>
-              <tr>Imagen</tr>
-            </thead>
-            <tbody id=${id}></tbody>
-        `
 
+  //SI HAY LOGIN HAY BARRA DE PEDIDOS
+  const menuPedidosGuardados = document.getElementById("menuPedidosFavoritos")
+  menuPedidosGuardados.addEventListener("click", e => {
+    if(e.target.value != "Pedidos Favoritos"){
+      const confirm = document.getElementById("custom-modal")
+      alertModal("Queres ingresar el pedido?", "Si tiene elementos en el carrito, estos se borraran", "Si", "No")
+      confirm.style.display = "block"
+      pasePedido = JSON.parse(e.target.value)
+
+      confirm.addEventListener("click", event => {
+        if(event.target.textContent == "Si"){          
+          socket.emit("chequear-compra", pasePedido)
+          confirm.style.display = "none"
+        } 
+        if(event.target.textContent == "No" || event.target.classList.contains("cruz")){
+          confirm.style.display = "none"
+        }      
+        menuPedidosGuardados.selectedIndex = 0      
+      })
+    }
+  })
+
+  //borrar pedidos del usuario
+  document.querySelector("#boton-borrar-pedidos").addEventListener("click", event => {
+    if(event.target.id == "boton-borrar-pedidos"){
+      //seleccionamos los pedidos en el historial
+      const idUsuario = event.target.value
+
+      const menu = document.querySelector("#menuPedidos")
+      let pedidos = menu.querySelectorAll("option")
+
+      mostrador.innerHTML = `
+                    <table id="tabla-pedidos" border="1" style="margin-top: 160rem; font-size: 10rem;">
+                    
+                </table>
+                </body>
+                </html>
+      `
+      let sub;
+      pedidos.forEach(e => {
         
-        pedido.forEach(p => {
+        if(e.textContent != "Historial de Pedidos"){
+          const pedido = JSON.parse(e.value)
+          document.getElementById("tabla-pedidos").innerHTML += `
+              <thead>
+              <tr>
+                ${e.label}
+              </tr>
+              </thead>
+          `
+          const id = e.label.replace(/\s/g, "");
+    
+          document.getElementById("tabla-pedidos").innerHTML += `
+              <thead>
+                <tr>Codigo</tr>
+                <tr>Titulo</tr>
+                <tr>Precio</tr>
+                <tr>Cantidad</tr>
+                <tr>Imagen</tr>
+              </thead>
+              <tbody id=${id}></tbody>
+          `
+
+          
+          pedido.forEach(p => {
+            document.getElementById(id).innerHTML += `
+                <td>${p.codigo}</td>
+                <td>${p.titulo}</td>
+                <td>${p.precio}</td>
+                <td>${p.cantidad}</td>
+                <td>${p.imagen}</td>
+              `
+          })
+          
           document.getElementById(id).innerHTML += `
-              <td>${p.codigo}</td>
-              <td>${p.titulo}</td>
-              <td>${p.precio}</td>
-              <td>${p.cantidad}</td>
-              <td>${p.imagen}</td>
-            `
-        })
-        
-        document.getElementById(id).innerHTML += `
-        <tfoot>
-                <tr>
-                  <button onclick="borrarPedido('${sub}', '${e.label}')">BORRAR PEDIDO</button>
-                </tr>
-        </tfoot>`
-      }else{
-        sub = e.value.toString()
-      }
-    })
-  }
-})
+          <tfoot>
+                  <tr>
+                    <button onclick="borrarPedido('${idUsuario}', '${e.label}')">BORRAR PEDIDO</button>
+                  </tr>
+          </tfoot>`
+        }else{
+          sub = e.value.toString()
+        }
+      })
+    }
+  })
 }
+
+
+
 socket.on("chequear-compra-res", compra => {
+  carrito.length = 0
    for(let c of compra){
           ingresarCarrito(c)
     }
+
+    actualizarCarrito()
+    const carritoShow = document.querySelector(".drawer-carrito");
+    carritoShow.style.display = "block"
 })
 
 function borrarPedido(id, fecha){
   data = {id: id, fecha: fecha}
-  socket.emit("borrar-pedido", data)
+  socket.emit("borrar-pedido-auth", data)
 }
 //RESPUESTA
-socket.on("borrar-pedido-res", res => {
+socket.on("borrar-pedido-auth-res", res => {
   if(res){
     alert("PEDIDO BORRADO EXITOSAMENTE")
   }else{

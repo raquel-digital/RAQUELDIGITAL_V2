@@ -19,7 +19,12 @@
               <button id="eliminar-carrito" type="button" class="btn-terciario">Eliminar carrito</button>
               <button id="cerrarCarrito" type="button" class="btn-secundario">Cerrar</button>
               <% if (login.pedidos) { %>
+                <!-- <input type="text" name="carrito_holder" style="display: none;" id="carrito-holder"> -->
                 <button id="guardarPedido" type="button" class="btn-secundario" value="<%= user.sub %>">Guardar pedido</button>
+                <form method="post" action="/check-out">
+                  <input type="text" name="carrito_holder" style="display: none;" id="carrito-holder">
+                  <button type="submit" class="btn-primario">Comprar carrito</button>
+                </form>
               <% }else{ %>
                 <!-- <button id="confirmar-compra" type="button" class="btn-primario">Comprar carrito</button> -->
                 <form method="post" action="/check-out">
