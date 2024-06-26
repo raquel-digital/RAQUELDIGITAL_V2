@@ -33,11 +33,10 @@ const store = {
       }
     },
     history: async function (user){
-      const base = await model.find({ id: user.id }, {pedidos: 1})
-      const history = base.filter(e => e.tipo != "Historial")
-      console.log(history)
-      if(history.length > 4){ 
-        console.log("BORRANDO PEDIDOS")       
+       const base = await model.find({ id: user.id }, {pedidos: 1})
+       const history = base[0].pedidos.filter(e => e.tipo == "Historial")
+       
+      if(history.length > 30){
         await model.updateOne(
           { id: user.id },
           { $pull: { pedidos: { _id: history[0]._id } } }
