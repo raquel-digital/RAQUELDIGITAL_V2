@@ -127,9 +127,9 @@ router.get('/generar-pedidos', (req, res) => {
 //-----BUSCADOR-----
 router.get("/buscador", (req, res) => {
   //DETECTAR IPHONE
-  const userAgent = req.headers['user-agent'];
+  //const userAgent = req.headers['user-agent'];
   // Verificar si la cadena del agente de usuario contiene "iPhone"
-  const esIPhone = userAgent.includes('iPhone');
+  const esIPhone = verAgente(req)//anterior userAgent.includes('iPhone');
 
   let io = require('../io.js').get();  
   io.once('connect', socket => {
@@ -156,18 +156,18 @@ router.get("/buscador", (req, res) => {
 
 router.get('/preguntas-frecuentes', function (req, res, next) {
   //DETECTAR IPHONE
-  const userAgent = req.headers['user-agent'];
+  //const userAgent = req.headers['user-agent'];
   // Verificar si la cadena del agente de usuario contiene "iPhone"
-  const esIPhone = userAgent.includes('iPhone');
+  const esIPhone = verAgente(req)//anterior userAgent.includes('iPhone');
 
   res.render('index', { faq: true, iphone: esIPhone, categRes: false, data: " ", login: false });
 });
 
 router.get('/profile', requiresAuth(), function (req, res, next) {
   //DETECTAR IPHONE
-  const userAgent = req.headers['user-agent'];
+  //const userAgent = req.headers['user-agent'];
   // Verificar si la cadena del agente de usuario contiene "iPhone"
-  const esIPhone = userAgent.includes('iPhone');
+  const esIPhone = verAgente(req)//anterior userAgent.includes('iPhone');
 
   res.render('profile', {
     iphone: esIPhone,
