@@ -59,10 +59,10 @@ router.get('/profile', requiresAuth(), (req, res) => {
 //-----CATEGS-----------
 router.get("/categoria/", async (req, res) => {  
   //DETECTAR IPHONE
-  const userAgent = req.headers['user-agent'];
+  //const userAgent = req.headers['user-agent'];
   const login = req.oidc.isAuthenticated() ? true : false
   // Verificar si la cadena del agente de usuario contiene "iPhone"
-  const esIPhone = userAgent.includes('iPhone');
+  const esIPhone = verAgente(req)//anterior userAgent.includes('iPhone');
   
   const categOrganicer =  require("../utils/cargarCategoria"); 
 
@@ -302,10 +302,15 @@ function verAgente(req){
   const userAgent = req.headers['user-agent'];  
   // Verificar si la cadena del agente de usuario contiene "iPhone"
   const esIPhone = userAgent.includes('iPhone') || userAgent.includes('Macintosh');
-  if(esIPhone){    
+  const isIOS = /iphone|ipad|ipod/.test(userAgent);
+  const isMac = /macintosh|mac os x/.test(userAgent);
+  if(esIPhone || isIOS || isMac){    
     console.log("IOS ACTIVO")
-  }
-  return esIPhone
+    return true
+  }else{
+    console.log("OTRA APP")
+    return false
+  }  
 }
 
-module.exports = router ;
+module.exports = router;
