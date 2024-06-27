@@ -302,7 +302,9 @@ function verAgente(req){
   const userAgent = req.headers['user-agent'];  
   // Verificar si la cadena del agente de usuario contiene "iPhone"
   const esIPhone = userAgent.includes('iPhone') || userAgent.includes('Macintosh');
-  
+  if(esIPhone){    
+    console.log("IOS ACTIVO")
+  }
   return esIPhone
 }
 
