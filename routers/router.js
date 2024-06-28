@@ -126,22 +126,29 @@ router.get('/generar-pedidos', (req, res) => {
 
 //-----BUSCADOR-----
 router.get("/buscador", (req, res) => {
-  //DETECTAR IPHONE
-  //const userAgent = req.headers['user-agent'];
-  // Verificar si la cadena del agente de usuario contiene "iPhone"
-  const esIPhone = verAgente(req)//anterior userAgent.includes('iPhone');
+  //DETECTAR IPHONE  
+  const esIPhone = verAgente(req)
 
   let io = require('../io.js').get();  
   io.once('connect', socket => {
     (async () => {      
-        const buscar = req.query.buscar.toLocaleLowerCase(); 
+        const buscar = req.query.buscar.toLocaleLowerCase()
+        
         if(req.query.buscar.length == 0){
           socket.emit("resultado-vacio");
           return
         }
-        const result = await controller.buscarArticulo(buscar); 
+        const result = await controller.buscarArticulo(buscar) 
+        if(result.length == 0){
+          const sinTilde = buscar.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+          const result = await controller.buscarArticulo(sinTilde)
+          const data = { result: result, query: sinTilde}       
+          socket.emit("resultado-busqueda", data);
+          return
+        }
         const data = { result: result, query: buscar}       
         socket.emit("resultado-busqueda", data);
+        return
     })();
   })   
   res.render('index', {
@@ -308,7 +315,7 @@ function verAgente(req){
     console.log("IOS ACTIVO")
     return true
   }else{
-    console.log("OTRA APP")
+    console.log("OTRO DISPOSITIVO")
     return false
   }  
 }
