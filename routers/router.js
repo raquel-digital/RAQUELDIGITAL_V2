@@ -142,7 +142,7 @@ router.get("/buscador", (req, res) => {
         if(result.length == 0){
           const sinTilde = buscar.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
           const result = await controller.buscarArticulo(sinTilde)
-          const data = { result: result, query: sinTilde}       
+          const data = { result: result, query: buscar}       
           socket.emit("resultado-busqueda", data);
           return
         }
