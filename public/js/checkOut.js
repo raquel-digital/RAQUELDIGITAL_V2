@@ -16,7 +16,7 @@ const provinciasSelect = document.querySelector(".listaProvincias");
 const localidades = document.querySelector(".listaLocalidades");
 const provinciasLocalidades = []
 let valorCorreo = 1488;
-let valorExpreso = 00;
+let valorExpreso = 0;
 
 const ingresoDestinoContainer = document.querySelector(".ingresoDestinoContainer")
 const ingresarDestino = document.querySelector(".ingresarDestino")
