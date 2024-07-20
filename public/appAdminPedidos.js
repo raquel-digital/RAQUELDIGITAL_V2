@@ -76,11 +76,11 @@ mostrador.addEventListener("click", e => {
 })
 
 
-function buscarPedido(num_orden){
-    if(!num_orden){
-      num_orden = document.getElementById("num_orden").value
+function buscarPedido(orden){
+    if(!orden){
+      orden = document.getElementById("num_orden").value
     }    
-    socket.emit("busqueda-pedido", num_orden);
+    socket.emit("busqueda-pedido", orden);
 }
   
 let pedido;

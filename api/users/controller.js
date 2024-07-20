@@ -36,8 +36,8 @@ const controller = {
        crudPedidos.ingresar(user);
    },
 
-   buscar: async function (num_orden) {
-    return store.buscar_orden(num_orden);
+   buscar: async function (orden) {
+    return store.buscar_orden(orden);
    },
    ultimosPedidos: async function () {
     const result = await store.lastOrders();

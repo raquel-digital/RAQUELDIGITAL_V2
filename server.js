@@ -158,10 +158,10 @@ io.on('connect', socket => {
            socket.emit("findOld-res", res);
         })();
     })
-    socket.on("busqueda-pedido", num_orden => {
+    socket.on("busqueda-pedido", orden => {
         const userController = require("./api/users/controller");
         (async () => {
-          const res = await userController.buscar(num_orden)
+          const res = await userController.buscar(orden)
           socket.emit("busqueda-pedido-reponse", res)
         })();
     })

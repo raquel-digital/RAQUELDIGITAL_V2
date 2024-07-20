@@ -7,6 +7,10 @@ const store = {
     },
     buscar_orden: async function (num) {
         const find = await model.find({numero_orden: num});
+        if(find.length == 0){
+            const nombre = await model.find({nombreApellido: num})
+            return nombre;
+        }
         return find;
     },
     ingresar: function (data){
