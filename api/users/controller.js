@@ -37,7 +37,8 @@ const controller = {
    },
 
    buscar: async function (orden) {
-    return store.buscar_orden(orden);
+    const res = await store.buscar_orden(orden);    
+    return res
    },
    ultimosPedidos: async function () {
     const result = await store.lastOrders();

@@ -88,15 +88,20 @@ let dataMail
 
 
 socket.on("busqueda-pedido-reponse", res => {
-  console.log("[ RESPUESTA PEDIDO ] : ", res);
-  pedido = res[0].compra;
+  console.log("[ RESPUESTA PEDIDO ] : ", res.length);
+  
   if(res.length == 0){
-    alert("PEDIDO INVALIDAO");
+    alert("NO HAY RESULTADOS");
     return;
   } 
   dataMail = res;
-  //draw.orders(pedido, res[0]) 
-  printPagePreview(pedido, res[0])  
+  pedido = res[0].compra;
+  if(res.length > 1){
+    searchResultTable(res)  
+  }else{    
+    printPagePreview(null, pedido, res[0])
+  }
+  
 })
   
 
@@ -702,8 +707,29 @@ socket.on("borrar-pedido-res", res => {
 });
 
 
-function printPagePreview(pedido, cliente){
-  console.log(pedido, cliente)
+function searchResultTable(res){
+
+  mostrador.innerHTML = ""
+  mostrador.innerHTML = `<h1>hay ${res.length} pedidos</h1>`
+
+  const arrayJSON = JSON.stringify(res);
+  document.getElementById("res-busqueda").value = arrayJSON
+  let i = 0
+  res.forEach(e => {    
+    mostrador.innerHTML += `  
+    <li>${e.nombreApellido} ${e.fecha} </li><button onclick="printPagePreview(${i})">VER</button>
+    `
+    i++
+  })
+}
+
+function printPagePreview(i, pedido, cliente){
+  if(i){
+    const rescate = document.getElementById("res-busqueda").value
+    const res = JSON.parse(rescate)
+    pedido = res[i].compra
+    cliente = res[i]
+  }
   let totalPedido = 0
   let envio = " "
   if(cliente.tipoDeEnvio){
@@ -761,8 +787,7 @@ function printPagePreview(pedido, cliente){
   `
   //
   const resumenCheckOut = document.querySelector(".resumen-check-out")
-  pedido.forEach(e => {
-    console.log(e.precio)
+  pedido.forEach(e => {    
     const total = e.cantidad * e.precio
     resumenCheckOut.innerHTML += `
     <td class="text-center"><img src="${e.imagen}" alt="imagen table" widht="auto" height="60px"></td>
@@ -770,7 +795,7 @@ function printPagePreview(pedido, cliente){
     <td>${e.titulo}<td>
     <td>${e.precio}</td>
     <td>${e.cantidad}</td>
-    <td>${total}</td>    
+    <td>${total.toFixed(2)}</td>    
     `;
     // <td>en stock: </td>
     // <td>falta: </td>
@@ -778,11 +803,11 @@ function printPagePreview(pedido, cliente){
   })
   if(cliente.tipoDeEnvio){
     document.querySelector(".total-compra-final").innerHTML = `
-    <th>Total: ${totalPedido}</th> <th>Total Mas Envío: ${totalPedido + cliente.tipoDeEnvio.Costo}</th>
+    <th>Total: ${totalPedido.toFixed(2)}</th> <th>Total Mas Envío: ${totalPedido.toFixed(2) + cliente.tipoDeEnvio.Costo}</th>
     `
   }else{
     document.querySelector(".total-compra-final").innerHTML = `
-    <th>Total: ${totalPedido}</th>
+    <th>Total: ${totalPedido.toFixed(2)}</th>
     `
   }
 

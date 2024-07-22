@@ -5,13 +5,17 @@ const store = {
         const ultimaOrden = await model.findOne().sort({ _id: -1 });
         return ultimaOrden.numero_orden;
     },
-    buscar_orden: async function (num) {
-        const find = await model.find({numero_orden: num});
-        if(find.length == 0){
-            const nombre = await model.find({nombreApellido: num})
+    buscar_orden: async function (data) {
+        
+        if(!isNaN(data)){
+            const num = Number(data)
+            const find = await model.find({numero_orden: num});            
+            return find;     
+        }else{
+            const nombre = await model.find({nombreApellido: new RegExp(data, 'i')})
             return nombre;
+            
         }
-        return find;
     },
     ingresar: function (data){
         const user = new model(data);
