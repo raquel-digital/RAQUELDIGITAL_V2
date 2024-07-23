@@ -564,6 +564,7 @@ barraHerramientas.addEventListener("click", e => {
       mostrador.innerHTML = `
       <textarea name="upData" cols="9" wrap="off" class="uploadArts" placeholder="Subir Articulos"></textarea>
       <button type="button" class="btn btn-success" onclick="uploadArts()">enviar</button>
+      <button type="button" class="btn btn-warning" onclick="uploadArtsLocal()" style="margin-top: 30px;">SUBIR ARTICULO DESDE WEB</button>
       `        
     }
     if(barraHerramientas.selectedIndex == 4){      
@@ -586,6 +587,7 @@ barraHerramientas.addEventListener("click", e => {
 let upload = []
 
 function uploadArts(){
+  upload = []
   const row = document.querySelector(".uploadArts").value.split("\n");
  
   for(let i in row){
@@ -629,6 +631,8 @@ function uploadArts(){
     socket.emit("busqueda-admin", upload);
   }
   socket.on("res-busqueda-upload", result => {
+    console.log(result)
+    preview(upload);
     if(result.length > 0){      
       for(let r of result){
         for(let u of upload){
@@ -663,6 +667,58 @@ function uploadArts(){
     }
   });
 
+  function uploadArtsLocal(){
+    upload = []
+    const ok = confirm("Vamos a subir un archivo desde la web, queres continuar?")
+
+    if(ok){
+     const clone = confirm("Qures clonar un artículo existente?")
+     if(clone){
+      const codigo = prompt("ingresa el CODIGO")
+      const imagen = prompt("ingresa el IMAGEN (dejar vacio si tiene el mismo nombre que el codigo)") 
+      const categ =  prompt("ingresa el CATEGORIA (dejar vacio si queres clonar la categoria original)")
+      upload.push({codigo: codigo.toUpperCase(), imagendetalle: imagen ? imagen != " " : codigo.toUpperCase() + ".jpg", categorias: categ ? categ != " " : codigo[0].toUpperCase() + codigo[1].toUpperCase()})
+      socket.emit("busqueda-admin", upload);
+      return
+     }
+
+     const codigo = prompt("ingresa el CODIGO")
+     const categ = prompt("ingresa CATEGORIA (dejar vacio si corresponde con el codigo)")
+     const nombre = prompt("ingresa el TITULO")
+     const nombre2 = prompt("ingresa el SUBTITULO")
+     const cantidadVenta = prompt("ingresa la cantidad de venta")
+     const precio = prompt("ingresa PRECIO (usar ',' para los decimales)")
+     const imagen = prompt("ingresa IMAGEN (dejar vacio si tiene el mismo nombre que el codigo)")
+     const tag = prompt("ingresa TAG")
+     const descripcion = prompt("ingresa la DESCRIPCION")
+
+     let img
+     if(imagen != " "){
+      img = imagen
+     }else{
+      img = codigo.toUpperCase() + ".jpg"
+     }
+     const art = {
+      codigo: codigo.toUpperCase(),
+      categorias: categ ? categ != " " : codigo[0].toUpperCase() + codigo[1].toUpperCase(),
+      nombre: nombre,
+      nombre2: nombre2,
+      CantidadDeVenta: cantidadVenta,
+      imagendetalle: img,
+      precio: precio,
+      descripcion: descripcion,
+      stock: 10,
+      tags: tag,
+      mostrar: true 
+     }
+     upload.push(art)
+     preview(upload)
+     return
+    }else{
+      return
+    }
+  }
+
   function ingresarColores(row){
     const colores = []
     row.shift()
@@ -694,8 +750,10 @@ function uploadArts(){
   });
 
   function preview(art){
+    console.log(art)
     mostrador.innerHTML = "";
     art.forEach(p => {
+      console.log(p)
       mostrador.innerHTML += `
       <div class="cardItem col-4">
       <hr><div class="card border-success">
