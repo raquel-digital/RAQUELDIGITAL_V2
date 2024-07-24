@@ -672,7 +672,7 @@ function uploadArts(){
     const ok = confirm("Vamos a subir un archivo desde la web, queres continuar?")
 
     if(ok){
-     const clone = confirm("Qures clonar un artículo existente?")
+     const clone = confirm("Queres clonar un artículo existente?")
      if(clone){
       const codigo = prompt("ingresa el CODIGO")
       const imagen = prompt("ingresa el IMAGEN (dejar vacio si tiene el mismo nombre que el codigo)") 
@@ -682,41 +682,134 @@ function uploadArts(){
       return
      }
 
-     const codigo = prompt("ingresa el CODIGO")
-     const categ = prompt("ingresa CATEGORIA (dejar vacio si corresponde con el codigo)")
-     const nombre = prompt("ingresa el TITULO")
-     const nombre2 = prompt("ingresa el SUBTITULO")
-     const cantidadVenta = prompt("ingresa la cantidad de venta")
-     const precio = prompt("ingresa PRECIO (usar ',' para los decimales)")
-     const imagen = prompt("ingresa IMAGEN (dejar vacio si tiene el mismo nombre que el codigo)")
-     const tag = prompt("ingresa TAG")
-     const descripcion = prompt("ingresa la DESCRIPCION")
-
-     let img
-     if(imagen != " "){
-      img = imagen
-     }else{
-      img = codigo.toUpperCase() + ".jpg"
-     }
-     const art = {
-      codigo: codigo.toUpperCase(),
-      categorias: categ ? categ != " " : codigo[0].toUpperCase() + codigo[1].toUpperCase(),
-      nombre: nombre,
-      nombre2: nombre2,
-      CantidadDeVenta: cantidadVenta,
-      imagendetalle: img,
-      precio: precio,
-      descripcion: descripcion,
-      stock: 10,
-      tags: tag,
-      mostrar: true 
-     }
-     upload.push(art)
-     preview(upload)
-     return
+     mostrador.innerHTML = `
+    <style>
+      .form-container {
+          width: 50%;
+          margin: 0 auto;
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+          margin-bottom: 15px;
+      }
+      label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+      }
+      input[type="text"] {
+          width: 100%;
+          padding: 8px;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+      }
+      button {
+          padding: 10px 20px;
+          background-color: #28a745;
+          color: white;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+      }
+      button:hover {
+          background-color: #218838;
+      }
+  </style>
+  <div class="form-container">
+      <form id="articulo-form">
+          <div class="form-group">
+              <label for="codigo">Código</label>
+              <input type="text" id="codigo" name="codigo">
+          </div>
+          <div class="form-group">
+              <label for="titulo">Título</label>
+              <input type="text" id="titulo" name="titulo">
+          </div>
+          <div class="form-group">
+              <label for="subtitulo">Subtítulo</label>
+              <input type="text" id="subtitulo" name="subtitulo">
+          </div>
+          <div class="form-group">
+              <label for="categoria">Categoría</label>
+              <input type="text" id="categoria" name="categoria">
+          </div>
+          <div class="form-group">
+              <label for="cantidad-venta">Cantidad de Venta</label>
+              <input type="text" id="cantidad-venta" name="cantidad-venta">
+          </div>
+          <div class="form-group">
+              <label for="precio">Precio</label>
+              <input type="text" id="precio" name="precio">
+          </div>
+          <div class="form-group">
+              <label for="imagen">Imagen</label>
+              <input type="text" id="imagen" name="imagen">
+          </div>
+          <div class="form-group">
+              <label for="tag">Tag</label>
+              <input type="text" id="tag" name="tag">
+          </div>
+          <div class="form-group">
+              <label for="descripcion">Descripción</label>
+              <input type="text" id="descripcion" name="descripcion">
+          </div>
+          <button type="button" onclick="subirPorForm()">Enviar</button>
+      </form>
+    </div>
+    `
+   
     }else{
       return
     }
+  }
+
+  function subirPorForm(){
+
+   
+
+   
+
+   const code = document.getElementById('codigo').value;
+   const titulo = document.getElementById('titulo').value;
+   const subtitulo = document.getElementById('subtitulo').value;
+   const categ = document.getElementById('categoria').value;
+   const cantidadVenta = document.getElementById('cantidad-venta').value;
+   const precio = document.getElementById('precio').value;
+   const imagen = document.getElementById('imagen').value;
+   const tag = document.getElementById('tag').value;
+   const descripcion = document.getElementById('descripcion').value;
+
+   let img
+   if(imagen != " "){
+    img = imagen
+   }else{
+    img = codigo.toUpperCase() + ".jpg"
+   }
+
+   const price = precio.replace(".", ",")
+
+   const art = {
+    codigo: code.toUpperCase(),
+    categorias: categ ? categ != " " : code[0].toUpperCase() + code[1].toUpperCase(),
+    nombre: titulo.toUpperCase(),
+    nombre2: subtitulo.toUpperCase(),
+    CantidadDeVenta: cantidadVenta,
+    imagendetalle: img,
+    precio: price,
+    descripcion: descripcion,
+    stock: 10,
+    tags: tag,
+    mostrar: true 
+   }
+
+   console.log(art)
+   upload.push(art)
+   preview(upload)
+   return
   }
 
   function ingresarColores(row){

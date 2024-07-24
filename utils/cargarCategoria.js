@@ -159,7 +159,7 @@ async function loadCateg(query){
       }
       if(categ == "indumentaria"){      
             //const result = await filtrar(["AN","CA","HO","HC","PA","VS/INDUMENTARIA"]);
-            const categFilter = ["AN","CA","HO","HC","PA","VS/INDUMENTARIA"]
+            const categFilter = ["AN","CA","HO","HC","PA","VS/INDUMENTARIA","RE","TP","TR","CI/VIVOS"]
             const result = arts.filter(element => categFilter.includes(element.categorias));
             if(result.length > 0){
              return { succes: true, result: result } 
