@@ -668,10 +668,8 @@ function uploadArts(){
   });
 
   function uploadArtsLocal(){
-    upload = []
-    const ok = confirm("Vamos a subir un archivo desde la web, queres continuar?")
-
-    if(ok){
+    upload = []    
+    
      const clone = confirm("Queres clonar un artículo existente?")
      if(clone){
       const codigo = prompt("ingresa el CODIGO")
@@ -761,17 +759,9 @@ function uploadArts(){
       </form>
     </div>
     `
-   
-    }else{
-      return
-    }
   }
 
   function subirPorForm(){
-
-   
-
-   
 
    const code = document.getElementById('codigo').value;
    const titulo = document.getElementById('titulo').value;
@@ -796,7 +786,7 @@ function uploadArts(){
     codigo: code.toUpperCase(),
     categorias: categ ? categ != " " : code[0].toUpperCase() + code[1].toUpperCase(),
     nombre: titulo.toUpperCase(),
-    nombre2: subtitulo.toUpperCase(),
+    nombre2: subtitulo,
     CantidadDeVenta: cantidadVenta,
     imagendetalle: img,
     precio: price,
