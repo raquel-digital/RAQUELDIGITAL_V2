@@ -35,6 +35,7 @@ const newSchema = new schema({
           imagen: String
         }
       ],
+    observaciones: String  
 })
 
 const model = mongoose.model("user", newSchema);

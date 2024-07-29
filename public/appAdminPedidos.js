@@ -261,7 +261,7 @@ const draw = {
                       <option value="Salio">Salio</option>
                     </select>
                     <hr>
-                    <h6>Notas:</h6>
+                    <h6 id="observaciones">Notas:</h6>
                     <textarea name="" id="notasText${d.num_orden}" cols="5" rows="5">${d.notas}</textarea>
 
                           <div class="card-footer row">
@@ -275,6 +275,9 @@ const draw = {
           </div>
         </div>
       ` 
+      console.log(d)
+      document.getElementById("observaciones").value = d.observaciones
+
         if(d.estado == " "){
           d.estado = "Pedido Sin Asignar";
         }  

@@ -50,7 +50,8 @@ const compraFinal = document.getElementById('datos-compra');
 
 (async () => {
   try {
-    const response = await fetch('../enviosData/dataEnvios.json')
+    const response = await fetch('../system/envios/dataEnvios.json')
+    console.log(response)
     if (!response.ok) {
       throw new Error('No se pudo obtener los datos.');
     }    
@@ -63,7 +64,7 @@ const compraFinal = document.getElementById('datos-compra');
   }
   
  
-await fetch('../enviosData/provincias.json')
+await fetch('../system/envios/provincias.json')
   .then(response => {
     if (!response.ok) {
       throw new Error('La solicitud no se pudo completar.');
@@ -599,6 +600,8 @@ function envio_mock(){
 
   document.querySelector("#carrito-holder").value = JSON.stringify(cliente.sys.compra)
   localStorage.setItem("carrito", JSON.stringify(cliente.sys.compra))
+  cliente.observaciones = document.getElementById("pedidoObservaciones").value
+  console.log(cliente.observaciones)
   const res = controlDatos(cliente)   
   alertsCheckOut(res)
 }

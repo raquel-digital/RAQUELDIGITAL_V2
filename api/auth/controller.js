@@ -55,7 +55,7 @@ const controller = {
         return true
 
        }catch(err){
-        console.log("[ ERROR AL GUARDAR PEDIDO DE USUARIO ] " + err)
+        console.log("[ ERROR AL GUARDAR PEDIDO DE USUARIO (auth no logueado)] " + err)
         return false
        }
     },

@@ -30,7 +30,8 @@ const controller = {
         formaDeContacto: {contacto: data.formaDeContacto.contacto, numero: data.formaDeContacto.numero},
         facturacion: {CUIT: data.facturacion.CUIT, RazonSocial: data.facturacion.RazonSocial, tipo: data.facturacion.tipo},
         formaDePago: data.formaDePago,
-        compra: data.sys.compra
+        compra: data.sys.compra,
+        observaciones: data.observaciones
        }
        store.ingresar(user);
        crudPedidos.ingresar(user);

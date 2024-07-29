@@ -18,7 +18,7 @@ const controller = {
         estado: "Pedido Sin Asignar",
         compra: data.compra,
         faltas: [],
-        notas: " "
+        notas: data.observaciones
        }
        store.ingresar(order);
    },
