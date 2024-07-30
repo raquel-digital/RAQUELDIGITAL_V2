@@ -275,7 +275,7 @@ const draw = {
           </div>
         </div>
       ` 
-      console.log(d)
+      
       document.getElementById("observaciones").value = d.observaciones
 
         if(d.estado == " "){
