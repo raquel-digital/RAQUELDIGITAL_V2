@@ -531,14 +531,31 @@ socket.on("actuPreciosAdminRes", result => {
     }
     mostrador.innerHTML = `<ul class="result"></ul>`
     const res = document.querySelector(".result");
-   
+
+    let tilde
+    if(Array.isArray(result[result.length - 1])){
+      tilde = result.pop()
+      console.log("sin tilde" + tilde)
+    }
+      
+
       result.forEach(e => {
+        const precio = e.precio.replace(",", ".")
+        const precioAnterior = e.precioViejo.replace(",", ".")
+        
         if(e.baja){
-          res.innerHTML += `<li style="color:red;">CODIGO: ${e.codigo} PRECIO EN BAJA: ${e.precio} PRECIO ANTERIOR: ${e.precioViejo}</li>`
+          res.innerHTML += `<li style="color:red;">CODIGO: ${e.codigo} PRECIO EN BAJA: ${e.precio} PRECIO ANTERIOR: ${e.precioViejo} BAJA DE: ${Number(precioAnterior).toFixed(2) - Number(precio).toFixed(2)}</li>`
         }else{        
-          res.innerHTML += `<li>CODIGO: ${e.codigo} NUEVO PRECIO: ${e.precio}</li>`
+          res.innerHTML += `<li>CODIGO: ${e.codigo} NUEVO PRECIO: ${e.precio} AUMENTO: ${Number(precio).toFixed(2) - Number(precioAnterior).toFixed(2)}</li>`
         }
       })
+
+      if(tilde){
+        res.innerHTML += `<hr><h1>Hay artículos sin tilde:</h1>`
+        tilde.forEach(e => {
+          res.innerHTML +=`<li>FALTA PONER TILDE A ARTÍCULO: ${e}</li>`
+        }) 
+      }
     
     alert("PRECIOS ACTUALIZADOS")
   }else{

@@ -11,37 +11,50 @@ async function actu(base, actu){
     try{
         console.log("[ ACTUALIZANDO PRECIOS ]")
         const result = [];
+        const sinTilde = []        
+
         base.forEach(art => {
-            actu.forEach(precio => {
-                if(art.codigo.includes(precio.Codigo) && precio.Precio != art.precio){
-                    const repArt = art.precio.replace(",",".");
-                    const repActu = precio.Precio.replace(",",".");
-                    const artPrice = Number(repArt);
-                    const actuPrice = Number(repActu);
-                    let baja = false                    
-                    if(artPrice > actuPrice){                        
-                        baja = true;
-                    }                
-                    const actu = { codigo: art.codigo, precio: precio.Precio, baja: baja, precioViejo: art.precio};
-                    //precios en presupuesto
-                    resBasico.forEach(e => {
-                        if(e.codigo == precio.Codigo){
-                            e.precio = actuPrice.toString()
-                        }
-                    })
-                    resMedio.forEach(e => {
-                        if(e.codigo == precio.Codigo){
-                            e.precio = actuPrice.toString()
-                        }
-                    })
-                    resPremium.forEach(e => {
-                        if(e.codigo == precio.Codigo){
-                            e.precio = actuPrice.toString()
-                        }
-                    })
-                    result.push(actu);
+            let conTilde = false //bool de tilde
+            actu.forEach(precio => {                
+                if(art.codigo.includes(precio.Codigo)){
+                    conTilde = true
+                    if(precio.Precio != art.precio){
+                        const repArt = art.precio.replace(",",".");
+                        const repActu = precio.Precio.replace(",",".");
+                        const artPrice = Number(repArt);
+                        const actuPrice = Number(repActu);
+                        let baja = false                    
+                        if(artPrice > actuPrice){                        
+                            baja = true;
+                        }                
+                        const actu = { codigo: art.codigo, precio: precio.Precio, baja: baja, precioViejo: art.precio};
+                        //precios en presupuesto
+                        resBasico.forEach(e => {
+                            if(e.codigo == precio.Codigo){
+                                e.precio = actuPrice.toString()
+                            }
+                        })
+                        resMedio.forEach(e => {
+                            if(e.codigo == precio.Codigo){
+                                e.precio = actuPrice.toString()
+                            }
+                        })
+                        resPremium.forEach(e => {
+                            if(e.codigo == precio.Codigo){
+                                e.precio = actuPrice.toString()
+                            }
+                        })
+                        result.push(actu);
+                    }
                 }
             })
+
+            if(!conTilde){
+                const codigo = art.codigo.split("-")
+                if(!sinTilde.includes(codigo[0])){
+                    sinTilde.push(codigo[0])
+                }
+            }
         })
         
         
@@ -49,9 +62,13 @@ async function actu(base, actu){
         
         console.log("[ ACTUALIZANDO VA A LLEVAR UN TIEMPO .... ]");
         
-        //fs.writeFileSync("./utils/local/1reporte/result.json", JSON.stringify(result, null, 2));
+        
         
         await controller.actualizarPrecios(result);
+
+        if(sinTilde.length > 0){
+            result.push(sinTilde)
+        }        
         return result;
     }catch(err){
         console.log("[ ERROR EN FUNCION ACTU ] " + err);
