@@ -114,6 +114,7 @@ function showArts(art){
                <div class="collapse" id="${p.codigo}colapse">
                  <hr>
                  <label class="form-check-label" for="titulo">Titulo:</label>              
+              <p>ULTIMA MODIFICACION: ${p.fechaModificacion}</p>
               <input name="titulo" value="${p.nombre}">
               <label class="form-check-label" for="subsubtitulo">Sub Titulo:</label>
               <input name="subsubtitulo" value="${p.nombre2}">
@@ -125,6 +126,7 @@ function showArts(art){
               <input name="stock" value="${p.CantidadDeVenta}">
               <label class="form-check-label" for="codigo">Codigo:</label>
               <input name="codigo" value="${p.codigo}">
+              
                  <button class="btn btn-danger borrarArticulo" value=${p.codigo}>BORRAR</button>
                </div>
                </div>
@@ -165,6 +167,7 @@ function showArts(art){
             </div>
               <div class="collapse" id="${p.codigo}colapse">
                 <hr>
+                <p>ULTIMA MODIFICACION: ${p.fechaModificacion}</p>
                 <label class="form-check-label" for="titulo">Titulo:</label>              
               <input name="titulo" value="${p.nombre}">
               <label class="form-check-label" for="subsubtitulo">Sub Titulo:</label>
@@ -213,6 +216,7 @@ function showArts(art){
           </div>
             <div class="collapse" id="${p.codigo}colapse">
               <hr>
+              <p>ULTIMA MODIFICACION: ${p.fechaModificacion}</p>
               <label class="form-check-label" for="titulo">Titulo:</label>              
               <input name="titulo" value="${p.nombre}">
               <label class="form-check-label" for="subsubtitulo">Sub Titulo:</label>
@@ -539,14 +543,16 @@ socket.on("actuPreciosAdminRes", result => {
     }
       
 
-      result.forEach(e => {
+      result.forEach(e => {        
         const precio = e.precio.replace(",", ".")
         const precioAnterior = e.precioViejo.replace(",", ".")
+        const precioBaja = Number(precioAnterior) - Number(precio)
+        const precioAlta = Number(precio) - Number(precioAnterior)
         
         if(e.baja){
-          res.innerHTML += `<li style="color:red;">CODIGO: ${e.codigo} PRECIO EN BAJA: ${e.precio} PRECIO ANTERIOR: ${e.precioViejo} BAJA DE: ${Number(precioAnterior).toFixed(2) - Number(precio).toFixed(2)}</li>`
+          res.innerHTML += `<li style="color:red;">CODIGO: ${e.codigo} PRECIO EN BAJA: ${e.precio} PRECIO ANTERIOR: ${e.precioViejo} BAJA DE: ${precioBaja.toFixed(2)}</li>`
         }else{        
-          res.innerHTML += `<li>CODIGO: ${e.codigo} NUEVO PRECIO: ${e.precio} AUMENTO: ${Number(precio).toFixed(2) - Number(precioAnterior).toFixed(2)}</li>`
+          res.innerHTML += `<li>CODIGO: ${e.codigo} NUEVO PRECIO: ${e.precio} AUMENTO: ${precioAlta.toFixed(2)}</li>`
         }
       })
 

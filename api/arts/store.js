@@ -53,7 +53,8 @@ const store = {
                     stock: data.stock,
                     nombre: data.nombre,
                     nombre2: data.nombre2,
-                    CantidadDeVenta: data.CantidadDeVenta
+                    CantidadDeVenta: data.CantidadDeVenta,
+                    fechaModificacion: data.fechaModificacion
                 }},
                 { new: true });
 

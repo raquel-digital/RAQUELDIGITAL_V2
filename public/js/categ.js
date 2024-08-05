@@ -138,16 +138,53 @@ document.addEventListener('DOMContentLoaded', () => {
         if(data.succes){ 
           mostrador.innerHTML = ""
           document.querySelector("main h1").textContent = data.categ
-          mostradorDeArticulos = data.result.sort(function (a, b) {
-            if (a.id > b.id) {
+          
+          //OLD ordenar por ID
+          // mostradorDeArticulos = data.result.sort(function (a, b) {
+          //   if (a.id > b.id) {
+          //     return 1;
+          //   }
+          //   if (a.id < b.id) {
+          //     return -1;
+          //   }            
+          //   return 0;
+          // }).reverse();
+          
+          
+          mostradorDeArticulos = data.result.sort((a, b) => {
+            const fechaA = a.fechaModificacion.split(" ")
+            const fechaB = b.fechaModificacion.split(" ")
+
+            const dateA = fechaA[0].split('/');
+            const dateB = fechaB[0].split('/');
+            const comaA = dateA[2].split(",")
+            const comaB = dateB[2].split(",")
+            const añoA = Number(comaA[0]) 
+            const añoB = Number(comaB[0])
+
+            //año
+            if (añoA > añoB) {
               return 1;
             }
-            if (a.id < b.id) {
+            if (añoA < añoB) {
               return -1;
-            }            
-            return 0;
+            } 
+            // //mes  
+            if (dateA[1] > dateB[1]) {
+              return 1;
+            }
+            if (dateA[1] < dateB[1]) {
+              return -1;
+            }  
+            // //dia
+            if (dateA[0] > dateB[0]) {
+              return 1;
+            }
+            if (dateA[0] < dateB[0]) {
+              return -1;
+            }    
+            return 0   
           }).reverse();
-
           
           categOrganizador(data.categ);
 

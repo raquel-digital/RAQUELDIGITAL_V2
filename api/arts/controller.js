@@ -17,23 +17,24 @@ controller = {
                     dateId.id = dateId.id + i;
                     i++;
                     a.id = dateId.id;
+
                     //console.log(a.codigo, dateId.id)
-                    const split = dateId.fechaModificacion.split(" ");
-                    const splitPuntos = split[1].split(":")
-                    splitPuntos[2] = parseInt(splitPuntos[2]) + 1
-                    split[1] = splitPuntos.join(":")
-                    dateId.fechaModificacion = split.join(" ")                    
-                    a.fechaModificacion =  dateId.fechaModificacion;
+                    // const split = dateId.fechaModificacion.split(" ");
+                    // const splitPuntos = split[1].split(":")
+                    // splitPuntos[2] = parseInt(splitPuntos[2]) + 1
+                    // split[1] = splitPuntos.join(":")
+                    // dateId.fechaModificacion = split.join(" ")                    
+                    // a.fechaModificacion =  dateId.fechaModificacion;
+
                     const date = new Date();
-                    a.fechaDeIngreso = date.toLocaleString;
+                    const fecha = date.toLocaleString();
+                    const fechaSplit = fecha.split(",") 
+                    a.fechaDeIngreso = fechaSplit[0]
+                    a.fechaModificacion = fechaSplit[0]
                     if(!a.stock) {
                         a.stock = 10;
                     }
-                    a.imgActualizada  = true;
-                    //****a mano****//
-                        //a.mostrar = false
-                        //a.id = ids;
-                    //*****//
+                    a.imgActualizada  = true;                    
                     const ingreso = await store.ingresar(a);
                     result.push(ingreso);
                 })();
@@ -71,6 +72,8 @@ controller = {
                 result = await store.updateColor(e);                
                 arrayRes.push(result);
             }else{
+                const date = require("../../utils/fecha")
+                e.fechaModificacion = date()
                 result = await store.update(e);
                 arrayRes.push(result);
             }
