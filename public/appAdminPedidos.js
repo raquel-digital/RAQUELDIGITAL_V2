@@ -805,8 +805,10 @@ function printPagePreview(i, pedido, cliente){
     totalPedido += total    
   })
   if(cliente.tipoDeEnvio){
+    const total = Number(totalPedido)
+    const totalMasEnvio = cliente.tipoDeEnvio.Costo + total
     document.querySelector(".total-compra-final").innerHTML = `
-    <th>Total: ${totalPedido.toFixed(2)}</th> <th>Total Mas Envío: ${totalPedido.toFixed(2) + cliente.tipoDeEnvio.Costo}</th>
+    <th>Total: ${totalPedido.toFixed(2)}</th> <th>Total Mas Envío: ${totalMasEnvio.toFixed(2)}</th>
     `
   }else{
     document.querySelector(".total-compra-final").innerHTML = `
@@ -826,6 +828,8 @@ function printPagePreview(i, pedido, cliente){
       copyToClipboard(obj)
     }
   })
+
+  console.log(cliente.tipoDeEnvio)
 }
 
 function printPage(pedido, cliente){
@@ -866,7 +870,6 @@ function copyToClipboard(inputElement) {
 //TABLA IMPRIMIR CON PRECIOS SIN IVA
 
 function printPagePreviewSinIVA(pedido, cliente){
-  console.log(pedido, cliente)
   let totalPedido = 0
   let envio = " "
   if(cliente.tipoDeEnvio){
@@ -931,21 +934,21 @@ function printPagePreviewSinIVA(pedido, cliente){
     <td>${e.cantidad}</td>
     <td>${total}</td>
     `;
-    // <td>en stock: </td>
-    // <td>falta: </td>
+    
     totalPedido += total    
   })
   if(cliente.tipoDeEnvio){
+    const total = Number(totalPedido)
+    const totalMasEnvio = cliente.tipoDeEnvio.Costo + total
     document.querySelector(".total-compra-final").innerHTML = `
-    <th>Total: ${totalPedido}</th> <th>Total Mas Envío: ${totalPedido + cliente.tipoDeEnvio.Costo}</th>
+    <th>Total: ${totalPedido.toFixed(2)}</th> <th>Total Mas Envío: ${totalMasEnvio.toFixed(2)}</th>
     `
   }else{
     document.querySelector(".total-compra-final").innerHTML = `
-    <th>Total: ${totalPedido}</th>
+    <th>Total: ${totalPedido.toFixed(2)}</th>
     `
   }
   
-  document.querySelector(".total-compra-final").innerHTML = ""
   window.print()
   printPagePreview(pedido, cliente)
 }
