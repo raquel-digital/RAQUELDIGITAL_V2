@@ -727,6 +727,7 @@ function searchResultTable(res){
 }
 
 function printPagePreview(i, pedido, cliente){
+  console.log(i,pedido,cliente)
   if(i){
     const rescate = document.getElementById("res-busqueda").value
     const res = JSON.parse(rescate)
@@ -736,10 +737,17 @@ function printPagePreview(i, pedido, cliente){
   let totalPedido = 0
   let envio = " "
   if(cliente.tipoDeEnvio){
-    envio = `<div class="row"><b>Tipo de envío: ${cliente.retira} Forma de envío: ${cliente.tipoDeEnvio.forma_de_envio}</b></div>
+    if(cliente.retira == "Por Expreso"){
+      envio = `<div class="row"><b>Tipo de envío: ${cliente.retira} Forma de envío: ${cliente.tipoDeEnvio.forma_de_envio} Por transporte: ${cliente.tipoDeEnvio.Empresa}</b></div>
+    <div class="row"><b>Calle: ${cliente.tipoDeEnvio.Calle} Altura: ${cliente.tipoDeEnvio.Altura} Piso: ${cliente.tipoDeEnvio.piso_departamento} Horario de entrega: ${cliente.tipoDeEnvio.Horario_Entrega}</b></div>
+    <div class="row"><b>Localidad: ${cliente.tipoDeEnvio.Localidad} Provincia: ${cliente.tipoDeEnvio.Provincia}</b></div>
+    <div class="row"><b>CP: ${cliente.tipoDeEnvio.CP} Costo Envío: ${cliente.tipoDeEnvio.Costo} DNI: ${cliente.tipoDeEnvio.DNI}</b></div>` 
+    }else{
+      envio = `<div class="row"><b>Tipo de envío: ${cliente.retira} Forma de envío: ${cliente.tipoDeEnvio.forma_de_envio}</b></div>
     <div class="row"><b>Calle: ${cliente.tipoDeEnvio.Calle} Altura: ${cliente.tipoDeEnvio.Altura} Piso: ${cliente.tipoDeEnvio.piso_departamento} Horario de entrega: ${cliente.tipoDeEnvio.Horario_Entrega}</b></div>
     <div class="row"><b>Localidad: ${cliente.tipoDeEnvio.Localidad} Provincia: ${cliente.tipoDeEnvio.Provincia}</b></div>
     <div class="row"><b>CP: ${cliente.tipoDeEnvio.CP} Costo Envío: ${cliente.tipoDeEnvio.Costo}</b></div>` 
+    }
   }else{
     envio = `<div class="row"><b>Tipo de envío: ${cliente.retira}</b></div>`
   }
