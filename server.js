@@ -88,7 +88,8 @@ io.on('connect', socket => {
             await controller.ingresar(data)
 
             //enviamos mail
-            await mailEmit(data);
+            //await mailEmit(data);
+            loadCategs()//actualiza allArts
         })()    
     })    
     
@@ -319,6 +320,20 @@ io.on('connect', socket => {
                 socket.emit("ingresar-presu-res", data)
             }
         })
+    })
+
+    //CHEQUEAR STOCK MERCADERIA
+    socket.on("checkStock", () => {
+        delete require.cache[require.resolve("./public/system/dir/allArts.json")];
+        const arts = require("./public/system/dir/allArts.json")
+        socket.emit("checkStock-res", arts)
+    })
+    socket.on("reponer-en-stock", send => {        
+        (async () => {
+            const res = await controller.actuStock(send)
+            loadCategs()//actualiza el allArts.json
+            socket.emit("reponer-en-stock-res", res)
+        })()
     })
 })
 

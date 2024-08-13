@@ -296,6 +296,15 @@ controller = {
         }
         return res
     },
+    actuStock: async function (send){        
+      const res = await store.updateStock(send)
+      return res
+    },
+    stockControl: async function (compra){        
+        compra.forEach(c => {
+            store.stockControl(c)
+        })
+    }
 }
 
 module.exports = controller;

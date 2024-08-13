@@ -121,7 +121,7 @@ function showArts(art){
               <label class="form-check-label" for="descripcion">Descripción:</label>
               <input name="descripcion" value="${p.descripcion}">
               <label class="form-check-label" for="stock">Stock:</label>
-              <input name="stock" value="${p.stock}">
+              <input type="number" name="stock" value="${p.stock}">
               <label class="form-check-label" for="stock">CANTIDAD DE VENTA:</label>
               <input name="stock" value="${p.CantidadDeVenta}">
               <label class="form-check-label" for="codigo">Codigo:</label>
@@ -175,7 +175,7 @@ function showArts(art){
               <label class="form-check-label" for="descripcion">Descripción:</label>
               <input name="descripcion" value="${p.descripcion}">
               <label class="form-check-label" for="stock">Stock:</label>
-              <input name="stock" value="${p.stock}">
+              <input type="number" name="stock" value="${p.stock}">
               <label class="form-check-label" for="codigo">Codigo:</label>
               <input name="codigo" value="${p.codigo}">
                 <button class="btn btn-danger borrarArticulo" value=${p.codigo}>BORRAR</button>
@@ -224,7 +224,7 @@ function showArts(art){
               <label class="form-check-label" for="descripcion">Descripción:</label>
               <input name="descripcion" value="${p.descripcion}">
               <label class="form-check-label" for="stock">Stock:</label>
-              <input name="stock" value="${p.stock}">
+              <input type="number" name="stock" value="${p.stock}">
               <label class="form-check-label" for="cantidad-venta">C/venta:</label>
               <input name="cantidad-venta" value="${p.CantidadDeVenta}">
               <label class="form-check-label" for="codigo">Codigo:</label>
@@ -405,7 +405,16 @@ mostrador.addEventListener("click", e => {
         const cambioCodigo = mouse.parentElement.children[1].children[3].children[12].value;
         const subtitulo = mouse.parentElement.children[1].children[3].children[4].value;
         const cantVenta = mouse.parentElement.children[1].children[3].children[10].value
-        const stock = mouse.parentElement.children[1].children[3].children[8].value
+        
+        let stock = Number(mouse.parentElement.children[1].children[3].children[9].value) 
+        
+        if(!mostrar){
+          stock = 0
+        }
+
+        if(mostrar && stock <= 0){
+          stock = 10
+        }
 
         artChange = { 
           codigo: codigo, 
@@ -414,13 +423,12 @@ mostrador.addEventListener("click", e => {
           imagendetalle: img, 
           descripcion: decr, 
           categorias: categ, 
-          stock:  stock == "null" ? 10 : parseInt(stock), 
+          stock: stock,
           cambioCodigo: cambioCodigo, 
           nombre: titulo, 
           nombre2: subtitulo, 
           CantidadDeVenta: cantVenta
         };
-        console.log(artChange, cantVenta)
       }
       
       cambiosArt(artChange);
@@ -579,9 +587,10 @@ barraHerramientas.addEventListener("click", e => {
       `        
     }
     if(barraHerramientas.selectedIndex == 2){
-      mostrador.innerHTML = `<div class="display"><button type="button" class="btn btn-success" onclick=start()>START</button><button type="button" class="btn btn-danger" onclick=stop()>STOP</button> </div>`
-      start();
-      checkOrders();   
+      // mostrador.innerHTML = `<div class="display"><button type="button" class="btn btn-success" onclick=start()>START</button><button type="button" class="btn btn-danger" onclick=stop()>STOP</button> </div>`
+      // start();
+      // checkOrders(); 
+      socket.emit("checkStock")   
     }
     if(barraHerramientas.selectedIndex == 3){      
       mostrador.innerHTML = `
@@ -1071,7 +1080,7 @@ function cartaColoresShow(art){
                <div class="collapse" id="${p.codigo}colapse">
                  <hr>
                  <input value="${art.descripcion}">
-                 <input value="${p.stock}">
+                 <input type="number" value="${p.stock}">
                  <button class="btn btn-danger borrarArticulo" value=${p.codigo}>BORRAR</button>
                </div>
                </div>
@@ -1432,7 +1441,75 @@ function writeTable(art, code, msg){
   writeTable(data.allArts, data.pedido, data.tipo)
  })
 
+ socket.on("checkStock-res", data => {
+  console.log(data)
+  mostrador.innerHTML = `<h3>Articulos en falta de stock:</h3>`  
+  mostrador.innerHTML += `<table class="table table-striped table-hover">
+            <thead>
+               <tr>
+                   <th>imagen</th>
+                   <th>codigo</th>
+                   <th>titulo</th>
+                   <th>subtitulo</th>
+                   <th>stock</th>
+                   <th>mostrar</th>
+                   <th>checkbox</th>
+               </tr>
+              </thead>
+              <tbody id="tableStock" class="resumen-check-out">
+                
+              </tbody>
+              <tfoot >
+                <tr id="footer-stock">
+                  
+                </tr>
+          </tfoot>
+        </table>`
+  tableStock(data)
+  //data.forEach(e => {
+    // if(e.stock <= 0){      
+    //   mostrador.innerHTML += `<div class="arts"><li>${e.codigo} ${e.fechaModificacion} MOSTRAR: ${e.mostrar} STOCK: ${e.stock} <label class="form-check-label" for="${e.codigo}">HAY STOCK ||   </label><input type="checkbox" name="${e.codigo}" class="check-mostrar"></li></div>`
+    // }
+  //})
 
+ }) 
+
+ function checkStock(){
+  const inputs = document.querySelectorAll("input")
+  const send = []
+  inputs.forEach(e => {    
+    if(e.checked){
+      send.push(e.name)
+    }
+  })
+  socket.emit("reponer-en-stock", send)
+ }
+
+ socket.on("reponer-en-stock-res", res => {
+    console.log("actu stock", res) 
+    showArts(res)
+ })
+
+ function tableStock(data){  
+   console.log(data)
+    const tableStock = document.getElementById("tableStock")  
+
+    data.forEach(e => {
+      if(e.stock <= 0){
+        tableStock.innerHTML += `
+        <td><img src="./img/${e.categorias}/${e.imagendetalle}" alt="imagen table" widht="60px" height="60px"></td>
+        <td>${e.codigo}</td>
+        <td>${e.nombre}<td>
+        <td>${e.nombre2}</td>
+        <td>${e.stock}</td>
+        <td>fecha modificacion: ${e.fechaModificacion}</td>
+        <td>Hay stock <input type="checkbox" name="${e.codigo}" class="check-mostrar"></td>
+        `; 
+      }     
+    })
+    document.getElementById("footer-stock").innerHTML = `<button onclick="checkStock()">ENVIAR</button>` 
+   
+}
 
 
 

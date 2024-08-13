@@ -262,6 +262,55 @@ const store = {
           return false
         }
       },
+      updateStock: async function (art) {
+        try{
+            
+            const res = []
+            for(a of art){
+                const upd = await model.findOneAndUpdate({
+                    codigo: a
+                },
+                {
+                    $set: {
+                        mostrar: true,
+                        stock: 10,                    
+                    }
+                },
+                { returnDocument: 'after' } // Opción para devolver el documento actualizado
+            )
+                
+                res.push(upd)
+            }
+            return res
+        }catch(err){
+            console.log("[ ERROR EN updateStock] " + err) 
+        }
+      },
+      stockControl: async function (art) {
+        
+        // Paso 1: Restar el valor
+         const resta = art.cantidad * -1
+         console.log("ART cantidad",art.cantidad, "resta", resta)
+        const updatedDocument = await model.findOneAndUpdate(
+            { codigo: art.codigo },            // Filtro para encontrar el documento
+            { $inc: { stock: resta } },        // Restar 5 al stock
+            { returnDocument: 'after' }     // Devolver el documento actualizado
+        );
+        
+        // // Paso 2: Evaluar el resultado y realizar la acción correspondiente
+        if (updatedDocument.stock <= 0) {
+            await model.findOneAndUpdate(
+                { codigo: art.codigo },
+                {
+                    $set: {
+                        mostrar: false
+                    }
+                }
+            )
+        } 
+        
+        return
+      },
  }
  
  module.exports = store;
