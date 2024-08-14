@@ -154,13 +154,24 @@ document.addEventListener('DOMContentLoaded', () => {
           mostradorDeArticulos = data.result.sort((a, b) => {
             const fechaA = a.fechaModificacion.split(" ")
             const fechaB = b.fechaModificacion.split(" ")
+            
 
+            if(fechaA[0] == "" || fechaB[0] == ""){        
+              return
+            }
+            
             const dateA = fechaA[0].split('/');
             const dateB = fechaB[0].split('/');
             const comaA = dateA[2].split(",")
             const comaB = dateB[2].split(",")
             const añoA = Number(comaA[0]) 
-            const añoB = Number(comaB[0])
+            const añoB = Number(comaB[0])      
+
+            const mesA = Number(dateA[0])
+            const mesB = Number(dateB[0])
+
+            const diaA = Number(dateA[1])
+            const diaB = Number(dateB[1])
 
             //año
             if (añoA > añoB) {
@@ -170,20 +181,20 @@ document.addEventListener('DOMContentLoaded', () => {
               return -1;
             } 
             // //mes  
-            if (dateA[1] > dateB[1]) {
+            if (mesA > mesB) {
               return 1;
             }
-            if (dateA[1] < dateB[1]) {
+            if (mesA < mesB) {
               return -1;
             }  
             // //dia
-            if (dateA[0] > dateB[0]) {
+            if (diaA > diaB) {
               return 1;
             }
-            if (dateA[0] < dateB[0]) {
+            if (diaA < diaB) {
               return -1;
             }    
-            return 0   
+            return 0
           }).reverse();
           
           categOrganizador(data.categ);

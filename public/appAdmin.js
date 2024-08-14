@@ -1491,10 +1491,53 @@ function writeTable(art, code, msg){
  })
 
  function tableStock(data){  
-   console.log(data)
+    console.log(data)
     const tableStock = document.getElementById("tableStock")  
 
-    data.forEach(e => {
+    const ordenadoFecha = data.sort((a, b) => {
+      
+      const fechaA = a.fechaModificacion.split(" ")
+        const fechaB = b.fechaModificacion.split(" ")
+        
+        if(fechaA[0] == "" || fechaB[0] == ""){        
+          return
+        }
+        
+        const dateA = fechaA[0].split('/');
+        const dateB = fechaB[0].split('/');
+        const comaA = dateA[2].split(",")
+        const comaB = dateB[2].split(",")
+        const añoA = Number(comaA[0]) 
+        const añoB = Number(comaB[0])     
+        const mesA = Number(dateA[0])
+        const mesB = Number(dateB[0])
+        const diaA = Number(dateA[1])
+        const diaB = Number(dateB[1])
+        //año
+        if (añoA > añoB) {
+          return 1;
+        }
+        if (añoA < añoB) {
+          return -1;
+        } 
+        // //mes  
+        if (mesA > mesB) {
+          return 1;
+        }
+        if (mesA < mesB) {
+          return -1;
+        }  
+        // //dia
+        if (diaA > diaB) {
+          return 1;
+        }
+        if (diaA < diaB) {
+          return -1;
+        }    
+        return 0   
+    }).reverse();
+
+    ordenadoFecha.forEach(e => {
       if(e.stock <= 0){
         tableStock.innerHTML += `
         <td><img src="./img/${e.categorias}/${e.imagendetalle}" alt="imagen table" widht="60px" height="60px"></td>
