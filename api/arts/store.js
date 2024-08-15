@@ -35,7 +35,7 @@ const store = {
                         stock: data.stock,
                         CantidadDeVenta: data.CantidadDeVenta
                     }});
-                    console.log(data)
+                    
             })()
         })
     },    
@@ -115,7 +115,7 @@ const store = {
                     }
                 }
             )
-            console.log("restltado!!!",res)
+           
             return { status: true};
         }catch(err){
             return { status: false, message: "Error al actualizar color " + data.codigo, error: err }; 
@@ -290,7 +290,7 @@ const store = {
         
         // Paso 1: Restar el valor
          const resta = art.cantidad * -1
-         console.log("ART cantidad",art.cantidad, "resta", resta)
+        
         const updatedDocument = await model.findOneAndUpdate(
             { codigo: art.codigo },            // Filtro para encontrar el documento
             { $inc: { stock: resta } },        // Restar 5 al stock
