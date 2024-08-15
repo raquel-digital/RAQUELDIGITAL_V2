@@ -1539,12 +1539,14 @@ function writeTable(art, code, msg){
 
     ordenadoFecha.forEach(e => {
       if(e.stock <= 0){
+        const estado = e.mostrar ? "Visible" : "Oculto"
         tableStock.innerHTML += `
         <td><img src="./img/${e.categorias}/${e.imagendetalle}" alt="imagen table" widht="60px" height="60px"></td>
         <td>${e.codigo}</td>
         <td>${e.nombre}<td>
         <td>${e.nombre2}</td>
         <td>${e.stock}</td>
+        <td>${estado}</td>
         <td>fecha modificacion: ${e.fechaModificacion}</td>
         <td>Hay stock <input type="checkbox" name="${e.codigo}" class="check-mostrar"></td>
         `; 

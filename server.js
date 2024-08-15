@@ -88,7 +88,7 @@ io.on('connect', socket => {
             await controller.ingresar(data)
 
             //enviamos mail
-            //await mailEmit(data);
+            await mailEmit(data);
             loadCategs()//actualiza allArts
         })()    
     })    
