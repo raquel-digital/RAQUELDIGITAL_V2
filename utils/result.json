@@ -1,0 +1,248 @@
+[
+  {
+    "_id": "62e83030eaf95794b4596fe6",
+    "codigo": "CI5000",
+    "categorias": "CI",
+    "nombre": "CINTA BIES RASO 20MM X 25 MTS",
+    "nombre2": "Cinta Bies De Raso 20mm ",
+    "CantidadDeVenta": "Presentacion: por rollo 25 mts ",
+    "imagendetalle": "CI5000-CARTA.jpg",
+    "precio": "7291,90",
+    "descripcion": "Cinta albies, contiene un dobladillo ideal para cubrir los bordes de la costura. Tiene un precio un poco mas elevado ya que es importada. Medida: 20mm de alto Material: raso",
+    "stock": 10,
+    "tags": "bies ",
+    "fechaDeIngreso": "1-8-2022",
+    "fechaModificacion": "6/8/2022, 7:07:44 PM ",
+    "fechaUltimaVenta": "",
+    "imgActualizada": true,
+    "mostrar": true,
+    "id": 9220,
+    "__v": 0,
+    "colores": [
+      {
+        "codigo": "CI5000-07",
+        "color": "ci5000_07.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0c7"
+      },
+      {
+        "codigo": "CI5000-02",
+        "color": "ci5000_02.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0c5"
+      },
+      {
+        "codigo": "CI5000-09",
+        "color": "ci5000_09.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0cd"
+      },
+      {
+        "codigo": "CI5000-05",
+        "color": "ci5000_05.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0cf"
+      },
+      {
+        "codigo": "CI5000-999",
+        "color": "ci5000_01.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0d1"
+      },
+      {
+        "codigo": "CI5000-06",
+        "color": "ci5000_06.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0d3"
+      },
+      {
+        "codigo": "CI5000-20",
+        "color": "ci5000_20.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0d5"
+      },
+      {
+        "codigo": "CI5000-23",
+        "color": "ci5000_23.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0d7"
+      },
+      {
+        "codigo": "CI5000-08",
+        "color": "ci5000_08.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0c9"
+      },
+      {
+        "codigo": "CI5000-04",
+        "color": "ci5000_04.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0cb"
+      },
+      {
+        "codigo": "CI5000-31",
+        "color": "ci5000_31.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0dd"
+      },
+      {
+        "codigo": "CI5000-29",
+        "color": "ci5000_29.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0df"
+      },
+      {
+        "codigo": "CI5000-15",
+        "color": "ci5000_15.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0e3"
+      },
+      {
+        "codigo": "CI5000-16",
+        "color": "ci5000_16.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0e1"
+      },
+      {
+        "codigo": "CI5000-30",
+        "color": "ci5000_30.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0e5"
+      },
+      {
+        "codigo": "CI5000-18",
+        "color": "ci5000_18.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0eb"
+      },
+      {
+        "codigo": "CI5000-17",
+        "color": "ci5000_17.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0e7"
+      },
+      {
+        "codigo": "CI5000-25",
+        "color": "ci5000_25.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0e9"
+      },
+      {
+        "codigo": "CI5000-19",
+        "color": "ci5000_19.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0ed"
+      },
+      {
+        "codigo": "CI5000-22",
+        "color": "ci5000_22.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0f3"
+      },
+      {
+        "codigo": "CI5000-32",
+        "color": "ci5000_32.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0f1"
+      },
+      {
+        "codigo": "CI5000-21",
+        "color": "ci5000_21.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0ef"
+      },
+      {
+        "codigo": "CI5000-24",
+        "color": "ci5000_24.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0db"
+      },
+      {
+        "codigo": "CI5000-11",
+        "color": "ci5000_11.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0d9"
+      },
+      {
+        "codigo": "CI5000-03",
+        "color": "ci5000_03.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0fd"
+      },
+      {
+        "codigo": "CI5000-27",
+        "color": "ci5000_27.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0fb"
+      },
+      {
+        "codigo": "CI5000-14",
+        "color": "ci5000_14.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0f9"
+      },
+      {
+        "codigo": "CI5000-28",
+        "color": "ci5000_28.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0ff"
+      },
+      {
+        "codigo": "CI5000-13",
+        "color": "ci5000_13.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d101"
+      },
+      {
+        "codigo": "CI5000-12",
+        "color": "ci5000_12.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d103"
+      },
+      {
+        "codigo": "CI5000-10",
+        "color": "ci5000_10.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0f5"
+      },
+      {
+        "codigo": "CI5000-26",
+        "color": "ci5000_26.jpg",
+        "stock": 10,
+        "mostrar": true,
+        "_id": "646374cda5e7e19134e9d0f7"
+      }
+    ]
+  }
+]

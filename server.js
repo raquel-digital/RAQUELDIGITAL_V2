@@ -335,6 +335,11 @@ io.on('connect', socket => {
             socket.emit("reponer-en-stock-res", res)
         })()
     })
+    //CONSULTAS DE CLIENTES
+    socket.on("consulta-cliente", data => {
+        console.log(data)
+        mailConsulta(data)
+    })
 })
 
 
@@ -355,8 +360,38 @@ const db = require("./db");//conexion con mongo
 
 db(process.env.mongo);
 
-async function mailEmit(data){
+async function mailConsulta(data){
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {            
+            user: requer.mail,
+            pass: requer.pmail
+        },
+        tls: {
+            rejectUnauthorized: false//importante para que no rebote la conexccion
+        }
+    })
+    const mailOptions = {
+        from: 'SITIO WEB',
+        to: 'raqueldigitalweb@gmail.com',            
+        subject: 'Consulta de cliente',
+        html: ` <h1> CONSULTA DE CLIENTE</h1>
+                <p>CONTACTO: ${data.contacto}</p>  
+                <p>MENSAGE: ${data.consulta}<p>
+        `
+    }
+    transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+            console.log(err)
+            return err
+        }
+        console.log("[ MAIL ENVIADO EXITOSAMENTE ]")
+    })
+    return
+}
 
+async function mailEmit(data){
+    
     const datos = data;
     let compra;
 

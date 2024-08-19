@@ -509,7 +509,7 @@ function actualizarPrecioCarrito(codigo, cant){
           imagen = "/img/" + splitImg[2] + "/" + e.color          
         }
         
-                modalContenidoColor.innerHTML += `
+        modalContenidoColor.innerHTML += `
         <div class="card-articulo">
         <div id="modal-color${e.codigo}" class="contenedor-img-articulo img-color ${imagen} ${e.codigo}" style="background-image:url(${imagen});"></div>
         <div class="color-info">
@@ -551,7 +551,6 @@ function actualizarPrecioCarrito(codigo, cant){
 
   function alertModal(txt, txt2, confirmar, cancelar){
     document.getElementById("mensaje-1").textContent = txt
-
     if(txt2){
       document.getElementById("mensaje-2").textContent = txt2
     }
@@ -571,6 +570,61 @@ function actualizarPrecioCarrito(codigo, cant){
     // Comparar los números
     return numeroA - numeroB;
 }
+
+document.getElementById("consultas-clientes").addEventListener("click", () => {
+  document.querySelector("main h1").innerHTML = ""
+  const res = document.querySelector("#resultado-router")
+  const barraTags = document.querySelector(".filtros")
+  if(res || barraTags){
+    res.innerHTML = ""
+    barraTags.innerHTML = ""
+  }
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // Para un desplazamiento suave
+  });
+  
+  mostrador.innerHTML = `
+    <h1>Aqui podes dejarnos tus consultas o sugerencias para mejorar el sitio</h1>
+    <textarea name="" id="pedidoObservaciones" cols="100" rows="12"></textarea>
+    
+    <div id="0" class="card-preg-frec">
+        <h3 style="display: inline-block; margin-right: 10px;">Podes dejarnos un mail o whatsapp por si queres que nos pongamos en contacto</h3>
+        <input id="contacto-consultas" type="text" style="display: inline-block;margin-right: 10px;">
+               
+    </div>
+</div>
+    </div>
+    <div>
+      <button id="boton-envio-consulta" class="btn-primario">Enviar</button>
+    </div>    
+    `
+    document.getElementById("boton-envio-consulta").addEventListener("click", () => {
+      const consulta = document.getElementById("pedidoObservaciones").value
+      const contacto = document.getElementById("contacto-consultas").value
+      const confirm = document.getElementById("custom-modal")
+      if(contacto){
+        alertModal("Gracias por tu mensaje", "nos pondremos en contacto al " + contacto, "Ok", "Cancelar")
+      }else{
+        alertModal("Gracias por tu mensaje", "", "Ok", "Cancelar")
+      }
+      confirm.style.display = "block" 
+      confirm.addEventListener("click", event => {
+           if(event.target.textContent == "Ok"){
+            const data = {
+              consulta: consulta,
+              contacto: contacto
+            }            
+            socket.emit("consulta-cliente", data)
+            confirm.style.display = "none" 
+            window.location.href = "https://raqueldigital.herokuapp.com/";
+          } 
+          if(event.target.textContent == "Cancelar" || event.target.classList.contains("cruz")){
+            confirm.style.display = "none" 
+          }
+        }) 
+    })
+})
 
 
 

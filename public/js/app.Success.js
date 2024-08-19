@@ -29,7 +29,7 @@ if(datosCliente.sys.checked.efectivo){
 var resumenCheckOut = document.querySelector(".resumen-check-out");
 
 let totalCompra = 0;
-table(); 
+//table(); 
 
 function table(){
     if(Array.isArray(compra)){
@@ -137,3 +137,44 @@ datosCliente.compra = resumenCheckOut.innerHTML;
 
 //socket.emit("mail", datosCliente)
 localStorage.removeItem("carrito");
+
+document.getElementById("consultas").innerHTML = `
+    <h1>Aqui podes dejarnos tus consultas o sugerencias para mejorar el sitio</h1>
+    <div class="container   
+ mt-5">
+        <h2>¡Déjanos tu opinión!</h2>
+        
+            <div class="mb-3">
+                <label for="sugerencias" class="form-label">Tus sugerencias:</label>
+                <textarea class="form-control" id="pedidoObservaciones" rows="5"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="contacto" class="form-label">Contacto (opcional):</label>
+                <input type="text" class="form-control" id="contacto-consultas">
+            </div>
+            <button id="boton-envio-consulta" class="btn btn-primary">Enviar</button>
+        
+    </div>
+    `
+    document.getElementById("boton-envio-consulta").addEventListener("click", () => {
+      const consulta = document.getElementById("pedidoObservaciones").value
+      const contacto = document.getElementById("contacto-consultas").value
+      const confirm = document.getElementById("custom-modal")
+      
+      if(contacto){
+        alert("Gracias por tu mensaje nos pondremos en contacto al " + contacto)
+      }else{
+        alert("Gracias por tu mensaje")
+      }
+      const data = {
+        consulta: consulta,
+        contacto: contacto
+      } 
+                
+      socket.emit("consulta-cliente", data)
+      window.location.href = "https://raqueldigital.herokuapp.com/"; 
+            
+})
+  
+
+    

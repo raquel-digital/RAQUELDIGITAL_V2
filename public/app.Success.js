@@ -135,3 +135,45 @@ datosCliente.compra = resumenCheckOut.innerHTML;
 
 //socket.emit("mail", datosCliente)
 localStorage.removeItem("carrito");
+
+
+document.getElementById("consultas").innerHTML = `
+    <h1>Aqui podes dejarnos tus consultas o sugerencias para mejorar el sitio</h1>
+    <textarea name="" id="pedidoObservaciones" cols="100" rows="12"></textarea>
+    
+    <div id="0" class="card-preg-frec">
+        <h3 style="display: inline-block; margin-right: 10px;">Podes dejarnos un mail o whatsapp por si queres que nos pongamos en contacto</h3>
+        <input id="contacto-consultas" type="text" style="display: inline-block;margin-right: 10px;">
+               
+    </div>
+</div>
+    </div>
+    <div>
+      <button id="boton-envio-consulta" class="btn-primario">Enviar</button>
+    </div>    
+    `
+    document.getElementById("boton-envio-consulta").addEventListener("click", () => {
+      const consulta = document.getElementById("pedidoObservaciones").value
+      const contacto = document.getElementById("contacto-consultas").value
+      const confirm = document.getElementById("custom-modal")
+      if(contacto){
+        alertModal("Gracias por tu mensaje", "nos pondremos en contacto al " + contacto, "Ok", "Cancelar")
+      }else{
+        alertModal("Gracias por tu mensaje", "", "Ok", "Cancelar")
+      }
+      confirm.style.display = "block" 
+      confirm.addEventListener("click", event => {
+           if(event.target.textContent == "Ok"){
+            const data = {
+              consulta: consulta,
+              contacto: contacto
+            }            
+            socket.emit("consulta-cliente", data)
+            confirm.style.display = "none" 
+            window.redire
+          } 
+          if(event.target.textContent == "Cancelar" || event.target.classList.contains("cruz")){
+            confirm.style.display = "none" 
+          }
+        }) 
+    })

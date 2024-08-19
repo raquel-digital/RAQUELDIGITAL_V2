@@ -298,6 +298,7 @@ const store = {
         );
         
         // // Paso 2: Evaluar el resultado y realizar la acción correspondiente
+        //OCULTAR ARTICULO SI EL STOCK ES MENOR A CERO
         if (updatedDocument.stock <= 0) {
             await model.findOneAndUpdate(
                 { codigo: art.codigo },
