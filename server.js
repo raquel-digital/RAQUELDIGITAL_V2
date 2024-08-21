@@ -21,6 +21,10 @@ const loadCategs = require("./utils/tagsGenerator")
 
 const nodemailer = require('nodemailer');
 
+if(process.argv[2] === "dev"){
+    console.log("[ MODO DEV NO SE PUEDEN ENVIAR PEDIDOS ]")
+}
+
 const config = {
     authRequired: false,
     auth0Logout: true,
@@ -82,15 +86,21 @@ io.on('connect', socket => {
     
     //CHECK OUT    
     socket.on("mail", data =>{        
-        (async () => {
-            //ingresamos pedido a la base de datos
-            const controller = require("./api/users/controller")
-            await controller.ingresar(data)
+        if(process.argv[2] === "dev"){
+            //modo dev
+            console.log("MODO DEV", data)
+        }else{
+            //modo produccion        
+            (async () => {
+                //ingresamos pedido a la base de datos
+                const controller = require("./api/users/controller")
+                await controller.ingresar(data)
 
-            //enviamos mail
-            await mailEmit(data);
-            loadCategs()//actualiza allArts
-        })()    
+                //enviamos mail
+                await mailEmit(data);
+                loadCategs()//actualiza allArts
+            })()
+        } 
     })    
     
     //ADMIN PEDIDOS
@@ -304,16 +314,6 @@ io.on('connect', socket => {
                     }
                     return 0;
                 });
-
-                // if(data.tipo == "PRESUPUESTO BASICO"){
-                //     fs.writeFileSync(`./public/system/presupuestos/presupuesto-basico.json`, JSON.stringify(data.pedido, null, 2));
-                // }
-                // if(data.tipo == "PRESUPUESTO MEDIANO"){
-                //     fs.writeFileSync(`./public/system/presupuestos/presupuesto-medio.json`, JSON.stringify(data.pedido, null, 2));
-                // }
-                // if(data.tipo == "PRESUPUESTO PREMIUM"){
-                //     fs.writeFileSync(`./public/system/presupuestos/presupuesto-premium.json`, JSON.stringify(data.pedido, null, 2));
-                // }
 
                 const controller = require("./api/presupuesto/constroller")
                 controller.ingresar(data)

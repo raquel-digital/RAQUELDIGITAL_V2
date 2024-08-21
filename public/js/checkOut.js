@@ -614,7 +614,7 @@ function controlDatos(cliente){
   if(cliente.retira == ""){
       return {state: false, message: "Por favor ingrese una forma de envío", redMark: "envio-retiro"};
   }
-  if(cliente.retira == "Por Envio" &&  !cliente.tipoDeEnvio.hasOwnProperty("forma_de_envio")){
+  if(cliente.retira == "Por Envio" &&  !cliente.tipoDeEnvio.hasOwnProperty("forma_de_envio") || cliente.Localidad === "Seleccione su localidad" || cliente.Localidad === "" || cliente.Provincia === "Seleccione Su Provincia"| cliente.Provincia === ""){
       return {state: false, message: "Por favor ingresar provincia, localidad y forma de envío", redMark: "selec-prov-loc"}
   }
   if(cliente.tipoDeEnvio.forma_de_envio == "Moto"){
