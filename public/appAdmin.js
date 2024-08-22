@@ -432,7 +432,7 @@ mostrador.addEventListener("click", e => {
       }
       
       console.log(artChange)
-      //cambiosArt(artChange);
+      cambiosArt(artChange);
       
     } 
     if(mouse.classList.contains("borrarArticulo")){
