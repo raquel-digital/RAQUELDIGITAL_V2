@@ -390,7 +390,7 @@ mostrador.addEventListener("click", e => {
       const img = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[2].value;
       
       const categ = mouse.parentElement.childNodes[3].childNodes[5].childNodes[1].childNodes[5].value;
-      const titulo = mouse.parentElement.children[1].children[3].children[2].value;
+      const titulo = mouse.parentElement.children[1].children[3].children[3].value;
     
       let artChange;
 
@@ -401,10 +401,10 @@ mostrador.addEventListener("click", e => {
         
       }else{
         //ACTUALIZAR ARTICULO COMUN
-        const decr = mouse.parentElement.children[1].children[3].children[6].value
-        const cambioCodigo = mouse.parentElement.children[1].children[3].children[12].value;
-        const subtitulo = mouse.parentElement.children[1].children[3].children[4].value;
-        const cantVenta = mouse.parentElement.children[1].children[3].children[10].value
+        const decr = mouse.parentElement.children[1].children[3].children[7].value
+        const cambioCodigo = mouse.parentElement.children[1].children[3].children[13].value;
+        const subtitulo = mouse.parentElement.children[1].children[3].children[5].value;
+        const cantVenta = mouse.parentElement.children[1].children[3].children[11].value
         
         let stock = Number(mouse.parentElement.children[1].children[3].children[9].value) 
         
@@ -431,7 +431,8 @@ mostrador.addEventListener("click", e => {
         };
       }
       
-      cambiosArt(artChange);
+      console.log(artChange)
+      //cambiosArt(artChange);
       
     } 
     if(mouse.classList.contains("borrarArticulo")){
