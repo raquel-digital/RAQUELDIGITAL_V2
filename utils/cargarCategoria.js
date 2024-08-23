@@ -70,7 +70,7 @@ async function loadCateg(query){
       }
       if(categ == "cierres"){        
        //const result = await filtrar("CE");
-       const categFilter = ["CE"]
+       const categFilter = ["CE","TE/TIRA-CIERRES"]
        const result = arts.filter(element => categFilter.includes(element.categorias));
        if(result.length > 0){
         return { succes: true, result: result } 
