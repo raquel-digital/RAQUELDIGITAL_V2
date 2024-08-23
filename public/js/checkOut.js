@@ -81,7 +81,7 @@ await fetch('../system/envios/provincias.json')
         provincia: e.nombre,
         localidades: []
       }    
-      arg.localidades.push(`<option value="Seleccione su localidad">Seleccione su localidad</option>`);
+      arg.localidades.push(`<option value="Seleccione su localidad" disabled selected>Seleccione su localidad</option>`);
       e.ciudades.forEach(c => {
         arg.localidades.push(`<option value="${c.nombre}">${c.nombre}</option>`);
       })
