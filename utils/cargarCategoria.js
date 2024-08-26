@@ -87,7 +87,7 @@ async function loadCateg(query){
       }
       if(categ == "cordones"){        
        //const result = await filtrar(["CD","TE"]);
-       const categFilter = ["CD","TE"]
+       const categFilter = ["CD","TE", "TE/TIRA-CIERRES"]
        const result = arts.filter(element => categFilter.includes(element.categorias));
        if(result.length > 0){
         return { succes: true, result: result } 
@@ -135,7 +135,7 @@ async function loadCateg(query){
       }
       if(categ == "herrajes"){      
        //const result = await filtrar(["AH","AP","MQ","HE","HH","RC","RR","TE"]);
-       const categFilter = ["AH","AP","MQ","HE","HH","RC","RR","TE"]
+       const categFilter = ["AH","AP","MQ","HE","HH","RC","RR","TE", "TE/TIRA-CIERRES"]
        const result = arts.filter(element => categFilter.includes(element.categorias));
        if(result.length > 0){
         return { succes: true, result: result } 
