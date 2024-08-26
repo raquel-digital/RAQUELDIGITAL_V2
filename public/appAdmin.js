@@ -655,10 +655,12 @@ function uploadArts(){
         }else{
           art.imagendetalle = cell[5];
         }
+
+
+
         upload.push(art)
       }      
-    }
-          
+    }          
     socket.emit("busqueda-admin", upload);
   }
   socket.on("res-busqueda-upload", result => {
@@ -667,6 +669,13 @@ function uploadArts(){
     if(result.length > 0){      
       for(let r of result){
         for(let u of upload){
+
+          if(r.codigo === u.codigo){
+            alert("ARTICULO " + u.codigo + " YA EXISTE")
+            return
+          }
+
+
           const split = u.codigo.split("-")
           const codigo = split[0]
           let match = false;//si no hay coincidencia invertir la busqueda
