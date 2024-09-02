@@ -623,6 +623,12 @@ function uploadArts(){
  
   for(let i in row){
       const cell = row[i].split("\t")
+      console.log(cell)
+      if(cell[2].includes("x") || cell[2].includes("X")){
+        console.log("INGRESO POR SISTEMA")
+        uploadArtsLocal(cell)
+      }
+      
       if(cell[0] == "codigo" && cell[1] == "colores") {
         //modo colores       
         ingresarColores(row);
@@ -655,8 +661,6 @@ function uploadArts(){
         }else{
           art.imagendetalle = cell[5];
         }
-
-
 
         upload.push(art)
       }      
@@ -707,18 +711,21 @@ function uploadArts(){
     }
   });
 
-  function uploadArtsLocal(){
+  function uploadArtsLocal(art){
     upload = []    
-    
-     const clone = confirm("Queres clonar un artículo existente?")
-     if(clone){
-      const codigo = prompt("ingresa el CODIGO")
-      const imagen = prompt("ingresa el IMAGEN (dejar vacio si tiene el mismo nombre que el codigo)") 
-      const categ =  prompt("ingresa el CATEGORIA (dejar vacio si queres clonar la categoria original)")
-      upload.push({codigo: codigo.toUpperCase(), imagendetalle: imagen ? imagen != " " : codigo.toUpperCase() + ".jpg", categorias: categ ? categ != " " : codigo[0].toUpperCase() + codigo[1].toUpperCase()})
-      socket.emit("busqueda-admin", upload);
-      return
-     }
+      
+    if(!art){
+      const clone = confirm("Queres clonar un artículo existente?")
+      if(clone){
+        const codigo = prompt("ingresa el CODIGO")
+        const imagen = prompt("ingresa el IMAGEN (dejar vacio si tiene el mismo nombre que el codigo)") 
+        const categ =  prompt("ingresa el CATEGORIA (dejar vacio si queres clonar la categoria original)")
+        upload.push({codigo: codigo.toUpperCase(), imagendetalle: imagen ? imagen != " " : codigo.toUpperCase() + ".jpg", categorias: categ ? categ != " " : codigo[0].toUpperCase() + codigo[1].toUpperCase()})
+        socket.emit("busqueda-admin", upload);
+        return
+      }
+    }
+     
 
      mostrador.innerHTML = `
     <style>
@@ -799,6 +806,22 @@ function uploadArts(){
       </form>
     </div>
     `
+    if(art){
+      console.log(art)
+      const code = document.getElementById('codigo');
+      code.value = art[0]
+      const titulo = document.getElementById('titulo')
+      titulo.value = art[1]
+      const categ = document.getElementById('categoria')
+      categ.value = art[0][0] + art[0][1]
+      const cantidadVenta = document.getElementById('cantidad-venta')
+      cantidadVenta.value = art[2]
+      const p = art[5].replace(",",".")
+      const precio = document.getElementById('precio')
+      precio.value = p
+      const imagen = document.getElementById('imagen')
+      imagen.value = art[0] + ".jpg"
+    }
   }
 
   function subirPorForm(){
@@ -824,7 +847,7 @@ function uploadArts(){
 
    const art = {
     codigo: code.toUpperCase(),
-    categorias: categ ? categ != " " : code[0].toUpperCase() + code[1].toUpperCase(),
+    categorias: categ,
     nombre: titulo.toUpperCase(),
     nombre2: subtitulo,
     CantidadDeVenta: cantidadVenta,
@@ -837,6 +860,7 @@ function uploadArts(){
    }
 
    console.log(art)
+   upload.length = 0
    upload.push(art)
    preview(upload)
    return
