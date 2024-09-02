@@ -821,6 +821,8 @@ function uploadArts(){
       precio.value = p
       const imagen = document.getElementById('imagen')
       imagen.value = art[0] + ".jpg"
+      const descripcion = document.getElementById('cantidad-venta')
+      descripcion.textContent = "Material:  Medida:  "
     }
   }
 
