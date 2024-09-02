@@ -627,6 +627,7 @@ function uploadArts(){
         if(cell[2].includes("x") || cell[2].includes("X")){
           console.log("INGRESO POR SISTEMA")
           uploadArtsLocal(cell)
+          return
         }
       }
       
