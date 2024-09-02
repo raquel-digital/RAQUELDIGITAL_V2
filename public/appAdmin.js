@@ -623,11 +623,13 @@ function uploadArts(){
  
   for(let i in row){
       const cell = row[i].split("\t")
-      console.log(cell)
-      if(cell[2].includes("x") || cell[2].includes("X")){
-        console.log("INGRESO POR SISTEMA")
-        uploadArtsLocal(cell)
+      if(cell.length > 2){
+        if(cell[2].includes("x") || cell[2].includes("X")){
+          console.log("INGRESO POR SISTEMA")
+          uploadArtsLocal(cell)
+        }
       }
+      
       
       if(cell[0] == "codigo" && cell[1] == "colores") {
         //modo colores       
@@ -807,7 +809,6 @@ function uploadArts(){
     </div>
     `
     if(art){
-      console.log(art)
       const code = document.getElementById('codigo');
       code.value = art[0]
       const titulo = document.getElementById('titulo')
