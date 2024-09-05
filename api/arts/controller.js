@@ -1,6 +1,7 @@
 
 const { async } = require("rxjs");
 const store = require("./store");
+const date = require("../../utils/fecha")
 
 controller = {
     nuevoArticulo: function (art){
@@ -25,12 +26,10 @@ controller = {
                     // split[1] = splitPuntos.join(":")
                     // dateId.fechaModificacion = split.join(" ")                    
                     // a.fechaModificacion =  dateId.fechaModificacion;
-
-                    const date = new Date();
-                    const fecha = date.toLocaleString();
-                    const fechaSplit = fecha.split(",") 
-                    a.fechaDeIngreso = fechaSplit[0]
-                    a.fechaModificacion = fechaSplit[0]
+                       
+                    const fecha = date()            
+                    a.fechaDeIngreso = fecha
+                    a.fechaModificacion = fecha
                     if(!a.stock) {
                         a.stock = 10;
                     }
@@ -71,8 +70,7 @@ controller = {
                 }                
                 result = await store.updateColor(e);                
                 arrayRes.push(result);
-            }else{
-                const date = require("../../utils/fecha")
+            }else{                
                 e.fechaModificacion = date()
                 result = await store.update(e);
                 arrayRes.push(result);
