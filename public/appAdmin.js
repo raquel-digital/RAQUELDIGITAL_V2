@@ -623,12 +623,9 @@ function uploadArts(){
  
   for(let i in row){
       const cell = row[i].split("\t")
-      if(cell.length > 2){
-        if(cell[2].includes("x") || cell[2].includes("X")){
-          console.log("INGRESO POR SISTEMA")
+      if(cell.length == 6){
           uploadArtsLocal(cell)
           return
-        }
       }
       
       
@@ -714,8 +711,9 @@ function uploadArts(){
     }
   });
 
-  function uploadArtsLocal(art){
-    upload = []    
+  function uploadArtsLocal(art){   upload = [] 
+    
+    
       
     if(!art){
       const clone = confirm("Queres clonar un artículo existente?")
@@ -809,6 +807,11 @@ function uploadArts(){
       </form>
     </div>
     `
+
+    document.getElementById("codigo").addEventListener("keyup", e => {
+      document.getElementById("imagen").value = document.getElementById("codigo").value + ".jpg"
+    })
+
     if(art){
       const code = document.getElementById('codigo');
       code.value = art[0]
