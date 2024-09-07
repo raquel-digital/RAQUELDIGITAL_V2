@@ -152,6 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
           
           
           mostradorDeArticulos = data.result.sort((a, b) => {
+            // if(!a.mostrar || !b.mostrar){
+            //   return
+            // }
             const fechaA = a.fechaModificacion.split(" ")
             const fechaB = b.fechaModificacion.split(" ")
             
@@ -197,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return 0
           }).reverse();
           
+          console.log(mostradorDeArticulos)
           categOrganizador(data.categ);
 
           if(mostradorDeArticulos.length > indice){ 
