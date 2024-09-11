@@ -140,65 +140,65 @@ document.addEventListener('DOMContentLoaded', () => {
           document.querySelector("main h1").textContent = data.categ
           
           //OLD ordenar por ID
-          // mostradorDeArticulos = data.result.sort(function (a, b) {
-          //   if (a.id > b.id) {
+          mostradorDeArticulos = data.result.sort(function (a, b) {
+            if (a.id > b.id) {
+              return 1;
+            }
+            if (a.id < b.id) {
+              return -1;
+            }            
+            return 0;
+          }).reverse();
+          
+          
+          // mostradorDeArticulos = data.result.sort((a, b) => {
+          //   // if(!a.mostrar || !b.mostrar){
+          //   //   return
+          //   // }
+          //   const fechaA = a.fechaModificacion.split(" ")
+          //   const fechaB = b.fechaModificacion.split(" ")
+            
+
+          //   if(fechaA[0] == "" || fechaB[0] == ""){        
+          //     return
+          //   }
+            
+          //   const dateA = fechaA[0].split('/');
+          //   const dateB = fechaB[0].split('/');
+          //   const comaA = dateA[2].split(",")
+          //   const comaB = dateB[2].split(",")
+          //   const añoA = Number(comaA[0]) 
+          //   const añoB = Number(comaB[0])      
+
+          //   const mesA = Number(dateA[0])
+          //   const mesB = Number(dateB[0])
+
+          //   const diaA = Number(dateA[1])
+          //   const diaB = Number(dateB[1])
+
+          //   //año
+          //   if (añoA > añoB) {
           //     return 1;
           //   }
-          //   if (a.id < b.id) {
+          //   if (añoA < añoB) {
           //     return -1;
-          //   }            
-          //   return 0;
+          //   } 
+          //   // //mes  
+          //   if (mesA > mesB) {
+          //     return 1;
+          //   }
+          //   if (mesA < mesB) {
+          //     return -1;
+          //   }  
+          //   // //dia
+          //   if (diaA > diaB) {
+          //     return 1;
+          //   }
+          //   if (diaA < diaB) {
+          //     return -1;
+          //   }    
+          //   return 0
           // }).reverse();
-          
-          
-          mostradorDeArticulos = data.result.sort((a, b) => {
-            // if(!a.mostrar || !b.mostrar){
-            //   return
-            // }
-            const fechaA = a.fechaModificacion.split(" ")
-            const fechaB = b.fechaModificacion.split(" ")
-            
-
-            if(fechaA[0] == "" || fechaB[0] == ""){        
-              return
-            }
-            
-            const dateA = fechaA[0].split('/');
-            const dateB = fechaB[0].split('/');
-            const comaA = dateA[2].split(",")
-            const comaB = dateB[2].split(",")
-            const añoA = Number(comaA[0]) 
-            const añoB = Number(comaB[0])      
-
-            const mesA = Number(dateA[0])
-            const mesB = Number(dateB[0])
-
-            const diaA = Number(dateA[1])
-            const diaB = Number(dateB[1])
-
-            //año
-            if (añoA > añoB) {
-              return 1;
-            }
-            if (añoA < añoB) {
-              return -1;
-            } 
-            // //mes  
-            if (mesA > mesB) {
-              return 1;
-            }
-            if (mesA < mesB) {
-              return -1;
-            }  
-            // //dia
-            if (diaA > diaB) {
-              return 1;
-            }
-            if (diaA < diaB) {
-              return -1;
-            }    
-            return 0
-          }).reverse();
           
           console.log(mostradorDeArticulos)
           categOrganizador(data.categ);

@@ -711,8 +711,7 @@ function uploadArts(){
     }
   });
 
-  function uploadArtsLocal(art){   upload = [] 
-    
+  function uploadArtsLocal(art){   upload = []    
     
       
     if(!art){
