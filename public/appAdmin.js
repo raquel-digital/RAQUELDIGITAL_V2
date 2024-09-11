@@ -721,7 +721,7 @@ function uploadArts(){
         const codigo = prompt("ingresa el CODIGO")
         const imagen = prompt("ingresa el IMAGEN (dejar vacio si tiene el mismo nombre que el codigo)") 
         const categ =  prompt("ingresa el CATEGORIA (dejar vacio si queres clonar la categoria original)")
-        upload.push({codigo: codigo.toUpperCase(), imagendetalle: imagen ? imagen != " " : codigo.toUpperCase() + ".jpg", categorias: categ ? categ != " " : codigo[0].toUpperCase() + codigo[1].toUpperCase()})
+        upload.push({codigo: codigo.toUpperCase(), imagendetalle: imagen != "" ? imagen + ".jpg" : codigo.toUpperCase() + ".jpg", categorias: categ == "" ? codigo[0].toUpperCase() + codigo[1].toUpperCase() : categ})
         socket.emit("busqueda-admin", upload);
         return
       }
