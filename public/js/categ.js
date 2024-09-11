@@ -140,21 +140,21 @@ document.addEventListener('DOMContentLoaded', () => {
           document.querySelector("main h1").textContent = data.categ
           
           //OLD ordenar por ID
-          mostradorDeArticulos = data.result.sort(function (a, b) {
-            if (a.id > b.id) {
-              return 1;
-            }
-            if (a.id < b.id) {
-              return -1;
-            }            
-            return 0;
-          }).reverse();
+          // mostradorDeArticulos = data.result.sort(function (a, b) {
+          //   if (a.id > b.id) {
+          //     return 1;
+          //   }
+          //   if (a.id < b.id) {
+          //     return -1;
+          //   }            
+          //   return 0;
+          // }).reverse();
           
           
           // mostradorDeArticulos = data.result.sort((a, b) => {
-          //   // if(!a.mostrar || !b.mostrar){
-          //   //   return
-          //   // }
+          //   if(!a.mostrar || !b.mostrar){
+          //     return
+          //   }
           //   const fechaA = a.fechaModificacion.split(" ")
           //   const fechaB = b.fechaModificacion.split(" ")
             
@@ -199,6 +199,18 @@ document.addEventListener('DOMContentLoaded', () => {
           //   }    
           //   return 0
           // }).reverse();
+
+          mostradorDeArticulos = data.result.sort((a, b) => {
+            const [diaA, mesA, anioA] = a.fechaModificacion.split('/').map(Number);
+            const [diaB, mesB, anioB] = b.fechaModificacion.split('/').map(Number);
+          
+            // Convertimos la fecha en un objeto Date
+            const fechaA = new Date(anioA, mesA - 1, diaA);
+            const fechaB = new Date(anioB, mesB - 1, diaB);
+          
+            // Ordenamos de más reciente a más viejo
+            return fechaB - fechaA;
+          }).reverse();
           
           console.log(mostradorDeArticulos)
           categOrganizador(data.categ);
