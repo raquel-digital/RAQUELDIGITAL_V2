@@ -1532,48 +1532,68 @@ function writeTable(art, code, msg){
     console.log(data)
     const tableStock = document.getElementById("tableStock")  
 
-    const ordenadoFecha = data.sort((a, b) => {
+    //OLD
+    // const ordenadoFecha = data.sort((a, b) => {
       
-      const fechaA = a.fechaModificacion.split(" ")
-        const fechaB = b.fechaModificacion.split(" ")
+    //   const fechaA = a.fechaModificacion.split(" ")
+    //     const fechaB = b.fechaModificacion.split(" ")
         
-        if(fechaA[0] == "" || fechaB[0] == ""){        
-          return
-        }
+    //     if(fechaA[0] == "" || fechaB[0] == ""){        
+    //       return
+    //     }
         
-        const dateA = fechaA[0].split('/');
-        const dateB = fechaB[0].split('/');
-        const comaA = dateA[2].split(",")
-        const comaB = dateB[2].split(",")
-        const añoA = Number(comaA[0]) 
-        const añoB = Number(comaB[0])     
-        const mesA = Number(dateA[0])
-        const mesB = Number(dateB[0])
-        const diaA = Number(dateA[1])
-        const diaB = Number(dateB[1])
-        //año
-        if (añoA > añoB) {
-          return 1;
-        }
-        if (añoA < añoB) {
-          return -1;
-        } 
-        // //mes  
-        if (mesA > mesB) {
-          return 1;
-        }
-        if (mesA < mesB) {
-          return -1;
-        }  
-        // //dia
-        if (diaA > diaB) {
-          return 1;
-        }
-        if (diaA < diaB) {
-          return -1;
-        }    
-        return 0   
-    }).reverse();
+    //     const dateA = fechaA[0].split('/');
+    //     const dateB = fechaB[0].split('/');
+    //     const comaA = dateA[2].split(",")
+    //     const comaB = dateB[2].split(",")
+    //     const añoA = Number(comaA[0]) 
+    //     const añoB = Number(comaB[0])     
+    //     const mesA = Number(dateA[0])
+    //     const mesB = Number(dateB[0])
+    //     const diaA = Number(dateA[1])
+    //     const diaB = Number(dateB[1])
+    //     //año
+    //     if (añoA > añoB) {
+    //       return 1;
+    //     }
+    //     if (añoA < añoB) {
+    //       return -1;
+    //     } 
+    //     // //mes  
+    //     if (mesA > mesB) {
+    //       return 1;
+    //     }
+    //     if (mesA < mesB) {
+    //       return -1;
+    //     }  
+    //     // //dia
+    //     if (diaA > diaB) {
+    //       return 1;
+    //     }
+    //     if (diaA < diaB) {
+    //       return -1;
+    //     }    
+    //     return 0   
+    // }).reverse();
+    const ordenadoFecha = data.sort((a, b) => {
+      const [diaA, mesA, anioA] = a.fechaModificacion.split('/').map(Number);
+      const [diaB, mesB, anioB] = b.fechaModificacion.split('/').map(Number);
+    
+      
+      // Convertimos la fecha en un objeto Date
+      const fechaA = new Date(anioA, mesA - 1, diaA);
+      const fechaB = new Date(anioB, mesB - 1, diaB);
+
+      const esFechaAInvalida = isNaN(fechaA.getTime())
+      const esFechaBInvalida = isNaN(fechaB.getTime())
+
+      if (esFechaAInvalida && !esFechaBInvalida) return 1;
+      if (esFechaBInvalida && !esFechaAInvalida) return -1;
+      if (esFechaAInvalida && esFechaBInvalida) return 0;
+      
+      // Ordenamos de más reciente a más viejo
+      return fechaB - fechaA;
+    })
 
     ordenadoFecha.forEach(e => {
       if(e.stock <= 0){
