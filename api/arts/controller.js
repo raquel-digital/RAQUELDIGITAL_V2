@@ -33,7 +33,9 @@ controller = {
                     if(!a.stock) {
                         a.stock = 10;
                     }
-                    a.imgActualizada  = true;                    
+                    a.imgActualizada  = true; 
+                    a.tags = a.tags.toLocaleLowerCase()  
+                    console.log(a.tags)                 
                     const ingreso = await store.ingresar(a);
                     result.push(ingreso);
                 })();
