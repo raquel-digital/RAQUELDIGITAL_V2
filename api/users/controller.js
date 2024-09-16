@@ -5,7 +5,7 @@ const artsController = require("../arts/controller")
 
 const controller = {
    ingresar: async function (data){
-       
+       console.log(data.tipoDeEnvio.piso_departamento)
         const date = new Date();
         const fecha = date.toLocaleString();
         let ultimaOrden = await store.numero_orden();
@@ -19,6 +19,7 @@ const controller = {
         tipoDeEnvio: {            
             Altura: data.tipoDeEnvio.Altura, 
             Calle: data.tipoDeEnvio.Calle, 
+            piso_departamento: data.tipoDeEnvio.Piso,
             Costo: data.tipoDeEnvio.Costo, 
             Horario_Entrega:data.tipoDeEnvio.Horario_Entrega,  
             Provincia: data.tipoDeEnvio.Provincia, 

@@ -88,7 +88,7 @@ let dataMail
 
 
 socket.on("busqueda-pedido-reponse", res => {
-  console.log("[ RESPUESTA PEDIDO ] : ", res.length);
+  console.log("[ RESPUESTA PEDIDO ] : ", res);
   
   if(res.length == 0){
     alert("NO HAY RESULTADOS");
