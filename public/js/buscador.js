@@ -45,12 +45,9 @@ socket.on("resultado-busqueda", data => {
         window.location.href = "https://raqueldigital.herokuapp.com/"
       };
     }else{
-      console.log("res")
+      console.log(data)
       document.getElementById("resultado-router").innerHTML = `<h1>Resultados de búsqueda para <span class="resultado-busqueda">“${data.query}”</span></h1>`
       
-      // if(paginador){
-      //   paginador.innerHTML = ""
-      // }
       document.querySelector(".paginador").innerHTML = ""
 
       if(result.length > indice){
