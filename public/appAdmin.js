@@ -397,7 +397,9 @@ mostrador.addEventListener("click", e => {
       if(codigo.includes("*")){
         //ACTUALIZAR ARTICULO DE COLOR
         const split = codigo.split("*");
-        artChange = {_id: split[1], codigo: split[0], mostrar: mostrar, tags: tags, imagendetalle: img, categorias: categ, nombre: titulo};
+        let stock = Number(mouse.parentElement.children[1].children[3].children[2].value)
+        console.log(stock)
+        artChange = {_id: split[1], stock: stock, codigo: split[0], mostrar: mostrar, tags: tags, imagendetalle: img, categorias: categ, nombre: titulo};
         
       }else{
         //ACTUALIZAR ARTICULO COMUN
@@ -430,7 +432,7 @@ mostrador.addEventListener("click", e => {
           CantidadDeVenta: cantVenta
         };
       }
-      
+      console.log(artChange)
       cambiosArt(artChange);      
     } 
     if(mouse.classList.contains("borrarArticulo")){
@@ -1528,8 +1530,7 @@ function writeTable(art, code, msg){
     showArts(res)
  })
 
- function tableStock(data){  
-    console.log(data)
+ function tableStock(data){
     const tableStock = document.getElementById("tableStock")  
 
     //OLD
@@ -1608,6 +1609,24 @@ function writeTable(art, code, msg){
         <td>fecha modificacion: ${e.fechaModificacion}</td>
         <td>Hay stock <input type="checkbox" name="${e.codigo}" class="check-mostrar"></td>
         `; 
+      }else{
+        if(e.colores){
+          e.colores.forEach(c => {
+            if(c.stock <= 0){
+              const estado = c.mostrar ? "Visible" : "Oculto"
+              tableStock.innerHTML += `
+              <td><img src="./img/${e.categorias}/${c.color}" alt="imagen table" widht="60px" height="60px"></td>
+              <td>${c.codigo}</td>
+              <td>${e.nombre}<td>
+              <td>${e.nombre2}</td>
+              <td>${c.stock}</td>
+              <td>${estado}</td>
+              <td>fecha modificacion: ${e.fechaModificacion}</td>
+              <td>Hay stock <input type="checkbox" name="${c.codigo}" class="check-mostrar"></td>
+              `;
+            }            
+          })
+        }
       }     
     })
     document.getElementById("footer-stock").innerHTML = `<button onclick="checkStock()">ENVIAR</button>` 

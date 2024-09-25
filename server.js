@@ -88,7 +88,7 @@ io.on('connect', socket => {
     socket.on("mail", data =>{        
         if(process.argv[2] === "dev"){
             //modo dev
-            console.log("MODO DEV", data)
+            console.log("MODO DEV", data)           
         }else{
             //modo produccion        
             (async () => {

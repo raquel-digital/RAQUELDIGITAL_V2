@@ -608,7 +608,7 @@ function envio_mock(){
 
 
 function controlDatos(cliente){
-  console.log(cliente.Localidad, cliente.Provincia)
+  //console.log(cliente.Localidad, cliente.Provincia)
   if(cliente.nombreApellido == ""){
       return {state: false, message: "Por favor ingrese su nombre", redMark: "nombre"};
   }

@@ -62,7 +62,7 @@ controller = {
             if(e._id || e.descripcion == "color"){
                 if(e.descripcion == "color"){
                     const split = e.codigo.split("-")
-                    e.stock = 10
+                    //e.stock = 10
                     if(split.length > 2){
                         e.codigo = split[0]+"-"+split[1]
                     }else{

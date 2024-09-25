@@ -34,6 +34,7 @@ document.querySelector(".lupa").addEventListener("click", event => {
 
 //recibir resultados
 socket.on("resultado-busqueda", data => { 
+    console.log(data)
     const result = data.result.filter(e => e.mostrar)  
     if(result.length == 0){
      document.querySelector("main").innerHTML = `<h1>No hay resultados de búsqueda para <span class="resultado-busqueda">“${data.query}”</span></h1>
@@ -45,7 +46,7 @@ socket.on("resultado-busqueda", data => {
         window.location.href = "https://raqueldigital.herokuapp.com/"
       };
     }else{
-      console.log(data)
+     
       document.getElementById("resultado-router").innerHTML = `<h1>Resultados de búsqueda para <span class="resultado-busqueda">“${data.query}”</span></h1>`
       
       document.querySelector(".paginador").innerHTML = ""

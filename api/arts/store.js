@@ -91,11 +91,13 @@ const store = {
     },
     updateColor:async function (data){
         try{
-           
+           console.log(data)
             const res =  await model.findOneAndUpdate( {codigo: data.codigo, "colores._id" : ObjectId(data._id) } ,
                 {
                     $set: {
-                        "colores.$.mostrar": data.mostrar
+                        "colores.$.color": data.imagendetalle,
+                        "colores.$.mostrar": data.mostrar,
+                        "colores.$.stock": data.stock
                     }
                 },
                 { new: true }
@@ -278,8 +280,22 @@ const store = {
                 },
                 { returnDocument: 'after' } // Opción para devolver el documento actualizado
             )
+                if(upd){
+                    res.push(upd)
+                }else{
+                    const res =await model.findOneAndUpdate(
+                        { "colores.codigo": a }, // Condición de búsqueda
+                        {
+                          $set: {
+                            "colores.$.mostrar": true, // Modificar el campo 'mostrar' dentro del array
+                            "colores.$.stock": 10,     // Modificar el campo 'stock' dentro del array
+                          },
+                        },
+                        { new: true } // Devolver el documento actualizado
+                      )
+                    return res
+                }
                 
-                res.push(upd)
             }
             return res
         }catch(err){
@@ -296,7 +312,13 @@ const store = {
             { $inc: { stock: resta } },        // Restar 5 al stock
             { returnDocument: 'after' }     // Devolver el documento actualizado
         );
-        
+        if(!updatedDocument){
+            await model.findOneAndUpdate(
+                 { "colores.codigo": art.codigo },            // Filtro para encontrar el documento
+                 { $inc: { "colores.$.stock": resta } },        // Restar 5 al stock
+                 { returnDocument: 'after' }     // Devolver el documento actualizado
+             );
+         }
         // // Paso 2: Evaluar el resultado y realizar la acción correspondiente
         //OCULTAR ARTICULO SI EL STOCK ES MENOR A CERO
         // if (updatedDocument.stock <= 0) {
