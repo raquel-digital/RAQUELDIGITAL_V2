@@ -543,6 +543,8 @@ const draw = {
                   <option value="Reiteramos aviso importe">Reiteramos aviso importe</option>
                   <option value="Listo para enviar" >Listo para enviar</option>
                   <option value="Listo para que retire" >Listo para que retire</option>
+                  <option value="Sale por expreso">Sale por expreso</option>
+                  <option value="Sale por correo">Sale por correo</option>
                   <option value="Salio">Salio</option>
                 </select>
                 <hr>
@@ -675,8 +677,14 @@ function cambiosPorFlecha(i){
     const e = pedidos[i-1]
     const notas = document.querySelector("#notasText"+e.num_orden).value;
     const preparado = document.querySelector("#preparado"+e.num_orden).value;
-    const estado = document.querySelector("#estado"+e.num_orden).value;
-    e.notas = notas;
+    const estado = document.querySelector("#estado"+e.num_orden).value;    
+    
+    if(e.estado != estado){
+      e.notas = notas + "// " + estado;
+    }else{
+      e.notas = notas
+    }
+
     e.prepara = preparado;
     e.estado = estado;
 }
