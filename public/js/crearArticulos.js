@@ -47,7 +47,6 @@ function showArts(art, message){
           </div>
         `
         //btn-secundario
-        console.log(p.codigo) 
         const boton = document.querySelector("." + p.codigo);
         boton.setAttribute("codigo", p.codigo);
         boton.setAttribute("precio", p.precio);

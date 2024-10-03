@@ -31,7 +31,10 @@ const controller = {
     },
     guardarPedido: async function (data) {
        try{       
-
+        if(!data.id){
+            const pedidoRandom = require("../pedidos/controller")
+            pedidoRandom.ingresarCarrito(data)
+        }
         const date = new Date
         const user = {
          id: data.id,

@@ -3,13 +3,13 @@ const { async } = require("rxjs");
 const store = require("./store");
 
 const controller = {
-    ingresar: async function (data){
+    ingresar: async function (data, historial){        
        
         const dia = new Date().getDate().toString();
         const mes = new Date().getMonth() + 1;
         const anio = new Date().getFullYear().toString();
         const fecha = dia + "/" + mes.toString()  + "/" + anio;
-        
+
         const order = {    
         fecha: fecha,
         num_orden: data.numero_orden,
@@ -21,6 +21,7 @@ const controller = {
         notas: data.observaciones
        }
        store.ingresar(order);
+       return
    },
    buscar: async function () {
     try{
@@ -62,10 +63,24 @@ const controller = {
    ingresarCarrito: function(data){
     const date = new Date()
     const fecha = date.toLocaleString()
-    data.fecha = fecha
-    store.writeCarrito(data)
+
+    //ingresar pedido de cliente random
+      const order = {    
+        fecha: fecha,
+        num_orden: data.numero_orden,
+        cliente: "cliente online",
+        prepara: "Oscar",
+        estado: "Pedido Sin Asignar",
+        compra: data.pedido,
+        faltas: [],
+        notas: " "
+       }
+       
+    store.writeCarrito(order)
    },
-  
+   borrarPedidoCheckOut: function(_id){
+    store.deleteCheckOutOrder(_id)
+   }
 }
 
 

@@ -340,6 +340,14 @@ io.on('connect', socket => {
         console.log(data)
         mailConsulta(data)
     })
+    //CHEQUEAR PEDIDOS QUE SOLO SE INGRESARON AL CHECKOUT
+    socket.on("chequear-pedidos-sinTerminar", () => {        
+        (async () => {
+            const controller = require("./api/pedidos/controller.js")
+            const res = await controller.buscarSinTerminar()
+            socket.emit("chequear-pedidos-sinTerminar-res", res)
+        })()        
+    })
 })
 
 

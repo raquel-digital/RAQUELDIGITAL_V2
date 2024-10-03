@@ -12,6 +12,15 @@ const store = {
     },
     findOld: async function (){
         const model = require("./controlComprasModel")
+
+        const count = await model.countDocuments();
+
+        // Si hay más de 3 documentos, eliminar el más antiguo
+        if (count > 100) {
+            // Eliminar el primer documento (más antiguo)
+            const result = await model.deleteOne({}, { sort: { _id: 1 } });
+        }
+
         const res = await model.find();
         return res;
     },
@@ -34,19 +43,10 @@ const store = {
     },
     writeCarrito: async function (data){
         try{
-            console.log(data)
-            const model = require("./controlComprasModel")
-            const check = await model.find({ shopId: data.shopId });
-            if(check.length == 0){
-                await model.create(data)
-            }else{
-                await model.updateOne({ shopId: data.shopId}, 
-                    { 
-                        $set: { fecha: data.fecha, 
-                                compra: data.compra
-                            }  
-                    })
-            }
+            const model = require("./controlComprasModel")            
+            const order = new model(data);
+            await order.save(data)
+            return
         }catch(err){
             console.log(err)
         }

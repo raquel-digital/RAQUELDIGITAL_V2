@@ -106,6 +106,7 @@ socket.on("busqueda-pedido-reponse", res => {
   
 
 socket.emit("chequear-pedidos-admin");
+
 socket.on("nuevos-pedidos", data => {  
   if(pedidos == undefined && data.length > 0){
     pedidos = data;    
@@ -125,8 +126,8 @@ socket.on("nuevos-pedidos", data => {
   }
   return;
 });
-socket.on("pedidos-enCurso", data => {
-    
+
+socket.on("pedidos-enCurso", data => {    
   data.forEach(e => { e.viejo = true });
   pedidos = data
   console.log(pedidos)  
@@ -861,6 +862,16 @@ function loadPedEnCurso(){
   socket.emit("chequear-pedidos-sinTerminar");
 }
 
+socket.on("chequear-pedidos-sinTerminar-res", data => {
+  pedidos = data.reverse()
+  let i = 0
+  mostrador.innerHTML = `<div style="margin-top: 30px">PEDIDOS NO CERRADOS</div>`
+  pedidos.forEach(e => {
+    mostrador.innerHTML += `<li>Fecha: ${e.fecha} cantidad de items en compra: ${e.compra.length} <button onclick=printPagePreviewOld(${i})>VER</button></li>`
+    i++
+  })
+})
+
 //FUNCION PARA COPIAR UNA TABLA Y ENVIARLA POR WHASTAPP
 //SOLO COPIA EL HTML
 function copyToClipboard(inputElement) {
@@ -967,6 +978,81 @@ function printPagePreviewSinIVA(pedido, cliente){
   
   window.print()
   printPagePreview(pedido, cliente)
+}
+
+function printPagePreviewOld(i){
+  const pedido = pedidos[i].compra
+  const cliente = "Pedido NN"
+  console.log(pedido)
+  mostrador.innerHTML = `
+  <table class="table table-bordered table-hover tablaOrden">
+  <thead>
+     <tr>
+         <th>foto</th>
+         <th>codigo</th>
+         <th>titulo</th>
+         <th>precio unitario</th>
+         <th>cantidad</th>
+         <th>total</th>
+     </tr>
+    </thead>
+    <tbody class="resumen-check-out">
+      
+    </tbody>
+    <tfoot >
+      <tr class="total-compra-final">
+        
+      </tr>
+    </tfoot>
+  </table>
+  </div> 
+   
+  <button id="printPagePreviewSinIVA" class="botonOrden">IMPRIMIR</button>
+  <hr> 
+  <hr>
+  <hr>
+  <button class="botonOrden" onclick="sendDataMail(dataMail)">ENVIAR X MAIL</button>
+  <hr>   
+  <button id="pagePreciosSinIVA" class="botonOrden" >PRECIOS SIN IVA</button>
+  <hr>   
+  <button id="copiarContenido" class="botonOrden" >COPIAR</button>
+  <hr> 
+  <button class="botonOrden" onclick="refreshing()">VOLVER</button>
+  `
+  //
+  const resumenCheckOut = document.querySelector(".resumen-check-out")
+  let totalPedido = 0
+  pedido.forEach(e => {    
+    const total = e.cantidad * e.precio
+    resumenCheckOut.innerHTML += `
+    <td class="text-center"><img src="${e.imagen}" alt="imagen table" widht="auto" height="60px"></td>
+    <td>${e.codigo}</td>
+    <td>${e.titulo}<td>
+    <td>${e.precio}</td>
+    <td>${e.cantidad}</td>
+    <td>${total.toFixed(2)}</td>    
+    `;
+    // <td>en stock: </td>
+    // <td>falta: </td>
+    totalPedido += total    
+  })
+ 
+    document.querySelector(".total-compra-final").innerHTML = `
+    <th>Total: ${totalPedido.toFixed(2)}</th>
+    `
+
+  const clienteMock = {
+    facturacion: {tipo: ""},
+    formaDeContacto: {contacto: ""},
+  }  
+  document.querySelector(".mostrador").addEventListener("click", e => {
+    if(e.target.id == "printPagePreviewSinIVA"){
+      printPage(pedido, clienteMock)
+    }
+    if(e.target.id == "pagePreciosSinIVA"){
+      printPagePreviewSinIVA(pedido, clienteMock)
+    }
+  })
 }
 
 
