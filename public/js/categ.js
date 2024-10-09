@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     socket.on("categ-result", data => {
-        
+        console.log(data)
         if(data.succes){ 
           mostrador.innerHTML = ""
           document.querySelector("main h1").textContent = data.categ
@@ -240,7 +240,6 @@ if(filtros){
               }
               return
             }
-            
             loadTag(articulosTags, clik);
           }
     })
