@@ -525,7 +525,7 @@ function actuPrecios(){
   const split = e.split("\t")
   if(split[0] == " " || split[1] == " " || split[0] == undefined || split[1] == undefined || split[1] <= 0){    
     alert("HAY ERRORES EN ARTICULO " + {Codigo: split[0], Precio: split[1]});
-    console.log({Codigo: split[0], Precio: split[1]})
+    console.log(e)
   }else{
     const precios = {Codigo: split[0], Precio: split[1]}
     preJson.push(precios);
