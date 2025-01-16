@@ -983,7 +983,6 @@ function printPagePreviewSinIVA(pedido, cliente){
 function printPagePreviewOld(i){
   const pedido = pedidos[i].compra
   const cliente = "Pedido NN"
-  console.log(pedido)
   mostrador.innerHTML = `
   <table class="table table-bordered table-hover tablaOrden">
   <thead>
@@ -1008,16 +1007,10 @@ function printPagePreviewOld(i){
   </div> 
    
   <button id="printPagePreviewSinIVA" class="botonOrden">IMPRIMIR</button>
-  <hr> 
   <hr>
+  <button onclick="ingresarPedidoWeb(${i})">INGRESAR A PEDIDOS</button>
   <hr>
-  <button class="botonOrden" onclick="sendDataMail(dataMail)">ENVIAR X MAIL</button>
-  <hr>   
-  <button id="pagePreciosSinIVA" class="botonOrden" >PRECIOS SIN IVA</button>
-  <hr>   
-  <button id="copiarContenido" class="botonOrden" >COPIAR</button>
-  <hr> 
-  <button class="botonOrden" onclick="refreshing()">VOLVER</button>
+  <button class="botonOrden" onclick="loadPedEnCurso()">VOLVER</button>
   `
   //
   const resumenCheckOut = document.querySelector(".resumen-check-out")
@@ -1054,5 +1047,130 @@ function printPagePreviewOld(i){
     }
   })
 }
+
+function ingresarPedidoWeb(i){  
+  mostrador.innerHTML += `
+  <style>
+    .form-container {
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #218838;
+    }
+</style>
+<div class="form-container">
+    <form id="articulo-form">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre">
+        </div>
+       
+        <div class="form-group">
+            <label for="contacto">Contacto</label>            
+            <input type="text" id="contacto" name="contacto">
+        </div>        
+        <div class="form-group">
+            <label for="precio">DATOS DE ENVIO</label>
+            <input type="text" id="provincia" name="precio" placeholder="provincia">
+            <input type="text" id="localidad" name="precio" placeholder="localidad">
+            <input type="text" id="calle" name="precio" placeholder="calle">
+            <input type="text" id="altura" name="precio" placeholder="altura">
+            <input type="text" id="piso" name="precio" placeholder="piso">
+            <input type="text" id="cp" name="precio" placeholder="codigo postal">
+            <input type="text" id="expreso" name="precio" placeholder="nombre del expreso">
+        </div>
+        <button type="button" onclick="ingresarFormPedido(${i})">Enviar</button>
+    </form>
+  </div>  `
+  
+}
+
+function ingresarFormPedido(i){
+  
+  let totalPedido = 0
+
+  pedidos[i].compra.forEach(e => {
+    totalPedido += e.precio * e.cantidad
+  })
+  console.log(totalPedido)
+  const cliente = {
+    nombreApellido: document.getElementById("nombre").value,
+    sys: {
+        checked: {          
+            envio: false,
+            retiro: true,
+            expreso: false,
+            correo: false,
+            whatsapp: false,
+            "mail": false,
+            "consumidor_final": true,
+            "monotributo": false,
+            "iva_inscripto": false,
+            "exento": false,
+            "mercado_pago": false,
+            "transferencia": false,
+            "efectivo": false,
+        },
+        "compra": pedidos[i].compra,
+        "totalCompra": totalPedido 
+    },
+    "tipoDeEnvio": {
+        "forma_de_envio": "ingreso web",
+        "Costo": 0,
+        "Empresa": document.getElementById("expreso").value,
+        "Provincia": document.getElementById("provincia").value,
+        "Localidad": document.getElementById("localidad").value,
+        "Calle": document.getElementById("calle").value,
+        "Altura": document.getElementById("altura").value,
+        "Piso": document.getElementById("piso").value,
+        "DNI": ""
+    },
+    "retira": "ingreso web",
+    "formaDeContacto": {
+        "contacto": "Whatsapp",
+        "numero": document.getElementById("contacto").value
+    },
+    "facturacion": {
+        "tipo": "ingreso web",
+        "RazonSocial": " ",
+        "CUIT": " "
+    },
+    "formaDePago": "ingreso web",
+    "observaciones": "",
+    "state": true
+  }  
+  const check = confirm("Queres ingresar el pedido?")
+  if(check){    
+    socket.emit("mail", cliente)
+  }
+} 
 
 

@@ -85,7 +85,8 @@ io.on('connect', socket => {
     })
     
     //CHECK OUT    
-    socket.on("mail", data =>{        
+    socket.on("mail", data =>{    
+        console.log("ok")    
         if(process.argv[2] === "dev"){
             //modo dev
             console.log("MODO DEV", data)           
@@ -99,7 +100,7 @@ io.on('connect', socket => {
                 //enviamos mail
                 await mailEmit(data);
                 loadCategs()//actualiza allArts
-            })()
+                            })()
         } 
     })    
     
