@@ -1487,22 +1487,23 @@ function writeTable(art, code, msg){
   mostrador.innerHTML += `<table class="table table-striped table-hover">
             <thead>
                <tr>
-                   <th>imagen</th>
-                   <th>codigo</th>
-                   <th>titulo</th>
-                   <th>subtitulo</th>
-                   <th>stock</th>
-                   <th>mostrar</th>
-                   <th>checkbox</th>
+                   <th>Imagen</th>
+                   <th id="Codigo">Codigo</th>
+                   <th>Titulo</th>
+                   <th id="Stock">Stock</th>
+                   <th id="Mostrar">Mostrar</th>
+                   <th id="Fecha">Fecha De Modificacion</th>
+                   <th id="Checkbox">Checkbox</th>                   
+                   <th id="Imprimir">Imprimir</th>
                </tr>
               </thead>
               <tbody id="tableStock" class="resumen-check-out">
                 
               </tbody>
               <tfoot >
-                <tr id="footer-stock">
+                <td id="footer-stock">
                   
-                </tr>
+                </td>
           </tfoot>
         </table>`
   tableStock(data)
@@ -1511,7 +1512,42 @@ function writeTable(art, code, msg){
     //   mostrador.innerHTML += `<div class="arts"><li>${e.codigo} ${e.fechaModificacion} MOSTRAR: ${e.mostrar} STOCK: ${e.stock} <label class="form-check-label" for="${e.codigo}">HAY STOCK ||   </label><input type="checkbox" name="${e.codigo}" class="check-mostrar"></li></div>`
     // }
   //})
-
+  document.getElementById("Codigo").addEventListener("click", e => {   
+    const codigo = data.sort((a, b) => {
+      if(a.codigo > b.codigo){
+        return 1
+      }
+      if(a.codigo < b.codigo){
+        return -1
+      }
+      return 0
+    })
+    tableStock(codigo, "codigo")
+  }) 
+  document.getElementById("Mostrar").addEventListener("click", e => {
+    const mostrar = data.sort((a, b) => {
+      if(a.mostrar > b.mostrar){
+        return 1
+      }
+      if(a.mostrar < b.mostrar){
+        return -1
+      }
+      return 0
+    })
+    tableStock(mostrar, "mostrar")
+  }) 
+  document.getElementById("Stock").addEventListener("click", e => {
+    const stock = data.sort((a, b) => {
+      if(a.stock > b.stock){
+        return 1
+      }
+      if(a.stock < b.stock){
+        return -1
+      }
+      return 0
+    })
+    tableStock(stock, "stock")
+  }) 
  }) 
 
  function checkStock(){
@@ -1530,8 +1566,51 @@ function writeTable(art, code, msg){
     showArts(res)
  })
 
- function tableStock(data){
-    const tableStock = document.getElementById("tableStock")  
+ function tableStock(data, sort){
+   
+    const tableStock = document.getElementById("tableStock")
+
+    if(sort){  
+      tableStock.innerHTML = ""
+      data.forEach(e => {
+        if(e.stock <= 0){
+          const estado = e.mostrar ? "Visible" : "Oculto"
+          tableStock.innerHTML += `
+          <tr>
+          <td><img src="./img/${e.categorias}/${e.imagendetalle}" alt="imagen table" widht="60px" height="60px"></td>
+          <td>${e.codigo}</td>
+          <td>${e.nombre}<td>
+          <td>${e.stock}</td>
+          <td>${estado}</td>
+          <td>fecha modificacion: ${e.fechaModificacion}</td>
+          <td>Hay stock <input type="checkbox" name="${e.codigo}" class="check-mostrar"></td>
+          <td>Imprimir<input type="checkbox" name="${e.codigo}imp" class="artImprimir"></td>
+          </tr>
+          `; 
+        }else{
+          if(e.colores){
+            e.colores.forEach(c => {
+              if(c.stock <= 0){
+                const estado = c.mostrar ? "Visible" : "Oculto"
+                tableStock.innerHTML += `
+                <tr>
+                <td><img src="./img/${e.categorias}/${c.color}" alt="imagen table" widht="60px" height="60px"></td>
+                <td>${c.codigo}</td>
+                <td>${e.nombre}<td>
+                <td>${c.stock}</td>
+                <td>${estado}</td>
+                <td>fecha modificacion: ${e.fechaModificacion}</td>
+                <td>Hay stock <input type="checkbox" name="${c.codigo}" class="check-mostrar"></td>
+                <td>Imprimir<input type="checkbox" name="${e.codigo}imp" class="artImprimir"></td>
+                </tr>
+                `;
+              }            
+            })
+          }
+        }     
+      })
+      return
+    }
 
     //OLD
     // const ordenadoFecha = data.sort((a, b) => {
@@ -1600,14 +1679,16 @@ function writeTable(art, code, msg){
       if(e.stock <= 0){
         const estado = e.mostrar ? "Visible" : "Oculto"
         tableStock.innerHTML += `
+        <tr>
         <td><img src="./img/${e.categorias}/${e.imagendetalle}" alt="imagen table" widht="60px" height="60px"></td>
         <td>${e.codigo}</td>
         <td>${e.nombre}<td>
-        <td>${e.nombre2}</td>
         <td>${e.stock}</td>
         <td>${estado}</td>
         <td>fecha modificacion: ${e.fechaModificacion}</td>
         <td>Hay stock <input type="checkbox" name="${e.codigo}" class="check-mostrar"></td>
+        <td>Imprimir<input type="checkbox" name="${e.codigo}imp"  class="artImprimir"></td>
+        </tr>
         `; 
       }else{
         if(e.colores){
@@ -1615,22 +1696,43 @@ function writeTable(art, code, msg){
             if(c.stock <= 0){
               const estado = c.mostrar ? "Visible" : "Oculto"
               tableStock.innerHTML += `
+              <tr>
               <td><img src="./img/${e.categorias}/${c.color}" alt="imagen table" widht="60px" height="60px"></td>
               <td>${c.codigo}</td>
               <td>${e.nombre}<td>
-              <td>${e.nombre2}</td>
               <td>${c.stock}</td>
               <td>${estado}</td>
               <td>fecha modificacion: ${e.fechaModificacion}</td>
               <td>Hay stock <input type="checkbox" name="${c.codigo}" class="check-mostrar"></td>
+              <td>Imprimir<input type="checkbox" name="${e.codigo}imp" class="artImprimir"></td>
+              </tr>
               `;
             }            
           })
         }
       }     
     })
-    document.getElementById("footer-stock").innerHTML = `<button onclick="checkStock()">ENVIAR</button>` 
+    document.getElementById("footer-stock").innerHTML = `<button onclick="checkStock()">ENVIAR</button><button style="margin-left:20px;" onclick="imprimirStock()">imprimir</button>` 
    
+}
+
+function imprimirStock(){
+  const imprimir = []
+
+  const arts = document.querySelectorAll(".artImprimir")
+  arts.forEach(e => {    
+    if(e.checked){
+      imprimir.push(e.parentElement.parentElement)
+    }
+  })
+  const tableStock = document.getElementById("tableStock")
+  tableStock.innerHTML  = ""
+
+  imprimir.forEach(e => {
+    tableStock.innerHTML += e.innerHTML
+  })
+
+  document.getElementById("footer-stock").innerHTML = `<button style="margin-left:20px;" onclick="window.print()">imprimir</button>`
 }
 
 
