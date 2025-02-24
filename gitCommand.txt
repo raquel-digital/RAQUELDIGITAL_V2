@@ -1,1 +1,1 @@
-git add . && git commit -m "Cambio nombre de archivo" && git push origin main
+git add . && git commit -m "art varios" && git push origin main
