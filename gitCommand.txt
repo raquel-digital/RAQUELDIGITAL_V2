@@ -1,1 +1,1 @@
-git add . && git commit -m "cambio en log" && git push origin main
+git add . && git commit -m "art varios" && git push origin main
