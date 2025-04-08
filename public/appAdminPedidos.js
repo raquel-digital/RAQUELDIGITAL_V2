@@ -576,7 +576,7 @@ const draw = {
   },
     orders: (pedido) => {
             mostrador.innerHTML = `
-        <table class="table table-striped table-hover tablaOrden">
+        <table id="tablaCopiar" class="table table-striped table-hover tablaOrden">
         <thead>
         <tr>
             <th>codigo</th>
@@ -771,7 +771,7 @@ function printPagePreview(i, pedido, cliente){
   <div class="row"><b>Facturacion: ${cliente.facturacion.tipo} Razon Social: ${cliente.facturacion.RazonSocial} CUIT: ${cliente.facturacion.CUIT}</b></div>
   <div class="row"><b>Forma de contacto: ${cliente.formaDeContacto.contacto} ${cliente.formaDeContacto.numero}</b></div>
   </div>
-  <table class="table table-bordered table-hover tablaOrden">
+  <table id="tablaCopiar" class="table table-bordered table-hover tablaOrden">
   <thead>
      <tr>
          <th>foto</th>
@@ -801,11 +801,11 @@ function printPagePreview(i, pedido, cliente){
   <hr>   
   <button id="pagePreciosSinIVA" class="botonOrden" >PRECIOS SIN IVA</button>
   <hr>   
-  <button id="copiarContenido" class="botonOrden" >COPIAR</button>
+  <button onclick="copyCardAsImage('tablaCopiar')">COPIAR</button>
   <hr> 
   <button class="botonOrden" onclick="refreshing()">VOLVER</button>
   `
-  //
+  
   const resumenCheckOut = document.querySelector(".resumen-check-out")
   pedido.forEach(e => {    
     const total = e.cantidad * e.precio
@@ -918,7 +918,7 @@ function printPagePreviewSinIVA(pedido, cliente){
   <div class="row"><b>Facturacion: ${cliente.facturacion.tipo} Razon Social: ${cliente.facturacion.RazonSocial} CUIT: ${cliente.facturacion.CUIT}</b></div>
   <div class="row"><b>Forma de contacto: ${cliente.formaDeContacto.contacto} ${cliente.formaDeContacto.numero}</b></div>
   </div>
-  <table class="table table-bordered table-hover tablaOrden">
+  <table id="tablaCopiar" class="table table-bordered table-hover tablaOrden">
   <thead>
      <tr>
          <th>foto</th>
@@ -984,7 +984,7 @@ function printPagePreviewOld(i){
   const pedido = pedidos[i].compra
   const cliente = "Pedido NN"
   mostrador.innerHTML = `
-  <table class="table table-bordered table-hover tablaOrden">
+  <table id="tablaCopiar" class="table table-bordered table-hover tablaOrden">
   <thead>
      <tr>
          <th>foto</th>
@@ -1173,4 +1173,33 @@ function ingresarFormPedido(i){
   }
 } 
 
+async function copyCardAsImage(id) {
+  console.log("copyCardAsImage", id);
+  const element = document.getElementById(id);
+
+  try {
+      // Usamos html2canvas para convertir el elemento HTML en un canvas
+      const canvas = await html2canvas(element, {
+          scale: 2, // Aumenta la resolución de la imagen
+          useCORS: true, // Permite cargar imágenes externas
+      });
+
+      // Convertimos el canvas a un blob (formato de imagen)
+      canvas.toBlob(async (blob) => {
+          try {
+              // Creamos un item para el portapapeles
+              const clipboardItem = new ClipboardItem({ 'image/png': blob });
+              // Copiamos la imagen al portapapeles
+              await navigator.clipboard.write([clipboardItem]);
+              //alert('¡Imagen copiada al portapapeles! Ahora puedes pegarla en WhatsApp.');
+          } catch (error) {
+              console.error('Error al copiar la imagen al portapapeles:', error);
+              //alert('Hubo un error al copiar la imagen. Asegúrate de que tu navegador lo permita.');
+          }
+      }, 'image/png');
+  } catch (error) {
+      console.error('Error al generar la imagen:', error);
+      alert('Hubo un error al generar la imagen.');
+  }
+}
 
