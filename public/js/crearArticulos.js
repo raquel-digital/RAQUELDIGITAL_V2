@@ -19,7 +19,7 @@ function showArts(art, message){
         const imagen = "/img/" + p.categorias + "/" + p.imagendetalle  
         
         mostrador.innerHTML += `
-        <div class="card-articulo">
+        <div id=${p.codigo+"cardGlobal"} class="card-articulo">
             <div id=${p.codigo+"imagen"} class="contenedor-img-articulo" style="background-image:url(${imagen});">
                         
             </div>
@@ -28,9 +28,15 @@ function showArts(art, message){
               <p class="info-gral-articulo">${p.nombre2}</p>
               <div class="descripcion-titulo">
                 <p>Ver descripción</p>
-                <button type="button" class="chevron"></button>
+                <button type="button" class="chevron"></button>                
               </div>
-              <p class="descripcion-texto" style="display:none;">${p.descripcion}<br/><span>Código:</span> ${p.codigo}<br/><span>Unidad de venta:</span> ${p.CantidadDeVenta}</p>
+              <p class="descripcion-texto" style="display:none;">${p.descripcion}<br/>
+                <span>Código:</span> ${p.codigo}<br/>
+                <span>Unidad de venta: ${p.CantidadDeVenta}</span> 
+                <br> 
+                <span><a href="javascript:void(0)" onclick="copyCardAsImage('${p.codigo+"cardGlobal"}')" class="copy-link">Copiar al porta papeles</a></span>
+                </br>
+                </p>
               <div class="precio-cantidad">
                 <div class="precio-card">
                   <p>$${p.precio}</p>
@@ -105,4 +111,37 @@ mostrador.addEventListener('click', event=>{
     }
   })
   stopEmits = false
+}
+
+
+//TEST COPIAR CARD A IMAGEN
+
+async function copyCardAsImage(id) {
+  console.log("copyCardAsImage", id);
+  const element = document.getElementById(id);
+
+  try {
+      // Usamos html2canvas para convertir el elemento HTML en un canvas
+      const canvas = await html2canvas(element, {
+          scale: 2, // Aumenta la resolución de la imagen
+          useCORS: true, // Permite cargar imágenes externas
+      });
+
+      // Convertimos el canvas a un blob (formato de imagen)
+      canvas.toBlob(async (blob) => {
+          try {
+              // Creamos un item para el portapapeles
+              const clipboardItem = new ClipboardItem({ 'image/png': blob });
+              // Copiamos la imagen al portapapeles
+              await navigator.clipboard.write([clipboardItem]);
+              //alert('¡Imagen copiada al portapapeles! Ahora puedes pegarla en WhatsApp.');
+          } catch (error) {
+              console.error('Error al copiar la imagen al portapapeles:', error);
+              //alert('Hubo un error al copiar la imagen. Asegúrate de que tu navegador lo permita.');
+          }
+      }, 'image/png');
+  } catch (error) {
+      console.error('Error al generar la imagen:', error);
+      alert('Hubo un error al generar la imagen.');
+  }
 }
