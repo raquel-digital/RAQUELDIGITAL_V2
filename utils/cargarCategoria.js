@@ -38,7 +38,7 @@ async function loadCateg(query){
       }
       if(categ == "bijou"){
             //const result = await filtrar(["CM","CP","MU","MO","LE"]);//EL SE VA A SUBDIVIDIR EN BRETELES
-            const categFilter = ["CM","CP","MU","MO","LE"]
+            const categFilter = ["CM","CP","MU","MO","LE","HP"]
             const result = arts.filter(element => categFilter.includes(element.categorias));
             if(result.length > 0){
              return { succes: true, result: result } 
