@@ -53,7 +53,9 @@ socket.on("result-actu", result => {
   console.log(result.update)  
   alert("ARTICULOS ACTUALIZADOS");
   cambiosEnArticulos = []  
-  showArts(result.update)
+  if(result.update.length <= 10){
+    showArts(result.update)
+  }
 })
 
 socket.on("categorias", categ => {

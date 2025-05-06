@@ -415,6 +415,16 @@ header {
 	outline: 2px solid #2D8EE9;
 }
 
+.banner {
+	width: 100%;
+	aspect-ratio: 3/1;
+	background-image: url(/img/img-ejemplo1.jpg);
+	background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: #fef5e7;
+}
+
 .contenedor-img-articulo {
   	width: 100%;
   	aspect-ratio: 3/2;
@@ -1550,6 +1560,10 @@ footer li img {
 
 	.contenedor-principal nav button {
 		display: block;
+	}
+
+	.banner{
+		margin-top: 28rem;
 	}
 
 	.contenedor-principal nav ul {
