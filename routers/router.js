@@ -256,7 +256,37 @@ router.post("/check-out", (req, res) => {
           }                
       }
   })
+ 
+     
+  
+  //CREA JSON CON LI DE PROV Y LOCALIDADES
+ 
+    // const provincias = require('../public/system/envios/provincias.json') 
+    // const provinciasLocalidades = []
+    // // provincias.forEach( e => {
+    // //    `<li class="seleccionProv" role="option" data-value="${e.nombre}">${e.nombre}</li>`
+    // // })
+    // provincias.forEach( e => {
+    //   let arg = {
+    //     provincia: e.nombre,
+    //     localidades: []
+    //   }    
+    //   arg.localidades = `<li class="seleccionLoc" role="option" data-value="Seleccione su localidad" disabled selected>Seleccione su localidad</li>`;
+    //   e.ciudades.forEach(c => {
+    //     // Escapar el nombre para evitar inyecciones
+    //     const nombreEscapado = c.nombre.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    //     arg.localidades += `<li class="seleccionLoc" role="option" data-value="${nombreEscapado}">${nombreEscapado}</li>`;
+    //   }); 
+      
+    //   provinciasLocalidades.push(arg)
+    //   const fs = require('fs');
+    //   fs.writeFileSync('./provinciasLocalidades.json', JSON.stringify(provinciasLocalidades, null, 2), 'utf8', (err) => {
+    //     if (err) throw err;
+    //     console.log('Data written to file');
+    //   });
+    //   })
 
+  //res.render("checkOutNuevo", {carrito: carritoAnterior, iphone: esIPhone})
   res.render("checkOut", { iphone: esIPhone, carrito: carritoAnterior })
 })
 

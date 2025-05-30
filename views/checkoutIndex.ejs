@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Casa Raquel</title>
+  <script src="/socket.io/socket.io.js"></script> 
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="checkout_nuevo/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="description" content="Free Web tutorials">
+  <meta name="author" content="Casa Raquel">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="contenedor-header">
+    <header>
+      <a href="index.ejs"><img class="logo-header" src="checkout_nuevo/img/logo.svg" alt="Casa Raquel" /></a>
+    </header>
+  </div>
+
+
+  <div class="contenedor-checkout">
+		
+		<h1>Completá los datos para finalizar el pedido</h1>
+
+		<main>
+			<div class="card-checkout">
+				<h2>Datos personales</h2>
+				<label for="nombre-apellido">Nombre y apellido</label>
+				<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+				<input type="text" id="nombre-apellido" placeholder="Escribí tu nombre completo" autofocus="autofocus" />
+				<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+				<p style="display: none;" class="texto-error">Este campo no puede quedar vacío.</p>
+			</div>
+
+			<div id="opcionInterior" class="card-checkout">
+				<h2>Recepción de la compra</h2>
+				<!-- Se debe ocultar esta alerta con display: none; para que no se vea cuando está todo ok -->
+				<div class="alerta-error" style="display: none;">
+					<img src="checkout_nuevo/img/cruz-error.svg" alt="Error" />
+					<p>Por favor, elegí una de las opciones.</p>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="retiro" name="recepcion_compra" value="Retiro en el local">
+					<label for="retiro">Retiro en el local - <span>Lavalle 2665, Capital Federal</span></label>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="envio" name="recepcion_compra" value="Envío a domicilio">
+					<label for="envio">Envío</label>
+				</div>
+				
+
+				<div class="datos-envio" style="display: none;">
+					<div id="provincia" class="combo-select">
+						<label for="select-provincia">Provincia</label>
+						<!-- Le agregué la clase "input-error" al desplegable. Por defecto no debe aparecer, es una clase que se suma cuando el usuario no eligió ninguna opción -->
+						<div class="fake-select" tabindex="0" id="select-provincia" role="combobox" aria-haspopup="listbox" aria-expanded="false">
+						  <span id="provText" class="fake-select_placeholder">Seleccioná la provincia</span>
+						  <ul id="ulProvincia" class="fake-select_options" role="listbox">
+						    
+						  </ul>
+						</div>
+						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+						<p class="texto-error" style="display: none;">Por favor, elegí una opción para continuar.</p>
+					</div>
+					<div id="localidad" class="combo-select" style="display: none;">
+						<label for="select-localidad">Localidad</label>
+						<!-- Le agregué la clase "input-error" al desplegable. Por defecto no debe aparecer, es una clase que se suma cuando el usuario no eligió ninguna opción -->
+						<div id="select-localidad" class="fake-select" tabindex="0" id="select-localidad" role="combobox" aria-haspopup="listbox" aria-expanded="false">
+						  <span id="locText" class="fake-select_placeholder" data-placeholder="Seleccioná la localidad">Seleccioná la localidad</span>
+						  <ul id="ulLocalidad" class="fake-select_options" role="listbox">
+						    
+						  </ul>
+						</div>
+						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+						<p class="texto-error" style="display: none;">Por favor, elegí una opción para continuar.</p>
+					</div>
+					<div id="checkout-radiobuttons-opciones-envio" class="checkout-radiobuttons" style="display: none;">
+						<input type="radio" id="correo-argentino" name="tipo-de-envio" value="Por Correo Argentino">
+						<label for="correo-argentino">Por Correo Argentino - Precio: $1667</label>
+						<div class="checkout-radiobuttons">
+						<input type="radio" id="expreso" name="tipo-de-envio" value="Por Expreso">
+						<label for="expreso">Por Expreso - Precio: $500 <span>(el flete de envío a la terminal)</span></label>
+					</div>
+				</div>				
+
+				<div class="datos-correo-argentino" style="display: none;">
+					<hr class="linea-separadora">
+					<h3>Seleccione el tipo de envío</h3>
+
+					<!-- Correo argentino -->
+					
+					</div>
+					<p class="texto-campos-obligatorios">Los campos marcados con asterisco (*) son obligatorios.</p>
+					<div class="datos-envio">
+						<div class="combo-select">
+							<label for="caba-direccion">Dirección*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-direccion" placeholder="Ingresá la calle" autofocus="autofocus" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="caba-altura">Altura*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-altura" placeholder="Ingresá la altura" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="caba-piso-dpto">Piso / Dpto*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-piso-dpto" placeholder="Ingresá el piso y el dpto" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="provincia-cod-postal">Código postal*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="provincia-cod-postal" placeholder="Ingresá el código postal" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="usuario-dni">DNI*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="usuario-dni" placeholder="Ingresá el documento" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+					</div>
+					<!-- FIN Correo argentino -->
+
+					<!-- Expreso -->
+					<div class="datos-expreso">
+					<div class="alerta-informativa">
+						<img src="checkout_nuevo/img/icono-informativo.svg" alt="Error" />
+						<p>Además de abonar <span>$500</span> al flete que realiza el envío a la terminal, debe abonarle al Expreso al recibir su pedido. El costo varía según la empresa de transporte elegida.</p>
+					</div>
+
+					<p class="texto-campos-obligatorios">Los campos marcados con asterisco (*) son obligatorios.</p>
+					<div class="datos-envio">
+						<div class="combo-select">
+							<div class="label-con-tooltip">
+							  <label for="empresa-transporte">Empresa de transporte</label>
+							  <!-- El usuario puede hacer hover o tocar el ícono para que se abra el tooltip. En caso que lo toque hay que agregar la lógica de programación para que el tooltip se cierre cuando el usuario lo vuelve a tocar o cuando toca por fuera de él -->
+							  <button type="button" aria-label="Información sobre la empresa de transporte">
+							    <span>
+							      Si  no la sabés, dejá el campo vacío. La podés indicar luego cuando nos contactemos con vos.
+							    </span>
+							  </button>
+							</div>
+							<input type="text" id="empresa-transporte" placeholder="Ingresá la empresa de transporte" autofocus="autofocus" />
+						</div>
+						<div class="combo-select">
+							<div class="label-con-tooltip">
+							  <label for="expreso-direccion">Dirección*</label>
+							  <!-- El usuario puede hacer hover o tocar el ícono para que se abra el tooltip. En caso que lo toque hay que agregar la lógica de programación para que el tooltip se cierre cuando el usuario lo vuelve a tocar o cuando toca por fuera de él -->
+							  <button type="button" aria-label="Información sobre la dirección adonde llega el expreso">
+							    <span>
+							      Si  querés retirar el pedido en el depósito, escribí “Retiro en depósito”.
+							    </span>
+							  </button>
+							</div>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="expreso-direccion" placeholder="Ingresá la calle" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="caba-altura">Altura*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-altura" placeholder="Ingresá la altura" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="caba-piso-dpto">Piso / Dpto*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-piso-dpto" placeholder="Ingresá el piso y el dpto" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="usuario-dni">DNI*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="usuario-dni" placeholder="Ingresá el documento" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+					</div>
+					</div>
+					<!-- FIN Expreso -->
+				</div>
+			</div>
+
+			<!-- Código exclusivo si el usuario elige CABA en "Provincia" -->
+			<div id="opcionCABA" class="card-checkout" style="display: none;">
+				<h2>Recepción de la compra</h2>
+				<!-- Se debe ocultar esta alerta con display: none; para que no se vea cuando está todo ok -->
+				<div class="alerta-error" style="display: none;">
+					<img src="checkout_nuevo/img/cruz-error.svg" alt="Error" />
+					<p>Por favor, elegí una de las opciones.</p>
+				</div>
+			
+				<div class="datos-envio">
+					<div class="combo-select">
+						<label for="select-provincia">Provincia</label>
+						<!-- Le agregué la clase "input-error" al desplegable. Por defecto no debe aparecer, es una clase que se suma cuando el usuario no eligió ninguna opción -->
+						<div class="fake-select input-error" tabindex="0" id="select-provincia" role="combobox" aria-haspopup="listbox" aria-expanded="false">
+						  <span class="fake-select_placeholder" data-placeholder="Seleccioná la provincia">Seleccioná la provincia</span>
+						  <ul class="fake-select_options" role="listbox">
+						    <li role="option" data-value="caba">Ciudad Autónoma de Buenos Aires</li>
+						    <li role="option" data-value="buenos-aires">Buenos Aires</li>
+						    <li role="option" data-value="cordoba">Córdoba</li>
+						    <li role="option" data-value="santa-fe">Santa Fe</li>
+						    <li role="option" data-value="mendoza">Mendoza</li>
+						    <li role="option" data-value="tucuman">Tucumán</li>
+						    <li role="option" data-value="salta">Salta</li>
+						    <li role="option" data-value="neuquen">Neuquén</li>
+						  </ul>
+						</div>
+						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+						<p class="texto-error">Por favor, elegí una opción para continuar.</p>
+					</div>
+					<p class="texto-envio-caba">El envío dentro CABA se realiza por moto y tiene un  valor de <span style="font-weight: 600;">$600</span>.</p>
+					</div>
+
+				<div>
+					<hr class="linea-separadora">
+					<p class="texto-campos-obligatorios">Los campos marcados con asterisco (*) son obligatorios.</p>
+					<div class="datos-envio">
+						<div class="combo-select">
+							<label for="caba-direccion">Dirección*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-direccion" placeholder="Ingresá la calle" autofocus="autofocus" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="caba-altura">Altura*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-altura" placeholder="Ingresá la altura" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="caba-piso-dpto">Piso / Dpto*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-piso-dpto" placeholder="Ingresá el piso y el dpto" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<div class="label-con-tooltip">
+							  <label for="caba-franja-horaria">Franja horaria</label>
+							  <!-- El usuario puede hacer hover o tocar el ícono para que se abra el tooltip. En caso que lo toque hay que agregar la lógica de programación para que el tooltip se cierre cuando el usuario lo vuelve a tocar o cuando toca por fuera de él -->
+							  <button type="button" aria-label="Información sobre franja horaria">
+							    <span>
+							      Podés indicarnos la franja en la que querés recibir el pedido.<br />
+							      Si no la sabés, dejá el campo vacío.
+							    </span>
+							  </button>
+							</div>
+							<input type="text" id="caba-franja-horaria" placeholder="Ingresá la franja horaria" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIN Código exclusivo si el usuario elige CABA en "Provincia" -->
+
+			<!-- Código exclusivo si el usuario elige otra opción que no sea CABA en "Provincia" -->
+			<div id="opcionInterior" class="card-checkout" style="display: none;">
+				<h2>Recepción de la compra</h2>
+				<!-- Se debe ocultar esta alerta con display: none; para que no se vea cuando está todo ok -->
+				<div class="alerta-error" style="display: none;">
+					<img src="checkout_nuevo/img/cruz-error.svg" alt="Error" />
+					<p>Por favor, elegí una de las opciones.</p>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="retiro" name="recepcion_compra" value="Retiro en el local">
+					<label for="retiro">Retiro en el local - <span>Lavalle 2665, Capital Federal</span></label>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="envio" name="recepcion_compra" value="Envío a domicilio">
+					<label for="envio">Envío a domicilio</label>
+				</div>
+				<div class="datos-envio">
+					<div class="combo-select">
+						<label for="select-provincia">Provincia</label>
+						<!-- Le agregué la clase "input-error" al desplegable. Por defecto no debe aparecer, es una clase que se suma cuando el usuario no eligió ninguna opción -->
+						<div class="fake-select input-error" tabindex="0" id="select-provincia" role="combobox" aria-haspopup="listbox" aria-expanded="false">
+						  <span class="fake-select_placeholder" data-placeholder="Seleccioná la provincia">Seleccioná la provincia</span>
+						  <ul id="ulProvincia" class="fake-select_options" role="listbox">
+						    
+						  </ul>
+						</div>
+						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+						<p class="texto-error" style="display: none;">Por favor, elegí una opción para continuar.</p>
+					</div>
+					<div class="combo-select">
+						<label for="select-localidad">Localidad</label>
+						<!-- Le agregué la clase "input-error" al desplegable. Por defecto no debe aparecer, es una clase que se suma cuando el usuario no eligió ninguna opción -->
+						<div class="fake-select input-error" tabindex="0" id="select-localidad" role="combobox" aria-haspopup="listbox" aria-expanded="false">
+						  <span class="fake-select_placeholder" data-placeholder="Seleccioná la localidad">Seleccioná la localidad</span>
+						  <ul id="ulLocalidad" class="fake-select_options" role="listbox">
+						    
+						  </ul>
+						</div>
+						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+						<p class="texto-error">Por favor, elegí una opción para continuar.</p>
+					</div>
+				</div>
+
+				<div class="datos-correo-argentino">
+					<hr class="linea-separadora">
+					<h3>Seleccione el tipo de envío</h3>
+
+					<!-- Correo argentino -->
+					<div class="checkout-radiobuttons">
+						<input type="radio" id="correo-argentino" name="tipo-de-envio" value="Por Correo Argentino">
+						<label for="correo-argentino">Por Correo Argentino - Precio: $1667</label>
+					</div>
+					<p class="texto-campos-obligatorios">Los campos marcados con asterisco (*) son obligatorios.</p>
+					<div class="datos-envio">
+						<div class="combo-select">
+							<label for="caba-direccion">Dirección*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-direccion" placeholder="Ingresá la calle" autofocus="autofocus" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="caba-altura">Altura*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-altura" placeholder="Ingresá la altura" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="caba-piso-dpto">Piso / Dpto*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-piso-dpto" placeholder="Ingresá el piso y el dpto" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="provincia-cod-postal">Código postal*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="provincia-cod-postal" placeholder="Ingresá el código postal" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="usuario-dni">DNI*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="usuario-dni" placeholder="Ingresá el documento" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+					</div>
+					<!-- FIN Correo argentino -->
+
+					<!-- Expreso -->
+					<div class="checkout-radiobuttons">
+						<input type="radio" id="expreso" name="tipo-de-envio" value="Por Expreso">
+						<label for="expreso">Por Expreso - Precio: $500 <span>(el flete de envío a la terminal)</span></label>
+					</div>
+
+					<div class="alerta-informativa">
+						<img src="checkout_nuevo/img/icono-informativo.svg" alt="Error" />
+						<p>Además de abonar <span>$500</span> al flete que realiza el envío a la terminal, debe abonarle al Expreso al recibir su pedido. El costo varía según la empresa de transporte elegida.</p>
+					</div>
+
+					<p class="texto-campos-obligatorios">Los campos marcados con asterisco (*) son obligatorios.</p>
+					<div class="datos-envio">
+						<div class="combo-select">
+							<div class="label-con-tooltip">
+							  <label for="empresa-transporte">Empresa de transporte</label>
+							  <!-- El usuario puede hacer hover o tocar el ícono para que se abra el tooltip. En caso que lo toque hay que agregar la lógica de programación para que el tooltip se cierre cuando el usuario lo vuelve a tocar o cuando toca por fuera de él -->
+							  <button type="button" aria-label="Información sobre la empresa de transporte">
+							    <span>
+							      Si  no la sabés, dejá el campo vacío. La podés indicar luego cuando nos contactemos con vos.
+							    </span>
+							  </button>
+							</div>
+							<input type="text" id="empresa-transporte" placeholder="Ingresá la empresa de transporte" autofocus="autofocus" />
+						</div>
+						<div class="combo-select">
+							<div class="label-con-tooltip">
+							  <label for="expreso-direccion">Dirección*</label>
+							  <!-- El usuario puede hacer hover o tocar el ícono para que se abra el tooltip. En caso que lo toque hay que agregar la lógica de programación para que el tooltip se cierre cuando el usuario lo vuelve a tocar o cuando toca por fuera de él -->
+							  <button type="button" aria-label="Información sobre la dirección adonde llega el expreso">
+							    <span>
+							      Si  querés retirar el pedido en el depósito, escribí “Retiro en depósito”.
+							    </span>
+							  </button>
+							</div>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="expreso-direccion" placeholder="Ingresá la calle" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="caba-altura">Altura*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-altura" placeholder="Ingresá la altura" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="caba-piso-dpto">Piso / Dpto*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="caba-piso-dpto" placeholder="Ingresá el piso y el dpto" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+						<div class="combo-select">
+							<label for="usuario-dni">DNI*</label>
+							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+							<input type="text" id="usuario-dni" placeholder="Ingresá el documento" class="input-error" />
+							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+							<p class="texto-error">Este campo no puede quedar vacío.</p>
+						</div>
+					</div>
+					<!-- FIN Expreso -->
+				</div>
+				
+			</div>
+			<!-- FIN Código exclusivo si el usuario elige otra opción que no sea CABA en "Provincia" -->
+
+			<div class="card-checkout">
+				<h2>Contacto</h2>
+				<p class="texto-card-checkout">¿Cómo preferís que nos contactemos con vos?</p>
+				<!-- Se debe ocultar esta alerta con display: none; para que no se vea cuando está todo ok -->
+				<div class="alerta-error">
+					<img src="checkout_nuevo/img/cruz-error.svg" alt="Error" />
+					<p>Por favor, elegí una de las opciones.</p>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="whatsapp" name="contacto" value="Whatsapp">
+					<label for="whatsappo">Whatsapp</label>
+				</div>
+				<div class="checkout-input">
+					<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+					<input type="text" placeholder="Ingresá el nº de Whatsapp" autofocus="autofocus" class="input-error" />
+					<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+					<p class="texto-error">Este campo no puede quedar vacío.</p>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="email" name="contacto" value="Email">
+					<label for="email">Email</label>
+				</div>
+				<div class="checkout-input">
+					<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+					<input type="text" placeholder="Ingresá el email" autofocus="autofocus" class="input-error" />
+					<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+					<p class="texto-error">Este campo no puede quedar vacío.</p>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="tel-fijo" name="contacto" value="Teléfono fijo">
+					<label for="tel-fijo">Teléfono fijo</label>
+				</div>
+				<div class="checkout-input">
+					<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+					<input type="text" placeholder="Ingresá el teléfono fijo" autofocus="autofocus" class="input-error" />
+					<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+					<p class="texto-error">Este campo no puede quedar vacío.</p>
+				</div>
+			</div>
+
+			<div class="card-checkout">
+				<h2>Facturación</h2>
+				<!-- Se debe ocultar esta alerta con display: none; para que no se vea cuando está todo ok -->
+				<div class="alerta-error">
+					<img src="checkout_nuevo/img/cruz-error.svg" alt="Error" />
+					<p>Por favor, elegí una de las opciones.</p>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="consumidor-final" name="facturacion" value="Consumidorfinal">
+					<label for="consumidor-final">Consumidor final</label>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="monotributista" name="facturacion" value="Monotributista">
+					<label for="monotributista">Monotributista</label>
+				</div>
+				<div class="datos-facturacion">
+					<p class="texto-campos-obligatorios">Los campos marcados con asterisco (*) son obligatorios.</p>
+					<div>
+						<label for="razon-social">Razón social*</label>
+						<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+						<input type="text" id="razon-social" placeholder="Ingresá la razón social" autofocus="autofocus" class="input-error" />
+						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+						<p class="texto-error">Este campo no puede quedar vacío.</p>
+					</div>
+					<div>
+						<label for="usuario-cuit">CUIT*</label>
+						<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+						<input type="text" id="usuario-cuit" placeholder="Ingresá el CUIT" class="input-error" />
+						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+						<p class="texto-error">Este campo no puede quedar vacío.</p>
+					</div>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="iva-inscripto" name="facturacion" value="IVA inscripto">
+					<label for="iva-inscripto">IVA inscripto</label>
+				</div>
+				<div class="datos-facturacion">
+					<p class="texto-campos-obligatorios">Los campos marcados con asterisco (*) son obligatorios.</p>
+					<div>
+						<label for="razon-social">Razón social*</label>
+						<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+						<input type="text" id="razon-social" placeholder="Ingresá la razón social" autofocus="autofocus" class="input-error" />
+						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+						<p class="texto-error">Este campo no puede quedar vacío.</p>
+					</div>
+					<div>
+						<label for="usuario-cuit">CUIT*</label>
+						<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+						<input type="text" id="usuario-cuit" placeholder="Ingresá el CUIT" class="input-error" />
+						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+						<p class="texto-error">Este campo no puede quedar vacío.</p>
+					</div>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="exento" name="facturacion" value="Exento">
+					<label for="exento">Exento</label>
+				</div>
+				<div class="datos-facturacion">
+					<p class="texto-campos-obligatorios">Los campos marcados con asterisco (*) son obligatorios.</p>
+					<div>
+						<label for="razon-social">Razón social*</label>
+						<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+						<input type="text" id="razon-social" placeholder="Ingresá la razón social" autofocus="autofocus" class="input-error" />
+						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+						<p class="texto-error">Este campo no puede quedar vacío.</p>
+					</div>
+					<div>
+						<label for="usuario-cuit">CUIT*</label>
+						<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
+						<input type="text" id="usuario-cuit" placeholder="Ingresá el CUIT" class="input-error" />
+						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
+						<p class="texto-error">Este campo no puede quedar vacío.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="card-checkout">
+				<h2>Forma de pago</h2>
+				<!-- Se debe ocultar esta alerta con display: none; para que no se vea cuando está todo ok -->
+				<div class="alerta-error">
+					<img src="checkout_nuevo/img/cruz-error.svg" alt="Error" />
+					<p>Por favor, elegí una de las opciones.</p>
+				</div>
+				<div class="checkout-radiobuttons">
+					<!-- Efectivo solo aparece si el usuario selecciona "Retiro en el local" -->
+					<input type="radio" id="retiro" name="forma_de_pago" value="Efectivo">
+					<label for="retiro">Efectivo</label>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="retiro" name="forma_de_pago" value="Mercado Pago">
+					<label for="retiro">Mercado Pago</label>
+				</div>
+				<div class="checkout-radiobuttons">
+					<input type="radio" id="retiro" name="forma_de_pago" value="Transferencia bancaria">
+					<label for="retiro">Transferencia bancaria</label>
+				</div>
+				<div class="transferencia-bancaria">
+					<div class="alerta-informativa">
+						<img src="checkout_nuevo/img/icono-informativo.svg" alt="Error" />
+						<p>Por favor, una vez realizada la transferencia avísenos así podemos confirmar la acreditación.</p>
+					</div>
+					<p>Puede realizar la operación a cualquiera de las siguientes cuentas:</p>
+					<p style="margin-top: 16rem;"><span>ICBC</span></br>
+					CBU: 0150505402000102323287</br>
+					ALIAS: CASARAQUEL
+					</p>
+					<p style="margin-top: 16rem;"><span>MERCADOPAGO</span></br>
+					CVU: 0000003100034337461618</br>
+					ALIAS: CASARAQUELSA
+					</p>
+				</div>
+			</div>
+
+			<button type="button" class="btn-primario">Finalizar pedido</button>
+		</main>
+
+		<section>
+			<div class="resumen-compra-contenedor">
+				<h2>Resumen de compra</h2>
+				
+				<div class="carrito-cuerpo">
+			    	<div class="carrito-item">
+			    		<div class="contenedor-img-carrito"></div>
+			    			<div>
+			    				<p class="item-titulo">BANDERA ARGENTINA XS X 12 UNIDADES</p>
+			    				<p class="cantidad-articulos">x 1</p>
+			    			</div>
+			    			<p class="item-precio">$1278.27</p>
+			    	</div>
+
+			    	<div class="carrito-item">
+			    		<div class="contenedor-img-carrito"></div>
+			    			<div>
+				    			<p class="item-titulo">APLIC.CARPINCHO CH. X 6 UNIDADES</p>
+				    			<p class="cantidad-articulos">x 2</p>
+				    		</div>
+			    			<p class="item-precio">$2690.97</p>
+			    	</div>
+
+			    	<div class="carrito-item">
+			    		<div class="contenedor-img-carrito"></div>
+			    			<div>
+				    			<p class="item-titulo">APLICACION FLEXI VARIOS X 6U APLICACIONES VARIAS X 6 U.</p>
+				    			<p class="cantidad-articulos">x 1</p>
+			    			</div>
+			    			<p class="item-precio">$2342.32</p>
+			    	</div>
+
+			    	<div class="carrito-item">
+			    		<div class="contenedor-img-carrito"></div>
+			    			<div>
+				    			<p class="item-titulo">VIVO REFLECTIVO X 20 MTS</p>
+				    			<p class="cantidad-articulos">x 3</p>
+				    		</div>
+			    			<p class="item-precio">$7115.89</p>
+			    	</div>
+
+			    	<div class="carrito-item">
+			    		<div class="contenedor-img-carrito"></div>
+				    		<div>
+				    			<p class="item-titulo">PUNTILLA LYCRA 180MM X 10 MTS</p>
+				    			<p class="cantidad-articulos">x 2</p>
+				    		</div>
+			    			<p class="item-precio">$9649.75</p>
+			    	</div>
+
+			    	<div class="carrito-item">
+			    		<div class="contenedor-img-carrito"></div>
+				    		<div>
+				    			<p class="item-titulo">GALON FAJA BORDADA 80MM X 10 MTS</p>
+				    			<p class="cantidad-articulos">x 5</p>
+				    		</div>
+			    			<p class="item-precio">$25113.37</p>
+			    	</div>
+
+			    	<div class="carrito-item">
+			    		<div class="contenedor-img-carrito"></div>
+				    		<div>
+				    			<p class="item-titulo">STRASS DOBLE PLATA</p>
+				    			<p class="cantidad-articulos">x 1</p>
+				    		</div>
+			    			<p class="item-precio">$3338.83</p>
+			    	</div>
+
+			    </div>
+
+			    <div class="carrito-footer">
+			    	<div class="total-carrito">
+			    		<p>Total de la compra</p>
+			    		<p>$702,50</p>
+			    	</div>
+			    </div>
+
+			</div>
+
+			<a class="seguir-comprando" href="#">
+				<img src="checkout_nuevo/img/chevron-default.svg" alt="Volver" />
+				<p>Seguir comprando</p>
+			</a>
+
+		</section>
+
+</div>
+
+  <script src="js/checkOutSelects.js"></script>
+  <script src="js/checkoutNew.js"></script>
+</body>
+</html>
