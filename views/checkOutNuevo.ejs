@@ -24,13 +24,15 @@
     <h1>Completá los datos para finalizar el pedido</h1>
 
     <main>
+		<form class="formAction" action="" method="post">
+		 
         <div class="card-checkout">
 				<h2>Datos personales</h2>
 				<label for="nombre-apellido">Nombre y apellido</label>
 				<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
 				<input type="text" id="nombre-apellido" placeholder="Escribí tu nombre completo" autofocus="autofocus" />
 				<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
-				<p style="display: none;" class="texto-error">Este campo no puede quedar vacío.</p>
+				<p id="nombre-apellidoError" style="display: none;" class="texto-error">Este campo no puede quedar vacío.</p>
 		</div>
 
         <div id="opcionInterior" class="card-checkout">
@@ -59,7 +61,7 @@
 						  </ul>
 						</div>
 						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
-						<p class="texto-error" style="display: none;">Por favor, elegí una opción para continuar.</p>
+						<p id="select-provinciaError" class="texto-error" style="display: none;">Por favor, elegí una opción para continuar.</p>
 					</div>
 					<div id="localidad" class="combo-select" style="display: none;">
 						<label for="select-localidad">Localidad</label>
@@ -71,7 +73,7 @@
 						  </ul>
 						</div>
 						<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
-						<p class="texto-error" style="display: none;">Por favor, elegí una opción para continuar.</p>
+						<p id="select-localidadError" class="texto-error" style="display: none;">Por favor, elegí una opción para continuar.</p>
 					</div>
 					<div id="checkout-radiobuttons-opciones-envio" class="checkout-radiobuttons" style="display: none;">
 						<div id="opsEnviosError" class="alerta-error" style="display: none;" style="margin-top: 10rem;">
@@ -98,14 +100,14 @@
 							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
 							<input type="text" id="correo-direccion" placeholder="Ingresá la calle" autofocus="autofocus"  />
 							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
-							<p class="texto-error" style="display: none;">Este campo no puede quedar vacío.</p>
+							<p id="correo-direccionError" class="texto-error" style="display: none;">Por favor ingresá una dirección para continuar.</p>
 						</div>
 						<div class="combo-select">
 							<label for="correo-altura">Altura*</label>
 							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
 							<input type="text" id="correo-altura" placeholder="Ingresá la altura"  />
 							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
-							<p class="texto-error" style="display: none;">Este campo no puede quedar vacío.</p>
+							<p id="correo-alturaError" class="texto-error" style="display: none;">Por favor ingresá la altura de la calle para continuar</p>
 						</div>
 						<div class="combo-select">
 							<label for="correo-piso-dpto">Piso / Dpto</label>
@@ -119,14 +121,14 @@
 							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
 							<input type="text" id="correo-cod-postal" placeholder="Ingresá el código postal"  />
 							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
-							<p class="texto-error" style="display: none;">Este campo no puede quedar vacío.</p>
+							<p id="correo-cod-postalError" class="texto-error" style="display: none;">Este campo no puede quedar vacío.</p>
 						</div>
 						<div class="combo-select">
 							<label for="correo-dni">DNI*</label>
 							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
 							<input type="text" id="correo-dni" placeholder="Ingresá el documento"  />
 							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
-							<p class="texto-error" style="display: none;">Este campo no puede quedar vacío.</p>
+							<p id="correo-dniError" class="texto-error" style="display: none;">Por favor ingresá el DNI para continuar</p>
 						</div>
 					</div>
 				<!-- FIN Correo argentino -->
@@ -163,16 +165,16 @@
                                 </button>
                                 </div>
                                 <!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
-                                <input type="text" id="expreso-direccion" placeholder="Ingresá la calle"  />
+                                <input itemid="expreso-direccionError" type="text" id="expreso-direccion" placeholder="Ingresá la calle"  />
                                 <!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
-                                <p class="texto-error"style="display: none;">Este campo no puede quedar vacío.</p>
+                                <p id="expreso-direccionError" class="texto-error"style="display: none;">Este campo no puede quedar vacío.</p>
                             </div>
                             <div class="combo-select">
                                 <label for="expreso-altura">Altura*</label>
                                 <!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
                                 <input type="text" id="expreso-altura" placeholder="Ingresá la altura"  />
                                 <!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
-                                <p class="texto-error" style="display: none;">Este campo no puede quedar vacío.</p>
+                                <p id="expreso-alturaError" class="texto-error" style="display: none;">Este campo no puede quedar vacío.</p>
                             </div>
                             <div class="combo-select">
                                 <label for="expreso-piso-dpto">Piso / Dpto</label>
@@ -186,7 +188,7 @@
                                 <!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
                                 <input type="text" id="expreso-dni" placeholder="Ingresá el documento"  />
                                 <!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
-                                <p class="texto-error" style="display: none;">Este campo no puede quedar vacío.</p>
+                                <p id="expreso-dniError" class="texto-error" style="display: none;">Este campo no puede quedar vacío.</p>
                             </div>
                         </div>
                 </div>
@@ -203,14 +205,14 @@
 							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
 							<input type="text" id="caba-direccion" placeholder="Ingresá la calle" autofocus="autofocus"  />
 							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
-							
+							<p id="caba-direccionError" class="texto-error" style="display: none;">Este campo no puede quedar vacío.</p>
 						</div>
 						<div class="combo-select">
 							<label for="caba-altura">Altura*</label>
 							<!-- Le agregué la clase "input-error" a ese input. Por defecto no debe aparecer, es una clase que se suma cuando queda vacío -->
 							<input type="text" id="caba-altura" placeholder="Ingresá la altura"  />
 							<!-- Se debe ocultar este texto con display: none; para que no se vea cuando está todo ok -->
-							
+							<p id="caba-alturaError" class="texto-error" style="display: none;">Este campo no puede quedar vacío.</p>
 						</div>
 						<div class="combo-select">
 							<label for="caba-piso-dpto">Piso / Dpto</label>
@@ -374,7 +376,7 @@
 					<img src="checkout_nuevo/img/cruz-error.svg" alt="Error" />
 					<p>Por favor, elegí una de las opciones.</p>
 				</div>
-				<div class="checkout-radiobuttons">
+				<div id="efectivoDIV" class="checkout-radiobuttons">
 					<!-- Efectivo solo aparece si el usuario selecciona "Retiro en el local" -->
 					<input type="radio" id="efectivo" name="forma_de_pago" value="Efectivo">
 					<label for="efectivo">Efectivo</label>
@@ -410,7 +412,11 @@
 				<textarea name="" id="pedidoObservaciones" cols="90" rows="12"></textarea>
 				</div>
 			</div>
-
+			<input type="text" name="carrito_holder" style="display: none;" id="carrito-holder"><!--holder del carrito -->
+			<input class="precio" type="hidden" name="precio">
+            <input class="titulo" type="hidden" name="titulo">
+	
+		</form>
 			<button id="finalizarVenta" type="button" class="btn-primario">Finalizar pedido</button>
 			
     </main>

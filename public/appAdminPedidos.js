@@ -107,7 +107,8 @@ socket.on("busqueda-pedido-reponse", res => {
 
 socket.emit("chequear-pedidos-admin");
 
-socket.on("nuevos-pedidos", data => {  
+socket.on("nuevos-pedidos", data => { 
+  console.log(data) 
   if(pedidos == undefined && data.length > 0){
     pedidos = data;    
     //draw.newOrders(pedidos);

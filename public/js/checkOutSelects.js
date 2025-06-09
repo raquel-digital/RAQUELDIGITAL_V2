@@ -3,11 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('envio').addEventListener('click', e => {
     cliente.retira = "Por Envio"
     document.querySelector('.datos-envio').style.display = 'block';
+    document.getElementById("efectivoDIV").style.display = 'none';
   });
   document.getElementById('retiro').addEventListener('click', e => {
     cliente.retira = "Retira en local"
     document.querySelector('.datos-envio').style.display = 'none';
-    console.log(cliente)
+    document.getElementById("efectivoDIV").style.display = 'block';
   });
 
   // Seleccionar todos los elementos con clase fake-select
@@ -32,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Manejar la selección de una opción
     document.getElementById("select-provincia").addEventListener('click', e => {
       if(e.target.classList.contains("seleccionProv")){
-        const selectedText = e.target.textContent.trim();
+        const selectedText = e.target.textContent.trim();       
+
         document.getElementById("provText").textContent = selectedText;
         costoEnvio(selectedText)
 
@@ -67,6 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById("select-localidad").addEventListener('click', e => {
       if(e.target.classList.contains("seleccionLoc")){
         const selectedText = e.target.textContent.trim();
+        if(selectedText == "Seleccione su localidad") {
+          document.getElementById("checkout-radiobuttons-opciones-envio").style.display = "none";
+          document.getElementById("datos-correo-argentino").style.display = "none";
+          return
+        }
         document.getElementById("locText").textContent = selectedText;
         document.getElementById("checkout-radiobuttons-opciones-envio").style.display = "block";
       }

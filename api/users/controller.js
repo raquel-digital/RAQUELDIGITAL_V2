@@ -5,7 +5,22 @@ const artsController = require("../arts/controller")
 
 const controller = {
    ingresar: async function (data){
-       console.log(data.tipoDeEnvio.piso_departamento)
+       //console.log(data.tipoDeEnvio.piso_departamento)
+        if(data.retira == "Retira en local") {
+                data.tipoDeEnvio = {            
+                Altura: "", 
+                Calle: "", 
+                piso_departamento: "",
+                Costo: "", 
+                Horario_Entrega: "",  
+                Provincia: "", 
+                Localidad: "", 
+                Empresa: "", 
+                DNI: "", 
+                CP: "", 
+                forma_de_envio: ""
+            }
+        }
         const date = new Date();
         const fecha = date.toLocaleString();
         let ultimaOrden = await store.numero_orden();
@@ -19,7 +34,7 @@ const controller = {
         tipoDeEnvio: {            
             Altura: data.tipoDeEnvio.Altura, 
             Calle: data.tipoDeEnvio.Calle, 
-            piso_departamento: data.tipoDeEnvio.Piso,
+            piso_departamento: data.tipoDeEnvio.piso_departamento,
             Costo: data.tipoDeEnvio.Costo, 
             Horario_Entrega:data.tipoDeEnvio.Horario_Entrega,  
             Provincia: data.tipoDeEnvio.Provincia, 

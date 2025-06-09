@@ -2,10 +2,14 @@ const socket = io.connect();
 
 const datos_cliente = JSON.parse(localStorage.getItem('datos-envio'));//recuperamos los datos del cliente
 const pedido = JSON.parse(localStorage.getItem("carrito")) //recuperamos el carrito
+document.getElementById("carrito-holder").value = JSON.stringify(pedido)//guardamos el pedido para que lo tome la cabecera del req.boy 
 const cliente = {}
 const provinciasSelect = document.getElementById("ulProvincia");
 const localidadSelect = document.getElementById("ulLocalidad");
 let provinciasLocalidades; //contenedor de localidades por provincia
+let envioMP = 0
+let form = document.querySelector(".formAction");
+
 
 //buscamos los datos de envío y listado de provincias
 (async () => {
@@ -17,7 +21,6 @@ let provinciasLocalidades; //contenedor de localidades por provincia
     return response.json();
   })
   .then(argentina => {
-    console.log(argentina)
     // Trabaja con los datos JSON
     argentina.forEach( e => {
       provinciasSelect.innerHTML += `<li class="seleccionProv" role="option" data-value="${e.provincia}">${e.provincia}</li>`
@@ -38,6 +41,7 @@ let provinciasLocalidades; //contenedor de localidades por provincia
 //ingresamos carrito
 document.querySelector(".carrito-cuerpo").innerHTML = "";
 let total = 0;
+
 pedido.forEach(e => {
     total += e.precio * e.cantidad
     document.querySelector(".carrito-cuerpo").innerHTML += `
@@ -52,8 +56,11 @@ pedido.forEach(e => {
         </div>
     </div>    
     `
-    document.getElementById("total_de_compra").textContent = `$${total}`;
+    document.getElementById("total_de_compra").textContent = `$${total.toFixed(2)}`;
 })
+cliente.sys = {}
+cliente.sys.compra = pedido
+cliente.sys.totalCompra = total.toFixed(2)
 
 
 
@@ -80,6 +87,7 @@ function checkOut() {
           CP: document.getElementById("correo-cod-postal").value,
           DNI: document.getElementById("correo-dni").value,
         }
+        envioMP += cliente.tipoDeEnvio.Costo
         cliente.retira = "Por Envio"
       }      
       if(cliente.vamosAEnviar == "expreso" || document.getElementById("expreso").checked) {
@@ -87,13 +95,14 @@ function checkOut() {
             forma_de_envio: "Expreso",
             Calle: document.getElementById("expreso-direccion").value,
             Altura: document.getElementById("expreso-altura").value,
-            piso_departamento: document.getElementById("caba-piso-dpto").value,
+            piso_departamento: document.getElementById("expreso-piso-dpto").value,
             DNI: document.getElementById("expreso-dni").value,
             Empresa: document.getElementById("empresa-transporte").value,
             Costo: valoresEnvio.expreso,
             Provincia: document.getElementById("provText").textContent,
             Localidad: document.getElementById("locText").textContent, 
           }
+          envioMP += cliente.tipoDeEnvio.Costo
           cliente.retira = "Por Envio"
       }      
       if(cliente.vamosAEnviar == "Por Moto") {
@@ -106,6 +115,7 @@ function checkOut() {
             Costo: valoresEnvio.moto,
             Provincia: "Ciudad Autonoma De Bs As",
           }
+          envioMP += cliente.tipoDeEnvio.Costo
           cliente.retira = "Por Envio"
       }
     } 
@@ -159,24 +169,35 @@ function checkOut() {
     }
     //FORMA DE PAGO
     if(document.getElementById("mercadopago").checked) {
-        cliente.formaDePago = "Mercado Pago"//TODO accion para redireccionar a mercado pago
+        //ajustes mercadopago
+        document.querySelector(".precio").value = cliente.sys.totalCompra + envioMP;
+        document.querySelector(".titulo").value = "Carrito-Raquel-Digital";
+        cliente.formaDePago = "Mercado Pago"        
+        form.action = "/mercadopago"
     }
     if(document.getElementById("efectivo").checked) {
         cliente.formaDePago = "En Efectivo"
+        form.action = "/success-transferencia" //redireccion al succes final
     }
     if(document.getElementById("transferencia").checked) {
         cliente.formaDePago = "Transferencia Bancaria"
+        form.action = "/success-transferencia" //redireccion al succes final
     }
 
+    checkCorreccion(cliente)//en caso que haya errores previos los corregimos
     //observaciones
     cliente.observaciones = document.getElementById("pedidoObservaciones").value;
     const check = checkOutErrors(cliente)//chequeamos errores
-    if(!check) return
-    
-    checkCorreccion(cliente)//en caso que haya errores previos los corregimos
+    //si hay error frenar envio
+    if(!check) {
+      console.log("HAY ERRORES, NO SE ENVIA", check)
+      return
+    }
 
     localStorage.setItem('datos-envio', JSON.stringify(cliente)); //LOCAL STORE
-    //TODO enviar por socket
-    console.log(cliente);
+
+    //agregamos el carrito al cliente    
+    socket.emit("mail", cliente)
+    form.submit();
   }
 

@@ -3,7 +3,7 @@ function checkOutErrors(cliente) {
   //FALTA NOMBRE
   if(cliente.nombreApellido == "" || cliente.nombreApellido == null){
     document.getElementById("nombre-apellido").classList.add("input-error");
-    document.getElementById("nombre-apellido").insertAdjacentHTML('afterend', '<p class="texto-error">Este campo no puede quedar vacío.</p>');
+    document.getElementById("nombre-apellidoError").style.display = "block";
     document.getElementById("nombre-apellido").focus();
     document.getElementById("nombre-apellido").scrollIntoView({ behavior: 'smooth', block: 'center' });
     return false;
@@ -17,31 +17,31 @@ function checkOutErrors(cliente) {
   }
   //NO SE SELECCIONO PROVINCIA O LOCALIDAD
   if(!cliente.tipoDeEnvio && cliente.retira == "Por Envio"){   
-    if(document.getElementById("provText").textContent == "Seleccioná la provincia") {
-      document.getElementById("select-provincia").classList.add("input-error");
-      document.getElementById("select-provincia").insertAdjacentHTML('afterend', '<p class="texto-error">Por favor elegí una opción para continuar</p>');
-      document.getElementById("select-provincia").scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return false;
-    }
-    
-    if(document.getElementById("locText").textContent == "Seleccioná la localidad" || cliente.tipoDeEnvio.Localidad == "Seleccioná la localidad") { 
-      document.getElementById("select-localidad").classList.add("input-error");
-      document.getElementById("select-localidad").insertAdjacentHTML('afterend', '<p class="texto-error">Por favor elegí una opción para continuar</p>');
-      document.getElementById("select-localidad").scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return false;
-    }
     //NO SE SELECCIONO CORREO ARGENTINO O EXPRESO
     if(document.getElementById("correo-argentino").checked == false && document.getElementById("expreso").checked == false) {
       document.getElementById("opsEnviosError").style.display = "block";
       document.getElementById("opsEnviosError").focus();  
       document.getElementById("opsEnviosError").scrollIntoView({ behavior: 'smooth', block: 'center' });
     }    
+
+    if(document.getElementById("provText").textContent == "Seleccioná la provincia") {
+      document.getElementById("select-provincia").classList.add("input-error");
+      document.getElementById("select-provinciaError").style.display = "block";
+      document.getElementById("select-provincia").scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    }
+    
+    if(document.getElementById("locText").textContent == "Seleccioná la localidad" || cliente.tipoDeEnvio.Localidad == "Seleccioná la localidad") { 
+      document.getElementById("select-localidad").classList.add("input-error");
+      document.getElementById("select-localidadError").style.display = "block";
+      document.getElementById("select-localidad").scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;    }
+    
   }
   if(cliente.tipoDeEnvio){
-    if(document.getElementById("locText").textContent == "Seleccioná la localidad" || cliente.tipoDeEnvio.Localidad == "Seleccioná la localidad") { 
-      console.log("entro al error de localidad")
+    if(document.getElementById("locText").textContent == "Seleccione su localidad" || cliente.tipoDeEnvio.Localidad == "Seleccioná la localidad") { 
       document.getElementById("select-localidad").classList.add("input-error");
-      document.getElementById("select-localidad").insertAdjacentHTML('afterend', '<p class="texto-error">Por favor elegí una opción para continuar</p>');
+      document.getElementById("select-localidadError").style.display = "block";
       document.getElementById("select-localidad").scrollIntoView({ behavior: 'smooth', block: 'center' });
       return false;
     }
@@ -49,22 +49,22 @@ function checkOutErrors(cliente) {
     if(cliente.tipoDeEnvio.forma_de_envio == 'Correo_Argentino'){
       if(cliente.tipoDeEnvio.Calle == ""){        
         document.getElementById("correo-direccion").classList.add("input-error");
-        document.getElementById("correo-direccion").insertAdjacentHTML('afterend', '<p class="texto-error">Por favor ingresá una dirección para continuar</p>');
+        document.getElementById("correo-direccionError").style.display = "block";
         document.getElementById("correo-direccion").focus();
         document.getElementById("correo-direccion").scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
       }
       if(cliente.tipoDeEnvio.Altura == ""){        
         document.getElementById("correo-altura").classList.add("input-error");
-        document.getElementById("correo-altura").insertAdjacentHTML('afterend', '<p class="texto-error">Por favor ingresá la altura de la calle para continuar</p>');
+        document.getElementById("correo-alturaError").style.display = "block";
         document.getElementById("correo-altura").focus();
         document.getElementById("correo-altura").scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
       }      
       if(cliente.tipoDeEnvio.CP == ""){   
-        const showError = document.getElementById("correo-cod-postal") 
-        showError.classList.add("input-error");
-        showError.insertAdjacentHTML('afterend', '<p class="texto-error">Por favor ingresá el código postal para continuar</p>');
+        document.getElementById("correo-cod-postal").classList.add("input-error") 
+        const showError = document.getElementById("correo-cod-postalError");
+        showError.style.display = "block";
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
@@ -72,7 +72,7 @@ function checkOutErrors(cliente) {
       if(cliente.tipoDeEnvio.DNI == ""){   
         const showError = document.getElementById("correo-dni") 
         showError.classList.add("input-error");
-        showError.insertAdjacentHTML('afterend', '<p class="texto-error">Por favor ingresá el DNI para continuar</p>');
+        document.getElementById("correo-dniError").style.display = "block";
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
@@ -83,7 +83,7 @@ function checkOutErrors(cliente) {
       if(cliente.tipoDeEnvio.Calle == ""){   
         const showError = document.getElementById("expreso-direccion") 
         showError.classList.add("input-error");
-        showError.insertAdjacentHTML('afterend', '<p class="texto-error">Por favor ingresá la dirección de la calle para continuar</p>');
+        document.getElementById("expreso-direccionError").style.display = "block";
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
@@ -91,7 +91,7 @@ function checkOutErrors(cliente) {
       if(cliente.tipoDeEnvio.Altura == ""){        
         const showError = document.getElementById("expreso-altura") 
         showError.classList.add("input-error");
-        showError.insertAdjacentHTML('afterend', '<p class="texto-error">Por favor ingresá la dirección de la calle para continuar</p>');
+        document.getElementById("expreso-alturaError").style.display = "block";
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
@@ -99,7 +99,7 @@ function checkOutErrors(cliente) {
       if(cliente.tipoDeEnvio.DNI == ""){   
         const showError = document.getElementById("expreso-dni") 
         showError.classList.add("input-error");
-        showError.insertAdjacentHTML('afterend', '<p class="texto-error">Por favor ingresá el DNI para continuar</p>');
+        document.getElementById("expreso-dniError").style.display = "block";
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
@@ -110,7 +110,7 @@ function checkOutErrors(cliente) {
       if(cliente.tipoDeEnvio.Calle == ""){   
         const showError = document.getElementById("caba-direccion") 
         showError.classList.add("input-error");
-        showError.insertAdjacentHTML('afterend', '<p class="texto-error">Por favor ingresá la dirección de la calle para continuar</p>');
+        document.getElementById("caba-direccionError").style.display = "block";
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
@@ -118,7 +118,7 @@ function checkOutErrors(cliente) {
       if(cliente.tipoDeEnvio.Altura == ""){        
         const showError = document.getElementById("caba-altura") 
         showError.classList.add("input-error");
-        showError.insertAdjacentHTML('afterend', '<p class="texto-error">Por favor ingresá la dirección de la calle para continuar</p>');
+        document.getElementById("caba-alturaError").style.display = "block";
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
@@ -144,8 +144,7 @@ function checkOutErrors(cliente) {
       }      
      }
      if(cliente.formaDeContacto.contacto == "Mail"){
-      if(cliente.formaDeContacto.numero == "" || !cliente.formaDeContacto.numero.includes("@")){
-        //TODO NO MUESTRA MENSAJE DE ERROR
+      if(cliente.formaDeContacto.numero == ""){
         document.getElementById("mailError").style.display = "block";
         const showError = document.getElementById("mailError")
         
@@ -153,6 +152,14 @@ function checkOutErrors(cliente) {
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
       } 
+      if(!cliente.formaDeContacto.numero.includes("@")){
+        document.getElementById("mailError").style.display = "block";
+        const showError = document.getElementById("mailError")
+        
+        showError.focus();
+        showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return false;
+      }
       
      }
      if(cliente.formaDeContacto.contacto == "Telefono"){
@@ -229,4 +236,12 @@ function checkOutErrors(cliente) {
     document.getElementById("formaPagoError").scrollIntoView({ behavior: 'smooth', block: 'center' });
     return false;
   }
+  if(cliente.formaDePago == "En Efectivo" && cliente.retira == "Por Envio"){
+    document.getElementById("formaPagoError").style.display = "block";
+    document.getElementById("formaPagoError").focus();
+    document.getElementById("formaPagoError").scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return false;
+  }
+
+  return true
 }

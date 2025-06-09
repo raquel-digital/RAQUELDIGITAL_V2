@@ -297,16 +297,16 @@ mercadopago.configure({
 });
 
 router.post("/mercadopago", (req, res) => {
-  
+  //console.log("mercadopgao", req.body.precio)
   let preference = {
     items: [
       {
         title:req.body.titulo,
-        unit_price: parseInt(req.body.precio),
+        unit_price: Number(req.body.precio),
         quantity: 1,
       }
     ],
-    // ...
+    
 "back_urls": {
   "success": "raqueldigital.herokuapp.com/success",
   "failure": "raqueldigital.herokuapp.com/failure",
@@ -316,8 +316,7 @@ router.post("/mercadopago", (req, res) => {
 // ...
   };
   mercadopago.preferences.create(preference)
-  .then(function(response){
-    
+  .then(function(response){    
     res.redirect(response.body.init_point);
   }).catch(function(error){
     console.log(error);

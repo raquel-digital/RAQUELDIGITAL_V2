@@ -1,10 +1,7 @@
 function checkCorreccion(cliente)  {
   if(cliente.nombreApellido != "" && cliente.nombreApellido != null){
-    document.getElementById("nombre-apellido").classList.remove("input-error");
-    const error = document.getElementById("nombre-apellido").nextElementSibling;
-    if (error) {
-      error.remove();
-    }
+    document.getElementById("nombre-apellido").classList.remove("input-error")
+    document.getElementById("nombre-apellidoError").style.display = "none";
   }
   if(document.getElementById("retiro").checked == true || document.getElementById("envio").checked == true) {
     document.getElementById("recepCompraError").style.display = "none";
@@ -12,17 +9,11 @@ function checkCorreccion(cliente)  {
   if(!cliente.tipoDeEnvio){
     if(document.getElementById("provText").textContent != "Seleccioná la provincia") {
       document.getElementById("select-provincia").classList.remove("input-error");
-      const error = document.getElementById("select-provincia").nextElementSibling;
-      if (error) {
-        error.remove();
-      }
+      document.getElementById("select-provinciaError").style.display = "none";
     }
     if(document.getElementById("locText").textContent != "Seleccioná la localidad") {
       document.getElementById("select-localidad").classList.remove("input-error");
-      const error = document.getElementById("select-localidad").nextElementSibling;
-      if (error) {
-        error.remove();
-      }
+      document.getElementById("select-localidadError").style.display = "none";
     }    
   }
   if(cliente.tipoDeEnvio){
@@ -31,75 +22,47 @@ function checkCorreccion(cliente)  {
     if(cliente.tipoDeEnvio.forma_de_envio == 'Correo_Argentino'){
       if(cliente.tipoDeEnvio.Calle != ""){
         document.getElementById("correo-direccion").classList.remove("input-error");
-        const error = document.getElementById("correo-direccion").nextElementSibling;
-        if (error) {
-          error.remove();
-        }
+        document.getElementById("correo-direccionError").style.display = "none";
       }
       if(cliente.tipoDeEnvio.Altura != ""){
         document.getElementById("correo-altura").classList.remove("input-error");
-        const error = document.getElementById("correo-altura").nextElementSibling;
-        if (error) {
-          error.remove();
-        }
+        document.getElementById("correo-alturaError").style.display = "none";
       }      
       if(cliente.tipoDeEnvio.CP != ""){
-        const correct = document.getElementById("correo-cod-postal");
-        correct.classList.remove("input-error");
-        const error = correct.nextElementSibling;
-        if (error) {
-          error.remove();
-        }
+        document.getElementById("correo-cod-postal").classList.remove("input-error");
+        document.getElementById("correo-cod-postalError").style.display = "none";
       }
       if(cliente.tipoDeEnvio.DNI != ""){
         const correct = document.getElementById("correo-dni");
         correct.classList.remove("input-error");
-        const error = correct.nextElementSibling;
-        if (error) {
-          error.remove();
-        }
+        document.getElementById("correo-dniError").style.display = "none";
       }
     }
     //CORREGIR EXPRESO
    if(cliente.tipoDeEnvio.forma_de_envio == 'Expreso'){
       if(cliente.tipoDeEnvio.Calle != ""){
         document.getElementById("expreso-direccion").classList.remove("input-error");
-        const error = document.getElementById("expreso-direccion").nextElementSibling;
-        if (error) {
-          error.remove();
-        }
+        document.getElementById("expreso-direccionError").style.display = "none";
       }
       if(cliente.tipoDeEnvio.Altura != ""){
         document.getElementById("expreso-altura").classList.remove("input-error");
-        const error = document.getElementById("expreso-altura").nextElementSibling;
-        if (error) {
-          error.remove();
-        }
+        document.getElementById("expreso-alturaError").style.display = "none";
       }
       if(cliente.tipoDeEnvio.DNI != ""){
         const correct = document.getElementById("expreso-dni");
         correct.classList.remove("input-error");
-        const error = correct.nextElementSibling;
-        if (error) {
-          error.remove();
-        }
+        document.getElementById("expreso-dniError").style.display = "none";
       }
   }
   //CORREGIR POR MOTO
   if(cliente.tipoDeEnvio.forma_de_envio == "Moto"){
       if(cliente.tipoDeEnvio.Calle != ""){
         document.getElementById("caba-direccion").classList.remove("input-error");
-        const error = document.getElementById("caba-direccion").nextElementSibling;
-        if (error) {
-          error.remove();
-        }
+        document.getElementById("caba-direccionError").style.display = "none";
       }
       if(cliente.tipoDeEnvio.Altura != ""){
         document.getElementById("caba-altura").classList.remove("input-error");
-        const error = document.getElementById("caba-altura").nextElementSibling;
-        if (error) {
-          error.remove();
-        }
+        document.getElementById("caba-alturaError").style.display = "none";
       } 
     }
   }  

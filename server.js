@@ -432,7 +432,7 @@ async function mailEmit(data){
         }
     })
     let mailOptions;
-    if(datos.sys.checked.retiro){
+    if(datos.retira == "Retira en local"){
        
         mailOptions = {
             from: 'SITIO WEB',
@@ -460,15 +460,15 @@ async function mailEmit(data){
               </tbody>
               <tfoot >
                 <tr class="total-compra-final">
-                  TOTAL DEL PEDIDO: ${data.sys.totalCompra.toFixed(2)}
-                  TOTAL DEL PEDIDO + ENVIO: ${data.sys.totalCompra.toFixed(2) + data.tipoDeEnvio.Costo}
+                  TOTAL DEL PEDIDO: ${data.sys.totalCompra}
+                  TOTAL DEL PEDIDO + ENVIO: ${data.sys.totalCompra + data.tipoDeEnvio.Costo}
                 </tr>
           </tfoot>
             `
         }
     }
     
-    if(datos.sys.checked.expreso || datos.sys.checked.correo || datos.sys.checked.moto){        
+    if(datos.retira == "Por Envio"){        
         const costo_envios = Number(data.sys.totalCompra) + Number(data.tipoDeEnvio.Costo)
             mailOptions = {
                 from: 'SITIO WEB',
@@ -492,7 +492,7 @@ async function mailEmit(data){
                                 TRANSPORTE: ${datos.tipoDeEnvio.Empresa}
                             </li>
                             <li>
-                                CALLE: ${datos.tipoDeEnvio.Calle} ALTURA: ${datos.tipoDeEnvio.Altura} PISO: ${datos.tipoDeEnvio.Piso}
+                                CALLE: ${datos.tipoDeEnvio.Calle} ALTURA: ${datos.tipoDeEnvio.Altura} PISO: ${datos.tipoDeEnvio.piso_departamento}
                             </li>
                             <li>
                                 CP: ${datos.tipoDeEnvio.CP} DNI: ${datos.tipoDeEnvio.DNI}
@@ -518,7 +518,7 @@ async function mailEmit(data){
               </tbody>
               <tfoot >
                 <tr class="total-compra-final">
-                    TOTAL DEL PEDIDO: ${data.sys.totalCompra.toFixed(2)}                    
+                    TOTAL DEL PEDIDO: ${data.sys.totalCompra}                    
                 </tr>
                 <tr class="total-compra-final">
                     TOTAL DEL PEDIDO + ENVIO: ${costo_envios.toFixed(2)}
