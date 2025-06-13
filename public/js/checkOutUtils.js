@@ -2,10 +2,10 @@ let valoresEnvio
 (async () => await getCostos())();//getCostos()
 //----- UTILS -----//
 function costoEnvio(provincia) {
-  let valorCorreo = null//TODO ingresar valores de sistema
+  let valorCorreo = null
   const valor = document.getElementById("correo_argentino_costos")
  
-  if(provincia == "Buenos Aires"){//TODO en cada if hay que actualizar el valor del envío
+  if(provincia == "Buenos Aires"){
     valorCorreo = valoresEnvio.correoReg
     valor.innerHTML = `Por Correo Argentino - Precio: $${valoresEnvio.correoReg}`
   }
@@ -48,7 +48,6 @@ async function getCostos() {
 
 //ingreso de datos previos
 function ingresoDatosPrevios(cliente) {
-  console.log(cliente);
   document.getElementById("nombre-apellido").value = cliente.nombreApellido;
  
   //ENVIO
@@ -62,26 +61,24 @@ function ingresoDatosPrevios(cliente) {
   if(cliente.retira != "Retira en local"){
     if(cliente.tipoDeEnvio.forma_de_envio == "Correo_Argentino") {
 
-    document.getElementById("localidad").style.display = 'block';
-    document.getElementById("provText").textContent = cliente.tipoDeEnvio.Provincia
-    document.getElementById("locText").textContent = cliente.tipoDeEnvio.Localidad
+      document.getElementById("localidad").style.display = 'block';
+      document.getElementById("provText").textContent = cliente.tipoDeEnvio.Provincia
+      document.getElementById("locText").textContent = cliente.tipoDeEnvio.Localidad
 
-    document.getElementById("localidad").style.display = 'block';
-    document.getElementById("checkout-radiobuttons-opciones-envio").style.display = "block";
-    document.getElementById("correo-argentino").checked = true;
+      document.getElementById("localidad").style.display = 'block';
+      document.getElementById("checkout-radiobuttons-opciones-envio").style.display = "block";
+      document.getElementById("correo-argentino").checked = true;
 
-    document.querySelector(".datos-correo-argentino").style.display = "block";
-    
-    document.getElementById("correo-direccion").value = cliente.tipoDeEnvio.Calle
-    document.getElementById("correo-altura").value = cliente.tipoDeEnvio.Altura
-    document.getElementById("correo-piso-dpto").value = cliente.tipoDeEnvio.piso_departamento    
-    document.getElementById("correo-cod-postal").value = cliente.tipoDeEnvio.CP
-    document.getElementById("correo-dni").value = cliente.tipoDeEnvio.DNI   
+      document.querySelector(".datos-correo-argentino").style.display = "block";
+      
+      document.getElementById("correo-direccion").value = cliente.tipoDeEnvio.Calle
+      document.getElementById("correo-altura").value = cliente.tipoDeEnvio.Altura
+      document.getElementById("correo-piso-dpto").value = cliente.tipoDeEnvio.piso_departamento    
+      document.getElementById("correo-cod-postal").value = cliente.tipoDeEnvio.CP
+      document.getElementById("correo-dni").value = cliente.tipoDeEnvio.DNI   
 
-    //ingresar valor del correo
-    console.log("ingresando valor correo", valoresEnvio)
-    costoEnvio(cliente.tipoDeEnvio.Provincia); 
-    }//TODO VALORES DE ENVIO DEBEN REINGRESARSE POR UNA FUNCION
+      costoEnvio(cliente.tipoDeEnvio.Provincia); 
+    }
     if(cliente.tipoDeEnvio.forma_de_envio == "Expreso") {
 
       document.getElementById("localidad").style.display = 'block';
@@ -98,7 +95,9 @@ function ingresoDatosPrevios(cliente) {
       document.getElementById("expreso-altura").value = cliente.tipoDeEnvio.Altura
       document.getElementById("expreso-piso-dpto").value = cliente.tipoDeEnvio.piso_departamento    
       document.getElementById("empresa-transporte").value = cliente.tipoDeEnvio.Empresa
-      document.getElementById("expreso-dni").value = cliente.tipoDeEnvio.DNI    
+      document.getElementById("expreso-dni").value = cliente.tipoDeEnvio.DNI   
+      
+      costoEnvio(cliente.tipoDeEnvio.Provincia)
     }
     if(cliente.tipoDeEnvio.forma_de_envio == "Moto") {
       document.getElementById("provText").textContent = cliente.tipoDeEnvio.Provincia 

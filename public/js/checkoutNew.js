@@ -7,7 +7,6 @@ const cliente = {}
 const provinciasSelect = document.getElementById("ulProvincia");
 const localidadSelect = document.getElementById("ulLocalidad");
 let provinciasLocalidades; //contenedor de localidades por provincia
-let envioMP = 0
 let form = document.querySelector(".formAction");
 
 
@@ -87,7 +86,7 @@ function checkOut() {
           CP: document.getElementById("correo-cod-postal").value,
           DNI: document.getElementById("correo-dni").value,
         }
-        envioMP += cliente.tipoDeEnvio.Costo
+        
         cliente.retira = "Por Envio"
       }      
       if(cliente.vamosAEnviar == "expreso" || document.getElementById("expreso").checked) {
@@ -102,7 +101,7 @@ function checkOut() {
             Provincia: document.getElementById("provText").textContent,
             Localidad: document.getElementById("locText").textContent, 
           }
-          envioMP += cliente.tipoDeEnvio.Costo
+
           cliente.retira = "Por Envio"
       }      
       if(cliente.vamosAEnviar == "Por Moto") {
@@ -115,7 +114,7 @@ function checkOut() {
             Costo: valoresEnvio.moto,
             Provincia: "Ciudad Autonoma De Bs As",
           }
-          envioMP += cliente.tipoDeEnvio.Costo
+         
           cliente.retira = "Por Envio"
       }
     } 
@@ -170,7 +169,12 @@ function checkOut() {
     //FORMA DE PAGO
     if(document.getElementById("mercadopago").checked) {
         //ajustes mercadopago
-        document.querySelector(".precio").value = cliente.sys.totalCompra + envioMP;
+        let envioMP = 0
+        if(cliente.tipoDeEnvio){
+          envioMP = cliente.tipoDeEnvio.Costo
+        }
+        console.log(envioMP)
+        document.querySelector(".precio").value = Number(cliente.sys.totalCompra) + Number(envioMP);
         document.querySelector(".titulo").value = "Carrito-Raquel-Digital";
         cliente.formaDePago = "Mercado Pago"        
         form.action = "/mercadopago"
@@ -197,7 +201,7 @@ function checkOut() {
     localStorage.setItem('datos-envio', JSON.stringify(cliente)); //LOCAL STORE
 
     //agregamos el carrito al cliente    
-    socket.emit("mail", cliente)
-    form.submit();
+    //socket.emit("mail", cliente)
+    //form.submit();
   }
 
