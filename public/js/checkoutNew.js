@@ -201,7 +201,7 @@ function checkOut() {
     localStorage.setItem('datos-envio', JSON.stringify(cliente)); //LOCAL STORE
 
     //agregamos el carrito al cliente    
-    //socket.emit("mail", cliente)
-    //form.submit();
+    socket.emit("mail", cliente)
+    form.submit();
   }
 
