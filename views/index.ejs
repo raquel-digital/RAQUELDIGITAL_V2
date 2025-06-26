@@ -62,13 +62,15 @@
 		</nav>
 		<main>
 			
-			<h1>Últimos artículos agregados</h1>
+			
 			
             <% if (categRes) { %>
                 <div id="resultado-router"></div>
                 <div class="filtros"></div>            
 			<% } else { %>
+				<!-- TODO aniadir carrousel -->
 			<a href="https://raqueldigital.herokuapp.com/categoria?categ=Bordado&tag=dmc%20mouline"><div class="banner" style="background-image: url(/img/Hilados-DMC-en-Raquel-Digital.png);"></div></a>
+			<!-- <%- include('partials/carrusel') -%> -->
 			<% } %> 
             <!--  CONTENEDOR PRINCIPAL  -->
 			<div class="contenedor-articulos"> 

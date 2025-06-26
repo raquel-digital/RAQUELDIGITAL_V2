@@ -51,9 +51,9 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+/* input[type=number] {
   -moz-appearance: textfield;
-}
+} */
 
 /* Fin Reset CSS */
 
@@ -420,9 +420,9 @@ header {
 	aspect-ratio: 3/1;
 	background-image: url(/img/img-ejemplo1.jpg);
 	background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  background-color: #fef5e7;
+	background-position: center;
+	background-size: contain;
+	background-color: #fef5e7;
 }
 
 .contenedor-img-articulo {
