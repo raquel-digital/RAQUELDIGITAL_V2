@@ -1,6 +1,7 @@
 const paginador = document.querySelector(".paginador")
 
 document.querySelector("main h1").innerHTML = ""
+
 mostrador.innerHTML = `
 <div class="card-articulo card-art-sk">
 <div class="contenedor-img-articulo-sk"></div>

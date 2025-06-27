@@ -285,6 +285,7 @@ const boton = document.querySelector("#boton");
 var resultado = document.querySelector("#mostrador");
 
 const buscador = ()=>{
+  console.log("BUSCANDO")
   mostrador.innerHTML = "";
   paginador.innerHTML = "";
 
