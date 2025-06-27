@@ -283,9 +283,9 @@ function checkMostrar(art){
 const formulario = document.querySelector("#buscador");
 const boton = document.querySelector("#boton");
 var resultado = document.querySelector("#mostrador");
+console.log(boton)
 
-const buscador = ()=>{
-  console.log("BUSCANDO")
+const buscador = ()=>{  
   mostrador.innerHTML = "";
   paginador.innerHTML = "";
 

@@ -179,8 +179,7 @@ io.on('connect', socket => {
     })
     //---------------
     //ADMIN SEARCH
-    socket.on("busqueda-admin", query => {  
-        console.log("buscando server")          
+    socket.on("busqueda-admin", query => {                  
         (async () => {
             if(Array.isArray(query)){
                 const result = []
