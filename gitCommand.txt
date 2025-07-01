@@ -1,4 +1,4 @@
-git add . && git commit -m "art varios" && git push origin main
+git add . && git commit -m "galones lurex KB" && git push origin main
 
 git add . && git commit -m "precios envios" && git push origin main
 
