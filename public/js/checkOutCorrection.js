@@ -74,16 +74,19 @@ function checkCorreccion(cliente)  {
     if(cliente.formaDeContacto.contacto == "whatsapp"){
      if(cliente.formaDeContacto.numero != ""){     
       document.getElementById("whatsappError").style.display = "none";
+      document.getElementById("whatsapp-numero").classList.remove("input-error");
      }
     }
     if(cliente.formaDeContacto.contacto == "Mail"){
      if(cliente.formaDeContacto.numero != ""){      
       document.getElementById("mailError").style.display = "none";
+      document.getElementById("mail-numero").classList.remove("input-error");
      }
     }
     if(cliente.formaDeContacto.contacto == "Telefono"){
      if(cliente.formaDeContacto.numero != ""){      
       document.getElementById("telError").style.display = "none";
+      document.getElementById("tel-numero").classList.remove("input-error");
      }
     }
   }
@@ -94,26 +97,32 @@ function checkCorreccion(cliente)  {
    
     if(cliente.facturacion.tipo == "Monotributo"){
       if(cliente.facturacion.RazonSocial != ""){
-        document.getElementById("monoRSerror").style.display = "none";       
+        document.getElementById("monoRSerror").style.display = "none";   
+        document.getElementById("razon-social-monotributo").classList.remove("input-error");    
       }
       if(cliente.facturacion.CUIT != ""){
         document.getElementById("monoCUITerror").style.display = "none";
+        document.getElementById("usuario-cuit-monotributo").classList.remove("input-error");
       }    
     }
     if(cliente.facturacion.tipo == "Responsable Inscripto"){
       if(cliente.facturacion.RazonSocial != ""){
         document.getElementById("ivaInscriptoRSerror").style.display = "none";
+        document.getElementById("razon-social-iva-inscripto").classList.remove("input-error");
       }
       if(cliente.facturacion.CUIT != ""){
         document.getElementById("ivaInscriptoCUITerror").style.display = "none";
+        document.getElementById("usuario-cuit-iva-inscripto").classList.remove("input-error");
       }
     }
     if(cliente.facturacion.tipo == "Exento"){
       if(cliente.facturacion.RazonSocial == ! ""){
         document.getElementById("exentoRSerror").style.display = "none";
+        document.getElementById("razon-social-exento").classList.remove("input-error");
       }
       if(cliente.facturacion.CUIT != ""){
         document.getElementById("exentoCUITerror").style.display = "none";
+        document.getElementById("usuario-cuit-exento").classList.remove("input-error");
       }    
     }
   }

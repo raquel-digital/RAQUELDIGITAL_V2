@@ -137,7 +137,8 @@ function checkOutErrors(cliente) {
      if(cliente.formaDeContacto.contacto == "whatsapp"){
       if(cliente.formaDeContacto.numero == ""){
         document.getElementById("whatsappError").style.display = "block";
-        const showError = document.getElementById("whatsappError")        
+        const showError = document.getElementById("whatsapp-numero")   
+        showError.classList.add("input-error");     
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
@@ -146,16 +147,16 @@ function checkOutErrors(cliente) {
      if(cliente.formaDeContacto.contacto == "Mail"){
       if(cliente.formaDeContacto.numero == ""){
         document.getElementById("mailError").style.display = "block";
-        const showError = document.getElementById("mailError")
-        
+        const showError = document.getElementById("mail-numero")
+        showError.classList.add("input-error");
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
       } 
       if(!cliente.formaDeContacto.numero.includes("@")){
         document.getElementById("mailError").style.display = "block";
-        const showError = document.getElementById("mailError")
-        
+        const showError = document.getElementById("mail-numero")
+        showError.classList.add("input-error");
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
@@ -165,7 +166,8 @@ function checkOutErrors(cliente) {
      if(cliente.formaDeContacto.contacto == "Telefono"){
       if(cliente.formaDeContacto.numero == ""){
         document.getElementById("telError").style.display = "block";
-        const showError = document.getElementById("telError")        
+        const showError = document.getElementById("tel-numero") 
+        showError.classList.add("input-error");       
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });      
         return false;  
       }      
@@ -183,14 +185,16 @@ function checkOutErrors(cliente) {
     if(cliente.facturacion.tipo == "Monotributo"){
       if(cliente.facturacion.RazonSocial == ""){
         document.getElementById("monoRSerror").style.display = "block";
-        const showError = document.getElementById("monoRSerror")        
+        const showError = document.getElementById("razon-social-monotributo")  
+        showError.classList.add("input-error");      
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
       }
       if(cliente.facturacion.CUIT == ""){
         document.getElementById("monoCUITerror").style.display = "block";
-        const showError = document.getElementById("monoCUITerror")        
+        const showError = document.getElementById("usuario-cuit-monotributo")   
+        showError.classList.add("input-error");     
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
@@ -199,14 +203,16 @@ function checkOutErrors(cliente) {
     if(cliente.facturacion.tipo == "Responsable Inscripto"){
       if(cliente.facturacion.RazonSocial == ""){
         document.getElementById("ivaInscriptoRSerror").style.display = "block";
-        const showError = document.getElementById("ivaInscriptoRSerror")        
+        const showError = document.getElementById("razon-social-iva-inscripto")    
+        showError.classList.add("input-error");    
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
       }
       if(cliente.facturacion.CUIT == ""){
         document.getElementById("ivaInscriptoCUITerror").style.display = "block";
-        const showError = document.getElementById("ivaInscriptoCUITerror")        
+        const showError = document.getElementById("usuario-cuit-iva-inscripto") 
+        showError.classList.add("input-error");       
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
@@ -215,14 +221,16 @@ function checkOutErrors(cliente) {
     if(cliente.facturacion.tipo == "Exento"){
       if(cliente.facturacion.RazonSocial == ""){
         document.getElementById("exentoRSerror").style.display = "block";
-        const showError = document.getElementById("exentoRSerror")        
+        const showError = document.getElementById("razon-social-exento")   
+        showError.classList.add("input-error");     
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
       }
       if(cliente.facturacion.CUIT == ""){
         document.getElementById("exentoCUITerror").style.display = "block";
-        const showError = document.getElementById("exentoCUITerror")        
+        const showError = document.getElementById("usuario-cuit-exento")    
+        showError.classList.add("input-error");    
         showError.focus();
         showError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
