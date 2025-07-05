@@ -51,9 +51,9 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-/* input[type=number] {
+input[type=number] {
   -moz-appearance: textfield;
-} */
+}
 
 /* Fin Reset CSS */
 
@@ -76,7 +76,7 @@ h1 {
 h2 {
 	font-size: 20rem;
 	font-weight: 600;
-	line-height: 24rem;
+	line-height: 30rem;
 }
 
 h3 {
@@ -1725,6 +1725,7 @@ main div:first-child {
 .texto-campos-obligatorios {
 	font-size: 12rem;
 	line-height: 18rem;
+	margin-top: 12rem;
 }
 
 .label-con-tooltip {
@@ -1830,6 +1831,24 @@ main div:first-child {
 
 .transferencia-bancaria span {
 	font-weight: 600;
+}
+
+textarea#pedidoObservaciones {
+	width: 100%;
+  	box-sizing: border-box;
+}
+
+#checkout-radiobuttons-opciones-envio.checkout-radiobuttons {
+	grid-template-columns: 1fr;
+}
+
+#checkout-radiobuttons-opciones-envio input#correo-argentino, #checkout-radiobuttons-opciones-envio label#correo_argentino_costos {
+	grid-column: 1/2;
+  	grid-row: 1/2;
+}
+
+#checkout-radiobuttons-opciones-envio label#correo_argentino_costos {
+	margin-left: 36rem;
 }
 
 /* Fin Checkout */

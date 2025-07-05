@@ -1,0 +1,223 @@
+:root{
+  --color-principal: rgb(110, 181, 65);
+  --warning: #e32235;
+  --primary: #405cf5;
+  --amarillo: #ffc107;
+}
+.rule {
+  margin: 0;
+  border: none;
+  height: 1.5px;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #c9bbae, #f0f0f0);
+  background-image: linear-gradient(left, #f0f0f0, #c9bbae, #f0f0f0);
+}
+
+/* ===== Select Box ===== */
+/* div principal */
+.sel {
+  font-size: 0.8rem;  
+  display: inline-block;
+  margin: 1rem 2rem;
+  width: 21.875rem;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer; 
+}
+/* flecha */
+.sel::before {
+  position: absolute;
+  content: '\f103';
+  font-family: 'FontAwesome';
+  font-size: 2em;
+  color: #FFF;
+  right: 7rem;
+  top: 0.7rem;
+}
+
+.sel.active::before {
+  -webkit-transform: rotateX(-180deg);
+          transform: rotateX(-180deg);
+}
+/* texto interno */
+.sel__placeholder {
+  display: block;
+  font-family: 'Quicksand';
+  font-size: 2.3em;
+  color: #ffffff;
+  padding: 0.2em 0.5em;
+  text-align: left;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  visibility: visible;
+}
+
+.sel.active .sel__placeholder {
+  visibility: hidden;
+}
+
+.sel__placeholder::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.2em 0.5em;
+  content: attr(data-placeholder);
+  visibility: hidden;
+}
+
+.sel.active .sel__placeholder::before {
+  visibility: visible;
+}
+/* contenedor interno */
+.sel__box {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: -4px;
+  display: none;
+  list-style-type: none;
+  text-align: left;
+  font-size: 1em;
+  background-color: #FFF;
+  width: calc(100% + 8px);
+  box-sizing: border-box;
+}
+
+.sel.active .sel__box {
+  display: block;
+  -webkit-animation: fadeInUp 500ms;
+          animation: fadeInUp 500ms;
+}
+/* texto de las categorias */
+.sel__box__options {
+  display: list-item;
+  font-family: 'Quicksand';
+  font-size: 1.5em;
+  color: var(--color-principal);
+  padding: 0.5em 1em;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+/* tick de  */
+.sel__box__options::after {
+  content: '\f00c';
+  font-family: 'FontAwesome';
+  font-size: 0.5em;
+  margin-left: 5px;
+  display: none;
+}
+
+.sel__box__options.selected::after {
+  display: inline;
+}
+
+.sel__box__options:hover {
+  background-color: #ebedef;
+}
+
+.sel--black-panther {
+  z-index: 3;
+}
+
+/* ----- Select Box Superman ----- */
+.sel--superman {
+  z-index: 2;
+}
+
+
+/* ===== Keyframes ===== */
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 20px, 0);
+            transform: translate3d(0, 20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 20px, 0);
+            transform: translate3d(0, 20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.sel__box--black-panther{
+  overflow: auto;
+  width: 240px; /* adjust this width depending to amount of text to display */
+  height: 37.5rem; /* adjust height depending on number of options to display */
+  border: 1px silver solid;
+}
+.sel--black-panther span{
+  border: none;
+}
+
+@media screen and (max-device-width:990px), screen and (max-width:990px){
+ .sel{
+   position:absolute
+ }
+ .sel::before {
+    right: 7rem;
+  }
+  .sel__box__options{
+    font-size: 1.8rem;
+  }
+  
+}
+@media screen and (max-device-width:640px), screen and (max-width:640px){
+  .sel--black-panther {
+    margin: 0;
+    width: 16rem;
+}
+}
+@media screen and (max-device-width:360px), screen and (max-width:360px){
+  .sel{
+    font-size: 0.4rem;
+    width: 14rem;
+  }
+  .sel::before {
+    right: 14.3rem;
+    top: 0.4rem;
+  } 
+  
+  
+ 
+ }
+
+ 
