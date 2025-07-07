@@ -185,13 +185,13 @@ const draw = {
                         <h5 class="card-title">Prepara:</h5>
                             <select name="" id="preparado${p.num_orden}">
                                 <option value="Alejandro" >Alejandro</option>
-                                <option value="Eric" >Eric</option>
-                                <option value="Graciela" >Graciela</option>
+                                <option value="Alejo" >Alejo</option>                                
                                 <option value="Javier" >Javier</option>
                                 <option value="Karina" >Karina</option>
                                 <option value="Mario" >Mario</option>
                                 <option value="Monica" >Monica</option>
                                 <option value="Oscar" selected>Oscar</option>
+                                <option value="Rodrigo" >Rodrigo</option>
                             </select>    
                         <h5 class="card-title">Contacto: ${p.contacto[0].medio}</h5>  
                         <h5 class="card-title">Numero / Mail: ${p.contacto[0].nota}</h5>                     
