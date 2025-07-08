@@ -9,6 +9,10 @@ const localidadSelect = document.getElementById("ulLocalidad");
 let provinciasLocalidades; //contenedor de localidades por provincia
 let form = document.querySelector(".formAction");
 
+if(datos_cliente.retira == "Por Envio") {
+  document.getElementById("efectivoDIV").style.display = "none" 
+}
+
 
 //buscamos los datos de envío y listado de provincias
 (async () => {
