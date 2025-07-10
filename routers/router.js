@@ -240,52 +240,8 @@ router.post("/check-out", (req, res) => {
   // Verificar si la cadena del agente de usuario contiene "iPhone"
   const esIPhone = userAgent.includes('iPhone');
 
-  const carritoAnterior = JSON.parse(req.body.carrito_holder)
-
-  //Cheque precios
-  delete require.cache[require.resolve("../public/system/dir/allArts.json")];
-  const actuPrecios = require("../public/system/dir/allArts.json");
-  // Recorre cada elemento del carrito
-  carritoAnterior.forEach(producto => {
-      // Verifica si el código del producto está en el array de códigos y precios
-      const index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
-      if (index !== -1) {
-          const precio = actuPrecios[index].precio.replace(",", ".")                
-          if(producto.precio != precio){              
-              producto.precio = precio;
-          }                
-      }
-  })
- 
-     
+  const carritoAnterior = JSON.parse(req.body.carrito_holder)  
   
-  //CREA JSON CON LI DE PROV Y LOCALIDADES
- 
-    // const provincias = require('../public/system/envios/provincias.json') 
-    // const provinciasLocalidades = []
-    // // provincias.forEach( e => {
-    // //    `<li class="seleccionProv" role="option" data-value="${e.nombre}">${e.nombre}</li>`
-    // // })
-    // provincias.forEach( e => {
-    //   let arg = {
-    //     provincia: e.nombre,
-    //     localidades: []
-    //   }    
-    //   arg.localidades = `<li class="seleccionLoc" role="option" data-value="Seleccione su localidad" disabled selected>Seleccione su localidad</li>`;
-    //   e.ciudades.forEach(c => {
-    //     // Escapar el nombre para evitar inyecciones
-    //     const nombreEscapado = c.nombre.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    //     arg.localidades += `<li class="seleccionLoc" role="option" data-value="${nombreEscapado}">${nombreEscapado}</li>`;
-    //   }); 
-      
-    //   provinciasLocalidades.push(arg)
-    //   const fs = require('fs');
-    //   fs.writeFileSync('./provinciasLocalidades.json', JSON.stringify(provinciasLocalidades, null, 2), 'utf8', (err) => {
-    //     if (err) throw err;
-    //     console.log('Data written to file');
-    //   });
-    //   })
-
   res.render("checkOutNuevo", {carrito: carritoAnterior, iphone: esIPhone})
   //res.render("checkOut", { iphone: esIPhone, carrito: carritoAnterior })
 })

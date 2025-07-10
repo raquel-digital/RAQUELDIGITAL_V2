@@ -85,8 +85,7 @@ io.on('connect', socket => {
     })
     
     //CHECK OUT    
-    socket.on("mail", data =>{    
-        console.log("ok")    
+    socket.on("mail", data =>{ 
         if(process.argv[2] === "dev"){
             //modo dev
             console.log("MODO DEV", data)           

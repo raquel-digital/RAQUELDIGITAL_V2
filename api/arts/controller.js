@@ -300,7 +300,8 @@ controller = {
       const res = await store.updateStock(send)
       return res
     },
-    stockControl: async function (compra){        
+    stockControl: async function (compra){      
+        console.log(compra)  
         compra.forEach(c => {
             store.stockControl(c)
         })

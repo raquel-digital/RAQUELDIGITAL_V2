@@ -1,8 +1,8 @@
 const socket = io.connect();
 
 const datos_cliente = JSON.parse(localStorage.getItem('datos-envio'));//recuperamos los datos del cliente
-const pedido = JSON.parse(localStorage.getItem("carrito")) //recuperamos el carrito
-document.getElementById("carrito-holder").value = JSON.stringify(pedido)//guardamos el pedido para que lo tome la cabecera del req.boy 
+const carrito = JSON.parse(localStorage.getItem("carrito")) //recuperamos el carrito
+let pedido; //holder del carrito filtrado
 const cliente = {}
 const provinciasSelect = document.getElementById("ulProvincia");
 const localidadSelect = document.getElementById("ulLocalidad");
@@ -14,8 +14,67 @@ if(datos_cliente.retira == "Por Envio") {
 }
 
 
+
+
 //buscamos los datos de envío y listado de provincias
 (async () => {
+  //chequeo precio y ocultos del carrito
+  await fetch("../system/dir/allArts.json").then(response => {    
+    if (!response.ok) {
+      throw new Error('La solicitud no se pudo completar.');
+    }
+    return response.json();
+  }).then(actuPrecios => {
+    // Recorre cada elemento del carrito
+    const res = carrito.filter(producto => {
+    const index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
+    
+    if (index !== -1) {
+        const actualizado = actuPrecios[index];
+        const precio = actualizado.precio.replace(",", ".");
+        
+        if (producto.precio != precio) {
+            producto.precio = precio;
+        }
+        
+        // Conservar solo si mostrar es estrictamente true
+        return actualizado.mostrar
+    }
+
+      // Si no está en actuPrecios, se va
+      return false;  
+  })
+  
+    //ingresamos carrito
+    document.querySelector(".carrito-cuerpo").innerHTML = "";
+    let total = 0;
+    res.forEach(e => {
+        total += e.precio * e.cantidad
+        document.querySelector(".carrito-cuerpo").innerHTML += `
+        <div class="carrito-item">
+            <div class="contenedor-img-carrito" style='background-image: url(${e.imagen});'>
+                
+            </div>
+            <div class="carrito-item-info">
+                <h3>${e.titulo}</h3>
+                <p>Precio: $${e.precio}</p>
+                <p>Cantidad: ${e.cantidad}</p>
+            </div>
+        </div>    
+        `
+        document.getElementById("total_de_compra").textContent = `$${total.toFixed(2)}`;
+    })
+    
+    document.getElementById("carrito-holder").value = JSON.stringify(res)//guardamos el pedido para que lo tome la cabecera del req.boy 
+    pedido = res
+    localStorage.setItem("carrito", JSON.stringify(res))
+    cliente.sys = {}
+    cliente.sys.compra = pedido
+    cliente.sys.totalCompra = total.toFixed(2)
+  })
+  
+  
+
   await fetch('../system/envios/provinciasLocalidades.json')
   .then(response => {
     if (!response.ok) {
@@ -35,35 +94,16 @@ if(datos_cliente.retira == "Por Envio") {
   }); 
 
   //guardamos pedido en historial
-  const pedido = localStorage.getItem("carrito")
+  const pedidoUser = localStorage.getItem("carrito")
   const id = localStorage.getItem("login")
-  const data = { id: id, pedido: JSON.parse(pedido), nombre: " ", tipo: "Historial"}
+  const data = { id: id, pedido: JSON.parse(pedidoUser), nombre: " ", tipo: "Historial"}
   socket.emit("guardar-pedido-usuario", data)
 })()
 
-//ingresamos carrito
-document.querySelector(".carrito-cuerpo").innerHTML = "";
-let total = 0;
 
-pedido.forEach(e => {
-    total += e.precio * e.cantidad
-    document.querySelector(".carrito-cuerpo").innerHTML += `
-    <div class="carrito-item">
-        <div class="contenedor-img-carrito" style='background-image: url(${e.imagen});'>
-            
-        </div>
-        <div class="carrito-item-info">
-            <h3>${e.titulo}</h3>
-            <p>Precio: $${e.precio}</p>
-            <p>Cantidad: ${e.cantidad}</p>
-        </div>
-    </div>    
-    `
-    document.getElementById("total_de_compra").textContent = `$${total.toFixed(2)}`;
-})
-cliente.sys = {}
-cliente.sys.compra = pedido
-cliente.sys.totalCompra = total.toFixed(2)
+
+
+
 
 
 
