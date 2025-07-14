@@ -304,9 +304,11 @@ window.history.replaceState({}, "", nuevoQueryString);
   
   paginador.innerHTML = ""
 
-  if(articulosTags.length > indice){                
+  if(articulosTags.length > indice){
+      console.log("CON PAGINADOR", articulosTags)                
       crearPaginador(articulosTags);
   }else{        
+      console.log("SIN PAGINADOR", articulosTags)
       showArts(articulosTags);
   }
 
@@ -319,6 +321,7 @@ window.history.replaceState({}, "", nuevoQueryString);
 
 //CARGAR TAGS
 socket.on("tag-result", tag => {  
+  console.log("Cantidad de arts " + tag.length, tag)
   const articulosTags = [];
   for(let p of mostradorDeArticulos){ 
     if(p.tags.includes("%20")){

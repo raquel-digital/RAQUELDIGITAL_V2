@@ -8,7 +8,9 @@ function showArts(art, message){
     art.forEach(p => {
       
       if(p.mostrar){
-        
+        if(p.codigo == "HI0003-BLANCO"){
+          console.log("LLEGO EL HDP", p)
+        }
           if(isNaN(p.precio)){
            if(p.precio == String || p.precio.includes(",")){          
             p.precio = p.precio.replace(",", ".");

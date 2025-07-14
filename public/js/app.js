@@ -265,59 +265,64 @@ function actualizarPrecioCarrito(codigo, cant){
 }
 
   //PAGINADOR
-  function crearPaginador(arr){
-    paginador.innerHTML = ""
+function crearPaginador(arr){
+  console.log("--- INICIO crearPaginador ---");
+  console.log("1. Total de artículos recibidos (arr.length):", arr.length);
+  paginador.innerHTML = "";
 
-    //const paginadorArray = mostradorDeArticulos.filter(e => e.mostrar);
-    const paginadorArray = arr.filter(e => e.mostrar);    
-    
-    let i = paginadorArray.length / indice;
-    
-        let num = 1
-        
-        while(i > 0){
-            
-            
-            paginador.innerHTML +=  `<button type="button" class="pagina" onclick="asignadorPaginador(${num})">${num}</button>`
-
-            num++;
-            
-            i--;
-        }
-        
-        mostradorDeArticulosPaginador = arr
-        asignadorPaginador(1);              
-  }
-
-  function asignadorPaginador(i){
-    const paginador = document.querySelectorAll(".pagina")
-
-    paginador.forEach(e => {
-      if(e.classList.contains("pagina-elegida")){
-        e.classList.remove("pagina-elegida")
-      }
-      
-      if(e.textContent == i){        
-        e.classList.add("pagina-elegida")
-      }
-    })
+  const paginadorArray = arr.filter(e => e.mostrar);
+  console.log("2. Artículos a mostrar después de filtrar (paginadorArray.length):", paginadorArray);
   
-    const start = (i * indice) - indice;
-    const end = i * indice;
-   
-    const arrayIndiceMap = mostradorDeArticulosPaginador.slice(start, end);
-
-    // Calcula la posición de la sección
-    var posicion = mostrador.getBoundingClientRect().top + window.scrollY + -500;//-150 prev
-
-    // Realiza el desplazamiento suave hasta la posición de la sección
-    window.scrollTo({
-        top: posicion,
-        behavior: "smooth" // Animación suave
-    });
-      
-    showArts(arrayIndiceMap);  
+  // ¡Aquí es donde debería estar la corrección con Math.ceil!
+  let totalPaginas = Math.ceil(paginadorArray.length / indice); 
+  console.log("3. Valor de 'indice':", indice);
+  console.log("4. Cálculo de Math.ceil(paginadorArray.length / indice):", paginadorArray.length / indice);
+  console.log("5. Número TOTAL de páginas a crear (totalPaginas):", totalPaginas);
+  
+  for (let num = 1; num <= totalPaginas; num++) {
+    paginador.innerHTML += `<button type="button" class="pagina" onclick="asignadorPaginador(${num})">${num}</button>`;
   }
+  
+  mostradorDeArticulosPaginador = arr; // Asegúrate de que esta variable global se actualice correctamente.
+  asignadorPaginador(1);
+  console.log("--- FIN crearPaginador ---");
+}
+
+function asignadorPaginador(i){
+  console.log("--- INICIO asignadorPaginador ---");
+  console.log("1. Página actual solicitada (i):", i);
+  const paginas = document.querySelectorAll(".pagina");
+
+  paginas.forEach(e => {
+    if(e.classList.contains("pagina-elegida")){
+      e.classList.remove("pagina-elegida");
+    }
+    if(e.textContent == i){ 
+      e.classList.add("pagina-elegida");
+    }
+  });
+
+  const start = (i - 1) * indice; 
+  const end = i * indice;
+  
+  console.log("2. Valor de 'indice' en asignadorPaginador:", indice);
+  console.log("3. Cálculo de 'start':", start);
+  console.log("4. Cálculo de 'end':", end);
+
+  // Asegúrate de que 'mostradorDeArticulosPaginador' contenga el array completo que esperas.
+  console.log("5. Longitud de 'mostradorDeArticulosPaginador' antes del slice:", mostradorDeArticulosPaginador.length);
+  const arrayIndiceMap = mostradorDeArticulosPaginador.slice(start, end);
+  console.log("6. Artículos obtenidos para esta página (arrayIndiceMap.length):", arrayIndiceMap.length);
+
+  var posicion = mostrador.getBoundingClientRect().top + window.scrollY + -500;
+  window.scrollTo({
+    top: posicion,
+    behavior: "smooth"
+  });
+
+  showArts(arrayIndiceMap);
+  console.log("--- FIN asignadorPaginador ---");
+}
 
   function mostrarToats(txt, spin){
     const toast = document.querySelector(".toast-exito")
