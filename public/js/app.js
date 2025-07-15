@@ -273,8 +273,12 @@ function crearPaginador(arr){
   const paginadorArray = arr.filter(e => e.mostrar);
   console.log("2. Artículos a mostrar después de filtrar (paginadorArray.length):", paginadorArray);
   
+  console.log("FILTRO", paginadorArray)
+  const existe = paginadorArray.some(item => item.codigo === 'HI0003-BLANCO');
+  if(existe) console.log("EL HDP ESTA FILTRADO")
+
   // ¡Aquí es donde debería estar la corrección con Math.ceil!
-  let totalPaginas = Math.ceil(paginadorArray.length / indice); 
+  let totalPaginas = Math.ceil((paginadorArray.length + 1) / indice); 
   console.log("3. Valor de 'indice':", indice);
   console.log("4. Cálculo de Math.ceil(paginadorArray.length / indice):", paginadorArray.length / indice);
   console.log("5. Número TOTAL de páginas a crear (totalPaginas):", totalPaginas);
@@ -283,7 +287,7 @@ function crearPaginador(arr){
     paginador.innerHTML += `<button type="button" class="pagina" onclick="asignadorPaginador(${num})">${num}</button>`;
   }
   
-  mostradorDeArticulosPaginador = arr; // Asegúrate de que esta variable global se actualice correctamente.
+  mostradorDeArticulosPaginador = paginadorArray; // Asegúrate de que esta variable global se actualice correctamente.
   asignadorPaginador(1);
   console.log("--- FIN crearPaginador ---");
 }
@@ -319,7 +323,7 @@ function asignadorPaginador(i){
     top: posicion,
     behavior: "smooth"
   });
-
+  
   showArts(arrayIndiceMap);
   console.log("--- FIN asignadorPaginador ---");
 }
