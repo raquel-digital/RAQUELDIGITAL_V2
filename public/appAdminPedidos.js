@@ -88,7 +88,7 @@ let dataMail
 
 
 socket.on("busqueda-pedido-reponse", res => {
-  console.log("[ RESPUESTA PEDIDO ] : ", res);
+  
   
   if(res.length == 0){
     alert("NO HAY RESULTADOS");
@@ -108,11 +108,11 @@ socket.on("busqueda-pedido-reponse", res => {
 socket.emit("chequear-pedidos-admin");
 
 socket.on("nuevos-pedidos", data => { 
-  console.log(data) 
+ 
   if(pedidos == undefined && data.length > 0){
     pedidos = data;    
     //draw.newOrders(pedidos);
-    draw.pedidoFlecha(pedidos[i-1]);
+    //draw.pedidoFlecha(pedidos[i-1]);
     socket.emit("chequear-pedidos-admin");
     return;
   }
@@ -1121,7 +1121,7 @@ function ingresarFormPedido(i){
   pedidos[i].compra.forEach(e => {
     totalPedido += e.precio * e.cantidad
   })
-  console.log(totalPedido)
+  
   const cliente = {
     nombreApellido: document.getElementById("nombre").value,
     sys: {

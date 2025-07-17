@@ -13,6 +13,7 @@ if(datos_cliente.retira == "Por Envio") {
   document.getElementById("efectivoDIV").style.display = "none" 
 }
 
+const compraFinal = document.getElementById('datos-compra');
 
 
 
@@ -46,24 +47,24 @@ if(datos_cliente.retira == "Por Envio") {
   })
   
     //ingresamos carrito
-    document.querySelector(".carrito-cuerpo").innerHTML = "";
-    let total = 0;
-    res.forEach(e => {
-        total += e.precio * e.cantidad
-        document.querySelector(".carrito-cuerpo").innerHTML += `
-        <div class="carrito-item">
-            <div class="contenedor-img-carrito" style='background-image: url(${e.imagen});'>
+    //document.querySelector(".carrito-cuerpo").innerHTML = "";
+    //let total = 0;
+    // res.forEach(e => {
+    //     total += e.precio * e.cantidad
+    //     document.querySelector(".carrito-cuerpo").innerHTML += `
+    //     <div class="carrito-item">
+    //         <div class="contenedor-img-carrito" style='background-image: url(${e.imagen});'>
                 
-            </div>
-            <div class="carrito-item-info">
-                <h3>${e.titulo}</h3>
-                <p>Precio: $${e.precio}</p>
-                <p>Cantidad: ${e.cantidad}</p>
-            </div>
-        </div>    
-        `
-        document.getElementById("total_de_compra").textContent = `$${total.toFixed(2)}`;
-    })
+    //         </div>
+    //         <div class="carrito-item-info">
+    //             <h3>${e.titulo}</h3>
+    //             <p>Precio: $${e.precio}</p>
+    //             <p>Cantidad: ${e.cantidad}</p>
+    //         </div>
+    //     </div>    
+    //     `
+    //     document.getElementById("total_de_compra").textContent = `$${total.toFixed(2)}`;
+    // })
     
     document.getElementById("carrito-holder").value = JSON.stringify(res)//guardamos el pedido para que lo tome la cabecera del req.boy 
     pedido = res

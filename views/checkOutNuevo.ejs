@@ -414,7 +414,7 @@
 				<textarea name="" id="pedidoObservaciones" cols="90" rows="12" style="width: 100%"></textarea>
 				</div>
 			</div>
-			<input type="text" name="carrito_holder" style="display: none;" id="carrito-holder"><!--holder del carrito -->
+			<input type="text" name="carrito_holder" style="display: none;" id="carrito-holder">
 			<input class="precio" type="hidden" name="precio">
             <input class="titulo" type="hidden" name="titulo">
 	
@@ -426,17 +426,30 @@
 	<section>
 			<div class="resumen-compra-contenedor">
 				<h2>Resumen de compra</h2>
-				
+
+					
 				<div class="carrito-cuerpo">		    	
-
-			    	
-
+					<% let total = 0; %>
+					<% carrito.forEach(e => { %>
+						<div class="carrito-item">
+						<div class="contenedor-img-carrito" style='background-image: url("<%= e.imagen %>");'>
+							
+						</div>
+						<div class="carrito-item-info">
+							<h3><%= e.titulo %></h3>
+							<p>Precio: $<%= e.precio %></p>
+							<p>Cantidad: <%= e.cantidad %></p>
+						</div>
+						</div>                   
+						<% total += e.cantidad * e.precio %>           
+					<% }); %>   	
+					<div id="datos-compra" data-datos="<%= JSON.stringify(carrito) %>"></div>
 			    </div>
 
 			    <div class="carrito-footer">
 			    	<div class="total-carrito">
 			    		<p>Total de la compra</p>
-			    		<p id="total_de_compra">$</p>
+			    		<p id="total_de_compra">$ <%= total.toFixed(2) %></p>
 			    	</div>
 			    </div>
 

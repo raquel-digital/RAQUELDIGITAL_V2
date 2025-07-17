@@ -63,7 +63,7 @@ const controller = {
    ingresarCarrito: function(data){
     const date = new Date()
     const fecha = date.toLocaleString()
-
+    console.log("ingreso carro sin terminar")
     //ingresar pedido de cliente random
       const order = {    
         fecha: fecha,

@@ -240,16 +240,37 @@ router.post("/check-out", (req, res) => {
   // Verificar si la cadena del agente de usuario contiene "iPhone"
   const esIPhone = userAgent.includes('iPhone');
 
-  const carritoAnterior = JSON.parse(req.body.carrito_holder)  
-  
-  const miIP = "181.104.123.230"
-  
-  const ipCliente = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  const carritoAnterior = JSON.parse(req.body.carrito_holder)
 
-  if (ipCliente.includes(miIP)) {
-    return res.render("checkOutNuevo", {carrito: carritoAnterior, iphone: esIPhone})
-  }
+  delete require.cache[require.resolve("../public/system/dir/allArts.json")];
+  const actuPrecios = require("../public/system/dir/allArts.json")
+
+  const carritoFiltrado = carritoAnterior.filter(producto => {
+    const index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
+    
+    if (index !== -1) {
+        const actualizado = actuPrecios[index];
+        const precio = actualizado.precio.replace(",", ".");
+        
+        if (producto.precio != precio) {
+            producto.precio = precio;
+        }
+        
+        // Conservar solo si mostrar es estrictamente true
+        return actualizado.mostrar
+    }
+
+      // Si no está en actuPrecios, se va
+      return false;  
+  })
   
+  //REDIRECCION POR IP
+  const miIP = "181.104.123.230"  
+  const ipCliente = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  if (ipCliente.includes(miIP)) {
+    return res.render("checkOutNuevo", {carrito: carritoFiltrado, iphone: esIPhone})
+  }
+  //res.render("checkOutNuevo", {carrito: carritoFiltrado, iphone: esIPhone})
   res.render("checkOut", { iphone: esIPhone, carrito: carritoAnterior })
 })
 
