@@ -111,8 +111,8 @@ socket.on("nuevos-pedidos", data => {
  
   if(pedidos == undefined && data.length > 0){
     pedidos = data;    
-    //draw.newOrders(pedidos);
-    //draw.pedidoFlecha(pedidos[i-1]);
+    draw.newOrders(pedidos);
+    draw.pedidoFlecha(pedidos[i-1]);
     socket.emit("chequear-pedidos-admin");
     return;
   }
