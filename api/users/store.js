@@ -26,6 +26,11 @@ const store = {
        const base = await model.find().sort({ _id: -1}).limit(10);
        return base;
     },
+    largeOrders: async function (carrito) {      
+        //caso extremo cuando el pedido es tan grande que excede la memoria del server 
+       const user = new model(carrito);
+       return user.save();
+    },
 
  }
  

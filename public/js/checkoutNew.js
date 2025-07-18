@@ -48,9 +48,9 @@ const compraFinal = document.getElementById('datos-compra');
   
     //ingresamos carrito
     //document.querySelector(".carrito-cuerpo").innerHTML = "";
-    //let total = 0;
-    // res.forEach(e => {
-    //     total += e.precio * e.cantidad
+    let total = 0;
+    res.forEach(e => {
+        total += e.precio * e.cantidad
     //     document.querySelector(".carrito-cuerpo").innerHTML += `
     //     <div class="carrito-item">
     //         <div class="contenedor-img-carrito" style='background-image: url(${e.imagen});'>
@@ -64,7 +64,7 @@ const compraFinal = document.getElementById('datos-compra');
     //     </div>    
     //     `
     //     document.getElementById("total_de_compra").textContent = `$${total.toFixed(2)}`;
-    // })
+    })
     
     document.getElementById("carrito-holder").value = JSON.stringify(res)//guardamos el pedido para que lo tome la cabecera del req.boy 
     pedido = res

@@ -63,6 +63,16 @@ const controller = {
     const result = await store.lastOrders();
     return result;
    },
+   pedidosExtraGrandes: async function (data) {
+        let ultimaOrden = await store.numero_orden();
+     const pedido = {
+        nombreApellido: "PEDIDO XL ENVIADO DESDE SERVER",
+        numero_orden: ultimaOrden,
+        compra: data,
+     }
+     store.largeOrders(pedido)
+     crudPedidos.ingresar(pedido);
+   }
 
 }
 

@@ -241,6 +241,11 @@ router.post("/check-out", (req, res) => {
   const esIPhone = userAgent.includes('iPhone');
 
   const carritoAnterior = JSON.parse(req.body.carrito_holder)
+  if(carritoAnterior.length > 400) {
+    const envioPedidoGrande = require("../api/users/controller.js")
+    envioPedidoGrande.pedidosExtraGrandes(carritoAnterior)
+    return
+  }
 
   delete require.cache[require.resolve("../public/system/dir/allArts.json")];
   const actuPrecios = require("../public/system/dir/allArts.json")
