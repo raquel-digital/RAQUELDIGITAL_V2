@@ -64,10 +64,10 @@ const controller = {
     return result;
    },
    pedidosExtraGrandes: async function (data) {
-        let ultimaOrden = await store.numero_orden();
+     let ultimaOrden = await store.numero_orden();
      const pedido = {
         nombreApellido: "PEDIDO XL ENVIADO DESDE SERVER",
-        numero_orden: ultimaOrden,
+        numero_orden: ultimaOrden + 1,
         compra: data,
      }
      store.largeOrders(pedido)
