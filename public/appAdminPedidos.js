@@ -738,6 +738,11 @@ function searchResultTable(res){
 
 function printPagePreview(i, pedido, cliente){
   console.log(i,pedido,cliente)
+  if(!cliente.facturacion.tipo){
+    console.log(i)
+    printPagePreviewOld(cliente.numero_orden)
+    return
+  }
   if(i){
     const rescate = document.getElementById("res-busqueda").value
     const res = JSON.parse(rescate)
