@@ -737,10 +737,9 @@ function searchResultTable(res){
 }
 
 function printPagePreview(i, pedido, cliente){
-  console.log(i,pedido,cliente)
-  if(!cliente.facturacion.tipo){
-    console.log(i)
-    printPagePreviewOld(cliente.numero_orden)
+ 
+  if(cliente.nombreApellido == "PEDIDO XL ENVIADO DESDE SERVER"){
+    printPagePreviewOld(pedido)
     return
   }
   if(i){
@@ -987,7 +986,16 @@ function printPagePreviewSinIVA(pedido, cliente){
 }
 
 function printPagePreviewOld(i){
-  const pedido = pedidos[i].compra
+   console.log(i)
+   let pedido
+   if(i != Number){
+      pedido = i
+      console.log(pedido)
+    }else{
+      pedido = pedidos[i].compra
+    }
+  
+  
   const cliente = "Pedido NN"
   mostrador.innerHTML = `
   <table id="tablaCopiar" class="table table-bordered table-hover tablaOrden">
