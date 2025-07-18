@@ -243,6 +243,7 @@ router.post("/check-out", (req, res) => {
   const carritoAnterior = JSON.parse(req.body.carrito_holder)
   //si el carrito es demasiado grande lo deribamos a la pagina especial
   if(carritoAnterior.length > 399) {
+    console.log("INGRESANDO PEDIDO XL")
     const envioPedidoGrande = require("../api/users/controller.js")
     envioPedidoGrande.pedidosExtraGrandes(carritoAnterior)
      return res.render("pedidosXL")
