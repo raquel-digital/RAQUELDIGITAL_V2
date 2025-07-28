@@ -34,7 +34,7 @@ document.querySelector(".lupa").addEventListener("click", event => {
 
 //recibir resultados
 socket.on("resultado-busqueda", data => { 
-    console.log(data)
+    document.querySelector(".carrousel-container").style.display = "none"
     const result = data.result.filter(e => e.mostrar)  
     if(result.length == 0){
      document.querySelector("main").innerHTML = `<h1>No hay resultados de búsqueda para <span class="resultado-busqueda">“${data.query}”</span></h1>
@@ -62,6 +62,7 @@ socket.on("resultado-busqueda", data => {
 
 socket.on("resultado-vacio", () => {
   mostrador.innerHTML = ""
+  document.querySelector(".carrousel-container").style.display = "none"
   const vacio = document.querySelector(".busqueda-vacia")
   const bordeRojo = document.querySelector("#barra-busqueda")
   vacio.style.display = "block"      

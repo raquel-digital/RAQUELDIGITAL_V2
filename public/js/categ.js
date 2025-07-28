@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     socket.on("categ-result", data => {
-        console.log(data)
+        document.querySelector(".carrousel-container").style.display = "none"
         if(data.succes){ 
           mostrador.innerHTML = ""
           document.querySelector("main h1").textContent = data.categ
