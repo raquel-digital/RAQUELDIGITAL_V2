@@ -982,7 +982,6 @@ footer li img {
 	cursor: pointer;
 }
 
-
 /* Fin Modal img ampliada */
 
 /* Modal Carta de colores */
@@ -1126,7 +1125,7 @@ footer li img {
 }
 
 .seleccionar-color input[type="checkbox"] {
-	/* appearance: none; */
+	appearance: none;
 	width: 16px;
 	height: 16px;
 	border: 2px solid #7A7A7A;
@@ -1788,14 +1787,14 @@ main div:first-child {
 
 .alerta-informativa {
 	display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 10px;
-  background-color: #EAF9FF;
-  border-radius: 4px;
-  border: 1px solid #2D8EE9;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-  margin: 20rem 0;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 10px;
+	background-color: #EAF9FF;
+	border-radius: 4px;
+	border: 1px solid #2D8EE9;
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+	margin: 20rem 0;
 }
 
 .alerta-informativa span {
@@ -1852,6 +1851,107 @@ textarea#pedidoObservaciones {
 }
 
 /* Fin Checkout */
+
+/* Carrousel Home */
+
+.carrousel-container {
+	aspect-ratio: 3 / 1;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 36rem;
+}
+
+.img-carrousel {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	min-width: 100%;
+	min-height: 100%;
+	background-size: cover;
+}
+
+.banner1 {
+	background-image: url("../img/banner1-desktop.jpg");
+}
+
+.banner2 {
+	background-image: url("../img/banner2-desktop.jpg");
+}
+
+.banner3 {
+	background-image: url("../img/banner3-desktop.jpg");
+}
+
+.prev {
+	transform: rotate(90deg);
+}
+
+.next {
+	right: 0;
+	transform: rotate(-90deg);
+}
+
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	padding: 12px;
+	margin-top: -22px;
+	transition: 0.6s ease;
+	user-select: none;
+}
+
+.prev img, .next img {
+	width: 24px;
+}
+
+.prev:hover img {
+  content: url("../img/chevron-hover.svg");
+}
+
+.next:hover img {
+  content: url("../img/chevron-hover.svg");
+}
+
+.dots-wrapper {
+	position: absolute;
+	bottom: 10px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+	z-index: 10;
+}
+
+.dot {
+	cursor: pointer;
+	height: 6px;
+	width: 6px;
+	border-radius: 50%;
+	border: 2px solid #ffffff;
+	background-color: transparent;
+	transition: background-color 0.2s ease;
+}
+
+.active, .dot:hover {
+	background-color: #ffffff;
+	border: 2px solid #ffffff;
+}
+
+.fade {
+	animation-name: fade;
+	animation-duration: 1s;
+}
+
+@keyframes fade {
+	from {opacity: .6} 
+	to {opacity: 1}
+}
+
+/* Fin Carrousel Home */
 
 /* **************************** INICIO MEDIA QUERIES **************************** */
 
@@ -2009,6 +2109,7 @@ textarea#pedidoObservaciones {
 		margin-top: 4rem;
 		padding-top: 20rem;
 		display: none;
+		z-index: 1;
 	}
 
 	.contenedor-principal nav ul li {
@@ -2135,6 +2236,27 @@ textarea#pedidoObservaciones {
 	}
 
 	/* Fin Checkout */
+
+	/* Carrousel Home */
+
+	main div.carrousel-container {	
+		aspect-ratio: 2 / 1;
+		margin: 24rem 0;		
+	}
+
+	.banner1 {
+	background-image: url("../img/banner1-mobile.jpg");
+	}
+
+	.banner2 {
+		background-image: url("../img/banner2-mobile.jpg");
+	}
+
+	.banner3 {
+		background-image: url("../img/banner3-mobile.jpg");
+	}
+
+	/* Fin Carrousel Home */
 }
 
 @media only screen and (max-width: 400px) {

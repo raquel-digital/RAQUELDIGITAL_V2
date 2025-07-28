@@ -272,11 +272,12 @@ router.post("/check-out", (req, res) => {
   })
   
   //REDIRECCION POR IP
-  const miIP = "181.104.123.230"  
-  const ipCliente = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-  if (ipCliente.includes(miIP)) {
-    return res.render("checkOutNuevo", {carrito: carritoFiltrado, iphone: esIPhone})
-  }
+  // const miIP = "181.104.123.230"  
+  // const ipCliente = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  // if (ipCliente.includes(miIP)) {
+  //   return res.render("checkOutNuevo", {carrito: carritoFiltrado, iphone: esIPhone})
+  // }
+
   //res.render("checkOutNuevo", {carrito: carritoFiltrado, iphone: esIPhone})
   res.render("checkOut", { iphone: esIPhone, carrito: carritoAnterior })
 })
