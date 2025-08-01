@@ -1885,7 +1885,7 @@ textarea#pedidoObservaciones {
 }
 
 .banner4 {
-		background-image: url("../img/banner4-mobile.jpg");
+		background-image: url("../img/banner4-desktop.jpg");
 }
 
 .prev {
@@ -2259,7 +2259,7 @@ textarea#pedidoObservaciones {
 	.banner3 {
 		background-image: url("../img/banner3-mobile.jpg");
 	}
-	
+
 	.banner4 {
 		background-image: url("../img/banner4-mobile.jpg");
 	}
