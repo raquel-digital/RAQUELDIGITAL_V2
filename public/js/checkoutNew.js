@@ -9,8 +9,13 @@ const localidadSelect = document.getElementById("ulLocalidad");
 let provinciasLocalidades; //contenedor de localidades por provincia
 let form = document.querySelector(".formAction");
 
-if(datos_cliente.retira == "Por Envio") {
+console.log(datos_cliente)
+
+if(datos_cliente){
+  if(datos_cliente.retira == "Por Envio") {
   document.getElementById("efectivoDIV").style.display = "none" 
+}
+
 }
 
 const compraFinal = document.getElementById('datos-compra');

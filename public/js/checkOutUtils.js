@@ -29,12 +29,23 @@ async function getCostos() {
       throw new Error('No se pudo obtener los datos.');
     }    
     const data = await response.json(); // Esperar a que se resuelva la promesa JSON
+    const stringCompra = document.getElementById("total_de_compra").textContent
+    const totalDeCompra = parseFloat(stringCompra.replace("$", "").trim());
+    
     //ingresamos expreso y moto que son valores fijos
-    document.getElementById("valor_moto").textContent = "$" + data[0].moto;
+    if(totalDeCompra >= 100000){
+      document.querySelector(".texto-envio-caba").innerHTML = `Envío gratis por moto por superar los $100.000 en tu pedido <span id="valor_moto" style="font-weight: 600;"></span>.</p>`
+      //document.getElementById("valor_moto").textContent = ".";
+      data[0].moto = 0
+    }else{
+      document.getElementById("valor_moto").textContent = "$" + data[0].moto;
+    }
+
+    //document.getElementById("valor_moto").textContent = "$" + data[0].moto;
     document.getElementById("valor_expreso").innerHTML = `Por Expreso - Precio: $${data[0].expreso} <span>(el flete de envío a la terminal)</span>`;
     document.getElementById("valor_expreso_tooltip").innerHTML = `$${data[0].expreso}`;
     valoresEnvio = data[0];
-
+    
     //ingreso de datos previos de cliente
     if (datos_cliente) {
         ingresoDatosPrevios(datos_cliente);
