@@ -34,7 +34,7 @@ async function getCostos() {
     
     //ingresamos expreso y moto que son valores fijos
     if(totalDeCompra >= 100000){
-      document.querySelector(".texto-envio-caba").innerHTML = `Envío gratis por moto por superar los $100.000 en tu pedido <span id="valor_moto" style="font-weight: 600;"></span>.</p>`
+      document.querySelector(".texto-envio-caba").innerHTML = `Envío gratis por moto por superar los $100.000 en tu pedido <i>📦 Importante: si el pedido excede el tamaño de carga de la moto, se deberá abonar el costo de una segunda unidad.</i><span id="valor_moto" style="font-weight: 600;">${data[0].moto}</span>.</p>`
       //document.getElementById("valor_moto").textContent = ".";
       data[0].moto = 0
     }else{
