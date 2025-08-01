@@ -1884,6 +1884,10 @@ textarea#pedidoObservaciones {
 	background-image: url("../img/banner3-desktop.jpg");
 }
 
+.banner4 {
+		background-image: url("../img/banner4-mobile.jpg");
+}
+
 .prev {
 	transform: rotate(90deg);
 }
@@ -2254,6 +2258,10 @@ textarea#pedidoObservaciones {
 
 	.banner3 {
 		background-image: url("../img/banner3-mobile.jpg");
+	}
+	
+	.banner4 {
+		background-image: url("../img/banner4-mobile.jpg");
 	}
 
 	/* Fin Carrousel Home */
