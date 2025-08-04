@@ -986,17 +986,15 @@ function printPagePreviewSinIVA(pedido, cliente){
 }
 
 function printPagePreviewOld(i){
-   console.log(i)
-   let pedido
-   if(i != Number){
-      pedido = i
-      console.log(pedido)
-    }else{
-      pedido = pedidos[i].compra
-    }
+   
+  //ESTO ESTABA EVITANDO QUE SE MUESTRAN LOS PEDIDO //SI NO JODE BORRAR
+  //  if(i != Number){
+  //     console.log("INDICE RECIBIDO ", i)
+  //     alert("INDICE I incorrecto", i)
+  //     return
+  //  }      
+    
   
-  
-  const cliente = "Pedido NN"
   mostrador.innerHTML = `
   <table id="tablaCopiar" class="table table-bordered table-hover tablaOrden">
   <thead>
@@ -1029,7 +1027,7 @@ function printPagePreviewOld(i){
   //
   const resumenCheckOut = document.querySelector(".resumen-check-out")
   let totalPedido = 0
-  pedido.forEach(e => {    
+  pedidos[i].compra.forEach(e => {    
     const total = e.cantidad * e.precio
     resumenCheckOut.innerHTML += `
     <td class="text-center"><img src="${e.imagen}" alt="imagen table" widht="auto" height="60px"></td>
@@ -1039,8 +1037,7 @@ function printPagePreviewOld(i){
     <td>${e.cantidad}</td>
     <td>${total.toFixed(2)}</td>    
     `;
-    // <td>en stock: </td>
-    // <td>falta: </td>
+   
     totalPedido += total    
   })
  

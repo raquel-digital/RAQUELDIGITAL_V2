@@ -9,7 +9,10 @@ const localidadSelect = document.getElementById("ulLocalidad");
 let provinciasLocalidades; //contenedor de localidades por provincia
 let form = document.querySelector(".formAction");
 
-console.log(datos_cliente)
+if(carrito.length == 0){
+  alert("Carrito vacio no se puede proceder con el cierre del pedido, por favor reintente")
+  window.location.href = "https://www.raqueldigital.com";
+}
 
 if(datos_cliente){
   if(datos_cliente.retira == "Por Envio") {

@@ -612,6 +612,12 @@ document.getElementById("consultas-clientes").addEventListener("click", () => {
       const consulta = document.getElementById("pedidoObservaciones").value
       const contacto = document.getElementById("contacto-consultas").value
       const confirm = document.getElementById("custom-modal")
+
+      if(contacto == "" || contacto == null) {
+        alert("Por favor ingrese su contacto para poder responderle")
+        return
+      }
+
       if(contacto){
         alertModal("Gracias por tu mensaje", "nos pondremos en contacto al " + contacto, "Ok", "Cancelar")
       }else{
