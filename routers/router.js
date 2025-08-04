@@ -252,10 +252,18 @@ router.post("/check-out", (req, res) => {
   delete require.cache[require.resolve("../public/system/dir/allArts.json")];
   const actuPrecios = require("../public/system/dir/allArts.json")
 
+  
+
   const carritoFiltrado = carritoAnterior.filter(producto => {
-    const index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
+   const split = producto.codigo.split("-")
+   const codigo = split[0]  
+   let index = actuPrecios.findIndex(item => item.codigo === codigo);
+   if (index == -1) {
+    index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
+   }
     
     if (index !== -1) {
+        console.log("HAY", producto.codigo)
         const actualizado = actuPrecios[index];
         const precio = actualizado.precio.replace(",", ".");
         
@@ -266,10 +274,11 @@ router.post("/check-out", (req, res) => {
         // Conservar solo si mostrar es estrictamente true
         return actualizado.mostrar
     }
-
+      console.log("NO HAY", producto.codigo)
       // Si no está en actuPrecios, se va
       return false;  
   })
+  
   
   //REDIRECCION POR IP
   // const miIP = "181.104.123.230"  

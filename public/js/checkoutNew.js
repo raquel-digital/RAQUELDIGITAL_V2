@@ -34,25 +34,27 @@ const compraFinal = document.getElementById('datos-compra');
     }
     return response.json();
   }).then(actuPrecios => {
-    // Recorre cada elemento del carrito
-    const res = carrito.filter(producto => {
-    const index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
+  //   // Recorre cada elemento del carrito
+  //   const res = carrito.filter(producto => {
+  //   const split = producto.codigo.split("-")
+  //   const codigo = split[0]    
+  //   const index = actuPrecios.findIndex(item => item.codigo === codigo);
     
-    if (index !== -1) {
-        const actualizado = actuPrecios[index];
-        const precio = actualizado.precio.replace(",", ".");
+  //   if (index !== -1) {
+  //       const actualizado = actuPrecios[index];
+  //       const precio = actualizado.precio.replace(",", ".");
         
-        if (producto.precio != precio) {
-            producto.precio = precio;
-        }
+  //       if (producto.precio != precio) {
+  //           producto.precio = precio;
+  //       }
         
-        // Conservar solo si mostrar es estrictamente true
-        return actualizado.mostrar
-    }
+  //       // Conservar solo si mostrar es estrictamente true
+  //       return actualizado.mostrar
+  //   }
 
-      // Si no está en actuPrecios, se va
-      return false;  
-  })
+  //     // Si no está en actuPrecios, se va
+  //     return false;  
+  // })
   
     //ingresamos carrito
     //document.querySelector(".carrito-cuerpo").innerHTML = "";
@@ -76,7 +78,7 @@ const compraFinal = document.getElementById('datos-compra');
     
     document.getElementById("carrito-holder").value = JSON.stringify(res)//guardamos el pedido para que lo tome la cabecera del req.boy 
     pedido = res
-    localStorage.setItem("carrito", JSON.stringify(res))
+    //localStorage.setItem("carrito", JSON.stringify(res))
     cliente.sys = {}
     cliente.sys.compra = pedido
     cliente.sys.totalCompra = total.toFixed(2)

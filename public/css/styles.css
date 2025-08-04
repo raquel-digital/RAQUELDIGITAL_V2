@@ -1125,7 +1125,7 @@ footer li img {
 }
 
 .seleccionar-color input[type="checkbox"] {
-	appearance: none;
+	/* appearance: none; */
 	width: 16px;
 	height: 16px;
 	border: 2px solid #7A7A7A;
