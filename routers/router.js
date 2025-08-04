@@ -287,8 +287,8 @@ router.post("/check-out", (req, res) => {
   //   return res.render("checkOutNuevo", {carrito: carritoFiltrado, iphone: esIPhone})
   // }
 
-  res.render("checkOutNuevo", {carrito: carritoFiltrado, iphone: esIPhone})
-  //res.render("checkOut", { iphone: esIPhone, carrito: carritoAnterior })
+  //res.render("checkOutNuevo", {carrito: carritoFiltrado, iphone: esIPhone})
+  res.render("checkOut", { iphone: esIPhone, carrito: carritoAnterior })
 })
 
 //CHECK OUT MERCADOPAGO
