@@ -9,6 +9,7 @@ const localidadSelect = document.getElementById("ulLocalidad");
 let provinciasLocalidades; //contenedor de localidades por provincia
 let form = document.querySelector(".formAction");
 
+//si por alguna razon el carrito esta vacio retornar a la HOME
 if(carrito.length == 0){
   alert("Carrito vacio no se puede proceder con el cierre del pedido, por favor reintente")
   window.location.href = "https://www.raqueldigital.com";
@@ -21,70 +22,22 @@ if(datos_cliente){
 
 }
 
-const compraFinal = document.getElementById('datos-compra');
+const totalString = document.getElementById("total_de_compra").textContent
+
+const datosCompra = document.getElementById("datos-compra");
+const datosRaw = datosCompra.getAttribute("data-datos");
+const datos = JSON.parse(datosRaw);
+document.getElementById("carrito-holder").value = JSON.stringify(datos)//guardamos el pedido para que lo tome la cabecera del req.boy 
+pedido = datos
+localStorage.setItem("carrito", JSON.stringify(datos))
+cliente.sys = {}
+cliente.sys.compra = pedido
+cliente.sys.totalCompra = parseFloat(totalString.replace(/[^0-9.]/g, ""));
 
 
 
 //buscamos los datos de envío y listado de provincias
-(async () => {
-  //chequeo precio y ocultos del carrito
-  await fetch("../system/dir/allArts.json").then(response => {    
-    if (!response.ok) {
-      throw new Error('La solicitud no se pudo completar.');
-    }
-    return response.json();
-  }).then(actuPrecios => {
-  //   // Recorre cada elemento del carrito
-  //   const res = carrito.filter(producto => {
-  //   const split = producto.codigo.split("-")
-  //   const codigo = split[0]    
-  //   const index = actuPrecios.findIndex(item => item.codigo === codigo);
-    
-  //   if (index !== -1) {
-  //       const actualizado = actuPrecios[index];
-  //       const precio = actualizado.precio.replace(",", ".");
-        
-  //       if (producto.precio != precio) {
-  //           producto.precio = precio;
-  //       }
-        
-  //       // Conservar solo si mostrar es estrictamente true
-  //       return actualizado.mostrar
-  //   }
-
-  //     // Si no está en actuPrecios, se va
-  //     return false;  
-  // })
-  
-    //ingresamos carrito
-    //document.querySelector(".carrito-cuerpo").innerHTML = "";
-    let total = 0;
-    res.forEach(e => {
-        total += e.precio * e.cantidad
-    //     document.querySelector(".carrito-cuerpo").innerHTML += `
-    //     <div class="carrito-item">
-    //         <div class="contenedor-img-carrito" style='background-image: url(${e.imagen});'>
-                
-    //         </div>
-    //         <div class="carrito-item-info">
-    //             <h3>${e.titulo}</h3>
-    //             <p>Precio: $${e.precio}</p>
-    //             <p>Cantidad: ${e.cantidad}</p>
-    //         </div>
-    //     </div>    
-    //     `
-    //     document.getElementById("total_de_compra").textContent = `$${total.toFixed(2)}`;
-    })
-    
-    document.getElementById("carrito-holder").value = JSON.stringify(res)//guardamos el pedido para que lo tome la cabecera del req.boy 
-    pedido = res
-    //localStorage.setItem("carrito", JSON.stringify(res))
-    cliente.sys = {}
-    cliente.sys.compra = pedido
-    cliente.sys.totalCompra = total.toFixed(2)
-  })
-  
-  
+(async () => {  
 
   await fetch('../system/envios/provinciasLocalidades.json')
   .then(response => {
