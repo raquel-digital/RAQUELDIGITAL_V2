@@ -2,13 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('envio').addEventListener('click', e => {
     cliente.retira = "Por Envio"
-    document.querySelector('.datos-envio').style.display = 'block';
+    document.querySelector('.datos-envio').style.display = 'grid';
     document.getElementById("efectivoDIV").style.display = 'none';
   });
   document.getElementById('retiro').addEventListener('click', e => {
-    cliente.retira = "Retira en local"
+    cliente.retira = "Retira en local"    
     document.querySelector('.datos-envio').style.display = 'none';
     document.getElementById("efectivoDIV").style.display = 'block';
+    document.querySelector('.datos-correo-argentino').style.display = 'none';
+    document.querySelector('.datos-expreso').style.display = 'none';
   });
 
   // Seleccionar todos los elementos con clase fake-select
@@ -75,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
           return
         }
         document.getElementById("locText").textContent = selectedText;
-        document.getElementById("checkout-radiobuttons-opciones-envio").style.display = "block";
+        document.getElementById("checkout-radiobuttons-opciones-envio").style.display = "grid";
       }
     })
 
