@@ -349,6 +349,17 @@ io.on('connect', socket => {
             socket.emit("chequear-pedidos-sinTerminar-res", res)
         })()        
     })
+    //admin local aviso de recordario pedido
+    socket.on("aplazar-aviso-de-pedido-local", data => {
+        const controller = require("./api/pedidos/pedidosLocal/controller");
+        (async () => {           
+            const actuRecordatorio = await controller.actuRecordatorio(data) 
+            if(actuRecordatorio){
+                const res = await controller.buscar();
+                socket.emit("buscar-pedidos-local-res", res)  
+            }                      
+        })();
+    })
 })
 
 

@@ -73,7 +73,16 @@ const store = {
         const deleteModel = require("./modelDelete");
         const res = deleteModel.find().sort({ _id: -1 }).limit(50);
         return res;
-    }
+    },
+    actuRecordatorio: async function (data){ 
+        await model.findOneAndUpdate({
+            num_orden: data.orden
+        },
+        {
+             $inc: { recordarEn: data.suma } 
+        }  
+        )
+    },
 }
 
 module.exports = store;

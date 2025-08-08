@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
           return
         }
         document.getElementById("locText").textContent = selectedText;
-        document.getElementById("checkout-radiobuttons-opciones-envio").style.display = "grid";
+        document.getElementById("checkout-radiobuttons-opciones-envio").style.display = "block";//blcok o grid?
       }
     })
 

@@ -25,7 +25,8 @@ const controller = {
         notas: " ",
         forma_de_pago: data.forma_de_pago,
         envio: data.envio,
-        zona: data.zona
+        zona: data.zona,
+        recordarEn: 0
        }
         store.ingresar(order);
         return true;
@@ -70,7 +71,17 @@ const controller = {
     }catch(err){
       console.log("[ ERROR EN CONTROLLER borrarPedido ] " + err)
     }
-   }
+   },
+   actuRecordatorio: async function (data) {
+    try{  
+      
+      await store.actuRecordatorio(data);
+      return true;
+    }catch(err){
+      console.log("[ ERROR EN CONTROLLER actuRecordatorio ] " + err)
+      return false
+    }
+   },
 }
 
 

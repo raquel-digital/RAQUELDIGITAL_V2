@@ -189,9 +189,9 @@ const draw = {
                                 <option value="Javier" >Javier</option>
                                 <option value="Karina" >Karina</option>
                                 <option value="Mario" >Mario</option>
+                                <option value="Mateo" >Mateo</option>
                                 <option value="Monica" >Monica</option>
-                                <option value="Oscar" selected>Oscar</option>
-                                <option value="Rodrigo" >Rodrigo</option>
+                                <option value="Oscar" selected>Oscar</option>                                
                             </select>    
                         <h5 class="card-title">Contacto: ${p.contacto[0].medio}</h5>  
                         <h5 class="card-title">Numero / Mail: ${p.contacto[0].nota}</h5>                     
@@ -263,6 +263,7 @@ const draw = {
                         </div>
                         <div class="card-footer row">
                         <button class="botonConfirmar btn btn-primary" style="margin-right: 20px;" onclick="agregarCambio(${p.num_orden})">Corfirmar</button>
+                        <button class="botonConfirmar btn btn-warning" style="margin-right: 20px; margin-top: 0.5rem;" onclick="avisarPedido(${p.num_orden}, ${suma + 10})">Avisar mas tarde</button>
                         <button class="botonConfirmar btn btn-danger" style="margin-right: 20px; margin-top: 0.5rem;" onclick="borrarPedido(${p.num_orden})">Borrar</button>
                       </div>
                     </div>
@@ -359,10 +360,26 @@ const draw = {
             if(dia != Number(fechaSplit[0])){
               suma += dia - Number(fechaSplit[0])
             }
+
+            let resaltador = "transparent"
+            if(e.recordarEn && e.recordarEn > 0){
+                const record = e.recordarEn - suma
+                if(record <= 0){
+                    resaltador = "#ffff99"
+                }
+            }else{
+                //los pedidos viejos no tienen la propiedad e.recordarEn
+                if(suma > 10) {
+                    resaltador = "#ffff99"
+                }
+            }      
+            
+
+            
             
             if(e.notas.length > 1|| e.pedido.length > 1){
                 body.innerHTML += `
-            <tr>
+            <tr style="background-color: ${resaltador};">
                 <td><b>${e.num_orden}</b></td>
                 <td><b>${e.prepara}</b></td>
                 <td><b>${e.fecha}</b></td>
@@ -376,7 +393,7 @@ const draw = {
             `
             }else{
                 body.innerHTML += `
-            <tr>
+            <tr style="background-color: ${resaltador}">
                 <td>${e.num_orden}</td>
                 <td>${e.prepara}</td>
                 <td>${e.fecha}</td>
@@ -733,27 +750,7 @@ socket.on("req-cli-res", clientes => {
     completarBusqueda(clientes, "searchInputTareasInicio", "suggestionsContainerTareasInicio")
 })
 
-
-// if(mouse.classList.contains("borrar-lista-cliente")){
-//     Swal.fire({
-//       title: "Queres borrar al cliente de la lista?",
-//       text: "",
-//       icon: "warning",
-//       showCancelButton: true,
-//       confirmButtonColor: "#3085d6",
-//       cancelButtonColor: "#d33",
-//       confirmButtonText: "Si!!, borrar!"
-//     }).then((result) => {
-//       if (result.isConfirmed) {
-//         Swal.fire({
-//           title: "Borrado!",
-//           text: "El cliente fue borrado.",
-//           icon: "success"
-//         });
-//         const cliente = mouse.parentElement.parentElement.textContent
-//         if(cliente){
-//           socket.emit("borrar-cliente-lista", cliente)
-//         }
-//       }
-//     });
+function avisarPedido(orden, suma) {
+    socket.emit("aplazar-aviso-de-pedido-local", {orden: orden, suma: suma})
+}
 

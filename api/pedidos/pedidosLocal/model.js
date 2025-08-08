@@ -16,7 +16,8 @@ const newSchema = new schema({
     notas: String,
     forma_de_pago: String,
     envio: String,
-    zona: String    
+    zona: String,
+    recordarEn: Number,    
 })
 
 const model = mongoose.model("Pedidos - Local", newSchema);
