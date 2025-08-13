@@ -256,7 +256,11 @@ router.post("/check-out", (req, res) => {
 
   const carritoFiltrado = carritoAnterior.filter(producto => {
    const split = producto.codigo.split("-")
-   const codigo = split[0]  
+   let codigo = split[0]  
+   if(codigo.includes("_")){
+    const split = codigo.split("_")
+    codigo = split[0] 
+   }
    let index = actuPrecios.findIndex(item => item.codigo === codigo);
    if (index == -1) {
     index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
@@ -288,7 +292,7 @@ router.post("/check-out", (req, res) => {
   // }
 
   res.render("checkOutNuevo", {carrito: carritoFiltrado, iphone: esIPhone})
-  //res.render("checkOut", { iphone: esIPhone, carrito: carritoAnterior })
+  //res.render("checkOut", { iphone: esIPhone, carrito: carritoFiltrado })
 })
 
 //CHECK OUT MERCADOPAGO
