@@ -204,6 +204,7 @@ io.on('connect', socket => {
     //ADMIN PRECIOS
     socket.on("actuPreciosAdmin", data => {
         (async () => {
+            console.log("ACTUALIZANDO PRECIOS")
             const actuPrecios = require("./utils/preciosActu");
             const result = await actuPrecios(data);            
             if(result){

@@ -519,25 +519,28 @@ function newImg(codigo){
 }
 
 
-function actuPrecios(){
- console.log("ENVIANDO PRECIOS")
- const actu = document.querySelector(".actuPrecios");
- const split = actu.value.split(" "); 
- const preJson = [];
- split.map(e => {
-  const split = e.split("\t")
-  if(split[0] == " " || split[1] == " " || split[0] == undefined || split[1] == undefined || split[1] <= 0){    
-    alert("HAY ERRORES EN ARTICULO " + "CODIGO: " + split[0], "PRECIO: " + split[1]);
-    console.log(e, "CODIGO: " + split[0], "PRECIO: " + split[1])
-    return
-  }else{
-    const precios = {Codigo: split[0], Precio: split[1]}
-    preJson.push(precios);
+function actuPrecios() {
+  console.log("ENVIANDO PRECIOS")
+  const actu = document.querySelector(".actuPrecios");
+  const filas = actu.value.split(" "); 
+  const preJson = [];
+
+  for (const fila of filas) {
+    const datos = fila.split("\t");
+    const codigo = datos[0]?.trim();
+    const precio = datos[1]?.trim();
+
+    if (!codigo || !precio || Number(precio) <= 0) {    
+      alert(`HAY ERRORES EN ARTICULO CODIGO: ${codigo} PRECIO: ${precio}`);
+      console.log(fila, `CODIGO: ${codigo}`, `PRECIO: ${precio}`);
+      return; 
+    }
+
+    preJson.push({ Codigo: codigo, Precio: precio });
   }
-  
- }); 
- mostrador.innerHTML = `<h1>Actualizando precios esto lleva tiempo</h1>`
- socket.emit("actuPreciosAdmin", preJson); 
+
+  mostrador.innerHTML = `<h1>Actualizando precios esto lleva tiempo</h1>`;
+  socket.emit("actuPreciosAdmin", preJson); 
 }
 
 socket.on("actuPreciosAdminRes", result => {
@@ -561,11 +564,13 @@ socket.on("actuPreciosAdminRes", result => {
         const precioAnterior = e.precioViejo.replace(",", ".")
         const precioBaja = Number(precioAnterior) - Number(precio)
         const precioAlta = Number(precio) - Number(precioAnterior)
+        const porcentajeBaja = (precioBaja / Number(precioAnterior)) * 100
+        const porcentajeAlta = ((Number(precio) - precioAnterior) / Number(precioAnterior)) * 100
         
         if(e.baja){
-          res.innerHTML += `<li style="color:red;">CODIGO: ${e.codigo} PRECIO EN BAJA: ${e.precio} PRECIO ANTERIOR: ${e.precioViejo} BAJA DE: ${precioBaja.toFixed(2)}</li>`
+          res.innerHTML += `<li style="color:red;">CODIGO: ${e.codigo} PRECIO EN BAJA: ${e.precio} PRECIO ANTERIOR: ${e.precioViejo} BAJA DE: ${precioBaja.toFixed(2)} PORCENTAJE: ${porcentajeBaja.toFixed(2)}%</li>`
         }else{        
-          res.innerHTML += `<li>CODIGO: ${e.codigo} NUEVO PRECIO: ${e.precio} AUMENTO: ${precioAlta.toFixed(2)}</li>`
+          res.innerHTML += `<li>CODIGO: ${e.codigo} NUEVO PRECIO: ${e.precio} AUMENTO: ${precioAlta.toFixed(2)} PORCENTAJE: ${porcentajeAlta.toFixed(2)}%</li>`
         }
       })
 
