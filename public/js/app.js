@@ -581,6 +581,8 @@ function asignadorPaginador(i){
 }
 
 document.getElementById("consultas-clientes").addEventListener("click", () => {
+  const cliente = JSON.parse(localStorage.getItem('datos-envio'));  
+
   document.querySelector("main h1").innerHTML = ""
   const res = document.querySelector("#resultado-router")
   const barraTags = document.querySelector(".filtros")
@@ -608,6 +610,13 @@ document.getElementById("consultas-clientes").addEventListener("click", () => {
       <button id="boton-envio-consulta" class="btn-primario">Enviar</button>
     </div>    
     `
+
+    //ingresamos el contacto si es que ya lo tenemos.
+    if(cliente){
+      document.getElementById("contacto-consultas").value = cliente.formaDeContacto.numero
+    }
+    
+
     document.getElementById("boton-envio-consulta").addEventListener("click", () => {
       const consulta = document.getElementById("pedidoObservaciones").value
       const contacto = document.getElementById("contacto-consultas").value

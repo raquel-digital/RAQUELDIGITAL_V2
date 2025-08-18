@@ -339,8 +339,41 @@ io.on('connect', socket => {
     })
     //CONSULTAS DE CLIENTES
     socket.on("consulta-cliente", data => {
-        console.log(data)
-        mailConsulta(data)
+       mailConsulta(data)
+       
+       if(data.carrito){
+        //Formateamos los datos para ingreso a SYS pedidos
+        data.nombreApellido = "INGRESO POR CHECK OUT"
+        data.retira = "A CONFIRMAR"
+        data.tipoDeEnvio = {}            
+        data.tipoDeEnvio.Altura = ""
+        data.tipoDeEnvio.Calle = ""
+        data.tipoDeEnvio.piso_departamento = ""
+        data.tipoDeEnvio.Costo = ""
+        data.tipoDeEnvio.Horario_Entrega = ""  
+        data.tipoDeEnvio.Provincia = ""
+        data.tipoDeEnvio.Localidad = ""
+        data.tipoDeEnvio.Empresa = ""
+        data.tipoDeEnvio.DNI = "" 
+        data.tipoDeEnvio.CP = ""
+        data.tipoDeEnvio.forma_de_envio = ""
+        data.formaDeContacto = {}    
+        data.formaDeContacto.contacto = ""
+        data.formaDeContacto.numero = data.contacto
+        data.facturacion = {}
+        data.facturacion.CUIT = ""
+        data.facturacion.RazonSocial = ""
+        data.facturacion.tipo = ""
+        data.formaDePago = ""
+        data.sys = {}
+        data.sys.compra = data.carrito
+        data.observaciones = data.consulta
+        
+
+        const controller = require("./api/users/controller")
+        controller.ingresar(data)
+       }       
+       return
     })
     //CHEQUEAR PEDIDOS QUE SOLO SE INGRESARON AL CHECKOUT
     socket.on("chequear-pedidos-sinTerminar", () => {        
@@ -392,15 +425,61 @@ async function mailConsulta(data){
             rejectUnauthorized: false//importante para que no rebote la conexccion
         }
     })
-    const mailOptions = {
-        from: 'SITIO WEB',
-        to: 'raqueldigitalweb@gmail.com',            
-        subject: 'Consulta de cliente',
-        html: ` <h1> CONSULTA DE CLIENTE</h1>
-                <p>CONTACTO: ${data.contacto}</p>  
-                <p>MENSAGE: ${data.consulta}<p>
-        `
-    }
+
+    let mailOptions
+    if(!data.carrito) {
+        mailOptions = {
+            from: 'SITIO WEB',
+            to: 'raqueldigitalweb@gmail.com',            
+            subject: 'Consulta de cliente',
+            html: ` <h1> CONSULTA DE CLIENTE</h1>
+                    <p>CONTACTO: ${data.contacto}</p>  
+                    <p>MENSAGE: ${data.consulta}<p>
+            `
+        }
+    }else{
+       const compra = data.carrito.map(e => {
+            return `
+                    <tr>
+                    <td><img src="https://raqueldigital.herokuapp.com/${e.imagen}" alt="imagen table" widht="60px" height="60px"></td>
+                    <td>${e.codigo}</td>
+                    <td>${e.titulo}<td>
+                    <td>${e.cantidad}</td>
+                    <td>${e.precio}</td>
+                    </tr>       
+                `
+        }).join("")
+
+
+        mailOptions = {
+            from: 'SITIO WEB',
+            to: 'raqueldigitalweb@gmail.com',            
+            subject: 'Consulta de cliente',
+            html: ` <h1> CONSULTA DE CLIENTE</h1>
+                    <p>CONTACTO: ${data.contacto}</p>  
+                    <p>MENSAGE: ${data.consulta}<p>
+
+                    <h1>PEDIDO:</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>codigo</th>
+                                <th>titulo</th>
+                                <th>cantidad</th>
+                                <th>precio unitario</th>                   
+                                <th>total</th>
+                            </tr>
+                        </thead>
+                        <tbody class="resumen-check-out">
+                            ${compra}
+                        </tbody>
+                    </table>
+
+            `
+        }
+    }    
+
+
     transporter.sendMail(mailOptions, (err, info) => {
         if (err) {
             console.log(err)
@@ -426,7 +505,6 @@ async function mailEmit(data){
         <td>${e.precio}</td>
         </tr>       
         `
-       
     })
     
     const store = require("./api/users/store");

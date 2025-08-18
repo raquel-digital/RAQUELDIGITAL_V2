@@ -213,3 +213,11 @@ function checkOut() {
     form.submit();
   }
 
+
+
+  
+    
+  
+  
+
+

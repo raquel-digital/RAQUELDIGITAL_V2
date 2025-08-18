@@ -176,3 +176,15 @@ function ingresoDatosPrevios(cliente) {
     document.querySelector(".transferencia-bancaria").style.display = 'block';
   }
 }
+
+function alertModal(txt, txt2, confirmar, cancelar){
+    document.getElementById("mensaje-1").textContent = txt
+    if(txt2){
+      document.getElementById("mensaje-2").textContent = txt2
+    }
+
+    document.getElementById("confirmar-mensaje").textContent = confirmar
+    if(cancelar){
+      document.getElementById("cancelar-mensaje").textContent = cancelar
+    }
+}

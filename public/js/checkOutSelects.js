@@ -159,7 +159,71 @@ document.addEventListener('DOMContentLoaded', () => {
       checkOut()
     }    
   });  
-});
+
+
+
+  //FORMA CONTACTO
+  document.querySelector(".contenedor-checkout").innerHTML += `
+    <div style="max-width: 700px; margin: 30px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+  <h1 style="font-size: 20px; margin-bottom: 15px; color: #333; text-align: center;">
+    Si no podés cerrar el carrito o tuviste algún problema al completar el formulario, podés contactarnos por esta vía
+  </h1>
+  <h3 style="font-size: 18px; margin-bottom: 15px; color: #333; text-align: center;">
+    Nos pondremos en contacto para ayudarte a finalizar tu pedido
+  </h3>
+  
+  <textarea id="consultaCheckout" placeholder="Escribí tu consulta aquí..." 
+    style="width: 90%; min-height: 120px; padding: 12px; border: 1px solid #ccc; border-radius: 6px; resize: vertical; margin-bottom: 20px; font-size: 14px;">
+  </textarea>
+  
+  <div style="margin-bottom: 20px;">
+    <label for="contacto-consultas" style="display: block; font-size: 14px; margin-bottom: 8px; color: #555;">
+      Podés dejarnos tu mail o WhatsApp para que podamos contactarte
+    </label>
+    <input id="contacto-consultas" type="text" placeholder="ej: tunombre@mail.com o +54 9 11 2222 3333"
+      style="width: 90%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
+  </div>
+
+  <div style="text-align: right;">
+    <button id="boton-envio-consulta" 
+      style="background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; cursor: pointer;">
+      Enviar
+    </button>
+  </div>
+</div>
+    `
+
+    //ingresamos el contacto si es que ya lo tenemos.
+    if(datos_cliente){
+      document.getElementById("contacto-consultas").value = datos_cliente.formaDeContacto.numero
+    }
+    
+
+    document.getElementById("boton-envio-consulta").addEventListener("click", () => {
+      const consulta = document.getElementById("consultaCheckout").value
+      const contacto = document.getElementById("contacto-consultas").value
+
+      if(contacto == "" || contacto == null) {
+        alert("Por favor ingrese su contacto para poder responderle")
+        return
+      }
+
+      if(contacto){
+        alert("Gracias por tu mensaje nos pondremos en contacto al " + contacto)
+      }
+
+     
+            const data = {
+              consulta: consulta + "   || INGRESO DESDE CHECK OUT",
+              contacto: contacto,
+              carrito: carrito
+            }         
+            
+            socket.emit("consulta-cliente", data)   
+            
+            window.location.href = "https://www.raqueldigital.com";
+    }) 
+  })
 
 
 
