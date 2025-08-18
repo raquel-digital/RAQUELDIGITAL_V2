@@ -2190,6 +2190,13 @@ main div:first-child {
 
 	/* Fin Checkout */
 
+	/* --- FIX para mobile checkout finalizar pedido alternativo --- */
+  .consulta-card {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 15px 0;
+  }
+
 }
 
 /* **************************** FIN MEDIA QUERIES **************************** */
@@ -2260,8 +2267,9 @@ main div:first-child {
   cursor: pointer;
 }
 
-/* --- FIX para mobile --- */
+
 @media (max-width: 768px) {
+  /* --- FIX para mobile checkout finalizar pedido alternativo --- */
   .consulta-card {
     max-width: 100% !important;
     width: 100% !important;
