@@ -2193,3 +2193,78 @@ main div:first-child {
 }
 
 /* **************************** FIN MEDIA QUERIES **************************** */
+
+/* CARD DE ENVIO PEDIDO ALTERNATIVO */
+
+.consulta-card {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.consulta-card h1 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+.consulta-card h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+.consulta-card textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.consulta-card .input-box label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.consulta-card .input-box input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.consulta-card .boton-box {
+  text-align: right;
+}
+
+.consulta-card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* --- FIX para mobile --- */
+@media (max-width: 768px) {
+  .consulta-card {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 15px 0;
+  }
+}

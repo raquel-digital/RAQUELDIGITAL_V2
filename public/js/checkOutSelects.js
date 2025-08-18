@@ -164,31 +164,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //FORMA CONTACTO
   document.querySelector(".contenedor-checkout").innerHTML += `
-    <div style="max-width: 700px; margin: 30px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-  <h1 style="font-size: 20px; margin-bottom: 15px; color: #333; text-align: center;">
+   <div class="consulta-card">
+  <h1>
     Si no podés cerrar el carrito o tuviste algún problema al completar el formulario, podés contactarnos por esta vía
   </h1>
-  <h3 style="font-size: 18px; margin-bottom: 15px; color: #333; text-align: center;">
+  <h3>
     Nos pondremos en contacto para ayudarte a finalizar tu pedido
   </h3>
   
-  <textarea id="consultaCheckout" placeholder="Escribí tu consulta aquí..." 
-    style="width: 90%; min-height: 120px; padding: 12px; border: 1px solid #ccc; border-radius: 6px; resize: vertical; margin-bottom: 20px; font-size: 14px;">
-  </textarea>
+  <textarea id="consultaCheckout" placeholder="Escribí tu consulta aquí..."></textarea>
   
-  <div style="margin-bottom: 20px;">
-    <label for="contacto-consultas" style="display: block; font-size: 14px; margin-bottom: 8px; color: #555;">
+  <div class="input-box">
+    <label for="contacto-consultas">
       Podés dejarnos tu mail o WhatsApp para que podamos contactarte
     </label>
-    <input id="contacto-consultas" type="text" placeholder="ej: tunombre@mail.com o +54 9 11 2222 3333"
-      style="width: 90%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
+    <input id="contacto-consultas" type="text" placeholder="ej: tunombre@mail.com o +54 9 11 2222 3333">
   </div>
 
-  <div style="text-align: right;">
-    <button id="boton-envio-consulta" 
-      style="background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; cursor: pointer;">
-      Enviar
-    </button>
+  <div class="boton-box">
+    <button id="boton-envio-consulta">Enviar</button>
   </div>
 </div>
     `
