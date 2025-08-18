@@ -2191,6 +2191,9 @@ main div:first-child {
 	/* Fin Checkout */
 
 	/* --- FIX para mobile checkout finalizar pedido alternativo --- */
+	.consulta-card {  
+  margin: 100px auto;
+}
   .contenedor-checkout {
     flex-direction: column !important;
   }
@@ -2206,8 +2209,8 @@ main div:first-child {
 /* CARD DE ENVIO PEDIDO ALTERNATIVO */
 
 .consulta-card {
-  max-width: 700px;
-  margin: 30px auto;
+  max-width: 90%;
+  margin: 100px auto;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -2230,7 +2233,7 @@ main div:first-child {
 }
 
 .consulta-card textarea {
-  width: 100%;
+  width: 90%;
   min-height: 120px;
   padding: 12px;
   border: 1px solid #ccc;
@@ -2248,7 +2251,7 @@ main div:first-child {
 }
 
 .consulta-card .input-box input {
-  width: 100%;
+  width: 70%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -2271,8 +2274,8 @@ main div:first-child {
 
 @media only screen and (max-width: 800px) {
   .consulta-card {
-    max-width: 100% !important;
-    margin: 20px 0 !important;
+    max-width: 90% !important;
+    margin: 90px 0 !important;
   }
 }
 

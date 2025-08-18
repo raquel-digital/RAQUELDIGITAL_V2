@@ -188,35 +188,35 @@ document.addEventListener('DOMContentLoaded', () => {
 //     `
 
 //     //ingresamos el contacto si es que ya lo tenemos.
-//     if(datos_cliente){
-//       document.getElementById("contacto-consultas").value = datos_cliente.formaDeContacto.numero
-//     }
+    if(datos_cliente){
+      document.getElementById("contacto-consultas").value = datos_cliente.formaDeContacto.numero
+    }
     
 
-//     document.getElementById("boton-envio-consulta").addEventListener("click", () => {
-//       const consulta = document.getElementById("consultaCheckout").value
-//       const contacto = document.getElementById("contacto-consultas").value
+    document.getElementById("boton-envio-consulta").addEventListener("click", () => {
+      const consulta = document.getElementById("consultaCheckout").value
+      const contacto = document.getElementById("contacto-consultas").value
 
-//       if(contacto == "" || contacto == null) {
-//         alert("Por favor ingrese su contacto para poder responderle")
-//         return
-//       }
+      if(contacto == "" || contacto == null) {
+        alert("Por favor ingrese su contacto para poder responderle")
+        return
+      }
 
-//       if(contacto){
-//         alert("Gracias por tu mensaje nos pondremos en contacto al " + contacto)
-//       }
+      if(contacto){
+        alert("Gracias por tu mensaje nos pondremos en contacto al " + contacto)
+      }
 
      
-//             const data = {
-//               consulta: consulta + "   || INGRESO DESDE CHECK OUT",
-//               contacto: contacto,
-//               carrito: carrito
-//             }         
+            const data = {
+              consulta: consulta + "   || INGRESO DESDE CHECK OUT",
+              contacto: contacto,
+              carrito: carrito
+            }         
             
-//             socket.emit("consulta-cliente", data)   
+            socket.emit("consulta-cliente", data)   
             
-//             window.location.href = "https://www.raqueldigital.com";
-//     }) 
+            window.location.href = "https://www.raqueldigital.com";
+    }) 
   
 
 })
