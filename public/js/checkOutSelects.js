@@ -163,61 +163,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   //FORMA CONTACTO
-  document.querySelector(".contenedor-checkout").innerHTML += `
-   <div class="consulta-card">
-  <h1>
-    Si no podés cerrar el carrito o tuviste algún problema al completar el formulario, podés contactarnos por esta vía
-  </h1>
-  <h3>
-    Nos pondremos en contacto para ayudarte a finalizar tu pedido
-  </h3>
+//   document.querySelector(".contenedor-checkout").innerHTML += `
+//    <div class="consulta-card">
+//   <h1>
+//     Si no podés cerrar el carrito o tuviste algún problema al completar el formulario, podés contactarnos por esta vía
+//   </h1>
+//   <h3>
+//     Nos pondremos en contacto para ayudarte a finalizar tu pedido
+//   </h3>
   
-  <textarea id="consultaCheckout" placeholder="Escribí tu consulta aquí..."></textarea>
+//   <textarea id="consultaCheckout" placeholder="Escribí tu consulta aquí..."></textarea>
   
-  <div class="input-box">
-    <label for="contacto-consultas">
-      Podés dejarnos tu mail o WhatsApp para que podamos contactarte
-    </label>
-    <input id="contacto-consultas" type="text" placeholder="ej: tunombre@mail.com o +54 9 11 2222 3333">
-  </div>
+//   <div class="input-box">
+//     <label for="contacto-consultas">
+//       Podés dejarnos tu mail o WhatsApp para que podamos contactarte
+//     </label>
+//     <input id="contacto-consultas" type="text" placeholder="ej: tunombre@mail.com o +54 9 11 2222 3333">
+//   </div>
 
-  <div class="boton-box">
-    <button id="boton-envio-consulta">Enviar</button>
-  </div>
-</div>
-    `
+//   <div class="boton-box">
+//     <button id="boton-envio-consulta">Enviar</button>
+//   </div>
+// </div>
+//     `
 
-    //ingresamos el contacto si es que ya lo tenemos.
-    if(datos_cliente){
-      document.getElementById("contacto-consultas").value = datos_cliente.formaDeContacto.numero
-    }
+//     //ingresamos el contacto si es que ya lo tenemos.
+//     if(datos_cliente){
+//       document.getElementById("contacto-consultas").value = datos_cliente.formaDeContacto.numero
+//     }
     
 
-    document.getElementById("boton-envio-consulta").addEventListener("click", () => {
-      const consulta = document.getElementById("consultaCheckout").value
-      const contacto = document.getElementById("contacto-consultas").value
+//     document.getElementById("boton-envio-consulta").addEventListener("click", () => {
+//       const consulta = document.getElementById("consultaCheckout").value
+//       const contacto = document.getElementById("contacto-consultas").value
 
-      if(contacto == "" || contacto == null) {
-        alert("Por favor ingrese su contacto para poder responderle")
-        return
-      }
+//       if(contacto == "" || contacto == null) {
+//         alert("Por favor ingrese su contacto para poder responderle")
+//         return
+//       }
 
-      if(contacto){
-        alert("Gracias por tu mensaje nos pondremos en contacto al " + contacto)
-      }
+//       if(contacto){
+//         alert("Gracias por tu mensaje nos pondremos en contacto al " + contacto)
+//       }
 
      
-            const data = {
-              consulta: consulta + "   || INGRESO DESDE CHECK OUT",
-              contacto: contacto,
-              carrito: carrito
-            }         
+//             const data = {
+//               consulta: consulta + "   || INGRESO DESDE CHECK OUT",
+//               contacto: contacto,
+//               carrito: carrito
+//             }         
             
-            socket.emit("consulta-cliente", data)   
+//             socket.emit("consulta-cliente", data)   
             
-            window.location.href = "https://www.raqueldigital.com";
-    }) 
-  })
+//             window.location.href = "https://www.raqueldigital.com";
+//     }) 
+  
+
+})
 
 
 

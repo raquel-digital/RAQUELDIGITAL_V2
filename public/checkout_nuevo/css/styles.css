@@ -2191,7 +2191,7 @@ main div:first-child {
 	/* Fin Checkout */
 
 	/* --- FIX para mobile checkout finalizar pedido alternativo --- */
-  .checkout-container {
+  .contenedor-checkout {
     flex-direction: column !important;
   }
   .checkout-container > * {
@@ -2269,12 +2269,13 @@ main div:first-child {
   cursor: pointer;
 }
 
-
-@media (max-width: 768px) {
-  /* --- FIX para mobile checkout finalizar pedido alternativo --- */
+@media only screen and (max-width: 800px) {
   .consulta-card {
     max-width: 100% !important;
-    width: 100% !important;
-    margin: 15px 0;
+    margin: 20px 0 !important;
   }
 }
+
+
+
+
