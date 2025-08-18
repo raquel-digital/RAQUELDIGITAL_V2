@@ -2190,6 +2190,91 @@ main div:first-child {
 
 	/* Fin Checkout */
 
+	/* --- FIX para mobile checkout finalizar pedido alternativo --- */
+	.consulta-card {  
+  margin: 100px auto;
+}
+  .contenedor-checkout {
+    flex-direction: column !important;
+  }
+  .checkout-container > * {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
 }
 
 /* **************************** FIN MEDIA QUERIES **************************** */
+
+/* CARD DE ENVIO PEDIDO ALTERNATIVO */
+
+.consulta-card {
+  max-width: 90%;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.consulta-card h1 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+.consulta-card h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+.consulta-card textarea {
+  width: 90%;
+  min-height: 120px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.consulta-card .input-box label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.consulta-card .input-box input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.consulta-card .boton-box {
+  text-align: right;
+}
+
+.consulta-card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  .consulta-card {
+    max-width: 90% !important;
+    margin: 90px 0 !important;
+  }
+}
