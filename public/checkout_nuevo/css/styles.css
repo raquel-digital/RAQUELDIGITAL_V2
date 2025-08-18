@@ -2191,10 +2191,12 @@ main div:first-child {
 	/* Fin Checkout */
 
 	/* --- FIX para mobile checkout finalizar pedido alternativo --- */
-  .consulta-card {
-    max-width: 100% !important;
+  .checkout-container {
+    flex-direction: column !important;
+  }
+  .checkout-container > * {
     width: 100% !important;
-    margin: 15px 0;
+    max-width: 100% !important;
   }
 
 }
