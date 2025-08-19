@@ -197,7 +197,7 @@ function feedback() {
    }
    console.log(data)
    socket.emit("feedback", data)
-   //window.location.href = "https://raqueldigital.herokuapp.com/"; 
+   window.location.href = "https://raqueldigital.herokuapp.com/"; 
 }
   
 
