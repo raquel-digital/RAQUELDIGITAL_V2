@@ -5,6 +5,11 @@ let datosCliente = JSON.parse(localStorage.getItem('datos-envio'));
 
 localStorage.removeItem("carrito");
 
+//evitamos que el form feedback use submit
+document.getElementById("feedbackForm").addEventListener("submit", function(e){
+    e.preventDefault(); // cancela el envío
+});
+
 const mensajeCierre =  document.querySelector("#ovalo");
 if(datosCliente.sys.checked.mercado_pago){
   mensajeCierre.innerHTML = `<h1>Gracias Por Tu Compra:</h1>`
@@ -175,6 +180,25 @@ document.getElementById("consultas").innerHTML = `
       window.location.href = "https://raqueldigital.herokuapp.com/"; 
             
 })
+
+function feedback() {
+   const conociste = document.getElementById("conociste").value
+   const xpCompra = document.getElementById("xpCompra").value
+   const userXP = document.getElementById("products").value
+   const comentarios = document.getElementById("comments").value
+   
+   const data = {
+    nombre: datosCliente.nombreApellido,
+    contacto: datosCliente.formaDeContacto.numero,
+    conociste: conociste,
+    xpCompra: xpCompra,
+    userXP: userXP,
+    comentarios: comentarios
+   }
+   console.log(data)
+   socket.emit("feedback", data)
+   //window.location.href = "https://raqueldigital.herokuapp.com/"; 
+}
   
 
     

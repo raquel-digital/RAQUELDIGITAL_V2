@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 const requer  = require("./utils/config")
 const controller = require("./api/arts/controller");
+const mailing = require("./utils/mailing.js")
 
 //socket
 const io = require('./io.js').init(http);
@@ -393,6 +394,10 @@ io.on('connect', socket => {
                 socket.emit("buscar-pedidos-local-res", res)  
             }                      
         })();
+    })
+    socket.on("feedback", data => {
+        console.log(data)
+        mailing.feedback(data)
     })
 })
 

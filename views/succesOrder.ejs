@@ -71,7 +71,122 @@
                
         </div>
     </div>
-    <div id="consultas"></div>
+     <style>
+        .feedback-section {
+        display: grid;
+        place-items: center; 
+        margin-top: 30px;  /* separación del bloque anterior */
+        }
+        .form-container {
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        max-width: 520px;
+        width: 100%;
+        }
+        
+        /* .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        } */
+        h2 {
+            text-align: center;
+            color: #43804e;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="radio"] {
+            margin-top: 15px;
+            margin-right: 5px;
+        }
+        .radio-group {
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #43804e;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #56385a;
+        }
+        .success-message {
+            display: none;
+            color: #2e7d32;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+     <div class="feedback-section">
+  <div class="form-container">
+        <h2>¡Gracias por tu compra!</h2>
+        <p>Nos encantaría conocer tu opinión para mejorar tu experiencia en nuestra tienda.</p>
+        <form id="feedbackForm">
+            
+            <label for="conociste">¿Cómo llegaste a conocernos?</label>
+            <select id="conociste" name="products" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Por recomendacion de un amigo">Por recomendacion de un amigo</option>
+                <option value="Por que fui al local a comprar">Por que fui al local a comprar</option>
+                <option value="regulares">Por Google</option>
+                <option value="Por Redes Sociales">Por Redes Sociales</option>
+            </select>
+
+            <label for="xpCompra">¿Cómo fue tu experiencia de compra?</label>
+            <select id="xpCompra" name="products" required>
+                <option value="">Selecciona una opción</option>
+                <option value="muy_buenos">Muy buenos</option>
+                <option value="buenos">Buenos</option>
+                <option value="regulares">Regulares</option>
+                <option value="no_satisfactorios">No satisfactorios</option>
+            </select>
+
+            <label for="products">¿Qué te parecieron la navegacion, fue facil encontra lo que buscabas?</label>
+            <select id="products" name="products" required>
+                <option value="">Selecciona una opción</option>
+                <option value="muy_buenos">Si, totalmente!!</option>
+                <option value="buenos">Algunas cosas si otra no</option>
+                <option value="regulares">Regular</option>
+                <option value="costo_encontrar">Costo encontrar lo que necesitaba</option>
+                <option value="costo_encontrar">La distribución es ineficiente</option>
+            </select>
+
+            
+
+            <label for="comments">¿Querés dejarnos un comentario, sugerencia o un producto que te gustaría que sumemos?</label>
+            <textarea id="comments" name="comments" rows="5" placeholder="Cuéntanos más sobre tu experiencia..."></textarea>
+
+            <button type="button" onclick="feedback()">Enviar Feedback</button>
+        </form>
+        <p class="success-message" id="successMessage">¡Gracias por tu feedback! Lo valoramos mucho.</p>
+    </div>
+</div>
+    
+
     <script src="./js/app.Success.js"></script>
     <script>
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
