@@ -184,7 +184,7 @@ document.getElementById("consultas").innerHTML = `
 function feedback() {
    const conociste = document.getElementById("conociste").value
    const xpCompra = document.getElementById("xpCompra").value
-   const userXP = document.getElementById("products").value
+   const userXP = document.getElementById("navegacion").value
    const comentarios = document.getElementById("comments").value
    
    const data = {
@@ -195,9 +195,10 @@ function feedback() {
     userXP: userXP,
     comentarios: comentarios
    }
-   console.log(data)
+   alert("Muchas Gracias por tu comentario")
    socket.emit("feedback", data)
    window.location.href = "https://raqueldigital.herokuapp.com/"; 
+   
 }
   
 

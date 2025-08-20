@@ -141,50 +141,51 @@
             margin-top: 10px;
         }
     </style>
-     <div class="feedback-section">
-  <div class="form-container">
+   <div class="feedback-section">
+    <div class="form-container">
         <h2>¡Gracias por tu compra!</h2>
-        <p>Nos encantaría conocer tu opinión para mejorar tu experiencia en nuestra tienda.</p>
+        <p>Tu opinión nos ayuda a mejorar cada día. Contanos qué te pareció tu experiencia en nuestra tienda.</p>
+        
         <form id="feedbackForm">
-            
-            <label for="conociste">¿Cómo llegaste a conocernos?</label>
-            <select id="conociste" name="products" required>
-                <option value="">Selecciona una opción</option>
-                <option value="Por recomendacion de un amigo">Por recomendacion de un amigo</option>
-                <option value="Por que fui al local a comprar">Por que fui al local a comprar</option>
-                <option value="regulares">Por Google</option>
-                <option value="Por Redes Sociales">Por Redes Sociales</option>
-            </select>
+        
+        <label for="conociste">¿Cómo llegaste a conocernos?</label>
+        <select id="conociste" name="conociste" required>
+            <option value="">Seleccioná una opción</option>
+            <option value="Por recomendación de un amigo">Por recomendación de un amigo</option>
+            <option value="Por que fui al local a comprar">Por que fui al local a comprar</option>
+            <option value="Por Google">Por Google</option>
+            <option value="Por redes sociales">Por redes sociales</option>
+        </select>
 
-            <label for="xpCompra">¿Cómo fue tu experiencia de compra?</label>
-            <select id="xpCompra" name="products" required>
-                <option value="">Selecciona una opción</option>
-                <option value="muy_buenos">Muy buenos</option>
-                <option value="buenos">Buenos</option>
-                <option value="regulares">Regulares</option>
-                <option value="no_satisfactorios">No satisfactorios</option>
-            </select>
+        <label for="xpCompra">¿Cómo fue tu experiencia de compra?</label>
+        <select id="xpCompra" name="xpCompra" required>
+            <option value="">Seleccioná una opción</option>
+            <option value="muy_buena">Muy buena</option>
+            <option value="buena">Buena</option>
+            <option value="regular">Regular</option>
+            <option value="mala">No satisfactoria</option>
+        </select>
 
-            <label for="products">¿Qué te parecieron la navegacion, fue facil encontra lo que buscabas?</label>
-            <select id="products" name="products" required>
-                <option value="">Selecciona una opción</option>
-                <option value="muy_buenos">Si, totalmente!!</option>
-                <option value="buenos">Algunas cosas si otra no</option>
-                <option value="regulares">Regular</option>
-                <option value="costo_encontrar">Costo encontrar lo que necesitaba</option>
-                <option value="costo_encontrar">La distribución es ineficiente</option>
-            </select>
+        <label for="navegacion">¿Qué te pareció la navegación? ¿Fue fácil encontrar lo que buscabas?</label>
+        <select id="navegacion" name="navegacion" required>
+            <option value="">Seleccioná una opción</option>
+            <option value="Sí, totalmente">Sí, totalmente</option>
+            <option value="Algunas cosas sí, otras no">Algunas cosas sí, otras no</option>
+            <option value="Regular">Regular</option>
+            <option value="Me costó encontrar lo que necesitaba">Me costó encontrar lo que necesitaba</option>
+            <option value="La organización no me resultó clara">La organización no me resultó clara</option>
+        </select>
 
-            
+        <label for="comments">¿Querés dejarnos un comentario, sugerencia o un producto que te gustaría que sumemos?</label>
+        <textarea id="comments" name="comments" rows="5" placeholder="Contanos más sobre tu experiencia..."></textarea>
 
-            <label for="comments">¿Querés dejarnos un comentario, sugerencia o un producto que te gustaría que sumemos?</label>
-            <textarea id="comments" name="comments" rows="5" placeholder="Cuéntanos más sobre tu experiencia..."></textarea>
-
-            <button type="button" onclick="feedback()">Enviar Feedback</button>
+        <button type="button" onclick="feedback()">Enviar feedback</button>
         </form>
+        
         <p class="success-message" id="successMessage">¡Gracias por tu feedback! Lo valoramos mucho.</p>
-    </div>
+  </div>
 </div>
+
     
 
     <script src="./js/app.Success.js"></script>
