@@ -439,7 +439,13 @@ async function mailConsulta(data){
             subject: 'Consulta de cliente',
             html: ` <h1> CONSULTA DE CLIENTE</h1>
                     <p>CONTACTO: ${data.contacto}</p>  
-                    <p>MENSAGE: ${data.consulta}<p>
+                    <p>¿Cómo llegaste a conocernos?: ${data.conociste}<p>
+                    <p>¿Qué te parece la navegacion, es facil encontra lo que buscabas?: ${data.navegacion}</p>  
+                    <p>¿Qué tan satisfecho quedaste con el servicio que recibiste?: ${data.satisfaccion}<p>
+                    <p>¿Qué opinas de la calidad de nuestros productos?: ${data.calidadProductos}</p>  
+                    <p>¿Consideras que el precio de los productos es justo?: ${data.precioProductos}<p>
+                    <p>¿Qué tan probable es que nos recomiendes a un amigo o familiar?: ${data.recomendacion}</p>  
+                    <p>MENSAJE: ${data.consulta}<p>
             `
         }
     }else{

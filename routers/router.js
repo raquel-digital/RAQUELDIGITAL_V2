@@ -251,12 +251,12 @@ router.post("/check-out", (req, res) => {
 
   delete require.cache[require.resolve("../public/system/dir/allArts.json")];
   const actuPrecios = require("../public/system/dir/allArts.json")
-
   
-
+  
   const carritoFiltrado = carritoAnterior.filter(producto => {
    const split = producto.codigo.split("-")
    let codigo = split[0]  
+   
    if(codigo.includes("_")){
     const split = codigo.split("_")
     codigo = split[0] 
@@ -267,7 +267,7 @@ router.post("/check-out", (req, res) => {
    }
     
     if (index !== -1) {
-        console.log("HAY", producto.codigo)
+        
         const actualizado = actuPrecios[index];
         const precio = actualizado.precio.replace(",", ".");
         
@@ -278,7 +278,7 @@ router.post("/check-out", (req, res) => {
         // Conservar solo si mostrar es estrictamente true
         return actualizado.mostrar
     }
-      console.log("NO HAY", producto.codigo)
+      
       // Si no está en actuPrecios, se va
       return false;  
   })

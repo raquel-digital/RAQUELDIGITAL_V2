@@ -530,7 +530,7 @@ function asignadorPaginador(i){
             </div>
         </div>
         <div class="seleccionar-color">
-            <label for="">Seleccionar</label>
+            <p for="">Seleccionar</p>
             <input type="checkbox" id="" value="">
         </div>
         </div>
@@ -596,18 +596,142 @@ document.getElementById("consultas-clientes").addEventListener("click", () => {
   });
   
   mostrador.innerHTML = `
-    <h1>Aqui podes dejarnos tus consultas o sugerencias para mejorar el sitio</h1>
-    <textarea name="" id="pedidoObservaciones" cols="100" rows="12"></textarea>
-    
-    <div id="0" class="card-preg-frec">
-        <h3 style="display: inline-block; margin-right: 10px;">Podes dejarnos un mail o whatsapp por si queres que nos pongamos en contacto</h3>
-        <input id="contacto-consultas" type="text" style="display: inline-block;margin-right: 10px;">
-               
-    </div>
-</div>
-    </div>
-    <div>
-      <button id="boton-envio-consulta" class="btn-primario">Enviar</button>
+  <style>
+        body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  
+  color: #333;
+}
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            color: #43804e;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="radio"] {
+            margin-top: 15px;
+            margin-right: 5px;
+        }
+        .radio-group {
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #43804e;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #56385a;
+        }
+        .success-message {
+            display: none;
+            color: #2e7d32;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+    <div class="form-container">
+        <h2>Tus comentarios nos ayudan a mejorar</h2>
+        <p>¡Hola! Queremos asegurarnos de que tu experiencia con nosotros sea la mejor posible. Por eso, te invitamos a compartir tus comentarios y ayudarnos a mejorar.</p>
+        <form id="feedbackForm">
+            
+            <p for="conociste">¿Cómo llegaste a conocernos?</p>
+            <select id="conociste" name="products" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Por recomendacion de un amigo">Por recomendacion de un amigo</option>
+                <option value="Por que fui al local a comprar">Por que fui al local a comprar</option>
+                <option value="Por Google">Por Google</option>
+                <option value="Por Redes Sociales">Por Redes Sociales</option>
+            </select>           
+
+            <p for="products">¿Qué te parece la navegacion, es facil encontra lo que buscabas?</p>
+            <select id="products" name="products" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Si, totalmente!!">Si, totalmente!!</option>
+                <option value="Algunas cosas si otra no">Algunas cosas si otra no</option>
+                <option value="regulares">Regular</option>
+                <option value="Costo encontrar lo que necesitaba">Costo encontrar lo que necesitaba</option>
+                <option value="La distribución es ineficiente">La distribución es ineficiente</option>
+            </select>
+            <p for="servicioCliente">¿Qué tan satisfecho quedaste con el servicio que recibiste?</p>
+            <select id="servicioCliente" name="servicioCliente" required>
+                <option value="">Selecciona una opción</option>
+                <option value="muy_satisfecho">Muy satisfecho</option>
+                <option value="satisfecho">Satisfecho</option>
+                <option value="insatisfecho">Insatisfecho</option>
+                <option value="muy_insatisfecho">Muy insatisfecho</option>
+            </select>
+
+<p for="calidadProductos">¿Qué opinas de la calidad de nuestros productos?</p>
+<select id="calidadProductos" name="calidadProductos" required>
+    <option value="">Selecciona una opción</option>
+    <option value="Excelente, superó mis expectativas">Excelente, superó mis expectativas</option>
+    <option value="Muy buena, lo que esperaba">Muy buena, lo que esperaba</option>
+    <option value="buena">Buena</option>
+    <option value="regular">Regular</option>
+    <option value="Mala, no los volvería a comprar">Mala, no los volvería a comprar</option>
+</select>
+
+<p for="precioProductos">¿Consideras que el precio de los productos es justo?</p>
+<select id="precioProductos" name="precioProductos" required>
+    <option value="">Selecciona una opción</option>
+    <option value="Sí, la relación precio-calidad es perfecta">Sí, la relación precio-calidad es perfecta</option>
+    <option value="Sí, es un precio justo">Sí, es un precio justo</option>
+    <option value="Podría ser mejor">Podría ser mejor</option>
+    <option value="Un poco caro para lo que es">Un poco caro para lo que es</option>
+</select>
+
+<p for="recomendacion">¿Qué tan probable es que nos recomiendes a un amigo o familiar?</p>
+<select id="recomendacion" name="recomendacion" required>
+    <option value="">Selecciona una opción</option>
+    <option value="10">10 (Altamente probable)</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1 (Nada probable)</option>
+</select>
+            
+
+            <p for="comments">¿Querés dejarnos un comentario, sugerencia o un producto que te gustaría que sumemos?</p>
+            <textarea id="pedidoObservaciones" name="comments" rows="5" placeholder="Cuéntanos más sobre tu experiencia..."></textarea>
+            <h3 style="display: inline-block; margin-right: 10px;">Podes dejarnos un mail o whatsapp por si queres que nos pongamos en contacto</h3>
+            <input id="contacto-consultas" type="text" style="display: inline-block;margin-right: 10px;">
+            <button type="button" id="boton-envio-consulta">Enviar Feedback</button>
+        </form>
+        <p class="success-message" id="successMessage">¡Gracias por tu feedback! Lo valoramos mucho.</p>
     </div>    
     `
 
@@ -637,8 +761,15 @@ document.getElementById("consultas-clientes").addEventListener("click", () => {
            if(event.target.textContent == "Ok"){
             const data = {
               consulta: consulta,
-              contacto: contacto
-            }            
+              contacto: contacto,
+              conociste: document.getElementById("conociste").value,
+              navegacion: document.getElementById("products").value,
+              satisfaccion: document.getElementById("servicioCliente").value,
+              calidadProductos: document.getElementById("calidadProductos").value,
+              precioProductos: document.getElementById("precioProductos").value,
+              recomendacion: document.getElementById("recomendacion").value
+            }   
+            console.log(data)         
             socket.emit("consulta-cliente", data)
             confirm.style.display = "none" 
             window.location.href = "https://raqueldigital.herokuapp.com/";

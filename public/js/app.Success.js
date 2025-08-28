@@ -182,21 +182,20 @@ document.getElementById("consultas").innerHTML = `
 })
 
 function feedback() {
-   const conociste = document.getElementById("conociste").value
-   const xpCompra = document.getElementById("xpCompra").value
-   const userXP = document.getElementById("navegacion").value
-   const comentarios = document.getElementById("comments").value
-   
+      
    const data = {
-    nombre: datosCliente.nombreApellido,
-    contacto: datosCliente.formaDeContacto.numero,
-    conociste: conociste,
-    xpCompra: xpCompra,
-    userXP: userXP,
-    comentarios: comentarios
+      contacto: datosCliente.nombreApellido + " FEEDBACK DE COMPRA ",
+      consulta: document.getElementById("comments").value,
+      conociste: document.getElementById("conociste").value,
+      navegacion: document.getElementById("products").value,
+      satisfaccion: document.getElementById("servicioCliente").value,
+      calidadProductos: document.getElementById("calidadProductos").value,
+      precioProductos: document.getElementById("precioProductos").value,
+      recomendacion: document.getElementById("recomendacion").value
    }
    alert("Muchas Gracias por tu comentario")
-   socket.emit("feedback", data)
+   //socket.emit("feedback", data) OLD
+   socket.emit("consulta-cliente", data)
    window.location.href = "https://raqueldigital.herokuapp.com/"; 
    
 }

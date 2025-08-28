@@ -148,33 +148,66 @@
         
         <form id="feedbackForm">
         
-        <label for="conociste">¿Cómo llegaste a conocernos?</label>
-        <select id="conociste" name="conociste" required>
-            <option value="">Seleccioná una opción</option>
-            <option value="Por recomendación de un amigo">Por recomendación de un amigo</option>
-            <option value="Por que fui al local a comprar">Por que fui al local a comprar</option>
-            <option value="Por Google">Por Google</option>
-            <option value="Por redes sociales">Por redes sociales</option>
-        </select>
+        <p for="conociste">¿Cómo llegaste a conocernos?</p>
+            <select id="conociste" name="products" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Por recomendacion de un amigo">Por recomendacion de un amigo</option>
+                <option value="Por que fui al local a comprar">Por que fui al local a comprar</option>
+                <option value="Por Google">Por Google</option>
+                <option value="Por Redes Sociales">Por Redes Sociales</option>
+            </select>           
 
-        <label for="xpCompra">¿Cómo fue tu experiencia de compra?</label>
-        <select id="xpCompra" name="xpCompra" required>
-            <option value="">Seleccioná una opción</option>
-            <option value="muy_buena">Muy buena</option>
-            <option value="buena">Buena</option>
-            <option value="regular">Regular</option>
-            <option value="mala">No satisfactoria</option>
-        </select>
+            <p for="products">¿Qué te parece la navegacion, es facil encontra lo que buscabas?</p>
+            <select id="products" name="products" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Si, totalmente!!">Si, totalmente!!</option>
+                <option value="Algunas cosas si otra no">Algunas cosas si otra no</option>
+                <option value="regulares">Regular</option>
+                <option value="Costo encontrar lo que necesitaba">Costo encontrar lo que necesitaba</option>
+                <option value="La distribución es ineficiente">La distribución es ineficiente</option>
+            </select>
+            <p for="servicioCliente">¿Qué tan satisfecho quedaste con el servicio que recibiste?</p>
+            <select id="servicioCliente" name="servicioCliente" required>
+                <option value="">Selecciona una opción</option>
+                <option value="muy_satisfecho">Muy satisfecho</option>
+                <option value="satisfecho">Satisfecho</option>
+                <option value="insatisfecho">Insatisfecho</option>
+                <option value="muy_insatisfecho">Muy insatisfecho</option>
+            </select>
 
-        <label for="navegacion">¿Qué te pareció la navegación? ¿Fue fácil encontrar lo que buscabas?</label>
-        <select id="navegacion" name="navegacion" required>
-            <option value="">Seleccioná una opción</option>
-            <option value="Sí, totalmente">Sí, totalmente</option>
-            <option value="Algunas cosas sí, otras no">Algunas cosas sí, otras no</option>
-            <option value="Regular">Regular</option>
-            <option value="Me costó encontrar lo que necesitaba">Me costó encontrar lo que necesitaba</option>
-            <option value="La organización no me resultó clara">La organización no me resultó clara</option>
-        </select>
+            <p for="calidadProductos">¿Qué opinas de la calidad de nuestros productos?</p>
+            <select id="calidadProductos" name="calidadProductos" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Excelente, superó mis expectativas">Excelente, superó mis expectativas</option>
+                <option value="Muy buena, lo que esperaba">Muy buena, lo que esperaba</option>
+                <option value="buena">Buena</option>
+                <option value="regular">Regular</option>
+                <option value="Mala, no los volvería a comprar">Mala, no los volvería a comprar</option>
+            </select>
+
+            <p for="precioProductos">¿Consideras que el precio de los productos es justo?</p>
+            <select id="precioProductos" name="precioProductos" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Sí, la relación precio-calidad es perfecta">Sí, la relación precio-calidad es perfecta</option>
+                <option value="Sí, es un precio justo">Sí, es un precio justo</option>
+                <option value="Podría ser mejor">Podría ser mejor</option>
+                <option value="Un poco caro para lo que es">Un poco caro para lo que es</option>
+            </select>
+
+            <p for="recomendacion">¿Qué tan probable es que nos recomiendes a un amigo o familiar?</p>
+            <select id="recomendacion" name="recomendacion" required>
+                <option value="">Selecciona una opción</option>
+                <option value="10">10 (Altamente probable)</option>
+                <option value="9">9</option>
+                <option value="8">8</option>
+                <option value="7">7</option>
+                <option value="6">6</option>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1 (Nada probable)</option>
+            </select>
 
         <label for="comments">¿Querés dejarnos un comentario, sugerencia o un producto que te gustaría que sumemos?</label>
         <textarea id="comments" name="comments" rows="5" placeholder="Contanos más sobre tu experiencia..."></textarea>
@@ -184,7 +217,7 @@
         
         <p class="success-message" id="successMessage">¡Gracias por tu feedback! Lo valoramos mucho.</p>
   </div>
-</div>
+   </div>
 
     
 
