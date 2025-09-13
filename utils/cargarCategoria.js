@@ -9,8 +9,22 @@ async function loadCateg(query){
       if(query == "Elásticos"){
             query = "elasticos"; 
       }
+
+      
+
       const categ = query.toLowerCase().replace("%20", " ");
       console.log(categ)
+
+
+      //CATEGORIA ESPECIAL
+      if(query == "linea fb"){
+            const result = arts.filter(element => element.tags.includes("linea-fb"));
+            console.log(result)
+            if(result.length > 0){
+                  return { succes: true, result: result }; 
+            }
+      }
+
       if(categ == "alfileres y agujas"){
        //const result = await filtrar(["AF","AG","AT","BA","GA"]);
        const categFilter = ["AF","AG","AT","BA","GA"]
