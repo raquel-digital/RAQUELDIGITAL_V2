@@ -1600,7 +1600,7 @@
     "_id": "67f6987e373d1dc84f10f5a8"
   },
   {
-    "codigo": "HI2900",
+    "codigo": "HI2900-BLANCO",
     "imagen": "/img/HI/hi2900.jpg",
     "precio": "3736.21",
     "titulo": "CONO HILO ELASTICO BCO 240MT",
@@ -1608,7 +1608,7 @@
     "_id": "67f6987e373d1dc84f10f5a9"
   },
   {
-    "codigo": "HI2901",
+    "codigo": "HI2901-NEGRO",
     "imagen": "/img/HI/hi2901.jpg",
     "precio": "4184.53",
     "titulo": "CONO HILO ELASTICO NGRO 240M",
@@ -1808,7 +1808,7 @@
     "_id": "67f6987e373d1dc84f10f5c2"
   },
   {
-    "codigo": "NA1506_2",
+    "codigo": "NA1506-DORADO",
     "imagen": "/img/NA/na1506_2[2].jpg",
     "precio": "2498.13",
     "titulo": "CINTA LUREX ANGOSTA X 20 MTS",
@@ -1816,7 +1816,7 @@
     "_id": "67f6987e373d1dc84f10f5c3"
   },
   {
-    "codigo": "NA1522",
+    "codigo": "NA1522-PLATEADO",
     "imagen": "/img/NA/na1522[2].jpg",
     "precio": "7872.96",
     "titulo": "1506-22 CINTA DE LUREX X10MT",
@@ -1824,7 +1824,7 @@
     "_id": "67f6987e373d1dc84f10f5c4"
   },
   {
-    "codigo": "NA1522_2",
+    "codigo": "NA1522-DORADO",
     "imagen": "/img/NA/na1522_[2].jpg",
     "precio": "7872.96",
     "titulo": "1506/22 CINTA DE LUREX X10MT",
@@ -1840,7 +1840,7 @@
     "_id": "67f6987e373d1dc84f10f5c6"
   },
   {
-    "codigo": "NA1561_2",
+    "codigo": "NA1561-DORADO",
     "imagen": "/img/NA/na1561_2[2].jpg",
     "precio": "2223.15",
     "titulo": "1506-1 CINTA DE LUREX X10MTS",
@@ -1872,7 +1872,7 @@
     "_id": "67f6987e373d1dc84f10f5ca"
   },
   {
-    "codigo": "NA1565_2",
+    "codigo": "NA1565-DORADO",
     "imagen": "/img/NA/na1565_2[2].jpg",
     "precio": "2981.71",
     "titulo": "1506-5 CINTA DE LUREX X10MTS",
@@ -1880,7 +1880,7 @@
     "_id": "67f6987e373d1dc84f10f5cb"
   },
   {
-    "codigo": "NA1569",
+    "codigo": "NA1569-DORADO",
     "imagen": "/img/NA/na1569.jpg",
     "precio": "4347.02",
     "titulo": "1506-9 CINTA DE LUREX X10MTS",

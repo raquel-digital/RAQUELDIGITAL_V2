@@ -621,6 +621,9 @@ barraHerramientas.addEventListener("click", e => {
     if(barraHerramientas.selectedIndex == 7){      
       mostrador.innerHTML = `<div id="presupuesto-container"><button class="btn btn-primary" id="presupuesto-basico" style="margin-right: 10px;">Presupuesto basico</button><button class="btn btn-primary" id="presupuesto-mediano" style="margin-right: 10px;">Presupuesto Mediano</button><button class="btn btn-primary" id="presupuesto-premium" style="margin-right: 10px;">Presupuesto Premium</button></div>`
       herramientasPresupuesto()
+    } 
+    if(barraHerramientas.selectedIndex == 8){      
+      ingresosMercaderia()
     }  
   }
   barraHerramientas.selectedIndex = 0  

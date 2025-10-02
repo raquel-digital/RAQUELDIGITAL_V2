@@ -223,8 +223,7 @@ router.get("/login-admin", (req,res) => {
 //----POST--------------
 
 router.post("/valid-log", (req,res) => { 
-  log = req.body;
-  
+  log = req.body;  
   const check = middleware.validAdmin(log);
   if(check){
     res.redirect("/admin");
