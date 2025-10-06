@@ -399,6 +399,14 @@ io.on('connect', socket => {
         console.log(data)
         mailing.feedback(data)
     })
+    //HISTORIAL INGRESOS
+    socket.on("verHistorial", () => {
+        const api = require("./api/arts/apiHistorial.js");
+        (async () => {
+            const historial = await api.read()
+            socket.emit("ingresarHistorial-res", historial) 
+        })();
+    });
 })
 
 
