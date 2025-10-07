@@ -580,6 +580,8 @@ socket.on("actuPreciosAdminRes", result => {
           res.innerHTML +=`<li>FALTA PONER TILDE A ARTÍCULO: ${e}</li>`
         }) 
       }
+
+      historialIngresos()
     
     alert("PRECIOS ACTUALIZADOS")
   }else{

@@ -148,30 +148,26 @@ function historialIngresos(){
   socket.emit("verHistorial");
 }
 
-socket.emit("verHistorial");
-socket.on("ingresarHistorial-res", (data) => {
 
+socket.on("ingresarHistorial-res", (data) => {    
     const hoy = new Date();
     const fechaFormateada = `${hoy.getDate() - 1}/${hoy.getMonth() + 1}/${hoy.getFullYear()}`;
     console.log(fechaFormateada);
-        
-    // const fechasOrdenadas = data.sort((a, b) => {
-    // const [diaA, mesA, añoA] = a.fecha.split('/').map(Number);
-    // const [diaB, mesB, añoB] = b.fecha.split('/').map(Number);
-
-    // const fechaA = new Date(añoA, mesA - 1, diaA);
-    // const fechaB = new Date(añoB, mesB - 1, diaB);
-
-    // return fechaB - fechaA; // de más reciente a más antigua
-    // })
     
-    const ingresosDelDia = data.filter(e => e.fecha == fechaFormateada)    
-    console.log(ingresosDelDia)
+    const ingresosDelDia = data.filter(e => e.fecha == fechaFormateada) 
     dibujarTableIngresoServer(ingresosDelDia)
 });
 
 function  dibujarTableIngresoServer(data) {
-    mostrador.innerHTML = `
+
+    const mostrador = document.querySelector(".result");
+    console.log(data)
+    if(data.length == 0) {
+         mostrador.innerHTML += `<hr><h1>NO HAY ARTICULOS PARA ACTUALIZAR</h1>`
+        return
+    }
+    
+    mostrador.innerHTML += `
       <h1>Articulos para mostrar</h1>
       <table class="table table-bordered table-hover">
         <thead>
@@ -211,23 +207,16 @@ function  dibujarTableIngresoServer(data) {
     const encontrados = document.getElementById("ingresosEnTabla")
     const noEncontrados = document.getElementById("noencontradosEnTabla")
 
-    // const combinaciones = data
-    // .filter(obj => obj.colores.length > 0) // solo los que tienen colores
-    // .flatMap(obj => obj.colores.map(color => `${obj.codigo}-${color}`));
-         
-        
-    const colorFix = data.map(e => {
-        const colorRaw = e.color.match(/Color:\s*([^|]+)/)?.[1]?.trim() || "";
-        const colores = colorRaw
-                ? colorRaw.split(/[\/]/).map(c => c.replace(/X\d+$/,"").trim()).filter(c => c.length > 0)
-                : [];
-        e.color = colores        
-    })
-    console.log(colorFix)
-     const combinaciones = colorFix
-    .filter(obj => obj.color.length > 0) // solo los que tienen colores
-    .flatMap(obj => obj.color.map(color => `${obj.codigo}-${color}`));
     
+    data.forEach(obj => {
+    if (obj.color && typeof obj.color === 'string') {
+        obj.color = obj.color.split('/').map(c => c.trim());
+    }
+    });
+
+    const combinaciones = data.filter(obj => obj.color.length > 0) // solo los que tienen colores
+    .flatMap(obj => obj.color.map(color => `${obj.codigo}-${color}`));
+
     (async () => {
         try {
             await fetch('./system/dir/allArts.json')
@@ -239,7 +228,7 @@ function  dibujarTableIngresoServer(data) {
             }).then(articulos => {
                 console.log(combinaciones)                
                 combinaciones.map( e => {
-                    let check = false
+                    let check = false                    
                     const split = e.split("-")
                     const find = articulos.filter(f => f.codigo.includes(split[0]))
                     if(find.length > 0) {
