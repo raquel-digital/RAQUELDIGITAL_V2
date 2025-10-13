@@ -119,6 +119,7 @@ io.on('connect', socket => {
         (async () => { 
             const res = await controller.updatePedidos(pedidos);
             socket.emit("update-pedido-res", res);
+            loadCategs()
         })();
     });
 

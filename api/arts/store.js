@@ -334,6 +334,28 @@ const store = {
         
         return
       },
+      updateOcultar: async function (codigo) {       
+        try{
+          let updatedDocument = await  model.findOneAndUpdate({ codigo: codigo},
+            { $set: { mostrar: false} }
+          )
+          if(!updatedDocument){
+            updatedDocument = await model.findOneAndUpdate(
+                 { "colores.codigo": codigo }, 
+                 { $set: { "colores.$.mostrar": false } },
+             );
+              
+         }
+          if(!updatedDocument){
+            await model.findOneAndUpdate(
+                 { "colores.codigo": codigo + "_talle" }, 
+                 { $set: { "colores.$.mostrar": false } },
+             );
+          }
+        }catch(err){
+            console.log(err)
+        }
+      }
  }
  
  module.exports = store;

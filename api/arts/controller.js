@@ -305,7 +305,15 @@ controller = {
         compra.forEach(c => {
             store.stockControl(c)
         })
-    }
+    },
+    ocultarArtDesdePedidoWeb: async function (art){
+              
+      for(f of art.faltas) {
+        console.log(f)
+        store.updateOcultar(f.codigo)
+      }     
+      return
+    },
 }
 
 module.exports = controller;

@@ -44,6 +44,11 @@ const controller = {
       pedidos.forEach(e => {
         (async () => { 
           await store.update(e);
+          if(e.faltas.length > 0){
+            const controllerArts = require("../arts/controller")
+            console.log(e)
+            controllerArts.ocultarArtDesdePedidoWeb(e)
+          }
         })();
       });
       return true;

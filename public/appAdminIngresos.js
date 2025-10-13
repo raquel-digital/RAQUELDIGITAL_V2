@@ -2,8 +2,41 @@ function ingresosMercaderia() {
    mostrador.innerHTML = `
       <input type="text" class="actuIngresos" style="width:100%;height:100px" placeholder="ingresar codigo y precio"  >
       <button type="button" class="btn btn-warning" onclick="procesarIngresos()">enviar</button>
+      <hr>
+      <h1>Ingreso por fecha</h1>
+      <input type="date" id="fechaInicio">
+<input type="date" id="fechaFin">
+<button id="generar">Generar Fechas</button>
+
       `  
+        const hoy = new Date().toISOString().split('T')[0];        
+        const finInput = document.getElementById('fechaFin');
+        finInput.value = hoy;
+
+      document.getElementById('generar').addEventListener('click', () => {
+        const inicio = new Date(document.getElementById('fechaInicio').value);
+        const fin = new Date(document.getElementById('fechaFin').value);
+
+        if (isNaN(inicio) || isNaN(fin) || inicio > fin) {
+        console.log('Fechas inválidas');
+        return;
+        }
+
+        const fechas = [];
+        let actual = new Date(inicio);
+        while (actual <= fin) {
+        const dia = actual.getDate().toString().padStart(2, '0');
+        const mes = (actual.getMonth() + 1).toString().padStart(2, '0');
+        const año = actual.getFullYear();
+        fechas.push(`${dia}/${mes}/${año}`);
+        actual.setDate(actual.getDate() + 1);
+        }
+
+        console.log(fechas);
+    });
 }
+
+
 
 function procesarIngresos() {
     const ingresos = document.querySelector(".actuIngresos").value
@@ -148,13 +181,22 @@ function historialIngresos(){
   socket.emit("verHistorial");
 }
 
-
+socket.emit("verHistorial");
 socket.on("ingresarHistorial-res", (data) => {    
     const hoy = new Date();
     const fechaFormateada = `${hoy.getDate() - 1}/${hoy.getMonth() + 1}/${hoy.getFullYear()}`;
-    console.log(fechaFormateada);
+    console.log(fechaFormateada);    
     
-    const ingresosDelDia = data.filter(e => e.fecha == fechaFormateada) 
+    let ingresosDelDia = data.filter(e => e.fecha == fechaFormateada) 
+    if(ingresosDelDia.length == 0) {
+        console.log("FECHA MES ANTERIOR " + `31/${hoy.getMonth()}/${hoy.getFullYear()}`);
+        ingresosDelDia = data.filter(e => e.fecha == `31/${hoy.getMonth()}/${hoy.getFullYear()}`)        
+        if(ingresosDelDia.length == 0) { 
+            console.log("FECHA MES ANTERIOR 2do INTENTO" + `30/${hoy.getMonth()}/${hoy.getFullYear()}`);
+            ingresosDelDia = data.filter(e => e.fecha == `30/${hoy.getMonth()}/${hoy.getFullYear()}`)
+        }
+    }
+
     dibujarTableIngresoServer(ingresosDelDia)
 });
 
