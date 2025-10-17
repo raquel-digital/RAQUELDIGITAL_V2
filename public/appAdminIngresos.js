@@ -110,9 +110,10 @@ function  dibujarTable(data) {
     const encontrados = document.getElementById("ingresosEnTabla")
     const noEncontrados = document.getElementById("noencontradosEnTabla")
 
+    console.log(data)
     const combinaciones = data
-  .filter(obj => obj.colores && obj.colores.length > 0)
-  .flatMap(obj => obj.colores.map(color => `${obj.codigo}-${color}-${obj.fecha}`));
+    .filter(obj => obj.colores && obj.colores.length > 0)
+    .flatMap(obj => obj.colores.map(color => `${obj.codigo}-${color}-${obj.fecha}`));
     
    
 
@@ -133,10 +134,7 @@ function  dibujarTable(data) {
                     const find = articulos.filter(f => f.codigo.includes(split[0]))
                      
                     if(find.length > 0) {
-                        find.forEach(f => { 
-                            console.log(combinaciones)  
-                               
-                                                  
+                        find.forEach(f => {                                                  
                             if(f.colores && f.colores.length > 0){
                                 f.colores.forEach(c =>{
                                     const splitCod = e.split("-").map(s => s.trim());
@@ -144,7 +142,7 @@ function  dibujarTable(data) {
                                     if(c.codigo.includes(splitCod[1])){ 
                                         check = true                                       
                                         if(!c.mostrar){                                            
-                                            encontrados.innerHTML += `<td>${splitCod[1]}</td><td>ENCONTRO COLOR</td><td>Carta Color</td><td>${fecha}</td>`
+                                            encontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>ENCONTRO COLOR</td><td>Carta Color</td><td>${fecha}</td>`
                                         }
                                     }                                    
                                 })
@@ -157,7 +155,7 @@ function  dibujarTable(data) {
                                     if(f.codigo.includes(splitCod[1])) {
                                         check = true                                                                                
                                         if(!f.mostrar){                                            
-                                            encontrados.innerHTML += `<td>${splitCod[1]}</td><td>ENCONTRO EN LISTA -</td><td>Lista Directa</td><td>${fecha}</td>`
+                                            encontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>ENCONTRO EN LISTA -</td><td>Lista Directa</td><td>${fecha}</td>`
                                             return
                                         }                                       
                                     }
@@ -170,12 +168,12 @@ function  dibujarTable(data) {
                             if(e.includes("EL65") || e.includes("EL89")|| e.includes("EN65") || e.includes("EN89")){
                                 return
                             }                                                             
-                            noEncontrados.innerHTML += `<td>${splitCod[1]}</td><td>Esta en lista pero no con ese color</td><td>${fecha}</td>`
+                            noEncontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>Esta en lista pero no con ese color</td><td>${fecha}</td>`
                         }
                         return
                     }else{ 
                         const splitCod = e.split("-").map(s => s.trim());                       
-                        noEncontrados.innerHTML += `<td>${splitCod[1]}</td><td>NO EXISTE EN FIND</td><td>${fecha}</td>`
+                        noEncontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>NO EXISTE EN FIND</td><td>${fecha}</td>`
                     }
 
                 })
@@ -230,8 +228,13 @@ function  dibujarTableIngresoServer(data) {
 
     console.log(data)
     const combinaciones = data
-    .filter(obj => obj.colores && obj.colores.length > 0)
-    .flatMap(obj => obj.colores.map(color => `${obj.codigo}-${color}-${obj.fecha}`));
+  .filter(obj => obj.color && obj.color.length > 0)
+  .flatMap(obj =>
+    obj.color.map(c => {
+      const limpio = c.replace(/X\d+$/i, "").trim();
+      return `${obj.codigo}-${limpio}-${obj.fecha}`;
+    })
+  );
     console.log(combinaciones)
     
     if(combinaciones.length == 0) {
@@ -239,6 +242,8 @@ function  dibujarTableIngresoServer(data) {
          mostrador.innerHTML += `<hr><h1>NO HAY ARTICULOS PARA ACTUALIZAR</h1>`
         return
     }
+
+    (async () => {
 
     mostrador.innerHTML += `
       <h1>Articulos para mostrar</h1>
@@ -278,11 +283,13 @@ function  dibujarTableIngresoServer(data) {
     </table>
     `
 
-    const encontrados = document.getElementById("ingresosEnTabla")
-    const noEncontrados = document.getElementById("noencontradosEnTabla")
+    
 
-    (async () => {
+    
         try {
+            const encontrados = document.getElementById("ingresosEnTabla")
+            const noEncontrados = document.getElementById("noencontradosEnTabla")
+
             await fetch('./system/dir/allArts.json')
             .then(response => {
                 if (!response.ok) {
@@ -307,7 +314,7 @@ function  dibujarTableIngresoServer(data) {
                                     if(c.codigo.includes(splitCod[1])){ 
                                         check = true                                       
                                         if(!c.mostrar){                                            
-                                            encontrados.innerHTML += `<td>${splitCod[1]}</td><td>ENCONTRO COLOR</td><td>Carta Color</td><td>${f.fecha}</td>`
+                                            encontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>ENCONTRO COLOR</td><td>Carta Color</td><td>${f.fecha}</td>`
                                         }
                                     }                                    
                                 })
@@ -320,7 +327,7 @@ function  dibujarTableIngresoServer(data) {
                                     if(f.codigo.includes(splitCod[1])) {
                                         check = true                                                                                
                                         if(!f.mostrar){                                            
-                                            encontrados.innerHTML += `<td>${splitCod[1]}</td><td>ENCONTRO EN LISTA -</td><td>Lista Directa</td><td>${f.fecha}</td>`
+                                            encontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>ENCONTRO EN LISTA -</td><td>Lista Directa</td><td>${f.fecha}</td>`
                                             return
                                         }                                       
                                     }
@@ -333,12 +340,12 @@ function  dibujarTableIngresoServer(data) {
                             if(e.includes("EL65") || e.includes("EL89")|| e.includes("EN65") || e.includes("EN89")){
                                 return
                             }                                                             
-                            noEncontrados.innerHTML += `<td>${splitCod[1]}</td><td>Esta en lista pero no con ese color</td><td>${fecha}</td>`
+                            noEncontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>Esta en lista pero no con ese color</td><td>${fecha}</td>`
                         }
                         return
                     }else{            
                         const splitCod = e.split("-").map(s => s.trim());            
-                        noEncontrados.innerHTML += `<td>${splitCod[1]}</td><td>NO EXISTE EN FIND</td><td>${fecha}</td>`
+                        noEncontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>NO EXISTE EN FIND</td><td>${fecha}</td>`
                     }
 
                 })
