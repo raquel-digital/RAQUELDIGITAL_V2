@@ -1,3 +1,5 @@
+let fechasHistorial = null; //se usa para consultar historial de fechas
+
 function ingresosMercaderia() { 
    mostrador.innerHTML = `
       <input type="text" class="actuIngresos" style="width:100%;height:100px" placeholder="ingresar codigo y precio"  >
@@ -18,7 +20,7 @@ function ingresosMercaderia() {
         const fin = new Date(document.getElementById('fechaFin').value);
 
         if (isNaN(inicio) || isNaN(fin) || inicio > fin) {
-        console.log('Fechas inválidas');
+        alert('Fechas inválidas');
         return;
         }
 
@@ -32,7 +34,8 @@ function ingresosMercaderia() {
         actual.setDate(actual.getDate() + 1);
         }
 
-        console.log(fechas);
+        fechasHistorial = fechas
+        socket.emit("verHistorial")
     });
 }
 
@@ -193,24 +196,30 @@ function historialIngresos(){
 socket.on("ingresarHistorial-res", (data) => {    
     const hoy = new Date();
     const fechaFormateada = `${hoy.getDate() - 1}/${hoy.getMonth() + 1}/${hoy.getFullYear()}`;
-    console.log(fechaFormateada);    
-    
-    let ingresosDelDia = data.filter(e => e.fecha == fechaFormateada) 
-    if(ingresosDelDia.length == 0) {
-        console.log("FECHA MES ANTERIOR " + `31/${hoy.getMonth()}/${hoy.getFullYear()}`);
-        ingresosDelDia = data.filter(e => e.fecha == `31/${hoy.getMonth()}/${hoy.getFullYear()}`)        
-        if(ingresosDelDia.length == 0) { 
-            console.log("FECHA MES ANTERIOR 2do INTENTO" + `30/${hoy.getMonth()}/${hoy.getFullYear()}`);
-            ingresosDelDia = data.filter(e => e.fecha == `30/${hoy.getMonth()}/${hoy.getFullYear()}`)
+    let ingresosDelDia
+
+    if(!fechasHistorial){
+        ingresosDelDia = data.filter(e => e.fecha == fechaFormateada) 
+        if(ingresosDelDia.length == 0) {
+            console.log("FECHA MES ANTERIOR " + `31/${hoy.getMonth()}/${hoy.getFullYear()}`);
+            ingresosDelDia = data.filter(e => e.fecha == `31/${hoy.getMonth()}/${hoy.getFullYear()}`)        
+            if(ingresosDelDia.length == 0) { 
+                console.log("FECHA MES ANTERIOR 2do INTENTO" + `30/${hoy.getMonth()}/${hoy.getFullYear()}`);
+                ingresosDelDia = data.filter(e => e.fecha == `30/${hoy.getMonth()}/${hoy.getFullYear()}`)
+            }
         }
-    }
+    }else{
+        console.log(data)
+        ingresosDelDia = data.filter(e => fechasHistorial.includes(e.fecha))
+    }    
 
     dibujarTableIngresoServer(ingresosDelDia)
 });
 
 function  dibujarTableIngresoServer(data) {
+    console.log(data)
 
-    const mostrador = document.querySelector(".result");
+    //const mostrador = document.querySelector(".result");
     
     if(data.length == 0) {
          console.log("NO HAY LENGHT EN COMBINACIONES ", data)
