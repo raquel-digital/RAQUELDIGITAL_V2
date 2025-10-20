@@ -201,12 +201,15 @@ socket.on("ingresarHistorial-res", (data) => {
     if(!fechasHistorial){
         ingresosDelDia = data.filter(e => e.fecha == fechaFormateada) 
         if(ingresosDelDia.length == 0) {
-            console.log("FECHA MES ANTERIOR " + `31/${hoy.getMonth()}/${hoy.getFullYear()}`);
-            ingresosDelDia = data.filter(e => e.fecha == `31/${hoy.getMonth()}/${hoy.getFullYear()}`)        
-            if(ingresosDelDia.length == 0) { 
-                console.log("FECHA MES ANTERIOR 2do INTENTO" + `30/${hoy.getMonth()}/${hoy.getFullYear()}`);
-                ingresosDelDia = data.filter(e => e.fecha == `30/${hoy.getMonth()}/${hoy.getFullYear()}`)
-            }
+            const check = confirm(`No hay nuevas entradas para FECHA: ${fechaFormateada} queres chequear el final del mes anterior?`)
+            if(check){
+                console.log("FECHA MES ANTERIOR " + `31/${hoy.getMonth()}/${hoy.getFullYear()}`);
+                ingresosDelDia = data.filter(e => e.fecha == `31/${hoy.getMonth()}/${hoy.getFullYear()}`)        
+                if(ingresosDelDia.length == 0) { 
+                    console.log("FECHA MES ANTERIOR 2do INTENTO" + `30/${hoy.getMonth()}/${hoy.getFullYear()}`);
+                    ingresosDelDia = data.filter(e => e.fecha == `30/${hoy.getMonth()}/${hoy.getFullYear()}`)
+                }
+            }            
         }
     }else{
         console.log(data)
