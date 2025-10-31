@@ -553,9 +553,7 @@ function agregarCambio(orden){
     document.querySelector(".tablaMensage").innerHTML = `
                     <h1 style="margin-top: 3rem;">PEDIDOS ANTERIORES</h1>                    
                     <input id="busquedaPedidoAnterior" class="form-control buscador my-2" type="text" name="buscar">
-                    <button id="boton" class="boton btn btn-primary mb-2 btn-lg" type="submit" onclick="buscarPedidoAnterior()">Buscar</button>
-                    
-                    `
+                    <button id="boton" class="boton btn btn-primary mb-2 btn-lg" type="submit" onclick="buscarPedidoAnterior()">Buscar</button>`
   })
 
   function pedidosTabla() {
@@ -645,7 +643,7 @@ function borrarPedidosXInput(){
             aviso += p.cliente + " | "
         }
     }
-
+    
     const confirmar = window.confirm("DESEA BORRAR LOS PEDIDOS DE: " + aviso)
     
     if(confirmar){
@@ -668,7 +666,7 @@ function completarBusqueda(agenda, input, listado){
     
     const searchInput = document.getElementById(input);
     const suggestionsContainer = document.getElementById(listado);
-    console.log(searchInput, suggestionsContainer)
+    
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.trim();
         // Simplemente como ejemplo, aquí generamos algunas sugerencias de búsqueda aleatorias.
