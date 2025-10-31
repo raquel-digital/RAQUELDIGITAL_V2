@@ -16,6 +16,7 @@ mostrador.innerHTML = `
 `
 socket.emit("buscar-pedidos-local");
 socket.on("buscar-pedidos-local-res", data => {
+    console.log(data)
     pedidos = data;
     draw.tabla(pedidos)
 })

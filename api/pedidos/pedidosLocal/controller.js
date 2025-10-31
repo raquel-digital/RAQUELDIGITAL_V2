@@ -13,9 +13,14 @@ const controller = {
         const contacto = { medio: data.contacto, nota: data.numero_mail};
         const num = await store.findNumOrder();
 
+        let nuevoNumeroOrden = 1;
+        if (num && num.length > 0 && num[0].num_orden) {
+          nuevoNumeroOrden = num[0].num_orden + 1;
+        }
+
         const order = {    
         fecha: fecha,
-        num_orden: num[0].num_orden + 1,
+        num_orden: nuevoNumeroOrden,
         cliente: data.cliente,
         prepara: data.prepara,
         estado: data.estado,
