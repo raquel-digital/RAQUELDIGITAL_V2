@@ -906,7 +906,7 @@ function uploadArts(){
        colores.push(art);
       }
     }
-    
+    console.log(colores)
     socket.emit("upload-colors", colores);
   }
 
