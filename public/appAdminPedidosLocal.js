@@ -32,6 +32,11 @@ mostrador.addEventListener("click", e => {
         const orden =  mouse.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
         editarPedido(orden);
     }
+    if(mouse.classList.contains("restaurarOrden")){        
+        const orden =  mouse.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+        const fecha =  mouse.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+        restaurarPedido({orden: orden, fecha: fecha});
+    }
     if(mouse.id == "seleccionar-todo"){
         const checkBox = document.querySelector("#seleccionar-todo")
         if(checkBox.checked){
@@ -411,6 +416,95 @@ const draw = {
             
         })
         
+    },
+    tablaPapelera: (pedidos) => {
+        
+        mostrador.innerHTML = `
+        <div class="tablaMensage"></div>          
+        <table class="table table-striped" style="margin-top: 6rem;">
+            <thead class="thead-light" >
+            <tr>
+            <th scope="col">- N°</th>
+            <th scope="col">VENDEDOR</th>
+            <th scope="col">DE FECHA</th>
+            <th scope="col">DIAS EN PREPARACION</th>
+            <th scope="col">CLIENTE</th>
+            <th scope="col">ESTADO</th>
+            <th scope="col">GUARDADO ZONA</th>
+            <th scope="col"> ######## </th>
+            <th scope="col"> BORRAR <input type="checkbox" id="seleccionar-todo" name="seleccionarTodo"></th>
+            </tr>
+            </thead>
+            <tbody class="tableBody">
+            
+            </tbody>
+        </table>
+        <div class="editarPedido"></div>
+        `;
+
+        const body =  document.querySelector(".tableBody");
+        pedidos.forEach(e =>{
+            const fechaSplit = e.fecha.split("/");
+            let suma = 0;
+            if(anio != Number(fechaSplit[2])){
+              suma += 365 * (anio - Number(fechaSplit[2]))
+            }
+            if(mes != Number(fechaSplit[1])){
+              suma += 30 * (mes - Number(fechaSplit[1]))
+            }
+            if(dia != Number(fechaSplit[0])){
+              suma += dia - Number(fechaSplit[0])
+            }
+
+            let resaltador = "transparent"
+            if(e.recordarEn && e.recordarEn > 0){
+                const record = e.recordarEn - suma
+                if(record <= 0){
+                    resaltador = "#ffff99"
+                }
+            }else{
+                //los pedidos viejos no tienen la propiedad e.recordarEn
+                if(suma > 10) {
+                    resaltador = "#ffff99"
+                }
+            }      
+            
+
+            
+            
+            if(e.notas.length > 1|| e.pedido.length > 1){
+                body.innerHTML += `
+            <tr style="background-color: ${resaltador};">
+                <td><b>${e.num_orden}</b></td>
+                <td><b>${e.prepara}</b></td>
+                <td><b>${e.fecha}</b></td>
+                <td><b>${suma}</b></td>
+                <td><b>${e.cliente}</b></td>
+                <td><b>${e.estado}</b></td>
+                <td><b>${e.zona}</b></td>
+                <td class="restaurarOrden" style="color: blue;"  data-bs-toggle="tooltip" data-bs-placement="right" title="${e.notas + " " + e.faltas}">[ RESTAURAR ]</td>
+                <td><input class="borrarPedidoInput" type="checkbox" id="miCheckbox" name="miCheckbox"></td>
+            </tr>
+            `
+            }else{
+                body.innerHTML += `
+            <tr style="background-color: ${resaltador}">
+                <td>${e.num_orden}</td>
+                <td>${e.prepara}</td>
+                <td>${e.fecha}</td>
+                <td>${suma}</td>
+                <td>${e.cliente}</td>
+                <td>${e.estado}</td>
+                <td>${e.zona}</td>
+                <td class="restaurarOrden" style="color: blue;"  data-bs-toggle="tooltip" data-bs-placement="right" title="${e.notas + " " + e.faltas}">[ RESTAURAR ]</td>
+                <td><input class="borrarPedidoInput" type="checkbox" id="miCheckbox" name="miCheckbox"></td>
+            </tr>
+            `
+            }
+            
+            
+        })
+        
     }
 }
 
@@ -548,7 +642,7 @@ function agregarCambio(orden){
   socket.on("pedidos-anteriores-res", data => {    
     pedidosTemp = pedidos;
     pedidos = data;
-    draw.tabla(pedidos)
+    draw.tablaPapelera(pedidos)
     
     document.querySelector(".tablaMensage").innerHTML = `
                     <h1 style="margin-top: 3rem;">PEDIDOS ANTERIORES</h1>                    
@@ -625,6 +719,10 @@ function imprimirPedidos(){
 }
 
 function borrarPedidosXInput(){
+    const x = prompt("ingresar clave")
+    if(x != "asdfgh"){
+        return
+    }
     const pedidos = document.querySelectorAll(".borrarPedidoInput")
     const pedidosABorrar = []
     for(const p of pedidos){
@@ -657,6 +755,20 @@ function borrarPedidosXInput(){
             p.checked = false
         }
     }    
+}
+
+function borrarPedidosMasivos() {
+    //;)
+    let aviso = ""
+    if(pedidosABorrar.length > 0){
+        for(const p of pedidosABorrar){
+            aviso += p.cliente + " | "
+        }
+    }
+     const confirmar = window.confirm("DESEA BORRAR LOS PEDIDOS DE: " + aviso)
+     if(confirmar){       
+        alert("PEDIDOS BORRADOS")
+    }
 }
 
 
@@ -752,4 +864,14 @@ socket.on("req-cli-res", clientes => {
 function avisarPedido(orden, suma) {
     socket.emit("aplazar-aviso-de-pedido-local", {orden: orden, suma: suma})
 }
+
+function restaurarPedido(data) {
+    console.log(data)
+    const check = confirm("Deseas restaurar este pedido?")
+    if(check){
+        socket.emit("restaurar-pedido", data)
+    }
+}
+
+socket.on("restaurar-pedido-res", () => window.location.reload())
 

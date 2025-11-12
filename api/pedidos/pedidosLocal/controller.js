@@ -1,6 +1,7 @@
 const { model } = require("mongoose");
 const { async } = require("rxjs");
 const store = require("./store");
+const storePapelera = require("./storePapelera")
 
 const controller = {
     ingresar: async function (data){
@@ -84,6 +85,35 @@ const controller = {
       return true;
     }catch(err){
       console.log("[ ERROR EN CONTROLLER actuRecordatorio ] " + err)
+      return false
+    }
+   },
+   restaurarPedido: async function (data) {
+    try{            
+      const res = await storePapelera.restore(data);
+      if(res){        
+        const order = {    
+        fecha: res.fecha,
+        num_orden: res.num_orden,
+        cliente: res.cliente,
+        prepara: res.prepara,
+        estado: res.estado,
+        contacto: res.contacto,
+        pedido: res.pedido,
+        faltas: " ",
+        notas: " ",
+        forma_de_pago: res.forma_de_pago,
+        envio: res.envio,
+        zona: res.zona,
+        recordarEn: 0
+       }
+        
+        await store.ingresar(order);
+        await storePapelera.delete(data);
+      }
+      return true;
+    }catch(err){
+      console.log("[ ERROR EN CONTROLLER restaurarPedido ] " + err)
       return false
     }
    },

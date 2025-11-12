@@ -408,6 +408,14 @@ io.on('connect', socket => {
             socket.emit("ingresarHistorial-res", historial) 
         })();
     });
+    socket.on("restaurar-pedido", data => {
+        
+        (async () => {
+            const controller = require("./api/pedidos/pedidosLocal/controller.js")
+            controller.restaurarPedido(data)
+            socket.emit("restaurar-pedido-res") 
+        })();
+    })
 })
 
 
