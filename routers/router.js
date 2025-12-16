@@ -252,8 +252,10 @@ router.post("/check-out", (req, res) => {
   const actuPrecios = require("../public/system/dir/allArts.json")
   
   
-  const carritoFiltrado = carritoAnterior.filter(producto => {
-   const split = producto.codigo.split("-")
+  const carritoFiltrado = carritoAnterior.filter(producto => {    
+   
+   
+    const split = producto.codigo.split("-")
    let codigo = split[0]  
    
    if(codigo.includes("_")){
@@ -261,8 +263,12 @@ router.post("/check-out", (req, res) => {
     codigo = split[0] 
    }
    let index = actuPrecios.findIndex(item => item.codigo === codigo);
+   
    if (index == -1) {
-    index = actuPrecios.findIndex(item => item.codigo === producto.codigo);
+    index = actuPrecios.findIndex(item => item.codigo.includes(producto.codigo));
+    if(index == null || index == undefined || index == -1) {
+      index = actuPrecios.findIndex(item => item.codigo.includes(codigo));
+    }
    }
     
     if (index !== -1) {

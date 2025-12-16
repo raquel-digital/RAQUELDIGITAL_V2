@@ -720,7 +720,7 @@
     "_id": "6672eeab572f6be3ac88d13e"
   },
   {
-    "codigo": "EL8028",
+    "codigo": "EL8028-BLANCO",
     "imagen": "/img/EL/EL8028-6G.JPG",
     "precio": "5177.70",
     "titulo": "ELASTICO AFELP.28 MM X 10MTS",
@@ -784,7 +784,7 @@
     "_id": "6672eeab572f6be3ac88d146"
   },
   {
-    "codigo": "HO7000",
+    "codigo": "HO7000-BLANCO",
     "imagen": "/img/HO/ho7000.jpg",
     "precio": "10875.44",
     "titulo": "HOMBRERA FORR.NRO0 BCA/COLOR",
@@ -840,7 +840,7 @@
     "_id": "6672eeab572f6be3ac88d14d"
   },
   {
-    "codigo": "PE8001",
+    "codigo": "PE8001-FINA",
     "imagen": "/img/PE/pe8001.jpg",
     "precio": "12315.19",
     "titulo": "PEGAMENTO BARRA FINA X KILO",
