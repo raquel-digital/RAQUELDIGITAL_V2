@@ -117,7 +117,7 @@ async function loadCateg(query){
       }
       if(categ == "costura"){        
             //const result = await filtrar(["CS","CS-BROCHE","TR"]);
-            const categFilter = ["CS","CS-BROCHE","TR","CS/REGLAS"]
+            const categFilter = ["CS","CS-BROCHE","TR","CS/REGLAS", "RM"]
             const result = arts.filter(element => categFilter.includes(element.categorias));
             if(result.length > 0){
              return { succes: true, result: result } 
@@ -157,7 +157,7 @@ async function loadCateg(query){
       }
       if(categ == "herramientas"){      
        //const result = await filtrar(["CS","TJ","MH","PA","PE","MH/manualidades"]);
-       const categFilter = ["CS","TJ","MH","PA","PE","MH/manualidades","CS/REGLAS"]
+       const categFilter = ["CS","TJ","MH","PA","PE","MH/manualidades","CS/REGLAS", "RM"]
        const result = arts.filter(element => categFilter.includes(element.categorias));
        if(result.length > 0){
         return { succes: true, result: result } 
@@ -205,7 +205,7 @@ async function loadCateg(query){
       }
       if(categ == "matrices e insumos"){      
        //const result = await filtrar(["BU","BR","BS","CR","CS-BROCHE"]);
-       const categFilter = ["BU","BR","BS","CR","CS-BROCHE"]
+       const categFilter = ["BU","BR","BS","CR","CS-BROCHE", "RM"]
        const result = arts.filter(element => categFilter.includes(element.categorias));
        if(result.length > 0){
         return { succes: true, result: result } 
@@ -237,7 +237,7 @@ async function loadCateg(query){
       }
       if(categ == "reparacion ropa"){
             //const result = await filtrar(["AN","HO","GA","RE","TP","TR","CI/VIVOS","VS/INDUMENTARIA"]);
-            const categFilter = ["AN","HO","GA","RE","TP","TR","CI/VIVOS","VS/INDUMENTARIA"]
+            const categFilter = ["AN","HO","GA","RE","TP","TR","CI/VIVOS","VS/INDUMENTARIA", "RM"]
             const result = arts.filter(element => categFilter.includes(element.categorias));
             if(result.length > 0){
              return { succes: true, result: result } 
