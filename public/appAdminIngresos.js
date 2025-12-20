@@ -220,7 +220,7 @@ socket.on("ingresarHistorial-res", (data) => {
 });
 
 function  dibujarTableIngresoServer(data) {
-    console.log(data)
+   
 
     //const mostrador = document.querySelector(".result");
     
@@ -238,7 +238,7 @@ function  dibujarTableIngresoServer(data) {
         }
     });
 
-    console.log(data)
+    
     const combinaciones = data
   .filter(obj => obj.color && obj.color.length > 0)
   .flatMap(obj =>
