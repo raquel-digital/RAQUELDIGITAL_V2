@@ -318,15 +318,21 @@ function  dibujarTableIngresoServer(data) {
                     if(find.length > 0) {                        
                         find.forEach(f => {   
                              
-                            console.log(fecha)                      
+                                                
                             if(f.colores && f.colores.length > 0){
                                 f.colores.forEach(c =>{
                                     const splitCod = e.split("-").map(s => s.trim());
                                     fecha = splitCod[2]
+
+                                    const todosSeMuestran = f.colores.every(articulo => articulo.mostrar === true);
+                                    let msg = "nada"
+                                    if(todosSeMuestran){
+                                        msg = "TODOS LOS ARTÍCULOS SE MUESTRAN"
+                                    }
                                     if(c.codigo.includes(splitCod[1])){ 
                                         check = true                                       
                                         if(!c.mostrar){                                            
-                                            encontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>ENCONTRO COLOR</td><td>Carta Color</td><td>${f.fecha}</td>`
+                                            encontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>ENCONTRO COLOR</td><td>Carta Color</td><td>${f.fecha}</td><td>${msg}</td>`
                                         }
                                     }                                    
                                 })
@@ -336,10 +342,15 @@ function  dibujarTableIngresoServer(data) {
                                     const splitCod = e.split("-").map(s => s.trim());
                                     const splitF = f.codigo.split("-")
                                     fecha = splitCod[2]
+                                    const todosSeMuestran = find.every(articulo => articulo.codigo.includes(splitCod[0]) && articulo.mostrar === true);
+                                    let msg = "Hay ocultos"
+                                    if(todosSeMuestran){
+                                        msg = "Todos exhibidos"
+                                    }
                                     if(f.codigo.includes(splitCod[1])) {
                                         check = true                                                                                
                                         if(!f.mostrar){                                            
-                                            encontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>ENCONTRO EN LISTA -</td><td>Lista Directa</td><td>${f.fecha}</td>`
+                                            encontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>ENCONTRO EN LISTA -</td><td>Lista Directa</td><td>${f.fecha}</td><td>${msg}</td>`
                                             return
                                         }                                       
                                     }
@@ -351,8 +362,13 @@ function  dibujarTableIngresoServer(data) {
                             const splitCod = e.split("-").map(s => s.trim()); 
                             if(e.includes("EL65") || e.includes("EL89")|| e.includes("EN65") || e.includes("EN89")){
                                 return
-                            }                                                             
-                            noEncontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>Esta en lista pero no con ese color</td><td>${fecha}</td>`
+                            }   
+                             let msg = "Hay ocultos"
+                             const todosSeMuestran = find.every(articulo => articulo.codigo.includes(splitCod[0]) && articulo.mostrar === true);
+                             if(todosSeMuestran){
+                                 msg = "Todos exhibidos"
+                             }                                                          
+                            noEncontrados.innerHTML += `<td>${splitCod[0]}-${splitCod[1]}</td><td>Esta en lista pero no con ese color</td><td>${fecha}</td><td>${msg}</td>`
                         }
                         return
                     }else{            
