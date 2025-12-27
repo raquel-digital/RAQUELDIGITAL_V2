@@ -101,7 +101,7 @@ async function loadCateg(query){
       }
       if(categ == "cordones"){        
        //const result = await filtrar(["CD","TE"]);
-       const categFilter = ["CD","TE", "TE/TIRA-CIERRES"]
+       const categFilter = ["CD","TE", "TE/TIRA-CIERRES", "HI/bordado"]
        const result = arts.filter(element => categFilter.includes(element.categorias));
        if(result.length > 0){
         return { succes: true, result: result } 
@@ -157,7 +157,7 @@ async function loadCateg(query){
       }
       if(categ == "herramientas"){      
        //const result = await filtrar(["CS","TJ","MH","PA","PE","MH/manualidades"]);
-       const categFilter = ["CS","TJ","MH","PA","PE","MH/manualidades","CS/REGLAS", "RM"]
+       const categFilter = ["CS","TJ","MH","PA","PE","MH/manualidades","CS/REGLAS", "RM","HI/hilo_chino"]
        const result = arts.filter(element => categFilter.includes(element.categorias));
        if(result.length > 0){
         return { succes: true, result: result } 
@@ -165,7 +165,7 @@ async function loadCateg(query){
       }
       if(categ == "hilos"){      
        //const result = await filtrar(["HI","HI/HI8100","HI/HI0901","HI/HI9000"]);
-       const categFilter = ["HI","HI/HI8100","HI/HI0901","HI/HI9000", "HI/bordado"]
+       const categFilter = ["HI","HI/HI8100","HI/HI0901","HI/HI9000", "HI/bordado", "HI/bordado"]
        const result = arts.filter(element => categFilter.includes(element.categorias));
        if(result.length > 0){
         return { succes: true, result: result } 
