@@ -1,8 +1,8 @@
 [
     {
-        "correoReg": 14000,
-        "correoNac": 17000,
-        "correoNac2":  20000,
+        "correoReg": 17000,
+        "correoNac": 20000,
+        "correoNac2":  23000,
         "moto": 3100,
         "expreso": 6000 
     }
