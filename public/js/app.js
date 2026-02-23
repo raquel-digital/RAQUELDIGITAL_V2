@@ -5,7 +5,7 @@ let mostradorDeArticulosPaginador;
 
 let indice = 50
 if(window.innerWidth < 852){
-  indice = 10
+  indice = 20
 }
 if(window.innerWidth < 600){
   indice = 10

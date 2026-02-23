@@ -156,7 +156,7 @@ const store = {
         //     }
         // }       
         //return result;
-        base = await model.find({ mostrar: true }).sort({ id: -1}).limit(30);
+        base = await model.find({ mostrar: true }).sort({ id: -1}).limit(10)//(30);
         return base;
     },
 
