@@ -110,7 +110,8 @@ socket.emit("chequear-pedidos-admin");
 socket.on("nuevos-pedidos", data => { 
  
   if(pedidos == undefined && data.length > 0){
-    pedidos = data;    
+    pedidos = data;
+    i = data.length    
     draw.newOrders(pedidos);
     draw.pedidoFlecha(pedidos[i-1]);
     socket.emit("chequear-pedidos-admin");
@@ -119,8 +120,6 @@ socket.on("nuevos-pedidos", data => {
   if(data.length > 0 && data.length > pedidos.length){
     alert("HAY PEDIDOS NUEVOS");
     pedidos = data;
-    //TODO ver si es comodo quiza se pueda cambiar la opcion de que 
-    //cambie al pedido nuevo
     draw.pedidoFlecha(pedidos[pedidos.length-1]);
     alert("HAY PEDIDOS NUEVOS");
     return;
@@ -131,7 +130,7 @@ socket.on("nuevos-pedidos", data => {
 socket.on("pedidos-enCurso", data => {    
   data.forEach(e => { e.viejo = true });
   pedidos = data
-  console.log(pedidos)  
+  
   draw.oldOrders(pedidos);
 });
 
