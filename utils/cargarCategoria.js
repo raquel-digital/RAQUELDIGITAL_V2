@@ -27,7 +27,7 @@ async function loadCateg(query){
 
       if(categ == "alfileres y agujas"){
        //const result = await filtrar(["AF","AG","AT","BA","GA"]);
-       const categFilter = ["AF","AG","AT","BA","GA"]
+       const categFilter = ["AF","AG","AT","BA","GA","MH/AGUJA_FIELTRO"]
        const result = arts.filter(element => categFilter.includes(element.categorias));
        if(result.length > 0){
         return { succes: true, result: result }; 

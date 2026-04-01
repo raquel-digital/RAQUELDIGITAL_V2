@@ -5,7 +5,7 @@ async function loadCateg(){
     const allArts = await store.leer()
     let artBase = allArts
 
-    await filtrar(["AF","AG","AT","BA","GA"], "alfileres_y_agujas", artBase);
+    await filtrar(["AF","AG","AT","BA","GA","MH/AGUJA_FIELTRO"], "alfileres_y_agujas", artBase);
     await filtrar(["AJ"], "abrojos", artBase);
     await filtrar(["AB","AC","AE","AD","AR","RE/estampado"], "aplicaciones", artBase);
     await filtrar(["CM","CP","MU","MO","LE","HP"], "bijou", artBase);
