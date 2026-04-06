@@ -197,7 +197,7 @@ async function loadCateg(query){
       }
       if(categ == "manualidades"){      
        //const result = await filtrar(["AN","AL","CM","CP","MU","MH/manualidades","VS/manualidades","RV","CS-BORDADO","LE","MO","PA"]);
-       const categFilter = ["AN","AL","CM","CP","MU","MH/manualidades", "MP","VS/manualidades","RV","CS-BORDADO","LE","MO","PA","CS/REGLAS", "CI/MANUALIDADES"]
+       const categFilter = ["AN","AL","CM","CP","MU","MH/manualidades", "MP","VS/manualidades","RV","CS-BORDADO","LE","MO","PA","CS/REGLAS", "CI/MANUALIDADES","MH/AGUJA_FIELTRO"]
        const result = arts.filter(element => categFilter.includes(element.categorias));
        if(result.length > 0){
         return { succes: true, result: result } 

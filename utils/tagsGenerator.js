@@ -26,7 +26,7 @@ async function loadCateg(){
     await filtrar(["AN","CA","HO","HC","PA","VS/INDUMENTARIA"], "indumentaria", artBase);
     await filtrar(["LA","AT"], "lanas", artBase);
     await filtrar(["RC","RR","EL"], "lenceria", artBase);
-    await filtrar(["AN","AL","CM","CP","MU","MH/manualidades","VS/manualidades","RV","CS-BORDADO","LE","MO","PA", "CI/MANUALIDADES"], "manualidades", artBase);
+    await filtrar(["AN","AL","CM","CP","MU","MH/manualidades","VS/manualidades","RV","CS-BORDADO","LE","MO","PA", "CI/MANUALIDADES","MH/AGUJA_FIELTRO"], "manualidades", artBase);
     await filtrar(["BU","BR","BS","CR","CS-BROCHE"], "matrices_e_insumos", artBase);
     await filtrar(["PE"], "pegamentos", artBase);
     await filtrar(["PL"], "plumas", artBase);
