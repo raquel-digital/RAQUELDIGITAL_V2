@@ -279,6 +279,24 @@ async function loadCateg(query){
        }     
       }
 
+      if(categ === "argentina"){
+       const result = await filtrar(["AR"]);
+       const controller = require("../api/arts/controller");
+       const busqueda = [];     
+       let resQuery = [];     
+       const queryEspecial = ["AE8038", "AE9359"];
+       for(const q of queryEspecial){
+           const res = await controller.buscarArticulo(q)
+           res.map(e => resQuery.push(e));
+       }
+       if(resQuery.length > 0){
+            resQuery.map(e => result.push(e)) ;
+       }  
+       if(result.length > 0){
+        return { succes: true, result: result } 
+       }     
+      }
+
       
       return { succes: false, result: "Categoria no valida" }
 }
