@@ -1496,7 +1496,7 @@ function writeTable(art, code, msg){
  })
 
  socket.on("checkStock-res", data => {
-  console.log(data)
+  console.log("Check Stock")
   mostrador.innerHTML = `<h3>Articulos en falta de stock:</h3>`  
   mostrador.innerHTML += `<table class="table table-striped table-hover">
             <thead>
@@ -1580,155 +1580,166 @@ function writeTable(art, code, msg){
     showArts(res)
  })
 
- function tableStock(data, sort){
-   
-    const tableStock = document.getElementById("tableStock")
-
-    if(sort){  
-      tableStock.innerHTML = ""
-      data.forEach(e => {
-        if(e.stock <= 0){
-          const estado = e.mostrar ? "Visible" : "Oculto"
-          tableStock.innerHTML += `
-          <tr>
-          <td><img src="./img/${e.categorias}/${e.imagendetalle}" alt="imagen table" widht="60px" height="60px"></td>
-          <td>${e.codigo}</td>
-          <td>${e.nombre}<td>
-          <td>${e.stock}</td>
-          <td>${estado}</td>
-          <td>fecha modificacion: ${e.fechaModificacion}</td>
-          <td>Hay stock <input type="checkbox" name="${e.codigo}" class="check-mostrar"></td>
-          <td>Imprimir<input type="checkbox" name="${e.codigo}imp" class="artImprimir"></td>
-          </tr>
-          `; 
-        }else{
-          if(e.colores){
-            e.colores.forEach(c => {
-              if(c.stock <= 0){
-                const estado = c.mostrar ? "Visible" : "Oculto"
-                tableStock.innerHTML += `
-                <tr>
-                <td><img src="./img/${e.categorias}/${c.color}" alt="imagen table" widht="60px" height="60px"></td>
-                <td>${c.codigo}</td>
-                <td>${e.nombre}<td>
-                <td>${c.stock}</td>
-                <td>${estado}</td>
-                <td>fecha modificacion: ${e.fechaModificacion}</td>
-                <td>Hay stock <input type="checkbox" name="${c.codigo}" class="check-mostrar"></td>
-                <td>Imprimir<input type="checkbox" name="${e.codigo}imp" class="artImprimir"></td>
-                </tr>
-                `;
-              }            
-            })
-          }
-        }     
-      })
-      return
-    }
-
-    //OLD
-    // const ordenadoFecha = data.sort((a, b) => {
+//  function tableStock(data, sort){
+    
+//     const tableStock = document.getElementById("tableStock")
+//     let contenido = 0
+//     if(sort){  
+//       tableStock.innerHTML = ""
       
-    //   const fechaA = a.fechaModificacion.split(" ")
-    //     const fechaB = b.fechaModificacion.split(" ")
+//       data.forEach(e => {        
+//         if(e.stock <= 0){
+//           contenido++
+//           const estado = e.mostrar ? "Visible" : "Oculto"
+//           tableStock.innerHTML += `
+//           <tr>
+//           <td><img src="./img/${e.categorias}/${e.imagendetalle}" alt="imagen table" widht="60px" height="60px"></td>
+//           <td>${e.codigo}</td>
+//           <td>${e.nombre}<td>
+//           <td>${e.stock}</td>
+//           <td>${estado}</td>
+//           <td>fecha modificacion: ${e.fechaModificacion}</td>
+//           <td>Hay stock <input type="checkbox" name="${e.codigo}" class="check-mostrar"></td>
+//           <td>Imprimir<input type="checkbox" name="${e.codigo}imp" class="artImprimir"></td>
+//           </tr>
+//           `; 
+//         }else{
+//           if(e.colores){
+//             e.colores.forEach(c => {
+//               if(c.stock <= 0){
+//                 contenido++
+//                 const estado = c.mostrar ? "Visible" : "Oculto"
+//                 tableStock.innerHTML += `
+//                 <tr>
+//                 <td><img src="./img/${e.categorias}/${c.color}" alt="imagen table" widht="60px" height="60px"></td>
+//                 <td>${c.codigo}</td>
+//                 <td>${e.nombre}<td>
+//                 <td>${c.stock}</td>
+//                 <td>${estado}</td>
+//                 <td>fecha modificacion: ${e.fechaModificacion}</td>
+//                 <td>Hay stock <input type="checkbox" name="${c.codigo}" class="check-mostrar"></td>
+//                 <td>Imprimir<input type="checkbox" name="${e.codigo}imp" class="artImprimir"></td>
+//                 </tr>
+//                 `;
+//               }            
+//             })
+//           }
+//         }     
+//       })
+//       return
+//     }
+
+//     //OLD
+//     // const ordenadoFecha = data.sort((a, b) => {
+      
+//     //   const fechaA = a.fechaModificacion.split(" ")
+//     //     const fechaB = b.fechaModificacion.split(" ")
         
-    //     if(fechaA[0] == "" || fechaB[0] == ""){        
-    //       return
-    //     }
+//     //     if(fechaA[0] == "" || fechaB[0] == ""){        
+//     //       return
+//     //     }
         
-    //     const dateA = fechaA[0].split('/');
-    //     const dateB = fechaB[0].split('/');
-    //     const comaA = dateA[2].split(",")
-    //     const comaB = dateB[2].split(",")
-    //     const añoA = Number(comaA[0]) 
-    //     const añoB = Number(comaB[0])     
-    //     const mesA = Number(dateA[0])
-    //     const mesB = Number(dateB[0])
-    //     const diaA = Number(dateA[1])
-    //     const diaB = Number(dateB[1])
-    //     //año
-    //     if (añoA > añoB) {
-    //       return 1;
-    //     }
-    //     if (añoA < añoB) {
-    //       return -1;
-    //     } 
-    //     // //mes  
-    //     if (mesA > mesB) {
-    //       return 1;
-    //     }
-    //     if (mesA < mesB) {
-    //       return -1;
-    //     }  
-    //     // //dia
-    //     if (diaA > diaB) {
-    //       return 1;
-    //     }
-    //     if (diaA < diaB) {
-    //       return -1;
-    //     }    
-    //     return 0   
-    // }).reverse();
-    const ordenadoFecha = data.sort((a, b) => {
-      const [diaA, mesA, anioA] = a.fechaModificacion.split('/').map(Number);
-      const [diaB, mesB, anioB] = b.fechaModificacion.split('/').map(Number);
+//     //     const dateA = fechaA[0].split('/');
+//     //     const dateB = fechaB[0].split('/');
+//     //     const comaA = dateA[2].split(",")
+//     //     const comaB = dateB[2].split(",")
+//     //     const añoA = Number(comaA[0]) 
+//     //     const añoB = Number(comaB[0])     
+//     //     const mesA = Number(dateA[0])
+//     //     const mesB = Number(dateB[0])
+//     //     const diaA = Number(dateA[1])
+//     //     const diaB = Number(dateB[1])
+//     //     //año
+//     //     if (añoA > añoB) {
+//     //       return 1;
+//     //     }
+//     //     if (añoA < añoB) {
+//     //       return -1;
+//     //     } 
+//     //     // //mes  
+//     //     if (mesA > mesB) {
+//     //       return 1;
+//     //     }
+//     //     if (mesA < mesB) {
+//     //       return -1;
+//     //     }  
+//     //     // //dia
+//     //     if (diaA > diaB) {
+//     //       return 1;
+//     //     }
+//     //     if (diaA < diaB) {
+//     //       return -1;
+//     //     }    
+//     //     return 0   
+//     // }).reverse();
+    
+//     const filtro = data.filter(e => e.stock <= 0 && !e.codigo.includes("HI0117"))
+    
+//     const ordenadoFecha = filtro.sort((a, b) => {
+//       const [diaA, mesA, anioA] = a.fechaModificacion.split('/').map(Number);
+//       const [diaB, mesB, anioB] = b.fechaModificacion.split('/').map(Number);
     
       
-      // Convertimos la fecha en un objeto Date
-      const fechaA = new Date(anioA, mesA - 1, diaA);
-      const fechaB = new Date(anioB, mesB - 1, diaB);
+//       // Convertimos la fecha en un objeto Date
+//       const fechaA = new Date(anioA, mesA - 1, diaA);
+//       const fechaB = new Date(anioB, mesB - 1, diaB);
 
-      const esFechaAInvalida = isNaN(fechaA.getTime())
-      const esFechaBInvalida = isNaN(fechaB.getTime())
+//       const esFechaAInvalida = isNaN(fechaA.getTime())
+//       const esFechaBInvalida = isNaN(fechaB.getTime())
 
-      if (esFechaAInvalida && !esFechaBInvalida) return 1;
-      if (esFechaBInvalida && !esFechaAInvalida) return -1;
-      if (esFechaAInvalida && esFechaBInvalida) return 0;
+//       if (esFechaAInvalida && !esFechaBInvalida) return 1;
+//       if (esFechaBInvalida && !esFechaAInvalida) return -1;
+//       if (esFechaAInvalida && esFechaBInvalida) return 0;
       
-      // Ordenamos de más reciente a más viejo
-      return fechaB - fechaA;
-    })
-
-    ordenadoFecha.forEach(e => {
-      if(e.stock <= 0){
-        const estado = e.mostrar ? "Visible" : "Oculto"
-        tableStock.innerHTML += `
-        <tr>
-        <td><img src="./img/${e.categorias}/${e.imagendetalle}" alt="imagen table" widht="60px" height="60px"></td>
-        <td>${e.codigo}</td>
-        <td>${e.nombre}<td>
-        <td>${e.stock}</td>
-        <td>${estado}</td>
-        <td>fecha modificacion: ${e.fechaModificacion}</td>
-        <td>Hay stock <input type="checkbox" name="${e.codigo}" class="check-mostrar"></td>
-        <td>Imprimir<input type="checkbox" name="${e.codigo}imp"  class="artImprimir"></td>
-        </tr>
-        `; 
-      }else{
-        if(e.colores){
-          e.colores.forEach(c => {
-            if(c.stock <= 0){
-              const estado = c.mostrar ? "Visible" : "Oculto"
-              tableStock.innerHTML += `
-              <tr>
-              <td><img src="./img/${e.categorias}/${c.color}" alt="imagen table" widht="60px" height="60px"></td>
-              <td>${c.codigo}</td>
-              <td>${e.nombre}<td>
-              <td>${c.stock}</td>
-              <td>${estado}</td>
-              <td>fecha modificacion: ${e.fechaModificacion}</td>
-              <td>Hay stock <input type="checkbox" name="${c.codigo}" class="check-mostrar"></td>
-              <td>Imprimir<input type="checkbox" name="${e.codigo}imp" class="artImprimir"></td>
-              </tr>
-              `;
-            }            
-          })
-        }
-      }     
-    })
-    document.getElementById("footer-stock").innerHTML = `<button onclick="checkStock()">ENVIAR</button><button style="margin-left:20px;" onclick="imprimirStock()">imprimir</button>` 
+//       // Ordenamos de más reciente a más viejo
+//       return fechaB - fechaA;
+//     })
+    
+//     ordenadoFecha.forEach(e => {
+//       if(contenido > 50){
+//         return
+//       }
+//       if(e.stock <= 0){  
+//         contenido++      
+//         const estado = e.mostrar ? "Visible" : "Oculto"
+//         tableStock.innerHTML += `
+//         <tr>
+//         <td><img src="./img/${e.categorias}/${e.imagendetalle}" alt="imagen table" widht="60px" height="60px"></td>
+//         <td>${e.codigo}</td>
+//         <td>${e.nombre}<td>
+//         <td>${e.stock}</td>
+//         <td>${estado}</td>
+//         <td>fecha modificacion: ${e.fechaModificacion}</td>
+//         <td>Hay stock <input type="checkbox" name="${e.codigo}" class="check-mostrar"></td>
+//         <td>Imprimir<input type="checkbox" name="${e.codigo}imp"  class="artImprimir"></td>
+//         </tr>
+//         `; 
+//       }else{
+//         if(e.colores){
+//           e.colores.forEach(c => {
+//             if(c.stock <= 0){
+//               contenido++
+//               const estado = c.mostrar ? "Visible" : "Oculto"
+//               tableStock.innerHTML += `
+//               <tr>
+//               <td><img src="./img/${e.categorias}/${c.color}" alt="imagen table" widht="60px" height="60px"></td>
+//               <td>${c.codigo}</td>
+//               <td>${e.nombre}<td>
+//               <td>${c.stock}</td>
+//               <td>${estado}</td>
+//               <td>fecha modificacion: ${e.fechaModificacion}</td>
+//               <td>Hay stock <input type="checkbox" name="${c.codigo}" class="check-mostrar"></td>
+//               <td>Imprimir<input type="checkbox" name="${e.codigo}imp" class="artImprimir"></td>
+//               </tr>
+//               `;
+//             }            
+//           })
+//         }
+//       }     
+//     })
+//     document.getElementById("footer-stock").innerHTML = `<button onclick="checkStock()">ENVIAR</button><button style="margin-left:20px;" onclick="imprimirStock()">imprimir</button>` 
    
-}
+// }
 
 function imprimirStock(){
   const imprimir = []
@@ -1747,6 +1758,123 @@ function imprimirStock(){
   })
 
   document.getElementById("footer-stock").innerHTML = `<button style="margin-left:20px;" onclick="window.print()">imprimir</button>`
+}
+
+// Variables globales para el estado de la paginación
+let paginaActual = 1;
+const itemsPorPagina = 50;
+let datosFiltradosGlobal = [];
+
+/**
+ * Función principal para renderizar la tabla
+ */
+function tableStock(data, sort) {
+    const tableElement = document.getElementById("tableStock");
+    const footerElement = document.getElementById("footer-stock");
+
+    // 1. Aplanamos y filtramos los datos (incluyendo lógica de colores)
+    let procesados = [];
+    data.forEach(item => {
+        // Ignorar código específico según tu lógica original
+        if (item.codigo.includes("HI0117")) return;
+
+        if (item.stock <= 0) {
+            procesados.push({ ...item, esVariante: false });
+        } else if (item.colores) {
+            item.colores.forEach(c => {
+                if (c.stock <= 0) {
+                    procesados.push({ ...item, ...c, esVariante: true, codigoPadre: item.codigo });
+                }
+            });
+        }
+    });
+
+    // 2. Ordenamiento por fecha (Si no es 'sort', aplicamos el ordenamiento por fechaModificacion)
+    if (!sort) {
+        procesados.sort((a, b) => {
+            const parseFecha = (str) => {
+                if (!str) return new Date(0);
+                const [dia, mes, anio] = str.split('/').map(Number);
+                return new Date(anio, mes - 1, dia);
+            };
+            return parseFecha(b.fechaModificacion) - parseFecha(a.fechaModificacion);
+        });
+    }
+
+    datosFiltradosGlobal = procesados;
+    paginaActual = 1; // Reiniciar a la primera página
+    renderizarPagina();
+}
+
+/**
+ * Renderiza la porción de datos correspondiente a la página actual
+ */
+function renderizarPagina() {
+    const tableElement = document.getElementById("tableStock");
+    const inicio = (paginaActual - 1) * itemsPorPagina;
+    const fin = inicio + itemsPorPagina;
+    const itemsAMostrar = datosFiltradosGlobal.slice(inicio, fin);
+
+    // Generar HTML de las filas
+    const htmlFilas = itemsAMostrar.map(e => {
+        const estado = e.mostrar ? "Visible" : "Oculto";
+        const imagen = e.esVariante ? e.color : e.imagendetalle;
+        const nombreCheckbox = e.esVariante ? e.codigo : e.codigo; // Mantener coherencia de nombres
+
+        return `
+            <tr>
+                <td><img src="./img/${e.categorias}/${imagen}" alt="imagen table" width="60px" height="60px"></td>
+                <td>${e.codigo}</td>
+                <td>${e.nombre}</td>
+                <td>${e.stock}</td>
+                <td>${estado}</td>
+                <td>fecha modificacion: ${e.fechaModificacion}</td>
+                <td>Hay stock <input type="checkbox" name="${e.codigo}" class="check-mostrar"></td>
+                <td>Imprimir <input type="checkbox" name="${(e.codigoPadre || e.codigo)}imp" class="artImprimir"></td>
+            </tr>`;
+    }).join('');
+
+    tableElement.innerHTML = htmlFilas;
+    actualizarFooter();
+}
+
+/**
+ * Genera los botones de paginación y los botones de acción
+ */
+function actualizarFooter() {
+    const footerElement = document.getElementById("footer-stock");
+    const totalPaginas = Math.ceil(datosFiltradosGlobal.length / itemsPorPagina);
+    
+    let htmlFooter = `<div class="acciones">
+        <button onclick="checkStock()">ENVIAR</button>
+        <button style="margin-left:20px;" onclick="imprimirStock()">IMPRIMIR</button>
+    </div>`;
+
+    // Si hay más de una página, crear controles
+    if (totalPaginas > 1) {
+        let botonesPaginacion = `<div class="paginador" style="margin-top: 10px;">`;
+        for (let i = 1; i <= totalPaginas; i++) {
+            botonesPaginacion += `
+                <button 
+                    onclick="cambiarPagina(${i})" 
+                    style="margin-right:5px; ${i === paginaActual ? 'background-color: #ddd; font-weight: bold;' : ''}">
+                    ${i}
+                </button>`;
+        }
+        botonesPaginacion += `</div>`;
+        htmlFooter += botonesPaginacion;
+    }
+
+    footerElement.innerHTML = htmlFooter;
+}
+
+/**
+ * Función para cambiar entre páginas
+ */
+function cambiarPagina(num) {
+    paginaActual = num;
+    renderizarPagina();
+    window.scrollTo(0, 0); // Opcional: volver arriba al cambiar de página
 }
 
 
