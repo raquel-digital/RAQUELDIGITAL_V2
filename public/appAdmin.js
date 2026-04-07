@@ -1779,6 +1779,8 @@ function tableStock(data, sort) {
         if (item.codigo.includes("HI0117")) return;
         if (item.codigo.includes("AE")) return;
         if (item.codigo.includes("AB")) return;
+        if (item.codigo.includes("AD")) return;
+        if (item.codigo.includes("AC")) return;
 
         if (item.stock <= 0) {
             procesados.push({ ...item, esVariante: false });
