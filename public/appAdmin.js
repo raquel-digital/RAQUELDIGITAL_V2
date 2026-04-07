@@ -1777,6 +1777,8 @@ function tableStock(data, sort) {
     data.forEach(item => {
         // Ignorar código específico según tu lógica original
         if (item.codigo.includes("HI0117")) return;
+        if (item.codigo.includes("AE")) return;
+        if (item.codigo.includes("AB")) return;
 
         if (item.stock <= 0) {
             procesados.push({ ...item, esVariante: false });
