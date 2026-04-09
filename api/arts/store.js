@@ -335,21 +335,23 @@ const store = {
         return
       },
       updateOcultar: async function (codigo) {       
-        try{
+        try{    
+          const fechaHoy = crearFechaManual()  
+                 
           let updatedDocument = await  model.findOneAndUpdate({ codigo: codigo},
-            { $set: { mostrar: false} }
+            { $set: { mostrar: false, stock: 0, fechaModificacion: fechaHoy } }
           )
           if(!updatedDocument){
             updatedDocument = await model.findOneAndUpdate(
                  { "colores.codigo": codigo }, 
-                 { $set: { "colores.$.mostrar": false } },
+                 { $set: { "colores.$.mostrar": false, "colores.$.stock": 0, fechaModificacion: fechaHoy  } },
              );
               
          }
           if(!updatedDocument){
             await model.findOneAndUpdate(
                  { "colores.codigo": codigo + "_talle" }, 
-                 { $set: { "colores.$.mostrar": false } },
+                 { $set: { "colores.$.mostrar": false, fechaModificacion: fechaHoy, "colores.$.stock": 0 }},
              );
           }
         }catch(err){
@@ -357,5 +359,14 @@ const store = {
         }
       }
  }
+
+ function crearFechaManual() {
+  const f = new Date();
+  const d = String(f.getDate()).padStart(2, '0');
+  const m = String(f.getMonth() + 1).padStart(2, '0'); // +1 porque enero es 0
+  const a = f.getFullYear();
+  
+  return `${d}/${m}/${a}`;
+}
  
  module.exports = store;

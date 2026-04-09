@@ -19,6 +19,7 @@ const store = {
     },
     update: async function (data){
      try{
+        console.log(data)
         await model.findOneAndUpdate({
             num_orden: data.num_orden
         },{
@@ -27,7 +28,8 @@ const store = {
                 estado: data.estado,
                 compra: data.compra,
                 faltas: data.faltas,
-                notas: data.notas
+                notas: data.notas,
+                faltasPasadas: data.faltasPasadas
             }
         })
      }catch(err){

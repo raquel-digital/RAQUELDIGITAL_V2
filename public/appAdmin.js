@@ -1782,11 +1782,11 @@ function tableStock(data, sort) {
         if (item.codigo.includes("AD")) return;
         if (item.codigo.includes("AC")) return;
 
-        if (item.stock <= 0) {
+        if (item.stock <= 0 || !item.mostrar) {
             procesados.push({ ...item, esVariante: false });
         } else if (item.colores) {
             item.colores.forEach(c => {
-                if (c.stock <= 0) {
+                if (c.stock <= 0 || !item.mostrar) {
                     procesados.push({ ...item, ...c, esVariante: true, codigoPadre: item.codigo });
                 }
             });
@@ -1804,8 +1804,34 @@ function tableStock(data, sort) {
             return parseFecha(b.fechaModificacion) - parseFecha(a.fechaModificacion);
         });
     }
+    
+    const filtroFecha = procesados.sort((a, b) => {
+        const obtenerValorNumerico = (fechaStr) => {
+            if (!fechaStr) return 0;
+            
+            // Extraemos solo "DD/MM/YYYY" eliminando posibles espacios o comas
+            const limpia = fechaStr.trim().split(" ")[0].replace(/,/g, "");
+            const partes = limpia.split("/");
 
-    datosFiltradosGlobal = procesados;
+            if (partes.length !== 3) return 0;
+
+            const dia = partes[0].padStart(2, '0');
+            const mes = partes[1].padStart(2, '0');
+            const anio = partes[2];
+
+            // Retorna un número tipo 20260408, que es comparable matemáticamente
+            return parseInt(`${anio}${mes}${dia}`, 10);
+        };
+
+        const valorA = obtenerValorNumerico(a.fechaModificacion);
+        const valorB = obtenerValorNumerico(b.fechaModificacion);
+
+        // De mayor a menor (2026 arriba, 2022 abajo)
+        return valorB - valorA;
+    });
+
+    
+    datosFiltradosGlobal = filtroFecha;
     paginaActual = 1; // Reiniciar a la primera página
     renderizarPagina();
 }

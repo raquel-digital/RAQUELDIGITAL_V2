@@ -3,10 +3,12 @@ const schema = mongoose.Schema;
 
 const newSchema = new schema({
     fecha: String,
+
     num_orden: Number,
     cliente: String,
     prepara: String,
     estado: String,
+    faltasPasadas: Boolean,
     compra: [
         {
           codigo: String,
@@ -25,7 +27,7 @@ const newSchema = new schema({
           imagen: String,
           fecha_entrega: String
         }
-      ],
+      ],      
     notas: String   
 })
 

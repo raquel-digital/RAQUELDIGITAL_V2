@@ -41,14 +41,19 @@ const controller = {
    },
    updatePedidos: async function (pedidos){
     try{
+      console.log("ACTUALIZANDO PEDIDOS WEB!!!!!!!!")
       pedidos.forEach(e => {
         (async () => { 
-          await store.update(e);
-          if(e.faltas.length > 0){
-            const controllerArts = require("../arts/controller")
-            console.log(e)
+          
+          if(e.faltas.length > 0 && !e.faltasPasadas){
+            const controllerArts = require("../arts/controller")            
             controllerArts.ocultarArtDesdePedidoWeb(e)
+            e.faltasPasadas = true
           }
+          if(e.faltas.length == 0){
+            e.faltasPasadas = false
+          }
+          await store.update(e);
         })();
       });
       return true;
