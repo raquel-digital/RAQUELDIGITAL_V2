@@ -7,7 +7,7 @@ async function loadCateg(){
 
     await filtrar(["AF","AG","AT","BA","GA","MH/AGUJA_FIELTRO"], "alfileres_y_agujas", artBase);
     await filtrar(["AJ"], "abrojos", artBase);
-    await filtrar(["AB","AC","AE","AD","AR","RE/estampado"], "aplicaciones", artBase);
+    await filtrar(["AB","AC","AE","AD","AR","RE/estampado", "AK"], "aplicaciones", artBase);
     await filtrar(["CM","CP","MU","MO","LE","HP"], "bijou", artBase);
     await filtrar(["ST","LE","MO","GL","NA","AD"], "brillos", artBase);
     await filtrar(["BB","RB","TP-BORDADO","CS-BORDADO","HI/mouline","HI/coloris","HI/variacion","HI/HI0317","HI/bordado","TZ"], "bordado", artBase);

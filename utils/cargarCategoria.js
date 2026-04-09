@@ -43,7 +43,7 @@ async function loadCateg(query){
        }
       }
       if(categ == "aplicaciones"){
-       const categFilter = ["AB","AC","AE","AD","AR","RE/estampado"]
+       const categFilter = ["AB","AC","AE","AD","AR","RE/estampado", "AK"]
        const result = arts.filter(element => categFilter.includes(element.categorias));     
        //const result = await filtrar(["AB","AC","AE","AD","AR","RE/estampado"]);
        if(result.length > 0){

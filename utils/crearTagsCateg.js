@@ -80,7 +80,7 @@ async function crearCategs () {
 async function loadCateg(){
     await filtrar(["AF","AG","AT","BA","GA"], "alfileres_y_agujas");
     await filtrar(["AJ"], "abrojos");
-    await filtrar(["AB","AC","AE","AD","AR","RE/estampado"], "aplicaciones");
+    await filtrar(["AB","AC","AE","AD","AR","RE/estampado", "AK"], "aplicaciones");
     await filtrar(["CM","CP","MU","MO","LE","HP"], "bijou");
     await filtrar(["ST","LE","MO","GL","NA","AD"], "brillos");
     await filtrar(["BB","RB","TP-BORDADO","CS-BORDADO","HI/mouline","HI/coloris","HI/variacion","HI/HI0317","HI/bordado","TZ"], "bordado");
