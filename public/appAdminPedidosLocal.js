@@ -205,8 +205,7 @@ const draw = {
                             <h5 class="card-title">Estado:</h5>
                             <select name="" id="estado${p.num_orden}">
                                 <option value="Pedido Sin Asignar">Pedido Sin Asignar</option>
-                                <option value="En preparacion">En preparacion</option>
-                                <option value="En preparacion -- Falta Mercaderia">En preparacion</option>
+                                <option value="En preparacion">En preparacion</option>                                
                                 <option value="Mercaderia encargada">Mercaderia encargada</option>
                                 <option value="pasamos faltas">pasamos faltas</option>
                                 <option value="Señado" >Señado</option>
@@ -216,6 +215,7 @@ const draw = {
                                 <option value="Pagado">Pagado</option>
                                 <option value="Listo para enviar">Listo para enviar</option>
                                 <option value="Listo para que retire">Listo para que retire</option>
+                                <option value="A consultar">A consultar</option>
                             </select>
                             <h5 class="card-title">Zona Guardado:</h5>
                             <select name="" id="zona${p.num_orden}" value=${p.zona}>
