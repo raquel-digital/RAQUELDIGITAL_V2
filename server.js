@@ -286,6 +286,20 @@ io.on('connect', socket => {
         socket.emit("req-cli-res", clientes)
     })
     //PRESUPUESTOS
+    socket.on("pedir-presupuestos", () => {
+    // Eliminamos la caché de Node para asegurarnos de leer el disco real
+    delete require.cache[require.resolve("./public/system/presupuestos/presupuesto-basico.json")];
+    delete require.cache[require.resolve("./public/system/presupuestos/presupuesto-medio.json")];
+    delete require.cache[require.resolve("./public/system/presupuestos/presupuesto-premium.json")];
+
+        socket.emit("enviar-presupuestos-res", {
+            test: require("./public/system/presupuestos/test.json"),
+            codeBasico: require("./public/system/presupuestos/presupuesto-basico.json"),
+            codeMedio: require("./public/system/presupuestos/presupuesto-medio.json"),
+            codePremium: require("./public/system/presupuestos/presupuesto-premium.json")
+        });
+    });
+
     socket.on("cambios-en-presu", data => {
         const controller = require("./api/presupuesto/constroller")
         controller.ingresar(data)
