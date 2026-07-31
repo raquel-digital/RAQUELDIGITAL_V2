@@ -1,5 +1,6 @@
 [
   {
+    "_id": "6a6b7fee96a91d07bd8ef562",
     "codigo": "AB1007",
     "imagen": "/img/AB/AB1007G.jpg",
     "precio": "2424.13",
@@ -7,6 +8,7 @@
     "cantidad": "5"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef563",
     "codigo": "AF0043",
     "imagen": "/img/AF/af0043.jpg",
     "precio": "3372.94",
@@ -14,6 +16,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef564",
     "codigo": "AF8117",
     "imagen": "/img/AF/af8117.jpg",
     "precio": "11380.22",
@@ -21,6 +24,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef565",
     "codigo": "AF8121",
     "imagen": "/img/AF/af8121.jpg",
     "precio": "11893.02",
@@ -28,6 +32,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef566",
     "codigo": "AF8131",
     "imagen": "/img/AF/af8131.jpg",
     "precio": "14081.93",
@@ -35,6 +40,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef567",
     "codigo": "AG0125",
     "imagen": "/img/AG/ag0125[2].jpg",
     "precio": "7561.67",
@@ -42,6 +48,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef568",
     "codigo": "AG1151",
     "imagen": "/img/AG/AG1151.jpg",
     "precio": "7045.64",
@@ -49,6 +56,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef569",
     "codigo": "AG1154",
     "imagen": "/img/AG/ag1154.jpg",
     "precio": "2256.99",
@@ -56,6 +64,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef56a",
     "codigo": "AG2020",
     "imagen": "/img/AG/AGSINGER.JPG",
     "precio": "12147.95",
@@ -63,6 +72,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef56b",
     "codigo": "AG2045",
     "imagen": "/img/AG/AGSINGER.JPG",
     "precio": "12838.93",
@@ -70,6 +80,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef56c",
     "codigo": "AH0001",
     "imagen": "/img/AH/ah0014.jpg",
     "precio": "6211.38",
@@ -77,6 +88,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef56d",
     "codigo": "AH0003",
     "imagen": "/img/AH/ah0014.jpg",
     "precio": "9699.47",
@@ -84,6 +96,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef56e",
     "codigo": "AH0005",
     "imagen": "/img/AH/ah0014.jpg",
     "precio": "9524.74",
@@ -91,6 +104,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef56f",
     "codigo": "AN6001",
     "imagen": "/img/AN/AN6001-carta.jpg",
     "precio": "1209.9",
@@ -98,6 +112,7 @@
     "cantidad": "90"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef570",
     "codigo": "AT1350",
     "imagen": "/img/AT/AT1350.jpg",
     "precio": "7903.14",
@@ -105,6 +120,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef571",
     "codigo": "AT1540",
     "imagen": "/img/AT/AT1515G.JPG",
     "precio": "12158.69",
@@ -112,6 +128,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef572",
     "codigo": "AT1550",
     "imagen": "/img/AT/AT1515G.JPG",
     "precio": "13171.91",
@@ -119,6 +136,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef573",
     "codigo": "AT6301",
     "imagen": "/img/AT/at6301_2.jpg",
     "precio": "8666.95",
@@ -126,6 +144,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef574",
     "codigo": "BO5518",
     "imagen": "/img/BO/bo5516.jpg",
     "precio": "5144.5",
@@ -133,6 +152,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef575",
     "codigo": "BR0202",
     "imagen": "/img/BR/bs0202_0209_1209.jpg",
     "precio": "13601.28",
@@ -140,6 +160,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef576",
     "codigo": "BS1315",
     "imagen": "/img/BS/BS1313-CARTA.JPG",
     "precio": "7431.12",
@@ -147,6 +168,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef577",
     "codigo": "BU0202",
     "imagen": "/img/BU/bu0000.jpg",
     "precio": "7281.18",
@@ -154,6 +176,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef578",
     "codigo": "BU1313",
     "imagen": "/img/BU/bu0000.jpg",
     "precio": "8509.33",
@@ -161,6 +184,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef579",
     "codigo": "BU7950",
     "imagen": "/img/BU/BU7950.JPG",
     "precio": "38468.93",
@@ -168,6 +192,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef57a",
     "codigo": "CD0005",
     "imagen": "/img/CD/CD0007G.jpg",
     "precio": "6583.05",
@@ -175,6 +200,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef57b",
     "codigo": "CD0350",
     "imagen": "/img/CD/CD0350-CARTA.jpg",
     "precio": "5531.42",
@@ -182,6 +208,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef57c",
     "codigo": "CD0922",
     "imagen": "/img/CD/CD0923-CARTA.jpg",
     "precio": "12599.95",
@@ -189,6 +216,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef57d",
     "codigo": "CD2012",
     "imagen": "/img/CD/CD2012G.jpg",
     "precio": "2346.26",
@@ -196,6 +224,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef57e",
     "codigo": "CD2013",
     "imagen": "/img/CD/CD2013G.jpg",
     "precio": "3394.09",
@@ -203,6 +232,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef57f",
     "codigo": "CD3650",
     "imagen": "/img/CD/CD3650G.jpg",
     "precio": "2124.38",
@@ -210,6 +240,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef580",
     "codigo": "CD3651",
     "imagen": "/img/CD/cd3649_50_51_52.jpg",
     "precio": "2707.91",
@@ -217,6 +248,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef581",
     "codigo": "CD3652",
     "imagen": "/img/CD/CD3652G.jpg",
     "precio": "3586.83",
@@ -224,6 +256,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef582",
     "codigo": "CE0016",
     "imagen": "/img/CE/cierre_fijo-carta_colores.jpg",
     "precio": "1981.44",
@@ -231,6 +264,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef583",
     "codigo": "CE0018",
     "imagen": "/img/CE/cierre_fijo-carta_colores.jpg",
     "precio": "2096.82",
@@ -238,6 +272,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef584",
     "codigo": "CE0030",
     "imagen": "/img/CE/cierre_fijo-carta_colores.jpg",
     "precio": "2943.86",
@@ -245,6 +280,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef585",
     "codigo": "CE0040",
     "imagen": "/img/CE/cierre_fijo-carta_colores.jpg",
     "precio": "3884.68",
@@ -252,6 +288,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef586",
     "codigo": "CE0045",
     "imagen": "/img/CE/cierre_fijo-carta_colores.jpg",
     "precio": "4247.03",
@@ -259,6 +296,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef587",
     "codigo": "CE0260",
     "imagen": "/img/CE/cierre_desmontables-carta_colores.jpg",
     "precio": "6402.24",
@@ -266,6 +304,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef588",
     "codigo": "CE0270",
     "imagen": "/img/CE/cierre_desmontables-carta_colores.jpg",
     "precio": "6772.26",
@@ -273,6 +312,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef589",
     "codigo": "CE0316",
     "imagen": "/img/CE/CE_METAL-CARTA.jpg ",
     "precio": "7914.33",
@@ -280,6 +320,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef58a",
     "codigo": "CI0001",
     "imagen": "/img/CI/CI0101-cartacolores-N1.jpg",
     "precio": "797.29",
@@ -287,6 +328,7 @@
     "cantidad": "5"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef58b",
     "codigo": "CI0002",
     "imagen": "/img/CI/CI0101-cartacolores-N2.jpg",
     "precio": "973.67",
@@ -294,6 +336,7 @@
     "cantidad": "5"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef58c",
     "codigo": "CI0003",
     "imagen": "/img/CI/CI0101-cartacolores-N3.jpg",
     "precio": "1041.57",
@@ -301,6 +344,7 @@
     "cantidad": "5"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef58d",
     "codigo": "CI0005",
     "imagen": "/img/CI/CI0101-cartacolores-N5.jpg ",
     "precio": "1431.19",
@@ -308,6 +352,7 @@
     "cantidad": "5"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef58e",
     "codigo": "CI0009",
     "imagen": "/img/CI/CI0101-cartacolores-N9.jpg",
     "precio": "2068.62",
@@ -315,6 +360,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef58f",
     "codigo": "CI0012",
     "imagen": "/img/CI/CI0101-cartacolores-N12.jpg ",
     "precio": "2672.18",
@@ -322,6 +368,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef590",
     "codigo": "CI0025",
     "imagen": "/img/CI/MOCHILERA-CARTA.jpg",
     "precio": "2553",
@@ -329,6 +376,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef591",
     "codigo": "CI0030",
     "imagen": "/img/CI/MOCHILERA-CARTA.jpg",
     "precio": "3034.78",
@@ -336,6 +384,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef592",
     "codigo": "CI0040",
     "imagen": "/img/CI/MOCHILERA-CARTA.jpg",
     "precio": "4021.36",
@@ -343,6 +392,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef593",
     "codigo": "CI0050",
     "imagen": "/img/CI/CI0101-cartacolores-N0.jpg",
     "precio": "2754.84",
@@ -350,6 +400,7 @@
     "cantidad": "6"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef594",
     "codigo": "CI0101",
     "imagen": "/img/CI/CI0101-cartacolores-N1.jpg",
     "precio": "1005.33",
@@ -357,6 +408,7 @@
     "cantidad": "10"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef595",
     "codigo": "CI0102",
     "imagen": "/img/CI/CI0101-cartacolores-N2.jpg",
     "precio": "1217.6",
@@ -364,6 +416,7 @@
     "cantidad": "6"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef596",
     "codigo": "CI0103",
     "imagen": "/img/CI/CI0101-cartacolores-N3.jpg",
     "precio": "1371.39",
@@ -371,6 +424,7 @@
     "cantidad": "6"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef597",
     "codigo": "CI0105",
     "imagen": "/img/CI/CI0101-cartacolores-N5.jpg",
     "precio": "1756.94",
@@ -378,6 +432,7 @@
     "cantidad": "6"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef598",
     "codigo": "CI0109",
     "imagen": "/img/CI/CI0101-cartacolores-N9.jpg",
     "precio": "2684.88",
@@ -385,6 +440,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef599",
     "codigo": "CI0112",
     "imagen": "/img/CI/CI0101-cartacolores-N12.jpg",
     "precio": "3547.91",
@@ -392,6 +448,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef59a",
     "codigo": "CI0117",
     "imagen": "/img/CI/VIVOS/CI0117-CARTA.jpg",
     "precio": "4295.84",
@@ -399,6 +456,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef59b",
     "codigo": "CI0121",
     "imagen": "/img/CI/VIVOS/CI0121-CARTA.jpg",
     "precio": "5655.3",
@@ -406,6 +464,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef59c",
     "codigo": "CI0301",
     "imagen": "/img/CI/ci0301[2].jpg",
     "precio": "914.88",
@@ -413,6 +472,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef59d",
     "codigo": "CI0303",
     "imagen": "/img/CI/ci0303[2].jpg",
     "precio": "1218.45",
@@ -420,6 +480,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef59e",
     "codigo": "CI0310",
     "imagen": "/img/CI/CI0310-CARTA.jpg",
     "precio": "3714.49",
@@ -427,6 +488,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef59f",
     "codigo": "CI0320",
     "imagen": "/img/CI/CI0310-CARTA.jpg",
     "precio": "3977.29",
@@ -434,6 +496,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5a0",
     "codigo": "CI0350",
     "imagen": "/img/CI/CI0310-CARTA.jpg",
     "precio": "3380.49",
@@ -441,6 +504,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5a1",
     "codigo": "CI1101",
     "imagen": "/img/CI/CI0101-cartacolores-N1x50.jpg",
     "precio": "3028.45",
@@ -448,6 +512,7 @@
     "cantidad": "6"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5a2",
     "codigo": "CI1120",
     "imagen": "/img/CI/CI1120G.JPG",
     "precio": "3317.81",
@@ -455,6 +520,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5a3",
     "codigo": "CI1125",
     "imagen": "/img/CI/CI1125G.JPG",
     "precio": "5550.38",
@@ -462,6 +528,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5a4",
     "codigo": "CI1252",
     "imagen": "/img/CI/CI1252-CARTA.jpg",
     "precio": "4734.89",
@@ -469,6 +536,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5a5",
     "codigo": "CI1271",
     "imagen": "/img/CI/CI1271-CARTA.jpg",
     "precio": "1207.11",
@@ -476,6 +544,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5a6",
     "codigo": "CI1273",
     "imagen": "/img/CI/CI1273-CARTA.jpg",
     "precio": "1815.82",
@@ -483,6 +552,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5a7",
     "codigo": "CI1275",
     "imagen": "/img/CI/CI1275-CARTA.jpg",
     "precio": "2419.95",
@@ -490,6 +560,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5a8",
     "codigo": "CI1279",
     "imagen": "/img/CI/CI1279-CARTA.jpg",
     "precio": "4113.29",
@@ -497,6 +568,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5a9",
     "codigo": "CI1925",
     "imagen": "/img/CI/CI1925G.JPG",
     "precio": "3821.46",
@@ -504,6 +576,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5aa",
     "codigo": "CI3008",
     "imagen": "/img/CI/CI3008-CARTA.jpg",
     "precio": "3113.39",
@@ -511,6 +584,7 @@
     "cantidad": "5"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ab",
     "codigo": "CI3015",
     "imagen": "/img/CI/CI3015-CARTA.jpg",
     "precio": "2267.15",
@@ -518,6 +592,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ac",
     "codigo": "CI3035",
     "imagen": "/img/CI/CI3035-CARTA.jpg",
     "precio": "3542.83",
@@ -525,6 +600,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ad",
     "codigo": "CI3925",
     "imagen": "/img/CI/CI3925G.jpg",
     "precio": "5012.04",
@@ -532,6 +608,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ae",
     "codigo": "CI4900",
     "imagen": "/img/CI/CI4900-CARTA.jpg",
     "precio": "1911.2",
@@ -539,6 +616,7 @@
     "cantidad": "5"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5af",
     "codigo": "CI4950",
     "imagen": "/img/CI/CI4950-CARTA.jpg",
     "precio": "2603.15",
@@ -546,6 +624,7 @@
     "cantidad": "5"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5b0",
     "codigo": "CI8425",
     "imagen": "/img/CI/CI8425G.jpg",
     "precio": "5011.69",
@@ -553,6 +632,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5b1",
     "codigo": "CI9523",
     "imagen": "/img/CI/CI9523G.JPG",
     "precio": "5027.14",
@@ -560,6 +640,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5b2",
     "codigo": "CI9725",
     "imagen": "/img/CI/CI9725.jpg",
     "precio": "5012.04",
@@ -567,6 +648,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5b3",
     "codigo": "CR2555",
     "imagen": "/img/CR/cr2777.jpg",
     "precio": "19053.87",
@@ -574,6 +656,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5b4",
     "codigo": "CR2666",
     "imagen": "/img/CR/cr2666.jpg",
     "precio": "20369.75",
@@ -581,6 +664,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5b5",
     "codigo": "CR4045",
     "imagen": "/img/CR/cr4045_70.jpg",
     "precio": "13276.3",
@@ -588,6 +672,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5b6",
     "codigo": "CS0006",
     "imagen": "/img/CS/CS0006G.jpg",
     "precio": "4415.75",
@@ -595,6 +680,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5b7",
     "codigo": "CS0734",
     "imagen": "/img/CS/CS0736G.jpeg",
     "precio": "3194.74",
@@ -602,6 +688,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5b8",
     "codigo": "CS0750",
     "imagen": "/img/CS/CS0750.JPG",
     "precio": "1973.22",
@@ -609,6 +696,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5b9",
     "codigo": "CS1003",
     "imagen": "/img/CS/cs1003.jpg",
     "precio": "4120.67",
@@ -616,6 +704,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ba",
     "codigo": "CS1150",
     "imagen": "/img/CS/cs1150.jpg",
     "precio": "1833.28",
@@ -623,6 +712,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5bb",
     "codigo": "CS1180",
     "imagen": "/img/CS/cs1180.jpg",
     "precio": "3839.27",
@@ -630,6 +720,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5bc",
     "codigo": "CS4400",
     "imagen": "/img/CS/cs4400.jpg",
     "precio": "1088.25",
@@ -637,6 +728,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5bd",
     "codigo": "CS5001",
     "imagen": "/img/CS/cs5001.jpg",
     "precio": "4210.8",
@@ -644,6 +736,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5be",
     "codigo": "CS5277",
     "imagen": "/img/CS/cs5277.jpg",
     "precio": "2136.57",
@@ -651,6 +744,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5bf",
     "codigo": "CS8191",
     "imagen": "/img/CS-BROCHE/cs0911.jpg",
     "precio": "13765.35",
@@ -658,6 +752,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5c0",
     "codigo": "CS8192",
     "imagen": "/img/CS-BROCHE/cs0911.jpg",
     "precio": "16064.54",
@@ -665,6 +760,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5c1",
     "codigo": "CS9600",
     "imagen": "/img/CS/cs9600.jpg",
     "precio": "1399.81",
@@ -672,6 +768,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5c2",
     "codigo": "CS9602",
     "imagen": "/img/CS/cs9602.jpg",
     "precio": "4741.54",
@@ -679,6 +776,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5c3",
     "codigo": "EL0003",
     "imagen": "/img/EL/EL0003G.jpg",
     "precio": "5475.36",
@@ -686,6 +784,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5c4",
     "codigo": "EL0531",
     "imagen": "/img/EL/el0531.jpg",
     "precio": "5788.33",
@@ -693,6 +792,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5c5",
     "codigo": "EL0548",
     "imagen": "/img/EL/el0548.jpg",
     "precio": "6357.27",
@@ -700,6 +800,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5c6",
     "codigo": "EL3012",
     "imagen": "/img/EL/el3012.jpg",
     "precio": "3848.32",
@@ -707,6 +808,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5c7",
     "codigo": "EL3016",
     "imagen": "/img/EL/el3012.jpg",
     "precio": "4440.85",
@@ -714,6 +816,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5c8",
     "codigo": "EL3815",
     "imagen": "/img/EL/el8220.jpg",
     "precio": "3563.41",
@@ -721,6 +824,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5c9",
     "codigo": "EL3820",
     "imagen": "/img/EL/el8220.jpg",
     "precio": "4342.13",
@@ -728,6 +832,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ca",
     "codigo": "EL3825",
     "imagen": "/img/EL/el8220.jpg",
     "precio": "5630.34",
@@ -735,6 +840,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5cb",
     "codigo": "EL8028",
     "imagen": "/img/EL/EL8028-6G.JPG",
     "precio": "5177.7",
@@ -742,6 +848,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5cc",
     "codigo": "EL8930",
     "imagen": "/img/EL/el8930.jpg",
     "precio": "3200.29",
@@ -749,6 +856,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5cd",
     "codigo": "EN3012",
     "imagen": "/img/EN/en3012_22_elastico.jpg",
     "precio": "4149.47",
@@ -756,6 +864,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ce",
     "codigo": "EN3016",
     "imagen": "/img/EN/en3012_22_elastico.jpg",
     "precio": "4817.69",
@@ -763,6 +872,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5cf",
     "codigo": "FB0001",
     "imagen": "/img/CD/FB0001G.jpg",
     "precio": "14273.56",
@@ -770,6 +880,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5d0",
     "codigo": "FB0012",
     "imagen": "/img/CD/FB0012G.JPG",
     "precio": "7168.02",
@@ -777,6 +888,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5d1",
     "codigo": "FB0088",
     "imagen": "/img/CD/fb0088.jpg",
     "precio": "4878.9",
@@ -784,6 +896,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5d2",
     "codigo": "FB0262",
     "imagen": "/img/FB/FB0262.jpg",
     "precio": "1296.01",
@@ -791,6 +904,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5d3",
     "codigo": "FB0275",
     "imagen": "/img/FB/FLECOS-SEDA-CARTA.jpg",
     "precio": "10992.38",
@@ -798,6 +912,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5d4",
     "codigo": "FB0281",
     "imagen": "/img/FB/FLECOS-SEDA-CARTA.jpg",
     "precio": "29168.21",
@@ -805,6 +920,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5d5",
     "codigo": "FB0815",
     "imagen": "/img/PU/FB0815.jpg",
     "precio": "5103.59",
@@ -812,6 +928,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5d6",
     "codigo": "FB0816",
     "imagen": "/img/PU/FB0816G.jpg",
     "precio": "2765.49",
@@ -819,6 +936,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5d7",
     "codigo": "GP0640",
     "imagen": "/img/GP/GP0640-CARTA.jpg",
     "precio": "6147.49",
@@ -826,6 +944,7 @@
     "cantidad": "5"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5d8",
     "codigo": "HI0040",
     "imagen": "/img/HI/HI0040G.JPG",
     "precio": "3986.93",
@@ -833,6 +952,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5d9",
     "codigo": "HI0311",
     "imagen": "/img/HI/HI0311-CARTA.jpg",
     "precio": "2280.85",
@@ -840,20 +960,23 @@
     "cantidad": "12"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5da",
     "codigo": "HI0451",
     "imagen": "/img/HI/HI0450G.jpg",
     "precio": "43830.75",
     "titulo": "HILO GUTTERMAN 450MTS X20 UN COLOR",
-    "cantidad": "0,5"
+    "cantidad": "0.5"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5db",
     "codigo": "HI1451",
     "imagen": "/img/HI/hi1451.jpg",
     "precio": "40180.64",
     "titulo": "HILO GUTTERMAN 450MTS X 20 UN BLANCO",
-    "cantidad": "0,5"
+    "cantidad": "0.5"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5dc",
     "codigo": "HI2500",
     "imagen": "/img/HI/hi2500.jpg",
     "precio": "5480.37",
@@ -861,6 +984,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5dd",
     "codigo": "HI2501",
     "imagen": "/img/HI/HI2501.jpg",
     "precio": "6138.02",
@@ -868,6 +992,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5de",
     "codigo": "HI8888",
     "imagen": "/img/HI/HI8888.jpg",
     "precio": "3899.21",
@@ -875,6 +1000,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5df",
     "codigo": "HO7000",
     "imagen": "/img/HO/ho7000.jpg",
     "precio": "10875.44",
@@ -882,6 +1008,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5e0",
     "codigo": "HO7000",
     "imagen": "/img/HO/ho7000.jpg",
     "precio": "10875.44",
@@ -889,6 +1016,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5e1",
     "codigo": "HO8001",
     "imagen": "/img/HO/ho8001_2.jpg",
     "precio": "14910.44",
@@ -896,6 +1024,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5e2",
     "codigo": "MH1160",
     "imagen": "/img/MH/MH1160.jpg",
     "precio": "4393.39",
@@ -903,6 +1032,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5e3",
     "codigo": "NA1506",
     "imagen": "/img/NA/na1506[2].jpg",
     "precio": "2546.31",
@@ -910,6 +1040,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5e4",
     "codigo": "NA1565",
     "imagen": "/img/NA/na1565.jpg",
     "precio": "2839.65",
@@ -917,6 +1048,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5e5",
     "codigo": "PA0001",
     "imagen": "/img/PA/pa0001.jpg",
     "precio": "11696.67",
@@ -924,6 +1056,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5e6",
     "codigo": "PA0005",
     "imagen": "/img/PA/pa0005.jpg",
     "precio": "12431.13",
@@ -931,6 +1064,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5e7",
     "codigo": "PE0198",
     "imagen": "/img/PE/pe0198.jpg",
     "precio": "1309.7",
@@ -938,6 +1072,7 @@
     "cantidad": "6"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5e8",
     "codigo": "PE0200",
     "imagen": "/img/PE/pe0200.jpg",
     "precio": "2020.91",
@@ -945,6 +1080,7 @@
     "cantidad": "10"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5e9",
     "codigo": "PE0202",
     "imagen": "/img/PE/pe202_3.jpg",
     "precio": "6089.88",
@@ -952,6 +1088,7 @@
     "cantidad": "5"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ea",
     "codigo": "PE1718",
     "imagen": "/img/PE/pe1718.jpg",
     "precio": "1367.61",
@@ -959,6 +1096,7 @@
     "cantidad": "6"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5eb",
     "codigo": "PE3030",
     "imagen": "/img/PE/PE3030G.JPG",
     "precio": "633.58",
@@ -966,6 +1104,7 @@
     "cantidad": "12"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ec",
     "codigo": "PE8001",
     "imagen": "/img/PE/pe8001.jpg",
     "precio": "12315.19",
@@ -973,6 +1112,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ed",
     "codigo": "PE8002",
     "imagen": "/img/PE/pe8002[2].jpg",
     "precio": "11476.11",
@@ -980,6 +1120,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ee",
     "codigo": "PU0201",
     "imagen": "/img/PU/PU0201G.jpg",
     "precio": "2263.85",
@@ -987,6 +1128,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ef",
     "codigo": "PU0203",
     "imagen": "/img/PU/PU0203G.jpg",
     "precio": "3895.12",
@@ -994,6 +1136,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5f0",
     "codigo": "PY1097",
     "imagen": "/img/PY/PY1097.JPG",
     "precio": "9617.47",
@@ -1001,6 +1144,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5f1",
     "codigo": "PY2098",
     "imagen": "/img/PY/PY2098.JPG",
     "precio": "7846.12",
@@ -1008,6 +1152,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5f2",
     "codigo": "PY2105",
     "imagen": "/img/PY/PY2105.JPG",
     "precio": "6561.83",
@@ -1015,6 +1160,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5f3",
     "codigo": "RC0568",
     "imagen": "/img/RC/RC0568.JPG",
     "precio": "5618.6",
@@ -1022,6 +1168,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5f4",
     "codigo": "RC0591",
     "imagen": "/img/RC/RC0591.JPG",
     "precio": "2919.22",
@@ -1029,6 +1176,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5f5",
     "codigo": "RC0592",
     "imagen": "/img/RC/RC0592.JPG",
     "precio": "4419.54",
@@ -1036,6 +1184,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5f6",
     "codigo": "RC0902",
     "imagen": "/img/RC/RC0902G.JPG",
     "precio": "4563.88",
@@ -1043,6 +1192,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5f7",
     "codigo": "RE0001",
     "imagen": "/img/RE/mendafacil-carta.jpg",
     "precio": "2526.48",
@@ -1050,6 +1200,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5f8",
     "codigo": "RE0002",
     "imagen": "/img/RE/mendafacil-carta.jpg",
     "precio": "4579.25",
@@ -1057,6 +1208,7 @@
     "cantidad": "6"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5f9",
     "codigo": "RE0205",
     "imagen": "/img/RE/RE0305-CARTA.jpg",
     "precio": "5052.96",
@@ -1064,6 +1216,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5fa",
     "codigo": "RE0305",
     "imagen": "/img/RE/RE0305-CARTA.jpg",
     "precio": "5052.96",
@@ -1071,6 +1224,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5fb",
     "codigo": "RE1222",
     "imagen": "/img/RE/RE1222-CARTA.jpg",
     "precio": "5176.84",
@@ -1078,6 +1232,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5fc",
     "codigo": "RE1224",
     "imagen": "/img/RE/RE1224-CARTA.jpg",
     "precio": "5672.86",
@@ -1085,6 +1240,7 @@
     "cantidad": "6"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5fd",
     "codigo": "RE1226",
     "imagen": "/img/RE/RE1226-CARTA.jpg",
     "precio": "5176.84",
@@ -1092,6 +1248,7 @@
     "cantidad": "6"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5fe",
     "codigo": "TJ0003",
     "imagen": "/img/TJ/TJ0003.jpg",
     "precio": "957.24",
@@ -1099,6 +1256,7 @@
     "cantidad": "3"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef5ff",
     "codigo": "TJ4506",
     "imagen": "/img/TJ/TJ4506.jpg",
     "precio": "14011.35",
@@ -1106,6 +1264,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef600",
     "codigo": "TJ9006",
     "imagen": "/img/TJ/TJ9006.JPG",
     "precio": "2586.76",
@@ -1113,6 +1272,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef601",
     "codigo": "TJ9007",
     "imagen": "/img/TJ/TJ9007.JPG",
     "precio": "2940.31",
@@ -1120,6 +1280,7 @@
     "cantidad": "2"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef602",
     "codigo": "VS0006",
     "imagen": "/img/VS/INDUMENTARIA/vs0005_6_7.jpg",
     "precio": "2402.77",
@@ -1127,6 +1288,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef603",
     "codigo": "VS0100",
     "imagen": "/img/VS/INDUMENTARIA/vs0100_0101.jpg",
     "precio": "3772.18",
@@ -1134,6 +1296,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef604",
     "codigo": "VS0900",
     "imagen": "/img/RC/RC0190.JPG",
     "precio": "7521.98",
@@ -1141,6 +1304,7 @@
     "cantidad": "1"
   },
   {
+    "_id": "6a6b7fee96a91d07bd8ef605",
     "codigo": "VS1000",
     "imagen": "/img/VS/vs1000.jpg",
     "precio": "10246.33",
@@ -1148,9 +1312,10 @@
     "cantidad": "3"
   },
   {
-    "codigo": "el6520",
+    "_id": "6a6b7fee96a91d07bd8ef606",
+    "codigo": "EL6520",
     "imagen": "/img/EL/BRADBURY.JPG",
-    "precio": "2949,16",
+    "precio": "2949.16",
     "titulo": "ELASTICO POLIESTER X 25 MTS",
     "cantidad": "4"
   }

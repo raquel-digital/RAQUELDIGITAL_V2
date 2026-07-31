@@ -1,7 +1,7 @@
 const model = require("./model");
 
 const store = {
-    write: async function (data) {
+        write: async function (data) {
             const articuloExistente = await model.findOne({ tipo: data.tipo });
             
             if (articuloExistente) {
@@ -26,7 +26,16 @@ const store = {
                 { $set: { 'presupuesto.$.codigo': newCode } }
               );
             return 
+        },
+        update: async function (data) {            
+            
+            if(data.presupuesto == undefined){
+                return
+            }
+
+            await model.replaceOne({ tipo: data.tipo }, data);
         }
+
  }
  
  module.exports = store;
