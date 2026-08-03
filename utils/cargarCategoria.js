@@ -123,6 +123,13 @@ async function loadCateg(query){
              return { succes: true, result: result } 
             }
       }
+      if(categ == "dtf"){        
+            const categFilter = ["AK"]
+            const result = arts.filter(element => categFilter.includes(element.categorias));
+            if(result.length > 0){
+             return { succes: true, result: result } 
+            }
+      }
       if(categ == "elásticos"){        
        //const result = await filtrar(["EL","EN"]);
        const categFilter = ["EL","EN"]

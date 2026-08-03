@@ -1,3 +1,9 @@
+//Hace el llamado a la base de articulos para levantar los tags de categoria
+// en caso de una nueva categoria o de incorporar un nuevo codigo a la base 
+// hay que inscribirlo en este seccion
+
+//ACLARACION !!!!!!!!!IMPORTANTE!!! LOS DTFS TIENEN UN COMPORTAMIENTO DE EXEPCION
+
 const fs = require("fs");
 const store = require("../api/arts/store")
 
@@ -17,6 +23,7 @@ async function loadCateg(){
     await filtrar(["CD","TE"], "cordones", artBase);
     await filtrar(["CR"], "cortineria", artBase);
     await filtrar(["CS","CS-BROCHE","TR"], "costura", artBase);
+    await filtrar(["AK"], "dtf", artBase);
     await filtrar(["EL","EN"], "elásticos", artBase);
     await filtrar(["PF"], "flecos", artBase);
     await filtrar(["FL","FR"], "flores", artBase);
@@ -40,7 +47,16 @@ async function loadCateg(){
   return  console.log("Categorias Cargadas")
 }
 
+function categDFT(arr, categ, artBase) {
+    //
+    const dtefes = artBase.filter(e => e.codigo.includes("AK")).map(e => e.codigo)
+    console.log(dtefes)
+}
+
 async function filtrar(arr, categ, artBase){
+    //ACLARACION !!!!!!!!!IMPORTANTE!!! LOS DTFS TIENEN UN COMPORTAMIENTO DE EXEPCION
+    //Los tags se escriben a mano en el archivo dtf.json (en system categ)
+
     const categArr = {}    
 
     for(const art of artBase){
