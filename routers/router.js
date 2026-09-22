@@ -44,7 +44,8 @@ router.get("/", (req,res) => {
               login: {
                   isLog: login,
                   pedidos: pedidos
-              }
+              },
+              resultBusqueda: null
             });
       })()        
   }else{
@@ -56,7 +57,8 @@ router.get("/", (req,res) => {
           login: {
               isLog: login,
               pedidos: pedidos
-          }
+          },
+          resultBusqueda: null
         });
   }
 })
@@ -109,7 +111,8 @@ router.get("/categoria/", async (req, res) => {
             login: {
                 isLog: login,
                 pedidos: pedidos
-            }
+            },
+            resultBusqueda: null
           });
     })()        
 }else{
@@ -117,7 +120,8 @@ router.get("/categoria/", async (req, res) => {
       categRes: true, 
       faq: false,
       iphone: esIPhone,
-      login: req.oidc.isAuthenticated() ? true : false,    
+      login: req.oidc.isAuthenticated() ? true : false,  
+      resultBusqueda: null  
     });  
   }
 })
@@ -132,65 +136,89 @@ router.get('/generar-pedidos', (req, res) => {
     data: "pedidos",
     faq: false,
     iphone: esIPhone,
-    login: req.oidc.isAuthenticated() ? true : false
+    login: req.oidc.isAuthenticated() ? true : false,
+    resultBusqueda: null
   });
 });
 
 //-----BUSCADOR-----
-router.get("/buscador", buscadorLimiter, (req, res) => {
+// router.get("/buscador", buscadorLimiter, async (req, res) => {
+//   try {
+//     const esIPhone = verAgente(req);
+//     const login = req.oidc.isAuthenticated();
+//     const queryRaw = req.query.buscar || "";
+//     const buscar = queryRaw.trim().toLowerCase();
+
+//     // 1. FILTRO ANTI-BOTS Y VALIDACIÓN
+//     const REGEX_BUSQUEDA_VALIDA = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s\-_]{2,40}$/;
+    
+//     const esSpam = buscar.length === 0 || 
+//                    buscar.length > 50 || 
+//                    buscar.includes('@') || 
+//                    buscar.includes('http') || 
+//                    buscar.includes('://') ||
+//                    !REGEX_BUSQUEDA_VALIDA.test(buscar);
+
+//     let resultBusqueda = [];
+
+//     // 2. EJECUCIÓN DE BÚSQUEDA SOLO SI ES VÁLIDA
+//     if (!esSpam) {
+//       resultBusqueda = await controller.buscarArticulo(buscar);
+
+//       // Intento sin tildes si la primera búsqueda no devolvió nada
+//       if (!resultBusqueda || resultBusqueda.length === 0) {
+//         const sinTilde = buscar.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+//         resultBusqueda = await controller.buscarArticulo(sinTilde);
+//       }
+//     }
+
+//     // 3. MANEJO DE SESIÓN Y PEDIDOS (Igual que en /categoria)
+//     let pedidos = null;
+//     // if (login) {
+//     //   pedidos = await authController.leer(req.oidc.user);
+//     // }
+//     console.log(resultBusqueda)
+//     // 4. RENDERIZADO ÚNICO DIRECTO A EJS
+//     return res.render('index', {
+//       categRes: true,
+//       faq: false,
+//       iphone: esIPhone,
+//       busquedaResult: { 
+//         result: resultBusqueda || [], 
+//         query: buscar 
+//       },
+//       login: login ? {
+//         isLog: true,
+//         pedidos: pedidos
+//       } : false,
+//       resultBusqueda: resultBusqueda
+//     });
+
+//   } catch (error) {
+//     console.error("Error en la ruta /buscador:", error);
+//     return res.status(500).render('index', {
+//       categRes: false,
+//       faq: false,
+//       iphone: verAgente(req),
+//       busquedaResult: { result: [], query: "" },
+//       login: req.oidc.isAuthenticated() ? { isLog: true, pedidos: null } : false,
+//       resultBusqueda: null
+//     });
+//   }
+// });
+router.get("/buscador", (req, res) => {
   const esIPhone = verAgente(req);
-  const queryRaw = req.query.buscar || "";
-  const buscar = queryRaw.trim().toLowerCase();
+  const login = req.oidc.isAuthenticated();
 
-  // 1. FILTRO ANTI-BOTS (Descarte inmediato)
-  const esSpam = buscar.length === 0 || 
-                 buscar.length > 50 || 
-                 buscar.includes('@') || 
-                 buscar.includes('http') || 
-                 buscar.includes('://');
-
-  if (esSpam) {
-    return 
-  }
-  // Filtro anti-bots
-  const REGEX_BUSQUEDA_VALIDA = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s\-_]{2,40}$/;
-        if (!REGEX_BUSQUEDA_VALIDA.test(buscar) || buscar.includes('@') || buscar.includes('http')) {
-            return 
-        }      
-
-
-  let io = require('../io.js').get();  
-
-  // Manejador único por conexión para evitar interferencias
-  const onConnect = async (socket) => {
-    // Si la petición actual no coincide con lo que el cliente espera, no emitimos a todos
-    if (esSpam) {
-      socket.emit("resultado-vacio");
-      return;
-    }
-
-    let result = await controller.buscarArticulo(buscar);
-
-    if (result.length == 0) {
-      const sinTilde = buscar.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-      result = await controller.buscarArticulo(sinTilde);
-    }
-
-    // Emitimos SOLO al socket que se acaba de conectar para esta petición
-    socket.emit("resultado-busqueda", { result: result, query: buscar });
-  };
-
-  // Escuchamos una sola vez y Removemos listeners antiguos para evitar cruces
-  io.once('connect', onConnect);
-
-  res.render('index', {
-    categRes: true, 
-    faq: false, 
+  // Renderiza la vista de inmediato con resultados vacíos sin tocar base de datos ni sockets
+  return res.render('index', {
+    categRes: true,
+    faq: false,
     iphone: esIPhone,
-    login: req.oidc.isAuthenticated() ? true : false,    
-  });  
+    busquedaResult: { result: [], query: "" },
+    login: login ? { isLog: true, pedidos: null } : false
+  });
 });
-
 
 
 router.get('/preguntas-frecuentes', function (req, res, next) {
@@ -199,7 +227,7 @@ router.get('/preguntas-frecuentes', function (req, res, next) {
   // Verificar si la cadena del agente de usuario contiene "iPhone"
   const esIPhone = verAgente(req)//anterior userAgent.includes('iPhone');
 
-  res.render('index', { faq: true, iphone: esIPhone, categRes: false, data: " ", login: false });
+  res.render('index', { faq: true, iphone: esIPhone, categRes: false, data: " ", login: false, resultBusqueda: null });
 });
 
 router.get('/profile', requiresAuth(), function (req, res, next) {

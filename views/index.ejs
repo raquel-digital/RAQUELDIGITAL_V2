@@ -111,10 +111,12 @@
 			<% } %> 
             <!--  CONTENEDOR PRINCIPAL  -->
 			<div class="contenedor-articulos"> 
+				
 				               
-                <!-- <% if (categRes) { %> -->
+                <% if (typeof busquedaResult !== 'undefined' && busquedaResult.result && busquedaResult.result.length > 0) { %>
+                   <h1>ACA ESCRIBIMOS LOS RESULTADOS DE LA BUSQUEDA</h1>                
                    
-                <!-- <% } else { %>  -->
+                <% } else { %>
                     
 				<div class="card-articulo card-art-sk">
 					<div class="contenedor-img-articulo-sk"></div>
@@ -236,9 +238,9 @@
 						<button type="button" class="btn-primario-sk"></button>
 					</div>
 				</div>
-                <!-- <% } %> -->
+                <% } %>
                 <!-- PREGUNTA FRECUENTES -->
-                
+                  
 			</div>
             <!-- FIN CONTENEDOR PRINCIPAL -->
             <% if (categRes) { %>
