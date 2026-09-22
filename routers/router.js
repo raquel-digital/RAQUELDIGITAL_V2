@@ -137,63 +137,38 @@ router.get('/generar-pedidos', (req, res) => {
 });
 
 //-----BUSCADOR-----
-router.get("/buscador", buscadorLimiter, async (req, res) => {
-  const esIPhone = verAgente(req);
-  const rawQuery = req.query.buscar;
+// 1. Regex para validar búsquedas razonables (solo letras, números y espacios)
+const REGEX_BUSQUEDA_VALIDA = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s\-_]{2,40}$/;
 
-  // 1. Validar que exista el parámetro de búsqueda
-  if (!rawQuery || typeof rawQuery !== 'string' || rawQuery.trim().length === 0) {
-    return res.render('index', {
-      categRes: true,
-      faq: false,
-      iphone: esIPhone,
-      login: req.oidc.isAuthenticated(),
-      resultado: [],
-      query: ""
-    });
-  }
+router.get('/buscador', async (req, res) => {
+    try {
+        const query = (req.query.buscar || '').trim();
 
-  // 2. BLOQUEO DE CARACTERES ASIÁTICOS/CHINOS (Rango Unicode CJK)
-  // Si contiene caracteres chinos/japoneses/coreanos, aborta sin tocar la base de datos
-  const tieneCaracteresAsiaticos = /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uffef\u4e00-\u9faf\u2600-\u26ff]/;
-  if (tieneCaracteresAsiaticos.test(rawQuery)) {
-    return res.render('index', {
-      categRes: true,
-      faq: false,
-      iphone: esIPhone,
-      login: req.oidc.isAuthenticated(),
-      resultado: [],
-      query: rawQuery.slice(0, 30) // Cortar para evitar mostrar textos gigantes
-    });
-  }
+        // VALIDACIÓN 1: Búsqueda vacía o extremadamente corta
+        if (!query || query.length < 2) {
+            return res.render('buscador', { articulos: [], buscar: query });
+        }
 
-  // 3. Limpieza y sanitización de la búsqueda
-  const buscar = rawQuery.toLowerCase().trim().slice(0, 60); // Limite de 60 caracteres
-  let result = [];
+        // VALIDACIÓN 2: Bloqueo de bots por caracteres inválidos, mails o comandos
+        if (!REGEX_BUSQUEDA_VALIDA.test(query) || query.includes('@') || query.includes('http')) {
+            // Se responde rápido con un array vacío SIN consultar MongoDB
+            return res.render('buscador', { articulos: [], buscar: query });
+        }
 
-  try {
-    // Primera búsqueda
-    result = await controller.buscarArticulo(buscar);
+        // CONSULTA MONGO: Limitar a máximo 50 resultados para no saturar RAM
+        const articulos = await Articulo.find({
+            $text: { $search: query }
+        })
+        .select('nombre codigo precio imagen categoria') // Traer solo campos necesarios
+        .limit(50)
+        .lean(); // .lean() devuelve JSON puro y consume 10 veces menos RAM que documentos de Mongoose
 
-    // Segunda búsqueda sin tildes si la primera no trajo nada
-    if (!result || result.length === 0) {
-      const sinTilde = buscar.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-      result = await controller.buscarArticulo(sinTilde);
+        return res.render('buscador', { articulos, buscar: query });
+
+    } catch (error) {
+        console.error("Error en buscador:", error);
+        return res.status(500).send("Error interno");
     }
-  } catch (error) {
-    console.error("Error en búsqueda:", error);
-    result = [];
-  }
-
-  // 4. Renderizar directamente la vista con los resultados (sin listeners de socket colgados)
-  res.render('index', {
-    categRes: true,
-    faq: false,
-    iphone: esIPhone,
-    login: req.oidc.isAuthenticated(),
-    resultado: result || [],
-    query: buscar
-  });
 });
 
 
