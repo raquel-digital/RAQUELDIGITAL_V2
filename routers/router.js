@@ -137,44 +137,50 @@ router.get('/generar-pedidos', (req, res) => {
 });
 
 //-----BUSCADOR-----
-// 1. Regex para validar búsquedas razonables (solo letras, números y espacios)
-const REGEX_BUSQUEDA_VALIDA = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s\-_]{2,40}$/;
+router.get("/buscador", buscadorLimiter, (req, res) => {
+  // DETECTAR IPHONE  
+  const esIPhone = verAgente(req);
 
-router.get('/buscador', buscadorLimiter, async (req, res) => {
-   try {
-        const query = (req.query.buscar || '').trim();
+  const queryRaw = req.query.buscar || "";
+  const buscar = queryRaw.trim().toLowerCase();
 
-        // 1. Si está vacío o es muy corto, no consulta a la base de datos
-        if (!query || query.length < 2) {
-            return res.render('buscador', { articulos: [], buscar: query });
+  // 1. FILTRO ANTI-BOTS: Si viene vacío, muy largo (>50), o tiene mails/links, no registramos el socket
+  const esSpam = buscar.length === 0 || 
+                 buscar.length > 50 || 
+                 buscar.includes('@') || 
+                 buscar.includes('http') || 
+                 buscar.includes('://');
+
+  let io = require('../io.js').get();  
+  
+  io.once('connect', socket => {
+    (async () => {      
+        // Si la búsqueda es spam o está vacía, emitimos vacío de inmediato sin tocar MongoDB
+        if (esSpam) {
+          socket.emit("resultado-vacio");
+          return;
         }
 
-        // 2. Filtro de seguridad para descartar links, emails o caracteres raros
-        const REGEX_BUSQUEDA_VALIDA = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s\-_]{2,40}$/;
-        if (!REGEX_BUSQUEDA_VALIDA.test(query) || query.includes('@') || query.includes('http')) {
-            return res.render('buscador', { articulos: [], buscar: query });
+        // Búsqueda normal usando tu controller
+        let result = await controller.buscarArticulo(buscar); 
+
+        if (result.length == 0) {
+          const sinTilde = buscar.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+          result = await controller.buscarArticulo(sinTilde);
         }
 
-        // 3. Búsqueda directa por Regex en MongoDB (Código o Nombre)
-        // Se busca el término ignorando mayúsculas/minúsculas ('i')
-        const regexTermino = new RegExp(query, 'i');
+        const data = { result: result, query: buscar };        
+        socket.emit("resultado-busqueda", data);
+        return;
+    })();
+  });   
 
-        const articulos = await Articulo.find({
-            $or: [
-                { codigo: regexTermino },
-                { nombre: regexTermino }
-            ]
-        })
-        .limit(50)
-        .lean();
-
-        return res.render('buscador', { articulos, buscar: query });
-
-    } catch (error) {
-        // Esto imprime el error exacto en los logs de Heroku para diagnóstico
-        console.error("Error exacto en buscador:", error);
-        return res.status(500).send("Error interno");
-    }
+  res.render('index', {
+    categRes: true, 
+    faq: false, 
+    iphone: esIPhone,
+    login: req.oidc.isAuthenticated() ? true : false,    
+  });  
 });
 
 
