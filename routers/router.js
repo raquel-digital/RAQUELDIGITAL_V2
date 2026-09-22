@@ -150,12 +150,7 @@ router.get("/buscador", buscadorLimiter, (req, res) => {
                  buscar.includes('://');
 
   if (esSpam) {
-    return res.render('index', {
-      categRes: true, 
-      faq: false, 
-      iphone: esIPhone,
-      login: req.oidc.isAuthenticated() ? true : false,    
-    });
+    return 
   }
 
 
