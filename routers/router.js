@@ -140,33 +140,39 @@ router.get('/generar-pedidos', (req, res) => {
 // 1. Regex para validar búsquedas razonables (solo letras, números y espacios)
 const REGEX_BUSQUEDA_VALIDA = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s\-_]{2,40}$/;
 
-router.get('/buscador', async (req, res) => {
-    try {
+router.get('/buscador', buscadorLimiter, async (req, res) => {
+   try {
         const query = (req.query.buscar || '').trim();
 
-        // VALIDACIÓN 1: Búsqueda vacía o extremadamente corta
+        // 1. Si está vacío o es muy corto, no consulta a la base de datos
         if (!query || query.length < 2) {
             return res.render('buscador', { articulos: [], buscar: query });
         }
 
-        // VALIDACIÓN 2: Bloqueo de bots por caracteres inválidos, mails o comandos
+        // 2. Filtro de seguridad para descartar links, emails o caracteres raros
+        const REGEX_BUSQUEDA_VALIDA = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s\-_]{2,40}$/;
         if (!REGEX_BUSQUEDA_VALIDA.test(query) || query.includes('@') || query.includes('http')) {
-            // Se responde rápido con un array vacío SIN consultar MongoDB
             return res.render('buscador', { articulos: [], buscar: query });
         }
 
-        // CONSULTA MONGO: Limitar a máximo 50 resultados para no saturar RAM
+        // 3. Búsqueda directa por Regex en MongoDB (Código o Nombre)
+        // Se busca el término ignorando mayúsculas/minúsculas ('i')
+        const regexTermino = new RegExp(query, 'i');
+
         const articulos = await Articulo.find({
-            $text: { $search: query }
+            $or: [
+                { codigo: regexTermino },
+                { nombre: regexTermino }
+            ]
         })
-        .select('nombre codigo precio imagen categoria') // Traer solo campos necesarios
         .limit(50)
-        .lean(); // .lean() devuelve JSON puro y consume 10 veces menos RAM que documentos de Mongoose
+        .lean();
 
         return res.render('buscador', { articulos, buscar: query });
 
     } catch (error) {
-        console.error("Error en buscador:", error);
+        // Esto imprime el error exacto en los logs de Heroku para diagnóstico
+        console.error("Error exacto en buscador:", error);
         return res.status(500).send("Error interno");
     }
 });
