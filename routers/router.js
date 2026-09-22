@@ -152,6 +152,11 @@ router.get("/buscador", buscadorLimiter, (req, res) => {
   if (esSpam) {
     return 
   }
+  // Filtro anti-bots
+  const REGEX_BUSQUEDA_VALIDA = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s\-_]{2,40}$/;
+        if (!REGEX_BUSQUEDA_VALIDA.test(buscar) || buscar.includes('@') || buscar.includes('http')) {
+            return 
+        }      
 
 
   let io = require('../io.js').get();  
