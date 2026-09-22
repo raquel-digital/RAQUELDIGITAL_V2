@@ -15,6 +15,7 @@
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "express-openid-connect": "^2.16.0",
+    "express-rate-limit": "^8.7.0",
     "heroku": "^7.68.0",
     "mercadopago": "^1.5.12",
     "mongoose": "^6.12.0",
@@ -23,7 +24,6 @@
     "nodemon": "^2.0.20",
     "socket.io": "^4.7.2"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/raquel-digital/raquel-digital-microstio.git"
@@ -34,7 +34,7 @@
   "engines": {
     "node": "20.11.1",
     "npm": "10.5.0"
-  },  
+  },
   "homepage": "https://github.com/raquel-digital/raquel-digital-microstio#readme",
   "description": ""
 }

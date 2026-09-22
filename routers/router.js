@@ -8,6 +8,17 @@ const { requiresAuth } = require('express-openid-connect');
 const middleware =  require("../utils/middleware")
 
 
+//fix de ataque a mi buscador
+const rateLimit = require('express-rate-limit');
+
+// 1. Definís el limitador
+const buscadorLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minuto
+  max: 10, // Máximo 10 búsquedas por IP por minuto
+  message: 'Demasiadas búsquedas desde esta IP, reintenta en un minuto.'
+});
+
+
 router.get("/presupuestos", (req,res) => {
   res.sendFile(path.resolve("./public/presupuestos.html"))
 })
@@ -126,7 +137,7 @@ router.get('/generar-pedidos', (req, res) => {
 });
 
 //-----BUSCADOR-----
-router.get("/buscador", (req, res) => {
+router.get("/buscador", buscadorLimiter, (req, res) => {
   //DETECTAR IPHONE  
   const esIPhone = verAgente(req)
 
