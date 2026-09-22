@@ -149,6 +149,16 @@ router.get("/buscador", buscadorLimiter, (req, res) => {
                  buscar.includes('http') || 
                  buscar.includes('://');
 
+  if (esSpam) {
+    return res.render('index', {
+      categRes: true, 
+      faq: false, 
+      iphone: esIPhone,
+      login: req.oidc.isAuthenticated() ? true : false,    
+    });
+  }
+
+
   let io = require('../io.js').get();  
 
   // Manejador único por conexión para evitar interferencias
