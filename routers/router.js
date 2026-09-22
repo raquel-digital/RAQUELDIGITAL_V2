@@ -137,39 +137,64 @@ router.get('/generar-pedidos', (req, res) => {
 });
 
 //-----BUSCADOR-----
-router.get("/buscador", buscadorLimiter, (req, res) => {
-  //DETECTAR IPHONE  
-  const esIPhone = verAgente(req)
+router.get("/buscador", buscadorLimiter, async (req, res) => {
+  const esIPhone = verAgente(req);
+  const rawQuery = req.query.buscar;
 
-  let io = require('../io.js').get();  
-  io.once('connect', socket => {
-    (async () => {      
-        const buscar = req.query.buscar.toLocaleLowerCase()
-        
-        if(req.query.buscar.length == 0){
-          socket.emit("resultado-vacio");
-          return
-        }
-        const result = await controller.buscarArticulo(buscar) 
-        if(result.length == 0){
-          const sinTilde = buscar.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-          const result = await controller.buscarArticulo(sinTilde)
-          const data = { result: result, query: buscar}       
-          socket.emit("resultado-busqueda", data);
-          return
-        }
-        const data = { result: result, query: buscar}       
-        socket.emit("resultado-busqueda", data);
-        return
-    })();
-  })   
+  // 1. Validar que exista el parámetro de búsqueda
+  if (!rawQuery || typeof rawQuery !== 'string' || rawQuery.trim().length === 0) {
+    return res.render('index', {
+      categRes: true,
+      faq: false,
+      iphone: esIPhone,
+      login: req.oidc.isAuthenticated(),
+      resultado: [],
+      query: ""
+    });
+  }
+
+  // 2. BLOQUEO DE CARACTERES ASIÁTICOS/CHINOS (Rango Unicode CJK)
+  // Si contiene caracteres chinos/japoneses/coreanos, aborta sin tocar la base de datos
+  const tieneCaracteresAsiaticos = /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uffef\u4e00-\u9faf\u2600-\u26ff]/;
+  if (tieneCaracteresAsiaticos.test(rawQuery)) {
+    return res.render('index', {
+      categRes: true,
+      faq: false,
+      iphone: esIPhone,
+      login: req.oidc.isAuthenticated(),
+      resultado: [],
+      query: rawQuery.slice(0, 30) // Cortar para evitar mostrar textos gigantes
+    });
+  }
+
+  // 3. Limpieza y sanitización de la búsqueda
+  const buscar = rawQuery.toLowerCase().trim().slice(0, 60); // Limite de 60 caracteres
+  let result = [];
+
+  try {
+    // Primera búsqueda
+    result = await controller.buscarArticulo(buscar);
+
+    // Segunda búsqueda sin tildes si la primera no trajo nada
+    if (!result || result.length === 0) {
+      const sinTilde = buscar.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+      result = await controller.buscarArticulo(sinTilde);
+    }
+  } catch (error) {
+    console.error("Error en búsqueda:", error);
+    result = [];
+  }
+
+  // 4. Renderizar directamente la vista con los resultados (sin listeners de socket colgados)
   res.render('index', {
-    categRes: true, 
-    faq: false, 
+    categRes: true,
+    faq: false,
     iphone: esIPhone,
-    login: req.oidc.isAuthenticated() ? true : false,    
-  });  
-})
+    login: req.oidc.isAuthenticated(),
+    resultado: result || [],
+    query: buscar
+  });
+});
 
 
 
