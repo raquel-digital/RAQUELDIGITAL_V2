@@ -138,51 +138,58 @@ router.get('/generar-pedidos', (req, res) => {
 
 //-----BUSCADOR-----
 router.get("/buscador", buscadorLimiter, (req, res) => {
-  const esIPhone = verAgente(req);
-  const queryRaw = req.query.buscar || "";
-  const buscar = queryRaw.trim().toLowerCase();
+  // const esIPhone = verAgente(req);
+  // const queryRaw = req.query.buscar || "";
+  // const buscar = queryRaw.trim().toLowerCase();
 
-  // 1. FILTRO ANTI-BOTS (Descarte inmediato)
-  const esSpam = buscar.length === 0 || 
-                 buscar.length > 50 || 
-                 buscar.includes('@') || 
-                 buscar.includes('http') || 
-                 buscar.includes('://');
+  // // 1. FILTRO ANTI-BOTS (Descarte inmediato)
+  // const esSpam = buscar.length === 0 || 
+  //                buscar.length > 50 || 
+  //                buscar.includes('@') || 
+  //                buscar.includes('http') || 
+  //                buscar.includes('://');
 
-  if (esSpam) {
-    return res.render('index', {
-      categRes: true, 
-      faq: false, 
-      iphone: esIPhone,
-      login: req.oidc.isAuthenticated() ? true : false,    
-    });
-  }
+  // if (esSpam) {
+  //   return res.render('index', {
+  //     categRes: true, 
+  //     faq: false, 
+  //     iphone: esIPhone,
+  //     login: req.oidc.isAuthenticated() ? true : false,    
+  //   });
+  // }
 
 
-  let io = require('../io.js').get();  
+  // let io = require('../io.js').get();  
 
-  // Manejador único por conexión para evitar interferencias
-  const onConnect = async (socket) => {
-    // Si la petición actual no coincide con lo que el cliente espera, no emitimos a todos
-    if (esSpam) {
-      socket.emit("resultado-vacio");
-      return;
-    }
+  // // Manejador único por conexión para evitar interferencias
+  // const onConnect = async (socket) => {
+  //   // Si la petición actual no coincide con lo que el cliente espera, no emitimos a todos
+  //   if (esSpam) {
+  //     socket.emit("resultado-vacio");
+  //     return;
+  //   }
 
-    let result = await controller.buscarArticulo(buscar);
+  //   let result = await controller.buscarArticulo(buscar);
 
-    if (result.length == 0) {
-      const sinTilde = buscar.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-      result = await controller.buscarArticulo(sinTilde);
-    }
+  //   if (result.length == 0) {
+  //     const sinTilde = buscar.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+  //     result = await controller.buscarArticulo(sinTilde);
+  //   }
 
-    // Emitimos SOLO al socket que se acaba de conectar para esta petición
-    socket.emit("resultado-busqueda", { result: result, query: buscar });
-  };
+  //   // Emitimos SOLO al socket que se acaba de conectar para esta petición
+  //   socket.emit("resultado-busqueda", { result: result, query: buscar });
+  // };
 
-  // Escuchamos una sola vez y Removemos listeners antiguos para evitar cruces
-  io.once('connect', onConnect);
+  // // Escuchamos una sola vez y Removemos listeners antiguos para evitar cruces
+  // io.once('connect', onConnect);
 
+  // res.render('index', {
+  //   categRes: true, 
+  //   faq: false, 
+  //   iphone: esIPhone,
+  //   login: req.oidc.isAuthenticated() ? true : false,    
+  // });  
+  const esIPhone = verAgente(req)
   res.render('index', {
     categRes: true, 
     faq: false, 
