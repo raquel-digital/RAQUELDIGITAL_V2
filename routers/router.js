@@ -142,83 +142,83 @@ router.get('/generar-pedidos', (req, res) => {
 });
 
 //-----BUSCADOR-----
-// router.get("/buscador", buscadorLimiter, async (req, res) => {
-//   try {
-//     const esIPhone = verAgente(req);
-//     const login = req.oidc.isAuthenticated();
-//     const queryRaw = req.query.buscar || "";
-//     const buscar = queryRaw.trim().toLowerCase();
+router.get("/buscador", buscadorLimiter, async (req, res) => {
+  try {
+    const esIPhone = verAgente(req);
+    const login = req.oidc.isAuthenticated();
+    const queryRaw = req.query.buscar || "";
+    const buscar = queryRaw.trim().toLowerCase();
 
-//     // 1. FILTRO ANTI-BOTS Y VALIDACIÓN
-//     const REGEX_BUSQUEDA_VALIDA = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s\-_]{2,40}$/;
+    // 1. FILTRO ANTI-BOTS Y VALIDACIÓN
+    const REGEX_BUSQUEDA_VALIDA = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s\-_]{2,40}$/;
     
-//     const esSpam = buscar.length === 0 || 
-//                    buscar.length > 50 || 
-//                    buscar.includes('@') || 
-//                    buscar.includes('http') || 
-//                    buscar.includes('://') ||
-//                    !REGEX_BUSQUEDA_VALIDA.test(buscar);
+    const esSpam = buscar.length === 0 || 
+                   buscar.length > 50 || 
+                   buscar.includes('@') || 
+                   buscar.includes('http') || 
+                   buscar.includes('://') ||
+                   !REGEX_BUSQUEDA_VALIDA.test(buscar);
 
-//     let resultBusqueda = [];
+    let resultBusqueda = [];
 
-//     // 2. EJECUCIÓN DE BÚSQUEDA SOLO SI ES VÁLIDA
-//     if (!esSpam) {
-//       resultBusqueda = await controller.buscarArticulo(buscar);
+    // 2. EJECUCIÓN DE BÚSQUEDA SOLO SI ES VÁLIDA
+    if (!esSpam) {
+      resultBusqueda = await controller.buscarArticulo(buscar);
 
-//       // Intento sin tildes si la primera búsqueda no devolvió nada
-//       if (!resultBusqueda || resultBusqueda.length === 0) {
-//         const sinTilde = buscar.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-//         resultBusqueda = await controller.buscarArticulo(sinTilde);
-//       }
-//     }
+      // Intento sin tildes si la primera búsqueda no devolvió nada
+      if (!resultBusqueda || resultBusqueda.length === 0) {
+        const sinTilde = buscar.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+        resultBusqueda = await controller.buscarArticulo(sinTilde);
+      }
+    }
 
-//     // 3. MANEJO DE SESIÓN Y PEDIDOS (Igual que en /categoria)
-//     let pedidos = null;
-//     // if (login) {
-//     //   pedidos = await authController.leer(req.oidc.user);
-//     // }
-//     console.log(resultBusqueda)
-//     // 4. RENDERIZADO ÚNICO DIRECTO A EJS
-//     return res.render('index', {
-//       categRes: true,
-//       faq: false,
-//       iphone: esIPhone,
-//       busquedaResult: { 
-//         result: resultBusqueda || [], 
-//         query: buscar 
-//       },
-//       login: login ? {
-//         isLog: true,
-//         pedidos: pedidos
-//       } : false,
-//       resultBusqueda: resultBusqueda
-//     });
+    // 3. MANEJO DE SESIÓN Y PEDIDOS (Igual que en /categoria)
+    let pedidos = null;
+    // if (login) {
+    //   pedidos = await authController.leer(req.oidc.user);
+    // }
+    console.log(resultBusqueda)
+    // 4. RENDERIZADO ÚNICO DIRECTO A EJS
+    return res.render('index', {
+      categRes: true,
+      faq: false,
+      iphone: esIPhone,
+      busquedaResult: { 
+        result: resultBusqueda || [], 
+        query: buscar 
+      },
+      login: login ? {
+        isLog: true,
+        pedidos: pedidos
+      } : false,
+      resultBusqueda: resultBusqueda
+    });
 
-//   } catch (error) {
-//     console.error("Error en la ruta /buscador:", error);
-//     return res.status(500).render('index', {
-//       categRes: false,
-//       faq: false,
-//       iphone: verAgente(req),
-//       busquedaResult: { result: [], query: "" },
-//       login: req.oidc.isAuthenticated() ? { isLog: true, pedidos: null } : false,
-//       resultBusqueda: null
-//     });
-//   }
-// });
-router.get("/buscador", (req, res) => {
-  const esIPhone = verAgente(req);
-  const login = req.oidc.isAuthenticated();
-
-  // Renderiza la vista de inmediato con resultados vacíos sin tocar base de datos ni sockets
-  return res.render('index', {
-    categRes: true,
-    faq: false,
-    iphone: esIPhone,
-    busquedaResult: { result: [], query: "" },
-    login: login ? { isLog: true, pedidos: null } : false
-  });
+  } catch (error) {
+    console.error("Error en la ruta /buscador:", error);
+    return res.status(500).render('index', {
+      categRes: false,
+      faq: false,
+      iphone: verAgente(req),
+      busquedaResult: { result: [], query: "" },
+      login: req.oidc.isAuthenticated() ? { isLog: true, pedidos: null } : false,
+      resultBusqueda: null
+    });
+  }
 });
+// router.get("/buscador", (req, res) => {
+//   const esIPhone = verAgente(req);
+//   const login = req.oidc.isAuthenticated();
+
+//   // Renderiza la vista de inmediato con resultados vacíos sin tocar base de datos ni sockets
+//   return res.render('index', {
+//     categRes: true,
+//     faq: false,
+//     iphone: esIPhone,
+//     busquedaResult: { result: [], query: "" },
+//     login: login ? { isLog: true, pedidos: null } : false
+//   });
+// });
 
 
 router.get('/preguntas-frecuentes', function (req, res, next) {
