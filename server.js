@@ -9,6 +9,19 @@ const requer  = require("./utils/config")
 const controller = require("./api/arts/controller");
 const mailing = require("./utils/mailing.js")
 
+app.use((req, res, next) => {
+  const host = req.headers.host || '';
+  // Si la petición viene directo a herokuapp.com
+  if (host.includes('herokuapp.com')) {
+    // Podés redirigirlo a tu dominio oficial protegido
+    return res.redirect(301, `https://raqueldigital.com${req.originalUrl}`);
+    
+    // O si preferís cortar el ataque en seco con un error:
+    // return res.status(403).send('Acceso no permitido.');
+  }
+  next();
+});
+
 //socket
 const io = require('./io.js').init(http);
 
