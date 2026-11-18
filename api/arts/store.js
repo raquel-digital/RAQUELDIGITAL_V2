@@ -270,20 +270,20 @@ const store = {
             const res = []
             for(a of art){
                 const upd = await model.findOneAndUpdate({
-                    codigo: a
-                },
-                {
-                    $set: {
-                        mostrar: true,
-                        stock: 10,                    
-                    }
-                },
-                { returnDocument: 'after' } // Opción para devolver el documento actualizado
-            )
+                        codigo: a
+                    },
+                    {
+                        $set: {
+                            mostrar: true,
+                            stock: 10,                    
+                        }
+                    },
+                    { returnDocument: 'after' } // Opción para devolver el documento actualizado
+                )
                 if(upd){
                     res.push(upd)
                 }else{
-                    const res =await model.findOneAndUpdate(
+                    const upd = await model.findOneAndUpdate(
                         { "colores.codigo": a }, // Condición de búsqueda
                         {
                           $set: {
@@ -293,7 +293,7 @@ const store = {
                         },
                         { new: true } // Devolver el documento actualizado
                       )
-                    return res
+                    res.push(upd)
                 }
                 
             }
